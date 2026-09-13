@@ -1,8 +1,14 @@
 # Validation boundary
 
+Alpha.39 adds standalone [transaction and receipt commitment checks](BLOCK_TRANSACTION_COMMITMENTS.md). Complete canonical encoded transaction envelopes are hashed and placed in the transaction trie. A separate composition checks both roots under the same selected London header, then associates transaction and receipt payloads by index and matching type. RPC transaction hashes and sender summaries supply no proof.
+
+**790/790 Node offline tests across 40 files passed**, including 86 new transaction checks. The build retained 22 byte-identical frontend assets. The [current receipt](../evidence/TEST_RESULTS.json) records guarded fixture generation, offline checks, the guide example and the separate build. New cases are synthetic formatting and commitment examples. They do not establish signature validity or executed transactions. Existing historical captures omit complete signed transaction bytes; this increment does not upgrade their old verification claims. Endpoint authenticity, execution, consensus, finality, freshness and recovery/adoption integration remain open. There is no new network acquisition or deployment.
+
+## Historical alpha.38 evidence
+
 Alpha.38 adds a standalone [complete block receipt check](BLOCK_RECEIPT_COMMITMENTS.md). It recomputes the London-format receipt trie from the full ordered receipt set and compares the root to a checked selected header. Status, cumulative gas, blooms and log payloads enter that commitment; transaction hashes, calldata and other RPC summaries do not. Receipt-specific success flags do not change the header inspector's older body-verification flags.
 
-**704/704 Node offline tests across 39 files passed**, including 41 new receipt checks. The build retained 22 byte-identical frontend assets. The [current receipt](../evidence/TEST_RESULTS.json) records guarded fixture generation, offline checks, the guide example and the separate build. Existing captures, contracts, readers, primary sources and frontend are unchanged. There is no new network acquisition or public deployment. Transactions, signatures, execution, consensus, freshness, endpoint authenticity, finality and integration with action adoption remain unverified by this increment.
+**704/704 Node offline tests across 39 files passed**, including 41 new receipt checks. The build retained 22 byte-identical frontend assets. The [alpha.38 receipt](../evidence/ALPHA38_TEST_RESULTS.json) records guarded fixture generation, offline checks, the guide example and the separate build. Existing captures, contracts, readers, primary sources and frontend are unchanged. There is no new network acquisition or public deployment. Transactions, signatures, execution, consensus, freshness, endpoint authenticity, finality and integration with action adoption remain unverified by this increment.
 
 ## Historical alpha.37 evidence
 

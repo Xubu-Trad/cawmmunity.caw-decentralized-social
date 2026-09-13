@@ -69,3 +69,5 @@ The [tests](../tests/block-receipts.test.mjs) check the unchanged retained branc
 To regenerate those fixtures, run `python reference/fixtures/generate-block-receipts-fixtures.py` under the existing resource limits, then run the tests. The generator performs no network request and writes only its adjacent JSON fixture. Current commands, hashes and limits are in the [review guide](REVIEW_GUIDE.md) and [test receipt](../evidence/TEST_RESULTS.json).
 
 Next: bind complete signed transaction bytes to the header's transaction root, associate transactions and receipts by the committed index, then compose that evidence with selected-history adoption. Authentication, confirmation policy and deployment remain [open gates](ROADMAP.md).
+
+Alpha.39 adds a separate [transaction and receipt composition](BLOCK_TRANSACTION_COMMITMENTS.md). It checks both roots under one selected header and associates their complete payloads by index and type. This receipt-only API and its existing flags remain unchanged. Neither API authenticates the selected endpoint or verifies execution.

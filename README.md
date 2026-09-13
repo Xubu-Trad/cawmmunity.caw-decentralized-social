@@ -66,8 +66,9 @@ Draft, review a simulated fee, post, and inspect the receipt. Nothing is sent wh
 | [Alpha.36: actions with checked headers](docs/HEADER_CHECKED_ACTIONS.md) | Publish current action status only after checked recovery; recheck all saved branches at restart | Explicit offline mode; body inclusion, authenticated endpoints and finality remain open |
 | [Alpha.37: provider reports with checked headers](docs/HEADER_CHECKED_PROVIDERS.md) | Require header and accounting checks for every configured report before shared action status | Explicit offline mode; matching labels do not prove independent sources or authenticated history |
 | [Alpha.38: block receipt commitments](docs/BLOCK_RECEIPT_COMMITMENTS.md) | Rebuild complete receipt tries and match their roots to checked headers | Standalone London-format check; transaction association, endpoint authentication and adoption integration remain open |
+| [Alpha.39: transactions and receipts](docs/BLOCK_TRANSACTION_COMMITMENTS.md) | Check complete transaction bytes against the selected header and associate receipts at the same index | Standalone London-format check; signatures, execution, endpoint authentication and adoption integration remain open |
 
-**Recorded validation:** 704/704 offline tests across 39 files; 22 build assets. See [results and browser coverage](docs/VALIDATION.md). These finite checks establish neither an external audit, community agreement nor permanent availability.
+**Recorded validation:** 790/790 offline tests across 40 files; 22 build assets. See [results and browser coverage](docs/VALIDATION.md). These finite checks establish neither an external audit, community agreement nor permanent availability.
 
 ## Read, reproduce, challenge
 
