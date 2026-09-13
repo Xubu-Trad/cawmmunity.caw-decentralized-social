@@ -1,8 +1,14 @@
 # Validation boundary
 
+Alpha.38 adds a standalone [complete block receipt check](BLOCK_RECEIPT_COMMITMENTS.md). It recomputes the London-format receipt trie from the full ordered receipt set and compares the root to a checked selected header. Status, cumulative gas, blooms and log payloads enter that commitment; transaction hashes, calldata and other RPC summaries do not. Receipt-specific success flags do not change the header inspector's older body-verification flags.
+
+**704/704 Node offline tests across 39 files passed**, including 41 new receipt checks. The build retained 22 byte-identical frontend assets. The [current receipt](../evidence/TEST_RESULTS.json) records guarded fixture generation, offline checks, the guide example and the separate build. Existing captures, contracts, readers, primary sources and frontend are unchanged. There is no new network acquisition or public deployment. Transactions, signatures, execution, consensus, freshness, endpoint authenticity, finality and integration with action adoption remain unverified by this increment.
+
+## Historical alpha.37 evidence
+
 Alpha.37 adds an explicit [provider comparison mode with checked headers](HEADER_CHECKED_PROVIDERS.md). Each configured report must pass header integrity and accounting reconstruction in an isolated checked observer before entering comparison. Only exact whole-history agreement from the complete roster at the separately selected endpoint exposes a shared observation. The earlier comparison export and schema retain their behavior.
 
-**663/663 Node offline tests across 38 files passed**, including 29 new checked-provider checks. The build retained 22 byte-identical frontend assets. The [current receipt](../evidence/TEST_RESULTS.json) records the offline checks and separate build. Tests reuse retained controlled local captures and synthetic mutations. Shared observations include the checked header report; their finality, retry and provider-independence boundaries remain unchanged. There is no new acquisition, persistence interface, authenticated endpoint, body-inclusion proof, independent verifier or production integration. Historical captures, contracts, signed domains, primary sources and frontend remain unchanged.
+**663/663 Node offline tests across 38 files passed**, including 29 new checked-provider checks. The build retained 22 byte-identical frontend assets. The [alpha.37 receipt](../evidence/ALPHA37_TEST_RESULTS.json) records the offline checks and separate build. Tests reuse retained controlled local captures and synthetic mutations. Shared observations include the checked header report; their finality, retry and provider-independence boundaries remain unchanged. There is no new acquisition, persistence interface, authenticated endpoint, body-inclusion proof, independent verifier or production integration. Historical captures, contracts, signed domains, primary sources and frontend remain unchanged.
 
 ## Historical alpha.36 evidence
 
