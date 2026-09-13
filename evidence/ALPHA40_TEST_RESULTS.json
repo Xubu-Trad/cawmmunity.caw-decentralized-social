@@ -7,32 +7,26 @@
   "open_conflicts": 15,
   "initial_review_commit": "91479b6dc8c9a264411d75177d43029e0266c354",
   "github_address": "Xubu-Trad/cawmmunity.caw-decentralized-social",
-  "release": "0.1.0-alpha.41",
-  "date": "2026-09-13",
-  "tests": 822,
-  "passed": 822,
+  "release": "0.1.0-alpha.40",
+  "date": "2026-09-12",
+  "tests": 814,
+  "passed": 814,
   "failed": 0,
   "cancelled": 0,
   "skipped": 0,
   "todo": 0,
-  "test_files": 42,
-  "new_tests": 8,
-  "python_tests": 65,
-  "python_test_breakdown": {
-    "codec": 14,
-    "scope": 18,
-    "writer": 18,
-    "extractor": 15
-  },
+  "test_files": 41,
+  "new_tests": 24,
+  "python_tests": 46,
   "build_files": 22,
   "executions": {
-    "codec": {
-      "mode": "codec",
+    "collector": {
+      "mode": "collector",
       "runtime": "Python",
       "runtime_sha256": "372c2eae555b344520bf147be0096e009069aeca4e7f78d6aecea6d53158056a",
       "exit_code": 0,
-      "seconds": 0.875,
-      "observed_peak_bytes": 27840512,
+      "seconds": 1.125,
+      "observed_peak_bytes": 27971584,
       "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk"
     },
     "scope": {
@@ -40,26 +34,8 @@
       "runtime": "Python",
       "runtime_sha256": "372c2eae555b344520bf147be0096e009069aeca4e7f78d6aecea6d53158056a",
       "exit_code": 0,
-      "seconds": 0.813,
-      "observed_peak_bytes": 31154176,
-      "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk"
-    },
-    "writer": {
-      "mode": "writer",
-      "runtime": "Python",
-      "runtime_sha256": "372c2eae555b344520bf147be0096e009069aeca4e7f78d6aecea6d53158056a",
-      "exit_code": 0,
-      "seconds": 0.687,
-      "observed_peak_bytes": 32321536,
-      "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk"
-    },
-    "extractor": {
-      "mode": "extractor",
-      "runtime": "Python",
-      "runtime_sha256": "372c2eae555b344520bf147be0096e009069aeca4e7f78d6aecea6d53158056a",
-      "exit_code": 0,
-      "seconds": 17.969,
-      "observed_peak_bytes": 58183680,
+      "seconds": 0.438,
+      "observed_peak_bytes": 30867456,
       "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk"
     },
     "extract": {
@@ -67,8 +43,17 @@
       "runtime": "Python",
       "runtime_sha256": "372c2eae555b344520bf147be0096e009069aeca4e7f78d6aecea6d53158056a",
       "exit_code": 0,
-      "seconds": 1.031,
-      "observed_peak_bytes": 33439744,
+      "seconds": 0.781,
+      "observed_peak_bytes": 33083392,
+      "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk"
+    },
+    "hash": {
+      "mode": "hash",
+      "runtime": "Python",
+      "runtime_sha256": "372c2eae555b344520bf147be0096e009069aeca4e7f78d6aecea6d53158056a",
+      "exit_code": 0,
+      "seconds": 0.36,
+      "observed_peak_bytes": 20754432,
       "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk"
     },
     "focused": {
@@ -76,8 +61,8 @@
       "runtime": "Node.js 24.20.0",
       "runtime_sha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
       "exit_code": 0,
-      "seconds": 1.75,
-      "observed_peak_bytes": 67207168,
+      "seconds": 0.718,
+      "observed_peak_bytes": 69574656,
       "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk"
     },
     "guide": {
@@ -85,8 +70,8 @@
       "runtime": "Node.js 24.20.0",
       "runtime_sha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
       "exit_code": 0,
-      "seconds": 0.265,
-      "observed_peak_bytes": 45944832,
+      "seconds": 0.375,
+      "observed_peak_bytes": 53927936,
       "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk"
     },
     "all": {
@@ -94,8 +79,8 @@
       "node_version": "24.20.0",
       "node_sha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
       "exit_code": 0,
-      "seconds": 52.016,
-      "observed_peak_bytes": 468070400,
+      "seconds": 22.422,
+      "observed_peak_bytes": 468107264,
       "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk"
     },
     "build": {
@@ -103,16 +88,16 @@
       "node_version": "24.20.0",
       "node_sha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
       "exit_code": 0,
-      "seconds": 0.484,
-      "observed_peak_bytes": 55783424,
+      "seconds": 0.313,
+      "observed_peak_bytes": 55812096,
       "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk"
     },
     "live": {
       "runtime": "3.12.14",
       "runtime_sha256": "372c2eae555b344520bf147be0096e009069aeca4e7f78d6aecea6d53158056a",
       "exit_code": 0,
-      "seconds": 35.25,
-      "peak_bytes": 59756544,
+      "seconds": 26.953,
+      "peak_bytes": 56258560,
       "limits": "300 seconds, 512 MiB combined controller/node, 2 processes, 1 MiB output, 768 MiB startup memory, 2 GiB disk"
     }
   },
@@ -122,19 +107,16 @@
     "manifestSha256": "3590fc562c47c46f9f911918fd2b5181bb41db2f87f2ee6c6f0c2ee740ad8f0a"
   },
   "guide_example": {
-    "guide": "../docs/SIGNED_BODY_ACQUISITION.md",
+    "guide": "../docs/BLOCK_BODY_ACQUISITION.md",
     "output": {
       "blocks": 30,
-      "accepted": 30,
-      "rpcTransactionHashesVerified": true,
-      "transactionAssociationVerified": true,
-      "signaturesVerified": false,
+      "commitmentChecksPassed": 30,
+      "hashLabelRejections": 30,
       "senderVerified": false,
-      "endpointAuthenticated": false,
-      "executionVerified": false
+      "endpointAuthenticated": false
     }
   },
-  "changes": "Acquire genuinely signed local block bodies; preserve exact submitted bytes and accept all 30 observations with unchanged hash and commitment checks.",
+  "changes": "Acquire complete local block bodies and reject impersonated transaction labels that differ from raw-byte hashes, despite matching commitments.",
   "contracts_changed": false,
   "frontend_changed": false,
   "historical_readers_changed": false,
@@ -148,31 +130,22 @@
     "branch_captures": 2,
     "common_prefix_blocks": 10,
     "distinct_blocks": 20,
-    "rpc_requests": 884,
-    "signed_submissions": 22,
+    "rpc_requests": 822,
     "raw_api": "eth_getRawTransactionByHash",
     "both_commitment_checks_passed": 30,
-    "acquisition_wrapper_accepted": 30,
-    "hash_label_rejections": 0,
-    "source_manifest_sha256": "bc36f989ffdb8f323511de9d562f48778710d415072b646f89d6c47ca21311d2",
-    "body_captures_sha256": "e2db3326525f1b6b3e24af6582482220c7db1cf8d2e5a1099005caca84ba0c36",
-    "expanded_trace_sha256": "6ca0685230a9917eb3d73ce0a74666c9d4442059883df65f4a374551735c2975",
-    "expanded_trace_bytes": 3139554,
-    "compressed_trace_sha256": "d98a1b7c2e5d28bc05b75e427b7e2eacb7e237c6756c6dd460124feb6e18a276",
+    "acquisition_wrapper_accepted": 0,
+    "hash_label_rejections": 30,
+    "expected_error": "BLOCK_BODY_TRANSACTION_HASH",
+    "source_manifest_sha256": "6807d8c14817a6fde6d71cf622f3f509261b722ff85784c296caae0cad177183",
+    "body_captures_sha256": "c1ea7eee1ef381a9d9f17bb734765c7a5e531b88a3ba0bc79c3a2e059a8293bb",
+    "expanded_trace_sha256": "03ebecf9fc2e40fefbcb90326021e2f74ec715f215fee757fb4761fb595e2b3d",
+    "expanded_trace_bytes": 3025625,
+    "compressed_trace_sha256": "1a45ba831b5b25c4f9590bf7cd61c106feef0093ef93485f5f89c9acae9eba03",
     "scope_and_cleanup_checks_passed": true
   },
-  "fixture_signing": {
-    "cryptography_version": "50.0.1",
-    "fixed_public_test_keys_only": true,
-    "known_test_public_key_signature_checked": true,
-    "local_precompile_parity_checked": true,
-    "generic_sender_verifier": false,
-    "impersonation_enabled": false,
-    "real_wallet_used": false
-  },
   "verification_boundary": {
-    "generic_signatures_verified": false,
-    "generic_sender_verified": false,
+    "signatures_verified": false,
+    "sender_verified": false,
     "execution_verified": false,
     "endpoint_authenticated": false,
     "independent_providers": false,
@@ -183,13 +156,13 @@
     "impersonated_hash_formula_is_accepted_transaction_identity": false,
     "prior_alpha_claims_upgraded": false
   },
-  "next_gate": "Verify general transaction signatures and senders, bind CAW calls to complete checked bodies, then integrate body acceptance into selected-history recovery with explicit endpoint and confirmation assumptions.",
+  "next_gate": "Use actually signed top-level test transactions and reproduce full body acquisition before integrating acceptance into recovery.",
   "browser_visual_review": {
     "result": "not_repeated",
     "frontend_unchanged": true,
     "historical_receipt": "ALPHA27_TEST_RESULTS.json"
   },
-  "historical_receipt": "ALPHA40_TEST_RESULTS.json",
-  "historical_source_manifest": "ALPHA40_CODE_SHA256SUMS.txt",
-  "source_files": 235
+  "historical_receipt": "ALPHA39_TEST_RESULTS.json",
+  "historical_source_manifest": "ALPHA39_CODE_SHA256SUMS.txt",
+  "source_files": 221
 }

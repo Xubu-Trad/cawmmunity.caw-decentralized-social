@@ -1,8 +1,14 @@
 # Validation boundary
 
+Alpha.41 adds [signed local body acquisition](SIGNED_BODY_ACQUISITION.md). Twenty-two top-level submissions use the two published test identities, without impersonation. Both branches retain full raw transaction bytes and receipts. All 30 captured block observations pass the unchanged alpha.40 wrapper: computed transaction hashes match both RPC labels, and transaction/receipt commitments match the selected header. The old impersonated evidence and its rejections remain unchanged.
+
+**822/822 Node tests across 42 files and 65 Python tests passed.** All 30 block observations pass the existing hash and commitment checks. The [current receipt](../evidence/TEST_RESULTS.json) records the guarded live run, Python checks, extraction, focused tests, guide and build. This is one controlled local node, not independent public-chain evidence. The writer checks signatures against its fixed test public keys; the general body verifier still does not verify senders/signatures, execution, endpoint authenticity, consensus, finality or freshness. Integration into recovery acceptance remains open. No public deployment occurred.
+
+## Historical alpha.40 evidence
+
 Alpha.40 adds [bounded block-body acquisition](BLOCK_BODY_ACQUISITION.md) from a fresh isolated local experiment. The collector obtains complete encoded transactions from the node, retains complete receipts and rechecks both header views. A separate verifier checks both commitments and requires RPC transaction-hash labels to match the hashes of those raw bytes. All 30 local captures pass the commitment checks but are rejected because impersonation produces different RPC labels. This is retained failure evidence, not an accepted history.
 
-**814/814 Node tests across 41 files and 46 Python tests passed.** All 30 local bodies passed the standalone commitment checks and were correctly rejected by the acquisition wrapper for mismatched hash labels. The [current receipt](../evidence/TEST_RESULTS.json) records the live run, collector and scope tests, replay extraction, focused checks, guide and build. The two branches share one node and ten captured prefix blocks. Accounts are impersonated; sender/signature verification, authenticated endpoints, execution validity, finality and integration into recovery acceptance remain open. No public network deployment occurred.
+**814/814 Node tests across 41 files and 46 Python tests passed.** All 30 local bodies passed the standalone commitment checks and were correctly rejected by the acquisition wrapper for mismatched hash labels. The [alpha.40 receipt](../evidence/ALPHA40_TEST_RESULTS.json) records the live run, collector and scope tests, replay extraction, focused checks, guide and build. The two branches share one node and ten captured prefix blocks. Accounts are impersonated; sender/signature verification, authenticated endpoints, execution validity, finality and integration into recovery acceptance remain open. No public network deployment occurred.
 
 ## Historical alpha.39 evidence
 
