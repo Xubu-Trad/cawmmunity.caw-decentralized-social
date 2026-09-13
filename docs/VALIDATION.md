@@ -1,8 +1,14 @@
 # Validation boundary
 
+Alpha.42 adds [offline transaction sender verification](BLOCK_SENDER_VERIFICATION.md) for the three formats admitted by the existing London transaction reader. It checks commitment first, rebuilds the exact signing digest, enforces signature ranges and chain policy, recovers the public key and verifies the signature equation. The sender is derived from that key. The caller supplies the selected header hash, chain ID and unprotected-legacy policy; these inputs do not authenticate a network.
+
+**862/862 Node tests across 43 files passed**, including 40 new sender checks. The 65 earlier Python tests are retained in the alpha.41 receipt; this increment ran the native fixture generator separately. The [current receipt](../evidence/TEST_RESULTS.json) records native-generated Python fixtures, Node checks, the guide example and build. The new verifier is separate from all earlier readers and evidence. CAW account authority, valid execution, endpoint authentication, consensus, finality, freshness and recovery/adoption integration remain unverified. No new chain run or public deployment occurred.
+
+## Historical alpha.41 evidence
+
 Alpha.41 adds [signed local body acquisition](SIGNED_BODY_ACQUISITION.md). Twenty-two top-level submissions use the two published test identities, without impersonation. Both branches retain full raw transaction bytes and receipts. All 30 captured block observations pass the unchanged alpha.40 wrapper: computed transaction hashes match both RPC labels, and transaction/receipt commitments match the selected header. The old impersonated evidence and its rejections remain unchanged.
 
-**822/822 Node tests across 42 files and 65 Python tests passed.** All 30 block observations pass the existing hash and commitment checks. The [current receipt](../evidence/TEST_RESULTS.json) records the guarded live run, Python checks, extraction, focused tests, guide and build. This is one controlled local node, not independent public-chain evidence. The writer checks signatures against its fixed test public keys; the general body verifier still does not verify senders/signatures, execution, endpoint authenticity, consensus, finality or freshness. Integration into recovery acceptance remains open. No public deployment occurred.
+**822/822 Node tests across 42 files and 65 Python tests passed.** All 30 block observations pass the existing hash and commitment checks. The [alpha.41 receipt](../evidence/ALPHA41_TEST_RESULTS.json) records the guarded live run, Python checks, extraction, focused tests, guide and build. This is one controlled local node, not independent public-chain evidence. The writer checks signatures against its fixed test public keys; the general body verifier still does not verify senders/signatures, execution, endpoint authenticity, consensus, finality or freshness. Integration into recovery acceptance remains open. No public deployment occurred.
 
 ## Historical alpha.40 evidence
 
