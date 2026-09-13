@@ -1,0 +1,843 @@
+{
+  "blocks": [
+    {
+      "block_hash": "0x607ec78df084b41176b7284e2b2dee521bf80b1bd58a0a41b3232863fee988bf",
+      "block_number": "0x3",
+      "branch": "left",
+      "counts": {
+        "both_labels_match": 0,
+        "header_label_matches": 0,
+        "legacy_sender_suffix_checks": 1,
+        "legacy_sender_suffix_matches_both_labels": 1,
+        "raw_bytes": 3317,
+        "receipt_label_matches": 0,
+        "transaction_observations": 1
+      },
+      "sample": {
+        "header_label_matches_raw": false,
+        "header_rpc_transaction_hash": "0x85042ccb91585ed41139f97e2300e6a8634c7fdc9718825a9496314fc357839c",
+        "legacy_sender_suffix_keccak256": "0x85042ccb91585ed41139f97e2300e6a8634c7fdc9718825a9496314fc357839c",
+        "legacy_sender_suffix_matches_both_labels": true,
+        "raw_bytes": 3317,
+        "raw_keccak256": "0x00da02db955e1beaa922758b574c32ab5955447ace23e1adc56988e61061dc69",
+        "receipt_label_matches_raw": false,
+        "receipt_rpc_transaction_hash": "0x85042ccb91585ed41139f97e2300e6a8634c7fdc9718825a9496314fc357839c",
+        "transaction_index": "0x0",
+        "unverified_rpc_from": "0x00000000000000000000000000000000ca180001"
+      }
+    },
+    {
+      "block_hash": "0xff8206b1ba06e6f21bfd8dc0b2c7bc3ff3b1b6bdf471ce7285e3cc0fe12f2b6f",
+      "block_number": "0x4",
+      "branch": "left",
+      "counts": {
+        "both_labels_match": 0,
+        "header_label_matches": 0,
+        "legacy_sender_suffix_checks": 1,
+        "legacy_sender_suffix_matches_both_labels": 1,
+        "raw_bytes": 7823,
+        "receipt_label_matches": 0,
+        "transaction_observations": 1
+      },
+      "sample": {
+        "header_label_matches_raw": false,
+        "header_rpc_transaction_hash": "0x6baf614dc4e6d0e3985e71b933ec9cf011a85ea4292e7b214cb37a013a32f7a0",
+        "legacy_sender_suffix_keccak256": "0x6baf614dc4e6d0e3985e71b933ec9cf011a85ea4292e7b214cb37a013a32f7a0",
+        "legacy_sender_suffix_matches_both_labels": true,
+        "raw_bytes": 7823,
+        "raw_keccak256": "0x166d82cd02fac11d57be731f97a3e62415f186aa5cb992a1c5f82c5b791f45ff",
+        "receipt_label_matches_raw": false,
+        "receipt_rpc_transaction_hash": "0x6baf614dc4e6d0e3985e71b933ec9cf011a85ea4292e7b214cb37a013a32f7a0",
+        "transaction_index": "0x0",
+        "unverified_rpc_from": "0x00000000000000000000000000000000ca180001"
+      }
+    },
+    {
+      "block_hash": "0x94eae14ed2497c7942e310ab3ad0ceebada26c13aa89c0c1949400fbb6c6fdb6",
+      "block_number": "0x5",
+      "branch": "left",
+      "counts": {
+        "both_labels_match": 0,
+        "header_label_matches": 0,
+        "legacy_sender_suffix_checks": 1,
+        "legacy_sender_suffix_matches_both_labels": 1,
+        "raw_bytes": 110,
+        "receipt_label_matches": 0,
+        "transaction_observations": 1
+      },
+      "sample": {
+        "header_label_matches_raw": false,
+        "header_rpc_transaction_hash": "0x88a8f49a5ecf394b73937937135b80816b888654c721552372ecc0807630f28e",
+        "legacy_sender_suffix_keccak256": "0x88a8f49a5ecf394b73937937135b80816b888654c721552372ecc0807630f28e",
+        "legacy_sender_suffix_matches_both_labels": true,
+        "raw_bytes": 110,
+        "raw_keccak256": "0x59f7e28e9e83fb1c86f82401f3b17e6905a786e64fcba7aa46449b0475516ce5",
+        "receipt_label_matches_raw": false,
+        "receipt_rpc_transaction_hash": "0x88a8f49a5ecf394b73937937135b80816b888654c721552372ecc0807630f28e",
+        "transaction_index": "0x0",
+        "unverified_rpc_from": "0x765d03fe39e2a0a48ac162a15b541c3cd1d63e76"
+      }
+    },
+    {
+      "block_hash": "0xf823d02de7ef80641720a2284abe75866c77687f3157321f6c7a228ea85fbbc5",
+      "block_number": "0x6",
+      "branch": "left",
+      "counts": {
+        "both_labels_match": 0,
+        "header_label_matches": 0,
+        "legacy_sender_suffix_checks": 1,
+        "legacy_sender_suffix_matches_both_labels": 1,
+        "raw_bytes": 110,
+        "receipt_label_matches": 0,
+        "transaction_observations": 1
+      },
+      "sample": {
+        "header_label_matches_raw": false,
+        "header_rpc_transaction_hash": "0x03085bf0a5f0f4a409456441c9c6d95486b84c970ba0b29f953f5905440bf11f",
+        "legacy_sender_suffix_keccak256": "0x03085bf0a5f0f4a409456441c9c6d95486b84c970ba0b29f953f5905440bf11f",
+        "legacy_sender_suffix_matches_both_labels": true,
+        "raw_bytes": 110,
+        "raw_keccak256": "0x59f7e28e9e83fb1c86f82401f3b17e6905a786e64fcba7aa46449b0475516ce5",
+        "receipt_label_matches_raw": false,
+        "receipt_rpc_transaction_hash": "0x03085bf0a5f0f4a409456441c9c6d95486b84c970ba0b29f953f5905440bf11f",
+        "transaction_index": "0x0",
+        "unverified_rpc_from": "0x47ecac8221f18970c48cf48aaa3cbe8167bbbe73"
+      }
+    },
+    {
+      "block_hash": "0xc5532ea016821c50a173feddf840d18be4db9e23f596572bc8f97afdc8c3ce5a",
+      "block_number": "0x7",
+      "branch": "left",
+      "counts": {
+        "both_labels_match": 0,
+        "header_label_matches": 0,
+        "legacy_sender_suffix_checks": 1,
+        "legacy_sender_suffix_matches_both_labels": 1,
+        "raw_bytes": 142,
+        "receipt_label_matches": 0,
+        "transaction_observations": 1
+      },
+      "sample": {
+        "header_label_matches_raw": false,
+        "header_rpc_transaction_hash": "0x66c4a8314aaf9898ad80ece4bf661e5d17455430e98ccd91e0dddec4bb8dc704",
+        "legacy_sender_suffix_keccak256": "0x66c4a8314aaf9898ad80ece4bf661e5d17455430e98ccd91e0dddec4bb8dc704",
+        "legacy_sender_suffix_matches_both_labels": true,
+        "raw_bytes": 142,
+        "raw_keccak256": "0x373fb51fb9ae7b43f5054a8fb95cfba63cbee9bd3507edca87925dcfda4964eb",
+        "receipt_label_matches_raw": false,
+        "receipt_rpc_transaction_hash": "0x66c4a8314aaf9898ad80ece4bf661e5d17455430e98ccd91e0dddec4bb8dc704",
+        "transaction_index": "0x0",
+        "unverified_rpc_from": "0x765d03fe39e2a0a48ac162a15b541c3cd1d63e76"
+      }
+    },
+    {
+      "block_hash": "0xe94c466eedcb9173a4f4eae2f2a970bd7b2bf2c10667e3ddd89f348ae764591e",
+      "block_number": "0x8",
+      "branch": "left",
+      "counts": {
+        "both_labels_match": 0,
+        "header_label_matches": 0,
+        "legacy_sender_suffix_checks": 1,
+        "legacy_sender_suffix_matches_both_labels": 1,
+        "raw_bytes": 142,
+        "receipt_label_matches": 0,
+        "transaction_observations": 1
+      },
+      "sample": {
+        "header_label_matches_raw": false,
+        "header_rpc_transaction_hash": "0xa18fd50bf5d7ef7b49fc3d632110289deec4b84ce7c247cbd3b6314216d2fa6c",
+        "legacy_sender_suffix_keccak256": "0xa18fd50bf5d7ef7b49fc3d632110289deec4b84ce7c247cbd3b6314216d2fa6c",
+        "legacy_sender_suffix_matches_both_labels": true,
+        "raw_bytes": 142,
+        "raw_keccak256": "0xffc74ba8d7241375c8572c394e3b3a1a1095e1f6bd5dd6641647fa64f1709780",
+        "receipt_label_matches_raw": false,
+        "receipt_rpc_transaction_hash": "0xa18fd50bf5d7ef7b49fc3d632110289deec4b84ce7c247cbd3b6314216d2fa6c",
+        "transaction_index": "0x0",
+        "unverified_rpc_from": "0x765d03fe39e2a0a48ac162a15b541c3cd1d63e76"
+      }
+    },
+    {
+      "block_hash": "0xf688d672e903057fd2255efa8516d6bbf5be4fb8f33bcea22ba20bfe07398c7f",
+      "block_number": "0x9",
+      "branch": "left",
+      "counts": {
+        "both_labels_match": 0,
+        "header_label_matches": 0,
+        "legacy_sender_suffix_checks": 1,
+        "legacy_sender_suffix_matches_both_labels": 1,
+        "raw_bytes": 142,
+        "receipt_label_matches": 0,
+        "transaction_observations": 1
+      },
+      "sample": {
+        "header_label_matches_raw": false,
+        "header_rpc_transaction_hash": "0x2e51519abd09ef4312eb15fca5a03c1c684f93368cd2165cf3b3338b1f671f0e",
+        "legacy_sender_suffix_keccak256": "0x2e51519abd09ef4312eb15fca5a03c1c684f93368cd2165cf3b3338b1f671f0e",
+        "legacy_sender_suffix_matches_both_labels": true,
+        "raw_bytes": 142,
+        "raw_keccak256": "0x67e45bb7bc52daadb9160bdb13b7efc6450ebd2b3a72bac4b070ba22dcce0c6d",
+        "receipt_label_matches_raw": false,
+        "receipt_rpc_transaction_hash": "0x2e51519abd09ef4312eb15fca5a03c1c684f93368cd2165cf3b3338b1f671f0e",
+        "transaction_index": "0x0",
+        "unverified_rpc_from": "0x47ecac8221f18970c48cf48aaa3cbe8167bbbe73"
+      }
+    },
+    {
+      "block_hash": "0x9c5556a006dfc1eef2a4bd0bfab0e193c3423033d844835680215795ce368baf",
+      "block_number": "0xa",
+      "branch": "left",
+      "counts": {
+        "both_labels_match": 0,
+        "header_label_matches": 0,
+        "legacy_sender_suffix_checks": 1,
+        "legacy_sender_suffix_matches_both_labels": 1,
+        "raw_bytes": 142,
+        "receipt_label_matches": 0,
+        "transaction_observations": 1
+      },
+      "sample": {
+        "header_label_matches_raw": false,
+        "header_rpc_transaction_hash": "0x10509cd6414a423e0eefd16b4eeb3ab19178def6602016635596d111447f7b3c",
+        "legacy_sender_suffix_keccak256": "0x10509cd6414a423e0eefd16b4eeb3ab19178def6602016635596d111447f7b3c",
+        "legacy_sender_suffix_matches_both_labels": true,
+        "raw_bytes": 142,
+        "raw_keccak256": "0x38beb947f4174423b2d0b7c581fce6f8ca378f92e4c5fe263aad3fbf2549b05b",
+        "receipt_label_matches_raw": false,
+        "receipt_rpc_transaction_hash": "0x10509cd6414a423e0eefd16b4eeb3ab19178def6602016635596d111447f7b3c",
+        "transaction_index": "0x0",
+        "unverified_rpc_from": "0x765d03fe39e2a0a48ac162a15b541c3cd1d63e76"
+      }
+    },
+    {
+      "block_hash": "0x18e5a8a48faa61f9884febb4f4ac3023e9342e38c1ef384c2ad66fc5f7145beb",
+      "block_number": "0xb",
+      "branch": "left",
+      "counts": {
+        "both_labels_match": 0,
+        "header_label_matches": 0,
+        "legacy_sender_suffix_checks": 1,
+        "legacy_sender_suffix_matches_both_labels": 1,
+        "raw_bytes": 142,
+        "receipt_label_matches": 0,
+        "transaction_observations": 1
+      },
+      "sample": {
+        "header_label_matches_raw": false,
+        "header_rpc_transaction_hash": "0x989897e873ac65884c4b21480c031c8d1cb799dd15376eb651e5302dac7b4c55",
+        "legacy_sender_suffix_keccak256": "0x989897e873ac65884c4b21480c031c8d1cb799dd15376eb651e5302dac7b4c55",
+        "legacy_sender_suffix_matches_both_labels": true,
+        "raw_bytes": 142,
+        "raw_keccak256": "0xa9b497d70e8508f0d2a78a293446928e15d74593a4caa033ab09937d67af8a1b",
+        "receipt_label_matches_raw": false,
+        "receipt_rpc_transaction_hash": "0x989897e873ac65884c4b21480c031c8d1cb799dd15376eb651e5302dac7b4c55",
+        "transaction_index": "0x0",
+        "unverified_rpc_from": "0x47ecac8221f18970c48cf48aaa3cbe8167bbbe73"
+      }
+    },
+    {
+      "block_hash": "0x98c46c4106c56331590ca82adaa4c7aba707087cfc7e366674926b9884aa5faa",
+      "block_number": "0xc",
+      "branch": "left",
+      "counts": {
+        "both_labels_match": 0,
+        "header_label_matches": 0,
+        "legacy_sender_suffix_checks": 1,
+        "legacy_sender_suffix_matches_both_labels": 1,
+        "raw_bytes": 528,
+        "receipt_label_matches": 0,
+        "transaction_observations": 1
+      },
+      "sample": {
+        "header_label_matches_raw": false,
+        "header_rpc_transaction_hash": "0x707381dd8eec24c2c50b0b52bc4b054d3eba286575741a493e98bbd308ddf769",
+        "legacy_sender_suffix_keccak256": "0x707381dd8eec24c2c50b0b52bc4b054d3eba286575741a493e98bbd308ddf769",
+        "legacy_sender_suffix_matches_both_labels": true,
+        "raw_bytes": 528,
+        "raw_keccak256": "0x5e4a26d02d382d8383c6b7db5faa32bc23b8d67b2be85991126a4a12c6709b7d",
+        "receipt_label_matches_raw": false,
+        "receipt_rpc_transaction_hash": "0x707381dd8eec24c2c50b0b52bc4b054d3eba286575741a493e98bbd308ddf769",
+        "transaction_index": "0x0",
+        "unverified_rpc_from": "0x00000000000000000000000000000000ca180001"
+      }
+    },
+    {
+      "block_hash": "0xc05889aefd2bbbb0938115858a1e04be921c8174de137a604fe490ed9ba378cf",
+      "block_number": "0xd",
+      "branch": "left",
+      "counts": {
+        "both_labels_match": 0,
+        "header_label_matches": 0,
+        "legacy_sender_suffix_checks": 1,
+        "legacy_sender_suffix_matches_both_labels": 1,
+        "raw_bytes": 142,
+        "receipt_label_matches": 0,
+        "transaction_observations": 1
+      },
+      "sample": {
+        "header_label_matches_raw": false,
+        "header_rpc_transaction_hash": "0xf11dd9fc4d63df953d23ac3b5ef746504aaafeace3e30d3e578ce855d2a3150a",
+        "legacy_sender_suffix_keccak256": "0xf11dd9fc4d63df953d23ac3b5ef746504aaafeace3e30d3e578ce855d2a3150a",
+        "legacy_sender_suffix_matches_both_labels": true,
+        "raw_bytes": 142,
+        "raw_keccak256": "0xfc8740245f59bdf22120a4029b3dbec226e299b93fd71a60e92f52de578ea3bd",
+        "receipt_label_matches_raw": false,
+        "receipt_rpc_transaction_hash": "0xf11dd9fc4d63df953d23ac3b5ef746504aaafeace3e30d3e578ce855d2a3150a",
+        "transaction_index": "0x0",
+        "unverified_rpc_from": "0x765d03fe39e2a0a48ac162a15b541c3cd1d63e76"
+      }
+    },
+    {
+      "block_hash": "0x54b16e46bae842825e0e7fe819519e9156593000c9cd6181756b343683dd28d6",
+      "block_number": "0xe",
+      "branch": "left",
+      "counts": {
+        "both_labels_match": 0,
+        "header_label_matches": 0,
+        "legacy_sender_suffix_checks": 1,
+        "legacy_sender_suffix_matches_both_labels": 1,
+        "raw_bytes": 528,
+        "receipt_label_matches": 0,
+        "transaction_observations": 1
+      },
+      "sample": {
+        "header_label_matches_raw": false,
+        "header_rpc_transaction_hash": "0xe162287c96cf086c90fbb67ae989da5be88a5ab62fc7b4fed9fd09d13c5cf1b3",
+        "legacy_sender_suffix_keccak256": "0xe162287c96cf086c90fbb67ae989da5be88a5ab62fc7b4fed9fd09d13c5cf1b3",
+        "legacy_sender_suffix_matches_both_labels": true,
+        "raw_bytes": 528,
+        "raw_keccak256": "0x69be0ad356c23d7d5683c6411c9e5f012f865800938f77a4f8e476d205bcac8d",
+        "receipt_label_matches_raw": false,
+        "receipt_rpc_transaction_hash": "0xe162287c96cf086c90fbb67ae989da5be88a5ab62fc7b4fed9fd09d13c5cf1b3",
+        "transaction_index": "0x0",
+        "unverified_rpc_from": "0x00000000000000000000000000000000ca180001"
+      }
+    },
+    {
+      "block_hash": "0x6f7094ab1b50eeae2db965df953d960f9c38e67f748b1c15d1b7a6011fb8887b",
+      "block_number": "0xf",
+      "branch": "left",
+      "counts": {
+        "both_labels_match": 0,
+        "header_label_matches": 0,
+        "legacy_sender_suffix_checks": 1,
+        "legacy_sender_suffix_matches_both_labels": 1,
+        "raw_bytes": 142,
+        "receipt_label_matches": 0,
+        "transaction_observations": 1
+      },
+      "sample": {
+        "header_label_matches_raw": false,
+        "header_rpc_transaction_hash": "0x39ed5182b2a0f11f1c3ef5eb83c0082e0d3603fc563a0b4582c9db4a96c06547",
+        "legacy_sender_suffix_keccak256": "0x39ed5182b2a0f11f1c3ef5eb83c0082e0d3603fc563a0b4582c9db4a96c06547",
+        "legacy_sender_suffix_matches_both_labels": true,
+        "raw_bytes": 142,
+        "raw_keccak256": "0x3bb8342ee03856039405d8fea9fdfe00d8f042c335a77a5fc2471c9935ef3539",
+        "receipt_label_matches_raw": false,
+        "receipt_rpc_transaction_hash": "0x39ed5182b2a0f11f1c3ef5eb83c0082e0d3603fc563a0b4582c9db4a96c06547",
+        "transaction_index": "0x0",
+        "unverified_rpc_from": "0x47ecac8221f18970c48cf48aaa3cbe8167bbbe73"
+      }
+    },
+    {
+      "block_hash": "0x121cdd06d08d9f7486f8f0de104e9fdfc14d93396bdcb038ee3a141c4e9509ea",
+      "block_number": "0x10",
+      "branch": "left",
+      "counts": {
+        "both_labels_match": 0,
+        "header_label_matches": 0,
+        "legacy_sender_suffix_checks": 1,
+        "legacy_sender_suffix_matches_both_labels": 1,
+        "raw_bytes": 528,
+        "receipt_label_matches": 0,
+        "transaction_observations": 1
+      },
+      "sample": {
+        "header_label_matches_raw": false,
+        "header_rpc_transaction_hash": "0x2c27c710c8596a496fb8f23a6473c8d0d2d4c7b1a252288ad5c138ea21cab861",
+        "legacy_sender_suffix_keccak256": "0x2c27c710c8596a496fb8f23a6473c8d0d2d4c7b1a252288ad5c138ea21cab861",
+        "legacy_sender_suffix_matches_both_labels": true,
+        "raw_bytes": 528,
+        "raw_keccak256": "0x50cb49ab64ca1e2567cdff6f5477dd4b14261aefbeb8ac149bde07e6d8dbc060",
+        "receipt_label_matches_raw": false,
+        "receipt_rpc_transaction_hash": "0x2c27c710c8596a496fb8f23a6473c8d0d2d4c7b1a252288ad5c138ea21cab861",
+        "transaction_index": "0x0",
+        "unverified_rpc_from": "0x00000000000000000000000000000000ca180001"
+      }
+    },
+    {
+      "block_hash": "0xee541e42cf620888d92be2eb0c0783e6698958b188ba70e64bbf449f94a546bc",
+      "block_number": "0x11",
+      "branch": "left",
+      "counts": {
+        "both_labels_match": 0,
+        "header_label_matches": 0,
+        "legacy_sender_suffix_checks": 1,
+        "legacy_sender_suffix_matches_both_labels": 1,
+        "raw_bytes": 142,
+        "receipt_label_matches": 0,
+        "transaction_observations": 1
+      },
+      "sample": {
+        "header_label_matches_raw": false,
+        "header_rpc_transaction_hash": "0xc279b8189b7efde743ac82454416d04899069f6fff117f500647fb7e7e59c5bd",
+        "legacy_sender_suffix_keccak256": "0xc279b8189b7efde743ac82454416d04899069f6fff117f500647fb7e7e59c5bd",
+        "legacy_sender_suffix_matches_both_labels": true,
+        "raw_bytes": 142,
+        "raw_keccak256": "0x0eb0122d9cb343379a966b197f0f4b03f8d4bf96894c13da8c1b6f0a6f763d5c",
+        "receipt_label_matches_raw": false,
+        "receipt_rpc_transaction_hash": "0xc279b8189b7efde743ac82454416d04899069f6fff117f500647fb7e7e59c5bd",
+        "transaction_index": "0x0",
+        "unverified_rpc_from": "0x47ecac8221f18970c48cf48aaa3cbe8167bbbe73"
+      }
+    },
+    {
+      "block_hash": "0x607ec78df084b41176b7284e2b2dee521bf80b1bd58a0a41b3232863fee988bf",
+      "block_number": "0x3",
+      "branch": "right",
+      "counts": {
+        "both_labels_match": 0,
+        "header_label_matches": 0,
+        "legacy_sender_suffix_checks": 1,
+        "legacy_sender_suffix_matches_both_labels": 1,
+        "raw_bytes": 3317,
+        "receipt_label_matches": 0,
+        "transaction_observations": 1
+      },
+      "sample": {
+        "header_label_matches_raw": false,
+        "header_rpc_transaction_hash": "0x85042ccb91585ed41139f97e2300e6a8634c7fdc9718825a9496314fc357839c",
+        "legacy_sender_suffix_keccak256": "0x85042ccb91585ed41139f97e2300e6a8634c7fdc9718825a9496314fc357839c",
+        "legacy_sender_suffix_matches_both_labels": true,
+        "raw_bytes": 3317,
+        "raw_keccak256": "0x00da02db955e1beaa922758b574c32ab5955447ace23e1adc56988e61061dc69",
+        "receipt_label_matches_raw": false,
+        "receipt_rpc_transaction_hash": "0x85042ccb91585ed41139f97e2300e6a8634c7fdc9718825a9496314fc357839c",
+        "transaction_index": "0x0",
+        "unverified_rpc_from": "0x00000000000000000000000000000000ca180001"
+      }
+    },
+    {
+      "block_hash": "0xff8206b1ba06e6f21bfd8dc0b2c7bc3ff3b1b6bdf471ce7285e3cc0fe12f2b6f",
+      "block_number": "0x4",
+      "branch": "right",
+      "counts": {
+        "both_labels_match": 0,
+        "header_label_matches": 0,
+        "legacy_sender_suffix_checks": 1,
+        "legacy_sender_suffix_matches_both_labels": 1,
+        "raw_bytes": 7823,
+        "receipt_label_matches": 0,
+        "transaction_observations": 1
+      },
+      "sample": {
+        "header_label_matches_raw": false,
+        "header_rpc_transaction_hash": "0x6baf614dc4e6d0e3985e71b933ec9cf011a85ea4292e7b214cb37a013a32f7a0",
+        "legacy_sender_suffix_keccak256": "0x6baf614dc4e6d0e3985e71b933ec9cf011a85ea4292e7b214cb37a013a32f7a0",
+        "legacy_sender_suffix_matches_both_labels": true,
+        "raw_bytes": 7823,
+        "raw_keccak256": "0x166d82cd02fac11d57be731f97a3e62415f186aa5cb992a1c5f82c5b791f45ff",
+        "receipt_label_matches_raw": false,
+        "receipt_rpc_transaction_hash": "0x6baf614dc4e6d0e3985e71b933ec9cf011a85ea4292e7b214cb37a013a32f7a0",
+        "transaction_index": "0x0",
+        "unverified_rpc_from": "0x00000000000000000000000000000000ca180001"
+      }
+    },
+    {
+      "block_hash": "0x94eae14ed2497c7942e310ab3ad0ceebada26c13aa89c0c1949400fbb6c6fdb6",
+      "block_number": "0x5",
+      "branch": "right",
+      "counts": {
+        "both_labels_match": 0,
+        "header_label_matches": 0,
+        "legacy_sender_suffix_checks": 1,
+        "legacy_sender_suffix_matches_both_labels": 1,
+        "raw_bytes": 110,
+        "receipt_label_matches": 0,
+        "transaction_observations": 1
+      },
+      "sample": {
+        "header_label_matches_raw": false,
+        "header_rpc_transaction_hash": "0x88a8f49a5ecf394b73937937135b80816b888654c721552372ecc0807630f28e",
+        "legacy_sender_suffix_keccak256": "0x88a8f49a5ecf394b73937937135b80816b888654c721552372ecc0807630f28e",
+        "legacy_sender_suffix_matches_both_labels": true,
+        "raw_bytes": 110,
+        "raw_keccak256": "0x59f7e28e9e83fb1c86f82401f3b17e6905a786e64fcba7aa46449b0475516ce5",
+        "receipt_label_matches_raw": false,
+        "receipt_rpc_transaction_hash": "0x88a8f49a5ecf394b73937937135b80816b888654c721552372ecc0807630f28e",
+        "transaction_index": "0x0",
+        "unverified_rpc_from": "0x765d03fe39e2a0a48ac162a15b541c3cd1d63e76"
+      }
+    },
+    {
+      "block_hash": "0xf823d02de7ef80641720a2284abe75866c77687f3157321f6c7a228ea85fbbc5",
+      "block_number": "0x6",
+      "branch": "right",
+      "counts": {
+        "both_labels_match": 0,
+        "header_label_matches": 0,
+        "legacy_sender_suffix_checks": 1,
+        "legacy_sender_suffix_matches_both_labels": 1,
+        "raw_bytes": 110,
+        "receipt_label_matches": 0,
+        "transaction_observations": 1
+      },
+      "sample": {
+        "header_label_matches_raw": false,
+        "header_rpc_transaction_hash": "0x03085bf0a5f0f4a409456441c9c6d95486b84c970ba0b29f953f5905440bf11f",
+        "legacy_sender_suffix_keccak256": "0x03085bf0a5f0f4a409456441c9c6d95486b84c970ba0b29f953f5905440bf11f",
+        "legacy_sender_suffix_matches_both_labels": true,
+        "raw_bytes": 110,
+        "raw_keccak256": "0x59f7e28e9e83fb1c86f82401f3b17e6905a786e64fcba7aa46449b0475516ce5",
+        "receipt_label_matches_raw": false,
+        "receipt_rpc_transaction_hash": "0x03085bf0a5f0f4a409456441c9c6d95486b84c970ba0b29f953f5905440bf11f",
+        "transaction_index": "0x0",
+        "unverified_rpc_from": "0x47ecac8221f18970c48cf48aaa3cbe8167bbbe73"
+      }
+    },
+    {
+      "block_hash": "0xc5532ea016821c50a173feddf840d18be4db9e23f596572bc8f97afdc8c3ce5a",
+      "block_number": "0x7",
+      "branch": "right",
+      "counts": {
+        "both_labels_match": 0,
+        "header_label_matches": 0,
+        "legacy_sender_suffix_checks": 1,
+        "legacy_sender_suffix_matches_both_labels": 1,
+        "raw_bytes": 142,
+        "receipt_label_matches": 0,
+        "transaction_observations": 1
+      },
+      "sample": {
+        "header_label_matches_raw": false,
+        "header_rpc_transaction_hash": "0x66c4a8314aaf9898ad80ece4bf661e5d17455430e98ccd91e0dddec4bb8dc704",
+        "legacy_sender_suffix_keccak256": "0x66c4a8314aaf9898ad80ece4bf661e5d17455430e98ccd91e0dddec4bb8dc704",
+        "legacy_sender_suffix_matches_both_labels": true,
+        "raw_bytes": 142,
+        "raw_keccak256": "0x373fb51fb9ae7b43f5054a8fb95cfba63cbee9bd3507edca87925dcfda4964eb",
+        "receipt_label_matches_raw": false,
+        "receipt_rpc_transaction_hash": "0x66c4a8314aaf9898ad80ece4bf661e5d17455430e98ccd91e0dddec4bb8dc704",
+        "transaction_index": "0x0",
+        "unverified_rpc_from": "0x765d03fe39e2a0a48ac162a15b541c3cd1d63e76"
+      }
+    },
+    {
+      "block_hash": "0xe94c466eedcb9173a4f4eae2f2a970bd7b2bf2c10667e3ddd89f348ae764591e",
+      "block_number": "0x8",
+      "branch": "right",
+      "counts": {
+        "both_labels_match": 0,
+        "header_label_matches": 0,
+        "legacy_sender_suffix_checks": 1,
+        "legacy_sender_suffix_matches_both_labels": 1,
+        "raw_bytes": 142,
+        "receipt_label_matches": 0,
+        "transaction_observations": 1
+      },
+      "sample": {
+        "header_label_matches_raw": false,
+        "header_rpc_transaction_hash": "0xa18fd50bf5d7ef7b49fc3d632110289deec4b84ce7c247cbd3b6314216d2fa6c",
+        "legacy_sender_suffix_keccak256": "0xa18fd50bf5d7ef7b49fc3d632110289deec4b84ce7c247cbd3b6314216d2fa6c",
+        "legacy_sender_suffix_matches_both_labels": true,
+        "raw_bytes": 142,
+        "raw_keccak256": "0xffc74ba8d7241375c8572c394e3b3a1a1095e1f6bd5dd6641647fa64f1709780",
+        "receipt_label_matches_raw": false,
+        "receipt_rpc_transaction_hash": "0xa18fd50bf5d7ef7b49fc3d632110289deec4b84ce7c247cbd3b6314216d2fa6c",
+        "transaction_index": "0x0",
+        "unverified_rpc_from": "0x765d03fe39e2a0a48ac162a15b541c3cd1d63e76"
+      }
+    },
+    {
+      "block_hash": "0xf688d672e903057fd2255efa8516d6bbf5be4fb8f33bcea22ba20bfe07398c7f",
+      "block_number": "0x9",
+      "branch": "right",
+      "counts": {
+        "both_labels_match": 0,
+        "header_label_matches": 0,
+        "legacy_sender_suffix_checks": 1,
+        "legacy_sender_suffix_matches_both_labels": 1,
+        "raw_bytes": 142,
+        "receipt_label_matches": 0,
+        "transaction_observations": 1
+      },
+      "sample": {
+        "header_label_matches_raw": false,
+        "header_rpc_transaction_hash": "0x2e51519abd09ef4312eb15fca5a03c1c684f93368cd2165cf3b3338b1f671f0e",
+        "legacy_sender_suffix_keccak256": "0x2e51519abd09ef4312eb15fca5a03c1c684f93368cd2165cf3b3338b1f671f0e",
+        "legacy_sender_suffix_matches_both_labels": true,
+        "raw_bytes": 142,
+        "raw_keccak256": "0x67e45bb7bc52daadb9160bdb13b7efc6450ebd2b3a72bac4b070ba22dcce0c6d",
+        "receipt_label_matches_raw": false,
+        "receipt_rpc_transaction_hash": "0x2e51519abd09ef4312eb15fca5a03c1c684f93368cd2165cf3b3338b1f671f0e",
+        "transaction_index": "0x0",
+        "unverified_rpc_from": "0x47ecac8221f18970c48cf48aaa3cbe8167bbbe73"
+      }
+    },
+    {
+      "block_hash": "0x9c5556a006dfc1eef2a4bd0bfab0e193c3423033d844835680215795ce368baf",
+      "block_number": "0xa",
+      "branch": "right",
+      "counts": {
+        "both_labels_match": 0,
+        "header_label_matches": 0,
+        "legacy_sender_suffix_checks": 1,
+        "legacy_sender_suffix_matches_both_labels": 1,
+        "raw_bytes": 142,
+        "receipt_label_matches": 0,
+        "transaction_observations": 1
+      },
+      "sample": {
+        "header_label_matches_raw": false,
+        "header_rpc_transaction_hash": "0x10509cd6414a423e0eefd16b4eeb3ab19178def6602016635596d111447f7b3c",
+        "legacy_sender_suffix_keccak256": "0x10509cd6414a423e0eefd16b4eeb3ab19178def6602016635596d111447f7b3c",
+        "legacy_sender_suffix_matches_both_labels": true,
+        "raw_bytes": 142,
+        "raw_keccak256": "0x38beb947f4174423b2d0b7c581fce6f8ca378f92e4c5fe263aad3fbf2549b05b",
+        "receipt_label_matches_raw": false,
+        "receipt_rpc_transaction_hash": "0x10509cd6414a423e0eefd16b4eeb3ab19178def6602016635596d111447f7b3c",
+        "transaction_index": "0x0",
+        "unverified_rpc_from": "0x765d03fe39e2a0a48ac162a15b541c3cd1d63e76"
+      }
+    },
+    {
+      "block_hash": "0x18e5a8a48faa61f9884febb4f4ac3023e9342e38c1ef384c2ad66fc5f7145beb",
+      "block_number": "0xb",
+      "branch": "right",
+      "counts": {
+        "both_labels_match": 0,
+        "header_label_matches": 0,
+        "legacy_sender_suffix_checks": 1,
+        "legacy_sender_suffix_matches_both_labels": 1,
+        "raw_bytes": 142,
+        "receipt_label_matches": 0,
+        "transaction_observations": 1
+      },
+      "sample": {
+        "header_label_matches_raw": false,
+        "header_rpc_transaction_hash": "0x989897e873ac65884c4b21480c031c8d1cb799dd15376eb651e5302dac7b4c55",
+        "legacy_sender_suffix_keccak256": "0x989897e873ac65884c4b21480c031c8d1cb799dd15376eb651e5302dac7b4c55",
+        "legacy_sender_suffix_matches_both_labels": true,
+        "raw_bytes": 142,
+        "raw_keccak256": "0xa9b497d70e8508f0d2a78a293446928e15d74593a4caa033ab09937d67af8a1b",
+        "receipt_label_matches_raw": false,
+        "receipt_rpc_transaction_hash": "0x989897e873ac65884c4b21480c031c8d1cb799dd15376eb651e5302dac7b4c55",
+        "transaction_index": "0x0",
+        "unverified_rpc_from": "0x47ecac8221f18970c48cf48aaa3cbe8167bbbe73"
+      }
+    },
+    {
+      "block_hash": "0x98c46c4106c56331590ca82adaa4c7aba707087cfc7e366674926b9884aa5faa",
+      "block_number": "0xc",
+      "branch": "right",
+      "counts": {
+        "both_labels_match": 0,
+        "header_label_matches": 0,
+        "legacy_sender_suffix_checks": 1,
+        "legacy_sender_suffix_matches_both_labels": 1,
+        "raw_bytes": 528,
+        "receipt_label_matches": 0,
+        "transaction_observations": 1
+      },
+      "sample": {
+        "header_label_matches_raw": false,
+        "header_rpc_transaction_hash": "0x707381dd8eec24c2c50b0b52bc4b054d3eba286575741a493e98bbd308ddf769",
+        "legacy_sender_suffix_keccak256": "0x707381dd8eec24c2c50b0b52bc4b054d3eba286575741a493e98bbd308ddf769",
+        "legacy_sender_suffix_matches_both_labels": true,
+        "raw_bytes": 528,
+        "raw_keccak256": "0x5e4a26d02d382d8383c6b7db5faa32bc23b8d67b2be85991126a4a12c6709b7d",
+        "receipt_label_matches_raw": false,
+        "receipt_rpc_transaction_hash": "0x707381dd8eec24c2c50b0b52bc4b054d3eba286575741a493e98bbd308ddf769",
+        "transaction_index": "0x0",
+        "unverified_rpc_from": "0x00000000000000000000000000000000ca180001"
+      }
+    },
+    {
+      "block_hash": "0x9ea365b55deedc0a9bb5a347fffa4e242804531fc827cf3cb7593c967d0ccb2f",
+      "block_number": "0xd",
+      "branch": "right",
+      "counts": {
+        "both_labels_match": 0,
+        "header_label_matches": 0,
+        "legacy_sender_suffix_checks": 1,
+        "legacy_sender_suffix_matches_both_labels": 1,
+        "raw_bytes": 142,
+        "receipt_label_matches": 0,
+        "transaction_observations": 1
+      },
+      "sample": {
+        "header_label_matches_raw": false,
+        "header_rpc_transaction_hash": "0xc421f74ec79e502e9922b77ed19275f372e25e3f4c50b0c534581ec9ca13dec2",
+        "legacy_sender_suffix_keccak256": "0xc421f74ec79e502e9922b77ed19275f372e25e3f4c50b0c534581ec9ca13dec2",
+        "legacy_sender_suffix_matches_both_labels": true,
+        "raw_bytes": 142,
+        "raw_keccak256": "0xb3a69ce60abf533aaed8c6129a96217cce56a654777312bd523ccdffad469da2",
+        "receipt_label_matches_raw": false,
+        "receipt_rpc_transaction_hash": "0xc421f74ec79e502e9922b77ed19275f372e25e3f4c50b0c534581ec9ca13dec2",
+        "transaction_index": "0x0",
+        "unverified_rpc_from": "0x765d03fe39e2a0a48ac162a15b541c3cd1d63e76"
+      }
+    },
+    {
+      "block_hash": "0x9d0b4776bd227144f60dfcacd8697cba2e63170f8b4d9953f62c977ef860cef0",
+      "block_number": "0xe",
+      "branch": "right",
+      "counts": {
+        "both_labels_match": 0,
+        "header_label_matches": 0,
+        "legacy_sender_suffix_checks": 1,
+        "legacy_sender_suffix_matches_both_labels": 1,
+        "raw_bytes": 528,
+        "receipt_label_matches": 0,
+        "transaction_observations": 1
+      },
+      "sample": {
+        "header_label_matches_raw": false,
+        "header_rpc_transaction_hash": "0xe162287c96cf086c90fbb67ae989da5be88a5ab62fc7b4fed9fd09d13c5cf1b3",
+        "legacy_sender_suffix_keccak256": "0xe162287c96cf086c90fbb67ae989da5be88a5ab62fc7b4fed9fd09d13c5cf1b3",
+        "legacy_sender_suffix_matches_both_labels": true,
+        "raw_bytes": 528,
+        "raw_keccak256": "0x69be0ad356c23d7d5683c6411c9e5f012f865800938f77a4f8e476d205bcac8d",
+        "receipt_label_matches_raw": false,
+        "receipt_rpc_transaction_hash": "0xe162287c96cf086c90fbb67ae989da5be88a5ab62fc7b4fed9fd09d13c5cf1b3",
+        "transaction_index": "0x0",
+        "unverified_rpc_from": "0x00000000000000000000000000000000ca180001"
+      }
+    },
+    {
+      "block_hash": "0xcdd34710287432c682403e8e11e609a0e7d11baf0588fccab12cada99bc1b58d",
+      "block_number": "0xf",
+      "branch": "right",
+      "counts": {
+        "both_labels_match": 0,
+        "header_label_matches": 0,
+        "legacy_sender_suffix_checks": 1,
+        "legacy_sender_suffix_matches_both_labels": 1,
+        "raw_bytes": 142,
+        "receipt_label_matches": 0,
+        "transaction_observations": 1
+      },
+      "sample": {
+        "header_label_matches_raw": false,
+        "header_rpc_transaction_hash": "0x98b1d08a4c939e1cc82ebd99253d04feadd3a93e8179b3710c6a7efff7fd40b6",
+        "legacy_sender_suffix_keccak256": "0x98b1d08a4c939e1cc82ebd99253d04feadd3a93e8179b3710c6a7efff7fd40b6",
+        "legacy_sender_suffix_matches_both_labels": true,
+        "raw_bytes": 142,
+        "raw_keccak256": "0xf296f0341b8e25b0cd8fa8c29e908e974d9adc388dc60ec8180bc6db76e01dc3",
+        "receipt_label_matches_raw": false,
+        "receipt_rpc_transaction_hash": "0x98b1d08a4c939e1cc82ebd99253d04feadd3a93e8179b3710c6a7efff7fd40b6",
+        "transaction_index": "0x0",
+        "unverified_rpc_from": "0x765d03fe39e2a0a48ac162a15b541c3cd1d63e76"
+      }
+    },
+    {
+      "block_hash": "0x4d8b27f08c3a3a837ede339d6bd743b82c5638aa94080941417dce1fb0a1e686",
+      "block_number": "0x10",
+      "branch": "right",
+      "counts": {
+        "both_labels_match": 0,
+        "header_label_matches": 0,
+        "legacy_sender_suffix_checks": 1,
+        "legacy_sender_suffix_matches_both_labels": 1,
+        "raw_bytes": 528,
+        "receipt_label_matches": 0,
+        "transaction_observations": 1
+      },
+      "sample": {
+        "header_label_matches_raw": false,
+        "header_rpc_transaction_hash": "0x022efe362fa2b4dd6dea0a18773833ef291a9d3d6a1c5e3ad903020d42b6c251",
+        "legacy_sender_suffix_keccak256": "0x022efe362fa2b4dd6dea0a18773833ef291a9d3d6a1c5e3ad903020d42b6c251",
+        "legacy_sender_suffix_matches_both_labels": true,
+        "raw_bytes": 528,
+        "raw_keccak256": "0x3f65e792224c4b419eafb30a4c74904a47f2a61860713ed9d2e1876c2e032077",
+        "receipt_label_matches_raw": false,
+        "receipt_rpc_transaction_hash": "0x022efe362fa2b4dd6dea0a18773833ef291a9d3d6a1c5e3ad903020d42b6c251",
+        "transaction_index": "0x0",
+        "unverified_rpc_from": "0x00000000000000000000000000000000ca180001"
+      }
+    },
+    {
+      "block_hash": "0xa40d5cc305edddba65090dd107dc8438e178bf4640c0ae7a3e6678ad11815756",
+      "block_number": "0x11",
+      "branch": "right",
+      "counts": {
+        "both_labels_match": 0,
+        "header_label_matches": 0,
+        "legacy_sender_suffix_checks": 1,
+        "legacy_sender_suffix_matches_both_labels": 1,
+        "raw_bytes": 142,
+        "receipt_label_matches": 0,
+        "transaction_observations": 1
+      },
+      "sample": {
+        "header_label_matches_raw": false,
+        "header_rpc_transaction_hash": "0x19b4464e031d4942ef62060b240053df44802a1fae1575a850d27bd9b6b723f8",
+        "legacy_sender_suffix_keccak256": "0x19b4464e031d4942ef62060b240053df44802a1fae1575a850d27bd9b6b723f8",
+        "legacy_sender_suffix_matches_both_labels": true,
+        "raw_bytes": 142,
+        "raw_keccak256": "0x5ca37a8a6773a59473bf1fea1584f3f51fcf41eedc1ed5bbae566034e8f6e433",
+        "receipt_label_matches_raw": false,
+        "receipt_rpc_transaction_hash": "0x19b4464e031d4942ef62060b240053df44802a1fae1575a850d27bd9b6b723f8",
+        "transaction_index": "0x0",
+        "unverified_rpc_from": "0x765d03fe39e2a0a48ac162a15b541c3cd1d63e76"
+      }
+    }
+  ],
+  "counts": {
+    "both_labels_match": 0,
+    "captures": 30,
+    "distinct_block_hashes": 20,
+    "distinct_raw_envelopes": 18,
+    "header_label_matches": 0,
+    "legacy_sender_suffix_checks": 30,
+    "legacy_sender_suffix_matches_both_labels": 30,
+    "raw_bytes": 28160,
+    "receipt_label_matches": 0,
+    "repeated_block_observations": 10,
+    "transaction_observations": 30
+  },
+  "first_mismatch": {
+    "block_hash": "0x607ec78df084b41176b7284e2b2dee521bf80b1bd58a0a41b3232863fee988bf",
+    "block_number": "0x3",
+    "branch": "left",
+    "header_label_matches_raw": false,
+    "header_rpc_transaction_hash": "0x85042ccb91585ed41139f97e2300e6a8634c7fdc9718825a9496314fc357839c",
+    "legacy_sender_suffix_keccak256": "0x85042ccb91585ed41139f97e2300e6a8634c7fdc9718825a9496314fc357839c",
+    "legacy_sender_suffix_matches_both_labels": true,
+    "raw_bytes": 3317,
+    "raw_keccak256": "0x00da02db955e1beaa922758b574c32ab5955447ace23e1adc56988e61061dc69",
+    "receipt_label_matches_raw": false,
+    "receipt_rpc_transaction_hash": "0x85042ccb91585ed41139f97e2300e6a8634c7fdc9718825a9496314fc357839c",
+    "transaction_index": "0x0",
+    "unverified_rpc_from": "0x00000000000000000000000000000000ca180001"
+  },
+  "flags": {
+    "allLegacySenderSuffixChecksMatchLabels": true,
+    "bodyCommitmentsVerified": false,
+    "consensusVerified": false,
+    "endpointAuthenticated": false,
+    "executionVerified": false,
+    "finalityVerified": false,
+    "freshnessVerified": false,
+    "headerHashVerified": false,
+    "independentProvidersVerified": false,
+    "rawByteHashesComputed": true,
+    "repeatedBlocksTreatedAsIndependentEvidence": false,
+    "rpcLabelsAllMatchRawByteHashes": false,
+    "senderVerified": false,
+    "signaturesVerified": false
+  },
+  "input_bytes": 172686,
+  "input_sha256": "c1ea7eee1ef381a9d9f17bb734765c7a5e531b88a3ba0bc79c3a2e059a8293bb",
+  "legacy_diagnostic": {
+    "formula": "Keccak256(raw_legacy_bytes || unverified_RPC_receipt_from_20_bytes)",
+    "rpc_from_is_unverified_metadata": true,
+    "source": "https://github.com/foundry-rs/foundry/blob/v1.8.1/crates/anvil/core/src/eth/transaction/mod.rs",
+    "source_blob_sha": "01f155c2dd82aabd15b433a0d7f09ab35efb680a",
+    "typed_envelopes_excluded": true
+  },
+  "primitive": {
+    "path": "reference/fixtures/generate-ethereum-proof-fixtures.py",
+    "reused_fixture_primitive": true,
+    "sha256": "5f100b6e1a12d29b0004bcb29f2ba5b23ffefc076646d2b67b1fb8df81c2effa"
+  },
+  "schema": "caw-local-raw-hash-diagnostic/1"
+}

@@ -92,3 +92,5 @@ node --max-old-space-size=256 --test --test-isolation=none --test-concurrency=1 
 The generator writes only its adjacent fixture file. Source and fixture hashes are in the [source manifest](../evidence/CODE_SHA256SUMS.txt); measured checks and limits are in the [current receipt](../evidence/TEST_RESULTS.json). Previous alpha.38 evidence is preserved separately.
 
 Primary encoding references: [EIP-2718](https://eips.ethereum.org/EIPS/eip-2718), [EIP-2930](https://eips.ethereum.org/EIPS/eip-2930), [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559), [RLP](https://ethereum.org/developers/docs/data-structures-and-encoding/rlp/) and the [transaction trie](https://ethereum.org/developers/docs/data-structures-and-encoding/patricia-merkle-trie/). No third-party implementation code was copied into this increment.
+
+Alpha.40 adds [live local acquisition of complete encoded bodies](BLOCK_BODY_ACQUISITION.md). The separate wrapper requires RPC transaction-hash labels to match hashes of the captured bytes after both roots pass. These local envelopes use impersonated accounts; no sender, signature or execution proof is added. The alpha.39 APIs remain unchanged.
