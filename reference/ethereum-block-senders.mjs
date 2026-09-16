@@ -318,3 +318,21 @@ export function inspectBlockSenders(headerInput, rawTransactionsInput, selection
     blockNumber: bodyIntegrity.blockNumber, transactionCount: transactions.length,
     body_integrity: bodyIntegrity, transactions, ...FLAGS });
 }
+
+/** Recover and check a public signature over the exact supplied digest. This
+ * does not construct a message domain, authenticate a named signer, or infer
+ * account authority. A different digest or parity may recover another key.
+ */
+export function inspectDigestSignature(digestInput, signatureInput) {
+  need(arguments.length === 2, 'SCHEMA');
+  const { digest, signature } = capture({ digest: digestInput, signature: signatureInput });
+  need(typeof digest === 'string' && digest.length === 66 && /^0x[0-9a-f]{64}$/.test(digest), 'DIGEST');
+  need(typeof signature === 'string' && signature.length === 132
+    && /^0x[0-9a-f]{130}$/.test(signature), 'SIGNATURE_ENCODING');
+  const v = BigInt('0x' + signature.slice(130, 132));
+  need(v === 27n || v === 28n, 'PARITY');
+  const sender = recover(digest, BigInt('0x' + signature.slice(2, 66)),
+    BigInt('0x' + signature.slice(66, 130)), v - 27n);
+  return freeze({ schema: 'caw-digest-signature/1', digest, signature, ...sender,
+    signatureVerified: true, signerAuthorityVerified: false, executionVerified: false });
+}

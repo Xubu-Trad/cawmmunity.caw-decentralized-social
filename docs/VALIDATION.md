@@ -1,8 +1,14 @@
 # Validation boundary
 
+Alpha.44 adds [post signature inspection](PAID_POST_SIGNATURES.md) and a separate history wrapper over alpha.43. Canonical call bytes produce the fixed contract's exact EIP-712 domain and digest. A bounded additive digest-signature export reuses the existing recovery arithmetic. Accepted post signatures must match each reconstructed historical owner under an explicit ordinary-account policy; failed calls are counted separately.
+
+**979/979 Node tests across 46 files passed**, including 76 new digest/post checks. The 65 Python tests remain historical alpha.41 evidence; this increment ran its native fixture generator separately. The [current receipt](../evidence/TEST_RESULTS.json) records native Python fixture generation, offline checks, the guide and build. A synthetic negative history passes the old body binding but fails the new inner-signature check. This is deliberately byte-consistent, non-executed evidence. Existing capture bytes, contracts, frontend and prior reader behavior remain unchanged. Code absence, ERC-1271 validation, registry permission execution, authenticated state/endpoints, consensus, finality, freshness and recovery adoption remain open.
+
+## Historical alpha.43 evidence
+
 Alpha.43 adds [history binding to verified block bodies](PAID_BODY_HISTORY.md). The new offline wrapper checks the selected header interval, complete transaction and receipt commitments, protected legacy signatures and sender recovery, then binds every consumed transaction summary and full receipt to those captures before the existing accounting reconstruction runs. Successful top-level creation addresses are derived from the recovered sender and raw nonce.
 
-**903/903 Node tests across 44 files passed**, including 41 new history-binding checks. The 65 Python tests remain historical alpha.41 evidence; they were not rerun. The [current receipt](../evidence/TEST_RESULTS.json) records the checks, runnable guide and build. Four retained collector histories cover two local branches; shared-prefix block observations are not independent providers. Earlier readers and evidence remain unchanged. The exclusive starting anchor has no body check. Full CAW authorization, contract execution, endpoint authentication, consensus, finality, freshness and recovery/adoption integration remain open. No new chain run, network acquisition or public deployment occurred.
+**903/903 Node tests across 44 files passed**, including 41 new history-binding checks. The 65 Python tests remain historical alpha.41 evidence; they were not rerun. The [alpha.43 receipt](../evidence/ALPHA43_TEST_RESULTS.json) records the checks, runnable guide and build. Four retained collector histories cover two local branches; shared-prefix block observations are not independent providers. Earlier readers and evidence remain unchanged. The exclusive starting anchor has no body check. Full CAW authorization, contract execution, endpoint authentication, consensus, finality, freshness and recovery/adoption integration remain open. No new chain run, network acquisition or public deployment occurred.
 
 ## Historical alpha.42 evidence
 

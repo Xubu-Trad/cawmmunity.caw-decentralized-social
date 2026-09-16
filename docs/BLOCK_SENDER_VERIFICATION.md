@@ -68,3 +68,5 @@ Only the London header profile and transaction types 0, 1 and 2 are supported. L
 Next: bind derived senders and committed call data to CAW account authority, then integrate complete-body checks into selected-history recovery. Independent acquisition, endpoint authentication and confirmation policy remain open. No new network acquisition, chain experiment, wallet connection or deployment is introduced here.
 
 Alpha.43 adds a separate [history binding wrapper](PAID_BODY_HISTORY.md). It checks raw transaction fields, receipt metadata and creation addresses before the existing fixed-experiment reconstruction. This sender component and its earlier flags remain unchanged.
+
+Alpha.44 appends `inspectDigestSignature(digest, signature)` to the same module. It reuses the existing public recovery arithmetic with strict 32-byte digest and 65-byte low-s signature admission; it does not supply a signing API or alter `inspectBlockSenders`. See [signed post permissions](PAID_POST_SIGNATURES.md) for the exact domain construction and separate owner comparison.

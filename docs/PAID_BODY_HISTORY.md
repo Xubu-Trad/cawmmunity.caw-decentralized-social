@@ -66,7 +66,7 @@ console.log(JSON.stringify({histories, transactionObservations,
   executionVerified: false, endpointAuthenticated: false}));
 ```
 
-**41 focused checks and 903/903 full-suite Node tests passed.** The guide bound all four retained collector histories; the build retained 22 byte-identical frontend assets. See the [current receipt](../evidence/TEST_RESULTS.json) for exact scope and run records.
+**41 focused checks and 903/903 full-suite Node tests passed.** The guide bound all four retained collector histories; the build retained 22 byte-identical frontend assets. See the [alpha.43 receipt](../evidence/ALPHA43_TEST_RESULTS.json) for exact scope and run records.
 
 The four histories reuse 30 captured block observations across two branches, with a ten-block common prefix and 20 distinct blocks. Checking each collector produces 60 transaction observations; that is not 60 independent transactions or providers. No new raw trace was generated.
 
@@ -75,3 +75,5 @@ The four histories reuse 30 captured block observations across two branches, wit
 Admission is limited to 128 history blocks, 256 total transactions before signature work, 8 MiB of weighted captured data, 100,000 nodes and depth 20. Lower-level per-block and per-envelope limits still apply. A valid larger network history can be refused by this bounded reference tool. Hostile same-process proxies and replaced native built-ins remain outside its plain-data boundary.
 
 Next: verify the separately signed posting authority and registry permission assumptions, then connect complete-body evidence to selection invalidation, rollback and restart. Independent acquisition, authenticated endpoints, confirmation policy and the remaining manifesto decisions stay open.
+
+Alpha.44 adds a separate [post signature wrapper](PAID_POST_SIGNATURES.md) over this result. It verifies successful EOA-style post signatures against historical message owners under an explicit policy. This body reader and its authority flags remain unchanged.
