@@ -70,8 +70,9 @@ Draft, review a simulated fee, post, and inspect the receipt. Nothing is sent wh
 | [Alpha.40: captured block bodies](docs/BLOCK_BODY_ACQUISITION.md) | Capture both local branches; verify commitments and reject mismatched transaction labels | Synthetic node with impersonated accounts; sender verification, authenticated endpoints and adoption integration remain open |
 | [Alpha.41: signed body acquisition](docs/SIGNED_BODY_ACQUISITION.md) | Signed local submissions match acquired bytes, transaction hashes and both commitments on two branches | Fixed public test identities; generic sender verification, authenticated endpoints and adoption integration remain open |
 | [Alpha.42: transaction senders](docs/BLOCK_SENDER_VERIFICATION.md) | Derive transaction senders from committed signature bytes, with explicit chain and legacy policy | Offline signature check; CAW authority, execution, authenticated endpoints and recovery integration remain open |
+| [Alpha.43: history bound to block bodies](docs/PAID_BODY_HISTORY.md) | Bind captured CAW history fields to committed raw bytes, recovered senders and receipts before accounting reconstruction | Fixed local legacy format; full account authority, execution and recovery integration remain open |
 
-**Recorded validation:** 862/862 Node offline tests across 43 files; 65 Python tests recorded in alpha.41; 22 build assets. See [results and browser coverage](docs/VALIDATION.md). These finite checks establish neither an external audit, community agreement nor permanent availability.
+**Recorded validation:** 903/903 Node offline tests across 44 files; 65 Python tests recorded in alpha.41; 22 build assets. See [results and browser coverage](docs/VALIDATION.md). These finite checks establish neither an external audit, community agreement nor permanent availability.
 
 ## Read, reproduce, challenge
 

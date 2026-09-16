@@ -1,8 +1,14 @@
 # Validation boundary
 
+Alpha.43 adds [history binding to verified block bodies](PAID_BODY_HISTORY.md). The new offline wrapper checks the selected header interval, complete transaction and receipt commitments, protected legacy signatures and sender recovery, then binds every consumed transaction summary and full receipt to those captures before the existing accounting reconstruction runs. Successful top-level creation addresses are derived from the recovered sender and raw nonce.
+
+**903/903 Node tests across 44 files passed**, including 41 new history-binding checks. The 65 Python tests remain historical alpha.41 evidence; they were not rerun. The [current receipt](../evidence/TEST_RESULTS.json) records the checks, runnable guide and build. Four retained collector histories cover two local branches; shared-prefix block observations are not independent providers. Earlier readers and evidence remain unchanged. The exclusive starting anchor has no body check. Full CAW authorization, contract execution, endpoint authentication, consensus, finality, freshness and recovery/adoption integration remain open. No new chain run, network acquisition or public deployment occurred.
+
+## Historical alpha.42 evidence
+
 Alpha.42 adds [offline transaction sender verification](BLOCK_SENDER_VERIFICATION.md) for the three formats admitted by the existing London transaction reader. It checks commitment first, rebuilds the exact signing digest, enforces signature ranges and chain policy, recovers the public key and verifies the signature equation. The sender is derived from that key. The caller supplies the selected header hash, chain ID and unprotected-legacy policy; these inputs do not authenticate a network.
 
-**862/862 Node tests across 43 files passed**, including 40 new sender checks. The 65 earlier Python tests are retained in the alpha.41 receipt; this increment ran the native fixture generator separately. The [current receipt](../evidence/TEST_RESULTS.json) records native-generated Python fixtures, Node checks, the guide example and build. The new verifier is separate from all earlier readers and evidence. CAW account authority, valid execution, endpoint authentication, consensus, finality, freshness and recovery/adoption integration remain unverified. No new chain run or public deployment occurred.
+**862/862 Node tests across 43 files passed**, including 40 new sender checks. The 65 earlier Python tests are retained in the alpha.41 receipt; this increment ran the native fixture generator separately. The [alpha.42 receipt](../evidence/ALPHA42_TEST_RESULTS.json) records native-generated Python fixtures, Node checks, the guide example and build. The new verifier is separate from all earlier readers and evidence. CAW account authority, valid execution, endpoint authentication, consensus, finality, freshness and recovery/adoption integration remain unverified. No new chain run or public deployment occurred.
 
 ## Historical alpha.41 evidence
 

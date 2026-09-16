@@ -7,17 +7,17 @@
   "open_conflicts": 15,
   "initial_review_commit": "91479b6dc8c9a264411d75177d43029e0266c354",
   "github_address": "Xubu-Trad/cawmmunity.caw-decentralized-social",
-  "release": "0.1.0-alpha.42",
-  "date": "2026-09-13",
-  "tests": 862,
-  "passed": 862,
+  "release": "0.1.0-alpha.43",
+  "date": "2026-09-16",
+  "tests": 903,
+  "passed": 903,
   "failed": 0,
   "cancelled": 0,
   "skipped": 0,
   "todo": 0,
-  "test_files": 43,
-  "new_tests": 40,
-  "source_files": 239,
+  "test_files": 44,
+  "new_tests": 41,
+  "source_files": 241,
   "build_files": 22,
   "executions": {
     "focused": {
@@ -25,17 +25,8 @@
       "runtime": "Node.js 24.20.0",
       "runtime_sha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
       "exit_code": 0,
-      "seconds": 1.578,
-      "observed_peak_bytes": 69009408,
-      "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk"
-    },
-    "generate": {
-      "mode": "generate",
-      "runtime": "Python",
-      "runtime_sha256": "372c2eae555b344520bf147be0096e009069aeca4e7f78d6aecea6d53158056a",
-      "exit_code": 0,
-      "seconds": 2.203,
-      "observed_peak_bytes": 26898432,
+      "seconds": 8.109,
+      "observed_peak_bytes": 140873728,
       "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk"
     },
     "guide": {
@@ -43,8 +34,8 @@
       "runtime": "Node.js 24.20.0",
       "runtime_sha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
       "exit_code": 0,
-      "seconds": 0.375,
-      "observed_peak_bytes": 46845952,
+      "seconds": 1.547,
+      "observed_peak_bytes": 72269824,
       "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk"
     },
     "all": {
@@ -52,8 +43,8 @@
       "node_version": "24.20.0",
       "node_sha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
       "exit_code": 0,
-      "seconds": 28.734,
-      "observed_peak_bytes": 469417984,
+      "seconds": 56.984,
+      "observed_peak_bytes": 476708864,
       "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk"
     },
     "build": {
@@ -61,8 +52,8 @@
       "node_version": "24.20.0",
       "node_sha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
       "exit_code": 0,
-      "seconds": 0.422,
-      "observed_peak_bytes": 55799808,
+      "seconds": 1.046,
+      "observed_peak_bytes": 55705600,
       "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk"
     }
   },
@@ -71,21 +62,18 @@
     "bytes": 1422784,
     "manifestSha256": "3590fc562c47c46f9f911918fd2b5181bb41db2f87f2ee6c6f0c2ee740ad8f0a"
   },
-  "fixture_file": "../reference/fixtures/block-senders-v1.json",
-  "fixture_sha256": "2ad5cc9166b143fb979f57712c154e446dadb0bdb2cb694e67e298a327299373",
-  "positive_vectors": 14,
-  "negative_vectors": 16,
   "guide_example": {
-    "guide": "../docs/BLOCK_SENDER_VERIFICATION.md",
+    "guide": "../docs/PAID_BODY_HISTORY.md",
     "output": {
-      "checked": 30,
-      "signaturesVerified": true,
-      "senderVerified": true,
-      "endpointAuthenticated": false,
-      "executionVerified": false
+      "histories": 4,
+      "transactionObservations": 60,
+      "transactionFieldsBound": true,
+      "accountAuthorityVerified": false,
+      "executionVerified": false,
+      "endpointAuthenticated": false
     }
   },
-  "changes": "Recover and verify transaction senders offline from complete committed legacy and type-1/type-2 bytes under explicit chain and legacy policy.",
+  "changes": "Bind fixed paid-history transaction fields, senders and full receipts to checked complete London block bodies before accounting reconstruction.",
   "contracts_changed": false,
   "frontend_changed": false,
   "historical_readers_changed": false,
@@ -95,30 +83,32 @@
   "public_deployment": false,
   "external_audit": false,
   "inspector": {
-    "module": "../reference/ethereum-block-senders.mjs",
-    "schema": "caw-block-senders-integrity/1",
+    "module": "../reference/paid-body-history.mjs",
+    "schema": "caw-paid-body-history/1",
     "profile": "london-16",
+    "chain_id": 31337,
     "transaction_types": [
-      "0x0",
-      "0x1",
-      "0x2"
+      "0x0"
     ],
-    "signature_scalars_checked": true,
-    "low_s_required": true,
-    "signatures_verified_under_recovered_public_keys": true,
-    "derived_senders_verified": true,
-    "protected_chain_id_checked": true,
-    "unprotected_legacy_requires_explicit_permission": true,
-    "maximum_transactions": 256,
-    "maximum_raw_bytes_per_transaction": 16384,
-    "maximum_combined_raw_bytes": 1048576,
+    "unprotected_legacy_allowed": false,
+    "full_history_receipts_equal_captures": true,
+    "full_end_header_equal_final_block": true,
+    "sender_destination_calldata_gas_price_value_bound": true,
+    "creation_address_derived_from_sender_and_nonce": true,
+    "maximum_blocks": 128,
+    "maximum_total_transactions_before_signature_work": 256,
     "captured_weighted_bytes": 8388608,
     "shared_primitives": true,
-    "retained_signed_block_observations_checked": 30
+    "retained_histories_checked": 4,
+    "retained_block_observations": 30,
+    "distinct_blocks": 20,
+    "collector_transaction_observations": 60
   },
   "verification_boundary": {
-    "caw_authority_verified": false,
-    "rpc_sender_metadata_authenticated": false,
+    "exclusive_anchor_body_verified": false,
+    "full_caw_account_authority_verified": false,
+    "inner_post_signature_verified": false,
+    "registry_permission_execution_verified": false,
     "transactions_execution_validated": false,
     "execution_verified": false,
     "endpoint_authenticated": false,
@@ -132,15 +122,14 @@
   "python_tests": {
     "result": "not_repeated",
     "prior_count": 65,
-    "historical_receipt": "ALPHA41_TEST_RESULTS.json",
-    "native_fixture_generation": "passed"
+    "historical_receipt": "ALPHA41_TEST_RESULTS.json"
   },
   "browser_visual_review": {
     "result": "not_repeated",
     "frontend_unchanged": true,
     "historical_receipt": "ALPHA27_TEST_RESULTS.json"
   },
-  "next_gate": "Bind committed transaction senders and calls to CAW account authority; integrate complete-body evidence into selected-history recovery under explicit endpoint and confirmation assumptions.",
-  "historical_receipt": "ALPHA41_TEST_RESULTS.json",
-  "historical_source_manifest": "ALPHA41_CODE_SHA256SUMS.txt"
+  "next_gate": "Verify separately signed post authority and registry permission assumptions, then integrate complete-body evidence into selection invalidation, rollback and restart under explicit endpoint and confirmation assumptions.",
+  "historical_receipt": "ALPHA42_TEST_RESULTS.json",
+  "historical_source_manifest": "ALPHA42_CODE_SHA256SUMS.txt"
 }

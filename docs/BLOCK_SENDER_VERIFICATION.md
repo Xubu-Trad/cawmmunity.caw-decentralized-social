@@ -57,7 +57,7 @@ console.log(JSON.stringify({checked, signaturesVerified: true, senderVerified: t
   endpointAuthenticated: false, executionVerified: false}));
 ```
 
-**40 focused checks and 862/862 full-suite Node tests passed.** The guide derived the recorded senders for all 30 retained observations. Native fixture generation passed; the build retained 22 byte-identical frontend assets. See the [current receipt](../evidence/TEST_RESULTS.json) for runtime, timing and source pins.
+**40 focused checks and 862/862 full-suite Node tests passed.** The guide derived the recorded senders for all 30 retained observations. Native fixture generation passed; the build retained 22 byte-identical frontend assets. See the [alpha.42 receipt](../evidence/ALPHA42_TEST_RESULTS.json) for runtime, timing and source pins.
 
 ## Limits and next work
 
@@ -66,3 +66,5 @@ The reader retains the existing admission limits: 256 transactions, 16 KiB per e
 Only the London header profile and transaction types 0, 1 and 2 are supported. Later envelope types are refused. Receipt commitments and their acquisition labels are checked separately by the existing body wrapper. A mathematically valid signature does not establish transaction execution, receipt validity, chain selection, freshness, finality or CAW permission. Empty bodies and repeated envelopes are commitment/verification cases, not evidence of a valid executed history. Hostile same-process proxies or replaced built-ins remain outside the plain-data boundary.
 
 Next: bind derived senders and committed call data to CAW account authority, then integrate complete-body checks into selected-history recovery. Independent acquisition, endpoint authentication and confirmation policy remain open. No new network acquisition, chain experiment, wallet connection or deployment is introduced here.
+
+Alpha.43 adds a separate [history binding wrapper](PAID_BODY_HISTORY.md). It checks raw transaction fields, receipt metadata and creation addresses before the existing fixed-experiment reconstruction. This sender component and its earlier flags remain unchanged.
