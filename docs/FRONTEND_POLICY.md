@@ -11,3 +11,5 @@ The intended frontend will make its own display and hosted-media rules understan
 NFT-controlled pseudonyms remain the manifesto identity target. Imageboard styling does not mean accountless posting or anonymity. Public activity and eventual account ownership can be linkable. This alpha neither collects private correspondence nor supplies encryption.
 
 The website, browser application and future protocol are separate components. GitHub controls this source hosting; the developer controls this unpublished website copy. Neither fact proves that a future deployed protocol is independent of those parties. See RESILIENCE_PLAN.md for proposed failure tests.
+
+See the [privacy boundary](PRIVACY_BOUNDARY.md) for observable data and unresolved messaging decisions, and [input admission](INPUT_BOUNDARY.md) for bounded requests and duplicate-field rejection.

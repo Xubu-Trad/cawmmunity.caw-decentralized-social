@@ -63,6 +63,7 @@ test('serves only the named public assets, with exact file bytes and MIME types'
     ['/fixtures.json', 'fixtures.json', 'application/json; charset=utf-8'],
     ['/media.mjs', 'media.mjs', 'text/javascript; charset=utf-8'],
     ['/deployment.mjs', 'deployment.mjs', 'text/javascript; charset=utf-8'],
+    ['/bounded-json.mjs', 'bounded-json.mjs', 'text/javascript; charset=utf-8'],
     ['/deployment.json', 'deployment.json', 'application/json; charset=utf-8'],
     ['/alpha.mjs', 'alpha.mjs', 'text/javascript; charset=utf-8'],
     ['/website.html', 'website.html', 'text/html; charset=utf-8'],

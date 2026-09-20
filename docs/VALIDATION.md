@@ -1,8 +1,14 @@
 # Validation boundary
 
+Alpha.45 adds [bounded input admission](INPUT_BOUNDARY.md) to the browser environment, fixtures and retained checkpoint fields, plus explicit referrer controls on both portable entry pages. Duplicate decoded keys, trailing data, invalid UTF-8 network bytes and resource-limit violations reject before domain validation. Signed wire formats and protocol contracts remain unchanged.
+
+**1014/1014 Node tests across 47 files passed**, including 35 new cases; all 51 focused checks passed. The deterministic build contains 22 public assets plus its checksum manifest. A fresh interactive browser pass could not be completed: the browser-control runtime failed to initialize and the isolated fallback could not launch under the existing one-process guard. Node tests cover parsing, configuration, fixtures, serving and asset packaging; they do not substitute for a browser pass. The 65 Python tests remain historical alpha.41 evidence and were not rerun. See the [current receipt](../evidence/TEST_RESULTS.json) and [privacy boundary](PRIVACY_BOUNDARY.md). No new network acquisition, chain experiment, deployment or anonymity claim is included.
+
+## Historical alpha.44 evidence
+
 Alpha.44 adds [post signature inspection](PAID_POST_SIGNATURES.md) and a separate history wrapper over alpha.43. Canonical call bytes produce the fixed contract's exact EIP-712 domain and digest. A bounded additive digest-signature export reuses the existing recovery arithmetic. Accepted post signatures must match each reconstructed historical owner under an explicit ordinary-account policy; failed calls are counted separately.
 
-**979/979 Node tests across 46 files passed**, including 76 new digest/post checks. The 65 Python tests remain historical alpha.41 evidence; this increment ran its native fixture generator separately. The [current receipt](../evidence/TEST_RESULTS.json) records native Python fixture generation, offline checks, the guide and build. A synthetic negative history passes the old body binding but fails the new inner-signature check. This is deliberately byte-consistent, non-executed evidence. Existing capture bytes, contracts, frontend and prior reader behavior remain unchanged. Code absence, ERC-1271 validation, registry permission execution, authenticated state/endpoints, consensus, finality, freshness and recovery adoption remain open.
+**979/979 Node tests across 46 files passed**, including 76 new digest/post checks. The 65 Python tests remain historical alpha.41 evidence; this increment ran its native fixture generator separately. The [alpha.44 receipt](../evidence/ALPHA44_TEST_RESULTS.json) records native Python fixture generation, offline checks, the guide and build. A synthetic negative history passes the old body binding but fails the new inner-signature check. This is deliberately byte-consistent, non-executed evidence. Existing capture bytes, contracts, frontend and prior reader behavior remain unchanged. Code absence, ERC-1271 validation, registry permission execution, authenticated state/endpoints, consensus, finality, freshness and recovery adoption remain open.
 
 ## Historical alpha.43 evidence
 

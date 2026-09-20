@@ -7,44 +7,27 @@
   "open_conflicts": 15,
   "initial_review_commit": "91479b6dc8c9a264411d75177d43029e0266c354",
   "github_address": "Xubu-Trad/cawmmunity.caw-decentralized-social",
-  "release": "0.1.0-alpha.44",
-  "date": "2026-09-16",
-  "tests": 979,
-  "passed": 979,
+  "release": "0.1.0-alpha.45",
+  "date": "2026-09-20",
+  "status": "checks_passed",
+  "tests": 1014,
+  "passed": 1014,
   "failed": 0,
   "cancelled": 0,
   "skipped": 0,
   "todo": 0,
-  "test_files": 46,
-  "new_tests": 76,
-  "source_files": 246,
-  "build_files": 22,
+  "test_files": 47,
+  "new_tests": 35,
+  "source_files": 248,
+  "build_files": 23,
   "executions": {
     "focused": {
       "mode": "focused",
-      "runtime": "Node.js 24.20.0",
-      "runtime_sha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
+      "node_version": "24.20.0",
+      "node_sha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
       "exit_code": 0,
-      "seconds": 13.188,
-      "observed_peak_bytes": 99119104,
-      "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk"
-    },
-    "generate": {
-      "mode": "generate",
-      "runtime": "Python 3.12.14",
-      "runtime_sha256": "766b4f956edf378917adc33c84e7d4c8b295a71e8aebcfdd2de7970f1f0ca0b6",
-      "exit_code": 0,
-      "seconds": 1.391,
-      "observed_peak_bytes": 32702464,
-      "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk"
-    },
-    "guide": {
-      "mode": "guide",
-      "runtime": "Node.js 24.20.0",
-      "runtime_sha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
-      "exit_code": 0,
-      "seconds": 1.719,
-      "observed_peak_bytes": 72806400,
+      "seconds": 0.984,
+      "observed_peak_bytes": 94056448,
       "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk"
     },
     "all": {
@@ -52,8 +35,8 @@
       "node_version": "24.20.0",
       "node_sha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
       "exit_code": 0,
-      "seconds": 122.734,
-      "observed_peak_bytes": 474374144,
+      "seconds": 55.625,
+      "observed_peak_bytes": 479027200,
       "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk"
     },
     "build": {
@@ -61,95 +44,57 @@
       "node_version": "24.20.0",
       "node_sha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
       "exit_code": 0,
-      "seconds": 0.625,
-      "observed_peak_bytes": 57008128,
+      "seconds": 0.797,
+      "observed_peak_bytes": 55746560,
       "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk"
     }
   },
   "build_output": {
-    "files": 22,
-    "bytes": 1422784,
-    "manifestSha256": "3590fc562c47c46f9f911918fd2b5181bb41db2f87f2ee6c6f0c2ee740ad8f0a"
+    "files": 23,
+    "bytes": 1428692,
+    "manifestSha256": "c4916abc6e35579d89d367eb8368ddcb4d677830c35eed30584ea4da796d4374"
   },
-  "guide_example": {
-    "guide": "../docs/PAID_POST_SIGNATURES.md",
-    "output": {
-      "histories": 4,
-      "successfulPostObservations": 10,
-      "failedPostObservations": 2,
-      "postSignaturesVerified": true,
-      "codeAbsenceVerified": false,
-      "accountAuthorityVerified": false
-    }
+  "browser_review": {
+    "status": "not_completed",
+    "reason": "Browser control runtime failed to initialize; isolated fallback could not spawn a browser under the existing one-process test guard.",
+    "automated_input_and_server_checks": "passed separately in the Node suite",
+    "fresh_visual_or_interactive_browser_pass": false,
+    "layout_changed": false,
+    "resource_limits_unchanged": true
   },
-  "fixture_file": "../reference/fixtures/paid-post-signatures-v1.json",
-  "fixture_sha256": "6e03216616272e7c383c09f63e0d046dd1c172416cfad06014fdb18c6c9f1655",
-  "native_positive_vectors": 6,
-  "synthetic_history_rejection_recipes": 1,
-  "changes": "Verify exact inner post EIP-712 signatures against historical owners after complete body binding, with explicit ordinary-account assumptions and separate failed-call coverage.",
+  "changes": "Bound browser configuration, fixtures and retained trust fields; reject decoded duplicate names before domain validation; add explicit no-referrer controls.",
   "contracts_changed": false,
-  "frontend_changed": false,
-  "historical_reader_behavior_changed": false,
+  "signed_formats_changed": false,
   "historical_evidence_changed": false,
-  "existing_sender_module_addition": "Strict two-argument public digest-signature inspection reusing unchanged recovery arithmetic.",
+  "frontend_changed": true,
+  "layout_changed": false,
   "new_chain_experiment": false,
   "new_network_acquisition": false,
   "public_deployment": false,
   "external_audit": false,
-  "inspector": {
-    "module": "../reference/paid-post-signatures.mjs",
-    "standalone_schema": "caw-paid-post-signature/1",
-    "history_schema": "caw-paid-post-history/1",
-    "profile": "paid-action-v1-eoa-65-low-s",
-    "signature_bytes": 65,
-    "v": [
-      27,
-      28
-    ],
-    "low_s_required": true,
-    "exact_fixed_contract_domain": true,
-    "expected_owner_matched": true,
-    "historical_successful_post_owners_matched": true,
-    "ordinary_account_policy_required": true,
-    "maximum_assumed_owners": 64,
-    "maximum_history_blocks": 128,
-    "maximum_history_transactions": 256,
-    "captured_weighted_bytes": 8388608,
-    "shared_primitives": true,
-    "retained_histories_checked": 4,
-    "distinct_successful_post_transactions": 4,
-    "successful_post_observations": 10,
-    "failed_post_observations_not_signature_checked": 2,
-    "synthetic_negative_passes_body_binding_but_fails_inner_signature": true
+  "parser_limits": {
+    "bytes": 1048576,
+    "container_depth": 32,
+    "values_plus_keys": 100000,
+    "configuration_bytes": 4096,
+    "fixture_bytes": 65536,
+    "ui_trust_field_bytes": 4096,
+    "existing_ui_trust_field_utf16_units": 1024
   },
   "verification_boundary": {
-    "full_caw_account_authority_verified": false,
-    "code_absence_verified": false,
-    "erc1271_verified": false,
-    "registry_permission_execution_verified": false,
-    "current_permission_verified": false,
-    "execution_verified": false,
-    "endpoint_authenticated": false,
-    "independent_providers": false,
-    "consensus_verified": false,
-    "finality_verified": false,
-    "freshness_verified": false,
-    "recovery_adoption_integration": false,
-    "prior_nested_flags_upgraded": false
+    "schema_validation_still_required": true,
+    "native_json_number_and_string_semantics_retained": true,
+    "formal_parser_equivalence_proven": false,
+    "network_anonymity_verified": false,
+    "private_messaging_implemented": false,
+    "protocol_authority_checks_changed": false
   },
   "python_tests": {
     "result": "not_repeated",
     "prior_count": 65,
-    "historical_receipt": "ALPHA41_TEST_RESULTS.json",
-    "native_fixture_generation": "passed"
+    "historical_receipt": "ALPHA41_TEST_RESULTS.json"
   },
-  "runtime_note": "Bundled Python 3.12.14 executable refreshed since alpha.42; its current bundled path and valid OpenAI Authenticode signature were checked before pinning the generator runtime. Node runtime and resource limits unchanged.",
-  "browser_visual_review": {
-    "result": "not_repeated",
-    "frontend_unchanged": true,
-    "historical_receipt": "ALPHA27_TEST_RESULTS.json"
-  },
-  "next_gate": "Verify registry permission and owner code/state assumptions, define a separately justified contract-wallet path, then integrate checked history into selection invalidation, rollback and restart.",
-  "historical_receipt": "ALPHA43_TEST_RESULTS.json",
-  "historical_source_manifest": "ALPHA43_CODE_SHA256SUMS.txt"
+  "historical_receipt": "ALPHA44_TEST_RESULTS.json",
+  "historical_source_manifest": "ALPHA44_CODE_SHA256SUMS.txt",
+  "next_gate": "Verify registry permission and owner code/state assumptions, then integrate checked bodies and post signatures into selected-history invalidation, rollback and restart."
 }

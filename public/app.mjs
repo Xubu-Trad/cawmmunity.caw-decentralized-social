@@ -1,6 +1,7 @@
 import { UNIT, createState, previewAction, applyAction, rebuild, canonicalExport, formatAmount, countCharacters } from './model.mjs';
 import {inspectMedia,validateVideoMetadata,MEDIA_LIMITS} from './media.mjs';
-import {loadEnvironment} from './deployment.mjs';
+import {loadEnvironment,loadFixtures} from './deployment.mjs';
+import {parseBoundedJson} from './bounded-json.mjs';
 import {createCheckpoint,verifyHistory} from './history.mjs';
 import {allocateFee,DEMO_FEES} from './economics.mjs';
 import {createDemoSigner} from './signatures.mjs';
@@ -435,7 +436,7 @@ function renderSignatureLab(){
   const verifyRecord=button('Verify saved record',()=>work(async()=>{
     const current=generation,revision=recoveryRevision;recoveredField.value='';recoveryResult.replaceChildren();
     if([savedFingerprint,savedBinding,savedPermission,savedOwner].some(field=>field.value.length>1024))throw new Error('A saved trust field exceeds the local input bound.');
-    const checked=await verifyLabRecord(savedRecord.value,JSON.parse(savedFingerprint.value),JSON.parse(savedBinding.value),savedPermission.value?JSON.parse(savedPermission.value):undefined,savedOwner.value?JSON.parse(savedOwner.value):undefined);
+    const checked=await verifyLabRecord(savedRecord.value,parseBoundedJson(savedFingerprint.value,4096),parseBoundedJson(savedBinding.value,4096),savedPermission.value?parseBoundedJson(savedPermission.value,4096):undefined,savedOwner.value?parseBoundedJson(savedOwner.value,4096):undefined);
     if(!mounted||current!==generation||revision!==recoveryRevision)return;
     recoveredField.value=checked.canonicalText;
     recoveryResult.replaceChildren(el('p',{class:'check-result'},'Saved fingerprints match. '+checked.signedActions+' signed CAW(s) checked; '+checked.fixtureTransfers+
@@ -453,8 +454,8 @@ function renderSignatureLab(){
   }
   function recoveryInputs(){
     if([savedFingerprint,savedBinding,savedPermission,savedOwner].some(field=>field.value.length>1024))throw new Error('A saved trust field exceeds the local input bound.');
-    return {text:savedRecord.value,checkpoint:JSON.parse(savedFingerprint.value),binding:JSON.parse(savedBinding.value),
-      permission:savedPermission.value?JSON.parse(savedPermission.value):undefined,owner:savedOwner.value?JSON.parse(savedOwner.value):undefined};
+    return {text:savedRecord.value,checkpoint:parseBoundedJson(savedFingerprint.value,4096),binding:parseBoundedJson(savedBinding.value,4096),
+      permission:savedPermission.value?parseBoundedJson(savedPermission.value,4096):undefined,owner:savedOwner.value?parseBoundedJson(savedOwner.value,4096):undefined};
   }
   const keepAnchor=button('Keep as comparison anchor',()=>work(async()=>{
     if(comparison)throw new Error('Clear the existing anchor explicitly before choosing another baseline.');
@@ -474,7 +475,7 @@ function renderSignatureLab(){
   async function compareCandidate(advance){
     const current=generation,revision=recoveryRevision,tracker=comparison;
     if(savedFingerprint.value.length>1024)throw new Error('The candidate fingerprint exceeds the local input bound.');
-    const checked=await tracker[advance?'advance':'inspect'](savedRecord.value,JSON.parse(savedFingerprint.value));
+    const checked=await tracker[advance?'advance':'inspect'](savedRecord.value,parseBoundedJson(savedFingerprint.value,4096));
     if(!mounted||current!==generation||revision!==recoveryRevision||comparison!==tracker)return;
     showAnchor();showComparison(checked,checked.advanced);
   }
@@ -637,7 +638,7 @@ function renderHistoryVerifier(){
     verify.disabled=true;result.replaceChildren(el('p',{},'Checking the saved record…'));
     try{
       if(saved.length>1024)throw new Error('The saved fingerprint is too large.');
-      const checked=await verifyHistory(text,JSON.parse(saved));
+      const checked=await verifyHistory(text,parseBoundedJson(saved,4096));
       if(generation!==revision||!history.isConnected)return;
       result.replaceChildren(el('p',{class:'check-result'},`Saved fingerprint matched. ${checked.state.events.length} synthetic events rebuilt.`),
         el('p',{},`${Object.keys(checked.state.accounts).length} accounts · ${checked.state.posts.length} posts · active session unchanged.`),
@@ -762,9 +763,7 @@ window.addEventListener('hashchange',()=>{
 try{
   await loadEnvironment();
   $('alpha-environment').textContent='Alpha simulation · no connected chain';
-  const response=await fetch(new URL('./fixtures.json',import.meta.url),{cache:'no-store',credentials:'omit'});
-  if(!response.ok)throw new Error('The local fixture could not be loaded.');
-  seed=await response.json();state=createState(seed);
+  seed=await loadFixtures();state=createState(seed);
   if(!Object.hasOwn(state.accounts,selected))selected=Object.keys(state.accounts)[0];
   const initialView=location.hash.slice(1);
   navigate(initialView==='main'?'feed':initialView||'feed',initialView==='main');

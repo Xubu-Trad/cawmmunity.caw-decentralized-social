@@ -25,6 +25,7 @@ const ROUTES = new Map([
   ['/fixtures.json', [new URL('./public/fixtures.json', import.meta.url), 'application/json; charset=utf-8']],
   ['/media.mjs', [new URL('./public/media.mjs', import.meta.url), 'text/javascript; charset=utf-8']],
   ['/deployment.mjs', [new URL('./public/deployment.mjs', import.meta.url), 'text/javascript; charset=utf-8']],
+  ['/bounded-json.mjs', [new URL('./public/bounded-json.mjs', import.meta.url), 'text/javascript; charset=utf-8']],
   ['/deployment.json', [new URL('./public/deployment.json', import.meta.url), 'application/json; charset=utf-8']],
   ['/alpha.mjs', [new URL('./public/alpha.mjs', import.meta.url), 'text/javascript; charset=utf-8']],
   ['/website.html', [new URL('./public/website.html', import.meta.url), 'text/html; charset=utf-8']],
