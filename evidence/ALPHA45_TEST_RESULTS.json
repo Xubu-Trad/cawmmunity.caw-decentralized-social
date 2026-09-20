@@ -1,0 +1,100 @@
+{
+  "runtime": "Node.js 24.20.0",
+  "project": "cawmmunity.caw - decentralized - social",
+  "frontend": "cawmmunity.caw - decentralized - social - alpha",
+  "protocol": "cawmmunity.caw - decentralized - social - protocol",
+  "source_requirements": 59,
+  "open_conflicts": 15,
+  "initial_review_commit": "91479b6dc8c9a264411d75177d43029e0266c354",
+  "github_address": "Xubu-Trad/cawmmunity.caw-decentralized-social",
+  "release": "0.1.0-alpha.45",
+  "date": "2026-09-20",
+  "status": "checks_passed",
+  "tests": 1014,
+  "passed": 1014,
+  "failed": 0,
+  "cancelled": 0,
+  "skipped": 0,
+  "todo": 0,
+  "test_files": 47,
+  "new_tests": 35,
+  "source_files": 248,
+  "build_files": 23,
+  "executions": {
+    "focused": {
+      "mode": "focused",
+      "node_version": "24.20.0",
+      "node_sha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
+      "exit_code": 0,
+      "seconds": 0.984,
+      "observed_peak_bytes": 94056448,
+      "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk"
+    },
+    "all": {
+      "mode": "all",
+      "node_version": "24.20.0",
+      "node_sha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
+      "exit_code": 0,
+      "seconds": 55.625,
+      "observed_peak_bytes": 479027200,
+      "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk"
+    },
+    "build": {
+      "mode": "build",
+      "node_version": "24.20.0",
+      "node_sha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
+      "exit_code": 0,
+      "seconds": 0.797,
+      "observed_peak_bytes": 55746560,
+      "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk"
+    }
+  },
+  "build_output": {
+    "files": 23,
+    "bytes": 1428692,
+    "manifestSha256": "c4916abc6e35579d89d367eb8368ddcb4d677830c35eed30584ea4da796d4374"
+  },
+  "browser_review": {
+    "status": "not_completed",
+    "reason": "Browser control runtime failed to initialize; isolated fallback could not spawn a browser under the existing one-process test guard.",
+    "automated_input_and_server_checks": "passed separately in the Node suite",
+    "fresh_visual_or_interactive_browser_pass": false,
+    "layout_changed": false,
+    "resource_limits_unchanged": true
+  },
+  "changes": "Bound browser configuration, fixtures and retained trust fields; reject decoded duplicate names before domain validation; add explicit no-referrer controls.",
+  "contracts_changed": false,
+  "signed_formats_changed": false,
+  "historical_evidence_changed": false,
+  "frontend_changed": true,
+  "layout_changed": false,
+  "new_chain_experiment": false,
+  "new_network_acquisition": false,
+  "public_deployment": false,
+  "external_audit": false,
+  "parser_limits": {
+    "bytes": 1048576,
+    "container_depth": 32,
+    "values_plus_keys": 100000,
+    "configuration_bytes": 4096,
+    "fixture_bytes": 65536,
+    "ui_trust_field_bytes": 4096,
+    "existing_ui_trust_field_utf16_units": 1024
+  },
+  "verification_boundary": {
+    "schema_validation_still_required": true,
+    "native_json_number_and_string_semantics_retained": true,
+    "formal_parser_equivalence_proven": false,
+    "network_anonymity_verified": false,
+    "private_messaging_implemented": false,
+    "protocol_authority_checks_changed": false
+  },
+  "python_tests": {
+    "result": "not_repeated",
+    "prior_count": 65,
+    "historical_receipt": "ALPHA41_TEST_RESULTS.json"
+  },
+  "historical_receipt": "ALPHA44_TEST_RESULTS.json",
+  "historical_source_manifest": "ALPHA44_CODE_SHA256SUMS.txt",
+  "next_gate": "Verify registry permission and owner code/state assumptions, then integrate checked bodies and post signatures into selected-history invalidation, rollback and restart."
+}

@@ -7,45 +7,63 @@
   "open_conflicts": 15,
   "initial_review_commit": "91479b6dc8c9a264411d75177d43029e0266c354",
   "github_address": "Xubu-Trad/cawmmunity.caw-decentralized-social",
-  "release": "0.1.0-alpha.45",
+  "release": "0.1.0-alpha.46",
   "date": "2026-09-20",
   "status": "checks_passed",
-  "tests": 1014,
-  "passed": 1014,
+  "tests": 1047,
+  "passed": 1047,
   "failed": 0,
   "cancelled": 0,
   "skipped": 0,
   "todo": 0,
-  "test_files": 47,
-  "new_tests": 35,
-  "source_files": 248,
+  "test_files": 49,
+  "new_tests": 33,
+  "source_files": 253,
   "build_files": 23,
   "executions": {
+    "generate": {
+      "mode": "generate",
+      "runtime": "Python 3.12.14",
+      "runtime_sha256": "766b4f956edf378917adc33c84e7d4c8b295a71e8aebcfdd2de7970f1f0ca0b6",
+      "exit_code": 0,
+      "seconds": 1.141,
+      "observed_peak_bytes": 33853440,
+      "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk"
+    },
     "focused": {
       "mode": "focused",
-      "node_version": "24.20.0",
-      "node_sha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
+      "runtime": "Node.js 24.20.0",
+      "runtime_sha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
       "exit_code": 0,
-      "seconds": 0.984,
-      "observed_peak_bytes": 94056448,
+      "seconds": 6.234,
+      "observed_peak_bytes": 99815424,
       "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk"
     },
     "all": {
       "mode": "all",
-      "node_version": "24.20.0",
-      "node_sha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
+      "runtime": "Node.js 24.20.0",
+      "runtime_sha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
       "exit_code": 0,
-      "seconds": 55.625,
-      "observed_peak_bytes": 479027200,
+      "seconds": 72.469,
+      "observed_peak_bytes": 473395200,
+      "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk"
+    },
+    "guide": {
+      "mode": "guide",
+      "runtime": "Node.js 24.20.0",
+      "runtime_sha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
+      "exit_code": 0,
+      "seconds": 2.219,
+      "observed_peak_bytes": 73441280,
       "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk"
     },
     "build": {
       "mode": "build",
-      "node_version": "24.20.0",
-      "node_sha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
+      "runtime": "Node.js 24.20.0",
+      "runtime_sha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
       "exit_code": 0,
-      "seconds": 0.797,
-      "observed_peak_bytes": 55746560,
+      "seconds": 0.735,
+      "observed_peak_bytes": 55791616,
       "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk"
     }
   },
@@ -54,47 +72,61 @@
     "bytes": 1428692,
     "manifestSha256": "c4916abc6e35579d89d367eb8368ddcb4d677830c35eed30584ea4da796d4374"
   },
-  "browser_review": {
-    "status": "not_completed",
-    "reason": "Browser control runtime failed to initialize; isolated fallback could not spawn a browser under the existing one-process test guard.",
-    "automated_input_and_server_checks": "passed separately in the Node suite",
-    "fresh_visual_or_interactive_browser_pass": false,
-    "layout_changed": false,
-    "resource_limits_unchanged": true
+  "fixture_generation": {
+    "status": "pass",
+    "bytes": 11032,
+    "sha256": "404d6a675d6a8f8cba0daa7f4e531d3e66c42540639586137b636d5c6299f64a"
   },
-  "changes": "Bound browser configuration, fixtures and retained trust fields; reject decoded duplicate names before domain validation; add explicit no-referrer controls.",
+  "guide_output": {
+    "histories": 4,
+    "transferObservations": 4,
+    "accountAuthorityVerified": false,
+    "executionVerified": false
+  },
+  "changes": "Add conditional direct registry approval and transfer replay bound to recovered senders, fixed byte pins and exact events.",
   "contracts_changed": false,
-  "signed_formats_changed": false,
   "historical_evidence_changed": false,
-  "frontend_changed": true,
-  "layout_changed": false,
+  "frontend_changed": false,
   "new_chain_experiment": false,
   "new_network_acquisition": false,
   "public_deployment": false,
   "external_audit": false,
-  "parser_limits": {
-    "bytes": 1048576,
-    "container_depth": 32,
-    "values_plus_keys": 100000,
-    "configuration_bytes": 4096,
-    "fixture_bytes": 65536,
-    "ui_trust_field_bytes": 4096,
-    "existing_ui_trust_field_utf16_units": 1024
+  "coverage": {
+    "standalone_synthetic_tests": 24,
+    "history_integration_tests": 9,
+    "retained_histories": 4,
+    "retained_transfer_observations": 4,
+    "distinct_retained_transfers": 2,
+    "retained_approval_or_operator_calls": 0,
+    "native_negative_recipes": 1,
+    "new_evm_execution": false
   },
   "verification_boundary": {
-    "schema_validation_still_required": true,
-    "native_json_number_and_string_semantics_retained": true,
-    "formal_parser_equivalence_proven": false,
-    "network_anonymity_verified": false,
-    "private_messaging_implemented": false,
-    "protocol_authority_checks_changed": false
+    "registry_permission_rule_consistency": true,
+    "registry_call_senders_bound": true,
+    "matching_preserved_registry_byte_strings": true,
+    "constructor_and_direct_call_semantics_assumed": true,
+    "authenticated_registry_storage": false,
+    "account_authority_verified": false,
+    "code_absence_verified": false,
+    "receiver_callbacks_verified": false,
+    "execution_verified": false,
+    "consensus_verified": false,
+    "finality_verified": false,
+    "freshness_verified": false,
+    "recovery_adoption_integrated": false
+  },
+  "browser_review": {
+    "status": "not_repeated",
+    "reason": "Frontend byte-identical; alpha.45 fresh interactive check remains unavailable and is preserved in its receipt."
   },
   "python_tests": {
     "result": "not_repeated",
     "prior_count": 65,
-    "historical_receipt": "ALPHA41_TEST_RESULTS.json"
+    "historical_receipt": "ALPHA41_TEST_RESULTS.json",
+    "native_fixture_generator_run": true
   },
-  "historical_receipt": "ALPHA44_TEST_RESULTS.json",
-  "historical_source_manifest": "ALPHA44_CODE_SHA256SUMS.txt",
-  "next_gate": "Verify registry permission and owner code/state assumptions, then integrate checked bodies and post signatures into selected-history invalidation, rollback and restart."
+  "historical_receipt": "ALPHA45_TEST_RESULTS.json",
+  "historical_source_manifest": "ALPHA45_CODE_SHA256SUMS.txt",
+  "next_gate": "Establish code/state authority and callback/contract-wallet boundaries, then compose body/post/registry checks into selected-history invalidation, rollback and restart."
 }

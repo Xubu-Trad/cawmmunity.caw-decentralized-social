@@ -1,8 +1,14 @@
 # Validation boundary
 
+Alpha.46 adds [registry permission inspection](PAID_REGISTRY_PERMISSIONS.md) over the unchanged body and post verifiers. Direct approvals, operators and transfers are checked against reconstructed permissions and recovered transaction senders. Runtime and creation pins identify the preserved fixture; they do not authenticate deployment or execution.
+
+**1047/1047 Node tests across 49 files passed**, including all 33 focused checks: 24 synthetic call-sequence tests and nine history integration tests. Native fixture generation and the four-history guide passed. A re-signed unauthorized transfer passes the prior body/post checks and rejects at the new permission boundary. The deterministic build retains the same 22 public assets plus checksum manifest. Contracts and frontend bytes are unchanged; no fresh browser or EVM run is claimed. The 65 Python tests remain historical alpha.41 evidence. See the [current receipt](../evidence/TEST_RESULTS.json); the earlier alpha.45 receipt and source manifest are archived byte-for-byte.
+
+## Historical alpha.45 evidence
+
 Alpha.45 adds [bounded input admission](INPUT_BOUNDARY.md) to the browser environment, fixtures and retained checkpoint fields, plus explicit referrer controls on both portable entry pages. Duplicate decoded keys, trailing data, invalid UTF-8 network bytes and resource-limit violations reject before domain validation. Signed wire formats and protocol contracts remain unchanged.
 
-**1014/1014 Node tests across 47 files passed**, including 35 new cases; all 51 focused checks passed. The deterministic build contains 22 public assets plus its checksum manifest. A fresh interactive browser pass could not be completed: the browser-control runtime failed to initialize and the isolated fallback could not launch under the existing one-process guard. Node tests cover parsing, configuration, fixtures, serving and asset packaging; they do not substitute for a browser pass. The 65 Python tests remain historical alpha.41 evidence and were not rerun. See the [current receipt](../evidence/TEST_RESULTS.json) and [privacy boundary](PRIVACY_BOUNDARY.md). No new network acquisition, chain experiment, deployment or anonymity claim is included.
+**1014/1014 Node tests across 47 files passed**, including 35 new cases; all 51 focused checks passed. The deterministic build contains 22 public assets plus its checksum manifest. A fresh interactive browser pass could not be completed: the browser-control runtime failed to initialize and the isolated fallback could not launch under the existing one-process guard. Node tests cover parsing, configuration, fixtures, serving and asset packaging; they do not substitute for a browser pass. The 65 Python tests remain historical alpha.41 evidence and were not rerun. See the [alpha.45 receipt](../evidence/ALPHA45_TEST_RESULTS.json) and [privacy boundary](PRIVACY_BOUNDARY.md). No new network acquisition, chain experiment, deployment or anonymity claim is included.
 
 ## Historical alpha.44 evidence
 

@@ -82,3 +82,5 @@ Four collector histories reuse two local branches: left has three accepted posts
 The history wrapper retains alpha.43's 128-block/256-total-transaction limits and combined 8 MiB/100,000-node/depth-20 input capture, plus the 64-owner policy bound. Signature calls have fixed public curve work and strict 32/65-byte inputs. No key generation, wallet connection or signing API is added. Same-process hostile proxies and altered native built-ins remain outside the input model.
 
 Next: verify registry permission and ordinary-account state assumptions, add a separately justified contract-wallet path, then integrate the checked history into selection invalidation, rollback and restart. Source decisions and public-release gates remain open.
+
+The later [registry permission wrapper](PAID_REGISTRY_PERMISSIONS.md) adds conditional direct-call approval and transfer checks. This earlier inspector and its flags remain unchanged; authenticated code/state and execution are still required.

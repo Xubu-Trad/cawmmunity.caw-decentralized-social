@@ -73,8 +73,9 @@ Draft, review a simulated fee, post, and inspect the receipt. Nothing is sent wh
 | [Alpha.43: history bound to block bodies](docs/PAID_BODY_HISTORY.md) | Bind captured CAW history fields to committed raw bytes, recovered senders and receipts before accounting reconstruction | Fixed local legacy format; full account authority, execution and recovery integration remain open |
 | [Alpha.44: signed post permissions](docs/PAID_POST_SIGNATURES.md) | Rebuild exact post signing digests and match successful posts to reconstructed historical owners | Explicit ordinary-account assumption; code absence, registry execution, endpoints and recovery integration remain open |
 | [Alpha.45: input admission](docs/INPUT_BOUNDARY.md) | Bound browser inputs and reject ambiguous fields before domain validation | Local input and request controls; no network anonymity or new settlement authority |
+| [Alpha.46: registry permissions](docs/PAID_REGISTRY_PERMISSIONS.md) | Match direct approvals and transfers to reconstructed permissions and recovered transaction senders | Fixed-registry assumptions; code/state authentication, execution, callbacks and recovery integration remain open |
 
-**Recorded validation:** 1014/1014 Node offline tests across 47 files; 65 Python tests recorded in alpha.41; 23 build assets. See [results and browser coverage](docs/VALIDATION.md). These finite checks establish neither an external audit, community agreement nor permanent availability.
+**Recorded validation:** 1047/1047 Node offline tests across 49 files; 65 Python tests recorded in alpha.41; 23 build assets. See [results and browser coverage](docs/VALIDATION.md). These finite checks establish neither an external audit, community agreement nor permanent availability.
 
 ## Read, reproduce, challenge
 
