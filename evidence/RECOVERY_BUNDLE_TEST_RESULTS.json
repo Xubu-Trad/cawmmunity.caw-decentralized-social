@@ -1,0 +1,28 @@
+{
+  "schema": "caw-recovery-validation/1",
+  "baseline": "4627ed2f3a985fe3b9f46f7be3ac5ea505ef3c2f",
+  "scope": "offline retained synthetic fixture; no network/production acceptance",
+  "node": "24.20.0",
+  "focused": {
+    "passed": 14,
+    "failed": 0
+  },
+  "full_suite": {
+    "passed": 1061,
+    "failed": 0,
+    "files": 50
+  },
+  "cli_fresh_working_directory": "passed separately under unchanged supervisor",
+  "prior_attempt": "13/14; child-process CLI test could not launch under process guard; replaced by direct directory check plus separate supervised CLI run",
+  "productionAccepted": false,
+  "source_sha256": {
+    "reference/recovery-bundle.mjs": "a8123fb9a5a4f435df1c7d03256c29db89cb5654a51c8b49f8e40819ad34b950",
+    "scripts/check-recovery-bundle.mjs": "e35d63a10759649498f9ddf7efb3d76f0e58c0d5c78640b87da6cedf5677e6cd",
+    "tests/recovery-bundle.test.mjs": "296eac9119d792265d522a4b8c1d04f9212aa65f13091cd3264ceddcef68c67f"
+  },
+  "result_log_sha256": {
+    "all-20261022T235028": "69cb1bc50565f6a5cef9515c10511a907ebdef7b80ba08eda1e934a80c549c70",
+    "focused-20261022T234906": "00ae5981da41225890c079abfb382129b756d61df8417875d5dae2cef2689e45",
+    "cli-20261022T234934": "5b2a52174a7953cc00adde429277a0c92fad0c24edb11e9741094e55a49ae735"
+  }
+}

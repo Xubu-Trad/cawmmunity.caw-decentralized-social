@@ -20,3 +20,8 @@ Labels identify the work: `review` for evidence and objections, `protocol` for b
 ## Active engineering slice — 2026-10-22
 
 Resume from alpha.46 with the [operator-independence register](OPERATOR_INDEPENDENCE.md), extending the existing OUT-08 recovery plan. First define and implement a bounded offline recovery-bundle check using existing readers and explicit trust assumptions. The new register records nine open dependencies and the negative cases needed before an original-operator-absent result can be claimed. This documentation adds no new test passes or production capability; the public test candidate and production remain blocked.
+
+
+### Recovery checker evidence
+
+The [bounded offline checker](RECOVERY_BUNDLE.md) now reuses existing readers against a separately retained selection, with 14 focused checks and 1061/1061 full offline regressions. A separate CLI run recovered from fresh files and a fresh working directory. It proves conditional fixture reconstruction only. Next: review an independently supplied package and explicit trust selection; do not promote it to authenticated acquisition, real account authority or automatic adoption. See [the exact scope and source hashes](../evidence/RECOVERY_BUNDLE_TEST_RESULTS.json).
