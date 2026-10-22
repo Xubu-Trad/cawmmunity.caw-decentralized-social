@@ -1,0 +1,27 @@
+{
+  "schema": "caw-recovery-selection-pin-validation/1",
+  "baseline": "fbbea1184df9bbcdc798c6ed9b8cb8f368ecca10",
+  "scope": "retained synthetic fixture only; no chain authentication",
+  "node": "24.20.0",
+  "focused": {
+    "passed": 21,
+    "failed": 0
+  },
+  "full_suite": {
+    "passed": 1068,
+    "failed": 0,
+    "files": 50
+  },
+  "cli": "separate guarded fresh-directory invocation passed with supplied digest",
+  "productionAccepted": false,
+  "source_sha256": {
+    "reference/recovery-bundle.mjs": "3989a76f9f6611488de2f4a359438d68b82f1e9fbf1128211b62663d5b2ac866",
+    "scripts/check-recovery-bundle.mjs": "dcbd06073fe1d10971b0ddd8883a498bbb466559ebfa9575a5d679b3710c3bff",
+    "tests/recovery-bundle.test.mjs": "8340b0b96b127b664f2af6becdafadc24a9283f20fa087c638874a5155c0a51c"
+  },
+  "result_log_sha256": {
+    "all-20261022T235633": "61b0700dba17149fe92e5d7012e01a9e774300933043ae93114e68bdead17f01",
+    "focused-20261022T235613": "b4434f93e21c55a878941a845c9c760fbe23769272c969441e668a926e8e1759",
+    "cli-20261022T235632": "36df6bb7830e2350e89bd2542da968d95233df7e52786d9319f1c8cc17712ce6"
+  }
+}

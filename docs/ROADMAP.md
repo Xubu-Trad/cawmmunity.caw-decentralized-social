@@ -25,3 +25,8 @@ Resume from alpha.46 with the [operator-independence register](OPERATOR_INDEPEND
 ### Recovery checker evidence
 
 The [bounded offline checker](RECOVERY_BUNDLE.md) now reuses existing readers against a separately retained selection, with 14 focused checks and 1061/1061 full offline regressions. A separate CLI run recovered from fresh files and a fresh working directory. It proves conditional fixture reconstruction only. Next: review an independently supplied package and explicit trust selection; do not promote it to authenticated acquisition, real account authority or automatic adoption. See [the exact scope and source hashes](../evidence/RECOVERY_BUNDLE_TEST_RESULTS.json).
+
+
+### Retained selection boundary
+
+The recovery command now requires a separately retained selection SHA-256. Replacing both the package and its selection fails against the original digest. This does not authenticate whoever supplied the digest or the selected chain. [21 focused checks and 1068 full regressions](../evidence/RECOVERY_SELECTION_PIN_TEST_RESULTS.json) passed; earlier 14/1061 results above remain historical. Independently supplied evidence and an authenticated trust-bootstrap design remain next, with no automatic state adoption.

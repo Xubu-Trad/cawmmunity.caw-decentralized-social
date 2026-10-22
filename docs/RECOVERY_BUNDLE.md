@@ -24,7 +24,7 @@ The directory must contain `history.json`, `manifest.json`, `bodies.json` and `p
 }
 ```
 
-The placeholders above are schema illustrations, not valid input. Hashes include whitespace and final newlines. Changing both a package and its selection does not prove authenticity. Retain the selection through an independently chosen trusted process; this component does not supply that process. Local reader code and the filesystem are also caller trust boundaries. The CLI is not a sandbox for a malicious local filesystem or privileged same-process JavaScript.
+The placeholders above are schema illustrations, not valid input. Hashes include whitespace and final newlines. The command additionally requires the exact selection file's SHA-256, retained outside the received package. This detects replacement of both the package and selection. Calculating that digest from an untrusted received selection at verification time defeats this substitution check. Retain it through an independently chosen trusted process; this component does not authenticate that process or establish canonical chain selection. Local reader code and the filesystem remain caller trust boundaries. The CLI is not a sandbox for a malicious local filesystem or privileged same-process JavaScript.
 
 ## Reproduce with the existing synthetic fixture
 
@@ -51,20 +51,25 @@ for name, value in members.items():
 m = sample['manifest']
 selection = dict(schema='caw-recovery-selection/1', profile='fixed-registry-eoa/1', chainId='0x7a69', startBlockHash=m['start_block_hash'], endBlockHash=m['end_block_hash'], sha256=hashes)
 (out / 'selection.json').write_text(json.dumps(selection), encoding='utf-8')
+print('Fixture selection digest:', hashlib.sha256((out / 'selection.json').read_bytes()).hexdigest())
 ```
 
-This creates a fixture selection from explicitly pinned retained bytes. It is not independent public acquisition. Run with Node 24.20.0:
+This creates a fixture selection from explicitly pinned retained bytes. It is not independent public acquisition or an authenticated trust-bootstrap process. For this fixture reproduction, replace the placeholder below with the printed fixture digest. For received packages, use a digest retained separately before receipt. Run with Node 24.20.0:
 
 ```sh
-node --max-old-space-size=128 scripts/check-recovery-bundle.mjs recovery-fixture/bundle recovery-fixture/selection.json
+node --max-old-space-size=128 scripts/check-recovery-bundle.mjs recovery-fixture/bundle recovery-fixture/selection.json "REPLACE_WITH_RETAINED_SELECTION_SHA256"
 node --max-old-space-size=256 --test --test-isolation=none --test-concurrency=1 --test-timeout=30000 tests/recovery-bundle.test.mjs
 ```
 
-The command also works from another working directory with absolute paths to the script, bundle and selection. Missing/oversized files, mismatched hashes, duplicate JSON keys, unsupported profiles and inconsistent history reject. No success record is emitted on rejection. The library API is `inspectRecoveryBundle(parts, selectionText)` in `reference/recovery-bundle.mjs`; members are raw JSON strings.
+The command also works from another working directory with absolute paths to the script, bundle and selection. Missing/oversized files, mismatched hashes or selection digest, duplicate JSON keys, unsupported profiles and inconsistent history reject. No success record is emitted on rejection. This intentionally adds a required command argument; earlier two-path invocations now reject with usage instructions.
+
+The pinned library API is `inspectPinnedRecoveryBundle(parts, selectionText, expectedSelectionSha256)` in `reference/recovery-bundle.mjs`; members are raw JSON strings. The original `inspectRecoveryBundle(parts, selectionText)` remains the explicitly unpinned fixture reader. It does not return `selectionPinMatched`. A pinned result reports both `selectionPinMatched: true` and `selectionTrust: "caller-retained-digest; provenance-not-authenticated"`.
 
 ## Evidence and remaining work
 
 Focused checks cover both retained branches, byte alteration, missing bodies, wrong selected endpoint, unsupported chain/account profile, ambiguous JSON, excess members, accessors, input bounds, missing block evidence despite recomputed hashes and absent owner assumptions. Directory checks use newly created files; the CLI was separately run from that fresh working directory under the existing resource guard.
+
+The selection-pinning increment adds replacement of both package and selection by the other valid branch, exact-byte whitespace changes, malformed/missing digests, oversized selection input and stable rejection of a null manifest. A deliberately self-selected replacement digest still yields false authentication/independence flags. These cases make the boundary observable; they do not supply independent review or acquisition.
 
 An initial child-process CLI test could not launch under the single-process guard. That failed harness result is retained; the guard was not relaxed. The directory test and separate supervised CLI invocation replace that test arrangement.
 

@@ -36,6 +36,7 @@ export function inspectRecoveryBundle(parts, selectionText) {
     captured[file] = parseBoundedJson(value);
   }
   const manifest = captured['manifest.json'];
+  need(manifest !== null && typeof manifest === 'object' && !Array.isArray(manifest), 'SCHEMA');
   need(manifest.chain_id === 31337 && manifest.start_block_hash === selection.startBlockHash
     && manifest.end_block_hash === selection.endBlockHash, 'ENDPOINT');
   const checked = inspectPaidRegistryHistory(captured['history.json'], manifest,
@@ -46,4 +47,16 @@ export function inspectRecoveryBundle(parts, selectionText) {
     executionVerified: false, finalityVerified: false, productionAccepted: false,
     authorityAssumption: 'fixed-fixture-constructor-and-direct-call-semantics; caller-supplied-eoa',
     endpointTrust: 'caller-supplied-selection', checked });
+}
+
+// A digest retained outside the received package detects substitution of both
+// the package and its selection. It does not establish the digest's provenance.
+export function inspectPinnedRecoveryBundle(parts, selectionText, expectedSelectionSha256) {
+  need(arguments.length === 3 && typeof expectedSelectionSha256 === 'string'
+    && /^[0-9a-f]{64}$/.test(expectedSelectionSha256), 'PIN');
+  need(typeof selectionText === 'string' && selectionText.length <= 16384
+    && Buffer.byteLength(selectionText, 'utf8') <= 16384, 'LIMIT');
+  need(sha(selectionText) === expectedSelectionSha256, 'SELECTION_PIN');
+  return Object.freeze({ ...inspectRecoveryBundle(parts, selectionText), selectionPinMatched: true,
+    selectionTrust: 'caller-retained-digest; provenance-not-authenticated' });
 }

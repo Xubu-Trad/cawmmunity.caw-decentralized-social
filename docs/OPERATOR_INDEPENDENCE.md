@@ -30,7 +30,7 @@ All rows remain OPEN. Existing finite experiments supply partial evidence as lin
 4. Inject one variable per case: missing body, mutated bytes, wrong selected endpoint, unsupported account model, then a valid retained fixture. Preserve the failed inputs and exact reader rejection. Treat unsupported evidence as rejection, never a fallback to unchecked adoption.
 5. Output separate fields for byte integrity, reconstruction, authority assumptions, endpoint trust, acquisition independence and execution scope. A successful offline fixture must still report endpoint authentication, public acquisition and production acceptance as NOT ESTABLISHED.
 
-**FACT —** the [bounded recovery checker](RECOVERY_BUNDLE.md) now implements this retained-fixture slice, with 14 focused checks and separate CLI execution. All nine dependency rows remain open. **UNRESOLVED —** public acquisition and authenticated authority are not established. It cannot prove survival after every public copy disappears, canonical chain selection, actual contract-wallet authority or production withdrawal safety. Those remain explicit successor experiments.
+**FACT —** the [bounded recovery checker](RECOVERY_BUNDLE.md) now implements this retained-fixture slice, with 21 focused checks, a required caller-retained selection digest in the CLI, and separate CLI execution. All nine dependency rows remain open. **UNRESOLVED —** public acquisition and authenticated authority are not established. It cannot prove survival after every public copy disappears, canonical chain selection, actual contract-wallet authority or production withdrawal safety. Those remain explicit successor experiments.
 
 ## Review receipt
 

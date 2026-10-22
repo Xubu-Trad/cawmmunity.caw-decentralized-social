@@ -5,7 +5,7 @@ import { readFileSync, writeFileSync, mkdtempSync, mkdirSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { gunzipSync } from 'node:zlib';
-import { inspectRecoveryBundle, RECOVERY_FILES } from '../reference/recovery-bundle.mjs';
+import { inspectRecoveryBundle, inspectPinnedRecoveryBundle, RECOVERY_FILES } from '../reference/recovery-bundle.mjs';
 import { checkRecoveryDirectory } from '../scripts/check-recovery-bundle.mjs';
 const root = new URL('../experiments/paid-signed-body-acquisition/', import.meta.url);
 const sha = x => createHash('sha256').update(x).digest('hex');
@@ -46,9 +46,32 @@ test('directory checker recovers from fresh files and rejects missing or oversiz
   const s=sample(), dir=mkdtempSync(join(tmpdir(),'caw-recovery-')), bundle=join(dir,'bundle');mkdirSync(bundle);
   for(const f of RECOVERY_FILES)writeFileSync(join(bundle,f),s.parts[f]);
   const selected=join(dir,'selection.json');writeFileSync(selected,JSON.stringify(s.selection));
-  const good=checkRecoveryDirectory(bundle,selected);assert.equal(good.endpointAuthenticated,false);
-  assert.throws(()=>checkRecoveryDirectory(join(dir,'absent'),selected),e=>e.code==='ENOENT');
+  const pin=sha(JSON.stringify(s.selection));
+  const good=checkRecoveryDirectory(bundle,selected,pin);assert.equal(good.endpointAuthenticated,false);assert.equal(good.selectionPinMatched,true);
+  assert.throws(()=>checkRecoveryDirectory(join(dir,'absent'),selected,pin),e=>e.code==='ENOENT');
   const large=join(dir,'oversized');mkdirSync(large);writeFileSync(join(large,'history.json'),'x'.repeat(1048577));
-  assert.throws(()=>checkRecoveryDirectory(large,selected),/FILE_LIMIT/);
+  assert.throws(()=>checkRecoveryDirectory(large,selected,pin),/FILE_LIMIT/);
   // The caller/supervisor retains this disposable evidence directory; no recursive deletion.
 });
+
+test('retained selection pin rejects replacing both package and selection with another valid branch',()=>{
+  const original=sample('left'), replacement=sample('right');
+  assert.throws(()=>inspectPinnedRecoveryBundle(replacement.parts,JSON.stringify(replacement.selection),sha(JSON.stringify(original.selection))),e=>e.code==='RECOVERY_BUNDLE_SELECTION_PIN');
+});
+test('matching retained selection pin preserves explicit unproved trust flags',()=>{
+  const s=sample(),text=JSON.stringify(s.selection),result=inspectPinnedRecoveryBundle(s.parts,text,sha(text));
+  assert.equal(result.selectionPinMatched,true);assert.equal(result.endpointAuthenticated,false);assert.equal(result.acquisitionIndependent,false);
+  assert.equal(result.accountAuthorityVerified,false);assert.equal(result.productionAccepted,false);assert.equal(Object.isFrozen(result),true);
+});
+test('self-selected replacement pin is not authentication',()=>{
+  const s=sample('right'),text=JSON.stringify(s.selection),result=inspectPinnedRecoveryBundle(s.parts,text,sha(text));
+  assert.equal(result.selectionPinMatched,true);assert.equal(result.endpointAuthenticated,false);
+  assert.equal(result.selectionTrust,'caller-retained-digest; provenance-not-authenticated');
+});
+test('missing and malformed pins reject',()=>{
+  const s=sample(),text=JSON.stringify(s.selection);
+  for(const pin of [undefined,null,{},'abc','A'.repeat(64)]) assert.throws(()=>inspectPinnedRecoveryBundle(s.parts,text,pin),e=>e.code==='RECOVERY_BUNDLE_PIN');
+});
+test('oversized selection rejects before hashing',()=>assert.throws(()=>inspectPinnedRecoveryBundle({},'x'.repeat(16385),'0'.repeat(64)),e=>e.code==='RECOVERY_BUNDLE_LIMIT'));
+test('selection whitespace change rejects against exact retained bytes',()=>{const s=sample(),text=JSON.stringify(s.selection);assert.throws(()=>inspectPinnedRecoveryBundle(s.parts,text+'\n',sha(text)),e=>e.code==='RECOVERY_BUNDLE_SELECTION_PIN');});
+test('null manifest has a stable schema rejection',()=>{const s=sample();s.parts['manifest.json']='null';s.selection.sha256['manifest.json']=sha('null');reject(s,'RECOVERY_BUNDLE_SCHEMA');});
