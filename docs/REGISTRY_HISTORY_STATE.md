@@ -26,3 +26,8 @@ node --test tests/paid-registry-state-history.test.mjs
 The generator refuses an existing output. Compare the new recipe with the committed recipe hash in [the validation record](../evidence/REGISTRY_HISTORY_STATE_TEST_RESULTS.json). The test reads the committed recipe and retained signed fixture. No network or wallet is used by this recipe generator.
 
 UNRESOLVED — a single executed signed-body capture with matching endpoint proofs, public anchor authenticity, execution and contract-wallet/callback scope. Next: extend the established signed local collector with read-only proof acquisition at its own endpoint. Do not reuse impersonated actors as signature evidence, infer prior authorization from final ownership, or present constructed endpoints as observed EVM state.
+
+
+## Executed joint follow-up
+
+[Joint signed local acquisition](JOINT_SIGNED_STATE_ACQUISITION.md) now supplies same-run signed histories and actual endpoint proofs for two branches. Earlier constructed fixtures remain as negative/consistency tests. This advances only the local executed acquisition gate.

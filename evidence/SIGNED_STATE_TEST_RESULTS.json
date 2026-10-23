@@ -1,0 +1,24 @@
+{
+  "schema": "caw-signed-state-validation/1",
+  "baseline": "e9a5958cc7b769b588d26867cf5866fa6b2bf187",
+  "node_suite": {
+    "passed": 1158,
+    "failed": 0,
+    "files": 62
+  },
+  "focused_node_cases": 6,
+  "transport_scope_python_tests": 6,
+  "source_sha256": {
+    "experiments/paid-signed-state-acquisition/run_signed_state.py": "b1e3b7527c122ea3e4eaefe979e590fce9dfa7341a2c025c284e365b2e446ec9",
+    "experiments/paid-signed-state-acquisition/state_node.py": "c49f9b562128e27bb27ee1489c2e64b0eb7a32ce0994a1a6926334b69cb2b111",
+    "experiments/paid-signed-state-acquisition/test_state_node.py": "26dd721daa5261a149ac39a20b14a1ee33ca9631ada9698c7467c9fa8faa2abf",
+    "experiments/paid-signed-state-acquisition/extract_joint_capture.py": "e2d732aff66599436e335b2f7028b6cdd3c671995b0229bf0962218f42abebe1",
+    "experiments/paid-signed-state-acquisition/experiment-inputs.json": "ffdd3ca542c8fcd282efe48b33f374c6f06debb993d8fadb7be35a0dc12e5f09",
+    "experiments/paid-signed-state-acquisition/joint-capture.json": "94a43795e6029a859b4bf4dfe05af41998317bee1fb0b2fb231b6642931d64dd",
+    "tests/paid-signed-state-acquisition.test.mjs": "507394e6e3635d894093ac7493fce50261b2a71bd5c444226872ecfefbdf7603"
+  },
+  "full_log_sha256": "6c6f8dba36737c5c7b06829363405a3ff8523423306e440dc273b3b5258d995b",
+  "local_execution": "two branches from one disposable synthetic-token chain, 22 signed submissions, no impersonation or remote RPC",
+  "scope": "same-run signed bodies and endpoint proofs; not public-chain, consensus, finality or independent EVM execution verification",
+  "productionAccepted": false
+}

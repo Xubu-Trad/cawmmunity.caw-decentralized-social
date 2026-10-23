@@ -90,3 +90,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Signed-history endpoint reconciliation
 
 [Signed registry history plus selected approval state](REGISTRY_HISTORY_STATE.md) now requires a matching checked endpoint and replayed owner/epoch/approval/operator values. Eight integration checks and 1152 regressions pass on explicitly constructed endpoints. Next: one executed signed-body capture with its own state proofs; current separate captures cannot satisfy that evidence gate. No production or execution acceptance is added.
+
+
+### Executed joint signed-state evidence
+
+[Joint local acquisition](JOINT_SIGNED_STATE_ACQUISITION.md) now binds two executed branch histories to their own endpoint proofs: six Node checks, six Python scope tests, 1158 full Node regressions. The local joint-capture gap is closed for zero-approval endpoints. Next: signed grant/revocation coverage and public/independent anchor authority. Production, consensus and execution acceptance remain blocked.
