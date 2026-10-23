@@ -1,0 +1,23 @@
+{
+  "schema": "caw-executed-registry-validation/1",
+  "baseline": "7faa8099032b0d7ca5a1095a2696013a952d6031",
+  "scope": "local Anvil London fixture with funded impersonated actors; no public-chain, signature or transition certification",
+  "focused_cases": 6,
+  "full_suite": {
+    "passed": 1122,
+    "failed": 0,
+    "files": 58
+  },
+  "source_sha256": {
+    "experiments/account-authority/capture_registry_state.py": "19edc1d0c9c4a7aedcdfad16b84b88de34b2e59580646af4994ee1d4f7e74f97",
+    "reference/fixtures/executed-registry-state-v1.json": "e3646e690b222f7ffd1aaf5c0156a28ac2aa40f503d6ffb7c3b1df64a67edc10",
+    "tests/executed-registry-state.test.mjs": "01d2a9dd5ce9a72f4c7a6aa38d4414ef75513f511cd9e391309f7bfcf9d9294f"
+  },
+  "full_log_sha256": "c5ccfe0a973d1c1ec92763145b57edcc1718a1459770fdf0e4b875ff512682af",
+  "capture": {
+    "complete": true,
+    "states": 2,
+    "remote_requests": 0
+  },
+  "productionAccepted": false
+}

@@ -15,3 +15,8 @@ The [Python generator](../reference/fixtures/generate-registry-state-fixtures.py
 Twelve focused cases cover owner changes across separately selected synthetic states, zero and maximum epochs, absent/oversized owners, missing epoch witnesses, wrong account IDs, altered claimed values, substituted code and proofs for another state. The two positive ownership states are not evidence of a valid transition between them. [Full offline regressions: 1116 passes across 57 files](../evidence/REGISTRY_STATE_TEST_RESULTS.json).
 
 Next: acquire comparable registry proofs from an executed fixture, reconcile with direct state queries, and separately address transaction ordering and approvals. A block's post-state owner cannot authorize every earlier transaction in that block. No automatic permission decision may be based on this decoder alone. Compiler layout provenance remains in [registry storage layout](REGISTRY_STORAGE_LAYOUT.md).
+
+
+## Executed acquisition follow-up
+
+The [local executed capture](EXECUTED_REGISTRY_STATE.md) now checks acquired proofs against direct owner/epoch reads before and after a transfer. This closes the local acquisition comparison only; public acquisition and transaction-position authority remain open.

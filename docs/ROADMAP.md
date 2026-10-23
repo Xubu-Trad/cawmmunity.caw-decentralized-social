@@ -70,3 +70,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Fixed-registry state decoding
 
 [Owner/epoch proof decoding](REGISTRY_STATE_PROOFS.md) derives exact mapping keys and checks witnesses against the selected header and fixture code. Twelve focused checks and 1116 full regressions passed on constructed states. Executed-fixture proof acquisition, transition/transaction timing and approvals remain next. This decoder does not grant live permission or widen production acceptance.
+
+
+### Executed registry acquisition
+
+[Two local executed owner/epoch states](EXECUTED_REGISTRY_STATE.md) now match their header-bound proofs and direct contract reads. Six additional checks bring offline coverage to 1122 tests. Next: transaction-position and approval scope; neither public acquisition nor live permission adoption is established.
