@@ -1,0 +1,17 @@
+{
+  "schema": "caw-first-transaction-validation/1",
+  "baseline": "a2827a8fe9c0dcce9c87cba8ee6aa4a8271420b2",
+  "full_suite": {
+    "passed": 1191,
+    "failed": 0,
+    "files": 67
+  },
+  "focused_passed": 8,
+  "source_sha256": {
+    "reference/first-transaction-anchor.mjs": "8c179a053b25b571744b3148be79e388646d5553ec7d6415cb1b047039760c7d",
+    "tests/first-transaction-anchor.test.mjs": "e817a2af6be43c90638910cb685bafa6385be86d6cec3f8fde47a87e69953761"
+  },
+  "full_log_sha256": "ea66237599f5c49d9726850bc2d0987d3214b12527591501484ae014fd5f4de8",
+  "executionVerified": false,
+  "productionAccepted": false
+}

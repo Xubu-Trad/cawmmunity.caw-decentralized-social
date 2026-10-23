@@ -1,0 +1,13 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {readFileSync} from 'node:fs';
+import {inspectFirstTransactionAnchor} from '../reference/first-transaction-anchor.mjs';
+const f=JSON.parse(readFileSync(new URL('../experiments/paid-signed-withdrawal-acquisition/joint-capture.json',import.meta.url)));
+function sample(){const b=f.branches.left,c=b.captures[1],parent=b.captures[0].header;return {schema:'caw-first-transaction-anchor/1',parentHeader:parent,header:c.header,rawTransactions:c.raw_transactions,selection:{profile:'london-16',parentHash:parent.hash,blockHash:c.header.hash,chainId:'0x7a69',transactionIndex:'0x0',transactionHash:b.history.blocks[1].transactions[0].receipt.transactionHash}};}
+const check=x=>inspectFirstTransactionAnchor(JSON.stringify(x));
+test('first transaction binds complete signed body and adjacent parent state root without execution claims',()=>{const x=sample(),r=check(x);assert.equal(r.parentStateRoot,x.parentHeader.stateRoot);assert.equal(r.transaction.hash,x.selection.transactionHash);assert.equal(r.transactionPositionBound,true);assert.ok(Object.isFrozen(r));for(const k of ['parentStateAuthenticated','preTransactionStateVerified','systemTransitionsVerified','executionVerified','accountAuthorityVerified','erc1271Verified','consensusVerified','finalityVerified','productionAccepted'])assert.equal(r[k],false);});
+test('later and noncanonical positions require replay rather than an endpoint shortcut',()=>{for(const i of ['0x1','0x00',0,-1]){const x=sample();x.selection.transactionIndex=i;assert.throws(()=>check(x),{code:'FIRST_TX_POSITION_UNSUPPORTED'});}});
+test('different selected transaction cannot use the same block body',()=>{const x=sample();x.selection.transactionHash='0x'+'00'.repeat(32);assert.throws(()=>check(x),{code:'FIRST_TX_TRANSACTION_MISMATCH'});});
+test('endpoint state cannot replace parent state',()=>{const x=sample();x.parentHeader=x.header;x.selection.parentHash=x.header.hash;assert.throws(()=>check(x));});
+test('altered parent state root fails header hashing',()=>{const x=sample();x.parentHeader.stateRoot='0x'+'00'.repeat(32);assert.throws(()=>check(x));});
+test('missing body transaction fails original body commitment check',()=>{const x=sample();x.rawTransactions=[];assert.throws(()=>check(x));});
+test('wrong chain selection rejects signed transaction',()=>{const x=sample();x.selection.chainId='0x1';assert.throws(()=>check(x));});
+test('caller authority claims and duplicate JSON fields cannot select a shortcut',()=>{const x=sample();x.executionVerified=true;assert.throws(()=>check(x),{code:'FIRST_TX_SCHEMA'});const y=JSON.stringify(sample()).replace('"schema":','"schema":"forged","schema":');assert.throws(()=>inspectFirstTransactionAnchor(y));});
