@@ -75,3 +75,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Executed registry acquisition
 
 [Two local executed owner/epoch states](EXECUTED_REGISTRY_STATE.md) now match their header-bound proofs and direct contract reads. Six additional checks bring offline coverage to 1122 tests. Next: transaction-position and approval scope; neither public acquisition nor live permission adoption is established.
+
+
+### Replay/state reconciliation boundary
+
+[Registry replay/state reconciliation](REGISTRY_STATE_RECONCILIATION.md) now compares the selected owner/epoch proof with replay from explicit constructor assumptions. Ten new tests bring offline coverage to 1132. A synthetic operator-grant counterexample demonstrates that matching owner/epoch cannot prove approval state or transcript completeness. Next: complete ordered transaction/receipt binding and approval-state coverage; no authority or adoption gate is closed.

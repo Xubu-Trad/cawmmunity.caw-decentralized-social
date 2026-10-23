@@ -1,0 +1,20 @@
+{
+  "schema": "caw-registry-reconciliation-validation/1",
+  "baseline": "19b96d1bd34ee467701519a66e76b03b1949ee08",
+  "focused_cases": 10,
+  "full_suite": {
+    "passed": 1132,
+    "failed": 0,
+    "files": 59
+  },
+  "source_sha256": {
+    "reference/registry-state-reconciliation.mjs": "2d228dd6a80958a65fb7a9a6f5a3aec1fb58238ad0fae5c33aa1afe952f9b4ff",
+    "tests/registry-state-reconciliation.test.mjs": "dfa30af1d76e4d74453d28ce01cb21c17228e6b5a810d465992704bef978aa03"
+  },
+  "full_log_sha256": "7897db0f84d01fb8c7eb499beedd728b6d3829cb33798893adcbcf4843b2df17",
+  "scope": "retained local executed transfer plus deliberately synthetic negative and operator-approval cases; no new chain run",
+  "approvalsStateVerified": false,
+  "sequenceComplete": false,
+  "transactionPositionVerified": false,
+  "productionAccepted": false
+}

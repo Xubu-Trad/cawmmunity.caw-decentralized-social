@@ -24,3 +24,6 @@ The actors were locally funded and impersonated, not cryptographically authentic
 UNRESOLVED — selected-header authenticity, public-provider disagreement, finality/freshness, approvals and transaction-time authority. Block post-state ownership cannot authorize an earlier transaction in that block. All reader authority, execution, permission and production flags remain false. No automatic permission adoption is enabled.
 
 Next: reconcile owner/epoch proofs with transaction-position authority and approval scope before connecting this decoder to the recovery permission path.
+
+
+[Replay/state reconciliation](REGISTRY_STATE_RECONCILIATION.md) now compares this retained transfer with the proved endpoint, while preserving the unverified sequence/order and approval boundaries.
