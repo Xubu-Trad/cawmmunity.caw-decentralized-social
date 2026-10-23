@@ -25,3 +25,6 @@ node --test tests/paid-signed-approval-acquisition.test.mjs
 Output files must be new and parents must exist. The Node test checks the retained fixture; verify a fresh projection by passing its branch objects to `inspectPaidRegistryStateHistory`. Timestamps and block hashes can vary between executions. See [validation hashes](../evidence/SIGNED_APPROVAL_TEST_RESULTS.json).
 
 UNRESOLVED — independent/public anchor authenticity, consensus/finality/freshness, contract wallets and callback execution. Authority and execution acceptance flags remain false. This closes positive/revoked selected-grant state coverage only for the local fixture. Next: isolate signed token-approved and operator-authorized transfers and demonstrate that revoked delegates cannot transfer, without changing core manifesto policy or equating transfer approval with paid-action/withdrawal authority.
+
+
+[Isolated signed delegated transfers](SIGNED_DELEGATE_ACQUISITION.md) now cover token approval, operator permission and revoked failures. Spending/withdrawal authority remains separate.

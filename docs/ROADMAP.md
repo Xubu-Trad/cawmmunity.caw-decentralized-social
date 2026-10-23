@@ -100,3 +100,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Signed grant/revocation endpoints
 
 [Signed approval acquisition](SIGNED_APPROVAL_ACQUISITION.md) verifies positive and revoked selected grants with original endpoint proofs in two local branches; seven new checks and 1165 full regressions pass. Transfers remain owner-authorized in this experiment. Next isolate delegated transfer paths and rejected revoked delegates; keep transfer permission separate from spending/withdrawal authority.
+
+
+### Signed delegated transfer evidence
+
+[Isolated delegated transfers](SIGNED_DELEGATE_ACQUISITION.md) pass for token approval and operator grants; revoked attempts fail locally with signed failed receipts. Eight new cases and 1173 regressions pass. Next reconcile spending/withdrawal negatives with existing custody evidence. Do not interpret NFT transfer grants as account spending powers or public-chain authority.

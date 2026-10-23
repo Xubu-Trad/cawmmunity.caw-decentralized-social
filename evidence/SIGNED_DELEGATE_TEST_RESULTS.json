@@ -1,0 +1,26 @@
+{
+  "schema": "caw-signed-delegate-validation/1",
+  "baseline": "a869d113dfad7be90865e364d4f07b6606323d09",
+  "focused_node_cases": 8,
+  "full_suite": {
+    "passed": 1173,
+    "failed": 0,
+    "files": 64
+  },
+  "source_sha256": {
+    "experiments/paid-signed-delegate-acquisition/run_signed_delegates.py": "b7f053f720dc161778421490c5735469149d6bd91178e9cd3ca4e52bca6c413d",
+    "experiments/paid-signed-delegate-acquisition/experiment-inputs.json": "bf943aacb769e3d8f4f1b84fb3479d06f88efb32ce7bb0214e80cdd3f95e3ce6",
+    "experiments/paid-signed-delegate-acquisition/joint-capture.json": "2fbe579e35a5b6bf3b83093331138b2a7733a7daafd9cf22473ab483226019c2",
+    "tests/paid-signed-delegate-acquisition.test.mjs": "7dee4af38b5f773c7073c01fd65c8909d20c7fb49c5b31dc846782961e49d922"
+  },
+  "full_log_sha256": "4b5f5e3b9bff3e2bb682ee33b8053c2c597813da396dd575e95fe9fad25f05c4",
+  "local_execution": {
+    "signed_submissions": 36,
+    "branches": 2,
+    "impersonation": false,
+    "remote_requests": 0,
+    "synthetic_token": true
+  },
+  "scope": "isolated token-approved/operator signed transfers and revoked failures; no withdrawal or paid-action delegation conclusion",
+  "productionAccepted": false
+}
