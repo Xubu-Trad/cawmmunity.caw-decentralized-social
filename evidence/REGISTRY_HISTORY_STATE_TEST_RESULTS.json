@@ -1,0 +1,21 @@
+{
+  "schema": "caw-registry-history-state-validation/1",
+  "baseline": "06863a721584d576579fc819305773b8fe2e2547",
+  "focused_cases": 8,
+  "full_suite": {
+    "passed": 1152,
+    "failed": 0,
+    "files": 61
+  },
+  "source_sha256": {
+    "reference/paid-registry-state-history.mjs": "1dceb6530faf67ee086bb72d765f1b16dd7597ac771ec9f118c613ac627b8043",
+    "tests/paid-registry-state-history.test.mjs": "2a14957b4ce6bc6f3f2d70abb0fa7adff6a2fc9eea6d6433215cdc004aa9b2a4",
+    "reference/fixtures/generate-paid-registry-state-fixtures.py": "db79616d625667ef9eb9b5ddaba2f2c956b7f5329d22c506776a8616ba812e64",
+    "reference/fixtures/paid-registry-state-v1.json": "302e74b810b7dd4decab0d277ef53635eafd8de43e5b478bddd7be214a0da0cb"
+  },
+  "full_log_sha256": "a12982c59536cb7590f70e21b624ba2368a8bb094565509e10ff2ce44b48be8a",
+  "scope": "retained signed transaction/receipt bytes with explicitly constructed terminal state roots; not a single executed capture",
+  "initial_failed_run": "1/8: wrapper requested 8 MiB from parser capped at 1 MiB; wrapper corrected to existing 1 MiB limit",
+  "runtime_transition": "generator pin updated after configured bundled Python 3.12.14 path and valid OpenAI Authenticode signature checked; guard limits unchanged",
+  "productionAccepted": false
+}

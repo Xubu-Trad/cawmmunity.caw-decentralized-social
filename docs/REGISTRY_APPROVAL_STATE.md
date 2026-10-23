@@ -33,3 +33,6 @@ node --test tests/registry-approval-state.test.mjs
 The output parent must exist; the output file must be new. The test checks the committed capture. A fresh capture can be checked by passing each case's evidence/selection JSON to the exported reader. Block hashes may differ between runs. The existing 768 MiB startup and other process limits remain enforced. Source and capture hashes are in [the validation record](../evidence/REGISTRY_APPROVAL_TEST_RESULTS.json).
 
 UNRESOLVED — selected endpoint authenticity, complete ordered history and transaction-position authority. This does not authenticate every past operator grant. The earlier reconciliation counterexample remains valid for the owner/epoch-only profile. Next: compose selected approval state with the existing signed-history reader at an explicitly matched endpoint, without treating a post-state grant as authorization for earlier calls.
+
+
+[Signed-history endpoint reconciliation](REGISTRY_HISTORY_STATE.md) now implements the composition, tested with explicitly constructed endpoints. A joint executed capture remains required.

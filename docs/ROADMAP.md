@@ -85,3 +85,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Selected approval state
 
 [Four-witness approval decoding](REGISTRY_APPROVAL_STATE.md) now proves the token approval and one current-owner operator pair, with six locally executed states and 1144 offline tests. Transaction-position authority and complete-history binding remain unresolved. Compose with the existing signed-history reader at a matched endpoint next; do not infer earlier permission from final state.
+
+
+### Signed-history endpoint reconciliation
+
+[Signed registry history plus selected approval state](REGISTRY_HISTORY_STATE.md) now requires a matching checked endpoint and replayed owner/epoch/approval/operator values. Eight integration checks and 1152 regressions pass on explicitly constructed endpoints. Next: one executed signed-body capture with its own state proofs; current separate captures cannot satisfy that evidence gate. No production or execution acceptance is added.
