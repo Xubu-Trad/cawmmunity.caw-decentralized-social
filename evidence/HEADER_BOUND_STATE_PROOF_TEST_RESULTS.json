@@ -1,0 +1,30 @@
+{
+  "schema": "caw-header-state-validation/1",
+  "baseline": "c73cfdbd14e881de4371b06dad0cdb037d608918",
+  "scope": "offline selected-header/account-proof binding from retained historical data; not canonical-chain or account-authority proof",
+  "focused": {
+    "passed": 10,
+    "failed": 0
+  },
+  "full_suite": {
+    "passed": 1094,
+    "failed": 0,
+    "files": 54
+  },
+  "prior_attempt": "8/9: positive fixture incorrectly included retained PublicNode proof-window failure; preserved and corrected to explicit rejection",
+  "source_sha256": {
+    "reference/header-bound-state-proof.mjs": "1da80ff670db1a84cf63f0566bcc1e174c0cf389c7575fa2978bc059d44d5a7a",
+    "tests/header-bound-state-proof.test.mjs": "9f2b5393ff4b382ded8d5186e8784a99786029720d1a9e0e3e7b1b48c20b6fc5"
+  },
+  "fixture_sha256": {
+    "reference/fixtures/caw-token-publicnode.json": "1563f69bc37a657525fe5ac1dfc125a82d37a58bfe6d70df671ebb0cc475e2d4",
+    "reference/fixtures/caw-token-drpc.json": "9a0781dc1d692e4f8ba0e9d9da51064a9bfd5a36c9d17bc34910bf8ed4235e04",
+    "reference/fixtures/ethereum-state-proof-v1.json": "5330f3293ca4e051e226a5fdc372eb4d91e0306a3c0864d2d3f630787eeae126"
+  },
+  "logs_sha256": {
+    "all-20261023T003116": "3c4e1f221a09f498b9045042b6e6792e5a5ad2c313698b86adfb50daab38436b",
+    "focused-20261023T003024": "925afe60db0b5edd5dea57ecdde733b14926d2a55b69b139c1d807b21f4cc579",
+    "focused-20261023T003049": "b47fc48268e82a81418b778e7f6f28b0c206d723821dbc1a636576463134c728"
+  },
+  "productionAccepted": false
+}

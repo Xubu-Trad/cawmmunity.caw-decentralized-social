@@ -50,3 +50,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Replacement-host evidence
 
 [Fresh-directory loopback hosting](STATIC_RECOVERY.md#replacement-host-experiment) now checks served bytes and relocated asset links, including a corrupt-host negative case. Independent builder/host reproduction and browser execution remain open. Further same-machine frontend tests cannot close the independence gate. Return primary implementation attention to the existing protocol authority and public-history trust requirements while seeking independent reproduction.
+
+
+### Selected-header state-proof binding
+
+[Header-bound state proofs](HEADER_BOUND_STATE_PROOF.md) now derive the proof root from the recomputed selected header, preventing an unrelated root override. Ten focused checks and 1094 offline regressions passed. Retained PublicNode proof unavailability remains a negative case. Canonical chain selection, acquisition independence, registry ownership and execution remain separate open gates; no current recovery acceptance flag changes.

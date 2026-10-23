@@ -28,3 +28,8 @@ INFERENCE — extending file comparison alone cannot close OI-02 or OI-03. Two m
 UNRESOLVED — chain/fork profile, trust-anchor selection, consensus/finality verification, real registry/account authority, independent acquisition and external storage survival remain open. Existing tests are finite synthetic evidence. This document adds no executed network experiment and changes no acceptance flags.
 
 The next implementation review must identify the selected profile and anchor assumptions before a network adapter is represented as authenticated recovery. Production and the public test candidate remain blocked. Record each artifact's parents, transformation, SHA-256, size and path; keep failed cases alongside successful ones.
+
+
+## Implemented prerequisite: selected-header state relation
+
+[Header-bound state proof composition](HEADER_BOUND_STATE_PROOF.md) now connects the existing header-hash and account/storage-proof readers. It removes a separately supplied state root, but trusts the caller-selected header hash. Its historical proof replay does not resolve the anchor, canonicality, freshness or account-authority questions above.
