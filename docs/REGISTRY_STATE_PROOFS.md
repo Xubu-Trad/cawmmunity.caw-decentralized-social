@@ -20,3 +20,6 @@ Next: acquire comparable registry proofs from an executed fixture, reconcile wit
 ## Executed acquisition follow-up
 
 The [local executed capture](EXECUTED_REGISTRY_STATE.md) now checks acquired proofs against direct owner/epoch reads before and after a transfer. This closes the local acquisition comparison only; public acquisition and transaction-position authority remain open.
+
+
+[Selected approval/operator proofs](REGISTRY_APPROVAL_STATE.md) add a separate four-witness profile. The original two-witness profile and its limited claims remain unchanged.

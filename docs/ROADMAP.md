@@ -80,3 +80,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Replay/state reconciliation boundary
 
 [Registry replay/state reconciliation](REGISTRY_STATE_RECONCILIATION.md) now compares the selected owner/epoch proof with replay from explicit constructor assumptions. Ten new tests bring offline coverage to 1132. A synthetic operator-grant counterexample demonstrates that matching owner/epoch cannot prove approval state or transcript completeness. Next: complete ordered transaction/receipt binding and approval-state coverage; no authority or adoption gate is closed.
+
+
+### Selected approval state
+
+[Four-witness approval decoding](REGISTRY_APPROVAL_STATE.md) now proves the token approval and one current-owner operator pair, with six locally executed states and 1144 offline tests. Transaction-position authority and complete-history binding remain unresolved. Compose with the existing signed-history reader at a matched endpoint next; do not infer earlier permission from final state.

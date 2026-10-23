@@ -1,0 +1,19 @@
+{
+  "schema": "caw-registry-approval-validation/1",
+  "baseline": "79cf176a61842a32a7fbf15ac3eae5ae2ff235f7",
+  "focused_cases": 12,
+  "full_suite": {
+    "passed": 1144,
+    "failed": 0,
+    "files": 60
+  },
+  "source_sha256": {
+    "reference/test-registry-state.mjs": "b6dc00df09d4419fb2a4cb2267da4526ae148ccc8c7ba764e31e3c3aa0627700",
+    "tests/registry-approval-state.test.mjs": "9d7dd63be9787e573f7a7bd5de16ea13cca092da9a24d1fa1e95b94181c20f3b",
+    "experiments/account-authority/capture_registry_approvals.py": "a88ec565e15a153399bcade89dd38ab9600bc485ebd8dea6ca0e5aaa47fe8b2e",
+    "reference/fixtures/executed-registry-approvals-v1.json": "9f9cfae95c6a6cba360c2b646c41740a2a0484288b7d6b076d77107194bf2480"
+  },
+  "full_log_sha256": "be6296b89c8e85db8479c5151c681049af00a756c05af6dd3327f68e40d1e5a6",
+  "scope": "six locally executed selected states, impersonated actors; no public provider or transaction-position certification",
+  "productionAccepted": false
+}
