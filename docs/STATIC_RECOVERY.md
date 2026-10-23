@@ -28,3 +28,24 @@ Success reports byte integrity relative to the supplied pin. `originAuthenticate
 See [recorded validation](../evidence/STATIC_RECOVERY_TEST_RESULTS.json) for the exact source hashes and test counts. Fresh temporary-directory copies and a separate CLI execution were checked on the same machine. That is not an independent builder reproduction or proof of continued network availability.
 
 OI-01 in [operator independence](OPERATOR_INDEPENDENCE.md) remains open: another builder must reconstruct the selected source/build and serve it without original credentials. Protocol history, account authority and chain authentication remain separate gates in the [recovery trust model](RECOVERY_TRUST_MODEL.md). This increment does not change contracts, economics, source interpretations or deployment status.
+
+
+## Reproducible portable archive
+
+```sh
+node scripts/package-static.mjs /path/to/new-alpha.tar
+```
+
+The output path must not already exist. The command packages only the builder's 22 fixed public assets and checksum manifest. POSIX ustar headers use fixed ordering, mode 0644, uid/gid zero, zero modification time and empty owner names. No compression, current timestamps, local paths, credentials or private workspace files are included. Identical input bytes produce identical archive bytes.
+
+The recorded unchanged asset set produces archive SHA-256 `d277ba5dc919324716e178b1623ade1cbd2e505be3b1576b218ec75d0619ad31`. Verify a received archive against a separately retained digest before unpacking it, then use the static-directory checker with the retained manifest digest. A hash supplied only alongside an unknown archive does not authenticate it. This archive is an alpha website package, not a protocol deployment or complete research/source backup.
+
+The optional interoperability experiment uses Python's standard-library tar reader:
+
+```sh
+python scripts/test-static-archive.py /path/to/new-alpha.tar /path/to/trusted-dist /path/to/new-roundtrip-directory
+```
+
+Use this on the locally generated bounded archive and a trusted build directory. It checks every member's bytes and metadata and writes validated plain filenames into a new directory. It is a test recipe, not a general hostile-archive extractor. Python is optional for this check; packaging and ordinary static verification still use only Node.
+
+[Recorded validation](../evidence/STATIC_PACKAGE_TEST_RESULTS.json): two in-memory builds matched; the CLI produced the same archive fingerprint; Python recovered all 23 files exactly. The full offline suite passed 1081 checks across 52 files. These remain same-machine results, with no independent operator, public hosting or production acceptance asserted.

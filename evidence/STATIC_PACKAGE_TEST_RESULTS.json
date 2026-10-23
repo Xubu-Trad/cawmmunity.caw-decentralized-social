@@ -1,0 +1,39 @@
+{
+  "schema": "caw-static-package-validation/1",
+  "baseline": "a5c173793613d1fb58fbb52867e4f1bfa24ce190",
+  "scope": "same-machine deterministic packaging and independent parser implementation; not independent operator reproduction",
+  "runtime": "Node 24.20.0",
+  "focused": {
+    "passed": 1,
+    "failed": 0
+  },
+  "full_suite": {
+    "passed": 1081,
+    "failed": 0,
+    "files": 52
+  },
+  "archive": {
+    "files": 23,
+    "bytes": 1446912,
+    "archiveSha256": "d277ba5dc919324716e178b1623ade1cbd2e505be3b1576b218ec75d0619ad31",
+    "manifestSha256": "c4916abc6e35579d89d367eb8368ddcb4d677830c35eed30584ea4da796d4374",
+    "productionAccepted": false
+  },
+  "interoperability": {
+    "files": 23,
+    "archiveSha256": "d277ba5dc919324716e178b1623ade1cbd2e505be3b1576b218ec75d0619ad31",
+    "manifestSha256": "c4916abc6e35579d89d367eb8368ddcb4d677830c35eed30584ea4da796d4374",
+    "reader": "Python standard-library tarfile",
+    "independentOperator": false
+  },
+  "source_sha256": {
+    "scripts/package-static.mjs": "83b55facf6d0d9143860456602556240ee7c9f85e5a268c195f088b61e91cf09",
+    "scripts/test-static-archive.py": "c94fea755cbaa73059fbf4f040a11346622b054c192881e7bf6dfcaa296173dd",
+    "tests/static-package.test.mjs": "14719b7fad959645cd595401f2be80b37335318786b988306d977d263c052146"
+  },
+  "logs_sha256": {
+    "focused": "1a936bd28568da4cf709815248fc3c684b48606bf36c62471d626bc179cde925",
+    "cli": "164dd845f8a430f923e9e1eb41dde1d50a7af3a0a5a77c5042199b9f96ef2b6a",
+    "all": "d496d329e8a641d3c73df6aebd21e16835af536f019f74562c7876e89681f180"
+  }
+}

@@ -40,3 +40,8 @@ The recovery command now requires a separately retained selection SHA-256. Repla
 ### Static frontend recovery
 
 The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set against a separately retained manifest digest, rejecting missing, changed and extra files. Twelve focused checks, a separate CLI invocation, the static build, and 1080/1080 offline regressions passed. This is same-machine byte verification, not a second builder reproduction or hosted-response check. OI-01 remains open; public recovery and protocol gates are unchanged.
+
+
+### Portable static packaging
+
+[Deterministic packaging](STATIC_RECOVERY.md#reproducible-portable-archive) now emits only the fixed frontend asset set, with constant archive metadata. Python tar interoperability and 1081 offline regressions passed. Independent builder distribution/reproduction and hosted-response verification remain open; this archive does not include or certify a protocol deployment.
