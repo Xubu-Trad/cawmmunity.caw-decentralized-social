@@ -84,3 +84,6 @@ The history wrapper retains alpha.43's 128-block/256-total-transaction limits an
 Next: verify registry permission and ordinary-account state assumptions, add a separately justified contract-wallet path, then integrate the checked history into selection invalidation, rollback and restart. Source decisions and public-release gates remain open.
 
 The later [registry permission wrapper](PAID_REGISTRY_PERMISSIONS.md) adds conditional direct-call approval and transfer checks. This earlier inspector and its flags remain unchanged; authenticated code/state and execution are still required.
+
+
+[Wallet authority evidence review](WALLET_AUTHORITY_EVIDENCE_REVIEW.md) records current coverage and the pre-call-state gap. Endpoint code proofs are insufficient to remove historical ordinary-account assumptions.

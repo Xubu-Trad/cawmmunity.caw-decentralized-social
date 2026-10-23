@@ -110,3 +110,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Signed withdrawal boundary
 
 [Transfer permission versus withdrawal](SIGNED_WITHDRAWAL_ACQUISITION.md): both signed non-owner withdrawal attempts fail while isolated transfer permissions remain valid. Five new checks; 1178/1178 full suite. Next reconcile paid-action signature and contract-wallet evidence. This does not prevent an authorized transfer delegate from becoming the owner.
+
+
+### Wallet execution evidence gate
+
+[Wallet authority review](WALLET_AUTHORITY_EVIDENCE_REVIEW.md) reconciles existing signature, contract callback and withdrawal coverage. Next: isolate wallet state sensitivity using fixed signed intent and signed configuration changes, then separately design transaction-position replay. Endpoint code proofs cannot upgrade historical wallet authority; type-4 transactions remain unsupported.
