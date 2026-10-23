@@ -45,3 +45,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Portable static packaging
 
 [Deterministic packaging](STATIC_RECOVERY.md#reproducible-portable-archive) now emits only the fixed frontend asset set, with constant archive metadata. Python tar interoperability and 1081 offline regressions passed. Independent builder distribution/reproduction and hosted-response verification remain open; this archive does not include or certify a protocol deployment.
+
+
+### Replacement-host evidence
+
+[Fresh-directory loopback hosting](STATIC_RECOVERY.md#replacement-host-experiment) now checks served bytes and relocated asset links, including a corrupt-host negative case. Independent builder/host reproduction and browser execution remain open. Further same-machine frontend tests cannot close the independence gate. Return primary implementation attention to the existing protocol authority and public-history trust requirements while seeking independent reproduction.

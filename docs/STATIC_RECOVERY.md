@@ -49,3 +49,10 @@ python scripts/test-static-archive.py /path/to/new-alpha.tar /path/to/trusted-di
 Use this on the locally generated bounded archive and a trusted build directory. It checks every member's bytes and metadata and writes validated plain filenames into a new directory. It is a test recipe, not a general hostile-archive extractor. Python is optional for this check; packaging and ordinary static verification still use only Node.
 
 [Recorded validation](../evidence/STATIC_PACKAGE_TEST_RESULTS.json): two in-memory builds matched; the CLI produced the same archive fingerprint; Python recovered all 23 files exactly. The full offline suite passed 1081 checks across 52 files. These remain same-machine results, with no independent operator, public hosting or production acceptance asserted.
+
+
+## Replacement-host experiment
+
+The [loopback recovery test](../tests/static-host-recovery.test.mjs) copies the release files into a fresh temporary directory and starts a separate minimal test host. It never imports the original app server or uses its public-directory routes. Every file is requested at `/restored/` and compared against the retained build hash; MIME types and HTML relative-asset destinations are checked. A deliberately corrupted hosted script rejects even when the local files and served checksum manifest are unchanged. This demonstrates why local verification alone cannot certify hosted responses.
+
+Three focused tests and [1084 offline regressions](../evidence/STATIC_HOST_RECOVERY_TEST_RESULTS.json) passed. The host is an ephemeral test fixture, not a recommended public server. This experiment does not execute browser JavaScript, validate rendering, obtain independent operator evidence, or prove future availability. OI-01 remains OPEN for independent reproduction/distribution. Do not reinterpret successful loopback HTTP checks as a public deployment or protocol recovery.

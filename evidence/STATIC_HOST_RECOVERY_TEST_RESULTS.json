@@ -1,0 +1,30 @@
+{
+  "schema": "caw-static-host-recovery/1",
+  "baseline": "e5b3e291cd506365f6d37b6f8fa4c0253cdb7603",
+  "scope": "same-machine loopback host from copied files; not independent operator or browser execution",
+  "focused": {
+    "passed": 3,
+    "failed": 0
+  },
+  "full_suite": {
+    "passed": 1084,
+    "failed": 0,
+    "files": 53
+  },
+  "checks": [
+    "all 23 release files served at relocated prefix with exact hashes and MIME types",
+    "HTML relative assets resolve under relocated prefix",
+    "corrupted hosted script rejected despite unchanged local build and manifest",
+    "test host rejects source/traversal paths"
+  ],
+  "source_sha256": {
+    "tests/static-host-recovery.test.mjs": "ffe71c3fa5a855c0dd58a34303cee0c0ec403fb80e2e7529f4c6f1550e5bcbd2"
+  },
+  "logs_sha256": {
+    "focused": "bee1c131504190bb5337bc562aa07377de0c4074cfc95c13bea7436068115ceb",
+    "all": "53b17968e3d5a9c1d304ad2214e65d964048f5e3b459f932b540af871edef8b3"
+  },
+  "independentOperator": false,
+  "browserRenderingVerified": false,
+  "productionAccepted": false
+}
