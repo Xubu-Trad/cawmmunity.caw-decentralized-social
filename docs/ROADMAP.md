@@ -60,3 +60,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Selected-state code identity
 
 [Runtime-code binding](HEADER_BOUND_STATE_PROOF.md#optional-runtime-code-binding) now compares supplied bytes with both the selected-header account commitment and a separately retained expected hash. Eight focused checks and 1102 offline regressions passed. Registry storage/ownership interpretation, dependencies, authenticated anchors and execution remain unresolved; matching code bytes does not grant permission or production acceptance.
+
+
+### Registry layout prerequisite
+
+[Compiler-derived registry layout](REGISTRY_STORAGE_LAYOUT.md) reproduced the fixture runtime, creation bytes and ABI exactly. Two focused provenance/type checks and a mutated-layout rejection passed. No full-suite rerun or new ownership proof is claimed. Next: concrete mapping-key derivation and selected-state storage evidence, preserving the difference between post-state ownership and transaction-time permission.

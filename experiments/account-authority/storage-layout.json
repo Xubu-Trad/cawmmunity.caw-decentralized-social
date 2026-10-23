@@ -1,0 +1,110 @@
+{
+  "schema": "caw-test-registry-layout/1",
+  "scope": "fixed TestAccountRegistry fixture, compiler layout only; no deployed-state or ownership proof",
+  "compiler_sha256": "ec9feb83ff291ae74805b38cc6834502fb31be690f325de59dff8e60d8432d66",
+  "compiler_input_sha256": "8cb44dc6311352b5b0c90b34a78ebab1943fe502d70ee9e71040480d8ecdd980",
+  "parent_input_sha256": "de67929edaefab5980a467a8422d4f7bfa650020a2e322fe593fe249ce811807",
+  "source_sha256": "ab3aecb6b0bc77fa838baf1141d2af96ad8395850b714f35b2f0cdb3b8c826df",
+  "runtime_sha256": "4745276b40204bd6e373b3f6c2e990ba8aeb3feb2de69a97b44510c58153d68f",
+  "runtime_bytes_identical": true,
+  "creation_bytes_identical": true,
+  "abi_identical": true,
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 1532,
+        "contract": "TestAccountRegistry.sol:TestAccountRegistry",
+        "label": "owners",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_uint256,t_address)"
+      },
+      {
+        "astId": 1536,
+        "contract": "TestAccountRegistry.sol:TestAccountRegistry",
+        "label": "balances",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 1540,
+        "contract": "TestAccountRegistry.sol:TestAccountRegistry",
+        "label": "approved",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_mapping(t_uint256,t_address)"
+      },
+      {
+        "astId": 1546,
+        "contract": "TestAccountRegistry.sol:TestAccountRegistry",
+        "label": "operators",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_bool))"
+      },
+      {
+        "astId": 1550,
+        "contract": "TestAccountRegistry.sol:TestAccountRegistry",
+        "label": "epochs",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_mapping(t_uint256,t_uint256)"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_mapping(t_address,t_bool)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => bool)",
+        "numberOfBytes": "32",
+        "value": "t_bool"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => bool))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_bool)"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_mapping(t_uint256,t_address)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => address)",
+        "numberOfBytes": "32",
+        "value": "t_address"
+      },
+      "t_mapping(t_uint256,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  },
+  "output_sha256": "56ada472e310570aaaef9b33709aeeb9ed9541d213c5032af86432f770f73df2",
+  "productionAccepted": false
+}

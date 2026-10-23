@@ -1,0 +1,37 @@
+{
+  "schema": "caw-registry-layout-validation/1",
+  "baseline": "42c51305f75b32bd890863bba84131203cc7d88a",
+  "scope": "pinned compiler reproduction of existing synthetic registry fixture; no chain deployment/state proof",
+  "compiler": {
+    "exit_code": 0,
+    "seconds": 1.530999999999949,
+    "observed_peak_bytes": 18518016,
+    "compiler_sha256": "ec9feb83ff291ae74805b38cc6834502fb31be690f325de59dff8e60d8432d66",
+    "input_sha256": "8cb44dc6311352b5b0c90b34a78ebab1943fe502d70ee9e71040480d8ecdd980",
+    "parent_input_sha256": "de67929edaefab5980a467a8422d4f7bfa650020a2e322fe593fe249ce811807",
+    "transformation": "add storageLayout to outputSelection; preserve sources and other settings"
+  },
+  "matches": {
+    "runtime": true,
+    "creation": true,
+    "abi": true
+  },
+  "focused_tests": {
+    "passed": 2,
+    "failed": 0
+  },
+  "negative_case": "modified owners slot rejected by output comparison",
+  "full_suite_rerun": false,
+  "last_full_suite": {
+    "passed": 1102,
+    "files": 55,
+    "evidence": "HEADER_BOUND_CODE_TEST_RESULTS.json"
+  },
+  "source_sha256": {
+    "experiments/account-authority/storage-layout.json": "03153a0aaa27033b8da4048e2bcf8f159485d66a3a5e99433871feb9b749ea40",
+    "scripts/registry-layout-reproduce.py": "cf97ed739299cc0531b3b85be4f446ed1216ce46f92fdfd067b1f7a043fa2357",
+    "tests/registry-storage-layout.test.mjs": "644ffc5209f80314655f09c69e5b51e0b11499681241f1fcab8589ce6cd83870"
+  },
+  "focused_log_sha256": "2a0e15c13c292cbd30e7052c50bb74a60c217a01c3851c5a591471af44ce52b7",
+  "productionAccepted": false
+}
