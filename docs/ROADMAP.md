@@ -65,3 +65,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Registry layout prerequisite
 
 [Compiler-derived registry layout](REGISTRY_STORAGE_LAYOUT.md) reproduced the fixture runtime, creation bytes and ABI exactly. Two focused provenance/type checks and a mutated-layout rejection passed. No full-suite rerun or new ownership proof is claimed. Next: concrete mapping-key derivation and selected-state storage evidence, preserving the difference between post-state ownership and transaction-time permission.
+
+
+### Fixed-registry state decoding
+
+[Owner/epoch proof decoding](REGISTRY_STATE_PROOFS.md) derives exact mapping keys and checks witnesses against the selected header and fixture code. Twelve focused checks and 1116 full regressions passed on constructed states. Executed-fixture proof acquisition, transition/transaction timing and approvals remain next. This decoder does not grant live permission or widen production acceptance.

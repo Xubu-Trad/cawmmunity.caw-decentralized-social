@@ -1,0 +1,25 @@
+{
+  "schema": "caw-registry-state-validation/1",
+  "baseline": "03f877d3679742f51d2afc67290493bc56b750bf",
+  "scope": "constructed account/storage tries and synthetic headers; fixed registry fixture; no live acquisition or execution",
+  "focused": {
+    "passed": 12,
+    "failed": 0
+  },
+  "full_suite": {
+    "passed": 1116,
+    "failed": 0,
+    "files": 57
+  },
+  "source_sha256": {
+    "reference/test-registry-state.mjs": "2a9974cae397aa9078e218f9affc1f4aa4116f29a20391cfcc430d3697ebbcff",
+    "reference/fixtures/generate-registry-state-fixtures.py": "553eb775685718bb2a3656fcf75d203470d9dbbcc8463793f415b4e52050a49d",
+    "reference/fixtures/registry-state-v1.json": "674fcbb4fa51799a7dbf57253fd124f2eb26d9193a517b9e983ef324899be76c",
+    "tests/registry-state.test.mjs": "73724a9e38c771852824597f8c6e2b6c8211c5676e4c16744f896f88238b76d0"
+  },
+  "logs_sha256": {
+    "focused": "275bdcf18573edf7c2510b73ab288a3df3bb1484b6ecc02df52363143e0c67de",
+    "all": "8c1bb6dbdded84b53892c69e68aca2c62594f3c8864bb1971c3c154f81c7e210"
+  },
+  "productionAccepted": false
+}
