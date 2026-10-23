@@ -1,0 +1,38 @@
+{
+  "schema": "caw-static-recovery-validation/1",
+  "baseline": "2b56f61a341da8ddb6af89904c736f7429e68197",
+  "scope": "same-machine copied static asset verification; no independent builder or hosted-response proof",
+  "runtime": "Node 24.20.0",
+  "focused": {
+    "passed": 12,
+    "failed": 0
+  },
+  "full_suite": {
+    "passed": 1080,
+    "failed": 0,
+    "files": 51
+  },
+  "cli": {
+    "manifestPinMatched": true,
+    "assetHashesMatched": true,
+    "files": 23,
+    "bytes": 1428692,
+    "manifestSha256": "c4916abc6e35579d89d367eb8368ddcb4d677830c35eed30584ea4da796d4374",
+    "originAuthenticated": false,
+    "hostedContentVerified": false,
+    "protocolVerified": false,
+    "productionAccepted": false
+  },
+  "build_manifest_sha256": "c4916abc6e35579d89d367eb8368ddcb4d677830c35eed30584ea4da796d4374",
+  "source_sha256": {
+    "scripts/check-static-dist.mjs": "661c45e029746bc0f97693820ae29689976df8f85645a2454c2fd70bf8eb0bf6",
+    "tests/static-recovery.test.mjs": "041f45e6d2ad2dd56d2026bf707b0f487ae9f2047e791eb4ee24b19b0195ae9d"
+  },
+  "log_sha256": {
+    "focused": "2cb9d647d4f9bbb52b8ca47ded6312bf0e22b16625ee8bc81854c16c1bad68d5",
+    "all": "cca356918bca70304ac737d2c9e90f10a5f4e5c3353b477046e97426ff26b4e9",
+    "cli": "34123754071f9510ed452e0b675d1cb299b86ee974b57ae22faa4e150a27eac3",
+    "build": "44ee46cc5e401b3c899aeb6f7aee1edc26cdec1e28c073bde3ee6f7dcf4eaa8f"
+  },
+  "productionAccepted": false
+}

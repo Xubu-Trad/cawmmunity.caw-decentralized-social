@@ -35,3 +35,8 @@ All rows remain OPEN. Existing finite experiments supply partial evidence as lin
 ## Review receipt
 
 Record the source commit, input parent hashes, transformation, output SHA-256/size/path, runtime versions, exact checks and negative results. Keep historical failures. A second builder should be able to disagree with the selected trust assumptions without needing the original operator's permission.
+
+
+## OI-01 partial evidence: static copy verification
+
+[Static recovery](STATIC_RECOVERY.md) adds a pinned-manifest checker for copied alpha assets. The local build and fresh-directory checks passed; altered, missing and extra inputs reject. An independently operated rebuild/host and verification of served responses remain outstanding, so OI-01 remains OPEN. No protocol authority or availability claim follows.

@@ -35,3 +35,8 @@ The recovery command now requires a separately retained selection SHA-256. Repla
 ### Public recovery trust gate
 
 [Recovery trust model](RECOVERY_TRUST_MODEL.md) separates acquisition, retained byte integrity, anchor authentication, operator independence and account authority. Select and review an explicit chain/fork profile and anchor trust model before broadening the synthetic reader. This is a proposed evidence sequence, not an executed public-network recovery or a resolved specification decision.
+
+
+### Static frontend recovery
+
+The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set against a separately retained manifest digest, rejecting missing, changed and extra files. Twelve focused checks, a separate CLI invocation, the static build, and 1080/1080 offline regressions passed. This is same-machine byte verification, not a second builder reproduction or hosted-response check. OI-01 remains open; public recovery and protocol gates are unchanged.
