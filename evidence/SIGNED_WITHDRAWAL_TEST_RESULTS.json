@@ -1,0 +1,19 @@
+{
+  "schema": "caw-signed-withdrawal-validation/1",
+  "baseline": "d9fa1dfefa8386ea9bfa75105c69c0b557b8f4e9",
+  "focused_cases": 5,
+  "full_suite": {
+    "passed": 1178,
+    "failed": 0,
+    "files": 65
+  },
+  "source_sha256": {
+    "experiments/paid-signed-withdrawal-acquisition/run_signed_withdrawals.py": "4bb76ce61dbd120d79f095767b0335a15c8e3b0c2ad4e37accb8596147e812c9",
+    "experiments/paid-signed-withdrawal-acquisition/experiment-inputs.json": "9d0b222ace51dad9f3393fc12bc6e1458d7709c492a3acb012c4e8fef9a66f93",
+    "experiments/paid-signed-withdrawal-acquisition/joint-capture.json": "eb6b3150255e0340d5b6afe487215c41380abf75b29a87d6637a65212d158a6a",
+    "tests/paid-signed-withdrawal-acquisition.test.mjs": "8d2761962e2624b0105d7e60358c7e5c7106c4cb355f246f94e4514bae50d1be"
+  },
+  "full_log_sha256": "1a8ea01f5fb27269212f3e9d994fd817da4e34dcc7a8085faa520e31331e7453",
+  "signed_local_submissions": 38,
+  "productionAccepted": false
+}

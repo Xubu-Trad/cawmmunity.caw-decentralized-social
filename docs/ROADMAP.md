@@ -105,3 +105,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Signed delegated transfer evidence
 
 [Isolated delegated transfers](SIGNED_DELEGATE_ACQUISITION.md) pass for token approval and operator grants; revoked attempts fail locally with signed failed receipts. Eight new cases and 1173 regressions pass. Next reconcile spending/withdrawal negatives with existing custody evidence. Do not interpret NFT transfer grants as account spending powers or public-chain authority.
+
+
+### Signed withdrawal boundary
+
+[Transfer permission versus withdrawal](SIGNED_WITHDRAWAL_ACQUISITION.md): both signed non-owner withdrawal attempts fail while isolated transfer permissions remain valid. Five new checks; 1178/1178 full suite. Next reconcile paid-action signature and contract-wallet evidence. This does not prevent an authorized transfer delegate from becoming the owner.

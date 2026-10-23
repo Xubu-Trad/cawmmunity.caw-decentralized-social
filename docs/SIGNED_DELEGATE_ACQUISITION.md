@@ -27,3 +27,6 @@ node --test tests/paid-signed-delegate-acquisition.test.mjs
 Outputs must be new, with existing parent directories. The regression reads the committed projection. Verify fresh branch objects with `inspectPaidRegistryStateHistory`; fresh timestamps/block hashes may differ. [Validation record](../evidence/SIGNED_DELEGATE_TEST_RESULTS.json).
 
 UNRESOLVED — transfer approval is not spending, posting or withdrawal authority. These results do not grant those powers to a delegate. Next: reconcile existing account-custody tests with a signed delegated withdrawal/paid-action negative case before extending authority acceptance. Public/independent anchors, consensus/finality/freshness, contract-wallet/callback scope and production remain open. No authority, execution or production acceptance flag is raised.
+
+
+[Signed withdrawal follow-up](SIGNED_WITHDRAWAL_ACQUISITION.md) covers direct non-owner withdrawals under both transfer permissions, preserving the distinction between delegation and later ownership.
