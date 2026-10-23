@@ -30,3 +30,8 @@ The [bounded offline checker](RECOVERY_BUNDLE.md) now reuses existing readers ag
 ### Retained selection boundary
 
 The recovery command now requires a separately retained selection SHA-256. Replacing both the package and its selection fails against the original digest. This does not authenticate whoever supplied the digest or the selected chain. [21 focused checks and 1068 full regressions](../evidence/RECOVERY_SELECTION_PIN_TEST_RESULTS.json) passed; earlier 14/1061 results above remain historical. Independently supplied evidence and an authenticated trust-bootstrap design remain next, with no automatic state adoption.
+
+
+### Public recovery trust gate
+
+[Recovery trust model](RECOVERY_TRUST_MODEL.md) separates acquisition, retained byte integrity, anchor authentication, operator independence and account authority. Select and review an explicit chain/fork profile and anchor trust model before broadening the synthetic reader. This is a proposed evidence sequence, not an executed public-network recovery or a resolved specification decision.
