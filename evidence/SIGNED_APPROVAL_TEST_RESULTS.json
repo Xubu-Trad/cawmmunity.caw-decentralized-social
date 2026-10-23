@@ -1,0 +1,26 @@
+{
+  "schema": "caw-signed-approval-validation/1",
+  "baseline": "3b491dfbecdb3cd35d71874046a27a6355d8e2cd",
+  "focused_node_cases": 7,
+  "full_suite": {
+    "passed": 1165,
+    "failed": 0,
+    "files": 63
+  },
+  "source_sha256": {
+    "experiments/paid-signed-approval-acquisition/run_signed_approvals.py": "076ec752e15f0ee9f7e72a86a286cb43d0b49a79b70aa44c939a20f3402af59e",
+    "experiments/paid-signed-approval-acquisition/experiment-inputs.json": "bc2bf21912b6ae7c6c03c1911ff5a67b5271ab781c8591fe22e0d95f5abbcd1c",
+    "experiments/paid-signed-approval-acquisition/joint-capture.json": "c9be9a63dc4d50ee6832a9661198f65a054c5eee90a66e597a82d008ab54289a",
+    "tests/paid-signed-approval-acquisition.test.mjs": "a3b89cf64c7d09dde79fc2b13e4c2206c96941a0ff6cc8a5433c84033188d8ca"
+  },
+  "full_log_sha256": "aa5b46af16d0b52d0e44e3adaa64b64a59c6b4ec43250628af1ae11a43a8097d",
+  "local_execution": {
+    "signed_submissions": 28,
+    "branches": 2,
+    "impersonation": false,
+    "remote_requests": 0,
+    "synthetic_token": true
+  },
+  "scope": "positive and revoked endpoint grants in joint signed local capture; owner-authorized transfers only",
+  "productionAccepted": false
+}

@@ -32,3 +32,6 @@ node --test tests/paid-signed-state-acquisition.test.mjs
 Output parents must exist and files must be new. The Node regression checks the committed joint fixture; for a fresh capture, pass each branch object from NEW_JOINT.json as JSON to `inspectPaidRegistryStateHistory`. Fresh timestamps/hashes may differ. The extractor projects saved collector results and checks scope/status; it is not a second independent raw-transcript replay. Cryptographic/body/state checking is performed by the existing JavaScript readers.
 
 UNRESOLVED — public-chain anchor authentication, finality, freshness, contract-wallet/callback behavior and independent execution verification. The joint local acquisition gap is closed only for this fixed test profile. All acceptance/authority/execution flags remain unchanged. Next: positively granted/revoked approval state in a signed joint capture, then the broader authority and independently acquired anchor gates. No deployment or production readiness is asserted.
+
+
+[Signed approval follow-up](SIGNED_APPROVAL_ACQUISITION.md) now covers nonzero token/operator grants and explicit revocation in a new joint capture. Delegated transfer enforcement is still a separate gate.

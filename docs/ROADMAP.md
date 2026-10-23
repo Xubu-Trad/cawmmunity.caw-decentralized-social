@@ -95,3 +95,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Executed joint signed-state evidence
 
 [Joint local acquisition](JOINT_SIGNED_STATE_ACQUISITION.md) now binds two executed branch histories to their own endpoint proofs: six Node checks, six Python scope tests, 1158 full Node regressions. The local joint-capture gap is closed for zero-approval endpoints. Next: signed grant/revocation coverage and public/independent anchor authority. Production, consensus and execution acceptance remain blocked.
+
+
+### Signed grant/revocation endpoints
+
+[Signed approval acquisition](SIGNED_APPROVAL_ACQUISITION.md) verifies positive and revoked selected grants with original endpoint proofs in two local branches; seven new checks and 1165 full regressions pass. Transfers remain owner-authorized in this experiment. Next isolate delegated transfer paths and rejected revoked delegates; keep transfer permission separate from spending/withdrawal authority.
