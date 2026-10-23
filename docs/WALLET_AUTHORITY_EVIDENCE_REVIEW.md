@@ -32,3 +32,6 @@ UNRESOLVED — public trust anchors, independent replay engine/toolchain, wallet
 ## Validation scope
 
 This review changes documentation only. It does not add tests or rerun an EVM. The latest recorded full suite remains 1178/1178 across 65 files, linked from the README. The review guide's test command is synchronized with the current package test list so it no longer omits the newer recovery and signed-acquisition checks.
+
+
+The [local mode experiment](WALLET_STATE_EXPERIMENT.md) is now executed. It uses supported latest-state reads bracketed by unchanged headers, not hash-pinned calls. Historical execution remains unresolved.

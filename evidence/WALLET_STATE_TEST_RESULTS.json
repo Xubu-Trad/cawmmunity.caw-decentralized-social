@@ -1,0 +1,19 @@
+{
+  "schema": "caw-wallet-state-validation/1",
+  "baseline": "65ae46ed08db1f22810011be11081af80b916d4b",
+  "full_suite": {
+    "passed": 1183,
+    "failed": 0,
+    "files": 66
+  },
+  "new_cases": 5,
+  "source_sha256": {
+    "experiments/paid-wallet-state/run_wallet_state.py": "b53b902e949b40d9e7e0502d544f9364d2c2c4370ba38464801090df941c3907",
+    "experiments/paid-wallet-state/experiment-inputs.json": "9086b230b5b576bd8d02d1a17ca67509a9a1c18eb4ef92a6ddb86998eb7ea93c",
+    "experiments/paid-wallet-state/observations.json": "93616b53822f8fa4e7708ee2458c8715c69c1d3cb583a86c7b63919c25b63e09",
+    "tests/paid-wallet-state-acquisition.test.mjs": "cb959ee68788141484514c1616097f5d39a939239c07c8c588a9ebb581d34077"
+  },
+  "full_log_sha256": "680546279c17eb99c135de64ef2cdc138e6faf65d46de8d23af6ee656369b84d",
+  "local_signed_submissions": 16,
+  "productionAccepted": false
+}

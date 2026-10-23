@@ -115,3 +115,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Wallet execution evidence gate
 
 [Wallet authority review](WALLET_AUTHORITY_EVIDENCE_REVIEW.md) reconciles existing signature, contract callback and withdrawal coverage. Next: isolate wallet state sensitivity using fixed signed intent and signed configuration changes, then separately design transaction-position replay. Endpoint code proofs cannot upgrade historical wallet authority; type-4 transactions remain unsupported.
+
+
+### Wallet state sensitivity observed
+
+[Fixed signed-post experiment](WALLET_STATE_EXPERIMENT.md): local valid/rejected/restored outcomes with unchanged intent and accounting. Five new checks; 1183/1183 full suite. Next: transaction-position execution witness; stable latest-header observations are not that proof.
