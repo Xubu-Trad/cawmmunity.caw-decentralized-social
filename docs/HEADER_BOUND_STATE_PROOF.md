@@ -23,3 +23,14 @@ The retained dRPC CAW-token account proof is checked against its retained header
 Tests reject the wrong selected hash, altered header root, an unrelated valid synthetic proof, a different selected account, a missing requested storage proof, mismatched/unsupported layouts, duplicate keys and root/trust overrides. The first focused attempt mistakenly treated the proof-window failure as a proof-bearing fixture and failed; that receipt is preserved, and the corrected tests distinguish these cases.
 
 This increment is a prerequisite for authenticating historical account state, not an authority solution. Public chain selection, independent acquisition, registry code/storage layout, ownership transitions, contract-wallet validation and permission-at-transaction execution remain unresolved. See [recovery trust](RECOVERY_TRUST_MODEL.md). The public test candidate and production remain blocked.
+
+
+## Optional runtime-code binding
+
+`inspectHeaderBoundCode(evidenceText, selectionText)` is a separate opt-in reader in the same module. Evidence must contain exactly `header`, `proof` and `code`; selection uses schema `caw-header-code-selection/1` and the same profile/hash/address/storageKeys fields plus `expectedCodeHash`. The original state-only API is unchanged.
+
+It requires an existing account, recomputes Ethereum Keccak over the supplied runtime bytes, and compares that hash both to the proven account code hash and the separately selected expected code hash. Missing code or identity never falls back to a state-only success. Code input is limited to 65,536 bytes by the existing hash primitive; the JSON envelope is limited to 512 KiB and selection to 16 KiB. An empty-code existing account could match an explicitly selected empty-code hash, but this is not an EOA, ownership or permission determination; account absence rejects.
+
+`codeMatchesSelectedState` and `expectedCodeHashMatched` describe byte identity only. Source reproduction, dependencies, execution and account authority remain unverified. Proxies, delegated code, libraries and mutable external contracts require separate dependency analysis; matching one account's code hash cannot certify the entire authority graph. The expected hash itself is a caller trust input, not an authenticated review or approved implementation.
+
+[Eight focused checks and 1102 full regressions](../evidence/HEADER_BOUND_CODE_TEST_RESULTS.json) passed using the retained dRPC account proof/header/runtime. Changed code, wrong expected identity, empty substituted contract code, malformed/oversized bytes, forged proof claims, omitted fields and duplicate/extra trust fields reject. No new RPC acquisition, contract execution or source-compilation reproduction occurred. The retained PublicNode proof-window failure remains unchanged in the state-proof tests.

@@ -1,0 +1,24 @@
+{
+  "schema": "caw-header-code-validation/1",
+  "baseline": "1a51741fce94c97050e58e03ced509747e3aba04",
+  "scope": "offline historical runtime bytes matched to selected-header account proof and caller-retained expected code hash; not execution or authority proof",
+  "focused": {
+    "passed": 8,
+    "failed": 0
+  },
+  "full_suite": {
+    "passed": 1102,
+    "failed": 0,
+    "files": 55
+  },
+  "source_sha256": {
+    "reference/header-bound-state-proof.mjs": "244e2f468d02b362246ae8e8bc659801b233c7257d774a695d40e9c1d2428955",
+    "tests/header-bound-code.test.mjs": "0b80abf5330b6c5e27bbee4842b6164496588be9ad355fe9ffb536c25eb000f0"
+  },
+  "fixture_sha256": "9a0781dc1d692e4f8ba0e9d9da51064a9bfd5a36c9d17bc34910bf8ed4235e04",
+  "logs_sha256": {
+    "focused": "1e70f5c083a1333bcbcccf000267ac460e451f9a42e41c210610fa97cc77addd",
+    "all": "cf1ce46c28fd72312276b4cba8b8f937ac9cb1cecfbae251961256cbedb0935a"
+  },
+  "productionAccepted": false
+}

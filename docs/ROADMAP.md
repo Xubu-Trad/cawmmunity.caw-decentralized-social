@@ -55,3 +55,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Selected-header state-proof binding
 
 [Header-bound state proofs](HEADER_BOUND_STATE_PROOF.md) now derive the proof root from the recomputed selected header, preventing an unrelated root override. Ten focused checks and 1094 offline regressions passed. Retained PublicNode proof unavailability remains a negative case. Canonical chain selection, acquisition independence, registry ownership and execution remain separate open gates; no current recovery acceptance flag changes.
+
+
+### Selected-state code identity
+
+[Runtime-code binding](HEADER_BOUND_STATE_PROOF.md#optional-runtime-code-binding) now compares supplied bytes with both the selected-header account commitment and a separately retained expected hash. Eight focused checks and 1102 offline regressions passed. Registry storage/ownership interpretation, dependencies, authenticated anchors and execution remain unresolved; matching code bytes does not grant permission or production acceptance.
