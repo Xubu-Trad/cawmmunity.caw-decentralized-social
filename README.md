@@ -1,16 +1,22 @@
 # cawmmunity.caw - decentralized - social
 
-i have started building a public implementation of the caw manifesto.
+this repository is one public attempt to build the caw manifesto and the reproduced r2 message into a protocol that does not need the person who started it.
 
-this is early community work. i am sharing it now because decentralization has to shape how we build, while assumptions can still be challenged and designs can still be replaced.
+it is not an official CAW release. it is not community accepted. production is blocked.
 
-i am asking the cawmmunity to build this with me. developers, reviewers, security researchers, wallet builders, indexer builders, frontend contributors and people who disagree with me. your input should help decide what this becomes. the goal is for the work to stand without xubu at its center.
+the reason this repo exists is simple. the source material does not tell the community to find one developer and wait. it points toward a public github, open contribution, peer review, agreement on something solid enough to release, and a deployed system where the people who built it do not keep special power afterward.
 
-the recovered R2 points toward public contribution, peer review and agreement before release. that is the process this repository is trying to follow.
+so this is being built as **an implementation**, not **the implementation**.
 
-the test we still need to pass is simple: xubu leaves and this website disappears. others can run compatible clients, recover the same public record, submit signed caws and withdraw their funds without my approval. **that is a design goal, not a capability established by this alpha.**
+other caw implementations should keep receiving review and patches. if one implementation slows down, the builders should not have to slow down with it. if you are already working somewhere else and the work is stalled, you do not have to abandon it to contribute here. preserve the authorship, bring the bounded change or evidence you can defend, and let other people review it.
 
-bring code. bring criticism. bring failed reproductions. bring the thing i missed. start with an [open review issue](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues) or the [contribution guide](CONTRIBUTING.md).
+the same rule applies to this repository. xubu's approval does not make a protocol compliant, and repository ownership must not become protocol authority. if this project eventually depends on xubu being available, then it has failed the standard it is trying to implement.
+
+the target is harder than shipping an interface. another builder should be able to recover the public record, verify the relevant authority and history, run a compatible client, submit valid actions, recover funds under the protocol rules, and continue development without asking the original builder for permission.
+
+that is still a design and evidence target. this alpha has not established it.
+
+the repository is deliberately open before those decisions are finished because decentralization needs to shape the architecture while assumptions can still be replaced.
 
 by teh ppl. for teh ppl.
 
@@ -33,6 +39,52 @@ Two components, one repository:
 - **Protocol:** [cawmmunity.caw - decentralized - social - protocol](docs/PROTOCOL_V0_SCOPE.md) — contracts, readers and local experiments.
 
 These are project names. `.caw` does not establish domain registration, deployment or production readiness.
+
+## where main stands now
+
+the implementation head reviewed immediately before this README update was `c2656c1ea2762f56b04e4d4fbf4758778c657a9d` on 2026-10-24. the package remains `0.1.0-alpha.46`. the README update does not promote the protocol version or claim a new execution result.
+
+the latest recorded full suite is **1215/1215 Node offline tests across 70 files**. the retained alpha.41 record also contains 65 Python tests. `executionVerified` remains false and `productionAccepted` remains false in the current witness-state receipt.
+
+recent work has moved the evidence boundary forward in several narrow areas:
+
+- selected registry ownership, epochs, approvals and operator state are now checked against header-bound proofs and reconciled with signed history under explicit assumptions;
+- signed grant, revocation, delegated-transfer and non-owner withdrawal cases have been isolated so transfer permission is not silently treated as spending authority;
+- wallet-state sensitivity has been observed with fixed signed intent while configuration changes around it;
+- first-transaction replay is now bound to a selected parent and complete body, with declared account, storage and code dependencies checked against the chosen parent;
+- read-only witness access fails closed on missing accounts and unselected storage instead of substituting zero values;
+- the next execution-adapter step is documented, but no execution engine has been installed and no fork-aware transaction replay has been validated.
+
+the public test candidate and production remain blocked.
+
+### outside review
+
+there has been one substantive outside reproduction so far. in issue #10, `tentencaw` reproduced both alpha.20 offline readers on Ubuntu 24.04 and obtained the same canonical reconstruction digest as the retained JavaScript and Python outputs. that is useful independent evidence for that bounded reader result; it does not establish independent acquisition, chain authenticity, consensus, execution correctness or production readiness.
+
+there are still **no outside pull requests and no outside commits** in this repository. that is not something to hide. the next stage is to turn an xubu-authored codebase with outside reproduction into a genuinely multi-contributor review and implementation process.
+
+### what still needs to be proven
+
+the highest-value work is not more same-machine polish. it is closing the boundaries that would otherwise make the protocol depend on an original operator or an unreviewed interpretation:
+
+1. execute a genuine signed transaction from proof-backed parent state without allowing missing evidence to become synthetic empty state;
+2. authenticate chain/fork selection and reproduce acquisition through genuinely independent paths;
+3. finish wallet and delegated-authority coverage, including contract-wallet and newer transaction-mode behavior where the protocol intends to support it;
+4. resolve the open manifesto/R2 specification conflicts instead of silently choosing economics, registration, message limits, DM history, permanence, staking or release rules;
+5. demonstrate recovery, operation and continued development with the original builder absent;
+6. define a public review and release process where one maintainer, one merge or one person's approval cannot be confused with community acceptance.
+
+the [roadmap](docs/ROADMAP.md), [59 mapped requirements](docs/MANIFESTO_R2_ALIGNMENT_REVIEW.md), [15 open conflicts](sources/SPEC_CONFLICTS.md) and [operator-independence register](docs/OPERATOR_INDEPENDENCE.md) are the current review map.
+
+### how to contribute here
+
+use a pull request for a bounded code or documentation change. state the problem, the source requirement or proposed deviation, the validation actually performed and the remaining concern. those are the same four fields in the repository PR template.
+
+a good contribution can also prove that an existing assumption is wrong. failed reproductions and objections are part of the work if they are specific enough for another person to repeat.
+
+preserve attribution when bringing work from another implementation. do not erase an unresolved disagreement just to make a branch merge cleanly. no contributor, including xubu, should receive protocol authority because they maintain the repository.
+
+the first outside PR is still open.
 
 ## Try it locally
 
