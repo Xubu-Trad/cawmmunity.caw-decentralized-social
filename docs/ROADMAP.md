@@ -135,3 +135,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Exact replay input binding
 
 [Parent/dependency composition](REPLAY_INPUT_BINDING.md) rejects valid proofs from another branch. Six new cases;1206/1206 suite. Positive fixture has a synthetic child, not a valid execution claim. Next: fail-closed state access, then fork-aware replay.
+
+
+### Read-only witness access
+
+[Witness-state access](WITNESS_STATE.md) rejects missing accounts and unselected slots without RPC or zero fallback. Nine focused cases and 1215/1215 offline tests passed. Next: fork-aware execution and system transitions, with missing reads propagated as failure. This read interface does not establish dependency completeness or wallet authority.

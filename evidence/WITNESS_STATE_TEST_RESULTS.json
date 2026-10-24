@@ -1,0 +1,17 @@
+{
+  "schema": "caw-witness-state-validation/1",
+  "baseline": "efda631bec489f3b1d76b618c998e8d16e7a96f4",
+  "full_suite": {
+    "passed": 1215,
+    "failed": 0,
+    "files": 70
+  },
+  "focused_passed": 9,
+  "source_sha256": {
+    "reference/witness-state.mjs": "fe49126dfbc7614848fccb3d8bae97017972b260b4049c239c120d9098ffb6b1",
+    "tests/witness-state.test.mjs": "70bcfc69978c796fbf97d64e573a77e06ffd4bb1acaf456564959b6066740058"
+  },
+  "full_log_sha256": "94981c3db72ec403da63b5a21e82847ca549c0012c045cc4a3bd41d39fc81258",
+  "executionVerified": false,
+  "productionAccepted": false
+}
