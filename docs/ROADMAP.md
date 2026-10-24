@@ -140,3 +140,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Read-only witness access
 
 [Witness-state access](WITNESS_STATE.md) rejects missing accounts and unselected slots without RPC or zero fallback. Nine focused cases and 1215/1215 offline tests passed. Next: fork-aware execution and system transitions, with missing reads propagated as failure. This read interface does not establish dependency completeness or wallet authority.
+
+
+### Execution adapter integration gate
+
+[Source review and experiment plan](EXECUTION_ADAPTER_REVIEW.md) identifies missing-state defaults that must not replace missing witness evidence. Next: pin a released engine and dependency set, implement journaled proof-backed access with permanent failure on missing evidence, and acquire a genuine executable first-transaction fixture. No engine has been installed or replay validated; 1215/1215 remains the prior offline result.

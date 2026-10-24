@@ -1,0 +1,41 @@
+{
+  "commit": "15eede6fb0721fdf0536ec27e838d137809c99e0",
+  "sources": [
+    {
+      "path": "packages/vm/src/runTx.ts",
+      "sha256": "226154e29b32d0d0c3cb204120f912add090c61e5f96c6a33bfe2b5aab381e6d",
+      "bytes": 60,
+      "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/15eede6fb0721fdf0536ec27e838d137809c99e0/packages/vm/src/runTx.ts"
+    },
+    {
+      "path": "packages/vm/src/runTx/inner.ts",
+      "sha256": "dc42f19aec0989bacc2f28e6c5e2a3715db91e72dc968bc8bbc728f0eb9e8adf",
+      "bytes": 52830,
+      "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/15eede6fb0721fdf0536ec27e838d137809c99e0/packages/vm/src/runTx/inner.ts"
+    },
+    {
+      "path": "packages/evm/src/evm.ts",
+      "sha256": "cb2c2998439ac188d24ad9d3b4ea2fdc176c9526a3b8529a65da367e0316bf17",
+      "bytes": 65396,
+      "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/15eede6fb0721fdf0536ec27e838d137809c99e0/packages/evm/src/evm.ts"
+    },
+    {
+      "path": "packages/statemanager/src/simpleStateManager.ts",
+      "sha256": "948a72da54013c1065c988591c70e14064ea00da053ebbca0904dcf0177fb00a",
+      "bytes": 6748,
+      "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/15eede6fb0721fdf0536ec27e838d137809c99e0/packages/statemanager/src/simpleStateManager.ts"
+    },
+    {
+      "path": "packages/common/src/interfaces.ts",
+      "sha256": "1444013233d4a929053fac0cf40a6ade4d3b87d173687ae26cb25f3ab0a9a5b4",
+      "bytes": 8013,
+      "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/15eede6fb0721fdf0536ec27e838d137809c99e0/packages/common/src/interfaces.ts"
+    },
+    {
+      "path": "packages/vm/package.json",
+      "sha256": "31e288001a5371bf3edcadfed413a6ef78cf3b62eb4b17a1b66b10f89ad6b65b",
+      "bytes": 3758,
+      "url": "https://github.com/ethereumjs/ethereumjs-monorepo/blob/15eede6fb0721fdf0536ec27e838d137809c99e0/packages/vm/package.json"
+    }
+  ]
+}
