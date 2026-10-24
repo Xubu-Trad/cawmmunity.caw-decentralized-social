@@ -1,0 +1,17 @@
+{
+  "schema": "caw-replay-dependency-validation/1",
+  "baseline": "a17445c7566df7beff7a07f0460f7d673ffbdde3",
+  "full_suite": {
+    "passed": 1200,
+    "failed": 0,
+    "files": 68
+  },
+  "focused_passed": 9,
+  "source_sha256": {
+    "reference/replay-dependencies.mjs": "75a8e02a9f1c3e4c4f5730e68747be6112a78eb3270413eb33351fdbd1b17205",
+    "tests/replay-dependencies.test.mjs": "ee3a80bae32cc094934ff0b0929ebd7517d94b6ca9b33e3cf1b6fd86a791a0e4"
+  },
+  "full_log_sha256": "585d4f926213d90997dfa11a669431959e856346401a44a7e5e582a404b72f3a",
+  "executionVerified": false,
+  "productionAccepted": false
+}

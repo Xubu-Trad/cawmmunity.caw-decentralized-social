@@ -125,3 +125,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### First transaction replay anchor
 
 [Parent/body binding](FIRST_TRANSACTION_ANCHOR.md) now validates a selected first transaction and parent-state commitment. Eight new checks;1191/1191 suite. It does not prove pre-transaction state or execute system/transaction transitions. Next: dependency proofs and explicit fork-aware replay.
+
+
+### Selected replay dependencies
+
+[Account/storage/code proof bundle](REPLAY_DEPENDENCIES.md) verifies declared dependencies at one header. Nine new checks;1200/1200 suite. Completeness, parent/child composition and execution remain open.

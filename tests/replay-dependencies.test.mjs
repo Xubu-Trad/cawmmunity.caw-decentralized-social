@@ -1,0 +1,14 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {readFileSync} from 'node:fs';
+import {inspectReplayDependencies} from '../reference/replay-dependencies.mjs';import {keccak256Hex} from '../reference/keccak256.mjs';
+const f=JSON.parse(readFileSync(new URL('../experiments/paid-signed-withdrawal-acquisition/joint-capture.json',import.meta.url)));
+function sample(){const b=structuredClone(f.branches.left),e=b.stateEvidence;return {schema:'caw-replay-dependencies/1',header:e.header,selection:{profile:'london-16',parentHash:e.header.hash,dependencies:[{address:e.proof.address,storageKeys:e.proof.storageProof.map(s=>'0x'+BigInt(s.key).toString(16).padStart(64,'0')),expectedCodeHash:keccak256Hex(e.code)}]},witnesses:[{proof:e.proof,code:e.code}]};}
+const check=x=>inspectReplayDependencies(JSON.stringify(x));
+test('selected registry code and four slots bind to one selected root without completeness claims',()=>{const x=sample(),r=check(x);assert.equal(r.selectedDependenciesVerified,true);assert.equal(r.dependencies[0].state.proof.storage.length,4);assert.equal(r.parentStateRoot,x.header.stateRoot);for(const k of ['dependencyClosureVerified','parentChildBindingVerified','parentStateAuthenticated','preTransactionStateVerified','executionVerified','accountAuthorityVerified','productionAccepted'])assert.equal(r[k],false);assert.ok(Object.isFrozen(r.dependencies));});
+test('missing dependency witness rejects',()=>{const x=sample();x.witnesses=[];assert.throws(()=>check(x),{code:'REPLAY_DEPENDENCIES_COUNT'});});
+test('duplicate selected account rejects',()=>{const x=sample();x.selection.dependencies.push(x.selection.dependencies[0]);x.witnesses.push(x.witnesses[0]);assert.throws(()=>check(x),{code:'REPLAY_DEPENDENCIES_DUPLICATE'});});
+test('missing storage witness rejects',()=>{const x=sample();x.witnesses[0].proof.storageProof.pop();assert.throws(()=>check(x));});
+test('changed runtime rejects against original account proof',()=>{const x=sample();x.witnesses[0].code='0x00';assert.throws(()=>check(x));});
+test('self-selected alternate code hash cannot replace the proven runtime',()=>{const x=sample();x.witnesses[0].code='0x00';x.selection.dependencies[0].expectedCodeHash=keccak256Hex('0x00');assert.throws(()=>check(x));});
+test('other branch proof cannot satisfy selected root',()=>{const x=sample();x.witnesses[0].proof=structuredClone(f.branches.right.stateEvidence.proof);assert.throws(()=>check(x));});
+test('unrequested witness and caller completeness flags reject',()=>{const x=sample();x.witnesses.push(x.witnesses[0]);assert.throws(()=>check(x));const y=sample();y.dependencyClosureVerified=true;assert.throws(()=>check(y),{code:'REPLAY_DEPENDENCIES_SCHEMA'});});
+test('empty selection cannot pass vacuously',()=>{const x=sample();x.selection.dependencies=[];x.witnesses=[];assert.throws(()=>check(x),{code:'REPLAY_DEPENDENCIES_COUNT'});});
