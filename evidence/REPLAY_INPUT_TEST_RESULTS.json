@@ -1,0 +1,19 @@
+{
+  "schema": "caw-replay-input-validation/1",
+  "baseline": "fa27b4b4aa141823af2d28dc4070888dd5c8ae07",
+  "full_suite": {
+    "passed": 1206,
+    "failed": 0,
+    "files": 69
+  },
+  "focused_passed": 6,
+  "source_sha256": {
+    "reference/replay-input-binding.mjs": "ea31ad821ba8f1c62084cc2ffc349da5ede96d964521525d3e0ef6b11d5ee610",
+    "reference/fixtures/generate-replay-input-fixture.py": "aedc039297be4694b766817e2afca454f3a582b57fbd791477ff296e6a88542c",
+    "reference/fixtures/replay-input-binding.json": "31902ecc9d91e8efcda421a64c31d716f5a1e112bb87ce280c0db1790a8b1cc2",
+    "tests/replay-input-binding.test.mjs": "8175a86ae782052263a81de4bb17e8d9f79c3f0516f3852bcedfa4de95a80249"
+  },
+  "full_log_sha256": "80b2f872233531002d2bf2c34789062ea6487dfba2c5a88576afce4bdfa2bee4",
+  "executionVerified": false,
+  "productionAccepted": false
+}

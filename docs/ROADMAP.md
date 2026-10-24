@@ -130,3 +130,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Selected replay dependencies
 
 [Account/storage/code proof bundle](REPLAY_DEPENDENCIES.md) verifies declared dependencies at one header. Nine new checks;1200/1200 suite. Completeness, parent/child composition and execution remain open.
+
+
+### Exact replay input binding
+
+[Parent/dependency composition](REPLAY_INPUT_BINDING.md) rejects valid proofs from another branch. Six new cases;1206/1206 suite. Positive fixture has a synthetic child, not a valid execution claim. Next: fail-closed state access, then fork-aware replay.
