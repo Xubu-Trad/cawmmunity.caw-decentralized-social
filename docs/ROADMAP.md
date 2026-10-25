@@ -180,3 +180,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Engine existing-account callback
 
 [Nine account callback checks](ENGINE_ACCOUNT_WRITE.md) passed, including paired storage/account rollback and six unsupported changes. Zero-value self CALL invoked two real engine account writes; no value-transfer or signed replay proof. Next genuine signed fixture and transaction-runner integration with all validity checks enabled.
+
+
+### Signed local transaction fixture
+
+[Signed transfer acquisition](SIGNED_TRANSFER_FIXTURE.md) now supplies three-account parent/child proofs and a verified receipt. Three grouped checks pass; no independent execution replay yet. Next connect runTx without nonce/balance bypass and compare acquired child state.

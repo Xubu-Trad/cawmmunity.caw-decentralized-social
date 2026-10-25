@@ -1,0 +1,17 @@
+{
+  "schema": "caw-signed-transfer-verification/1",
+  "baseline": "874b2e76189c999c2875b38d8a722468be69af48",
+  "checks": 3,
+  "passed": 3,
+  "source_sha256": {
+    "experiments/signed-transfer-fixture/acquire.py": "f23d842fa620738a275983c0d41ba2e3178a777eb576550112f7732b7ab97f26",
+    "experiments/signed-transfer-fixture/project.py": "6a894d4108663b3e0c6fe1ec697a9fdac0332cdd08584bb5930b5463c2d39e32",
+    "experiments/signed-transfer-fixture/fixture.json": "011869ece7b3e53de45a95cbd182abf4a71c539762f3f8c3281634454128b656",
+    "experiments/signed-transfer-fixture/verify.mjs": "191c3eb9a0f4ccc1df4ba2a1db6225a87a254b98d543618e8cc2be0a92d3b5a7"
+  },
+  "log_sha256": "7dd891013a53abe6c8e01d7b2b83b1bb64260b6725b73fb40a5a8d18623e6766",
+  "localObservedTransfer": true,
+  "independentReplay": false,
+  "publicChainAuthenticated": false,
+  "productionAccepted": false
+}
