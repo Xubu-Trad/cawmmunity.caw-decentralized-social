@@ -175,3 +175,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Existing-account journal
 
 [Nonce/balance overlay](REPLAY_ACCOUNT_OVERLAY.md) shares rollback with storage. Nine new cases;1241/1241 offline suite and four existing engine storage checks passed. Engine account writes and signed replay remain next. Returned proof hashes are original commitments, not updated state roots.
+
+
+### Engine existing-account callback
+
+[Nine account callback checks](ENGINE_ACCOUNT_WRITE.md) passed, including paired storage/account rollback and six unsupported changes. Zero-value self CALL invoked two real engine account writes; no value-transfer or signed replay proof. Next genuine signed fixture and transaction-runner integration with all validity checks enabled.

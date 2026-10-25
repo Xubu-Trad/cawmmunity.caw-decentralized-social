@@ -1,0 +1,13 @@
+{
+  "schema": "caw-engine-account-write/1",
+  "baseline": "b6442334a021478215062be182dddd99298681c2",
+  "checks": 9,
+  "passed": 9,
+  "engine_account_callbacks": 2,
+  "source_sha256": "382ad9443693125a41de4f5840f4f553a9af806f3a06238803337e2d002ffc2f",
+  "log_sha256": "6e625aebb025a0338555114aba677ef591e993c4418ffc2bbdc0c63c350d0bea",
+  "signedTransactionReplay": false,
+  "valueTransferVerified": false,
+  "executionVerified": false,
+  "productionAccepted": false
+}
