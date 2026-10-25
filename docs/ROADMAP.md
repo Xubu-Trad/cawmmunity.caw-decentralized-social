@@ -170,3 +170,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Engine storage-write integration
 
 [Four injected SSTORE checks](ENGINE_STORAGE_WRITE.md) cover child commit/revert, explicitly harnessed parent rollback and permanent missing-evidence failure after a write. No gas-accounting or signed replay proof. Next account journaling and transaction-level integration.
+
+
+### Existing-account journal
+
+[Nonce/balance overlay](REPLAY_ACCOUNT_OVERLAY.md) shares rollback with storage. Nine new cases;1241/1241 offline suite and four existing engine storage checks passed. Engine account writes and signed replay remain next. Returned proof hashes are original commitments, not updated state roots.

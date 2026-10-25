@@ -11,3 +11,6 @@ Eleven focused regressions and1232/1232 offline tests across72files passed. [Val
 INFERENCE — this supplies a bounded reversible storage component for the forthcoming engine adapter. It does not establish correct EVM SSTORE gas/refund behavior, original-storage cache integration, nested engine writes or transaction rollback. The starting state is parent-bound evidence, not proven pre-transaction state. The synthetic child remains unsuitable as a successful execution oracle.
 
 UNRESOLVED — account balance/nonce journaling, account absence/creation, code writes, state-root updates, engine integration and signed replay. No RPC fallback, admin authority, production acceptance or wallet-authority conclusion is added. Next connect this component to the pinned engine and independently test nested SSTORE commit/revert while keeping missing-evidence failure outside reversible state.
+
+
+The [existing-account extension](REPLAY_ACCOUNT_OVERLAY.md) now journals bounded nonce/balance updates in the same frames. Earlier storage-only scope and validation above remain historical. Code/root updates and account creation are still unsupported.
