@@ -1,0 +1,24 @@
+{
+  "schema": "caw-engine-read-boundary/1",
+  "baseline": "ded6e54b728833d1f153cebd7e57801efd706bc4",
+  "checks": 3,
+  "passed": 3,
+  "node": "24.20.0",
+  "package_manager": "pnpm 11.25.0",
+  "locked_packages": 17,
+  "install_scripts": false,
+  "source_sha256": {
+    "experiments/execution-engine/package.json": "6af71fea1e01e1cc044fe73dc6185e7ec28212210aec927a17a3b7b6deba5076",
+    "experiments/execution-engine/pnpm-lock.yaml": "fae68803a13e3cfa804cb872ca4872f65e844adb21c9d844fa5fb6804d0e6773",
+    "experiments/execution-engine/read-boundary.mjs": "3e12d45deed527cac9fffb925ed34586ff3341b9960dfd9a84e199fa81893d7b"
+  },
+  "logs_sha256": {
+    "engine-lock-checks": "51286ec088bb2e22b19f30046ae09be13a520cc3f1050477ce14a2f22050973a",
+    "engine-install-checks": "9b70553a747c716c92df2b585082e5a76e4da5e095a993042f04c35cabf64a95",
+    "engine-read-checks": "e2a4c699c2d4509d439a80574b718b624291911b493fe9afd32e5904d9bddf30"
+  },
+  "signedTransactionReplay": false,
+  "nestedCallRollbackVerified": false,
+  "executionVerified": false,
+  "productionAccepted": false
+}

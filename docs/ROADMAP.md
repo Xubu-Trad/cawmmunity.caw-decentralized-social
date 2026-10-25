@@ -150,3 +150,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Permanent replay read failure
 
 [Read-session safeguard](REPLAY_READ_SESSION.md) keeps missing-evidence failure outside any future reversible journal. Six new cases and1221/1221 offline tests pass. Five direct engine candidates are archive-pinned; transitive lock, installation and engine integration remain open.
+
+
+### Released-engine read probe
+
+[Three engine boundary checks](ENGINE_READ_BOUNDARY.md) passed with a frozen17-package graph and scripts disabled. Injected SLOAD reads proven state and rejects missing evidence. Signed replay and nested rollback remain unproved. Next: nested-call propagation, then bounded write journaling. Existing1221 offline checks remain a separate historical result.
