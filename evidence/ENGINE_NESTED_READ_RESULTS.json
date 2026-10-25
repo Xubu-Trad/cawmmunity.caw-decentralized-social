@@ -1,0 +1,15 @@
+{
+  "schema": "caw-engine-nested-read/1",
+  "baseline": "086e9ebbd3238a25e6d819dea716d119c51061f9",
+  "checks": 3,
+  "passed": 3,
+  "node": "24.20.0",
+  "engine": "EthereumJS 10.1.3; existing frozen 17-package lock",
+  "source_sha256": "430047d8aa94d90e01c2e202b6034ad58f27800375969eba5fdc33430dd0032d",
+  "log_sha256": "e90d8ecc0d39a6579c690b70d93f87030cf98fd84d1683792ea4a961f93e8bf7",
+  "scope": "Injected DELEGATECALL success, ordinary revert and missing-slot failure; explicit state-manager revert does not clear failure",
+  "signedTransactionReplay": false,
+  "journaledWritesVerified": false,
+  "executionVerified": false,
+  "productionAccepted": false
+}

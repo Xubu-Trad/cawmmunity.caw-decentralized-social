@@ -155,3 +155,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Released-engine read probe
 
 [Three engine boundary checks](ENGINE_READ_BOUNDARY.md) passed with a frozen17-package graph and scripts disabled. Injected SLOAD reads proven state and rejects missing evidence. Signed replay and nested rollback remain unproved. Next: nested-call propagation, then bounded write journaling. Existing1221 offline checks remain a separate historical result.
+
+
+### Nested engine failure propagation
+
+[Three DELEGATECALL checks](ENGINE_NESTED_READ.md) distinguish an ordinary caught revert from missing-witness failure. Session failure survives an explicit state-manager revert. Injected bytecode only; no write rollback or signed transaction replay proof. Next: bounded mutable overlay over immutable proof-backed state.
