@@ -1,0 +1,14 @@
+{
+  "schema": "caw-engine-storage-write/1",
+  "baseline": "0288be1f1f8195adfc0eca48e22265d9627ca292",
+  "checks": 4,
+  "passed": 4,
+  "node": "24.20.0",
+  "engine": "EthereumJS 10.1.3; existing frozen lock",
+  "source_sha256": "200b56ea2ecf7a4b3d91f3e359663f7a72f79eb1f166d965fb234f0b173fad90",
+  "log_sha256": "f475b519e6c91ec3d6f88a682b321c9a3f1aaa1c3950b3e56f729523d6059e6c",
+  "signedTransactionReplay": false,
+  "gasAccountingVerified": false,
+  "executionVerified": false,
+  "productionAccepted": false
+}

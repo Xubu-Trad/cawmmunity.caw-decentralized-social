@@ -165,3 +165,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Bounded storage overlay
 
 [Selected-slot write overlay](REPLAY_STORAGE_OVERLAY.md) preserves original values and supports nested commit/revert without clearing evidence failure. Eleven focused cases and1232/1232 offline checks pass. Next engine SSTORE integration; account/code journaling and signed replay remain open.
+
+
+### Engine storage-write integration
+
+[Four injected SSTORE checks](ENGINE_STORAGE_WRITE.md) cover child commit/revert, explicitly harnessed parent rollback and permanent missing-evidence failure after a write. No gas-accounting or signed replay proof. Next account journaling and transaction-level integration.
