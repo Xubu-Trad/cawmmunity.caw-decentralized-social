@@ -1,0 +1,18 @@
+{
+  "schema": "caw-replay-storage-validation/1",
+  "baseline": "06d1b7de690b7fc57bdfd766c08da057159477f6",
+  "focused_passed": 11,
+  "full_suite": {
+    "passed": 1232,
+    "failed": 0,
+    "files": 72
+  },
+  "source_sha256": {
+    "reference/replay-storage-overlay.mjs": "9f4ddab76d2117aabf7fc48ce1d2aca17b5ce16b4405513c761cd02b7d88ba91",
+    "tests/replay-storage-overlay.test.mjs": "6084f9ae6f3ef68e42d6be34f659932d813bbf9ba6ca1ddb964e4bd95784442a"
+  },
+  "log_sha256": "330cc9b507b3a9c165bc9a78b901dc39d3c1290dd634d3786727b77b0cac1f42",
+  "engineWriteIntegration": false,
+  "executionVerified": false,
+  "productionAccepted": false
+}

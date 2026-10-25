@@ -160,3 +160,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Nested engine failure propagation
 
 [Three DELEGATECALL checks](ENGINE_NESTED_READ.md) distinguish an ordinary caught revert from missing-witness failure. Session failure survives an explicit state-manager revert. Injected bytecode only; no write rollback or signed transaction replay proof. Next: bounded mutable overlay over immutable proof-backed state.
+
+
+### Bounded storage overlay
+
+[Selected-slot write overlay](REPLAY_STORAGE_OVERLAY.md) preserves original values and supports nested commit/revert without clearing evidence failure. Eleven focused cases and1232/1232 offline checks pass. Next engine SSTORE integration; account/code journaling and signed replay remain open.
