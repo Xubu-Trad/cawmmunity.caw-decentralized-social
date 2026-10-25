@@ -1,0 +1,113 @@
+{
+  "scope": "direct candidate packages only; not a transitive lock or installed engine",
+  "packages": [
+    {
+      "package": "@ethereumjs/vm",
+      "version": "10.1.3",
+      "tarball": "https://registry.npmjs.org/@ethereumjs/vm/-/vm-10.1.3.tgz",
+      "integrity": "sha512-tnhWnQOgA6AkgWTjDg2dcF11tlTV9eOq/VJdyzo06DwN7PzKHDEacI3tge+40Izqt9KqX16Nc37Agd8dqhDYMw==",
+      "sha256": "d70cc29c6e94f59fee9dde8466b60a3df18f7de7dc0810830dc926e15c489b44",
+      "bytes": 203380,
+      "license": "MPL-2.0",
+      "engines": {
+        "node": ">=20"
+      },
+      "dependencies": {
+        "debug": "^4.4.0",
+        "@noble/hashes": "^2.0.1",
+        "eventemitter3": "^5.0.1",
+        "@ethereumjs/tx": "^10.1.3",
+        "@ethereumjs/evm": "^10.1.3",
+        "@ethereumjs/mpt": "^10.1.3",
+        "@ethereumjs/rlp": "^10.1.3",
+        "@ethereumjs/util": "^10.1.3",
+        "@ethereumjs/block": "^10.1.3",
+        "@ethereumjs/common": "^10.1.3",
+        "@ethereumjs/statemanager": "^10.1.3"
+      },
+      "gitHead": "29f404f305be4473907d4aa4f7ece85633bb73da",
+      "registry_url": "https://registry.npmjs.org/@ethereumjs/vm/latest"
+    },
+    {
+      "package": "@ethereumjs/evm",
+      "version": "10.1.3",
+      "tarball": "https://registry.npmjs.org/@ethereumjs/evm/-/evm-10.1.3.tgz",
+      "integrity": "sha512-7C6oo3f1rvtsFAQOURcmEkyUTBTePBbQUgWTfzrual8kbb0R8053rY+PolvFDETfVSK/TrPzZFhFe5sgz+Clgw==",
+      "sha256": "d4648876d3b2a8ca5ef1f1414bbfd2bfe8feb7fa4f35d35e48090adc4cf50236",
+      "bytes": 455711,
+      "license": "MPL-2.0",
+      "engines": {
+        "node": ">=20"
+      },
+      "dependencies": {
+        "debug": "^4.4.0",
+        "@noble/curves": "^2.0.1",
+        "@noble/hashes": "^2.0.1",
+        "eventemitter3": "^5.0.1",
+        "@ethereumjs/util": "^10.1.3",
+        "@ethereumjs/common": "^10.1.3",
+        "@ethereumjs/statemanager": "^10.1.3"
+      },
+      "gitHead": "29f404f305be4473907d4aa4f7ece85633bb73da",
+      "registry_url": "https://registry.npmjs.org/@ethereumjs/evm/latest"
+    },
+    {
+      "package": "@ethereumjs/statemanager",
+      "version": "10.1.3",
+      "tarball": "https://registry.npmjs.org/@ethereumjs/statemanager/-/statemanager-10.1.3.tgz",
+      "integrity": "sha512-d56NBae8xjh/ZY+orqvIfE30WLHOn2okacUekbM9J7VZrokjxQ2800sb6K6srffoSekcgbHxIWFJ3r+81jzrrA==",
+      "sha256": "b131928c81f56f0be7c836fda2cabb359363d280a433f83a98a6633c7fafedf9",
+      "bytes": 126265,
+      "license": "MPL-2.0",
+      "engines": null,
+      "dependencies": {
+        "debug": "^4.4.0",
+        "lru-cache": "11.0.2",
+        "@noble/hashes": "^2.0.1",
+        "@ethereumjs/mpt": "^10.1.3",
+        "@ethereumjs/rlp": "^10.1.3",
+        "@ethereumjs/util": "^10.1.3",
+        "@ethereumjs/common": "^10.1.3",
+        "@js-sdsl/ordered-map": "^4.4.2",
+        "@ethereumjs/binarytree": "^10.1.3"
+      },
+      "gitHead": "29f404f305be4473907d4aa4f7ece85633bb73da",
+      "registry_url": "https://registry.npmjs.org/@ethereumjs/statemanager/latest"
+    },
+    {
+      "package": "@ethereumjs/common",
+      "version": "10.1.3",
+      "tarball": "https://registry.npmjs.org/@ethereumjs/common/-/common-10.1.3.tgz",
+      "integrity": "sha512-ECWwbc4s8Ji7U0mkfZP6gIDy1FxXe0ZyVOTt0adkztPQRzX2DbH2ul7a83DSS8qYAiG6//vVXMkP60TyYOnv8Q==",
+      "sha256": "7ea8baa62d0276c3969e474c407dee6330143cfd4e55df6c4897218a10422ee8",
+      "bytes": 105637,
+      "license": "MIT",
+      "engines": null,
+      "dependencies": {
+        "eventemitter3": "^5.0.1",
+        "@ethereumjs/util": "^10.1.3"
+      },
+      "gitHead": "29f404f305be4473907d4aa4f7ece85633bb73da",
+      "registry_url": "https://registry.npmjs.org/@ethereumjs/common/latest"
+    },
+    {
+      "package": "@ethereumjs/util",
+      "version": "10.1.3",
+      "tarball": "https://registry.npmjs.org/@ethereumjs/util/-/util-10.1.3.tgz",
+      "integrity": "sha512-PhezOVe4DFaC+QLIsnK/tiOaXjpjS2F9AH4Ez0EfWevFw9NWNSg95l7I0dWuHF0B7v9odm2Ijqwo0EnARXtUmA==",
+      "sha256": "4a6f8ff3c4330a57dff5e9f2e6c31ff55312e0cb564eb03d5c34e4e97e67beed",
+      "bytes": 162142,
+      "license": "MPL-2.0",
+      "engines": {
+        "node": ">=20"
+      },
+      "dependencies": {
+        "@noble/curves": "^2.0.1",
+        "@noble/hashes": "^2.0.1",
+        "@ethereumjs/rlp": "^10.1.3"
+      },
+      "gitHead": "29f404f305be4473907d4aa4f7ece85633bb73da",
+      "registry_url": "https://registry.npmjs.org/@ethereumjs/util/latest"
+    }
+  ]
+}

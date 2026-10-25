@@ -1,0 +1,20 @@
+{
+  "schema": "caw-replay-read-session-validation/1",
+  "baseline": "c2656c1ea2762f56b04e4d4fbf4758778c657a9d",
+  "publication_parent": "9324f041eb330f4898bc1d96b884ed0f3c3247a5",
+  "intervening_changes": "two README-only commits reviewed; tested code unchanged",
+  "full_suite": {
+    "passed": 1221,
+    "failed": 0,
+    "files": 71
+  },
+  "focused_passed": 6,
+  "source_sha256": {
+    "reference/replay-read-session.mjs": "a30707d5d98f9464aff7aded7d8727ce21310b9fd0f613cce51dd4a97600dae4",
+    "tests/replay-read-session.test.mjs": "aa12ed531b6dca1f8c5044e8f6db44bc9b9b5dcacea5434a2f5ff1e69a7f5f87"
+  },
+  "full_log_sha256": "ac81a283d450146370013891561a8e476b20b605c5447b16bc9a7a792df42b1a",
+  "engineIntegrated": false,
+  "executionVerified": false,
+  "productionAccepted": false
+}

@@ -145,3 +145,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Execution adapter integration gate
 
 [Source review and experiment plan](EXECUTION_ADAPTER_REVIEW.md) identifies missing-state defaults that must not replace missing witness evidence. Next: pin a released engine and dependency set, implement journaled proof-backed access with permanent failure on missing evidence, and acquire a genuine executable first-transaction fixture. No engine has been installed or replay validated; 1215/1215 remains the prior offline result.
+
+
+### Permanent replay read failure
+
+[Read-session safeguard](REPLAY_READ_SESSION.md) keeps missing-evidence failure outside any future reversible journal. Six new cases and1221/1221 offline tests pass. Five direct engine candidates are archive-pinned; transitive lock, installation and engine integration remain open.
