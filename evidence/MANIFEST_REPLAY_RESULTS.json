@@ -1,0 +1,16 @@
+{
+  "schema": "caw-manifest-replay-results/1",
+  "baseline": "f7cde32a743d5c4723157eb83386eee34c34ca72",
+  "checks": 66,
+  "passed": 66,
+  "previous_groups": 63,
+  "new_manifest_groups": 3,
+  "source_sha256": {
+    "experiments/execution-engine/source-manifest.mjs": "c3e91e2b0ac2c822aa89f90354dc380d6e769e6ed2aca2691a0a829a2b17ec91",
+    "experiments/execution-engine/source-manifest.json": "81c71fc5cbeda8eebe8207a3a4a83320a796df5946d2d6017c8f06114a65ec0f",
+    "experiments/execution-engine/manifest-replay.mjs": "9241cdc33f79d2103534cb13449bc70e7b2936c5dff4f48ce712f099efb1a1ef",
+    "experiments/execution-engine/manifest-replay-check.mjs": "f0629d2c60ba6ccb10342e485aa8d06bfe8305982ee77b9fdcb8c6b311c6df7a"
+  },
+  "log_sha256": "6b307ef4cfdd376d93418d6dffdac95ee53fd6e68b693ce4c56279bf2d599abf",
+  "productionAccepted": false
+}

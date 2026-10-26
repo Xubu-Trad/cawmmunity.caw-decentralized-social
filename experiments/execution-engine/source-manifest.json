@@ -1,0 +1,131 @@
+{
+  "schema": "caw-local-source-manifest/1",
+  "files": [
+    {
+      "root": "repo",
+      "path": "public/bounded-json.mjs",
+      "sha256": "73312692245add67ea140ef1393efe9577d337d917867f9edca02ce82af8b051",
+      "size": 6122
+    },
+    {
+      "root": "repo",
+      "path": "reference/ethereum-block-receipts.mjs",
+      "sha256": "8b864b86253cc18897f766d13f1e12ea9de84bc097f78461b9412479a50ee86d",
+      "size": 12865
+    },
+    {
+      "root": "repo",
+      "path": "reference/ethereum-block-senders.mjs",
+      "sha256": "fe704b1a596383a02f620c7212bfc6db43b885a330786754459542accd0a37b1",
+      "size": 16332
+    },
+    {
+      "root": "repo",
+      "path": "reference/ethereum-block-transactions.mjs",
+      "sha256": "312972408906b8f33857645a8e8c7ce27be668b5a10634d99a71b2b401d7b72f",
+      "size": 17230
+    },
+    {
+      "root": "repo",
+      "path": "reference/ethereum-execution-header.mjs",
+      "sha256": "dd69f58be27f861939432a2a140298fde3be1393e8d9bbd8b6dfb88c69cb34eb",
+      "size": 9631
+    },
+    {
+      "root": "repo",
+      "path": "reference/ethereum-state-proof.mjs",
+      "sha256": "56c2278447b1eccef6a29dbeb4da7777ad5330fe5bb67655c1ed9f8564af628f",
+      "size": 12928
+    },
+    {
+      "root": "repo",
+      "path": "reference/first-transaction-anchor.mjs",
+      "sha256": "8c179a053b25b571744b3148be79e388646d5553ec7d6415cb1b047039760c7d",
+      "size": 2321
+    },
+    {
+      "root": "repo",
+      "path": "reference/header-bound-state-proof.mjs",
+      "sha256": "244e2f468d02b362246ae8e8bc659801b233c7257d774a695d40e9c1d2428955",
+      "size": 3918
+    },
+    {
+      "root": "repo",
+      "path": "reference/keccak256.mjs",
+      "sha256": "6ed8268eb811eddb3345ebb47e824346c00585d6bed2ec3767e1783d31615edf",
+      "size": 2961
+    },
+    {
+      "root": "repo",
+      "path": "reference/replay-dependencies.mjs",
+      "sha256": "75a8e02a9f1c3e4c4f5730e68747be6112a78eb3270413eb33351fdbd1b17205",
+      "size": 2068
+    },
+    {
+      "root": "repo",
+      "path": "reference/replay-input-binding.mjs",
+      "sha256": "ea31ad821ba8f1c62084cc2ffc349da5ede96d964521525d3e0ef6b11d5ee610",
+      "size": 1360
+    },
+    {
+      "root": "repo",
+      "path": "reference/replay-read-session.mjs",
+      "sha256": "a30707d5d98f9464aff7aded7d8727ce21310b9fd0f613cce51dd4a97600dae4",
+      "size": 899
+    },
+    {
+      "root": "repo",
+      "path": "reference/replay-storage-overlay.mjs",
+      "sha256": "deb3d5e978b5d657c062d2b8835c9e79df4073eb37cc38a954aa32a2b5ebf416",
+      "size": 3352
+    },
+    {
+      "root": "repo",
+      "path": "reference/witness-state.mjs",
+      "sha256": "fe49126dfbc7614848fccb3d8bae97017972b260b4049c239c120d9098ffb6b1",
+      "size": 1931
+    },
+    {
+      "root": "engine",
+      "path": "witness-adapter.mjs",
+      "sha256": "69e6336862792e41a1d7f654d9632453f8a44758f175e5d4aec4c1a9efa66aad",
+      "size": 5627
+    },
+    {
+      "root": "engine",
+      "path": "replay-outcome.mjs",
+      "sha256": "ec8c23777ec37300c83417b7978b8fc2ac9bf306babd62c009f1a2ac92dab837",
+      "size": 1464
+    },
+    {
+      "root": "engine",
+      "path": "bound-replay.mjs",
+      "sha256": "031c0a179606793cb1d5080ddd1e804555e3d7347aabe5caf10023fbf1c56589",
+      "size": 1531
+    },
+    {
+      "root": "engine",
+      "path": "source-manifest.mjs",
+      "sha256": "c3e91e2b0ac2c822aa89f90354dc380d6e769e6ed2aca2691a0a829a2b17ec91",
+      "size": 2147
+    },
+    {
+      "root": "engine",
+      "path": "manifest-replay.mjs",
+      "sha256": "9241cdc33f79d2103534cb13449bc70e7b2936c5dff4f48ce712f099efb1a1ef",
+      "size": 407
+    },
+    {
+      "root": "engine",
+      "path": "package.json",
+      "sha256": "6af71fea1e01e1cc044fe73dc6185e7ec28212210aec927a17a3b7b6deba5076",
+      "size": 352
+    },
+    {
+      "root": "engine",
+      "path": "pnpm-lock.yaml",
+      "sha256": "fae68803a13e3cfa804cb872ca4872f65e844adb21c9d844fa5fb6804d0e6773",
+      "size": 6322
+    }
+  ]
+}
