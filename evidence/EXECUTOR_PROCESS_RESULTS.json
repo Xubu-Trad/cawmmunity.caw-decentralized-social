@@ -1,0 +1,73 @@
+{
+  "schema": "caw-executor-process-check/1",
+  "cases": [
+    {
+      "case": "first",
+      "expectedExit": 0,
+      "resultSha256": "ef37e67740ab0561a9ee8a5893637498136fb848b6e3c7e07d279ed7f8db31cc",
+      "stdoutSha256": "215b85fb6e4cf0c61e557fc3a352fe003a9391e3a05cc4710cb05c8db432e7a7",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "case": "repeat",
+      "expectedExit": 0,
+      "resultSha256": "ef37e67740ab0561a9ee8a5893637498136fb848b6e3c7e07d279ed7f8db31cc",
+      "stdoutSha256": "215b85fb6e4cf0c61e557fc3a352fe003a9391e3a05cc4710cb05c8db432e7a7",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "case": "bad-source",
+      "expectedExit": 1,
+      "resultSha256": null,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "20c81ffa383c65adbc34501ca7e231a8f9558e565cfa798e20fc512a0a8050cc"
+    },
+    {
+      "case": "bad-executor",
+      "expectedExit": 1,
+      "resultSha256": null,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "20c81ffa383c65adbc34501ca7e231a8f9558e565cfa798e20fc512a0a8050cc"
+    },
+    {
+      "case": "oversize",
+      "expectedExit": 1,
+      "resultSha256": null,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "20c81ffa383c65adbc34501ca7e231a8f9558e565cfa798e20fc512a0a8050cc"
+    },
+    {
+      "case": "invalid-utf8",
+      "expectedExit": 1,
+      "resultSha256": null,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "20c81ffa383c65adbc34501ca7e231a8f9558e565cfa798e20fc512a0a8050cc"
+    },
+    {
+      "case": "malformed",
+      "expectedExit": 1,
+      "resultSha256": null,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "20c81ffa383c65adbc34501ca7e231a8f9558e565cfa798e20fc512a0a8050cc"
+    },
+    {
+      "case": "existing",
+      "expectedExit": 1,
+      "resultSha256": "51675a662f89604d25a1675354893257889d6d87b9d102b804b75f198406d332",
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "20c81ffa383c65adbc34501ca7e231a8f9558e565cfa798e20fc512a0a8050cc"
+    }
+  ],
+  "passed": 8,
+  "freshProcesses": 8,
+  "successfulResultsByteIdentical": true,
+  "negativeOutputsAbsent": true,
+  "preexistingOutputPreserved": true,
+  "runtimeSha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
+  "cliSha256": "5e684f75792948de2dd9258c857699e2ec4092254204f281b866c87dd9399248",
+  "inputSha256": "56bc79c960e439f48a575109c2887ac5412540ec6648fd4bdb7b0a4414d7debd",
+  "filesystemRaceProtection": false,
+  "loadedModulesAttested": false,
+  "stateRootRecomputed": false,
+  "productionAccepted": false
+}

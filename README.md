@@ -44,7 +44,7 @@ production remains blocked until the protocol evidence, unresolved specification
 
 ## current build -- 2026-10-26
 
-this is a community implementation/reference alpha, not an official caw release. the frontend remains a local simulation; the package remains `0.1.0-alpha.46`. public test deployment and production are blocked. the evidence baseline before this update is [`4d63573`](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/commit/4d635735cbdaffd1914a89aa63f9047ed484561a); the new selected-executor check is linked below.
+this is a community implementation/reference alpha, not an official caw release. the frontend remains a local simulation; the package remains `0.1.0-alpha.46`. public test deployment and production are blocked. the evidence baseline before this update is [`ab0ebc0`](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/commit/ab0ebc0f5ed08a7ce486f1bec8488702fa999ff7); the new fresh-process check is linked below.
 
 the current engineering focus is recovery another builder can inspect and reproduce: selected state proofs, bounded signed-transaction replay, and the identity of the code doing that replay. these are separate evidence gates, not a claim that the protocol is complete.
 
@@ -58,12 +58,13 @@ the current engineering focus is recovery another builder can inspect and reprod
 | [selected entrypoints](docs/ENTRYPOINT_OBSERVATION.md) | 12 default-mode resolutions; cross-mode Address constructor mismatch reproduced | complete transitive loader graph, custom conditions and immutable execution snapshot |
 | [ESM replay comparison](docs/ESM_REPLAY_COMPARISON.md) | same 66 groups pass with tx/block ESM imports; eight result records match the retained mixed-mode run | bounded fixture comparison, not general engine equivalence or full loaded-code identity |
 | [selected executor](docs/SELECTED_EXECUTOR.md) | 13 focused groups; five signed outcomes/gas values and identity/input rejection cases | trusted gate/host, module caches, concurrent replacement, full roots and transitive dependency identity |
+| [fresh-process execution](docs/EXECUTOR_PROCESS.md) | eight separate processes; two identical result files, five no-output rejections and one preserved-output refusal | trusted supervisor/host, filesystem races, complete result validation and independent reproduction |
 
-these records have different scopes and are not added into one total. the 1241 ordinary checks and 66 replay groups remain retained prior runs for this update; the 13 selected-executor groups are reported separately. the earlier alpha.41 record separately contains 65 Python checks. execution experiments do not change the recovery receipt into a claim of complete execution verification; `productionAccepted` remains false.
+these records have different scopes and are not added into one total. the 1241 ordinary checks, 66 replay groups and 13 selected-executor groups remain retained prior runs; this update adds eight separately reported process cases. the earlier alpha.41 record separately contains 65 Python checks. execution experiments do not change the recovery receipt into a claim of complete execution verification; `productionAccepted` remains false.
 
 developers can start with the [review guide](docs/REVIEW_GUIDE.md), [shared adapter](docs/SHARED_WITNESS_ADAPTER.md), [structured outcomes](docs/REPLAY_OUTCOMES.md) and [source-manifest gate](docs/MANIFEST_REPLAY_GATE.md). the gate requires a separately selected expected digest; regenerating and automatically trusting a new manifest is not verification. the frontend/offline suite has no dependency-install step; engine experiments have their own pinned installation and reproduction instructions.
 
-next: test a fresh-process execution boundary for the selected executor, then address loaded-code identity and the remaining recovery trust boundaries. full state-root comparison, public acquisition/anchor authentication, broader wallet authority, transport/storage replacement and independent builder recovery remain open. the [roadmap](docs/ROADMAP.md) retains the detailed sequence and failed-evidence boundaries.
+next: independently validate process results against retained input and source selections before accepting them, then address loaded-code identity and the remaining recovery trust boundaries. full state-root comparison, public acquisition/anchor authentication, broader wallet authority, transport/storage replacement and independent builder recovery remain open. the [roadmap](docs/ROADMAP.md) retains the detailed sequence and failed-evidence boundaries.
 
 ## what makes the build different
 

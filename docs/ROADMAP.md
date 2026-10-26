@@ -275,3 +275,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Selected executor gate -- 2026-10-26
 
 [13 focused groups](SELECTED_EXECUTOR.md) exercise a fixed London executor and two-file source selection. No caller callback is accepted. Existing base manifest remains unchanged. File-URL/module-cache and cooperating-host assumptions remain explicit; next a fresh-process boundary. README updated; prior66/1241results not rerun.
+
+
+### Fresh-process execution -- 2026-10-26
+
+[Eight fresh processes](EXECUTOR_PROCESS.md) reproduce identical normal output and refuse bad selections/input or output overwrite. New CLI enforces bounded strict input and exclusive result creation. This is not immutable execution or crash-durable publication. Next strict result consumer bound to separately retained input/selections and successful process completion. README updated; prior suites not rerun.
