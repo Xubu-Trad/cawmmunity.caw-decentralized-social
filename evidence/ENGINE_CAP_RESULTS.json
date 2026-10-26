@@ -1,0 +1,24 @@
+{
+  "checks": 4,
+  "passed": 4,
+  "gas": "24810",
+  "slotBefore": "7",
+  "slotAfter": "0",
+  "refundCounter": "9600",
+  "refundApplied": "6202",
+  "writesBeforeMissingSlot": 4,
+  "scope": "signed two-slot clear, binding refund cap and acquired account/receipt/storage comparison, nonce/balance refusal, missing slot permanent failure",
+  "stateRootRecomputed": false,
+  "deploymentVerified": false,
+  "publicChainAuthenticated": false,
+  "productionAccepted": false,
+  "schema": "caw-engine-cap/1",
+  "baseline": "03d54a3cb845e63386896cfc8affc31095e2673a",
+  "source_sha256": {
+    "experiments/execution-engine/signed-cap-replay.mjs": "faa3253f7c73ad12c6e82f2af7ed31db830379d15d91b4ead2d54359bf6dca97",
+    "experiments/signed-cap-fixture/acquire.py": "66cc10cbc305ded5866bd29eb321f7492b7901572c39c8075921d59b690fcdb7",
+    "experiments/signed-cap-fixture/project.py": "c51f4178873b8f9158d6e60a5485ab2b123e787dd7462ba024145be897e842a9",
+    "experiments/signed-cap-fixture/fixture.json": "ee1bffa5a1606654847d10781ee166d9935996197a4dfe6edd520a6e4f23e72e"
+  },
+  "log_sha256": "7551785dfc4bb947b0b4700a0de842a69f2d249f4e77b7d487e43117596fdb77"
+}

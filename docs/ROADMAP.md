@@ -210,3 +210,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Signed storage-clear refund comparison
 
 [Four bounded storage-clear cases](ENGINE_CLEAR_REPLAY.md) match a4800 refund and21206 net gas against captured receipts/accounts. Refund cap not binding; capped-refund evidence is next. No production acceptance.
+
+
+### Signed binding refund-cap comparison
+
+[Four bounded cap cases](ENGINE_CAP_REPLAY.md) match a9600 counter capped to6202 and24810 charged gas. Missing second-slot evidence fails after the first write. Next shared adapter review; no production acceptance.
