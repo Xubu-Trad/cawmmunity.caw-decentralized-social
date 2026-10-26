@@ -1,6 +1,6 @@
 # Review the alpha
 
-The review target is a synthetic frontend and reference model. It includes a separate compiled local experiment joining fixed test NFT authority, signed paid posting and record reconstruction. Authentic registration and production settlement remain unfinished. It contains no wallet connector or production backend. Application code is in public/, server.mjs and scripts/; the separate Node readers and fixed fixtures are in reference/; 50 test files are in tests/.
+The review target is a synthetic frontend and reference model. It includes a separate compiled local experiment joining fixed test NFT authority, signed paid posting and record reconstruction. Authentic registration and production settlement remain unfinished. It contains no wallet connector or production backend. Application code is in public/, server.mjs and scripts/; the separate Node readers and fixed fixtures are in reference/; 73 test files are in tests/.
 
 ## Reproduce
 
@@ -81,3 +81,6 @@ Read [input admission](INPUT_BOUNDARY.md) and [privacy boundaries](PRIVACY_BOUND
 Read [registry permissions](PAID_REGISTRY_PERMISSIONS.md) for direct approvals/transfers bound to recovered senders, pinned fixture bytes and the explicit execution boundary. Retained transfers and synthetic approval cases have separate coverage; no production authority follows.
 
 Read [bounded offline recovery](RECOVERY_BUNDLE.md) for the separately selected four-file package, fresh-directory command and explicit unproved trust boundaries.
+
+
+Use [local access](LOCAL_ACCESS.md) for the separate frontend and selected-executor commands. The frontend remains simulated; protocol checks are explicitly invoked and use a separate pinned dependency installation.

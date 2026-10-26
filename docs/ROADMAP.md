@@ -280,3 +280,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Fresh-process execution -- 2026-10-26
 
 [Eight fresh processes](EXECUTOR_PROCESS.md) reproduce identical normal output and refuse bad selections/input or output overwrite. New CLI enforces bounded strict input and exclusive result creation. This is not immutable execution or crash-durable publication. Next strict result consumer bound to separately retained input/selections and successful process completion. README updated; prior suites not rerun.
+
+
+### Local access -- 2026-10-26
+
+[Local protocol and alpha access](LOCAL_ACCESS.md) documented; protocol:check exposes the selected-executor command.13groups rerun successfully from the local repo; loopback entrance HTTP200. No deployment or frontend/engine connection. Strict process-result consumer remains next.
