@@ -1,0 +1,49 @@
+{
+  "schema": "caw-esm-replay-comparison/1",
+  "baseline": "9fc1b4396db6ef1515cdb9de1c1473f874572e0e",
+  "checks": 66,
+  "passed": 66,
+  "reportRecordsCompared": 8,
+  "reportsEqual": true,
+  "baselineLogSha256": "6b307ef4cfdd376d93418d6dffdac95ee53fd6e68b693ce4c56279bf2d599abf",
+  "candidateLogSha256": "a9a7a8f09bd6764450bf34e0869892c8a51199627b08aed910a1437be3405dd3",
+  "sourceIdentity": {
+    "sourceSha256": {
+      "shared-signed-transfer-replay.mjs": "1da7db78e17f3d241d4987cdc62dd7422aeee431eb180f4b4c75ec17ab912c45",
+      "shared-missing-witness-replay.mjs": "1e548cee6e1e44d0cc726f6fedc07eebe3f0abf287f36dce9371e5a90bd10554",
+      "shared-signed-contract-replay.mjs": "b6462d1b2869960916fa47e413486a5af581d0bde623665569e19de47ff968fa",
+      "shared-signed-revert-replay.mjs": "fd04f11476d2670ad342061793282ec77e770b955082abd68ec178e6b947dcd7",
+      "shared-signed-clear-replay.mjs": "40a83f53c0dccc883947d8a0b96ffeed8d43d8d7fcbe5a9c48ab04e4e0876a84",
+      "shared-signed-cap-replay.mjs": "3dea6cabdc78b9d8b4e2c96b7635c6daf0cc207136832e4d17ebbff2a0d2dc01",
+      "shared-adapter-check.mjs": "21456f3e2a74f08fdf3181d81550411aa09cb1515e875c97be3b8f74b867aab7",
+      "manifest-replay-check.mjs": "f0629d2c60ba6ccb10342e485aa8d06bfe8305982ee77b9fdcb8c6b311c6df7a"
+    },
+    "generatedSha256": {
+      "esm-shared-signed-transfer-replay.mjs": "dc487e5c75f511093a50fdeb5b1921c06b36a1ae56a074332b1a3d0829b8742e",
+      "esm-shared-missing-witness-replay.mjs": "29234bc9268614fb4e7b9883b243580fa1d33091469d20e89b9ae1bc08061b13",
+      "esm-shared-signed-contract-replay.mjs": "e4e3519848a0f5aeebec64b9bae030a4c7cbcd56f836bb8bba653867d4b42a8c",
+      "esm-shared-signed-revert-replay.mjs": "ea6a53426803ca2fe09e317002d76c96fa104d79d5d08f92f8a1eee057a2fc71",
+      "esm-shared-signed-clear-replay.mjs": "066fbb3065e0ce61b7db683e46a47f964729d9cbbb1b18af4a82e2ee16c769a6",
+      "esm-shared-signed-cap-replay.mjs": "0699555d8fea29d368c56521a8a55625750e58b4300290dd9b72a9dc6b0f39c6",
+      "esm-shared-adapter-check.mjs": "2df6ac7029c17f60d4e7c04db3f94d891903a4c399380922dc989fec83c799d6",
+      "esm-manifest-replay-check.mjs": "9b5e0c55e4d99d17e4f732f9b58f502a87a19cae2b984def72f2644b80d49de4"
+    },
+    "resolverSha256": "24a20914b0befd88d0436c9a3d3af66372771963bf6db6f81eca580aa13f7cc3",
+    "transform": "Only tx/block import mode changed; local harness imports routed to generated counterparts. Original source files preserved."
+  },
+  "entrypoints": [
+    {
+      "esmEntrypoint": "@ethereumjs/tx",
+      "sha256": "90951966be632135644698b0d1802098cfbf7afa8741211c010a35bd6fb6543c"
+    },
+    {
+      "esmEntrypoint": "@ethereumjs/block",
+      "sha256": "e1ee0890d7bb866c97c15407379d7653555d680a76454fa500dbc7feef44da53"
+    }
+  ],
+  "scope": "tx/block ESM import variant of eight pinned retained harnesses; same fixtures, adapter, source manifest and assertions",
+  "fullDependencyGraphVerified": false,
+  "stateRootRecomputed": false,
+  "publicChainAuthenticated": false,
+  "productionAccepted": false
+}

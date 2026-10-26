@@ -265,3 +265,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Selected entrypoints and current README -- 2026-10-26
 
 [12 selected default-mode resolutions](ENTRYPOINT_OBSERVATION.md) agree with the pinned export paths; separate ESM/CommonJS Address identities reproduced. This is not a full transitive loader proof. Next compare a single-mode signed replay harness against retained outcomes before changing existing imports. README now introduces the project and indexes current evidence with separate counts and unresolved release gates. Keep that summary current with each engineering publication.
+
+
+### ESM replay comparison -- 2026-10-26
+
+[The tx/block ESM variant](ESM_REPLAY_COMPARISON.md) passes the same66groups and emits eight unchanged result records relative to the retained mixed-mode run. Original harnesses preserved. No complete-loader or full-state-root proof. Next explicitly bind executor/harness identity; update README with each engineering publication.
