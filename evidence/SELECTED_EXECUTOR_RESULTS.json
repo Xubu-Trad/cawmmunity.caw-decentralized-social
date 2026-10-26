@@ -1,0 +1,46 @@
+{
+  "schema": "caw-selected-executor-check/1",
+  "checks": 13,
+  "passed": 13,
+  "results": [
+    {
+      "fixture": "signed-transfer-fixture",
+      "kind": "execution-completed",
+      "gasUsed": "21000"
+    },
+    {
+      "fixture": "signed-contract-fixture",
+      "kind": "execution-completed",
+      "gasUsed": "26012"
+    },
+    {
+      "fixture": "signed-revert-fixture",
+      "kind": "execution-reverted",
+      "gasUsed": "26018"
+    },
+    {
+      "fixture": "signed-clear-fixture",
+      "kind": "execution-completed",
+      "gasUsed": "21206"
+    },
+    {
+      "fixture": "signed-cap-fixture",
+      "kind": "execution-completed",
+      "gasUsed": "24810"
+    }
+  ],
+  "executorManifestSha256": "73f50a25dced2047c87c30a4337bcdd6a9730c1352c2164ee998ae36df55fc50",
+  "sourceManifestSha256": "81c71fc5cbeda8eebe8207a3a4a83320a796df5946d2d6017c8f06114a65ec0f",
+  "stateRootRecomputed": false,
+  "loadedModulesAttested": false,
+  "productionAccepted": false,
+  "baseline": "4d635735cbdaffd1914a89aa63f9047ed484561a",
+  "sourceSha256": {
+    "selected-london-executor.mjs": "7fe792615fc7bc5d518beb08a213c60a0fd121b33f8473691b303413e29da167",
+    "selected-executor-gate.mjs": "e85fde4b6998ce9d183a65f4a06f76ace92230a0352125dfe501c6668a302fc6",
+    "selected-executor-check.mjs": "e75e7b3d0a8cc5cf4b046cf39f9ccc7ea95ad711433e3bec9a0b9dbe037f33ee",
+    "executor-selection.json": "73f50a25dced2047c87c30a4337bcdd6a9730c1352c2164ee998ae36df55fc50"
+  },
+  "logSha256": "fe2b06ccab1c8caf6d457b357ba109e5d388e8053d67f10ba46956c1402d66ab",
+  "runtimeSha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5"
+}

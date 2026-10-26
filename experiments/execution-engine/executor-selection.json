@@ -1,0 +1,17 @@
+{
+  "schema": "caw-local-source-manifest/1",
+  "files": [
+    {
+      "root": "engine",
+      "path": "selected-london-executor.mjs",
+      "size": 1453,
+      "sha256": "7fe792615fc7bc5d518beb08a213c60a0fd121b33f8473691b303413e29da167"
+    },
+    {
+      "root": "engine",
+      "path": "esm-package-entry.mjs",
+      "size": 983,
+      "sha256": "24a20914b0befd88d0436c9a3d3af66372771963bf6db6f81eca580aa13f7cc3"
+    }
+  ]
+}

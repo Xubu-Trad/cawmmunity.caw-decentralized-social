@@ -270,3 +270,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### ESM replay comparison -- 2026-10-26
 
 [The tx/block ESM variant](ESM_REPLAY_COMPARISON.md) passes the same66groups and emits eight unchanged result records relative to the retained mixed-mode run. Original harnesses preserved. No complete-loader or full-state-root proof. Next explicitly bind executor/harness identity; update README with each engineering publication.
+
+
+### Selected executor gate -- 2026-10-26
+
+[13 focused groups](SELECTED_EXECUTOR.md) exercise a fixed London executor and two-file source selection. No caller callback is accepted. Existing base manifest remains unchanged. File-URL/module-cache and cooperating-host assumptions remain explicit; next a fresh-process boundary. README updated; prior66/1241results not rerun.
