@@ -250,3 +250,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Expected source manifest gate
 
 [66 grouped checks](MANIFEST_REPLAY_GATE.md) verify21 local files against an explicitly selected manifest before replay. Installed dependencies/runtime and public chain remain unattested.
+
+
+### Installed engine package payloads
+
+[17 pinned archive comparisons](INSTALLED_PACKAGE_COMPARISON.md) match installed payloads; generated launchers remain separately unverified. Next dependency-resolution links and runtime identity. No full-installation attestation.

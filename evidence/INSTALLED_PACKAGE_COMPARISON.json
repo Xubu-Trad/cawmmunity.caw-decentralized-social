@@ -1,0 +1,276 @@
+{
+  "schema": "caw-installed-package-comparison/1",
+  "lockSha256": "fae68803a13e3cfa804cb872ca4872f65e844adb21c9d844fa5fb6804d0e6773",
+  "packages": [
+    {
+      "name": "@ethereumjs/binarytree",
+      "version": "10.1.3",
+      "integrity": "sha512-XWHuNNVZVtSfr6/2UbAhCXf848s4rNKUuVKFNG6O18lz0anuaMiIADfNQJ5DOhOfflZVIPRvGWegDMoU6xRaBA==",
+      "archiveSha256": "604bb67436cbdeae05c3481b1c52dd3d233c5db11bf96fc580fd8a66068dfc5e",
+      "files": 124,
+      "bytes": 385018,
+      "installationExtras": [
+        {
+          "path": "node_modules/.bin/rlp",
+          "sha256": "9d023f388f227a486ae411286848db7d27ae50081f9460b171b04a3ba2ed90df",
+          "verifiedAgainstArchive": false
+        },
+        {
+          "path": "node_modules/.bin/rlp.cmd",
+          "sha256": "616f41ac7bfcbf031bc1b9b328248ae8101eb37c8c6dda3babb6cebb671c79df",
+          "verifiedAgainstArchive": false
+        },
+        {
+          "path": "node_modules/.bin/rlp.ps1",
+          "sha256": "53c99ef9bf0fcdaba1cb2ff27fbe1b730153a10b306324c2ac22cacc4a086c06",
+          "verifiedAgainstArchive": false
+        }
+      ]
+    },
+    {
+      "name": "@ethereumjs/block",
+      "version": "10.1.3",
+      "integrity": "sha512-6c0U1T1VMv44l7WXL6RWDiP26o/Cv53Z+9C07+5WJHNrYM7S2S/DsOCVog95Hhh0E9KCRjoCu3bzSsxQynu8Og==",
+      "archiveSha256": "914dd546e6836e7e4e91b442abba1d3fc20ac3ec8360a1c1b351b9d9bbb9725e",
+      "files": 133,
+      "bytes": 638194,
+      "installationExtras": [
+        {
+          "path": "node_modules/.bin/rlp",
+          "sha256": "9d023f388f227a486ae411286848db7d27ae50081f9460b171b04a3ba2ed90df",
+          "verifiedAgainstArchive": false
+        },
+        {
+          "path": "node_modules/.bin/rlp.cmd",
+          "sha256": "616f41ac7bfcbf031bc1b9b328248ae8101eb37c8c6dda3babb6cebb671c79df",
+          "verifiedAgainstArchive": false
+        },
+        {
+          "path": "node_modules/.bin/rlp.ps1",
+          "sha256": "53c99ef9bf0fcdaba1cb2ff27fbe1b730153a10b306324c2ac22cacc4a086c06",
+          "verifiedAgainstArchive": false
+        }
+      ]
+    },
+    {
+      "name": "@ethereumjs/common",
+      "version": "10.1.3",
+      "integrity": "sha512-ECWwbc4s8Ji7U0mkfZP6gIDy1FxXe0ZyVOTt0adkztPQRzX2DbH2ul7a83DSS8qYAiG6//vVXMkP60TyYOnv8Q==",
+      "archiveSha256": "7ea8baa62d0276c3969e474c407dee6330143cfd4e55df6c4897218a10422ee8",
+      "files": 115,
+      "bytes": 637085,
+      "installationExtras": []
+    },
+    {
+      "name": "@ethereumjs/evm",
+      "version": "10.1.3",
+      "integrity": "sha512-7C6oo3f1rvtsFAQOURcmEkyUTBTePBbQUgWTfzrual8kbb0R8053rY+PolvFDETfVSK/TrPzZFhFe5sgz+Clgw==",
+      "archiveSha256": "d4648876d3b2a8ca5ef1f1414bbfd2bfe8feb7fa4f35d35e48090adc4cf50236",
+      "files": 583,
+      "bytes": 2946994,
+      "installationExtras": []
+    },
+    {
+      "name": "@ethereumjs/mpt",
+      "version": "10.1.3",
+      "integrity": "sha512-pN43KoH8V0afpIltMFJf0tSSpX9Xssp9LGAyamnYc93oe0r8bRafeizPWR9aDsS+WXSg/IWQscoZ3xTybQSYoA==",
+      "archiveSha256": "d056bf480bb5646081113e0d571728ecb3b5da748bbda3d074251cb66027a321",
+      "files": 204,
+      "bytes": 666974,
+      "installationExtras": [
+        {
+          "path": "node_modules/.bin/rlp",
+          "sha256": "9d023f388f227a486ae411286848db7d27ae50081f9460b171b04a3ba2ed90df",
+          "verifiedAgainstArchive": false
+        },
+        {
+          "path": "node_modules/.bin/rlp.cmd",
+          "sha256": "616f41ac7bfcbf031bc1b9b328248ae8101eb37c8c6dda3babb6cebb671c79df",
+          "verifiedAgainstArchive": false
+        },
+        {
+          "path": "node_modules/.bin/rlp.ps1",
+          "sha256": "53c99ef9bf0fcdaba1cb2ff27fbe1b730153a10b306324c2ac22cacc4a086c06",
+          "verifiedAgainstArchive": false
+        }
+      ]
+    },
+    {
+      "name": "@ethereumjs/rlp",
+      "version": "10.1.3",
+      "integrity": "sha512-d795YWkN6O8EJh/PgJ2zZKCdBMl8OlqkuVQESoidH666gaFtUuJ01jDtiuqfyOqTNcTdGhHi8LkQv1WEZzvZZw==",
+      "archiveSha256": "e308f7e81b2b518a3d4e9cac4dd2e08d00334be8efaa63c298079cd28cf3d541",
+      "files": 26,
+      "bytes": 150158,
+      "installationExtras": []
+    },
+    {
+      "name": "@ethereumjs/statemanager",
+      "version": "10.1.3",
+      "integrity": "sha512-d56NBae8xjh/ZY+orqvIfE30WLHOn2okacUekbM9J7VZrokjxQ2800sb6K6srffoSekcgbHxIWFJ3r+81jzrrA==",
+      "archiveSha256": "b131928c81f56f0be7c836fda2cabb359363d280a433f83a98a6633c7fafedf9",
+      "files": 178,
+      "bytes": 819788,
+      "installationExtras": [
+        {
+          "path": "node_modules/.bin/rlp",
+          "sha256": "9d023f388f227a486ae411286848db7d27ae50081f9460b171b04a3ba2ed90df",
+          "verifiedAgainstArchive": false
+        },
+        {
+          "path": "node_modules/.bin/rlp.cmd",
+          "sha256": "616f41ac7bfcbf031bc1b9b328248ae8101eb37c8c6dda3babb6cebb671c79df",
+          "verifiedAgainstArchive": false
+        },
+        {
+          "path": "node_modules/.bin/rlp.ps1",
+          "sha256": "53c99ef9bf0fcdaba1cb2ff27fbe1b730153a10b306324c2ac22cacc4a086c06",
+          "verifiedAgainstArchive": false
+        }
+      ]
+    },
+    {
+      "name": "@ethereumjs/tx",
+      "version": "10.1.3",
+      "integrity": "sha512-5uk9qB2MjyF4axL6GGPvYODe3uR/h6k36boDbvjH81WYFphw/JAIrI1thkWQX4BCyF8bi6suxORhi+vDc3lPlg==",
+      "archiveSha256": "af638e79696a079ecd4b4903818d89f0c6afea811dbf2e491368276959558ad1",
+      "files": 277,
+      "bytes": 1071644,
+      "installationExtras": [
+        {
+          "path": "node_modules/.bin/rlp",
+          "sha256": "9d023f388f227a486ae411286848db7d27ae50081f9460b171b04a3ba2ed90df",
+          "verifiedAgainstArchive": false
+        },
+        {
+          "path": "node_modules/.bin/rlp.cmd",
+          "sha256": "616f41ac7bfcbf031bc1b9b328248ae8101eb37c8c6dda3babb6cebb671c79df",
+          "verifiedAgainstArchive": false
+        },
+        {
+          "path": "node_modules/.bin/rlp.ps1",
+          "sha256": "53c99ef9bf0fcdaba1cb2ff27fbe1b730153a10b306324c2ac22cacc4a086c06",
+          "verifiedAgainstArchive": false
+        }
+      ]
+    },
+    {
+      "name": "@ethereumjs/util",
+      "version": "10.1.3",
+      "integrity": "sha512-PhezOVe4DFaC+QLIsnK/tiOaXjpjS2F9AH4Ez0EfWevFw9NWNSg95l7I0dWuHF0B7v9odm2Ijqwo0EnARXtUmA==",
+      "archiveSha256": "4a6f8ff3c4330a57dff5e9f2e6c31ff55312e0cb564eb03d5c34e4e97e67beed",
+      "files": 241,
+      "bytes": 993323,
+      "installationExtras": [
+        {
+          "path": "node_modules/.bin/rlp",
+          "sha256": "9d023f388f227a486ae411286848db7d27ae50081f9460b171b04a3ba2ed90df",
+          "verifiedAgainstArchive": false
+        },
+        {
+          "path": "node_modules/.bin/rlp.cmd",
+          "sha256": "616f41ac7bfcbf031bc1b9b328248ae8101eb37c8c6dda3babb6cebb671c79df",
+          "verifiedAgainstArchive": false
+        },
+        {
+          "path": "node_modules/.bin/rlp.ps1",
+          "sha256": "53c99ef9bf0fcdaba1cb2ff27fbe1b730153a10b306324c2ac22cacc4a086c06",
+          "verifiedAgainstArchive": false
+        }
+      ]
+    },
+    {
+      "name": "@ethereumjs/vm",
+      "version": "10.1.3",
+      "integrity": "sha512-tnhWnQOgA6AkgWTjDg2dcF11tlTV9eOq/VJdyzo06DwN7PzKHDEacI3tge+40Izqt9KqX16Nc37Agd8dqhDYMw==",
+      "archiveSha256": "d70cc29c6e94f59fee9dde8466b60a3df18f7de7dc0810830dc926e15c489b44",
+      "files": 115,
+      "bytes": 969496,
+      "installationExtras": [
+        {
+          "path": "node_modules/.bin/rlp",
+          "sha256": "9d023f388f227a486ae411286848db7d27ae50081f9460b171b04a3ba2ed90df",
+          "verifiedAgainstArchive": false
+        },
+        {
+          "path": "node_modules/.bin/rlp.cmd",
+          "sha256": "616f41ac7bfcbf031bc1b9b328248ae8101eb37c8c6dda3babb6cebb671c79df",
+          "verifiedAgainstArchive": false
+        },
+        {
+          "path": "node_modules/.bin/rlp.ps1",
+          "sha256": "53c99ef9bf0fcdaba1cb2ff27fbe1b730153a10b306324c2ac22cacc4a086c06",
+          "verifiedAgainstArchive": false
+        }
+      ]
+    },
+    {
+      "name": "@js-sdsl/ordered-map",
+      "version": "4.4.2",
+      "integrity": "sha512-iUKgm52T8HOE/makSxjqoWhe95ZJA1/G1sYsGev2JDKUSS14KAgg1LHb+Ba+IPow0xflbnSkOsZcO08C7w1gYw==",
+      "archiveSha256": "445977543e62c08dbeb285a177b05d484485bcd4fda80ad5014d29c454f47476",
+      "files": 14,
+      "bytes": 400201,
+      "installationExtras": []
+    },
+    {
+      "name": "@noble/curves",
+      "version": "2.4.0",
+      "integrity": "sha512-P4/62zrgfH33CneE3Dn4WhJVA22YUU0eR51wKIan4NVRvwsA0YnPTwWGpNbpuacSujmSFLvyzpyuR30+fbq2Ew==",
+      "archiveSha256": "55279c71b0201d6c0e58d0206d15825359e02a3932f326ba7b7909ac2d334aa9",
+      "files": 72,
+      "bytes": 1590210,
+      "installationExtras": []
+    },
+    {
+      "name": "@noble/hashes",
+      "version": "2.4.0",
+      "integrity": "sha512-X5XaVWZIBCT7HHZGm5I7ZQXDwLG+bGXuSrMQAW+7Zvl87h1kmc1ZB1VSRJcpUfoUrGQp4Fkoxm5kZ+Ms+aW+eA==",
+      "archiveSha256": "e1946149b780017b2564fcc092cb01c04e1d7f20627d0296c17da8868f4436dc",
+      "files": 60,
+      "bytes": 691646,
+      "installationExtras": []
+    },
+    {
+      "name": "debug",
+      "version": "4.4.3",
+      "integrity": "sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==",
+      "archiveSha256": "89c1ac9c946ee8905a875837114528e97eeae35e03be3190584b2216af43e4a7",
+      "files": 7,
+      "bytes": 42793,
+      "installationExtras": []
+    },
+    {
+      "name": "eventemitter3",
+      "version": "5.0.4",
+      "integrity": "sha512-mlsTRyGaPBjPedk6Bvw+aqbsXDtoAyAzm5MO7JgU+yVRyMQ5O8bD4Kcci7BS85f93veegeCPkL8R4GLClnjLFw==",
+      "archiveSha256": "21d4a36175672b9e6640c39a68613af73f9a4c47a4a4da39993e8cd085564eb6",
+      "files": 12,
+      "bytes": 74386,
+      "installationExtras": []
+    },
+    {
+      "name": "lru-cache",
+      "version": "11.0.2",
+      "integrity": "sha512-123qHRfJBmo2jXDbo/a5YOQrJoHF/GNQTLzQ5+IdK5pWpceK17yRc6ozlWd25FxvGKQbIUs91fDFkXmDHTKcyA==",
+      "archiveSha256": "2b73e2cb4351c39fb91b66251292b7bb0fabb5a124fef7060d6e1cbe6ed4a7bd",
+      "files": 17,
+      "bytes": 807860,
+      "installationExtras": []
+    },
+    {
+      "name": "ms",
+      "version": "2.1.3",
+      "integrity": "sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==",
+      "archiveSha256": "f6616e15e530ed552f9daa2d3ce71963947c6bc7c98c9b64fd3e673fd02622c6",
+      "files": 4,
+      "bytes": 6721,
+      "installationExtras": []
+    }
+  ],
+  "packagePayloadComparisonComplete": true,
+  "installationFullyAttested": false,
+  "runtimeAttested": false,
+  "resolutionGraphVerified": false,
+  "productionAccepted": false
+}
