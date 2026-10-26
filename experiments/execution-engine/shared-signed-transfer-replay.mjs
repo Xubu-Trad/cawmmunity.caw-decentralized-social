@@ -45,7 +45,9 @@ for(const d of expected.dependencies){const actual=e.overlay.account(d.state.pro
 // They test transaction validity enforcement, not an alternative authenticated state.
 for(const kind of ['nonce','balance']){
  const bad=environment(),a=bad.overlay.account(f.accounts[0]);
- bad.overlay.putAccount(f.accounts[0],kind==='nonce'?'0x1':a.nonce,kind==='balance'?'0x0':a.balance);
+ const changed=await bad.stateManager.getAccount(createAddressFromString(f.accounts[0]));
+ changed.nonce=BigInt(kind==='nonce'?'0x1':a.nonce);changed.balance=BigInt(kind==='balance'?'0x0':a.balance);
+ await bad.stateManager.putAccount(createAddressFromString(f.accounts[0]),changed);
  const before=bad.overlay.account(f.accounts[0]);
  await assert.rejects(execute(bad),kind==='nonce'?/nonce/i:/funds|balance/i);
  assert.deepEqual(bad.overlay.account(f.accounts[0]),before);bad.healthy();

@@ -23,4 +23,20 @@ for(const method of ['putCode','deleteAccount','clearStorage','getStateRoot','se
  await assert.rejects(e.stateManager.putStorage(a,k,hexToBytes('0x01')));
  await assert.rejects(e.stateManager.checkpoint());
 }
-console.log(JSON.stringify({checks:34,passed:34,scope:'26 acquired replay cases through shared adapter plus eight unsupported-method poison checks',productionAccepted:false}));
+
+const d=input.dependencies.selection.dependencies[0],a=createAddressFromString(d.address),k=hexToBytes(d.storageKeys[0]);
+const isolated=create(input);
+assert.equal(isolated.session,undefined);assert.equal(isolated.overlay.putAccount,undefined);
+assert.equal(isolated.stateManager.accountStack,undefined);assert.equal(isolated.stateManager.topAccountStack,undefined);
+assert.ok(Object.isFrozen(isolated)&&Object.isFrozen(isolated.overlay)&&Object.isFrozen(isolated.stateManager));
+assert.ok(Object.isFrozen(isolated.stateManager.originalStorageCache));
+assert.throws(()=>{isolated.stateManager.getAccount=()=>undefined;},TypeError);
+assert.throws(()=>{isolated.stateManager.originalStorageCache.get=()=>new Uint8Array();},TypeError);
+await isolated.stateManager.putStorage(a,k,hexToBytes('0x01'));
+const events=isolated.storageWrites;assert.ok(Object.isFrozen(events)&&Object.isFrozen(events[0]));
+assert.throws(()=>{events[0].value='0xff';},TypeError);assert.equal(isolated.storageWrites[0].value,'0x01');
+const malformed=create(input);await assert.rejects(malformed.stateManager.getAccount(null));
+assert.throws(()=>malformed.healthy());assert.throws(()=>malformed.overlay.account(d.address));
+await assert.rejects(malformed.stateManager.originalStorageCache.get(a,k));
+const closed=create(input);closed.overlay.discard();await assert.rejects(closed.stateManager.getAccount(a));assert.throws(()=>closed.healthy());
+console.log(JSON.stringify({checks:39,passed:39,scope:'34 regression groups plus frozen surfaces, callback replacement, immutable diagnostics, malformed callback poison, closed lifecycle',productionAccepted:false}));

@@ -220,3 +220,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Shared bounded witness adapter
 
 [34 grouped checks](SHARED_WITNESS_ADAPTER.md) pass through a shared experimental adapter. Stronger tests found and fixed storage access after unsupported-operation failure. Next complete interface/lifecycle review; no production acceptance.
+
+
+### Isolated witness adapter interface
+
+[39 grouped checks](SHARED_WITNESS_ADAPTER.md) pass with an explicit frozen callback interface and no inherited cache stacks. Next callback edge cases and diagnostic bounds; no production acceptance.

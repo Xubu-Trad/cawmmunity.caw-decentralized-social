@@ -1,20 +1,21 @@
 {
   "schema": "caw-shared-adapter/1",
-  "baseline": "ebf949ae1f3305223d7f6dc541c381b67db5a6ed",
-  "checks": 34,
-  "passed": 34,
+  "baseline": "879ecefd6d8b328fca04efdadae380fee9b5211b",
+  "checks": 39,
+  "passed": 39,
   "replayed_case_groups": 26,
   "unsupported_method_groups": 8,
+  "isolation_groups": 5,
   "source_sha256": {
-    "experiments/execution-engine/witness-adapter.mjs": "52a4c39c3a90c75d3192c56579dfc9ebe590494f56827263d0cac7753f394690",
-    "experiments/execution-engine/shared-adapter-check.mjs": "a76e570ebceec23ca1fae0baaaceadca22ad08379f0768fe1f4b62beee3ba565",
-    "experiments/execution-engine/shared-signed-transfer-replay.mjs": "522c9d7e840b6144d579bde6503884a49b1bb792087c22e858f604714c2f245a",
-    "experiments/execution-engine/shared-missing-witness-replay.mjs": "eef3456dfeac6c251e5dc897cc317a675901a59ee1333c47751552135768e115",
-    "experiments/execution-engine/shared-signed-contract-replay.mjs": "fc8288aa6c547aa7e144f9a6ae8c5547f4a674abaa968573b02a44d444ffbf25",
-    "experiments/execution-engine/shared-signed-revert-replay.mjs": "7ea6f52ee67ebb46ae440dc3227447b97893119e4ede2f34c96431277fb535c4",
-    "experiments/execution-engine/shared-signed-clear-replay.mjs": "82966f1d51a55df2d969aa0286e121e99750d98778157d15b23a70799938ca0e",
-    "experiments/execution-engine/shared-signed-cap-replay.mjs": "a8e69364eed362a2922d0fbd23518457cb1d0f25044b102855410dfb2da5ed38"
+    "experiments/execution-engine/witness-adapter.mjs": "84f98985bb544bb97358f57b37aee74f78b8e2cd038494170fe5fd9aa4b7d991",
+    "experiments/execution-engine/shared-adapter-check.mjs": "1f5688a799eb9d3a3fa4ca5036dc35742c0716d5b40c37088b3132a6fdca9dcf",
+    "experiments/execution-engine/shared-signed-transfer-replay.mjs": "1da7db78e17f3d241d4987cdc62dd7422aeee431eb180f4b4c75ec17ab912c45",
+    "experiments/execution-engine/shared-missing-witness-replay.mjs": "1e548cee6e1e44d0cc726f6fedc07eebe3f0abf287f36dce9371e5a90bd10554",
+    "experiments/execution-engine/shared-signed-contract-replay.mjs": "b6462d1b2869960916fa47e413486a5af581d0bde623665569e19de47ff968fa",
+    "experiments/execution-engine/shared-signed-revert-replay.mjs": "fd04f11476d2670ad342061793282ec77e770b955082abd68ec178e6b947dcd7",
+    "experiments/execution-engine/shared-signed-clear-replay.mjs": "40a83f53c0dccc883947d8a0b96ffeed8d43d8d7fcbe5a9c48ab04e4e0876a84",
+    "experiments/execution-engine/shared-signed-cap-replay.mjs": "3dea6cabdc78b9d8b4e2c96b7635c6daf0cc207136832e4d17ebbff2a0d2dc01"
   },
-  "log_sha256": "a18ba94e384e0def6c7c06556f1e759c91470d6c8362f4428a144126731a21e8",
+  "log_sha256": "8cab7721d34a4f4b32e344ef4ccf8b62e7bf6203722783e415644e6a6251fb02",
   "productionAccepted": false
 }

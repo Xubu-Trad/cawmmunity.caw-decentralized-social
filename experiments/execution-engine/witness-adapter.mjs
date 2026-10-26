@@ -1,5 +1,4 @@
 import assert from 'node:assert/strict';
-import {SimpleStateManager} from '@ethereumjs/statemanager';
 import {Account,hexToBytes,bytesToHex} from '@ethereumjs/util';
 // Existing proven accounts/selected slots only. Experimental, not a complete StateManager.
 export async function loadWitnessAdapter(root){
@@ -11,11 +10,11 @@ return function environment(selectedInput) {
   function healthy(){assert.equal(failed,false,'ACCOUNT_ADAPTER_FAILED');session.assertUsable();overlay.assertUsable();}
   const bytes=q=>{const n=BigInt(q);if(n===0n)return new Uint8Array();const h=n.toString(16);return hexToBytes('0x'+(h.length%2?'0':'')+h);};
   function unsupported(){failed=true;throw new Error('WITNESS_ADAPTER_UNSUPPORTED');}
-  class Reads extends SimpleStateManager {
-    constructor(){super();this.originalStorageCache={get:async(a,k)=>{healthy();return bytes(overlay.originalStorage(a.toString(),bytesToHex(k)));},clear:()=>{}};}
-    async checkpoint(){healthy();overlay.checkpoint();await super.checkpoint();}
-    async commit(){healthy();overlay.commit();await super.commit();}
-    async revert(){overlay.revert();await super.revert();reverts++;}
+  class Reads {
+    constructor(){this.originalStorageCache={get:async(a,k)=>{healthy();return bytes(overlay.originalStorage(a.toString(),bytesToHex(k)));},clear:()=>{}};}
+    async checkpoint(){healthy();overlay.checkpoint();}
+    async commit(){healthy();overlay.commit();}
+    async revert(){overlay.revert();reverts++;}
     async getAccount(a) {
       healthy();const p = overlay.account(a.toString());
       return new Account(BigInt(p.nonce), BigInt(p.balance), hexToBytes(p.storageHash), hexToBytes(p.codeHash));
@@ -47,7 +46,29 @@ return function environment(selectedInput) {
     consumeBAL(){return unsupported();}
     async clearStorage() { failed=true;throw new Error('WITNESS_ADAPTER_UNSUPPORTED'); }
   }
-  return {session,overlay,stateManager:new Reads(),healthy,writes:()=>writes,storageWrites,reverts:()=>reverts};
+  // Only the explicit callback surface is exposed; no inherited mutable cache stacks.
+  const internal=new Reads(),stateManager={};
+  for(const name of Object.getOwnPropertyNames(Reads.prototype)){
+    if(name==='constructor')continue;
+    stateManager[name]=async(...args)=>{
+      try { if(name!=='revert')healthy();return await internal[name](...args); }
+      catch(error){failed=true;throw error;}
+    };
+  }
+  stateManager.originalStorageCache=Object.freeze({
+    get:async(...args)=>{try{healthy();return await internal.originalStorageCache.get(...args);}catch(error){failed=true;throw error;}},
+    clear:()=>{},
+  });
+  Object.freeze(stateManager);
+  const view=Object.freeze({
+    account:(...args)=>{healthy();return overlay.account(...args);},
+    originalAccount:(...args)=>{healthy();return overlay.originalAccount(...args);},
+    storage:(...args)=>{healthy();return overlay.storage(...args);},
+    originalStorage:(...args)=>{healthy();return overlay.originalStorage(...args);},
+    discard:()=>overlay.discard(),
+  });
+  return Object.freeze({overlay:view,stateManager,healthy,writes:()=>writes,
+    get storageWrites(){return Object.freeze(storageWrites.map(x=>Object.freeze({...x})));},reverts:()=>reverts});
 }
 
 }
