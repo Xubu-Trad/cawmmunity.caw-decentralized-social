@@ -1,15 +1,15 @@
 {
   "schema": "caw-shared-adapter/1",
-  "baseline": "f941418c8e7d5f18dbf68387e15a3c8a78f6a365",
-  "checks": 49,
-  "passed": 49,
+  "baseline": "4bbac4058ada33015e7e056f287a89d02fe9e222",
+  "checks": 51,
+  "passed": 51,
   "replayed_case_groups": 26,
   "unsupported_method_groups": 8,
   "isolation_groups": 5,
-  "input_and_limit_groups": 10,
+  "input_and_limit_groups": 12,
   "source_sha256": {
-    "experiments/execution-engine/witness-adapter.mjs": "e189e6cb513ec1b58d47475c21dc4aba3c84b4eb1621d3a7dcf8719b0f3ad186",
-    "experiments/execution-engine/shared-adapter-check.mjs": "7ffe3b7814063ab08b776a07c4322130976459bf2e9fb58e92c6e8088d30fa40",
+    "experiments/execution-engine/witness-adapter.mjs": "f788eaa4fbc5d164436799d27b686c0607e47b1a8e46f602351cda760bfd82f2",
+    "experiments/execution-engine/shared-adapter-check.mjs": "21456f3e2a74f08fdf3181d81550411aa09cb1515e875c97be3b8f74b867aab7",
     "experiments/execution-engine/shared-signed-transfer-replay.mjs": "1da7db78e17f3d241d4987cdc62dd7422aeee431eb180f4b4c75ec17ab912c45",
     "experiments/execution-engine/shared-missing-witness-replay.mjs": "1e548cee6e1e44d0cc726f6fedc07eebe3f0abf287f36dce9371e5a90bd10554",
     "experiments/execution-engine/shared-signed-contract-replay.mjs": "b6462d1b2869960916fa47e413486a5af581d0bde623665569e19de47ff968fa",
@@ -17,6 +17,6 @@
     "experiments/execution-engine/shared-signed-clear-replay.mjs": "40a83f53c0dccc883947d8a0b96ffeed8d43d8d7fcbe5a9c48ab04e4e0876a84",
     "experiments/execution-engine/shared-signed-cap-replay.mjs": "3dea6cabdc78b9d8b4e2c96b7635c6daf0cc207136832e4d17ebbff2a0d2dc01"
   },
-  "log_sha256": "366bca84991b65d0ebd018ac650bb4ae4c08ed63de3296b01a9e700db5cfff8d",
+  "log_sha256": "c77410cf452a4eec59c9232bc30ebb4922a29f1ad7d67b385b88e0d762e466ed",
   "productionAccepted": false
 }

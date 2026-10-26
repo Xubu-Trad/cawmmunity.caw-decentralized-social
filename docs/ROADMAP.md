@@ -230,3 +230,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Bounded witness adapter callbacks
 
 [49 grouped checks](SHARED_WITNESS_ADAPTER.md) pass with strict callback input checks and a256-record per-attempt diagnostic budget. This is an experiment limit, not a protocol rule. No production acceptance.
+
+
+### Witness adapter interface and review gates
+
+[51 grouped checks and interface inventory](SHARED_WITNESS_ADAPTER.md) include a4096 shared callback budget with cleanup allowed after exhaustion. Full state roots, arbitrary execution and public-chain trust remain blocked.

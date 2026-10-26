@@ -6,7 +6,8 @@ export async function loadWitnessAdapter(root){
  const {createReplayStorageOverlay}=await import(new URL('reference/replay-storage-overlay.mjs',root));
 return function environment(selectedInput) {
   const session = createReplayReadSession(JSON.stringify(selectedInput)), overlay=createReplayStorageOverlay(JSON.stringify(selectedInput));
-  let failed=false,writes=0,reverts=0;const storageWrites=[];
+  let failed=false,writes=0,reverts=0,callbackCount=0;const storageWrites=[];
+  function consume(){assert.ok(callbackCount<4096,'CALLBACK_LIMIT');callbackCount++;}
   function healthy(){assert.equal(failed,false,'ACCOUNT_ADAPTER_FAILED');session.assertUsable();overlay.assertUsable();}
   const bytes=q=>{const n=BigInt(q);if(n===0n)return new Uint8Array();const h=n.toString(16);return hexToBytes('0x'+(h.length%2?'0':'')+h);};
   function unsupported(){failed=true;throw new Error('WITNESS_ADAPTER_UNSUPPORTED');}
@@ -63,12 +64,12 @@ return function environment(selectedInput) {
   for(const name of Object.getOwnPropertyNames(Reads.prototype)){
     if(name==='constructor')continue;
     stateManager[name]=async(...args)=>{
-      try { if(name!=='revert')healthy();validate(name,args);return await internal[name](...args); }
+      try { if(name!=='revert'){healthy();consume();}validate(name,args);return await internal[name](...args); }
       catch(error){failed=true;throw error;}
     };
   }
   stateManager.originalStorageCache=Object.freeze({
-    get:async(...args)=>{try{healthy();validate('getStorage',args);return await internal.originalStorageCache.get(...args);}catch(error){failed=true;throw error;}},
+    get:async(...args)=>{try{healthy();consume();validate('getStorage',args);return await internal.originalStorageCache.get(...args);}catch(error){failed=true;throw error;}},
     clear:()=>{},
   });
   Object.freeze(stateManager);

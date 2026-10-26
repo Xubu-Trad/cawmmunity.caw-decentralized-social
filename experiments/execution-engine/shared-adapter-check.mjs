@@ -61,4 +61,13 @@ for(let i=0;i<256;i++)await rolled.stateManager.putStorage(a,k,new Uint8Array())
 await rolled.stateManager.revert();rolled.healthy();
 await assert.rejects(rolled.stateManager.putStorage(a,k,new Uint8Array()),/STORAGE_DIAGNOSTIC_LIMIT/);
 assert.equal(rolled.storageWrites.length,256);assert.throws(()=>rolled.healthy());
-console.log(JSON.stringify({checks:49,passed:49,scope:'39 previous groups plus eight malformed inputs and two diagnostic-limit boundaries',productionAccepted:false}));
+const exhausted=create(input);
+for(let i=0;i<4096;i++)await exhausted.stateManager.getAccount(a);
+exhausted.healthy();await assert.rejects(exhausted.stateManager.getAccount(a),/CALLBACK_LIMIT/);
+assert.throws(()=>exhausted.healthy());
+const cleanup=create(input);await cleanup.stateManager.checkpoint();
+for(let i=0;i<4095;i++)await cleanup.stateManager.originalStorageCache.get(a,k);
+await assert.rejects(cleanup.stateManager.getAccount(a),/CALLBACK_LIMIT/);
+await cleanup.stateManager.revert();assert.throws(()=>cleanup.healthy());
+await assert.rejects(cleanup.stateManager.checkpoint());
+console.log(JSON.stringify({checks:51,passed:51,scope:'49 prior groups plus shared callback-budget boundary and cleanup after exhaustion',productionAccepted:false}));
