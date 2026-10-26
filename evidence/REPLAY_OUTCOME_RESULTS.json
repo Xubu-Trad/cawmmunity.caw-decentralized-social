@@ -1,0 +1,15 @@
+{
+  "schema": "caw-replay-outcome-results/1",
+  "baseline": "7fd4de3e865c7a0bee37dd6d67c5cf28999f98b3",
+  "checks": 59,
+  "passed": 59,
+  "previous_groups": 51,
+  "new_outcome_groups": 8,
+  "source_sha256": {
+    "experiments/execution-engine/witness-adapter.mjs": "69e6336862792e41a1d7f654d9632453f8a44758f175e5d4aec4c1a9efa66aad",
+    "experiments/execution-engine/replay-outcome.mjs": "ec8c23777ec37300c83417b7978b8fc2ac9bf306babd62c009f1a2ac92dab837",
+    "experiments/execution-engine/replay-outcome-check.mjs": "877c6e2f82e67c5aaeb5a73cc768c881a9a3770cac41e00582300d46195323d4"
+  },
+  "log_sha256": "7a783dd26a60d0d8ef11c7ac6a482a7cd00e96e796b44a3428aa334fdb5877b1",
+  "productionAccepted": false
+}

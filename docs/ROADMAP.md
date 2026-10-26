@@ -235,3 +235,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Witness adapter interface and review gates
 
 [51 grouped checks and interface inventory](SHARED_WITNESS_ADAPTER.md) include a4096 shared callback budget with cleanup allowed after exhaustion. Full state roots, arbitrary execution and public-chain trust remain blocked.
+
+
+### Structured local replay outcomes
+
+[59 grouped checks](REPLAY_OUTCOMES.md) distinguish execution revert from missing evidence, unsupported operations and local limits. Attempts close after reporting; state comparison and production flags stay false. Next explicit input/engine provenance binding.
