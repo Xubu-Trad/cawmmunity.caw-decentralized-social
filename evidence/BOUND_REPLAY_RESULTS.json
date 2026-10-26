@@ -1,0 +1,14 @@
+{
+  "schema": "caw-bound-replay-results/1",
+  "baseline": "1283f2cf140d85b7a6161855745986598477a56c",
+  "checks": 63,
+  "passed": 63,
+  "previous_groups": 59,
+  "new_provenance_groups": 4,
+  "source_sha256": {
+    "experiments/execution-engine/bound-replay.mjs": "031c0a179606793cb1d5080ddd1e804555e3d7347aabe5caf10023fbf1c56589",
+    "experiments/execution-engine/bound-replay-check.mjs": "e362270720983c64df800dc523775ba70edacd11c16850484770e33745539f3d"
+  },
+  "log_sha256": "be110210e88fb0424a943f4c994b5f820bfcec9f27d802e99276d282a8e3d7d2",
+  "productionAccepted": false
+}

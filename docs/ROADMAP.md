@@ -240,3 +240,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Structured local replay outcomes
 
 [59 grouped checks](REPLAY_OUTCOMES.md) distinguish execution revert from missing evidence, unsupported operations and local limits. Attempts close after reporting; state comparison and production flags stay false. Next explicit input/engine provenance binding.
+
+
+### Replay input/source provenance
+
+[63 grouped checks](BOUND_REPLAY_PROVENANCE.md) bind exact input and selected local source hashes. Installed engine and public chain are not attested. Next complete source manifest and pre-execution verification.
