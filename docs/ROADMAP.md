@@ -259,4 +259,4 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 
 ### Declared links and runtime checksum
 
-[17 pinned archive comparisons](LINKS_RUNTIME_COMPARISON.md) match installed payloads; generated launchers remain separately unverified. Next dependency-resolution links and runtime identity. No full-installation attestation.
+[61 declared links and the exact runtime checksum](LINKS_RUNTIME_COMPARISON.md) match. Conditional imports, loaded modules and the release signature remain unverified.
