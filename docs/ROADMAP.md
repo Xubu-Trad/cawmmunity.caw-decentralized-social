@@ -185,3 +185,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Signed local transaction fixture
 
 [Signed transfer acquisition](SIGNED_TRANSFER_FIXTURE.md) now supplies three-account parent/child proofs and a verified receipt. Three grouped checks pass; no independent execution replay yet. Next connect runTx without nonce/balance bypass and compare acquired child state.
+
+
+### Signed local transfer execution
+
+[Three bounded engine replay cases](ENGINE_TRANSFER_REPLAY.md) passed: acquired account/receipt comparison and nonce/balance rejection without bypasses. No full post-state-root or public-chain proof. Next missing-witness failure during transaction execution and acquired contract execution.

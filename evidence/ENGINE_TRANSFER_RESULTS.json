@@ -1,0 +1,13 @@
+{
+  "schema": "caw-engine-transfer/1",
+  "baseline": "143e8cfbe15f36e465774d8a2a69ef87f4c5b84d",
+  "checks": 3,
+  "passed": 3,
+  "source_sha256": "8b509518fe3c5c3174da16146d950f5e1a576dc1047aee8ca074dfe2cf10f167",
+  "log_sha256": "131c78b029f79cd46be79f1e45b829bae43991762d24323c8ef457c3790701b6",
+  "fixture_sha256": "011869ece7b3e53de45a95cbd182abf4a71c539762f3f8c3281634454128b656",
+  "localTransactionReplay": true,
+  "stateRootRecomputed": false,
+  "publicChainAuthenticated": false,
+  "productionAccepted": false
+}
