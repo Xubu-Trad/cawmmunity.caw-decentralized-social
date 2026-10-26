@@ -1,0 +1,13 @@
+{
+  "schema": "caw-engine-missing-witness/1",
+  "baseline": "d11a522d2b221b9d31d8387ea7b30c9215dbe03a",
+  "checks": 7,
+  "passed": 7,
+  "source_sha256": "2418fdc6bd93b394db14d754e28051e9b4c8d0e01f270795e50955051f75bd3f",
+  "log_sha256": "ef5581e71ab984f11310e6f939074071e4c1225492610e1230495f46bccb1091",
+  "fixture_sha256": "011869ece7b3e53de45a95cbd182abf4a71c539762f3f8c3281634454128b656",
+  "localTransactionReplay": true,
+  "stateRootRecomputed": false,
+  "publicChainAuthenticated": false,
+  "productionAccepted": false
+}
