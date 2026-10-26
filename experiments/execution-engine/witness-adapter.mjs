@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {Account,hexToBytes,bytesToHex} from '@ethereumjs/util';
+import {Address,Account,hexToBytes,bytesToHex} from '@ethereumjs/util';
 // Existing proven accounts/selected slots only. Experimental, not a complete StateManager.
 export async function loadWitnessAdapter(root){
  const {createReplayReadSession}=await import(new URL('reference/replay-read-session.mjs',root));
@@ -10,6 +10,18 @@ return function environment(selectedInput) {
   function healthy(){assert.equal(failed,false,'ACCOUNT_ADAPTER_FAILED');session.assertUsable();overlay.assertUsable();}
   const bytes=q=>{const n=BigInt(q);if(n===0n)return new Uint8Array();const h=n.toString(16);return hexToBytes('0x'+(h.length%2?'0':'')+h);};
   function unsupported(){failed=true;throw new Error('WITNESS_ADAPTER_UNSUPPORTED');}
+  const arities={checkpoint:0,commit:0,revert:0,getAccount:1,getCode:1,getStorage:2,putAccount:2,putStorage:3};
+  function validate(name,args){
+    if(!(name in arities))return;
+    assert.equal(args.length,arities[name],'CALLBACK_ARGUMENTS');
+    if(arities[name]===0)return;
+    assert.ok(args[0] && args[0].bytes instanceof Uint8Array && args[0].bytes.length===20,'CALLBACK_ADDRESS');
+    const addressBytes=new Uint8Array(args[0].bytes);
+    assert.equal(args[0].toString(),bytesToHex(addressBytes),'CALLBACK_ADDRESS_TEXT');
+    args[0]=new Address(addressBytes);
+    if(name==='getStorage'||name==='putStorage')assert.ok(args[1] instanceof Uint8Array && args[1].length===32,'CALLBACK_SLOT');
+    if(name==='putStorage')assert.ok(args[2] instanceof Uint8Array && args[2].length<=32,'CALLBACK_VALUE');
+  }
   class Reads {
     constructor(){this.originalStorageCache={get:async(a,k)=>{healthy();return bytes(overlay.originalStorage(a.toString(),bytesToHex(k)));},clear:()=>{}};}
     async checkpoint(){healthy();overlay.checkpoint();}
@@ -37,7 +49,7 @@ return function environment(selectedInput) {
       } catch(error){failed=true;throw error;}
     }
     async putCode() { failed=true;throw new Error('WITNESS_ADAPTER_UNSUPPORTED'); }
-    async putStorage(a,k,v) { healthy();overlay.putStorage(a.toString(),bytesToHex(k),'0x'+(v.length?BigInt(bytesToHex(v)):0n).toString(16));storageWrites.push({address:a.toString(),key:bytesToHex(k),value:bytesToHex(v)}); }
+    async putStorage(a,k,v) { healthy();assert.ok(storageWrites.length<256,'STORAGE_DIAGNOSTIC_LIMIT');overlay.putStorage(a.toString(),bytesToHex(k),'0x'+(v.length?BigInt(bytesToHex(v)):0n).toString(16));storageWrites.push({address:a.toString(),key:bytesToHex(k),value:bytesToHex(v)}); }
     async deleteAccount() { failed=true;throw new Error('WITNESS_ADAPTER_UNSUPPORTED'); }
     getStateRoot(){return unsupported();}
     setStateRoot(){return unsupported();}
@@ -51,12 +63,12 @@ return function environment(selectedInput) {
   for(const name of Object.getOwnPropertyNames(Reads.prototype)){
     if(name==='constructor')continue;
     stateManager[name]=async(...args)=>{
-      try { if(name!=='revert')healthy();return await internal[name](...args); }
+      try { if(name!=='revert')healthy();validate(name,args);return await internal[name](...args); }
       catch(error){failed=true;throw error;}
     };
   }
   stateManager.originalStorageCache=Object.freeze({
-    get:async(...args)=>{try{healthy();return await internal.originalStorageCache.get(...args);}catch(error){failed=true;throw error;}},
+    get:async(...args)=>{try{healthy();validate('getStorage',args);return await internal.originalStorageCache.get(...args);}catch(error){failed=true;throw error;}},
     clear:()=>{},
   });
   Object.freeze(stateManager);

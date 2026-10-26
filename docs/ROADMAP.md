@@ -225,3 +225,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Isolated witness adapter interface
 
 [39 grouped checks](SHARED_WITNESS_ADAPTER.md) pass with an explicit frozen callback interface and no inherited cache stacks. Next callback edge cases and diagnostic bounds; no production acceptance.
+
+
+### Bounded witness adapter callbacks
+
+[49 grouped checks](SHARED_WITNESS_ADAPTER.md) pass with strict callback input checks and a256-record per-attempt diagnostic budget. This is an experiment limit, not a protocol rule. No production acceptance.

@@ -39,4 +39,26 @@ const malformed=create(input);await assert.rejects(malformed.stateManager.getAcc
 assert.throws(()=>malformed.healthy());assert.throws(()=>malformed.overlay.account(d.address));
 await assert.rejects(malformed.stateManager.originalStorageCache.get(a,k));
 const closed=create(input);closed.overlay.discard();await assert.rejects(closed.stateManager.getAccount(a));assert.throws(()=>closed.healthy());
-console.log(JSON.stringify({checks:39,passed:39,scope:'34 regression groups plus frozen surfaces, callback replacement, immutable diagnostics, malformed callback poison, closed lifecycle',productionAccepted:false}));
+
+const badCalls=[
+ e=>e.stateManager.getAccount({toString:()=>d.address}),
+ e=>e.stateManager.getAccount(a,'extra'),
+ e=>e.stateManager.checkpoint('extra'),
+ e=>e.stateManager.getStorage(a,new Uint8Array(31)),
+ e=>e.stateManager.getStorage(a,new Uint8Array(33)),
+ e=>e.stateManager.putStorage(a,k,[]),
+ e=>e.stateManager.putStorage(a,k,new Uint8Array(33)),
+ e=>e.stateManager.originalStorageCache.get(a,new Uint8Array(31)),
+];
+for(const call of badCalls){const e=create(input);await assert.rejects(call(e));assert.throws(()=>e.healthy());assert.equal(e.storageWrites.length,0);}
+const bounded=create(input);
+for(let i=0;i<256;i++)await bounded.stateManager.putStorage(a,k,hexToBytes('0x01'));
+assert.equal(bounded.storageWrites.length,256);bounded.healthy();
+await assert.rejects(bounded.stateManager.putStorage(a,k,hexToBytes('0x02')),/STORAGE_DIAGNOSTIC_LIMIT/);
+assert.equal(bounded.storageWrites.length,256);assert.throws(()=>bounded.healthy());
+const rolled=create(input);await rolled.stateManager.checkpoint();
+for(let i=0;i<256;i++)await rolled.stateManager.putStorage(a,k,new Uint8Array());
+await rolled.stateManager.revert();rolled.healthy();
+await assert.rejects(rolled.stateManager.putStorage(a,k,new Uint8Array()),/STORAGE_DIAGNOSTIC_LIMIT/);
+assert.equal(rolled.storageWrites.length,256);assert.throws(()=>rolled.healthy());
+console.log(JSON.stringify({checks:49,passed:49,scope:'39 previous groups plus eight malformed inputs and two diagnostic-limit boundaries',productionAccepted:false}));
