@@ -1,0 +1,115 @@
+{
+  "schema": "caw-entrypoint-observation/1",
+  "entries": [
+    {
+      "name": "@ethereumjs/common",
+      "version": "10.1.3",
+      "mode": "esm",
+      "path": "dist/esm/index.js",
+      "sha256": "373f3fb85fdb445c54de89d5e6ac59c573637c4b7b0c699fc143d7fafae99ef6",
+      "packageJsonSha256": "c17012956360864f36c257791c3a6036c844e09e70417d25997605106e5b5ba8"
+    },
+    {
+      "name": "@ethereumjs/common",
+      "version": "10.1.3",
+      "mode": "cjs",
+      "path": "dist/cjs/index.js",
+      "sha256": "b3fc74f0b44f5189efb777890f1514241df3fcfafdf03ecab7da81f40011b73a",
+      "packageJsonSha256": "c17012956360864f36c257791c3a6036c844e09e70417d25997605106e5b5ba8"
+    },
+    {
+      "name": "@ethereumjs/evm",
+      "version": "10.1.3",
+      "mode": "esm",
+      "path": "dist/esm/index.js",
+      "sha256": "f46e7b7ad9d6e74d482b0b3058b1cb6f4281f301770887c4ca531fc3dbf11514",
+      "packageJsonSha256": "8a3c432434a6250963e416156e0387f016db477d95660114c9d595e3602b3b66"
+    },
+    {
+      "name": "@ethereumjs/evm",
+      "version": "10.1.3",
+      "mode": "cjs",
+      "path": "dist/cjs/index.js",
+      "sha256": "039d6009444e4bee56dbd80163b3c48c14decf49fd555856ad572fb91faf284e",
+      "packageJsonSha256": "8a3c432434a6250963e416156e0387f016db477d95660114c9d595e3602b3b66"
+    },
+    {
+      "name": "@ethereumjs/statemanager",
+      "version": "10.1.3",
+      "mode": "esm",
+      "path": "dist/esm/index.js",
+      "sha256": "1469c22fcff62d73c0f8e8268f88611c5aa1ccf11dbb56323d35233ed134176a",
+      "packageJsonSha256": "5d07fad4e721bea58e729b0986ea497ac169cf5762c71c94f5e3afd68544fe79"
+    },
+    {
+      "name": "@ethereumjs/statemanager",
+      "version": "10.1.3",
+      "mode": "cjs",
+      "path": "dist/cjs/index.js",
+      "sha256": "9f0b910dc793e4d69351454e6bd572c39cf38a91c44b7fff1998ad01151daf76",
+      "packageJsonSha256": "5d07fad4e721bea58e729b0986ea497ac169cf5762c71c94f5e3afd68544fe79"
+    },
+    {
+      "name": "@ethereumjs/util",
+      "version": "10.1.3",
+      "mode": "esm",
+      "path": "dist/esm/index.js",
+      "sha256": "3d7e95e659819a8946a65f8c8eb37fbf16c8eb0d4cb71679460df2d5b89b4a67",
+      "packageJsonSha256": "ea68e9bde58b3dcb293d36ebbe53cd04e87c71f4d978dc6ac80f1466b59839fa"
+    },
+    {
+      "name": "@ethereumjs/util",
+      "version": "10.1.3",
+      "mode": "cjs",
+      "path": "dist/cjs/index.js",
+      "sha256": "8376d3bd0a88c6834b6ac1ba6e209eeb4a61f7826ef711dd774ca9aee0480a20",
+      "packageJsonSha256": "ea68e9bde58b3dcb293d36ebbe53cd04e87c71f4d978dc6ac80f1466b59839fa"
+    },
+    {
+      "name": "@ethereumjs/vm",
+      "version": "10.1.3",
+      "mode": "esm",
+      "path": "dist/esm/index.js",
+      "sha256": "82284a13b38b45d3430e44f21e447f289b78a3d137cb191e8f8ade7f4867a7fa",
+      "packageJsonSha256": "8552b9165b0b816a8ad35cc67aa40df13924795e3324b890df45e11b73ba31aa"
+    },
+    {
+      "name": "@ethereumjs/vm",
+      "version": "10.1.3",
+      "mode": "cjs",
+      "path": "dist/cjs/index.js",
+      "sha256": "ab406a95504677adae9ee39e241be288d93b72e5885ca1482be99f00d2c8edbb",
+      "packageJsonSha256": "8552b9165b0b816a8ad35cc67aa40df13924795e3324b890df45e11b73ba31aa"
+    },
+    {
+      "name": "@ethereumjs/tx",
+      "version": "10.1.3",
+      "mode": "cjs",
+      "path": "dist/cjs/index.js",
+      "sha256": "627d4b4e7270f98a5b1d881034ae031ed7a63a01de94db432af42f31b6257dc6",
+      "packageJsonSha256": "150c7f96747f8688ba749d43321efdb1ec1d963e01206cad530175c76dce1768"
+    },
+    {
+      "name": "@ethereumjs/block",
+      "version": "10.1.3",
+      "mode": "cjs",
+      "path": "dist/cjs/index.js",
+      "sha256": "25a5ceefdcd925bfa9c396d0655d1d911ea7f73331cd9af9a6d9a50979085c31",
+      "packageJsonSha256": "8046e7f450b5816bb90962529f07a6374413ec145c4b82ace0aa447342cb8f16"
+    }
+  ],
+  "entrypointsChecked": 12,
+  "addressProbe": {
+    "distinctConstructors": true,
+    "crossModeInstanceof": false,
+    "sameAddressBytes": true
+  },
+  "scope": "five direct package roots in default import/require modes plus two VM-relative require paths",
+  "fullDependencyGraphVerified": false,
+  "loadedModulesAttested": false,
+  "releaseSignatureVerified": false,
+  "productionAccepted": false,
+  "checkerSha256": "d756afd10464322ce1fe9942cd290da11b5fcb724bd8e869701ea26969190fcd",
+  "runtime": "Node.js 24.20.0 Windows x64",
+  "runtimeSha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5"
+}

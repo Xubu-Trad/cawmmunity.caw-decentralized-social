@@ -260,3 +260,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Declared links and runtime checksum
 
 [61 declared links and the exact runtime checksum](LINKS_RUNTIME_COMPARISON.md) match. Conditional imports, loaded modules and the release signature remain unverified.
+
+
+### Selected entrypoints and current README -- 2026-10-26
+
+[12 selected default-mode resolutions](ENTRYPOINT_OBSERVATION.md) agree with the pinned export paths; separate ESM/CommonJS Address identities reproduced. This is not a full transitive loader proof. Next compare a single-mode signed replay harness against retained outcomes before changing existing imports. README now introduces the project and indexes current evidence with separate counts and unresolved release gates. Keep that summary current with each engineering publication.

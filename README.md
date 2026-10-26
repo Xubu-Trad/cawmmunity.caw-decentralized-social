@@ -42,24 +42,26 @@ the frontend is still a simulation and the protocol is still an experimental loc
 
 production remains blocked until the protocol evidence, unresolved specification decisions, operator-independence work and public review gates are strong enough to justify moving beyond the alpha.
 
-## current build
+## current build -- 2026-10-26
 
-the implementation evidence immediately before the recent README work is based on `c2656c1ea2762f56b04e4d4fbf4758778c657a9d`, dated 2026-10-24. the package remains `0.1.0-alpha.46`.
+this is a community implementation/reference alpha, not an official caw release. the frontend remains a local simulation; the package remains `0.1.0-alpha.46`. public test deployment and production are blocked. the evidence baseline before this update is [`87b5847`](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/commit/87b58472b5f3e840a5e9523c651aab9cba9efc68); the new entrypoint observation is linked below.
 
-the latest recorded full suite is **1215/1215 Node offline tests across 70 files**. the retained alpha.41 record also contains 65 Python tests. the current witness-state receipt still records `executionVerified: false` and `productionAccepted: false`.
+the current engineering focus is recovery another builder can inspect and reproduce: selected state proofs, bounded signed-transaction replay, and the identity of the code doing that replay. these are separate evidence gates, not a claim that the protocol is complete.
 
-the implementation now includes, among other things:
+| evidence | recorded result | what remains unproved |
+| --- | --- | --- |
+| [ordinary Node offline suite](evidence/REPLAY_ACCOUNT_TEST_RESULTS.json) | 1241/1241 checks across 73 files | finite local tests; not an external audit or production proof |
+| [bounded replay and source manifest](docs/MANIFEST_REPLAY_GATE.md) | 66 grouped checks; 21 selected source files checked against an explicit expected manifest digest | complete state-root recomputation, arbitrary callback provenance, authenticated public chain and independent reproduction |
+| [shared witness adapter](docs/SHARED_WITNESS_ADAPTER.md) | local signed transfer, contract write, revert and refund cases; missing evidence poisons the attempt | selected local London fixtures, not general transaction/fork coverage or a deployed CAW protocol |
+| [installed package payloads](docs/INSTALLED_PACKAGE_COMPARISON.md) | 17 lock-integrity-matched archives compared with installed payloads | generated launchers, complete installation and loaded-module attestation |
+| [dependency links and runtime](docs/LINKS_RUNTIME_COMPARISON.md) | 61 declared links and the Node executable checksum matched | runtime release signature and runtime safety |
+| [selected entrypoints](docs/ENTRYPOINT_OBSERVATION.md) | 12 default-mode resolutions; cross-mode Address constructor mismatch reproduced | complete transitive loader graph, custom conditions and immutable execution snapshot |
 
-- selected registry ownership, epochs, approvals and operator state checked against header-bound proofs and reconciled with signed history under explicit assumptions;
-- signed grant, revocation, delegated-transfer and non-owner withdrawal cases that keep transfer permission separate from spending authority;
-- wallet-state sensitivity observed against fixed signed intent while configuration changes around it;
-- first-transaction replay inputs bound to a selected parent and complete body;
-- declared account, storage and code dependencies checked against the selected parent;
-- read-only witness access that fails closed on missing accounts and unselected storage instead of inventing zero values;
-- independent history/accounting readers, rollback and restart work, provider-comparison experiments, transaction/receipt commitments, sender recovery, registry permission reconstruction and portable static recovery;
-- an execution-adapter plan that identifies the next proof-backed replay boundary without pretending execution has already been validated.
+these records have different scopes and are not added into one total. the 1241 ordinary checks and 66 replay groups are retained prior runs, not rerun by the entrypoint check. the earlier alpha.41 record separately contains 65 Python checks. execution experiments do not change the recovery receipt into a claim of complete execution verification; `productionAccepted` remains false.
 
-the next major step is not another interface pass. it is taking those proof-backed inputs through a real bounded execution path without allowing unavailable state to become synthetic empty state.
+developers can start with the [review guide](docs/REVIEW_GUIDE.md), [shared adapter](docs/SHARED_WITNESS_ADAPTER.md), [structured outcomes](docs/REPLAY_OUTCOMES.md) and [source-manifest gate](docs/MANIFEST_REPLAY_GATE.md). the gate requires a separately selected expected digest; regenerating and automatically trusting a new manifest is not verification. the frontend/offline suite has no dependency-install step; engine experiments have their own pinned installation and reproduction instructions.
+
+next: compare a single-import-mode replay harness with the retained results, then address loaded-code identity and the remaining recovery trust boundaries. full state-root comparison, public acquisition/anchor authentication, broader wallet authority, transport/storage replacement and independent builder recovery remain open. the [roadmap](docs/ROADMAP.md) retains the detailed sequence and failed-evidence boundaries.
 
 ## what makes the build different
 
@@ -81,7 +83,7 @@ this repo is trying to make the difficult parts visible early.
 
 the highest-value open work is currently:
 
-1. execute a genuine signed transaction from proof-backed parent state and preserve permanent failure when required evidence is missing;
+1. extend the bounded signed replay evidence toward complete state-root comparison, broader transaction coverage and independently reproducible engine identity;
 2. authenticate chain/fork selection and reproduce acquisition through genuinely independent paths;
 3. finish wallet and delegated-authority coverage, including contract-wallet and newer transaction modes where support is intended;
 4. resolve the open manifesto/R2 decisions around registration, economics, staking/distribution, message limits, private-message history, permanence and release rules through explicit review rather than hidden implementation choices;
@@ -96,7 +98,7 @@ the [roadmap](docs/ROADMAP.md), [operator-independence register](docs/OPERATOR_I
 
 that result is intentionally narrow: it reproduces the reader output. it does not establish independent acquisition, chain authenticity, consensus, execution correctness or production readiness.
 
-there are not yet any outside pull requests or outside commits.
+outside review and reproduction are welcome at every stage; each result should identify the commit and exact evidence it checks.
 
 that makes the next milestone straightforward: another builder should be able to change this implementation, explain why, prove the bounded result and leave the repository stronger than they found it.
 
@@ -117,7 +119,8 @@ a useful contribution can add code, remove unnecessary authority, reproduce an e
 
 preserve authorship when bringing work from another implementation. keep disagreements visible until they are actually resolved. no contributor, including xubu, should gain protocol authority merely because they maintain this repository.
 
-the first outside pr is still open.
+bring a bounded change or reproduction with its evidence and remaining limitations.
+
 ## Try it locally
 
 Use Node.js **24.20.0**. The frontend and Node offline tests need no third-party packages or install step. Review the source, then run:
@@ -169,7 +172,7 @@ Follow the [current gates](docs/ROADMAP.md), reproduce a result with the [review
 
 Trace the [59 mapped requirements](docs/MANIFESTO_R2_ALIGNMENT_REVIEW.md), [15 open conflicts](sources/SPEC_CONFLICTS.md) and [source coverage](docs/SOURCE_COVERAGE.md). Username registration remains blocked by the existing token's rejection of the literal zero-address transfer; [C-001](docs/C001_DECISION_REQUEST.md) preserves the evidence and decision request. A production authority graph and durable public recovery are unfinished.
 
-R2 calls for public contribution, peer review and an agreed release, without developer backdoors, proxies or multisigs. These remain release gates. Upstream contributions target the relevant **cawdevelopment** repository only.
+R2 calls for public contribution, peer review and an agreed release, without developer backdoors, proxies or multisigs. These remain release gates. implementation-specific findings belong in the relevant implementation repository; shared specification and release questions belong in the authorized cawdevelopment coordination space.
 
 Original code and project-authored explanatory documentation use the [scoped MIT license](LICENSE_STATUS.md). Artwork, screenshots, primary texts and raw observations are excluded; preserved [third-party notices](experiments/token-source/NOTICES.md) retain their separate attribution.
 
