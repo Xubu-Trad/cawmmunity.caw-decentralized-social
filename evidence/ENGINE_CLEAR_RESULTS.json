@@ -1,0 +1,23 @@
+{
+  "checks": 4,
+  "passed": 4,
+  "gas": "21206",
+  "slotBefore": "7",
+  "slotAfter": "0",
+  "refund": "4800",
+  "writesBeforeMissingSlot": 4,
+  "scope": "signed seeded storage clear, refund and acquired account/receipt/storage comparison, nonce/balance refusal, missing slot permanent failure",
+  "stateRootRecomputed": false,
+  "deploymentVerified": false,
+  "publicChainAuthenticated": false,
+  "productionAccepted": false,
+  "schema": "caw-engine-clear/1",
+  "baseline": "35120bb0f9947f048e943b7972364742f8326d8f",
+  "source_sha256": {
+    "experiments/execution-engine/signed-clear-replay.mjs": "9445099cf385c874c30e1186d93d0e05a6945c7c9f87d1f0731e3413a90a8ac0",
+    "experiments/signed-clear-fixture/acquire.py": "0b61cd113adbc138f71e3f6dcb0e37700a97cf2eece87f9497bccf22adb838c9",
+    "experiments/signed-clear-fixture/project.py": "3c54f59639263018db397d30b93da34a8c99d61dbe01cca31bc895a10d4c1b47",
+    "experiments/signed-clear-fixture/fixture.json": "c4a2c59e5c4059defd54f85e25c604321c45278f1612a6b5b5484552e299c488"
+  },
+  "log_sha256": "151e26f16957d15c2c96f7af8849eba6f81424f0c5ba25e98decfbc4d30850cb"
+}

@@ -205,3 +205,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Signed execution-revert comparison
 
 [Four bounded revert cases](ENGINE_REVERT_REPLAY.md) confirm a write is rolled back while nonce and gas effects persist. Missing evidence remains a fatal attempt error. Next isolate successful storage-clearing refund accounting; no production acceptance.
+
+
+### Signed storage-clear refund comparison
+
+[Four bounded storage-clear cases](ENGINE_CLEAR_REPLAY.md) match a4800 refund and21206 net gas against captured receipts/accounts. Refund cap not binding; capped-refund evidence is next. No production acceptance.
