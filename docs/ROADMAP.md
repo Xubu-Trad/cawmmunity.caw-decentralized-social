@@ -255,3 +255,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Installed engine package payloads
 
 [17 pinned archive comparisons](INSTALLED_PACKAGE_COMPARISON.md) match installed payloads; generated launchers remain separately unverified. Next dependency-resolution links and runtime identity. No full-installation attestation.
+
+
+### Declared links and runtime checksum
+
+[17 pinned archive comparisons](LINKS_RUNTIME_COMPARISON.md) match installed payloads; generated launchers remain separately unverified. Next dependency-resolution links and runtime identity. No full-installation attestation.
