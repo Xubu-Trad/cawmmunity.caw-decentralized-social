@@ -1,0 +1,22 @@
+{
+  "checks": 4,
+  "passed": 4,
+  "gas": "26012",
+  "slotBefore": "7",
+  "slotAfter": "8",
+  "writesBeforeMissingSlot": 4,
+  "scope": "signed seeded contract call, acquired accounts/receipt/storage comparison, nonce/balance refusal, missing slot permanent failure",
+  "stateRootRecomputed": false,
+  "deploymentVerified": false,
+  "publicChainAuthenticated": false,
+  "productionAccepted": false,
+  "schema": "caw-engine-contract/1",
+  "baseline": "871ac16b6d755966d2eafea67bb962d162767c66",
+  "source_sha256": {
+    "experiments/execution-engine/signed-contract-replay.mjs": "8061a6c8cd84c18eaa7a0a070b1d1dfe425d0ce6e9a2a4b6c2f6ada916fa4513",
+    "experiments/signed-contract-fixture/acquire.py": "f90ed638dfa3d8be5315b794bab5a91be9e18e3346a366be00478241e55771c4",
+    "experiments/signed-contract-fixture/project.py": "b653105ac623bc7c4f3e17e6c55439a818918066f4eb09c6fc929579adf64373",
+    "experiments/signed-contract-fixture/fixture.json": "8cb6f65ab90cc74b7376f4f6f467e654b7d9c0d184483290700cb9d2e23a727e"
+  },
+  "log_sha256": "9aa9e062fe32119dfe98d3a611e052ded595f70c4fb75f7bc8188aff4b1fabe1"
+}

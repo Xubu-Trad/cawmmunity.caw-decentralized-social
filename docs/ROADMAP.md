@@ -195,3 +195,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Missing-witness transaction failure
 
 [Seven bounded cases](ENGINE_MISSING_WITNESS_REPLAY.md) include missing sender/recipient/fee-recipient rejection and permanent attempt invalidation after rollback. Next acquired signed contract execution and missing-slot checks; no production acceptance.
+
+
+### Signed synthetic contract call
+
+[Four bounded cases](ENGINE_CONTRACT_REPLAY.md) match captured account, storage and receipt evidence and reject missing storage. Runtime/storage were locally seeded; no deployment or public-chain proof. Next acquired execution-revert comparison.
