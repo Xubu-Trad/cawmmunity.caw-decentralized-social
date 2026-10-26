@@ -1,0 +1,22 @@
+{
+  "checks": 4,
+  "passed": 4,
+  "gas": "26018",
+  "slotBefore": "7",
+  "slotAfter": "7",
+  "writesBeforeMissingSlot": 4,
+  "scope": "signed seeded reverting call, observed write then rollback, acquired accounts/receipt/storage comparison, nonce/balance refusal, missing slot permanent failure",
+  "stateRootRecomputed": false,
+  "deploymentVerified": false,
+  "publicChainAuthenticated": false,
+  "productionAccepted": false,
+  "schema": "caw-engine-revert/1",
+  "baseline": "2454b08e836eb313edf32302a5f9d6c07b6e3a3c",
+  "source_sha256": {
+    "experiments/execution-engine/signed-revert-replay.mjs": "20fbf0e7b3ad34446ecf26ec9741a4f108d24f0f9faee9921aca75acff961cdf",
+    "experiments/signed-revert-fixture/acquire.py": "f7b4f8a4e98851969f4a50405409cda95603698d6b3f93fabd413dddfb1aa8a7",
+    "experiments/signed-revert-fixture/project.py": "840071c0c1d83d76f9a80fffc209c5eca0c290a8fa3ea733d944a69a350e3f4f",
+    "experiments/signed-revert-fixture/fixture.json": "1ab352d18a8ef0de38940a64f66446a6435bf950771740424e27cf36407c3468"
+  },
+  "log_sha256": "22793f01153a40ad482dc75e8a32950c28c6b2dbbedb1cd799512a2ca6e83126"
+}
