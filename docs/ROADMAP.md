@@ -215,3 +215,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Signed binding refund-cap comparison
 
 [Four bounded cap cases](ENGINE_CAP_REPLAY.md) match a9600 counter capped to6202 and24810 charged gas. Missing second-slot evidence fails after the first write. Next shared adapter review; no production acceptance.
+
+
+### Shared bounded witness adapter
+
+[34 grouped checks](SHARED_WITNESS_ADAPTER.md) pass through a shared experimental adapter. Stronger tests found and fixed storage access after unsupported-operation failure. Next complete interface/lifecycle review; no production acceptance.

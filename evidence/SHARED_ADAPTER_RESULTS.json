@@ -1,0 +1,20 @@
+{
+  "schema": "caw-shared-adapter/1",
+  "baseline": "ebf949ae1f3305223d7f6dc541c381b67db5a6ed",
+  "checks": 34,
+  "passed": 34,
+  "replayed_case_groups": 26,
+  "unsupported_method_groups": 8,
+  "source_sha256": {
+    "experiments/execution-engine/witness-adapter.mjs": "52a4c39c3a90c75d3192c56579dfc9ebe590494f56827263d0cac7753f394690",
+    "experiments/execution-engine/shared-adapter-check.mjs": "a76e570ebceec23ca1fae0baaaceadca22ad08379f0768fe1f4b62beee3ba565",
+    "experiments/execution-engine/shared-signed-transfer-replay.mjs": "522c9d7e840b6144d579bde6503884a49b1bb792087c22e858f604714c2f245a",
+    "experiments/execution-engine/shared-missing-witness-replay.mjs": "eef3456dfeac6c251e5dc897cc317a675901a59ee1333c47751552135768e115",
+    "experiments/execution-engine/shared-signed-contract-replay.mjs": "fc8288aa6c547aa7e144f9a6ae8c5547f4a674abaa968573b02a44d444ffbf25",
+    "experiments/execution-engine/shared-signed-revert-replay.mjs": "7ea6f52ee67ebb46ae440dc3227447b97893119e4ede2f34c96431277fb535c4",
+    "experiments/execution-engine/shared-signed-clear-replay.mjs": "82966f1d51a55df2d969aa0286e121e99750d98778157d15b23a70799938ca0e",
+    "experiments/execution-engine/shared-signed-cap-replay.mjs": "a8e69364eed362a2922d0fbd23518457cb1d0f25044b102855410dfb2da5ed38"
+  },
+  "log_sha256": "a18ba94e384e0def6c7c06556f1e759c91470d6c8362f4428a144126731a21e8",
+  "productionAccepted": false
+}
