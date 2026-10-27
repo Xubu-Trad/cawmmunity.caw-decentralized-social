@@ -305,3 +305,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Competing-anchor evidence -- 2026-10-26
 
 [Six checks](ANCHOR_TRUST_BOUNDARY.md) reproduce separately valid selected branches without canonicality/finality. Anchor-policy alternatives documented without adoption. Next production registry/bootstrap trust review; independent executor reproduction remains open.
+
+
+### Registry/bootstrap authority -- 2026-10-27
+
+[Source review](REGISTRY_BOOTSTRAP_REVIEW.md) separates immutable runtime identity from constructor allocation and current ownership. Seven production evidence gates remain open. Next bounded experiment: unchanged registry deployments with different constructor owners, runtime comparison, separate paid-probe bindings and negative controls. No production policy selected; independent reproduction remains open.

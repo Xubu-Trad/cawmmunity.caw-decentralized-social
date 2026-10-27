@@ -1,0 +1,39 @@
+{
+  "schema": "caw-source-review/1",
+  "baseline": "a327680e7f98831af81fec832ef4927b14f13112",
+  "sources": [
+    {
+      "path": "experiments/paid-action/TestAccountRegistry.sol",
+      "sha256": "ab3aecb6b0bc77fa838baf1141d2af96ad8395850b714f35b2f0cdb3b8c826df",
+      "size": 5083
+    },
+    {
+      "path": "experiments/paid-action/CawPaidActionProbe.sol",
+      "sha256": "e48f8f8f816aae21e0e9865a8be0aa2e47204ea04b4c12b4124e5b0452412da1",
+      "size": 15066
+    },
+    {
+      "path": "sources/primary/manifesto-pinned.md",
+      "sha256": "066b14262bd29118a8f86d75bece0d5bde96c2b665b1a3b356c3867689094761",
+      "size": 10602
+    },
+    {
+      "path": "sources/primary/r2-message.txt",
+      "sha256": "2a77d034354b3ee698dd0266f93dfd5627e033cb8f79ec891498b80b7eab0e52",
+      "size": 1442
+    },
+    {
+      "path": "sources/SPEC_CONFLICTS.md",
+      "sha256": "eaafcc3c6bb7aeb0209f220a794ae343084f2db7130d04d033bdfcfac3354b1c",
+      "size": 15917
+    },
+    {
+      "path": "public/deployment.json",
+      "sha256": "0b33bb9686a5a7f018a87b4a65e1fd95bc74f77e131525f3107a2e4b969f2a6d",
+      "size": 259
+    }
+  ],
+  "method": "byte comparison with pinned GitHub contents; manual source review",
+  "newExecutionTests": 0,
+  "productionAccepted": false
+}

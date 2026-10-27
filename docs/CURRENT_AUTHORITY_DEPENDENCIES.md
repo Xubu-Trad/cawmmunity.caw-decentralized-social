@@ -39,3 +39,8 @@ All OI-01 through OI-09 remain OPEN. The most immediate evidence gap for the cur
 For production recovery, OI-02/OI-04 remain higher-impact prerequisites: agreed anchor/finality and authentic registry/account authority. They are unresolved design/evidence gates, not fixed by adding another local wrapper or a developer key. Continue the existing [trust model](RECOVERY_TRUST_MODEL.md); do not silently choose a chain anchor or economics. Existing [acquisition issue3](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues/3), [reproduction issue10](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues/10) and [distribution issue5](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues/5) are relevant established lanes; no duplicate issue is created here.
 
 This review closes no gate and claims no new test passes. Public test deployment and production remain blocked.
+
+
+## Registry/bootstrap detail -- 2026-10-27
+
+[RB-01 through RB-05 and seven open evidence gates](REGISTRY_BOOTSTRAP_REVIEW.md) expand AD-02/AD-03 without changing contract behavior or closing OI-04. Source-derived initial-state ambiguity is distinguished from an executed counterexample, which remains the next bounded experiment.

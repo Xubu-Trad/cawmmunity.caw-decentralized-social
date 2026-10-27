@@ -42,9 +42,9 @@ the frontend is still a simulation and the protocol is still an experimental loc
 
 production remains blocked until the protocol evidence, unresolved specification decisions, operator-independence work and public review gates are strong enough to justify moving beyond the alpha.
 
-## current build -- 2026-10-26
+## current build -- 2026-10-27
 
-this is a community implementation/reference alpha, not an official caw release. the frontend remains a local simulation; the package remains `0.1.0-alpha.46`. public test deployment and production are blocked. the evidence baseline before this update is [`a30e127`](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/commit/a30e12704434e37a4307ca4cf401375728dbda1d); the competing-anchor boundary and current local evidence are linked below.
+this is a community implementation/reference alpha, not an official caw release. the frontend remains a local simulation; the package remains `0.1.0-alpha.46`. public test deployment and production are blocked. the evidence baseline before this update is [`a327680`](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/commit/a327680e7f98831af81fec832ef4927b14f13112); the registry/bootstrap authority review and current local evidence are linked below.
 
 the current engineering focus is recovery another builder can inspect and reproduce: selected state proofs, bounded signed-transaction replay, and the identity of the code doing that replay. these are separate evidence gates, not a claim that the protocol is complete.
 
@@ -62,8 +62,9 @@ the current engineering focus is recovery another builder can inspect and reprod
 | [result record inspection](docs/EXECUTOR_RESULT.md) | 28 focused checks for completion inputs, exact identities, strict schema and refusal cases | metadata agreement cannot authenticate execution; plausible forged gas remains unverified |
 | [owned process inspection](docs/OWNED_EXECUTOR.md) | real worker/inspector sequence and nine synthetic transport cases | trusted host and captured process output; no cryptographic execution or full-root proof |
 | [competing-anchor boundary](docs/ANCHOR_TRUST_BOUNDARY.md) | six checks: two different same-height branches pass selected integrity checks; substituted hashes/finality claim reject | neither branch is established as canonical or final |
+| [registry/bootstrap review](docs/REGISTRY_BOOTSTRAP_REVIEW.md) | six pinned source files compared; seven production evidence gates remain open | runtime code identity does not authenticate initial ownership; no new execution tests |
 
-these records have different scopes and are not added into one total. the 1241 ordinary checks and 66 replay groups remain retained prior runs. The 13 selected-executor groups and eight process cases remain separate retained results; the 28 result-inspection checks remain separate evidence. The supervised worker/inspector run and nine transport cases are retained evidence. This update adds six retained-capture anchor checks; no new network acquisition or independent reproduction is claimed. the earlier alpha.41 record separately contains 65 Python checks. execution experiments do not change the recovery receipt into a claim of complete execution verification; `productionAccepted` remains false.
+these records have different scopes and are not added into one total. the 1241 ordinary checks and 66 replay groups remain retained prior runs. The 13 selected-executor groups and eight process cases remain separate retained results; the 28 result-inspection checks remain separate evidence. The supervised worker/inspector run and nine transport cases are retained evidence. This update reviews registry/bootstrap authority against six pinned source files; no execution tests, network acquisition or independent reproduction are added. the earlier alpha.41 record separately contains 65 Python checks. execution experiments do not change the recovery receipt into a claim of complete execution verification; `productionAccepted` remains false.
 
 developers can start with the [review guide](docs/REVIEW_GUIDE.md), [shared adapter](docs/SHARED_WITNESS_ADAPTER.md), [structured outcomes](docs/REPLAY_OUTCOMES.md) and [source-manifest gate](docs/MANIFEST_REPLAY_GATE.md). the gate requires a separately selected expected digest; regenerating and automatically trusting a new manifest is not verification. the frontend/offline suite has no dependency-install step; engine experiments have their own pinned installation and reproduction instructions.
 
