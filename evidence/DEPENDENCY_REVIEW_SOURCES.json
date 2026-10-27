@@ -1,0 +1,105 @@
+{
+  "schema": "caw-dependency-review-sources/1",
+  "baseline": "d047704b19898dfa3f13e87bf8e7ac4a92c99f6c",
+  "files": [
+    {
+      "path": "public/deployment.json",
+      "size": 259,
+      "sha256": "0b33bb9686a5a7f018a87b4a65e1fd95bc74f77e131525f3107a2e4b969f2a6d",
+      "gitBlob": "2d17a36d3dfe773c56915b6a6e01e37340f0775c"
+    },
+    {
+      "path": "server.mjs",
+      "size": 9579,
+      "sha256": "45a7d8d3bb012eb9e83eccccea9ac10cff6875554b9f6248cafce5268d807c75",
+      "gitBlob": "8a016078f1aa03d99d8edd7e8c4c4e5f945c2eb4"
+    },
+    {
+      "path": "experiments/paid-action/CawPaidActionProbe.sol",
+      "size": 15066,
+      "sha256": "e48f8f8f816aae21e0e9865a8be0aa2e47204ea04b4c12b4124e5b0452412da1",
+      "gitBlob": "e1e50066ac0391dbd5ce9cc9bebd4437665eec40"
+    },
+    {
+      "path": "experiments/paid-action/TestAccountRegistry.sol",
+      "size": 5083,
+      "sha256": "ab3aecb6b0bc77fa838baf1141d2af96ad8395850b714f35b2f0cdb3b8c826df",
+      "gitBlob": "f2462d9805e146625c9236f0cb86e34a0a268bb5"
+    },
+    {
+      "path": "experiments/execution-engine/run-owned-executor.py",
+      "size": 4758,
+      "sha256": "975d1e5e02c47aecd32fcbaea9561f189b128c1de4c341b3f051e5135bc83993",
+      "gitBlob": "ffcc03aecbf88d6705ba6336920144cf45634c9e"
+    },
+    {
+      "path": "experiments/execution-engine/selected-london-executor.mjs",
+      "size": 1453,
+      "sha256": "7fe792615fc7bc5d518beb08a213c60a0fd121b33f8473691b303413e29da167",
+      "gitBlob": "ea058826df9eb26b9273cabdc3a92816af69c25c"
+    },
+    {
+      "path": "experiments/execution-engine/selected-executor-gate.mjs",
+      "size": 1889,
+      "sha256": "e85fde4b6998ce9d183a65f4a06f76ace92230a0352125dfe501c6668a302fc6",
+      "gitBlob": "87c1caf33ab1ecfe28d74c639e1a481f34fee63d"
+    },
+    {
+      "path": "experiments/execution-engine/selected-executor-cli.mjs",
+      "size": 2007,
+      "sha256": "d176ecc3be30cd644d1da94088bfc9f76c999458d4a25a73ee3cb8a560e08e81",
+      "gitBlob": "5ba5acdd7df0999984132a48cb6b9090a82f37ff"
+    },
+    {
+      "path": "reference/executor-output.mjs",
+      "size": 1110,
+      "sha256": "58cde4cef8d5aff67a9f90e3a44945bb5010432f59ee62204a348462043ac04c",
+      "gitBlob": "aa98219b373809c31ab0df8629f43ef1d3274a9e"
+    },
+    {
+      "path": "reference/executor-result.mjs",
+      "size": 3020,
+      "sha256": "b9b80eff2af86d0aee1651c15cd635bd3c69f55c9dfbcb739cab6397ec1298b4",
+      "gitBlob": "87cf4f64e520cecc374f013dba976579fe7552b6"
+    },
+    {
+      "path": "experiments/execution-engine/source-manifest.json",
+      "size": 3943,
+      "sha256": "81c71fc5cbeda8eebe8207a3a4a83320a796df5946d2d6017c8f06114a65ec0f",
+      "gitBlob": "f977353a02674f3241fea6c772c133432c03c38c"
+    },
+    {
+      "path": "experiments/execution-engine/executor-selection.json",
+      "size": 427,
+      "sha256": "73f50a25dced2047c87c30a4337bcdd6a9730c1352c2164ee998ae36df55fc50",
+      "gitBlob": "6188f92d85bacd25296bb97537dc195f4da645a8"
+    },
+    {
+      "path": "experiments/execution-engine/pnpm-lock.yaml",
+      "size": 6322,
+      "sha256": "fae68803a13e3cfa804cb872ca4872f65e844adb21c9d844fa5fb6804d0e6773",
+      "gitBlob": "f4da55cc56a563d9070ec434eccf4fcd1b984d3f"
+    },
+    {
+      "path": "sources/SPEC_CONFLICTS.md",
+      "size": 15917,
+      "sha256": "eaafcc3c6bb7aeb0209f220a794ae343084f2db7130d04d033bdfcfac3354b1c",
+      "gitBlob": "1a0db4513ca4251a317a68e77918c97af57ea07c"
+    },
+    {
+      "path": "docs/RECOVERY_TRUST_MODEL.md",
+      "size": 4312,
+      "sha256": "07f76c07c12ce1d96965768f3c87e585f24a735fd24f3bce542e3929dc17a818",
+      "gitBlob": "e2b26cfa1c93c6056a4ef5ade2ae0d630fe5956d"
+    },
+    {
+      "path": "docs/OPERATOR_INDEPENDENCE.md",
+      "size": 7561,
+      "sha256": "294cbac5662391809dbabfa42624ea217b76f88d6f42301f1d886e8ce5bca170",
+      "gitBlob": "45d8c81f39c7c60f7112ca33636815237ba1382b"
+    }
+  ],
+  "scope": "selected current source surfaces, not an exhaustive runtime call graph",
+  "independenceEstablished": false,
+  "productionAccepted": false
+}

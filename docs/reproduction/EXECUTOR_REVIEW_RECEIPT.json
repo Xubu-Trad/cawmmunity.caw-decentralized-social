@@ -1,0 +1,19 @@
+{
+  "schema": "caw-independent-executor-review/1",
+  "status": "NOT_RUN",
+  "codeCommit": "d047704b19898dfa3f13e87bf8e7ac4a92c99f6c",
+  "reviewer": null,
+  "sourceRetrieval": null,
+  "sourceArchiveSha256": null,
+  "platform": null,
+  "nodeVersion": null,
+  "nodeSha256": null,
+  "pnpmVersion": null,
+  "sharedDependencies": [],
+  "independenceClaim": null,
+  "commandsAndEvidence": [],
+  "unexpectedResults": [],
+  "windowsSupervisorStatus": "NOT_RUN",
+  "executionAuthenticated": false,
+  "productionAccepted": false
+}

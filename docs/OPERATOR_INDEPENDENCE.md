@@ -40,3 +40,8 @@ Record the source commit, input parent hashes, transformation, output SHA-256/si
 ## OI-01 partial evidence: static copy verification
 
 [Static recovery](STATIC_RECOVERY.md) adds a pinned-manifest checker for copied alpha assets. The local build and fresh-directory checks passed; altered, missing and extra inputs reject. An independently operated rebuild/host and verification of served responses remain outstanding, so OI-01 remains OPEN. No protocol authority or availability claim follows.
+
+
+## Current source review -- 2026-10-26
+
+[Known authority/dependency surfaces](CURRENT_AUTHORITY_DEPENDENCIES.md) reconcile the original register with the current local executor and separate paid-action probe. All nine rows remain OPEN. Recent proof, replay, process and inspection work supplies partial OI-03/OI-04/OI-09 evidence only. The three-ID registry/distribution probe remains experimental. [Independent executor reproduction](INDEPENDENT_EXECUTOR_REVIEW.md) is the next outside evidence task; public anchor/finality and production account authority remain unresolved design prerequisites. No new execution tests or independent reviewer receipt are claimed by this review.

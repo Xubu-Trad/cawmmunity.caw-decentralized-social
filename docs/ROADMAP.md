@@ -295,3 +295,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Owned-process result inspection -- 2026-10-26
 
 [Worker and inspector integration](OWNED_EXECUTOR.md) passed; nine transport cases reject stale request markers, changed output and unsuccessful completion. No state adoption or execution authentication. Next authority/dependency graph and independent reproduction review; stop treating further local wrappers as independence evidence.
+
+
+### Authority/dependency reconciliation -- 2026-10-26
+
+[12 known source surfaces](CURRENT_AUTHORITY_DEPENDENCIES.md) mapped against all9open independence gates. Separate frontend, fixed three-account paid probe and local replay engine. [Pinned independent reproduction handoff](INDEPENDENT_EXECUTOR_REVIEW.md) and NOT_RUN receipt prepared; no new tests/reviewer claims. Next OI-09 external reproduction and explicit OI-02/OI-04 design review, not more local wrappers as independence proof.
