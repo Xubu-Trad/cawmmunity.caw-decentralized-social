@@ -1,0 +1,64 @@
+{
+  "schema": "caw-executed-ledger-check/1",
+  "captureSha256": "7601a3e581318ae3b216b920f0dbe62d6289394cbe0bf799decc75c6878ea164",
+  "passed": 14,
+  "checks": [
+    "executed capture uses a local synthetic token",
+    "zero storage proofs agree with history and direct reads",
+    "nonzero storage proofs agree with history and direct reads",
+    "withdrawn storage proofs agree with history and direct reads",
+    "executed balance and stake change",
+    "foreign withdrawal reverted without logs",
+    "valid earlier proof and selection cannot replace endpoint",
+    "valid earlier history cannot replace later ledger",
+    "forged final credit",
+    "missing history block",
+    "failed receipt promoted to success",
+    "changed claimed ledger slot",
+    "missing aggregate witness",
+    "supplied acceptance claim rejected"
+  ],
+  "realTokenEvidence": false,
+  "productionAccepted": false,
+  "baseline": "ad24388341cc3693711ee5216fc4f546a6c753cb",
+  "sources": [
+    {
+      "path": "experiments/registry-bootstrap/ledger-reader.mjs",
+      "sha256": "d05799403c1136fb4d38523781f6c473e0068ac049c2cd2d9d31d895724218e7",
+      "size": 3158
+    },
+    {
+      "path": "experiments/registry-bootstrap/binding-reader.mjs",
+      "sha256": "f66b839e32199dab9ec68e46fd3d00701c7b545a3da55f1eca8084b4aba36400",
+      "size": 3731
+    },
+    {
+      "path": "reference/paid-action-reader.mjs",
+      "sha256": "81c5f4dd0b9bf4798571c5696edd8fe8050ae707f8486c5fd5ad87314bf09269",
+      "size": 26042
+    },
+    {
+      "path": "public/bounded-json.mjs",
+      "sha256": "73312692245add67ea140ef1393efe9577d337d917867f9edca02ce82af8b051",
+      "size": 6122
+    }
+  ],
+  "newFiles": [
+    {
+      "path": "experiments/registry-bootstrap/capture-ledger.py",
+      "sha256": "0fa4aa2b391588cf2b40888510771a754cd8f3915b4f64674b80ecbbaf49bc5c",
+      "size": 6948
+    },
+    {
+      "path": "experiments/registry-bootstrap/ledger-history-reader.mjs",
+      "sha256": "a31142fa67bf7973366ccf8f42b6aa9393ad7a3ab4e2f41536cb4272b3888f27",
+      "size": 2138
+    },
+    {
+      "path": "experiments/registry-bootstrap/check-executed-ledger.mjs",
+      "sha256": "2073d325f05f6e5acf485b9015c543cc3311deddc2dcb7d7a91ff8a8d7d85885",
+      "size": 3264
+    }
+  ],
+  "rawRequestTracePublic": false
+}

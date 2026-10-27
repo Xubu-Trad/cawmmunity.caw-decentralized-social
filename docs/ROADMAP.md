@@ -335,3 +335,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Constructed paid-ledger proof decoder -- 2026-10-27
 
 [18 groups](PAID_LEDGER_PROOFS.md) pass for13-slot proofs plus fixed code/registry binding and ledger invariants. Synthetic constructed states only; no executed funding or history reconciliation. Next executed nonzero local capture with exact endpoint/history comparison. External token backing remains separate.
+
+
+### Executed synthetic-token ledger reconciliation -- 2026-10-27
+
+[14 groups](EXECUTED_LEDGER_RECONCILIATION.md) pass for zero/nonzero/withdrawn local endpoints,13-slot proofs, fixed code binding and existing history replay. Synthetic token and impersonated actors; no body/sender/receipt-root or real-token backing claim. Next compose the existing stronger history verification and preserve branch/position boundaries.

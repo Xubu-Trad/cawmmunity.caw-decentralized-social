@@ -1,0 +1,26 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {inspectTestLedgerHistory} from './ledger-history-reader.mjs';
+const raw=readFileSync(process.argv[2]);assert.ok(raw.length<2097152);const f=JSON.parse(raw),checks=[];
+const input=c=>({schema:'caw-test-ledger-history/1',evidence:c.evidence,selection:c.selection,history:c.history,manifest:c.manifest});
+const run=c=>inspectTestLedgerHistory(JSON.stringify(input(c)));
+const group=(name,fn)=>{fn();checks.push(name);};
+group('executed capture uses a local synthetic token',()=>{assert.equal(f.complete,true);assert.equal(f.syntheticToken,true);assert.equal(f.realTokenEvidence,false);assert.equal(f.impersonatedActors,true);assert.equal(f.node.upstream_forwarded_count,0);assert.equal(f.node.token_code_replaced,true);assert.equal(f.cases.length,3);});
+for(const c of f.cases)group(c.name+' storage proofs agree with history and direct reads',()=>{
+ const r=run(c);assert.equal(r.selectedLedgerMatchesHistory,true);
+ for(const key of ['credits','stakes','nonces','totalCredits','poolDust','messageCount'])assert.deepEqual(r.ledger[key],c.direct[key]);
+ for(const key of ['tokenBackingVerified','transactionSignaturesVerified','completeBodyVerified','completeReceiptRootVerified','executionVerified','withdrawalSafetyVerified','accountAuthorityVerified','currentPermissionVerified','consensusVerified','finalityVerified','freshnessVerified','productionAccepted'])assert.equal(r[key],false);
+});
+group('executed balance and stake change',()=>{assert.deepEqual(run(f.cases[1]).ledger.credits,['100','200','300']);assert.deepEqual(run(f.cases[2]).ledger.credits,['93','200','300']);assert.deepEqual(run(f.cases[2]).ledger.stakes,['5','20','30']);assert.equal(run(f.cases[2]).ledger.totalCredits,'593');});
+group('foreign withdrawal reverted without logs',()=>{const tx=f.cases[2].history.blocks.at(-1).transactions[0];assert.equal(tx.receipt.status,'0x0');assert.deepEqual(tx.receipt.logs,[]);});
+const reject=(name,fn)=>group(name,()=>{const c=structuredClone(f.cases[2]);fn(c);assert.throws(()=>run(c),e=>typeof e.code==='string');});
+reject('valid earlier proof and selection cannot replace endpoint',c=>{c.evidence=f.cases[1].evidence;c.selection=f.cases[1].selection;});
+reject('valid earlier history cannot replace later ledger',c=>{c.history=f.cases[1].history;c.manifest=f.cases[1].manifest;});
+reject('forged final credit',c=>{c.history.final.credits[0]='94';});
+reject('missing history block',c=>{c.history.blocks.pop();});
+reject('failed receipt promoted to success',c=>{c.history.blocks.at(-1).transactions[0].receipt.status='0x1';});
+reject('changed claimed ledger slot',c=>{c.evidence.probe.proof.storageProof[0].value='0x5e';});
+reject('missing aggregate witness',c=>{c.evidence.probe.proof.storageProof.pop();});
+group('supplied acceptance claim rejected',()=>{const c=input(f.cases[2]);c.tokenBackingVerified=true;assert.throws(()=>inspectTestLedgerHistory(JSON.stringify(c)),{code:'LEDGER_HISTORY_SCHEMA'});});
+console.log(JSON.stringify({schema:'caw-executed-ledger-check/1',captureSha256:createHash('sha256').update(raw).digest('hex'),passed:checks.length,checks,realTokenEvidence:false,productionAccepted:false},null,2));
