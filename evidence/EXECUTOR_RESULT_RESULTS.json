@@ -1,0 +1,16 @@
+{
+  "schema": "caw-executor-result-check/1",
+  "checks": 28,
+  "passed": 28,
+  "retainedProcessResult": true,
+  "negativeVariantsSynthetic": true,
+  "executionAuthenticated": false,
+  "productionAccepted": false,
+  "baseline": "b40308a0bc80d08b60ce25f3e1a3aac99ec4ca3b",
+  "sourceSha256": {
+    "reference/executor-result.mjs": "b9b80eff2af86d0aee1651c15cd635bd3c69f55c9dfbcb739cab6397ec1298b4",
+    "experiments/execution-engine/executor-result-check.mjs": "9afd481cf6cad829a2e58c257f527637b873bd8924f9a0bb7df666a1cc013601",
+    "experiments/execution-engine/retained-process-result.json": "ef37e67740ab0561a9ee8a5893637498136fb848b6e3c7e07d279ed7f8db31cc"
+  },
+  "logSha256": "e39f6b8099d18608660487f6dcf5f9bacebc65687d3628b0129ad2b07212c445"
+}

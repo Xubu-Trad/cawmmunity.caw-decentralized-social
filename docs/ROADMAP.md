@@ -285,3 +285,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Local access -- 2026-10-26
 
 [Local protocol and alpha access](LOCAL_ACCESS.md) documented; protocol:check exposes the selected-executor command.13groups rerun successfully from the local repo; loopback entrance HTTP200. No deployment or frontend/engine connection. Strict process-result consumer remains next.
+
+
+### Result record inspection -- 2026-10-26
+
+[28 checks](EXECUTOR_RESULT.md) validate schema and retained identities with a caller-supplied completion observation. Plausible forged gas deliberately remains unauthenticated. Next owned-process integration and stale/replaced output tests; no state adoption. README updated.
