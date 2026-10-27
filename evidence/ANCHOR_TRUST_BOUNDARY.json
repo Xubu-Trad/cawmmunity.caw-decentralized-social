@@ -1,0 +1,29 @@
+{
+  "schema": "caw-anchor-trust-boundary/1",
+  "checks": 6,
+  "passed": 6,
+  "fixtureSha256": "eb6b3150255e0340d5b6afe487215c41380abf75b29a87d6637a65212d158a6a",
+  "observations": [
+    {
+      "branch": "left",
+      "parentHash": "0x16c2fd79ae6f291181ef8d72b42ae9bb64dc3f7fbc81aecce0598c6120d3f3cf",
+      "blockHash": "0x68069748abcfa9267e0d22a8d6d4d2036656fc47728f32ddf68f91d06834143c",
+      "transactionHash": "0x2f93127b37bda815f0bf2530eeb51c89ed85c2282e91f377786a471eceb00998",
+      "consensusVerified": false,
+      "finalityVerified": false
+    },
+    {
+      "branch": "right",
+      "parentHash": "0x16c2fd79ae6f291181ef8d72b42ae9bb64dc3f7fbc81aecce0598c6120d3f3cf",
+      "blockHash": "0x66413db61183a3730af00d5b798c117662c5a726db02c4d14dfe687f3419cc27",
+      "transactionHash": "0xafd51e9ee4cc736546378dc396b84882ee9bcfb937793765b117e0a1c3764fee",
+      "consensusVerified": false,
+      "finalityVerified": false
+    }
+  ],
+  "scope": "retained local branch capture; no fresh acquisition or consensus verification",
+  "productionAccepted": false,
+  "baseline": "a30e12704434e37a4307ca4cf401375728dbda1d",
+  "checkerSha256": "159817bafb7361d092e402a7e6a67c191dc76b10fde8522fadba46f7a6814641",
+  "logSha256": "5623cb93f491ecd67c794d33169ae15280c78de906d28c1808a95032503d226f"
+}

@@ -33,3 +33,8 @@ The next implementation review must identify the selected profile and anchor ass
 ## Implemented prerequisite: selected-header state relation
 
 [Header-bound state proof composition](HEADER_BOUND_STATE_PROOF.md) now connects the existing header-hash and account/storage-proof readers. It removes a separately supplied state root, but trusts the caller-selected header hash. Its historical proof replay does not resolve the anchor, canonicality, freshness or account-authority questions above.
+
+
+## Reproduced competing-anchor boundary -- 2026-10-26
+
+[Six retained-capture checks](ANCHOR_TRUST_BOUNDARY.md) demonstrate two different same-height blocks sharing a parent and each satisfying selected integrity/sender checks. Neither obtains consensus/finality authority. Cross-selected hashes and an injected finality flag reject. This supplies concrete local evidence for the existing trust decision; it selects no production anchor policy.

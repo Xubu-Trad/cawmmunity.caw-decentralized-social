@@ -300,3 +300,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Authority/dependency reconciliation -- 2026-10-26
 
 [12 known source surfaces](CURRENT_AUTHORITY_DEPENDENCIES.md) mapped against all9open independence gates. Separate frontend, fixed three-account paid probe and local replay engine. [Pinned independent reproduction handoff](INDEPENDENT_EXECUTOR_REVIEW.md) and NOT_RUN receipt prepared; no new tests/reviewer claims. Next OI-09 external reproduction and explicit OI-02/OI-04 design review, not more local wrappers as independence proof.
+
+
+### Competing-anchor evidence -- 2026-10-26
+
+[Six checks](ANCHOR_TRUST_BOUNDARY.md) reproduce separately valid selected branches without canonicality/finality. Anchor-policy alternatives documented without adoption. Next production registry/bootstrap trust review; independent executor reproduction remains open.
