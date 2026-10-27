@@ -310,3 +310,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Registry/bootstrap authority -- 2026-10-27
 
 [Source review](REGISTRY_BOOTSTRAP_REVIEW.md) separates immutable runtime identity from constructor allocation and current ownership. Seven production evidence gates remain open. Next bounded experiment: unchanged registry deployments with different constructor owners, runtime comparison, separate paid-probe bindings and negative controls. No production policy selected; independent reproduction remains open.
+
+
+### Registry bootstrap counterexample -- 2026-10-27
+
+[11 local groups](REGISTRY_BOOTSTRAP_EXPERIMENT.md) pass: same runtime, distinct allocations, separate immutable probe bindings and rejection controls. Next reuse the existing registry proof reader to bind owner/epoch to selected code/state, with wrong-registry/root and competing-state negatives. Selection authority/finality and independent reproduction remain open.

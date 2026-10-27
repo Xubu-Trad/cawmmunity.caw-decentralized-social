@@ -37,3 +37,8 @@ all rows are OPEN. a future record must give independently retrievable evidence,
 IDEA -- next bounded experiment: deploy this unchanged test registry twice on an isolated local chain with different constructor owners, compare runtime hashes and authority outputs, then bind separate unchanged paid probes. preserve both constructor records. this can demonstrate RB-03's limitation without selecting a production registry, changing economics or adding developer authority. include wrong-code-hash and stale-epoch rejection controls. it cannot choose canonical state or prove production registration.
 
 UNRESOLVED -- production registry design, chain/finality/bootstrap policy, burn compatibility and exact cost schedule remain unadopted. use existing [specification conflicts](../sources/SPEC_CONFLICTS.md) and [authority review](CURRENT_AUTHORITY_DEPENDENCIES.md); do not create duplicate issues merely to record this review. no test passes added, no runtime behavior changed, no independence gate closed. [independent executor reproduction](INDEPENDENT_EXECUTOR_REVIEW.md) still needs another operator.
+
+
+## Executed follow-up -- 2026-10-27
+
+The source-derived limitation above now has an [11-group local deployment experiment](REGISTRY_BOOTSTRAP_EXPERIMENT.md). Identical registry runtimes accepted by separately bound probes return different initial owners. Wrong-hash, nonowner and stale-epoch controls reject. No production gate closes; no funded withdrawal or signature claim.

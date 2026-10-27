@@ -1,0 +1,135 @@
+{
+  "schema": "caw-registry-bootstrap-experiment/1",
+  "complete": true,
+  "localOnly": true,
+  "impersonatedActors": true,
+  "productionAccepted": false,
+  "freshCompilation": false,
+  "checks": [
+    "identical registry runtime; different initial owner; same epoch zero",
+    "both paid probes accept the same registry runtime hash and bind their selected address",
+    "wrong runtime pin rejects deployment",
+    "left nonowner rejected",
+    "left current owner reaches unfunded-credit rejection; no withdrawal succeeds",
+    "right nonowner rejected",
+    "right current owner reaches unfunded-credit rejection; no withdrawal succeeds",
+    "transfer increments epoch; new owner with stale epoch rejected",
+    "old owner with current epoch rejected",
+    "new owner with current epoch reaches unfunded-credit rejection",
+    "transfer leaves runtime and other registry authority unchanged"
+  ],
+  "inputs": {
+    "experiments/paid-action/paid_node.py": "ecd540dfd3414b28cbb9d085254cc2be3de42ea7f13033afb40b72c6884a4160",
+    "experiments/paid-action/run_paid_action.py": "92b50402f8ad097839ec4e40e7e221647c89c8b9d0b3c915c4ce2400531130bf",
+    "experiments/paid-action/paid-build.json": "54f130a1f49e8569cbe7b9a6db54547f8e1e9275d9c0c256b5d916b01a59c54e",
+    "reference/fixtures/generate-ethereum-proof-fixtures.py": "5f100b6e1a12d29b0004bcb29f2ba5b23ffefc076646d2b67b1fb8df81c2effa"
+  },
+  "registryRuntimeKeccak": "0x5bd17d0ec2568d04b7edcefb86de6aec5a54f84845004f6630b43c18d83d852d",
+  "registryRuntimeSha256": "4745276b40204bd6e373b3f6c2e990ba8aeb3feb2de69a97b44510c58153d68f",
+  "registries": [
+    "0xd2e60639eb3432223eb8dc42e3b5c99382609700",
+    "0x0ea9c71d0826ba32deba626f10a10905b87bb476"
+  ],
+  "probes": [
+    "0x90fbd66684944acd339b0f8407f29e4d6fcfe3d1",
+    "0x973d7bf73147792e8ba8e360c26879b16846a115"
+  ],
+  "initialAuthority": [
+    "0x000000000000000000000000765d03fe39e2a0a48ac162a15b541c3cd1d63e760000000000000000000000000000000000000000000000000000000000000000",
+    "0x00000000000000000000000047ecac8221f18970c48cf48aaa3cbe8167bbbe730000000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "passed": 11,
+  "guard": {
+    "schema": "caw-local-node/1",
+    "mode": "synthetic",
+    "anvil_version": "1.8.1",
+    "anvil_sha256": "c6e29da1b010fe00bac6c0dc5c29484bd641deb5a84050aea10d13e9dc4fe26f",
+    "anvil_bytes": 41583616,
+    "local_chain_id": 31337,
+    "hardfork": "london",
+    "host": "127.0.0.1",
+    "port": 18545,
+    "remote_provider": null,
+    "fork_block": null,
+    "expected_fork_hash": null,
+    "expected_state_root": null,
+    "wallet_used": false,
+    "transaction_broadcast": false,
+    "local_transaction_attempts": 13,
+    "generated_accounts": 0,
+    "local_impersonation_is_ownership_proof": false,
+    "token_storage_overridden": false,
+    "token_code_replaced": false,
+    "peak_node_memory_bytes": 35463168,
+    "node_output_bytes": 36966,
+    "wall_seconds": 6.625,
+    "limits": {
+      "node_process_bytes": 536870912,
+      "node_seconds": 600,
+      "output_bytes": 1048576,
+      "response_bytes": 1048576,
+      "trace_bytes": 4194304,
+      "local_requests": 1800,
+      "per_transaction_gas": 4000000,
+      "local_transaction_attempts": 250,
+      "upstream_requests": 200,
+      "request_seconds": 10
+    },
+    "stop_reason": null,
+    "overrides": [
+      {
+        "method": "anvil_setBalance",
+        "params": [
+          "0x765d03fe39e2a0a48ac162a15b541c3cd1d63e76",
+          "0xde0b6b3a7640000"
+        ],
+        "local_only": true
+      },
+      {
+        "method": "anvil_impersonateAccount",
+        "params": [
+          "0x765d03fe39e2a0a48ac162a15b541c3cd1d63e76"
+        ],
+        "local_only": true
+      },
+      {
+        "method": "anvil_setBalance",
+        "params": [
+          "0x47ecac8221f18970c48cf48aaa3cbe8167bbbe73",
+          "0xde0b6b3a7640000"
+        ],
+        "local_only": true
+      },
+      {
+        "method": "anvil_impersonateAccount",
+        "params": [
+          "0x47ecac8221f18970c48cf48aaa3cbe8167bbbe73"
+        ],
+        "local_only": true
+      },
+      {
+        "method": "anvil_setBalance",
+        "params": [
+          "0x00000000000000000000000000000000ca180001",
+          "0xde0b6b3a7640000"
+        ],
+        "local_only": true
+      },
+      {
+        "method": "anvil_impersonateAccount",
+        "params": [
+          "0x00000000000000000000000000000000ca180001"
+        ],
+        "local_only": true
+      }
+    ],
+    "local_request_count": 61,
+    "proxy_request_count": 0,
+    "upstream_forwarded_count": 0
+  },
+  "traceSha256": "5faf20a1f568dc8cd7565b726757634b5d692114536116a24373bc3d4f660b9f",
+  "runnerSha256": "92956d04c3fb1c2c25c927dba2c216b0be72987a9ae0bbdf326bca3a2c4a7ffd",
+  "baseline": "7308a0ee18f6edb8c5dd46ec8c4f57bf95dcab1e",
+  "tracePublic": false,
+  "additionalRequestDeadlineSeconds": 300
+}
