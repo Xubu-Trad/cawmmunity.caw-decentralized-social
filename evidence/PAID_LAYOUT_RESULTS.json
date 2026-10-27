@@ -1,0 +1,59 @@
+{
+  "passed": 4,
+  "checks": [
+    {
+      "name": "actual compiler output matches retained code ABI and layout",
+      "result": {
+        "matches": {
+          "runtime": true,
+          "creation": true,
+          "abi": true,
+          "layout": true
+        },
+        "compilerIdentityAuthenticated": false,
+        "deployedStateVerified": false
+      }
+    },
+    {
+      "name": "changed_credits_slot",
+      "rejected": true,
+      "reason": "compiler comparison failed: {'runtime': True, 'creation': True, 'abi': True, 'layout': False}"
+    },
+    {
+      "name": "changed_runtime",
+      "rejected": true,
+      "reason": "compiler comparison failed: {'runtime': False, 'creation': True, 'abi': True, 'layout': True}"
+    },
+    {
+      "name": "changed_abi",
+      "rejected": true,
+      "reason": "compiler comparison failed: {'runtime': True, 'creation': True, 'abi': False, 'layout': True}"
+    }
+  ],
+  "productionAccepted": false,
+  "baseline": "e9d696783993fd0a41ec88e527bb5493cffe0b5a",
+  "sources": [
+    {
+      "path": "reference/paid-action-reader.mjs",
+      "sha256": "81c5f4dd0b9bf4798571c5696edd8fe8050ae707f8486c5fd5ad87314bf09269",
+      "size": 26042
+    },
+    {
+      "path": "reference/paid-acquisition-evidence.mjs",
+      "sha256": "9c693c47a81ebba93657aeb03408dfb235800315ce9c1a8eee12704cb5020a53",
+      "size": 13739
+    },
+    {
+      "path": "reference/paid-registry-state-history.mjs",
+      "sha256": "1dceb6530faf67ee086bb72d765f1b16dd7597ac771ec9f118c613ac627b8043",
+      "size": 2295
+    },
+    {
+      "path": "experiments/registry-bootstrap/binding-reader.mjs",
+      "sha256": "f66b839e32199dab9ec68e46fd3d00701c7b545a3da55f1eca8084b4aba36400",
+      "size": 3731
+    }
+  ],
+  "compilerOutputSha256": "5a748e2310562436d7ffaf283ddc21cdd16cd7d8317cb7020ab1dea601b74994",
+  "scope": "compiler output reproduction and evidence-surface review; no deployed ledger proof"
+}

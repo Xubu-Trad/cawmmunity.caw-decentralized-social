@@ -1,0 +1,93 @@
+{
+  "schema": "caw-paid-probe-layout/1",
+  "scope": "fixed CawPaidActionProbe fixture, compiler layout only; no deployed ledger or backing proof",
+  "compiler_sha256": "ec9feb83ff291ae74805b38cc6834502fb31be690f325de59dff8e60d8432d66",
+  "compiler_input_sha256": "2ef621974eabfe12b4d82e049dfa0bf67736d1cfafb5d8adb63d77041dc3e13b",
+  "parent_input_sha256": "72543224575c3c49532cca983863c5eba3429e319765d9864365409cc2d0e1fe",
+  "source_sha256": "e48f8f8f816aae21e0e9865a8be0aa2e47204ea04b4c12b4124e5b0452412da1",
+  "runtime_sha256": "3bdc05485dfa84bcd00c6d2c9fd0ee3650d33a789cb76f41463c1e3b392de229",
+  "runtime_bytes_identical": true,
+  "creation_bytes_identical": true,
+  "abi_identical": true,
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 98,
+        "contract": "CawPaidActionProbe.sol:CawPaidActionProbe",
+        "label": "credits",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_uint256,t_uint256)"
+      },
+      {
+        "astId": 102,
+        "contract": "CawPaidActionProbe.sol:CawPaidActionProbe",
+        "label": "stakes",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_uint256,t_uint256)"
+      },
+      {
+        "astId": 106,
+        "contract": "CawPaidActionProbe.sol:CawPaidActionProbe",
+        "label": "nonces",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_mapping(t_uint256,t_uint256)"
+      },
+      {
+        "astId": 108,
+        "contract": "CawPaidActionProbe.sol:CawPaidActionProbe",
+        "label": "totalCredits",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 110,
+        "contract": "CawPaidActionProbe.sol:CawPaidActionProbe",
+        "label": "poolDust",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 112,
+        "contract": "CawPaidActionProbe.sol:CawPaidActionProbe",
+        "label": "messageCount",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 114,
+        "contract": "CawPaidActionProbe.sol:CawPaidActionProbe",
+        "label": "entered",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_bool"
+      }
+    ],
+    "types": {
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_mapping(t_uint256,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  },
+  "output_sha256": "5a748e2310562436d7ffaf283ddc21cdd16cd7d8317cb7020ab1dea601b74994",
+  "productionAccepted": false
+}

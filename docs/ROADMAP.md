@@ -325,3 +325,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Selected paid-contract binding -- 2026-10-27
 
 [17 groups](PAID_REGISTRY_CODE_BINDING.md) pass for a fixed-fixture code/state composition. Next inventory and reconcile existing paid-ledger/endpoint-state evidence against this binding before implementing duplicate checks. Balances, actual withdrawal safety, production anchor/registry decisions and independent reproduction remain open.
+
+
+### Paid-ledger endpoint inventory and layout -- 2026-10-27
+
+[Evidence boundary](PAID_LEDGER_STATE_BOUNDARY.md) distinguishes replay/getter comparison from registry proofs and paid code binding. Paid ledger storage proofs are not yet composed. Compiler-derived layout reproduced with identical runtime/creation/ABI;4verification cases pass. Next13-slot selected paid-ledger witness with nonzero-state cases; external token backing remains separate.
