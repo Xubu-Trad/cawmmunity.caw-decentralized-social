@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {inspectTestRegistryState} from '../../reference/test-registry-state.mjs';
+const path=process.argv[2];
+assert.ok(path,'capture file required');
+const raw=readFileSync(path);assert.ok(raw.length<524288);
+const fixture=JSON.parse(raw), checks=[];
+const check=c=>inspectTestRegistryState(JSON.stringify(c.evidence),JSON.stringify(c.selection));
+const group=(name,f)=>{f();checks.push(name);};
+const reject=(name,mutate)=>group(name,()=>{const c=structuredClone(fixture.cases[0]);mutate(c);assert.throws(()=>check(c),e=>typeof e.code==='string');});
+group('capture scope',()=>{assert.equal(fixture.complete,true);assert.equal(fixture.localOnly,true);assert.equal(fixture.impersonatedActors,true);assert.equal(fixture.productionAccepted,false);assert.equal(fixture.node.remote_provider,null);assert.equal(fixture.node.upstream_forwarded_count,0);assert.equal(fixture.cases.length,3);});
+for(const c of fixture.cases)group(c.name+' selected proof matches direct query',()=>{
+ const result=check(c);assert.equal(result.owner,c.owner);assert.equal(result.epoch,c.epoch);
+ assert.equal(c.directAuthority,'0x'+c.owner.slice(2).padStart(64,'0')+BigInt(c.epoch).toString(16).padStart(64,'0'));
+ assert.equal(result.codeMatchesFixture,true);assert.equal(result.selectedStateDecoded,true);
+ for(const key of ['accountAuthorityVerified','transactionPermissionVerified','currentPermissionVerified','executionVerified','endpointAuthenticated','consensusVerified','finalityVerified','freshnessVerified','productionAccepted'])assert.equal(result[key],false);
+});
+group('same header and runtime do not make two registry addresses interchangeable',()=>{
+ const [a,b]=fixture.cases;assert.deepEqual(a.evidence.header,b.evidence.header);assert.equal(a.evidence.code,b.evidence.code);assert.notEqual(a.selection.registry,b.selection.registry);assert.notEqual(check(a).owner,check(b).owner);
+});
+reject('wrong selected registry',c=>{c.selection.registry=fixture.cases[1].selection.registry;});
+reject('other registry proof with identical runtime',c=>{c.evidence.proof=fixture.cases[1].evidence.proof;});
+reject('old proof under later selected state',c=>{c.evidence.header=fixture.cases[2].evidence.header;c.selection.hash=fixture.cases[2].selection.hash;});
+reject('changed state root under retained header hash',c=>{c.evidence.header.stateRoot=fixture.cases[2].evidence.header.stateRoot;});
+reject('forged claimed owner',c=>{c.evidence.proof.storageProof[0].value='0x1';});
+reject('missing epoch witness',c=>{c.evidence.proof.storageProof.pop();});
+reject('substituted runtime bytes',c=>{c.evidence.code='0x00';});
+reject('injected finality claim',c=>{c.selection.finalityVerified=true;});
+console.log(JSON.stringify({schema:'caw-registry-bootstrap-state-check/1',captureSha256:createHash('sha256').update(raw).digest('hex'),passed:checks.length,checks,productionAccepted:false},null,2));

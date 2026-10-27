@@ -315,3 +315,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Registry bootstrap counterexample -- 2026-10-27
 
 [11 local groups](REGISTRY_BOOTSTRAP_EXPERIMENT.md) pass: same runtime, distinct allocations, separate immutable probe bindings and rejection controls. Next reuse the existing registry proof reader to bind owner/epoch to selected code/state, with wrong-registry/root and competing-state negatives. Selection authority/finality and independent reproduction remain open.
+
+
+### Registry address/state binding -- 2026-10-27
+
+[13 groups](REGISTRY_BOOTSTRAP_STATE.md) pass with fresh local proofs and unchanged reader. Next reconcile paid-probe immutable registry selection with selected-state code evidence, rather than a direct-call-only binding. Production anchor/registry decisions and independent reproduction stay open.

@@ -1,0 +1,75 @@
+{
+  "schema": "caw-registry-bootstrap-state-check/1",
+  "captureSha256": "4c56f075ba38c1e8c8abbb78aef2f2f6504a74589f9bd61e4e17f25db6f984a7",
+  "passed": 13,
+  "checks": [
+    "capture scope",
+    "left_initial selected proof matches direct query",
+    "right_initial selected proof matches direct query",
+    "left_transferred selected proof matches direct query",
+    "same header and runtime do not make two registry addresses interchangeable",
+    "wrong selected registry",
+    "other registry proof with identical runtime",
+    "old proof under later selected state",
+    "changed state root under retained header hash",
+    "forged claimed owner",
+    "missing epoch witness",
+    "substituted runtime bytes",
+    "injected finality claim"
+  ],
+  "productionAccepted": false,
+  "baseline": "aa4f4d98214740b6d8d968ca80b129144dfc1e8f",
+  "sources": [
+    {
+      "path": "reference/test-registry-state.mjs",
+      "sha256": "b6dc00df09d4419fb2a4cb2267da4526ae148ccc8c7ba764e31e3c3aa0627700",
+      "size": 5270
+    },
+    {
+      "path": "reference/header-bound-state-proof.mjs",
+      "sha256": "244e2f468d02b362246ae8e8bc659801b233c7257d774a695d40e9c1d2428955",
+      "size": 3918
+    },
+    {
+      "path": "reference/ethereum-state-proof.mjs",
+      "sha256": "56c2278447b1eccef6a29dbeb4da7777ad5330fe5bb67655c1ed9f8564af628f",
+      "size": 12928
+    },
+    {
+      "path": "reference/ethereum-execution-header.mjs",
+      "sha256": "dd69f58be27f861939432a2a140298fde3be1393e8d9bbd8b6dfb88c69cb34eb",
+      "size": 9631
+    },
+    {
+      "path": "reference/keccak256.mjs",
+      "sha256": "6ed8268eb811eddb3345ebb47e824346c00585d6bed2ec3767e1783d31615edf",
+      "size": 2961
+    },
+    {
+      "path": "public/bounded-json.mjs",
+      "sha256": "73312692245add67ea140ef1393efe9577d337d917867f9edca02ce82af8b051",
+      "size": 6122
+    },
+    {
+      "path": "experiments/registry-bootstrap/run.py",
+      "sha256": "92956d04c3fb1c2c25c927dba2c216b0be72987a9ae0bbdf326bca3a2c4a7ffd",
+      "size": 6335
+    }
+  ],
+  "newReaderBehavior": false,
+  "capturePublic": true,
+  "rawRequestTracePublic": false,
+  "additionalCaptureRequestDeadlineSeconds": 300,
+  "newFiles": [
+    {
+      "path": "experiments/registry-bootstrap/capture-state.py",
+      "sha256": "f33b1055ec7b6e5604a355b6ecfed26cced9d854f3a985ceaa61726c6c91cdf3",
+      "size": 4510
+    },
+    {
+      "path": "experiments/registry-bootstrap/check-state.mjs",
+      "sha256": "c04cd541acd1421120b8142856a64c9f3d969cd2c1c780d464a586168a9c3b30",
+      "size": 2991
+    }
+  ]
+}

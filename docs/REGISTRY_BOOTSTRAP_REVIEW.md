@@ -42,3 +42,8 @@ UNRESOLVED -- production registry design, chain/finality/bootstrap policy, burn 
 ## Executed follow-up -- 2026-10-27
 
 The source-derived limitation above now has an [11-group local deployment experiment](REGISTRY_BOOTSTRAP_EXPERIMENT.md). Identical registry runtimes accepted by separately bound probes return different initial owners. Wrong-hash, nonowner and stale-epoch controls reject. No production gate closes; no funded withdrawal or signature claim.
+
+
+## Selected state follow-up -- 2026-10-27
+
+[13 focused groups](REGISTRY_BOOTSTRAP_STATE.md) check three fresh local proofs, including two same-code registry addresses at the same block. Substitution negatives reject in the unchanged reader. Canonicality, current authority and production acceptance remain false.
