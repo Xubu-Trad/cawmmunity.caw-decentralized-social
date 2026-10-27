@@ -320,3 +320,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Registry address/state binding -- 2026-10-27
 
 [13 groups](REGISTRY_BOOTSTRAP_STATE.md) pass with fresh local proofs and unchanged reader. Next reconcile paid-probe immutable registry selection with selected-state code evidence, rather than a direct-call-only binding. Production anchor/registry decisions and independent reproduction stay open.
+
+
+### Selected paid-contract binding -- 2026-10-27
+
+[17 groups](PAID_REGISTRY_CODE_BINDING.md) pass for a fixed-fixture code/state composition. Next inventory and reconcile existing paid-ledger/endpoint-state evidence against this binding before implementing duplicate checks. Balances, actual withdrawal safety, production anchor/registry decisions and independent reproduction remain open.

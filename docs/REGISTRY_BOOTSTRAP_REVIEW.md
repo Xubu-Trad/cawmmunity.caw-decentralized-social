@@ -47,3 +47,8 @@ The source-derived limitation above now has an [11-group local deployment experi
 ## Selected state follow-up -- 2026-10-27
 
 [13 focused groups](REGISTRY_BOOTSTRAP_STATE.md) check three fresh local proofs, including two same-code registry addresses at the same block. Substitution negatives reject in the unchanged reader. Canonicality, current authority and production acceptance remain false.
+
+
+## Paid-contract binding follow-up -- 2026-10-27
+
+[17 focused groups](PAID_REGISTRY_CODE_BINDING.md) compose selected registry state with the paid-probe account/code commitment and fixed compiler-recorded immutables. Valid other-contract proofs cannot replace the selected relationship. No creation provenance or production authority is established.
