@@ -330,3 +330,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Paid-ledger endpoint inventory and layout -- 2026-10-27
 
 [Evidence boundary](PAID_LEDGER_STATE_BOUNDARY.md) distinguishes replay/getter comparison from registry proofs and paid code binding. Paid ledger storage proofs are not yet composed. Compiler-derived layout reproduced with identical runtime/creation/ABI;4verification cases pass. Next13-slot selected paid-ledger witness with nonzero-state cases; external token backing remains separate.
+
+
+### Constructed paid-ledger proof decoder -- 2026-10-27
+
+[18 groups](PAID_LEDGER_PROOFS.md) pass for13-slot proofs plus fixed code/registry binding and ledger invariants. Synthetic constructed states only; no executed funding or history reconciliation. Next executed nonzero local capture with exact endpoint/history comparison. External token backing remains separate.

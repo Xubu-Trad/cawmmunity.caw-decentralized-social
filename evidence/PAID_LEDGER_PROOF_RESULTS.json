@@ -1,0 +1,87 @@
+{
+  "schema": "caw-test-paid-ledger-check/1",
+  "fixtureSha256": "3c6366af80618adcade19c01b1160f12420599025434d1a31cf7ab8257ac00ff",
+  "passed": 18,
+  "checks": [
+    "constructed states are not execution or funding evidence",
+    "zero",
+    "nonzero",
+    "wrong-total",
+    "overlocked",
+    "entered",
+    "liability-overflow",
+    "missing witness",
+    "duplicate witness",
+    "wrong concrete storage key",
+    "forged credit value",
+    "zero-state proof substituted under nonzero header",
+    "changed selected probe",
+    "changed runtime",
+    "caller supplied ledger claim",
+    "unsupported finality claim",
+    "input size bound",
+    "object input refused"
+  ],
+  "executedStateVerified": false,
+  "productionAccepted": false,
+  "baseline": "3850235584a6abf2685317dc25f095bb73b4bdc0",
+  "sources": [
+    {
+      "path": "experiments/registry-bootstrap/binding-reader.mjs",
+      "sha256": "f66b839e32199dab9ec68e46fd3d00701c7b545a3da55f1eca8084b4aba36400",
+      "size": 3731
+    },
+    {
+      "path": "experiments/paid-action/storage-layout.json",
+      "sha256": "bb2ae95123e44e3f36f743802f300d9d497de55bb3ee22b3cb102251aad28976",
+      "size": 2907
+    },
+    {
+      "path": "reference/header-bound-state-proof.mjs",
+      "sha256": "244e2f468d02b362246ae8e8bc659801b233c7257d774a695d40e9c1d2428955",
+      "size": 3918
+    },
+    {
+      "path": "reference/test-registry-state.mjs",
+      "sha256": "b6dc00df09d4419fb2a4cb2267da4526ae148ccc8c7ba764e31e3c3aa0627700",
+      "size": 5270
+    },
+    {
+      "path": "reference/ethereum-state-proof.mjs",
+      "sha256": "56c2278447b1eccef6a29dbeb4da7777ad5330fe5bb67655c1ed9f8564af628f",
+      "size": 12928
+    },
+    {
+      "path": "reference/keccak256.mjs",
+      "sha256": "6ed8268eb811eddb3345ebb47e824346c00585d6bed2ec3767e1783d31615edf",
+      "size": 2961
+    },
+    {
+      "path": "public/bounded-json.mjs",
+      "sha256": "73312692245add67ea140ef1393efe9577d337d917867f9edca02ce82af8b051",
+      "size": 6122
+    }
+  ],
+  "newFiles": [
+    {
+      "path": "experiments/registry-bootstrap/ledger-reader.mjs",
+      "sha256": "d05799403c1136fb4d38523781f6c473e0068ac049c2cd2d9d31d895724218e7",
+      "size": 3158
+    },
+    {
+      "path": "experiments/registry-bootstrap/check-ledger.mjs",
+      "sha256": "937c7e9c23a030c5cc282667852a2732f1d0be53670416c957b43fe4665759d5",
+      "size": 2868
+    },
+    {
+      "path": "experiments/registry-bootstrap/generate-ledger.py",
+      "sha256": "ecb6e8c0fb8e36ff855e752e565618f26a305bd3895dce7dce7a1fa8457c4076",
+      "size": 3791
+    },
+    {
+      "path": "experiments/registry-bootstrap/ledger-fixture.json",
+      "sha256": "3c6366af80618adcade19c01b1160f12420599025434d1a31cf7ab8257ac00ff",
+      "size": 224385
+    }
+  ]
+}

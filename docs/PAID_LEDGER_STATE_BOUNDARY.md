@@ -44,3 +44,8 @@ the input helper refuses overwrite and checks parent/derived input identities. v
 IDEA -- request13 exact witnesses: nine mapping values for fixture IDs1..3, slots3/4/5 and the entered slot6. require valid zero/absence proofs too. bind them to the paid-contract account commitment, fixed code profile and same selected history endpoint. compare decoded integers with independently reconstructed history, require stakes<=credits and sum(credits)==totalCredits, and preserve failure on wrong slots, forged values, absent witnesses or a different state. use nonzero state as well as zero-state controls; an empty-contract demonstration cannot establish funded accounting.
 
 UNRESOLVED -- tokenBalance is state of the external token contract, not this ledger. proving totalCredits or a model's backing inequality alone does not establish actual token backing, transfer semantics or withdrawal execution. token code/layout/dependencies and successful/reverting withdrawal cases need separate evidence. a post-state entered=false flag is not a reentrancy proof. canonicality, current permission, production registration, source conflicts and independent reproduction remain open. no acceptance gate closes here.
+
+
+## Decoder follow-up -- 2026-10-27
+
+[Constructed proof checks](PAID_LEDGER_PROOFS.md) now compose the13ledger witnesses with fixed code/registry binding. The earlier inventory remains a historical baseline; executed nonzero acquisition and reconciliation with history are still missing.
