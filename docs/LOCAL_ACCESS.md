@@ -34,3 +34,6 @@ The selected-executor command succeeded from the local repository tree using the
 The Windows convenience launchers retain the existing 768 MiB available-memory startup floor, 2 GiB disk floor, pinned runtime and hard process limits. Its alpha preview expires after ten minutes and can be restarted. Generic commands above do not themselves implement that external supervisor; preserve applicable resource controls in your environment. A missing runtime, dependency directory or failed guard must be reported rather than bypassed.
 
 Next engineering work remains strict result validation against retained input/source selections, then the unresolved loaded-code, state-root and independent recovery boundaries. Local accessibility does not close those gates.
+
+
+For sequential guarded execution and result inspection on Windows, use [the owned-process supervisor](OWNED_EXECUTOR.md). It requires a new evidence directory and retains both process receipts. Local launchers remain separate from the simulated website.

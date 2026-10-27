@@ -1,0 +1,33 @@
+{
+  "schema": "caw-owned-executor-check/1",
+  "baseline": "9314755513615c6b2f5265a582ed805db2094c88",
+  "integration": {
+    "workerExit": 0,
+    "inspectorExit": 0,
+    "kind": "execution-completed",
+    "gasUsed": "26012",
+    "resultSha256": "ef37e67740ab0561a9ee8a5893637498136fb848b6e3c7e07d279ed7f8db31cc"
+  },
+  "syntheticTransportChecks": 9,
+  "sourceSha256": {
+    "reference/executor-output.mjs": "58cde4cef8d5aff67a9f90e3a44945bb5010432f59ee62204a348462043ac04c",
+    "experiments/execution-engine/selected-executor-cli.mjs": "d176ecc3be30cd644d1da94088bfc9f76c999458d4a25a73ee3cb8a560e08e81",
+    "experiments/execution-engine/inspect-owned-output.mjs": "f9ce9d551494837579e12ae788802226b866f1c68b663c589b39b2074801c2f6",
+    "experiments/execution-engine/run-owned-executor.py": "975d1e5e02c47aecd32fcbaea9561f189b128c1de4c341b3f051e5135bc83993",
+    "experiments/execution-engine/owned-output-check.mjs": "2947d8ea3771cba92f819c61f873650cf576d74eb246b38e31afe0e8ac2b6f38"
+  },
+  "recordSha256": {
+    "input.json": "56bc79c960e439f48a575109c2887ac5412540ec6648fd4bdb7b0a4414d7debd",
+    "inspection-input.json": "5aa19cda595a9737896ceba5e2cf692af4ab3a090be275d08ccdd92f70273a10",
+    "inspection.json": "03bf556d57bbf021847a00c6d92ab00c95e38681bf16844e577b8e4e1d713fa3",
+    "inspector-receipt.json": "3dbbb3cc7581cb37102879e30b3dab0df4c519ac0b4beca574ef4dde19dc7f76",
+    "inspector-stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "inspector-stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result.json": "ef37e67740ab0561a9ee8a5893637498136fb848b6e3c7e07d279ed7f8db31cc",
+    "worker-receipt.json": "05a08e55d0464087f718a8fd1f95d10ef1eb650633e493bfb00a1c1433991caf",
+    "worker-stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "worker-stdout.txt": "cb214d18bc8dcf2ad08edc1aa097e3eac308613b1b2c2dccdd2ccb62ca123d3a"
+  },
+  "executionAuthenticated": false,
+  "productionAccepted": false
+}

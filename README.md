@@ -44,7 +44,7 @@ production remains blocked until the protocol evidence, unresolved specification
 
 ## current build -- 2026-10-26
 
-this is a community implementation/reference alpha, not an official caw release. the frontend remains a local simulation; the package remains `0.1.0-alpha.46`. public test deployment and production are blocked. the evidence baseline before this update is [`b40308a`](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/commit/b40308a0bc80d08b60ce25f3e1a3aac99ec4ca3b); local access and the new result-inspection evidence are linked below.
+this is a community implementation/reference alpha, not an official caw release. the frontend remains a local simulation; the package remains `0.1.0-alpha.46`. public test deployment and production are blocked. the evidence baseline before this update is [`9314755`](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/commit/9314755513615c6b2f5265a582ed805db2094c88); local access and supervised result inspection are linked below.
 
 the current engineering focus is recovery another builder can inspect and reproduce: selected state proofs, bounded signed-transaction replay, and the identity of the code doing that replay. these are separate evidence gates, not a claim that the protocol is complete.
 
@@ -60,12 +60,13 @@ the current engineering focus is recovery another builder can inspect and reprod
 | [selected executor](docs/SELECTED_EXECUTOR.md) | 13 focused groups; five signed outcomes/gas values and identity/input rejection cases | trusted gate/host, module caches, concurrent replacement, full roots and transitive dependency identity |
 | [fresh-process execution](docs/EXECUTOR_PROCESS.md) | eight separate processes; two identical result files, five no-output rejections and one preserved-output refusal | trusted supervisor/host, filesystem races, complete result validation and independent reproduction |
 | [result record inspection](docs/EXECUTOR_RESULT.md) | 28 focused checks for completion inputs, exact identities, strict schema and refusal cases | metadata agreement cannot authenticate execution; plausible forged gas remains unverified |
+| [owned process inspection](docs/OWNED_EXECUTOR.md) | real worker/inspector sequence and nine synthetic transport cases | trusted host and captured process output; no cryptographic execution or full-root proof |
 
-these records have different scopes and are not added into one total. the 1241 ordinary checks and 66 replay groups remain retained prior runs. The 13 selected-executor groups and eight process cases remain separate retained results; this update adds 28 result-inspection checks. the earlier alpha.41 record separately contains 65 Python checks. execution experiments do not change the recovery receipt into a claim of complete execution verification; `productionAccepted` remains false.
+these records have different scopes and are not added into one total. the 1241 ordinary checks and 66 replay groups remain retained prior runs. The 13 selected-executor groups and eight process cases remain separate retained results; the 28 result-inspection checks remain separate evidence. This update adds one supervised worker/inspector run and nine transport cases. the earlier alpha.41 record separately contains 65 Python checks. execution experiments do not change the recovery receipt into a claim of complete execution verification; `productionAccepted` remains false.
 
 developers can start with the [review guide](docs/REVIEW_GUIDE.md), [shared adapter](docs/SHARED_WITNESS_ADAPTER.md), [structured outcomes](docs/REPLAY_OUTCOMES.md) and [source-manifest gate](docs/MANIFEST_REPLAY_GATE.md). the gate requires a separately selected expected digest; regenerating and automatically trusting a new manifest is not verification. the frontend/offline suite has no dependency-install step; engine experiments have their own pinned installation and reproduction instructions.
 
-next: connect result inspection to an owned process with observed completion and independently retained selections, then test stale/replaced output handling. full state-root comparison, public acquisition/anchor authentication, broader wallet authority, transport/storage replacement and independent builder recovery remain open. the [roadmap](docs/ROADMAP.md) retains the detailed sequence and failed-evidence boundaries.
+next: review the complete authority/dependency graph and independent reproduction boundary before connecting local observations to state adoption. full state-root comparison, public acquisition/anchor authentication, broader wallet authority, transport/storage replacement and independent builder recovery remain open. the [roadmap](docs/ROADMAP.md) retains the detailed sequence and failed-evidence boundaries.
 
 ## what makes the build different
 

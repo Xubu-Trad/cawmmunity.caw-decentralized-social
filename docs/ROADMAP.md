@@ -290,3 +290,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Result record inspection -- 2026-10-26
 
 [28 checks](EXECUTOR_RESULT.md) validate schema and retained identities with a caller-supplied completion observation. Plausible forged gas deliberately remains unauthenticated. Next owned-process integration and stale/replaced output tests; no state adoption. README updated.
+
+
+### Owned-process result inspection -- 2026-10-26
+
+[Worker and inspector integration](OWNED_EXECUTOR.md) passed; nine transport cases reject stale request markers, changed output and unsuccessful completion. No state adoption or execution authentication. Next authority/dependency graph and independent reproduction review; stop treating further local wrappers as independence evidence.

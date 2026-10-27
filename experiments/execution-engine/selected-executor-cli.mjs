@@ -5,8 +5,9 @@ import {createHash} from 'node:crypto';
 
 // One request per invocation. Use an external supervisor for resource/runtime policy.
 try {
-  if(process.argv.length!==7)throw new Error('ARGUMENTS');
-  const [root,inputPath,sourceDigest,executorDigest,outputPath]=process.argv.slice(2);
+  if(![7,8].includes(process.argv.length))throw new Error('ARGUMENTS');
+  const [root,inputPath,sourceDigest,executorDigest,outputPath,requestId]=process.argv.slice(2);
+  if(requestId!==undefined&&!/^[a-f0-9]{32}$/.test(requestId))throw new Error('REQUEST_ID');
   if(existsSync(outputPath))throw new Error('OUTPUT_EXISTS');
   const fd=openSync(inputPath,'r');let bytes;
   try {
@@ -23,7 +24,9 @@ try {
   const inputSha256=createHash('sha256').update(bytes).digest('hex');
   if(result.provenance.inputSha256!==inputSha256)throw new Error('INPUT_IDENTITY');
   // Exclusive create prevents overwriting a retained record, including on an output race.
-  writeFileSync(outputPath,JSON.stringify({schema:'caw-selected-executor-file/1',inputSha256,result})+'\n',{encoding:'utf8',flag:'wx',mode:0o600});
+  const encoded=JSON.stringify({schema:'caw-selected-executor-file/1',inputSha256,result})+'\n';
+  writeFileSync(outputPath,encoded,{encoding:'utf8',flag:'wx',mode:0o600});
+  if(requestId!==undefined)console.log(JSON.stringify({schema:'caw-executor-output/1',requestId,resultSha256:createHash('sha256').update(encoded).digest('hex')}));
 }catch {
   console.error('SELECTED_EXECUTOR_PROCESS_FAILED');
   process.exitCode=1;
