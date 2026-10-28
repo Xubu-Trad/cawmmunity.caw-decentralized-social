@@ -203,3 +203,8 @@ Original code and project-authored explanatory documentation use the [scoped MIT
 ### signed history and ledger progress -- 2026-10-28
 
 [15 focused groups](docs/SIGNED_LEDGER_RECONCILIATION.md) now pass on two acquired local branches with signed transaction bodies, receipt commitments and endpoint ledger proofs together. Swapped branches, altered transactions/receipts and missing witnesses reject. Both selected tips pass: this does not establish canonicality, real-token backing, independent providers or production authority. The frontend remains a local alpha; production/public-test release gates remain open.
+
+
+### current review decision -- 2026-10-28
+
+The signed local ledger evidence now needs an explicit [anchor-authority decision](docs/ANCHOR_DECISION_REVIEW.md): network/fork identity, bootstrap trust, finalized execution-header binding, freshness, conflict handling and replacement acquisition. Eight decision rows remain unresolved. Review is requested in existing issue3; no new local test count or production policy is claimed.

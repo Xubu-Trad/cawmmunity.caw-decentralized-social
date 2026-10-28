@@ -1,0 +1,38 @@
+{
+  "baseline": "da797434b9f58a93277ea8969fa52b11895b85eb",
+  "reviewType": "source and retained evidence",
+  "newTestsRun": false,
+  "productionPolicyAdopted": false,
+  "sources": [
+    {
+      "path": "docs/ANCHOR_TRUST_BOUNDARY.md",
+      "sha256": "835334e4abe55c973fd03a3188c821b9707a155426d8823507152ab610613126",
+      "size": 3431
+    },
+    {
+      "path": "docs/RECOVERY_TRUST_MODEL.md",
+      "sha256": "780f74a76c55d14593126f015bf5ba32dcd2c03e4612260ed927ce3bba328fc2",
+      "size": 4758
+    },
+    {
+      "path": "docs/CURRENT_AUTHORITY_DEPENDENCIES.md",
+      "sha256": "b3fe8aee8f3d8ddfd03fce6b320f9d943006635c964d5c5fe0ceed4b51aeefae",
+      "size": 7164
+    },
+    {
+      "path": "docs/OPERATOR_INDEPENDENCE.md",
+      "sha256": "5be193a49c09bd36dc4464a3bc9d4094e51419c2675c88ffe3bb59fd94fa2e0c",
+      "size": 8244
+    },
+    {
+      "path": "experiments/registry-bootstrap/body-ledger-reader.mjs",
+      "sha256": "b61677a579852c6d512ff012d28b8849fa0160a9441e39199c2a2932cc8e0606",
+      "size": 1545
+    },
+    {
+      "path": "evidence/SIGNED_LEDGER_RESULTS.json",
+      "sha256": "6d22863f3c240749ddb63297b5f906460eb398c7906bc7f4b6e074924b71386d",
+      "size": 2826
+    }
+  ]
+}

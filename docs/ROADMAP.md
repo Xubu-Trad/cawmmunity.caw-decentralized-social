@@ -350,3 +350,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### joint signed capture completed within fixture scope -- 2026-10-28
 
 [15 focused groups](SIGNED_LEDGER_RECONCILIATION.md) exercise both acquired branches and tampering cases. The preceding joint-capture task is complete only for the synthetic fixture. Next connect the selected-evidence result to existing anchor-selection/operator-independence requirements, retaining false canonicality, token-backing and production-authority claims.
+
+
+### anchor decision review -- 2026-10-28
+
+[AT-01 through AT-08](ANCHOR_DECISION_REVIEW.md) make the unresolved production anchor decision explicit. Existing signed-ledger evidence is selected consistency only. Seek a concrete profile/proposal and independent reproduction in established review lanes; do not add wrappers as independence proof or choose a developer-controlled fallback. No gate closed.

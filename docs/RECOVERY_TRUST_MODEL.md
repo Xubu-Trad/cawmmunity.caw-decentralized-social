@@ -38,3 +38,8 @@ The next implementation review must identify the selected profile and anchor ass
 ## Reproduced competing-anchor boundary -- 2026-10-26
 
 [Six retained-capture checks](ANCHOR_TRUST_BOUNDARY.md) demonstrate two different same-height blocks sharing a parent and each satisfying selected integrity/sender checks. Neither obtains consensus/finality authority. Cross-selected hashes and an injected finality flag reject. This supplies concrete local evidence for the existing trust decision; it selects no production anchor policy.
+
+
+## decision record -- 2026-10-28
+
+[Anchor-authority review](ANCHOR_DECISION_REVIEW.md) consolidates the required decisions as AT-01 through AT-08 after joint signed-ledger acquisition. It adopts no production trust path and changes no flags.
