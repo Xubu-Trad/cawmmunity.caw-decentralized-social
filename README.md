@@ -193,3 +193,8 @@ R2 calls for public contribution, peer review and an agreed release, without dev
 Original code and project-authored explanatory documentation use the [scoped MIT license](LICENSE_STATUS.md). Artwork, screenshots, primary texts and raw observations are excluded; preserved [third-party notices](experiments/token-source/NOTICES.md) retain their separate attribution.
 
 [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md) · [Licensing](LICENSE_STATUS.md)
+
+
+### latest engineering boundary -- 2026-10-28
+
+[Signed-body and ledger composition](docs/BODY_LEDGER_BOUNDARY.md): nine focused groups pass, including separate positive controls and rejection of unrelated signed bodies grafted onto ledger proofs. A joint positive acquisition is still pending; this experimental reader is not an accepted recovery path. Existing production and public-test release gates remain open.

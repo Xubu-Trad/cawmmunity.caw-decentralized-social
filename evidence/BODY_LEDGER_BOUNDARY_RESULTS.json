@@ -1,0 +1,57 @@
+{
+  "schema": "caw-body-ledger-boundary-check/1",
+  "passed": 9,
+  "checks": [
+    "earlier executed ledger check remains a scoped positive control",
+    "left retained signed body positive control",
+    "right retained signed body positive control",
+    "missing complete bodies cannot promote ledger evidence",
+    "left separately valid signed bodies cannot be grafted onto another ledger",
+    "right separately valid signed bodies cannot be grafted onto another ledger",
+    "caller acceptance field rejected",
+    "object input rejected",
+    "extra argument rejected"
+  ],
+  "jointPositiveCaptureVerified": false,
+  "productionAccepted": false,
+  "baseline": "6f65cbeb7a065c289cfbd282c53c5dc57cf850fd",
+  "sources": [
+    {
+      "path": "experiments/registry-bootstrap/ledger-history-reader.mjs",
+      "sha256": "a31142fa67bf7973366ccf8f42b6aa9393ad7a3ab4e2f41536cb4272b3888f27",
+      "size": 2138
+    },
+    {
+      "path": "reference/paid-body-history.mjs",
+      "sha256": "6c66adb622e4e66e9bf8876b9f0dd0f56fda4921a6f232ea2d9a8b78c9eac779",
+      "size": 12615
+    },
+    {
+      "path": "experiments/registry-bootstrap/executed-ledger.json",
+      "sha256": "7601a3e581318ae3b216b920f0dbe62d6289394cbe0bf799decc75c6878ea164",
+      "size": 403573
+    },
+    {
+      "path": "experiments/paid-signed-withdrawal-acquisition/joint-capture.json",
+      "sha256": "eb6b3150255e0340d5b6afe487215c41380abf75b29a87d6637a65212d158a6a",
+      "size": 678294
+    },
+    {
+      "path": "public/bounded-json.mjs",
+      "sha256": "73312692245add67ea140ef1393efe9577d337d917867f9edca02ce82af8b051",
+      "size": 6122
+    }
+  ],
+  "newFiles": [
+    {
+      "path": "experiments/registry-bootstrap/body-ledger-reader.mjs",
+      "sha256": "c2a15556f6aa282b514dd1a5a36a055e90c61e81c95d65b4b31b85e3c543cf88",
+      "size": 1546
+    },
+    {
+      "path": "experiments/registry-bootstrap/check-body-ledger.mjs",
+      "sha256": "92d2aa5ffd4358317a10c53a507ab2bc6458a7115b724fa02a5aee38dccceda7",
+      "size": 2218
+    }
+  ]
+}

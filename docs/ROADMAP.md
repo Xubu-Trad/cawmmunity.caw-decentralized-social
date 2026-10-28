@@ -340,3 +340,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Executed synthetic-token ledger reconciliation -- 2026-10-27
 
 [14 groups](EXECUTED_LEDGER_RECONCILIATION.md) pass for zero/nonzero/withdrawn local endpoints,13-slot proofs, fixed code binding and existing history replay. Synthetic token and impersonated actors; no body/sender/receipt-root or real-token backing claim. Next compose the existing stronger history verification and preserve branch/position boundaries.
+
+
+### signed body / ledger follow-up -- 2026-10-28
+
+[Boundary checks](BODY_LEDGER_BOUNDARY.md) reject unrelated captures. Next acquire signed transactions, full bodies/receipts and ledger proofs together at one endpoint, then verify the positive composition and altered endpoint/transaction/receipt cases. No joint-positive or release gate is closed by the nine boundary groups.

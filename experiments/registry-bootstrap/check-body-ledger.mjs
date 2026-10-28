@@ -1,0 +1,22 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {inspectTestBodyLedger} from './body-ledger-reader.mjs';
+import {inspectTestLedgerHistory} from './ledger-history-reader.mjs';
+import {inspectPaidBodyHistory} from '../../reference/paid-body-history.mjs';
+const read=p=>JSON.parse(readFileSync(new URL(p,import.meta.url)));
+const executed=read('./executed-ledger.json');
+const signed=read('../paid-signed-withdrawal-acquisition/joint-capture.json');
+const c=executed.cases.at(-1),input={schema:'caw-test-ledger-history/1',evidence:c.evidence,selection:c.selection,history:c.history,manifest:c.manifest};
+const text=JSON.stringify(input),checks=[];
+const group=(name,fn)=>{fn();checks.push(name);};
+group('earlier executed ledger check remains a scoped positive control',()=>assert.equal(inspectTestLedgerHistory(text).selectedLedgerMatchesHistory,true));
+for(const [name,b] of Object.entries(signed.branches))group(name+' retained signed body positive control',()=>{
+ const r=inspectPaidBodyHistory(b.history,b.manifest,b.captures);
+ assert.equal(r.signaturesVerified,true);assert.equal(r.receiptCommitmentVerified,true);assert.equal(r.executionVerified,false);
+});
+group('missing complete bodies cannot promote ledger evidence',()=>assert.throws(()=>inspectTestBodyLedger(text,'[]'),e=>e.code?.startsWith('PAID_BODY_HISTORY_')));
+for(const [name,b] of Object.entries(signed.branches))group(name+' separately valid signed bodies cannot be grafted onto another ledger',()=>assert.throws(()=>inspectTestBodyLedger(text,JSON.stringify(b.captures)),e=>e.code?.startsWith('PAID_BODY_HISTORY_')));
+group('caller acceptance field rejected',()=>assert.throws(()=>inspectTestBodyLedger(JSON.stringify({...input,completeBodyVerified:true}),'[]'),{code:'LEDGER_HISTORY_SCHEMA'}));
+group('object input rejected',()=>assert.throws(()=>inspectTestBodyLedger(input,[]),{code:'BODY_LEDGER_ARGUMENTS'}));
+group('extra argument rejected',()=>assert.throws(()=>inspectTestBodyLedger(text,'[]',true),{code:'BODY_LEDGER_ARGUMENTS'}));
+console.log(JSON.stringify({schema:'caw-body-ledger-boundary-check/1',passed:checks.length,checks,jointPositiveCaptureVerified:false,productionAccepted:false},null,2));
