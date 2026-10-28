@@ -2,7 +2,7 @@ import {parseBoundedJson} from '../../public/bounded-json.mjs';
 import {inspectPaidBodyHistory} from '../../reference/paid-body-history.mjs';
 import {inspectTestLedgerHistory} from './ledger-history-reader.mjs';
 function need(ok,code){if(!ok){const e=new Error('Body ledger rejected: '+code);e.code='BODY_LEDGER_'+code;throw e;}}
-// Experimental composition. A positive acquired joint fixture remains pending.
+// Experimental composition, exercised against acquired local signed fixtures.
 // Separate JSON boundaries retain the existing parser's 1 MiB maximum.
 export function inspectTestBodyLedger(ledgerText,bodyText){
  need(arguments.length===2&&typeof ledgerText==='string'&&typeof bodyText==='string','ARGUMENTS');

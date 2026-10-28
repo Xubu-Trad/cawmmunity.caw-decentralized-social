@@ -1,3 +1,5 @@
+> historical boundary experiment: the positive-acquisition gap below was subsequently exercised by [signed ledger reconciliation](SIGNED_LEDGER_RECONCILIATION.md). production and independent-provider claims remain open.
+
 # signed-body and selected-ledger boundary
 
 FACT -- nine focused groups pass. the retained executed-ledger capture passes its existing proof/replay check; both retained signed withdrawal branches pass their existing body/sender/receipt-root checker. these are separate positive controls. neither establishes a positive joint capture.

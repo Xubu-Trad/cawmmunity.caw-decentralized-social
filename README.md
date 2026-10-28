@@ -197,4 +197,9 @@ Original code and project-authored explanatory documentation use the [scoped MIT
 
 ### latest engineering boundary -- 2026-10-28
 
-[Signed-body and ledger composition](docs/BODY_LEDGER_BOUNDARY.md): nine focused groups pass, including separate positive controls and rejection of unrelated signed bodies grafted onto ledger proofs. A joint positive acquisition is still pending; this experimental reader is not an accepted recovery path. Existing production and public-test release gates remain open.
+[Signed-body and ledger composition](docs/BODY_LEDGER_BOUNDARY.md): nine focused groups pass, including separate positive controls and rejection of unrelated signed bodies grafted onto ledger proofs. The subsequent signed acquisition below demonstrates the joint local success path; this experimental reader is not an accepted production recovery path. Existing production and public-test release gates remain open.
+
+
+### signed history and ledger progress -- 2026-10-28
+
+[15 focused groups](docs/SIGNED_LEDGER_RECONCILIATION.md) now pass on two acquired local branches with signed transaction bodies, receipt commitments and endpoint ledger proofs together. Swapped branches, altered transactions/receipts and missing witnesses reject. Both selected tips pass: this does not establish canonicality, real-token backing, independent providers or production authority. The frontend remains a local alpha; production/public-test release gates remain open.

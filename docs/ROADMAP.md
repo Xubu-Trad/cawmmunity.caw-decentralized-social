@@ -345,3 +345,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### signed body / ledger follow-up -- 2026-10-28
 
 [Boundary checks](BODY_LEDGER_BOUNDARY.md) reject unrelated captures. Next acquire signed transactions, full bodies/receipts and ledger proofs together at one endpoint, then verify the positive composition and altered endpoint/transaction/receipt cases. No joint-positive or release gate is closed by the nine boundary groups.
+
+
+### joint signed capture completed within fixture scope -- 2026-10-28
+
+[15 focused groups](SIGNED_LEDGER_RECONCILIATION.md) exercise both acquired branches and tampering cases. The preceding joint-capture task is complete only for the synthetic fixture. Next connect the selected-evidence result to existing anchor-selection/operator-independence requirements, retaining false canonicality, token-backing and production-authority claims.

@@ -1,0 +1,82 @@
+{
+  "schema": "caw-signed-ledger-check/1",
+  "captureSha256": "f6340181c75a5d4c22f4d5bd0f9d044474f8b99561ab1cd41725fd505d1c88fa",
+  "passed": 15,
+  "checks": [
+    "signed local synthetic capture only",
+    "left signed bodies receipts and ledger agree",
+    "right signed bodies receipts and ledger agree",
+    "competing same height endpoints remain distinct",
+    "other branch complete bodies",
+    "other branch ledger witnesses",
+    "missing complete body",
+    "reordered complete bodies",
+    "altered raw transaction",
+    "missing receipt",
+    "altered receipt status",
+    "altered proof value",
+    "missing paid witness",
+    "forged final credit",
+    "caller acceptance claim"
+  ],
+  "jointPositiveCaptureVerified": true,
+  "independentProviders": false,
+  "syntheticToken": true,
+  "productionAccepted": false,
+  "baseline": "adc41a327858d5293aa27cc400e1edfcb3be38d3",
+  "sources": [
+    {
+      "path": "experiments/registry-bootstrap/ledger-history-reader.mjs",
+      "sha256": "a31142fa67bf7973366ccf8f42b6aa9393ad7a3ab4e2f41536cb4272b3888f27",
+      "size": 2138
+    },
+    {
+      "path": "reference/paid-body-history.mjs",
+      "sha256": "6c66adb622e4e66e9bf8876b9f0dd0f56fda4921a6f232ea2d9a8b78c9eac779",
+      "size": 12615
+    },
+    {
+      "path": "experiments/paid-signed-withdrawal-acquisition/run_signed_withdrawals.py",
+      "sha256": "4bb76ce61dbd120d79f095767b0335a15c8e3b0c2ad4e37accb8596147e812c9",
+      "size": 21027
+    },
+    {
+      "path": "experiments/paid-signed-withdrawal-acquisition/experiment-inputs.json",
+      "sha256": "9d0b222ace51dad9f3393fc12bc6e1458d7709c492a3acb012c4e8fef9a66f93",
+      "size": 3267
+    },
+    {
+      "path": "experiments/paid-signed-state-acquisition/state_node.py",
+      "sha256": "c49f9b562128e27bb27ee1489c2e64b0eb7a32ce0994a1a6926334b69cb2b111",
+      "size": 2284
+    },
+    {
+      "path": "public/bounded-json.mjs",
+      "sha256": "73312692245add67ea140ef1393efe9577d337d917867f9edca02ce82af8b051",
+      "size": 6122
+    }
+  ],
+  "newFiles": [
+    {
+      "path": "experiments/registry-bootstrap/capture-signed-ledger.py",
+      "sha256": "84ae2c2b8e0c3fe6bce62c98f4ca9b436bfed786f22961f1ea3b2ba55709fcd7",
+      "size": 3429
+    },
+    {
+      "path": "experiments/registry-bootstrap/compact-signed-ledger.py",
+      "sha256": "fa2d18b984d06e5d104ab9d159d451f44c1e4b6c84e2744f102c27dbf26a3328",
+      "size": 1215
+    },
+    {
+      "path": "experiments/registry-bootstrap/check-signed-ledger.mjs",
+      "sha256": "1c271644c14a6e82de5ad22361607145ffae494e6eecb43571ee7b2092032d02",
+      "size": 3309
+    },
+    {
+      "path": "experiments/registry-bootstrap/body-ledger-reader.mjs",
+      "sha256": "b61677a579852c6d512ff012d28b8849fa0160a9441e39199c2a2932cc8e0606",
+      "size": 1545
+    }
+  ],
+  "rawRequestTracePublic": false
+}
