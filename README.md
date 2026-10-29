@@ -248,3 +248,8 @@ The signed local ledger evidence now needs an explicit [anchor-authority decisio
 ### standard state-manager control -- 2026-10-29
 
 [Trie-backed replay](docs/DIRECT_TRIE_CONTROL.md) reproduces the native-account discrepancy without our experimental adapter. Parent trie root, receipt/gas and selected balances check out; native existence and the post-transaction root disagree with the captured child. Next isolate acquisition persistence and block-finalization behavior. No release gate closes.
+
+
+### one-leaf diagnostic -- 2026-10-29
+
+[A reversible diagnostic](docs/NATIVE_LEAF_CONTROL.md) shows that adding one empty native-account entry to the replay trie exactly reproduces the captured child root. The change is rolled back and the original mismatch retained. This localizes the difference; it is not a repair or accepted execution result. Next inspect the pinned acquisition commit path.

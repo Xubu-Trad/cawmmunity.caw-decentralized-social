@@ -1,0 +1,59 @@
+{
+  "schema": "caw-native-leaf-diagnostic/1",
+  "counterfactualRoot": "0x906b98db9ede878dbd185ad205995ec82b9838954f7097e1ab6c6aa72f56fb26",
+  "counterfactualMatchesCapturedRoot": true,
+  "originalReplayRestored": true,
+  "parentRootMatched": true,
+  "receiptAndGasMatched": true,
+  "senderAndFeeRecipientMatched": true,
+  "capturedNativeExists": true,
+  "replayedNativeExists": false,
+  "computedPostTransactionRoot": "0x29fc4e4e1e63b13addcdb03c5ce45766a85113bbd3d1cb6ee76206db24b43127",
+  "capturedChildRoot": "0x906b98db9ede878dbd185ad205995ec82b9838954f7097e1ab6c6aa72f56fb26",
+  "rootsMatch": false,
+  "experimentalAdapterUsed": false,
+  "wholeBlockExecutionVerified": false,
+  "independentOperator": false,
+  "productionAccepted": false,
+  "baseline": "3f877740a86752b99f05d39f54eb1726bcb8b2bc",
+  "fixtureSha256": "4ee4e3f0fd489090e4df1278c138037c6f7b4998f1e8cbbf069b26ea8f818e35",
+  "harnessSha256": "24ed6c73114332251b100879ae16b5b4049736db9afcbc832dc9d8ae71604d7f",
+  "sourceRevision": "982849d3140c01fd3b72905759581a132df7aa98",
+  "sourceFiles": [
+    {
+      "path": "Cargo.lock",
+      "sha256": "8d8377937b1d95cbc840c4d23199694173d14fb7031555b1c50309c69d68e616",
+      "size": 344151
+    },
+    {
+      "path": "crates/anvil/src/eth/backend/db.rs",
+      "sha256": "8bd86c817983efb78e09d006ed6f8b319dd3dd610f897030e3b46d4807beb783",
+      "size": 37445
+    },
+    {
+      "path": "crates/anvil/src/eth/backend/executor.rs",
+      "sha256": "98f8407065be9cadf46631ccd8b5fadceb5506883bb3abaaa577582d8afd4f0f",
+      "size": 31762
+    },
+    {
+      "path": "crates/anvil/src/eth/backend/mem/in_memory_db.rs",
+      "sha256": "a7048a569bb8c9602486491c6a84f8fd636539cefaec8256f6be8c7d143fe805",
+      "size": 35806
+    },
+    {
+      "path": "crates/anvil/src/eth/backend/mem/mod.rs",
+      "sha256": "d550437ec8346f8ded211bbf7a3f6f4d354e1dba63a696c797fb214a31c8f6dd",
+      "size": 402972
+    },
+    {
+      "path": "crates/anvil/src/eth/backend/mem/state.rs",
+      "sha256": "6b5628a9bdf8c2d33891f813658dc62665173421fb0d4f961c8d1e13b3804ab6",
+      "size": 20079
+    },
+    {
+      "path": "paths.txt",
+      "sha256": "f4906500157114d889f5b1c912eca88eda2833d62a9156e905b6bd4ab5a641ef",
+      "size": 93695
+    }
+  ]
+}

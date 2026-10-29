@@ -395,3 +395,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### adapter isolation -- 2026-10-29
 
 [Standard trie control](DIRECT_TRIE_CONTROL.md) retains the discrepancy. Inspect pinned acquisition persistence, proof serialization and block transitions next; post-transaction root mismatch alone is not complete block verification.
+
+
+### native leaf localization -- 2026-10-29
+
+[One-leaf diagnostic](NATIVE_LEAF_CONTROL.md) matches the captured root only after an explicit temporary state change, then restores the original replay. Next inspect touched/empty-account commit semantics; no acceptance gate closes.
