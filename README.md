@@ -222,4 +222,9 @@ The signed local ledger evidence now needs an explicit [anchor-authority decisio
 
 ### narrow native-account replay -- 2026-10-28
 
-[Both retained wallet calls now replay](docs/WALLET_NATIVE_REPLAY.md) with matching receipt/gas and selected child state, using a separate proven-absence adapter for the signature precompile. Ten boundary checks pass. The earlier blocker remains preserved; no general wallet, full-state-root, independent-operator or production acceptance follows.
+[Both retained wallet calls reproduce receipts and previously selected values](docs/WALLET_NATIVE_REPLAY.md); the [expanded child-state check exposes a native-account mismatch](docs/NATIVE_CLEANUP_MISMATCH.md), using a separate proven-absence adapter for the signature precompile. Ten boundary checks pass. The earlier blocker remains preserved; no general wallet, full-state-root, independent-operator or production acceptance follows.
+
+
+### blocking child-state finding -- 2026-10-29
+
+[Native cleanup mismatch](docs/NATIVE_CLEANUP_MISMATCH.md): restored success leaves a proven empty account in the captured child state, while replay reports it absent. Receipt/gas still match. Eighteen boundary groups pass, but complete selected child-state agreement is false for success. The discrepancy is preserved for investigation; no adapter or capture was forced to match.

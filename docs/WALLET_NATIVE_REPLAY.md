@@ -1,3 +1,5 @@
+> 2026-10-29 follow-up: [expanded child proof comparison](NATIVE_CLEANUP_MISMATCH.md) finds present-empty versus absent disagreement at the native account after success. Earlier receipt and selected-value matches do not establish complete child-state agreement.
+
 # native account absence in the local wallet replay
 
 FACT -- both retained wallet transactions now replay with the selected EthereumJS London executor: rejected status0/gas82721 and restored status1/gas166660. receipt bloom/logs/cumulative gas and the selected child account balances, nonces and storage values match the captured observations. missing wallet-mode evidence still rejects and invalidates the attempt.

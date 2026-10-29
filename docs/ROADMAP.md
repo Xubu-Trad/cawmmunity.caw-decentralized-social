@@ -370,3 +370,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### proven native absence -- 2026-10-28
 
 [Opt-in native adapter](WALLET_NATIVE_REPLAY.md) reproduces both fixture outcomes and passes10boundary checks; original readers remain unchanged. Next review proof/argument boundaries and cleanup against child absence evidence. No general account creation, full root or production gate closure.
+
+
+### native child-state blocker -- 2026-10-29
+
+[Present-empty versus absent](NATIVE_CLEANUP_MISMATCH.md) blocks complete selected child agreement after restored success. Trace lifecycle/cleanup against pinned engines and fork semantics before extending authority claims. Eighteen boundary groups pass; adapter unchanged.

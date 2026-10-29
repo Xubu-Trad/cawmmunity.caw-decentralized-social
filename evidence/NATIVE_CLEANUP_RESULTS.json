@@ -1,0 +1,85 @@
+{
+  "schema": "caw-wallet-native-replay/1",
+  "cases": [
+    {
+      "label": "reject",
+      "status": 0,
+      "gas": "82721",
+      "previouslySelectedChildAccountsAndSlotsMatch": true,
+      "nativeChildAccountMatches": true,
+      "capturedNativeChildExists": false,
+      "replayedNativeChildExists": false,
+      "completeSelectedChildAgreement": true,
+      "missingWalletModeRefused": true
+    },
+    {
+      "label": "restored",
+      "status": 1,
+      "gas": "166660",
+      "previouslySelectedChildAccountsAndSlotsMatch": true,
+      "nativeChildAccountMatches": false,
+      "capturedNativeChildExists": true,
+      "replayedNativeChildExists": false,
+      "completeSelectedChildAgreement": false,
+      "missingWalletModeRefused": true
+    }
+  ],
+  "boundaryChecks": [
+    "proven absence reads and nested rollback",
+    "returned account does not mutate stored touch",
+    "reject nonzero balance",
+    "reject nonzero nonce",
+    "reject code writes",
+    "reject storage reads",
+    "reject unproved account",
+    "reject wrong-parent absence proof",
+    "reject missing absence proof",
+    "cleanup cannot revive failed attempt",
+    "commit preserves empty touch and deletion",
+    "extra account-read argument rejects",
+    "fake address text rejects",
+    "nonempty codeHash rejects",
+    "nonempty storageRoot rejects",
+    "original storage cannot invent absent slots",
+    "discard prevents native reads",
+    "present account proof cannot stand in for native absence"
+  ],
+  "stateRootRecomputed": false,
+  "independentOperator": false,
+  "publicChainAuthenticated": false,
+  "arbitraryWalletCompatibility": false,
+  "productionAccepted": false,
+  "baseline": "c4c6f1515b500c225585f77ab65bc707a40083fb",
+  "sources": [
+    {
+      "path": "experiments/execution-engine/native-absence-adapter.mjs",
+      "sha256": "5fee55458e2c920ff3e86123c925a8b3b406f70d8e37300170bd6de80df1f01f",
+      "size": 3940
+    },
+    {
+      "path": "experiments/execution-engine/witness-adapter.mjs",
+      "sha256": "69e6336862792e41a1d7f654d9632453f8a44758f175e5d4aec4c1a9efa66aad",
+      "size": 5627
+    },
+    {
+      "path": "experiments/execution-engine/selected-london-executor.mjs",
+      "sha256": "7fe792615fc7bc5d518beb08a213c60a0fd121b33f8473691b303413e29da167",
+      "size": 1453
+    },
+    {
+      "path": "experiments/paid-wallet-state/witnesses.json",
+      "sha256": "0e709b35014787afd9e4cbef209cf0f2e023688047bc8a260378a782cbdce5a5",
+      "size": 331985
+    },
+    {
+      "path": "reference/header-bound-state-proof.mjs",
+      "sha256": "244e2f468d02b362246ae8e8bc659801b233c7257d774a695d40e9c1d2428955",
+      "size": 3918
+    }
+  ],
+  "harnessSha256": "337cee08653dd10a32083e24cc7db020ad3ae0a3cd96df0a0e31533931ec1775",
+  "retainedFailures": [
+    "incorrect assumption child native absent in both cases",
+    "actual child existence mismatch on restored case"
+  ]
+}
