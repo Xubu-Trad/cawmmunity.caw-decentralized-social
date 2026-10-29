@@ -375,3 +375,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### native child-state blocker -- 2026-10-29
 
 [Present-empty versus absent](NATIVE_CLEANUP_MISMATCH.md) blocks complete selected child agreement after restored success. Trace lifecycle/cleanup against pinned engines and fork semantics before extending authority claims. Eighteen boundary groups pass; adapter unchanged.
+
+
+### lifecycle localization -- 2026-10-29
+
+[Engine cleanup trace](NATIVE_ACCOUNT_LIFECYCLE.md) localizes the replay deletion; capture-side root cause remains unresolved. Next minimal native-call acquisition under the same pinned fork, separating direct/contract-mediated calls. No gate closure.

@@ -228,3 +228,8 @@ The signed local ledger evidence now needs an explicit [anchor-authority decisio
 ### blocking child-state finding -- 2026-10-29
 
 [Native cleanup mismatch](docs/NATIVE_CLEANUP_MISMATCH.md): restored success leaves a proven empty account in the captured child state, while replay reports it absent. Receipt/gas still match. Eighteen boundary groups pass, but complete selected child-state agreement is false for success. The discrepancy is preserved for investigation; no adapter or capture was forced to match.
+
+
+### native cleanup traced -- 2026-10-29
+
+[Lifecycle evidence](docs/NATIVE_ACCOUNT_LIFECYCLE.md) shows an explicit engine cleanup deletion after the empty native-account touch. The captured child proof still disagrees. Eighteen boundary groups remain passing; complete selected child agreement stays false on success. Next isolate native-call capture behavior, without changing the adapter to fit the observation.
