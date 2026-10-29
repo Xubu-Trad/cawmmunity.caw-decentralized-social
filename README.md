@@ -218,3 +218,8 @@ The signed local ledger evidence now needs an explicit [anchor-authority decisio
 ### wallet replay boundary -- 2026-10-28
 
 [The rejected wallet call replays](docs/WALLET_WITNESS_REPLAY.md) with matching gas/receipt and selected child state. The restored-success path remains blocked: the witness adapter does not represent a proven-absent native signature-precompile account. The harness explicitly expects that failure; it is not a full wallet replay pass. Next distinguish proven absence from missing evidence without weakening fail-closed behavior.
+
+
+### narrow native-account replay -- 2026-10-28
+
+[Both retained wallet calls now replay](docs/WALLET_NATIVE_REPLAY.md) with matching receipt/gas and selected child state, using a separate proven-absence adapter for the signature precompile. Ten boundary checks pass. The earlier blocker remains preserved; no general wallet, full-state-root, independent-operator or production acceptance follows.

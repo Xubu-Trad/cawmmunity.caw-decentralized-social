@@ -365,3 +365,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### parent-state wallet replay -- 2026-10-28
 
 [Rejected path reproduced; success blocked](WALLET_WITNESS_REPLAY.md). Acquired parent/child dependencies now exist. Next narrow absent-account/precompile handling with explicit missing-proof and unsupported-write rejection, then replay retained success. No full-state-root or production acceptance.
+
+
+### proven native absence -- 2026-10-28
+
+[Opt-in native adapter](WALLET_NATIVE_REPLAY.md) reproduces both fixture outcomes and passes10boundary checks; original readers remain unchanged. Next review proof/argument boundaries and cleanup against child absence evidence. No general account creation, full root or production gate closure.

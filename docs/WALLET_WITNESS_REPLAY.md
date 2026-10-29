@@ -1,3 +1,5 @@
+> historical blocker: the separate [native-absence follow-up](WALLET_NATIVE_REPLAY.md) now reproduces both fixture outcomes; this original blocked harness and its evidence remain unchanged.
+
 # wallet replay: rejected call reproduced, successful call blocked
 
 FACT -- fresh local parent/child proofs were captured around both mined wallet post attempts. the rejected call now replays with the existing EthereumJS London executor and unchanged witness adapter. status0, gas82721, receipt bloom/logs, cumulative gas and selected child account balances/nonces/storage agree with the acquired evidence. removing the wallet mode witness causes WITNESS_STATE_MISSING_SLOT and permanently invalidates that replay environment.

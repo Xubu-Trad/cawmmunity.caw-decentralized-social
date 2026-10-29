@@ -1,0 +1,77 @@
+{
+  "schema": "caw-wallet-native-replay/1",
+  "cases": [
+    {
+      "label": "reject",
+      "status": 0,
+      "gas": "82721",
+      "selectedChildAccountsAndSlotsMatch": true,
+      "missingWalletModeRefused": true
+    },
+    {
+      "label": "restored",
+      "status": 1,
+      "gas": "166660",
+      "selectedChildAccountsAndSlotsMatch": true,
+      "missingWalletModeRefused": true
+    }
+  ],
+  "boundaryChecks": [
+    "proven absence reads and nested rollback",
+    "returned account does not mutate stored touch",
+    "reject nonzero balance",
+    "reject nonzero nonce",
+    "reject code writes",
+    "reject storage reads",
+    "reject unproved account",
+    "reject wrong-parent absence proof",
+    "reject missing absence proof",
+    "cleanup cannot revive failed attempt"
+  ],
+  "stateRootRecomputed": false,
+  "independentOperator": false,
+  "publicChainAuthenticated": false,
+  "arbitraryWalletCompatibility": false,
+  "productionAccepted": false,
+  "baseline": "164f9130dd7b768004cf9c8cc4c0395061768935",
+  "sources": [
+    {
+      "path": "experiments/execution-engine/witness-adapter.mjs",
+      "sha256": "69e6336862792e41a1d7f654d9632453f8a44758f175e5d4aec4c1a9efa66aad",
+      "size": 5627
+    },
+    {
+      "path": "experiments/execution-engine/selected-london-executor.mjs",
+      "sha256": "7fe792615fc7bc5d518beb08a213c60a0fd121b33f8473691b303413e29da167",
+      "size": 1453
+    },
+    {
+      "path": "experiments/paid-wallet-state/witnesses.json",
+      "sha256": "0e709b35014787afd9e4cbef209cf0f2e023688047bc8a260378a782cbdce5a5",
+      "size": 331985
+    },
+    {
+      "path": "reference/header-bound-state-proof.mjs",
+      "sha256": "244e2f468d02b362246ae8e8bc659801b233c7257d774a695d40e9c1d2428955",
+      "size": 3918
+    },
+    {
+      "path": "reference/replay-dependencies.mjs",
+      "sha256": "75a8e02a9f1c3e4c4f5730e68747be6112a78eb3270413eb33351fdbd1b17205",
+      "size": 2068
+    }
+  ],
+  "newFiles": [
+    {
+      "path": "experiments/execution-engine/native-absence-adapter.mjs",
+      "sha256": "5fee55458e2c920ff3e86123c925a8b3b406f70d8e37300170bd6de80df1f01f",
+      "size": 3940
+    },
+    {
+      "path": "experiments/execution-engine/wallet-native-replay.mjs",
+      "sha256": "e15d9b6493e9c4459b39e061b5d853f5af28ec3ab70a19babd6f6984e30441ac",
+      "size": 7097
+    }
+  ],
+  "priorFailure": "strict read-only absence bridge refused engine empty putAccount; prior attempt retained"
+}
