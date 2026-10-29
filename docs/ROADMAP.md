@@ -355,3 +355,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### anchor decision review -- 2026-10-28
 
 [AT-01 through AT-08](ANCHOR_DECISION_REVIEW.md) make the unresolved production anchor decision explicit. Existing signed-ledger evidence is selected consistency only. Seek a concrete profile/proposal and independent reproduction in established review lanes; do not add wrappers as independence proof or choose a developer-controlled fallback. No gate closed.
+
+
+### mined contract-signature fixture -- 2026-10-28
+
+[Two mined attempts / nine focused groups](MINED_WALLET_EXPERIMENT.md) extend the previous simulation-only mode experiment. Next acquire exact parent-state code/storage dependencies and independently replay the transaction; selected receipts alone do not authenticate wallet authority.

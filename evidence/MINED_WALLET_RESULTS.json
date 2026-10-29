@@ -1,0 +1,69 @@
+{
+  "schema": "caw-mined-wallet-check/1",
+  "captureSha256": "a10d102b0c2af32ee0958439e489adb372ec204de8622e3845372aa852c5242b",
+  "passed": 9,
+  "checks": [
+    "explicit local writer evidence limitations",
+    "reject mined body sender receipt and parent commitments",
+    "restored mined body sender receipt and parent commitments",
+    "same post calldata with rejection then success",
+    "altered raw envelope",
+    "other post receipt",
+    "promoted receipt status",
+    "earlier parent",
+    "forged sender summary"
+  ],
+  "erc1271Verified": false,
+  "executionVerified": false,
+  "productionAccepted": false,
+  "baseline": "ed74419700621e3df70091a3ad60ab7752bea074",
+  "sources": [
+    {
+      "path": "experiments/paid-wallet-state/run_wallet_state.py",
+      "sha256": "b53b902e949b40d9e7e0502d544f9364d2c2c4370ba38464801090df941c3907",
+      "size": 8965
+    },
+    {
+      "path": "experiments/paid-wallet-state/experiment-inputs.json",
+      "sha256": "9086b230b5b576bd8d02d1a17ca67509a9a1c18eb4ef92a6ddb86998eb7ea93c",
+      "size": 3510
+    },
+    {
+      "path": "experiments/paid-action/TestSignatureOwner.sol",
+      "sha256": "310ca51c58305113070d06b6e2f7637dde550b0ed5141cdbb3c56bd02a8f3342",
+      "size": 2097
+    },
+    {
+      "path": "experiments/paid-body-acquisition/verify_body.mjs",
+      "sha256": "ab40ec3ac524df038927dd4c91930e3426d3af5eb058cc0ef88125ff235eb389",
+      "size": 6957
+    },
+    {
+      "path": "reference/ethereum-block-senders.mjs",
+      "sha256": "fe704b1a596383a02f620c7212bfc6db43b885a330786754459542accd0a37b1",
+      "size": 16332
+    },
+    {
+      "path": "reference/ethereum-execution-header.mjs",
+      "sha256": "dd69f58be27f861939432a2a140298fde3be1393e8d9bbd8b6dfb88c69cb34eb",
+      "size": 9631
+    }
+  ],
+  "newFiles": [
+    {
+      "path": "experiments/paid-wallet-state/capture-mined.py",
+      "sha256": "90c0b0b461b1d102031221d50c76b747801f34e2ad6ab3311fccc29c3af61abd",
+      "size": 1865
+    },
+    {
+      "path": "experiments/paid-wallet-state/compact-mined.py",
+      "sha256": "d3b99b6ee58f86043ad23a2e39e735dd7ccdc9e7dce4bf4e786c3e75b0cad603",
+      "size": 1092
+    },
+    {
+      "path": "experiments/paid-wallet-state/check-mined.mjs",
+      "sha256": "f747a3a273b96ee3ebbb792358c735ba9f63f55635905990dad97c378dcbcd06",
+      "size": 3237
+    }
+  ]
+}

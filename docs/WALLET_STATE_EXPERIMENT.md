@@ -22,3 +22,8 @@ node --test tests/paid-wallet-state-acquisition.test.mjs
 The Node tests read committed `observations.json`, a projection of the successful raw run. The raw SHA-256 is recorded in that projection. The retained public fields are schema, wallet, intent, observations, deployments, submissions and input manifest hash, plus explicit local/trust-limit labels. No raw transcript replay is claimed. Fresh signature randomness and block times may differ.
 
 UNRESOLVED — next establish a separately scoped execution witness at the transaction position, including wallet/probe code, relevant storage and external dependencies. The current test uses simulations rather than mined posts and London rules rather than EIP-7702. No ERC-1271, execution, historical authority or production acceptance flag is raised by this experiment.
+
+
+## mined follow-up -- 2026-10-28
+
+[Two mined attempts](MINED_WALLET_EXPERIMENT.md) now retain rejected/restored post receipts and signed body commitments. Nine focused groups pass. This does not close the pre-call witness or independent execution gate described above.

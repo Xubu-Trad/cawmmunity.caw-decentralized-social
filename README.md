@@ -208,3 +208,8 @@ Original code and project-authored explanatory documentation use the [scoped MIT
 ### current review decision -- 2026-10-28
 
 The signed local ledger evidence now needs an explicit [anchor-authority decision](docs/ANCHOR_DECISION_REVIEW.md): network/fork identity, bootstrap trust, finalized execution-header binding, freshness, conflict handling and replacement acquisition. Eight decision rows remain unresolved. Review is requested in existing issue3; no new local test count or production policy is claimed.
+
+
+### mined wallet evidence -- 2026-10-28
+
+[Nine focused groups](docs/MINED_WALLET_EXPERIMENT.md) check two mined local attempts of the same signed post: wallet rejection, then restored acceptance. Transaction/receipt commitments and sender/parent checks pass; altered evidence rejects. Independent wallet execution replay and pre-call dependency witnesses remain missing. No production authority flag changes.
