@@ -385,3 +385,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### minimal acquisition control -- 2026-10-29
 
 [Direct native call](DIRECT_NATIVE_CONTROL.md) isolates the observed presence transition from CAW contract logic. Next independently replay this interval with all selected account dependencies; no root-cause or release gate closure.
+
+
+### direct replay control -- 2026-10-29
+
+[Minimal second-engine replay](DIRECT_NATIVE_REPLAY.md) retains the native existence mismatch. Next ordinary trie-backed state-manager control before assigning root cause. No complete state agreement or gate closure.

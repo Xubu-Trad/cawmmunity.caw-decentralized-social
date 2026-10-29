@@ -238,3 +238,8 @@ The signed local ledger evidence now needs an explicit [anchor-authority decisio
 ### direct native-call control -- 2026-10-29
 
 [Minimal acquisition evidence](docs/DIRECT_NATIVE_CONTROL.md) reproduces the native account presence transition without CAW contracts. Seven focused groups pass against selected headers and transaction/receipt commitments. Independent replay of this minimal interval is next; the earlier state discrepancy and production gates remain open.
+
+
+### minimal replay discrepancy -- 2026-10-29
+
+[Direct-call replay](docs/DIRECT_NATIVE_REPLAY.md) matches receipt/gas and sender/fee-recipient balances, but still disagrees on native-account existence. Three missing/wrong-proof cases reject. Next compare an ordinary trie-backed state manager to isolate the experimental adapter; production and public test gates remain blocked.

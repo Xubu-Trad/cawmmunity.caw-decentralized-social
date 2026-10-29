@@ -1,0 +1,52 @@
+{
+  "schema": "caw-direct-native-replay/1",
+  "receiptAndGasMatch": true,
+  "gas": "25664",
+  "selectedAccountsMatch": [
+    "0x765d03fe39e2a0a48ac162a15b541c3cd1d63e76",
+    "0x0000000000000000000000000000000000000000"
+  ],
+  "capturedNativeExists": true,
+  "replayedNativeExists": false,
+  "completeSelectedChildAgreement": false,
+  "negativeChecks": [
+    "missing dependency 0x765d03fe39e2a0a48ac162a15b541c3cd1d63e76",
+    "missing dependency 0x0000000000000000000000000000000000000000",
+    "child proof cannot substitute for parent absence"
+  ],
+  "stateRootRecomputed": false,
+  "independentOperator": false,
+  "productionAccepted": false,
+  "baseline": "dee3cf5781ceaaddbf0e2f8d898c138b72c1e8a0",
+  "unchangedSources": [
+    {
+      "path": "experiments/execution-engine/native-absence-adapter.mjs",
+      "sha256": "5fee55458e2c920ff3e86123c925a8b3b406f70d8e37300170bd6de80df1f01f"
+    },
+    {
+      "path": "experiments/execution-engine/selected-london-executor.mjs",
+      "sha256": "7fe792615fc7bc5d518beb08a213c60a0fd121b33f8473691b303413e29da167"
+    },
+    {
+      "path": "experiments/paid-wallet-state/capture-direct-native.py",
+      "sha256": "4559f84f8d4d583d58342309c82c663ec55cfb368671ea1c416c76bb2d29c583"
+    }
+  ],
+  "sources": [
+    {
+      "path": "experiments/paid-wallet-state/capture-direct-witnesses.py",
+      "sha256": "0fc2811b46aaff3a1516ba00d9cc37f23e12ad981ea303159eb8d257e6d722dc",
+      "size": 2831
+    },
+    {
+      "path": "experiments/execution-engine/direct-native-replay.mjs",
+      "sha256": "4e59de4adad3573b32b92bd03414eeb7729f5fabc254a19fee0d288673888fdc",
+      "size": 4533
+    },
+    {
+      "path": "experiments/paid-wallet-state/direct-witnesses.json",
+      "sha256": "4ee4e3f0fd489090e4df1278c138037c6f7b4998f1e8cbbf069b26ea8f818e35",
+      "size": 16763
+    }
+  ]
+}
