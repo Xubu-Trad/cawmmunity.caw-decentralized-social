@@ -1,0 +1,42 @@
+{
+  "schema": "caw-direct-native-check/1",
+  "captureSha256": "e18cd2cf1a96d3240afe5a7a810100b965e71253009fe7eff7df1609b5a7bd77",
+  "passed": 7,
+  "checks": [
+    "local control without token installation",
+    "selected native parent and child proofs",
+    "single signed direct call and receipt commitments",
+    "fixed inner signature matches observed recovery",
+    "swapped parent proof rejects",
+    "altered native receipt rejects",
+    "altered raw envelope rejects"
+  ],
+  "parentNativeExists": false,
+  "childNativeExists": true,
+  "gas": "0x6440",
+  "independentExecution": false,
+  "productionAccepted": false,
+  "baseline": "0e48e9aa45e1ee34053d5e1a195216ac3a331a37",
+  "sources": [
+    {
+      "path": "experiments/paid-wallet-state/capture-direct-native.py",
+      "sha256": "4559f84f8d4d583d58342309c82c663ec55cfb368671ea1c416c76bb2d29c583",
+      "size": 3153
+    },
+    {
+      "path": "experiments/paid-wallet-state/compact-direct-native.py",
+      "sha256": "51f28454f0a2fc198c9aca7b3f260486039b5631c681d9b2c082507b5b21c1a1",
+      "size": 955
+    },
+    {
+      "path": "experiments/paid-wallet-state/check-direct-native.mjs",
+      "sha256": "97520a8e0130e694d7ddf21f8c5dfcf5606f29f1c548e6c836ce2ad5f09a6412",
+      "size": 3276
+    },
+    {
+      "path": "experiments/paid-wallet-state/direct-native.json",
+      "sha256": "e18cd2cf1a96d3240afe5a7a810100b965e71253009fe7eff7df1609b5a7bd77",
+      "size": 9019
+    }
+  ]
+}

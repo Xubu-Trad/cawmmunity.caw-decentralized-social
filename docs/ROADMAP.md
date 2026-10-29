@@ -380,3 +380,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### lifecycle localization -- 2026-10-29
 
 [Engine cleanup trace](NATIVE_ACCOUNT_LIFECYCLE.md) localizes the replay deletion; capture-side root cause remains unresolved. Next minimal native-call acquisition under the same pinned fork, separating direct/contract-mediated calls. No gate closure.
+
+
+### minimal acquisition control -- 2026-10-29
+
+[Direct native call](DIRECT_NATIVE_CONTROL.md) isolates the observed presence transition from CAW contract logic. Next independently replay this interval with all selected account dependencies; no root-cause or release gate closure.
