@@ -213,3 +213,8 @@ The signed local ledger evidence now needs an explicit [anchor-authority decisio
 ### mined wallet evidence -- 2026-10-28
 
 [Nine focused groups](docs/MINED_WALLET_EXPERIMENT.md) check two mined local attempts of the same signed post: wallet rejection, then restored acceptance. Transaction/receipt commitments and sender/parent checks pass; altered evidence rejects. Independent wallet execution replay and pre-call dependency witnesses remain missing. No production authority flag changes.
+
+
+### wallet replay boundary -- 2026-10-28
+
+[The rejected wallet call replays](docs/WALLET_WITNESS_REPLAY.md) with matching gas/receipt and selected child state. The restored-success path remains blocked: the witness adapter does not represent a proven-absent native signature-precompile account. The harness explicitly expects that failure; it is not a full wallet replay pass. Next distinguish proven absence from missing evidence without weakening fail-closed behavior.

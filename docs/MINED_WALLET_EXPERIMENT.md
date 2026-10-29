@@ -31,3 +31,8 @@ node --max-old-space-size=256 experiments/paid-wallet-state/check-mined.mjs <min
 the compactor preserves the selected raw-run fields, records the raw digest and refuses an existing output. fresh signing randomness and timestamps can differ. compare the demonstrated relations, not exact fresh hashes. resource and transport safeguards are unchanged.
 
 next acquire the wallet/probe/registry/token dependencies at each exact parent state and replay the single mined transaction with the separately reviewed execution engine. absent witnesses must reject; post-state evidence must not replace pre-call state. do not widen the ordinary-account history reader to accept contract signatures from these observations alone. [Prior mode experiment](WALLET_STATE_EXPERIMENT.md), [wallet authority review](WALLET_AUTHORITY_EVIDENCE_REVIEW.md).
+
+
+## witness follow-up
+
+[Parent/child proofs and replay](WALLET_WITNESS_REPLAY.md) reproduce rejection but expose a proven-absent-precompile representation blocker on success. The blocking evidence remains explicit.

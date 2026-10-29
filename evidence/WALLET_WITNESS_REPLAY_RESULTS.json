@@ -1,0 +1,80 @@
+{
+  "schema": "caw-wallet-witness-replay/1",
+  "cases": [
+    {
+      "label": "reject",
+      "status": 0,
+      "gas": "82721",
+      "selectedChildAccountsAndSlotsMatch": true,
+      "missingWalletModeRefused": true
+    },
+    {
+      "label": "restored",
+      "replayCompleted": false,
+      "blocker": "WITNESS_STATE_MISSING_ACCOUNT",
+      "missingAddress": "0x0000000000000000000000000000000000000001",
+      "nativeAccountAbsenceProven": true
+    }
+  ],
+  "stateRootRecomputed": false,
+  "independentOperator": false,
+  "publicChainAuthenticated": false,
+  "arbitraryWalletCompatibility": false,
+  "productionAccepted": false,
+  "baseline": "01b28a9cb9e8449e0e2b1205cae8125c017ccb80",
+  "captureSha256": "0e709b35014787afd9e4cbef209cf0f2e023688047bc8a260378a782cbdce5a5",
+  "sources": [
+    {
+      "path": "experiments/paid-wallet-state/capture-mined.py",
+      "sha256": "90c0b0b461b1d102031221d50c76b747801f34e2ad6ab3311fccc29c3af61abd",
+      "size": 1865
+    },
+    {
+      "path": "experiments/paid-wallet-state/run_wallet_state.py",
+      "sha256": "b53b902e949b40d9e7e0502d544f9364d2c2c4370ba38464801090df941c3907",
+      "size": 8965
+    },
+    {
+      "path": "experiments/paid-wallet-state/compact-mined.py",
+      "sha256": "d3b99b6ee58f86043ad23a2e39e735dd7ccdc9e7dce4bf4e786c3e75b0cad603",
+      "size": 1092
+    },
+    {
+      "path": "experiments/execution-engine/witness-adapter.mjs",
+      "sha256": "69e6336862792e41a1d7f654d9632453f8a44758f175e5d4aec4c1a9efa66aad",
+      "size": 5627
+    },
+    {
+      "path": "experiments/execution-engine/selected-london-executor.mjs",
+      "sha256": "7fe792615fc7bc5d518beb08a213c60a0fd121b33f8473691b303413e29da167",
+      "size": 1453
+    },
+    {
+      "path": "reference/replay-dependencies.mjs",
+      "sha256": "75a8e02a9f1c3e4c4f5730e68747be6112a78eb3270413eb33351fdbd1b17205",
+      "size": 2068
+    },
+    {
+      "path": "reference/header-bound-state-proof.mjs",
+      "sha256": "244e2f468d02b362246ae8e8bc659801b233c7257d774a695d40e9c1d2428955",
+      "size": 3918
+    }
+  ],
+  "newFiles": [
+    {
+      "path": "experiments/paid-wallet-state/capture-witnesses.py",
+      "sha256": "b6ffd4490401d7ac64ac2fa4b5a1d1293283b2c1706bd74bce2208d95ce7d7f1",
+      "size": 3128
+    },
+    {
+      "path": "experiments/execution-engine/wallet-witness-replay.mjs",
+      "sha256": "d6898e475b7e6719c4fe7bb1500dc6609e55dc8b216b988ff5090a08a40fefe0",
+      "size": 4738
+    }
+  ],
+  "priorFailures": [
+    "HEADER_STATE_ACCOUNT_ABSENT",
+    "WITNESS_STATE_MISSING_ACCOUNT",
+    "diagnostic attempted to mutate frozen stateManager; replaced by separate forwarding facade"
+  ]
+}

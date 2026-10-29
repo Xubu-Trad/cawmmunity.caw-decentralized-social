@@ -360,3 +360,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### mined contract-signature fixture -- 2026-10-28
 
 [Two mined attempts / nine focused groups](MINED_WALLET_EXPERIMENT.md) extend the previous simulation-only mode experiment. Next acquire exact parent-state code/storage dependencies and independently replay the transaction; selected receipts alone do not authenticate wallet authority.
+
+
+### parent-state wallet replay -- 2026-10-28
+
+[Rejected path reproduced; success blocked](WALLET_WITNESS_REPLAY.md). Acquired parent/child dependencies now exist. Next narrow absent-account/precompile handling with explicit missing-proof and unsupported-write rejection, then replay retained success. No full-state-root or production acceptance.
