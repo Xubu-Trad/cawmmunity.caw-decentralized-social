@@ -390,3 +390,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### direct replay control -- 2026-10-29
 
 [Minimal second-engine replay](DIRECT_NATIVE_REPLAY.md) retains the native existence mismatch. Next ordinary trie-backed state-manager control before assigning root cause. No complete state agreement or gate closure.
+
+
+### adapter isolation -- 2026-10-29
+
+[Standard trie control](DIRECT_TRIE_CONTROL.md) retains the discrepancy. Inspect pinned acquisition persistence, proof serialization and block transitions next; post-transaction root mismatch alone is not complete block verification.

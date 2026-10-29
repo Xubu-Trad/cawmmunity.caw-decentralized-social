@@ -243,3 +243,8 @@ The signed local ledger evidence now needs an explicit [anchor-authority decisio
 ### minimal replay discrepancy -- 2026-10-29
 
 [Direct-call replay](docs/DIRECT_NATIVE_REPLAY.md) matches receipt/gas and sender/fee-recipient balances, but still disagrees on native-account existence. Three missing/wrong-proof cases reject. Next compare an ordinary trie-backed state manager to isolate the experimental adapter; production and public test gates remain blocked.
+
+
+### standard state-manager control -- 2026-10-29
+
+[Trie-backed replay](docs/DIRECT_TRIE_CONTROL.md) reproduces the native-account discrepancy without our experimental adapter. Parent trie root, receipt/gas and selected balances check out; native existence and the post-transaction root disagree with the captured child. Next isolate acquisition persistence and block-finalization behavior. No release gate closes.

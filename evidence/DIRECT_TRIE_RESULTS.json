@@ -1,0 +1,18 @@
+{
+  "schema": "caw-direct-trie-replay/1",
+  "parentRootMatched": true,
+  "receiptAndGasMatched": true,
+  "senderAndFeeRecipientMatched": true,
+  "capturedNativeExists": true,
+  "replayedNativeExists": false,
+  "computedPostTransactionRoot": "0x29fc4e4e1e63b13addcdb03c5ce45766a85113bbd3d1cb6ee76206db24b43127",
+  "capturedChildRoot": "0x906b98db9ede878dbd185ad205995ec82b9838954f7097e1ab6c6aa72f56fb26",
+  "rootsMatch": false,
+  "experimentalAdapterUsed": false,
+  "wholeBlockExecutionVerified": false,
+  "independentOperator": false,
+  "productionAccepted": false,
+  "baseline": "32b7e87517eb67c68264110ca8a80416e05dd2ce",
+  "fixtureSha256": "4ee4e3f0fd489090e4df1278c138037c6f7b4998f1e8cbbf069b26ea8f818e35",
+  "harnessSha256": "6333eb5452628a05e069a79607d08f48da19a74a5cbf584550335df783b317c2"
+}
