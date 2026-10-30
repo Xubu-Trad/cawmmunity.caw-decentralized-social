@@ -400,3 +400,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### native leaf localization -- 2026-10-29
 
 [One-leaf diagnostic](NATIVE_LEAF_CONTROL.md) matches the captured root only after an explicit temporary state change, then restores the original replay. Next inspect touched/empty-account commit semantics; no acceptance gate closes.
+
+
+### commit-path hypothesis -- 2026-10-29
+
+[Source chain](NATIVE_COMMIT_REVIEW.md) traced through Foundry and locked revm crates. Next reproduce touched-empty commit behavior or observe boundary flags before reporting a confirmed root cause. Preserve the unmodified local fixture and mismatch.

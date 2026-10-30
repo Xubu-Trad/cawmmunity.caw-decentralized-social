@@ -253,3 +253,8 @@ The signed local ledger evidence now needs an explicit [anchor-authority decisio
 ### one-leaf diagnostic -- 2026-10-29
 
 [A reversible diagnostic](docs/NATIVE_LEAF_CONTROL.md) shows that adding one empty native-account entry to the replay trie exactly reproduces the captured child root. The change is rolled back and the original mismatch retained. This localizes the difference; it is not a repair or accepted execution result. Next inspect the pinned acquisition commit path.
+
+
+### acquisition commit review -- 2026-10-29
+
+[Checksum-pinned source review](docs/NATIVE_COMMIT_REVIEW.md) identifies a likely journal/database handoff mismatch for touched empty accounts. It fits the retained one-leaf discrepancy, but runtime boundary flags and a source-level reproduction are still required. No production gate closes.

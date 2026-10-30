@@ -1,0 +1,207 @@
+{
+  "schema": "caw-native-commit-source-review/1",
+  "baseline": "b08e908700d4f22a21ddf6cbe90ab29aa1ce0623",
+  "foundryRevision": "982849d3140c01fd3b72905759581a132df7aa98",
+  "sources": [
+    {
+      "path": "native-source-20261029/Cargo.lock",
+      "sha256": "8d8377937b1d95cbc840c4d23199694173d14fb7031555b1c50309c69d68e616",
+      "size": 344151
+    },
+    {
+      "path": "native-source-20261029/crates/anvil/src/eth/backend/db.rs",
+      "sha256": "8bd86c817983efb78e09d006ed6f8b319dd3dd610f897030e3b46d4807beb783",
+      "size": 37445
+    },
+    {
+      "path": "native-source-20261029/crates/anvil/src/eth/backend/executor.rs",
+      "sha256": "98f8407065be9cadf46631ccd8b5fadceb5506883bb3abaaa577582d8afd4f0f",
+      "size": 31762
+    },
+    {
+      "path": "native-source-20261029/crates/anvil/src/eth/backend/mem/in_memory_db.rs",
+      "sha256": "a7048a569bb8c9602486491c6a84f8fd636539cefaec8256f6be8c7d143fe805",
+      "size": 35806
+    },
+    {
+      "path": "native-source-20261029/crates/anvil/src/eth/backend/mem/mod.rs",
+      "sha256": "d550437ec8346f8ded211bbf7a3f6f4d354e1dba63a696c797fb214a31c8f6dd",
+      "size": 402972
+    },
+    {
+      "path": "native-source-20261029/crates/anvil/src/eth/backend/mem/state.rs",
+      "sha256": "6b5628a9bdf8c2d33891f813658dc62665173421fb0d4f961c8d1e13b3804ab6",
+      "size": 20079
+    },
+    {
+      "path": "native-source-20261029/crates/evm/core/src/backend/in_memory_db.rs",
+      "sha256": "ada9cfc3a502028712d8ed4396449cd790b9b57cf8128b8fc21e87a4038a613e",
+      "size": 6842
+    },
+    {
+      "path": "native-source-20261029/paths.txt",
+      "sha256": "f4906500157114d889f5b1c912eca88eda2833d62a9156e905b6bd4ab5a641ef",
+      "size": 93695
+    },
+    {
+      "path": "native-commit-source-20261029/in_memory_db.rs",
+      "sha256": "881356db04b692b7fd226952504cfe21acf6f2c52ab8548cd66d041dab97e8fa",
+      "size": 26038
+    },
+    {
+      "path": "native-commit-source-20261029/revm-context-42.0.0/src/block.rs",
+      "sha256": "16276b36ae3335c667bb1f661cef00378f0e219049dcb4d65549e949fb472d0e",
+      "size": 3707
+    },
+    {
+      "path": "native-commit-source-20261029/revm-context-42.0.0/src/cfg.rs",
+      "sha256": "c0e159d79950dd96a6fa844a013044dc285eccb93792fd33c056c17d805e56b6",
+      "size": 22619
+    },
+    {
+      "path": "native-commit-source-20261029/revm-context-42.0.0/src/context.rs",
+      "sha256": "c58816305d33ee8778eedd091ec8cd30d13cc6787b3eaf50625f519a5d719f18",
+      "size": 16640
+    },
+    {
+      "path": "native-commit-source-20261029/revm-context-42.0.0/src/evm.rs",
+      "sha256": "5e249dcdbf6f249a28f8ec4f825588074dea77fd1f3066dd03b4c257a015442b",
+      "size": 3030
+    },
+    {
+      "path": "native-commit-source-20261029/revm-context-42.0.0/src/journal/inner.rs",
+      "sha256": "96c938336a94331bccb9655992b537ea374b432111b2dbaaaa7f62324ded1240",
+      "size": 44900
+    },
+    {
+      "path": "native-commit-source-20261029/revm-context-42.0.0/src/journal/warm_addresses.rs",
+      "sha256": "a2d7ebcb4564cc849b3bcef76f80fced3b656c146aeb26a0d6c7d196eef56d24",
+      "size": 10743
+    },
+    {
+      "path": "native-commit-source-20261029/revm-context-42.0.0/src/journal.rs",
+      "sha256": "1a06f31bacac2c35072f758b5456402e12008af0bee1a7fe6b7b210dc47af383",
+      "size": 11606
+    },
+    {
+      "path": "native-commit-source-20261029/revm-context-42.0.0/src/lib.rs",
+      "sha256": "c9c549313505c96c22a3ff40d6b5f92df90adf101c1aade0676c7669bb655db0",
+      "size": 587
+    },
+    {
+      "path": "native-commit-source-20261029/revm-context-42.0.0/src/local.rs",
+      "sha256": "d19f017b9f8cc98a873a516df0dc9d3daca7874fb55722b0533a2c7f3cb0bc03",
+      "size": 1563
+    },
+    {
+      "path": "native-commit-source-20261029/revm-context-42.0.0/src/tx.rs",
+      "sha256": "e93af7507f43d8ec2a5b9ff6f9a765d090385f789d93ee5f7af5119ca4c29b09",
+      "size": 39355
+    },
+    {
+      "path": "native-commit-source-20261029/revm-context.crate",
+      "sha256": "cc6512f05f83378e29b2b016fa5bd7f5a533e3625548be4113732e1a536c2564",
+      "size": 58226
+    },
+    {
+      "path": "native-commit-source-20261029/revm-database-42.0.0.crate",
+      "sha256": "df72760eab0852100e748c7cb03ce0221626d60ac14534118c84c5cc894fb4c9",
+      "size": 73410
+    },
+    {
+      "path": "native-commit-source-20261029/revm-handler-42.0.1/src/api.rs",
+      "sha256": "5ea513546da4c15dcc6d79d484dfbf076a048709b3c8f9ca48a08d56d13cbaf1",
+      "size": 8561
+    },
+    {
+      "path": "native-commit-source-20261029/revm-handler-42.0.1/src/evm.rs",
+      "sha256": "35d81fa7f291f5cea4fd83f493dcfeb070569570529701c674de9a54f4c42a29",
+      "size": 8127
+    },
+    {
+      "path": "native-commit-source-20261029/revm-handler-42.0.1/src/execution.rs",
+      "sha256": "7f1315e28128ad12a2d64b102c19b6b50c028b56e6297b77defa4b6e63d70578",
+      "size": 8004
+    },
+    {
+      "path": "native-commit-source-20261029/revm-handler-42.0.1/src/frame.rs",
+      "sha256": "b2650aee21b9ca85264f973c63c8a4e2fe3d672c0501f53804e019859ec9c733",
+      "size": 28535
+    },
+    {
+      "path": "native-commit-source-20261029/revm-handler-42.0.1/src/frame_data.rs",
+      "sha256": "8bec79cfb9b0b8468e6d2e3ebea488e5ac7183375d45751bf2b35ee6ce4c6909",
+      "size": 5984
+    },
+    {
+      "path": "native-commit-source-20261029/revm-handler-42.0.1/src/handler.rs",
+      "sha256": "33a672105c71bf15bf3ac866dd74e938ae25daa8a6b34edec8e7cd6a602ea279",
+      "size": 27904
+    },
+    {
+      "path": "native-commit-source-20261029/revm-handler-42.0.1/src/instructions.rs",
+      "sha256": "5d4458476838e887d736213181930b489ddfa27e92996a5b5e8d19468404072f",
+      "size": 4395
+    },
+    {
+      "path": "native-commit-source-20261029/revm-handler-42.0.1/src/item_or_result.rs",
+      "sha256": "780ca4d66552c6a7801f17d27ccbb6c438ac7464fb31787efc240000fd4e69f1",
+      "size": 1856
+    },
+    {
+      "path": "native-commit-source-20261029/revm-handler-42.0.1/src/lib.rs",
+      "sha256": "efb217ad1f6f4c19f1b8bc5e02c890d51f9fb246429e7f9211803105367af10b",
+      "size": 1841
+    },
+    {
+      "path": "native-commit-source-20261029/revm-handler-42.0.1/src/mainnet_builder.rs",
+      "sha256": "f5ca93c3899d1a58759cb6677326cd087625635f69b3289162d9b8e857712c4f",
+      "size": 4524
+    },
+    {
+      "path": "native-commit-source-20261029/revm-handler-42.0.1/src/mainnet_handler.rs",
+      "sha256": "87e294de2ad4d25a850711d0c77a46c7d3f195ffc2ada1b316141fdf32535907",
+      "size": 1120
+    },
+    {
+      "path": "native-commit-source-20261029/revm-handler-42.0.1/src/post_execution.rs",
+      "sha256": "43e2382777389769c9f0206080031fdec79d251ff37bfd9a499267f7d10df87e",
+      "size": 7242
+    },
+    {
+      "path": "native-commit-source-20261029/revm-handler-42.0.1/src/pre_execution.rs",
+      "sha256": "515e8a839cd093c4b7a1461c33d4f769c848e69b0763d66d308e8ef3137e1503",
+      "size": 22624
+    },
+    {
+      "path": "native-commit-source-20261029/revm-handler-42.0.1/src/precompile_provider.rs",
+      "sha256": "c97bb62364da618035b5f78f787b8efa1e5f7a8bb10b378817e1285ed0bca79d",
+      "size": 12711
+    },
+    {
+      "path": "native-commit-source-20261029/revm-handler-42.0.1/src/system_call.rs",
+      "sha256": "1ccfec97e3d1d94c008b63b865d217e821ea692099838ecdcc5c96674b426123",
+      "size": 13775
+    },
+    {
+      "path": "native-commit-source-20261029/revm-handler-42.0.1/src/validation.rs",
+      "sha256": "8ad4107132bae1d5d45d745638a43a36f9c2da683744f8f6afc086f14b8c6a33",
+      "size": 28870
+    },
+    {
+      "path": "native-commit-source-20261029/revm-handler.crate",
+      "sha256": "09126175c3fa482e71e80cc28c6bb17e681911e472b94d4f7f73dd6780411798",
+      "size": 77455
+    },
+    {
+      "path": "native-commit-source-20261029/SOURCE.json",
+      "sha256": "98df33200c4f84cf0e34f68080040ed76e11e3d4e4090266f7d5ce53ef93f0b4",
+      "size": 251
+    }
+  ],
+  "newRuntimeTest": false,
+  "runtimeFlagsObserved": false,
+  "sourceBinaryRebuilt": false,
+  "rootCauseConfirmed": false,
+  "productionAccepted": false
+}
