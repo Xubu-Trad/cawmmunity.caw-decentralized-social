@@ -258,3 +258,8 @@ The signed local ledger evidence now needs an explicit [anchor-authority decisio
 ### acquisition commit review -- 2026-10-29
 
 [Checksum-pinned source review](docs/NATIVE_COMMIT_REVIEW.md) identifies a likely journal/database handoff mismatch for touched empty accounts. It fits the retained one-leaf discrepancy, but runtime boundary flags and a source-level reproduction are still required. No production gate closes.
+
+
+### commit reproduction prepared -- 2026-10-30
+
+[A small Rust reproduction](experiments/native-commit/README.md) now targets the reviewed database version directly, with four characterization cases and a separate desired-cleanup oracle. It is unexecuted: the checked local environments lack Rust, and the transitive dependency lock remains to be generated and verified. No new pass count or confirmed root cause is claimed.

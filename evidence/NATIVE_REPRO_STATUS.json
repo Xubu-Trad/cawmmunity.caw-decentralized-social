@@ -1,0 +1,29 @@
+{
+  "schema": "caw-native-commit-reproduction-status/1",
+  "baseline": "0c078c6e24e4ca7f5b3f244e40937d3a311dab8d",
+  "status": "UNEXECUTED",
+  "compilerAvailableInCheckedLocations": false,
+  "rustTestsExecuted": 0,
+  "characterizationCasesPrepared": 4,
+  "separateIgnoredOraclePrepared": 1,
+  "dependencyLockGenerated": false,
+  "runtimeFlagsObserved": false,
+  "productionAccepted": false,
+  "sources": [
+    {
+      "path": "experiments/native-commit/Cargo.toml",
+      "sha256": "35f52ec528a17b5e967c60179c575cbffe6c69f5db6d7f9e2f2326c004f25556",
+      "size": 262
+    },
+    {
+      "path": "experiments/native-commit/commit.rs",
+      "sha256": "33f7a7245f3c79917c207b5fb18b7fb971bd5d9aebb7ef70f7df55a2de38a888",
+      "size": 1966
+    },
+    {
+      "path": "experiments/native-commit/README.md",
+      "sha256": "b69491633420469ce0566c0f924437c0f9c5237b31d8dc13769ec5eee268e110",
+      "size": 2134
+    }
+  ]
+}

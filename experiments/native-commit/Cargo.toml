@@ -1,0 +1,17 @@
+[package]
+name = "caw-native-commit-characterization"
+version = "0.0.0"
+edition = "2021"
+rust-version = "1.91"
+publish = false
+
+[dependencies]
+revm-database = "=42.0.0"
+revm-state = "=42.0.0"
+
+[profile.dev]
+debug = 0
+
+[[test]]
+name = "commit"
+path = "commit.rs"

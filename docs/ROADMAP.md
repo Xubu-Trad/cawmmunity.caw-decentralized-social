@@ -405,3 +405,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### commit-path hypothesis -- 2026-10-29
 
 [Source chain](NATIVE_COMMIT_REVIEW.md) traced through Foundry and locked revm crates. Next reproduce touched-empty commit behavior or observe boundary flags before reporting a confirmed root cause. Preserve the unmodified local fixture and mismatch.
+
+
+### database reproduction gate -- 2026-10-30
+
+[Prepared Rust harness](../experiments/native-commit/README.md): run in a bounded compiler-equipped environment, retain both characterization/oracle logs, generate and review Cargo.lock, then rerun locked. Runtime Anvil account flags remain a separate open question. No acceptance change.
