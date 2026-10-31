@@ -195,6 +195,35 @@ test("Unicode is counted as code points, malformed surrogates fail, and exact te
   assert.equal(rebuild(FIXTURE, JSON.parse(canonicalExport(state))).posts.at(-1).text, exact);
 });
 
+test("mixed-content text respects the 420 scalar boundary", () => {
+  // A ZWJ sequence is three scalars and a flag is two scalars, so repeating
+  // them reaches 420 with fewer visible units than plain ASCII or emoji.
+  assert.equal(countCharacters("\u{1F469}\u200D\u{1F52C}"), 3);
+  assert.equal(countCharacters("\u{1F1EF}\u{1F1F5}"), 2);
+  assert.equal(countCharacters("https://example.invalid/" + "a".repeat(60)), 84);
+  const passes = [
+    ["mixed ASCII and emoji at 419", "a".repeat(418) + "😀", 419],
+    ["mixed ASCII and emoji at 420", "a".repeat(419) + "😀", 420],
+    ["ZWJ sequences at 420", "\u{1F469}\u200D\u{1F52C}".repeat(140), 420],
+    ["flags at 420", "\u{1F1EF}\u{1F1F5}".repeat(210), 420],
+    ["combining marks mixed with ASCII at 420", "e\u0301".repeat(200) + "a".repeat(20), 420],
+    ["long URL at 420", "https://example.invalid/" + "a".repeat(396), 420],
+  ];
+  for (const [label, text, expected] of passes) {
+    const state = apply(start(), "pioneer", "caw", { text });
+    assert.equal(state.receipts.at(-1).characterCount, expected, label);
+    assert.equal(state.posts.at(-1).text, text, label);
+  }
+  const rejects = [
+    "a".repeat(420) + "😀",
+    "\u{1F469}\u200D\u{1F52C}".repeat(140) + "😀",
+    "\u{1F1EF}\u{1F1F5}".repeat(210) + "a",
+    "e\u0301".repeat(200) + "a".repeat(21),
+    "https://example.invalid/" + "a".repeat(397),
+  ];
+  for (const text of rejects) assert.throws(() => apply(start(), "pioneer", "caw", { text }), code("TEXT_TOO_LONG"));
+});
+
 test("strict schemas reject extra fields, wrong types, invalid IDs and noncanonical amounts", () => {
   const state = start();
   const valid = intent(state, "pioneer", "caw", { text: "A bounded intent." });
