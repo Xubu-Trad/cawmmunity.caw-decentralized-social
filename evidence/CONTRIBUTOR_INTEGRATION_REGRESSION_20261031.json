@@ -1,0 +1,20 @@
+{
+  "schema": "caw-contributor-integration-regression/1",
+  "date": "2026-10-31",
+  "baseline": "4d7b25d3c58300dba883c8938aea2f3882a11830",
+  "runtime": "Node.js 24.20.0",
+  "runtimeSha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
+  "command": "package.json scripts.test (pinned Node executable, no npm install)",
+  "tests": 1243,
+  "passed": 1243,
+  "failed": 0,
+  "skipped": 0,
+  "testFiles": 73,
+  "exitCode": 0,
+  "seconds": 45.907,
+  "observedPeakBytes": 485076992,
+  "scope": "Local offline Node suite including local HTTP fixture tests; retained synthetic evidence. Not a fresh chain acquisition, Rust reproduction, consensus test or external audit.",
+  "nativeStateMismatchResolved": false,
+  "rustReproductionExecuted": false,
+  "productionAccepted": false
+}
