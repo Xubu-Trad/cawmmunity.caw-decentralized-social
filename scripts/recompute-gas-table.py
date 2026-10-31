@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Recompute the gas/payer tables in GAS_AND_PAYER_COMPARISON_DRAFT.md.
+"""Recompute the gas/payer tables in GAS_AND_PAYER_COMPARISON.md.
 
-Usage: python3 recompute_gas_table.py <repo-root>
+Usage: python3 scripts/recompute-gas-table.py .
 
 Reads experiments/paid-action/execution-summary.json and
 experiments/paid-action/execution-trace.json from the given checkout,
