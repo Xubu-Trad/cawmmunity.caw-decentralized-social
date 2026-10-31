@@ -410,3 +410,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### database reproduction gate -- 2026-10-30
 
 [Prepared Rust harness](../experiments/native-commit/README.md): run in a bounded compiler-equipped environment, retain both characterization/oracle logs, generate and review Cargo.lock, then rerun locked. Runtime Anvil account flags remain a separate open question. No acceptance change.
+
+
+### contributor review — 2026-10-31
+
+Review #11–#14 before integration: retain authorship, resolve the Unicode guide's runnable-validation gap and gas document's accounting/rounding/scope corrections. #12 and #13 each passed 21/21 focused model tests on pinned Node 24.20.0; combined integration/full-suite validation remains pending. No specification decision follows from these tests. Native-state mismatch remains open; Rust reproduction and hosted CI remain unexecuted/deferred.
