@@ -414,4 +414,4 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 
 ### contributor review — 2026-10-31
 
-Review #11–#14 before integration: retain authorship, resolve the Unicode guide's runnable-validation gap and gas document's accounting/rounding/scope corrections. #12 and #13 each passed 21/21 focused model tests on pinned Node 24.20.0; combined integration/full-suite validation remains pending. No specification decision follows from these tests. Native-state mismatch remains open; Rust reproduction and hosted CI remain unexecuted/deferred.
+#12 and #13 are merged with authorship preserved. Combined model tests pass 22/22 on pinned Node 24.20.0 and match merged content; no new full-suite result is claimed. Resolve #11's runnable-validation gap and #14's accounting/rounding/scope corrections before integrating those documents. Complete the commands/log record for the contributor-reported Linux reproduction in #10. No specification decision follows from these tests. Native-state mismatch remains open; Rust reproduction and hosted CI remain unexecuted/deferred.
