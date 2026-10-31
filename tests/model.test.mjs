@@ -142,6 +142,32 @@ test("replay and duplicate economic interactions cannot charge the same action t
   assert.throws(() => apply(recawed, "signal", "recaw", { postId: "seed-post" }), code("DUPLICATE_ACTION"));
 });
 
+// Demo-model layer only (Issue #7 evidence): sequential resubmission of a
+// post in the local model. This is not an EVM or mempool race verification
+// and does not close Issue #7. The generic replay mechanism is already
+// covered for like/follow/recaw above; this test adds only the post cases.
+test("resubmitted posts settle once and rejected resubmissions change nothing", () => {
+  const state = start();
+  const first = intent(state, "pioneer", "caw", { text: "A resubmission probe post." });
+  const settled = applyAction(state, first);
+  assert.equal(settled.accounts.pioneer.nonce, 1);
+  assert.equal(settled.posts.length, state.posts.length + 1);
+  const before = canonicalExport(settled);
+  assert.throws(() => applyAction(settled, first), code("REPLAY"));
+  assert.throws(() => applyAction(settled, { ...first, id: "other-id" }), code("INVALID_NONCE"));
+  assert.equal(canonicalExport(settled), before);
+  assert.equal(settled.posts.length, state.posts.length + 1);
+
+  const fresh = start();
+  const reordered = { ...intent(fresh, "pioneer", "caw", { text: "Out of order." }), nonce: 1 };
+  assert.throws(() => applyAction(fresh, reordered), code("INVALID_NONCE"));
+  assert.equal(applyAction(fresh, intent(fresh, "pioneer", "caw", { text: "In order." })).accounts.pioneer.nonce, 1);
+
+  const retry = intent(state, "pioneer", "caw", { text: "Retry after failure." });
+  assert.throws(() => applyAction(state, { ...retry, nonce: 99 }), code("INVALID_NONCE"));
+  assert.equal(applyAction(state, retry).accounts.pioneer.nonce, 1);
+});
+
 test("self-interactions are rejected as an explicit fixture policy", () => {
   for (const kind of ["like", "recaw"]) assert.throws(() => apply(start(), "pioneer", kind, { postId: "seed-post" }), code("SELF_INTERACTION"));
   assert.throws(() => apply(start(), "pioneer", "follow", { target: "pioneer" }), code("SELF_INTERACTION"));
