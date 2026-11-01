@@ -21,17 +21,17 @@ the best version of this repo should eventually contain decisions and code that 
 by teh ppl. for teh ppl.
 
 
-## current review — 2026-10-31
+## current review — 2026-11-01
 
 Four contributions from WD-27 have received review: [Unicode examples (#11)](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/11), [mixed-content boundary tests (#12)](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/12), [sequential post replay tests (#13)](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/13), and [gas/payer evidence (#14)](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/14). Each PR's conversation records the reviewed commit and independent checks.
 
 - The changed model test file in #12 and #13 passed independently: **21/21 per branch on Node 24.20.0**. These separate pre-merge runs overlap the existing tests; do not add them together or treat them as full-suite results.
-- The #11 counting snippet reproduced all 14 documented output lines. Runnable validation assertions were requested before merge.
-- The #14 script reproduced the retained gas figures. Review requested corrected credit deltas, explicit rounding, narrower RPC/fallback claims and accurate input-validation wording.
+- #11 now includes runnable validation assertions: all nine acceptance/rejection checks passed on Node 24.20.0, all 14 counting outputs matched, and a deliberately wrong expected count failed.
+- #14 now distinguishes credit increases from final balances, checks conservation and expected figures, names ROUND_HALF_EVEN display rounding, and narrows its RPC/fallback claims. The revised script passed on Python 3.12.14; an intentionally wrong gas expectation failed.
 
-**#12 and #13 are now merged with contributor authorship preserved.** Their combined model file passed **22/22 on Node 24.20.0**, and the merged file matches the tested content. #11 and #14 await the requested corrections. The subsequent full offline regression passed **1,243/1,243 tests across 73 files** on pinned Node 24.20.0 ([result](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/main/evidence/CONTRIBUTOR_INTEGRATION_REGRESSION_20261031.json)). Issues #7 and #8 remain open. The native-account state mismatch remains unresolved; the prepared Rust reproduction is unexecuted and hosted CI is deferred. No production or public-test release gate is closed.
+**All four contributions (#11–#14) are now merged with contributor authorship preserved.** Their combined model file passed **22/22 on Node 24.20.0**, and the merged file matches the tested content. The revised documentation and gas script were checked separately on November 1; they do not add to the Node suite count. The subsequent full offline regression passed **1,243/1,243 tests across 73 files** on pinned Node 24.20.0 ([result](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/main/evidence/CONTRIBUTOR_INTEGRATION_REGRESSION_20261031.json)). Issues #7 and #8 remain open. The native-account state mismatch remains unresolved; the prepared Rust reproduction is unexecuted and hosted CI is deferred. No production or public-test release gate is closed.
 
-[Issue #10](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues/10#issuecomment-6546349027) also records WD-27's Linux reproduction report. The reported canonical digest matches both retained outputs; the contributor's Linux session and full-suite counts remain attributed reports, not locally rerun results. Exact commands/logs were requested to complete that evidence record.
+[Issue #10](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues/10#issuecomment-6546349027) also records WD-27's Linux reproduction report. The reported canonical digest matches both retained outputs; the contributor's Linux session and full-suite counts remain attributed reports, not locally rerun results. WD-27 supplied a follow-up distinguishing recorded commands from a reconstructed equivalent digest command. Complete external logs have not been independently inspected.
 
 ![Commons in the current cawmmunity.caw alpha](docs/images/commons-alpha27.jpg)
 
