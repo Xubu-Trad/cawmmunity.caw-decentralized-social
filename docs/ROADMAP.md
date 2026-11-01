@@ -430,3 +430,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Owner-controlled migration review — 2026-11-01
 
 The [owner-controlled migration review](CRYPTO_MIGRATION_REVIEW.md) now defines seven proposed invariants and twelve threat cases covering transfers, double claims, compromised old keys, recovery and underlying-chain failures. [Issue #15](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues/15) requests specification review before implementation. This is design work; the last executed suite remains 1,248/1,248 and no new runtime result or release readiness is claimed.
+
+
+### Native replay runtime boundary — 2026-11-01
+
+A new [native-account runtime trace](NATIVE_RUNTIME_TRACE.md) observes an empty-account write followed by deletion in the replay engine. An uninstrumented control matches its receipt, gas and root. The captured node still retains the empty account: the discrepancy is narrowed, not resolved. This standalone experiment adds no passes to the 1,248-test suite; acquisition-side runtime observation and deferred Rust/CI work remain open.
