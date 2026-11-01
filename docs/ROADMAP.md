@@ -425,3 +425,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### Quantum and AI resilience — 2026-11-01
 
 [Cryptographic inventory and migration gates](QUANTUM_AI_RESILIENCE.md) now identify classical-signature and underlying-chain exposure. Five provider-failure regression cases passed; the full offline suite passed **1,248/1,248 across 73 files**. [Evidence](../evidence/CRYPTO_RESILIENCE_20261101.json). Next: independently review C-016 owner-controlled migration, hybrid/downgrade rules, signature resource bounds and remaining authority paths. No PQ scheme is implemented or selected. Existing native-account replay, public-test, CI and production gates remain unchanged.
+
+
+### Owner-controlled migration review — 2026-11-01
+
+The [owner-controlled migration review](CRYPTO_MIGRATION_REVIEW.md) now defines seven proposed invariants and twelve threat cases covering transfers, double claims, compromised old keys, recovery and underlying-chain failures. [Issue #15](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues/15) requests specification review before implementation. This is design work; the last executed suite remains 1,248/1,248 and no new runtime result or release readiness is claimed.
