@@ -1,0 +1,83 @@
+{
+  "schema": "caw-native-runtime-trace/1",
+  "events": [
+    {
+      "method": "checkpoint"
+    },
+    {
+      "method": "checkpoint"
+    },
+    {
+      "method": "checkpoint"
+    },
+    {
+      "method": "getAccount",
+      "address": "0x0000000000000000000000000000000000000001",
+      "account": {
+        "exists": false
+      }
+    },
+    {
+      "method": "putAccount",
+      "address": "0x0000000000000000000000000000000000000001",
+      "account": {
+        "exists": true,
+        "nonce": "0",
+        "balance": "0",
+        "codeHash": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470",
+        "storageRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"
+      }
+    },
+    {
+      "method": "commit"
+    },
+    {
+      "method": "commit"
+    },
+    {
+      "method": "getAccount",
+      "address": "0x0000000000000000000000000000000000000001",
+      "account": {
+        "exists": true,
+        "nonce": "0",
+        "balance": "0",
+        "codeHash": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470",
+        "storageRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"
+      }
+    },
+    {
+      "method": "deleteAccount",
+      "address": "0x0000000000000000000000000000000000000001"
+    },
+    {
+      "method": "commit"
+    }
+  ],
+  "observerControlMatched": true,
+  "acquisitionRuntimeObserved": false,
+  "parentRootMatched": true,
+  "receiptAndGasMatched": true,
+  "senderAndFeeRecipientMatched": true,
+  "capturedNativeExists": true,
+  "replayedNativeExists": false,
+  "computedPostTransactionRoot": "0x29fc4e4e1e63b13addcdb03c5ce45766a85113bbd3d1cb6ee76206db24b43127",
+  "capturedChildRoot": "0x906b98db9ede878dbd185ad205995ec82b9838954f7097e1ab6c6aa72f56fb26",
+  "rootsMatch": false,
+  "experimentalAdapterUsed": false,
+  "wholeBlockExecutionVerified": false,
+  "independentOperator": false,
+  "productionAccepted": false,
+  "baseline": "ad7cbab9653ad2227f74adafc4c0e4fc90a13f4e",
+  "seconds": 11.453,
+  "observedPeakBytes": 77754368,
+  "node": "Node.js 24.20.0",
+  "nodeSha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
+  "sourceSha256": {
+    "experiments/execution-engine/native-runtime-trace.mjs": "27a9d552215f3002783c3f9dc58816c9c92058fc4468203b64fb87119e61400a",
+    "experiments/execution-engine/selected-london-executor.mjs": "7fe792615fc7bc5d518beb08a213c60a0fd121b33f8473691b303413e29da167",
+    "experiments/execution-engine/pnpm-lock.yaml": "fae68803a13e3cfa804cb872ca4872f65e844adb21c9d844fa5fb6804d0e6773",
+    "experiments/paid-wallet-state/direct-witnesses.json": "4ee4e3f0fd489090e4df1278c138037c6f7b4998f1e8cbbf069b26ea8f818e35"
+  },
+  "stdoutSha256": "4965c20e86e1689367ae69d2b435412dd4bd1c0c73df26f4b9a8ce3f438bed41",
+  "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk"
+}
