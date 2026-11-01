@@ -435,3 +435,8 @@ The [owner-controlled migration review](CRYPTO_MIGRATION_REVIEW.md) now defines 
 ### Native replay runtime boundary — 2026-11-01
 
 A new [native-account runtime trace](NATIVE_RUNTIME_TRACE.md) observes an empty-account write followed by deletion in the replay engine. An uninstrumented control matches its receipt, gas and root. The captured node still retains the empty account: the discrepancy is narrowed, not resolved. This standalone experiment adds no passes to the 1,248-test suite; acquisition-side runtime observation and deferred Rust/CI work remain open.
+
+
+### Replay cleanup attribution — 2026-11-01
+
+The [replay cleanup follow-up](NATIVE_RUNTIME_TRACE.md#follow-up-cleanup-caller-observed) now attributes native-account deletion to `Journal.cleanup`, with two executed source files checked against retained package archives. The controlled result remains unchanged and is consistent with EIP-161 cleanup for this case. Acquisition-side runtime attribution is still missing; this is not a fix or production-readiness result.
