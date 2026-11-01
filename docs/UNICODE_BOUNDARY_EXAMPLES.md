@@ -136,12 +136,76 @@ decomposed-420 630 420 210
 zwj-420 1540 420 140
 ```
 
-The boundary validation results in Table 2 were checked against
-the current demo validation: mixed, decomposed, and ZWJ examples
-at 419 and 420 scalars apply successfully with the matching
-`characterCount`, and at 421 scalars they fail with
-`TEXT_TOO_LONG`. No disagreement with the current validation was
-found, and no validation code was changed for this guide.
+Counts alone do not show whether a post is accepted. The next
+command runs the demo validation itself — `applyAction` with a
+`caw` intent built from `public/fixtures.json` — for every
+Table 2 case and for the empty and whitespace-only inputs
+described under Table 2. Each actual result is compared with
+the expected result by `assert.deepEqual`; the command exits
+non-zero on the first mismatch, so a validation change cannot
+silently pass:
+
+```sh
+node --input-type=module -e "
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { createState, applyAction } from './public/model.mjs';
+const fixture = JSON.parse(readFileSync('./public/fixtures.json', 'utf8'));
+const attempt = (text) => {
+  const state = createState(JSON.parse(JSON.stringify(fixture)));
+  const account = state.accounts.pioneer;
+  const intent = { id: 'check-0', kind: 'caw', actor: 'pioneer', controller: account.controller, epoch: account.epoch, nonce: account.nonce, text };
+  try {
+    const next = applyAction(state, intent);
+    return { ok: true, count: next.receipts.at(-1).characterCount };
+  } catch (error) {
+    return { ok: false, code: error.code };
+  }
+};
+const check = (label, text, expected) => {
+  const result = attempt(text);
+  assert.deepEqual(result, expected, label);
+  console.log(label, 'PASS', JSON.stringify(result));
+};
+const emoji = '\u{1F600}';
+const decomposed = 'e\u0301';
+const zwj = '\u{1F469}\u200D\u{1F52C}';
+check('mixed-419', 'a'.repeat(418) + emoji, { ok: true, count: 419 });
+check('mixed-420', 'a'.repeat(419) + emoji, { ok: true, count: 420 });
+check('mixed-421', 'a'.repeat(420) + emoji, { ok: false, code: 'TEXT_TOO_LONG' });
+check('decomposed-420', decomposed.repeat(210), { ok: true, count: 420 });
+check('decomposed-421', decomposed.repeat(210) + 'e', { ok: false, code: 'TEXT_TOO_LONG' });
+check('zwj-420', zwj.repeat(140), { ok: true, count: 420 });
+check('zwj-421', zwj.repeat(140) + emoji, { ok: false, code: 'TEXT_TOO_LONG' });
+check('empty', '', { ok: false, code: 'EMPTY_TEXT' });
+check('whitespace', '   ', { ok: false, code: 'EMPTY_TEXT' });
+console.log('All 9 validation checks passed.');
+"
+```
+
+Expected output:
+
+```text
+mixed-419 PASS {"ok":true,"count":419}
+mixed-420 PASS {"ok":true,"count":420}
+mixed-421 PASS {"ok":false,"code":"TEXT_TOO_LONG"}
+decomposed-420 PASS {"ok":true,"count":420}
+decomposed-421 PASS {"ok":false,"code":"TEXT_TOO_LONG"}
+zwj-420 PASS {"ok":true,"count":420}
+zwj-421 PASS {"ok":false,"code":"TEXT_TOO_LONG"}
+empty PASS {"ok":false,"code":"EMPTY_TEXT"}
+whitespace PASS {"ok":false,"code":"EMPTY_TEXT"}
+All 9 validation checks passed.
+```
+
+Both commands were run verbatim with Node 24.20.0, the version
+named in `engines`: the counts match Table 1 and Table 2, and
+all 9 validation checks pass. No disagreement with the current
+validation was found, and no validation code was changed for
+this guide. The second command is a verification command for
+this guide, run by hand; it is not an added automated test,
+and the automated boundary coverage remains in
+`tests/model.test.mjs`.
 
 ## What this does not establish
 
