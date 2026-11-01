@@ -415,3 +415,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### contributor review — 2026-10-31
 
 #12 and #13 are merged with authorship preserved. Combined model tests pass 22/22 on pinned Node 24.20.0 and match merged content; the subsequent full offline regression passed **1,243/1,243 tests across 73 files** on pinned Node 24.20.0. #11 and #14 revisions are now merged after focused positive and deliberately failing checks on November 1. #10 has a contributor follow-up distinguishing recorded and reconstructed commands; full external logs remain uninspected. Continue the native-state investigation; these documentation/reproduction contributions do not resolve #7/#8 or the execution discrepancy. No specification decision follows from these tests. Native-state mismatch remains open; Rust reproduction and hosted CI remain unexecuted/deferred.
+
+
+### native call boundary — 2026-11-01
+
+[The call-to-commit source path](NATIVE_CALL_TOUCH_PATH.md) identifies where to observe the native target's state and flags. Next reproduce the unmodified pinned build before tracing load, transfer, precompile completion, journal finalization, commit and block completion. Preserve any divergence; do not force replay agreement. Rust/CI execution remains pending and no release gate closes.
