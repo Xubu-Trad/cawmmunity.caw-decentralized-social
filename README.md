@@ -23,6 +23,8 @@ by teh ppl. for teh ppl.
 
 ## current review — 2026-11-01
 
+The [offline recovery checker](docs/RECOVERY_BUNDLE.md#selection-first-directory-admission--2026-11-01) now verifies the retained selection digest before opening received bundle files. Three new regression cases pass; the full offline suite passes **1,251/1,251 across 73 files** ([evidence](evidence/RECOVERY_ADMISSION_RESULTS.json)). This improves admission order without changing trust assumptions. Native acquisition-side reproduction remains pending; no Rust compiler was found locally and hosted CI remains deferred.
+
 The [replay cleanup follow-up](docs/NATIVE_RUNTIME_TRACE.md#follow-up-cleanup-caller-observed) now attributes native-account deletion to `Journal.cleanup`, with two executed source files checked against retained package archives. The controlled result remains unchanged and is consistent with EIP-161 cleanup for this case. Acquisition-side runtime attribution is still missing; this is not a fix or production-readiness result.
 
 A new [native-account runtime trace](docs/NATIVE_RUNTIME_TRACE.md) observes an empty-account write followed by deletion in the replay engine. An uninstrumented control matches its receipt, gas and root. The captured node still retains the empty account: the discrepancy is narrowed, not resolved. This standalone experiment adds no passes to the 1,248-test suite; acquisition-side runtime observation and deferred Rust/CI work remain open.

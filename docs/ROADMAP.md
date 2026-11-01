@@ -440,3 +440,8 @@ A new [native-account runtime trace](NATIVE_RUNTIME_TRACE.md) observes an empty-
 ### Replay cleanup attribution — 2026-11-01
 
 The [replay cleanup follow-up](NATIVE_RUNTIME_TRACE.md#follow-up-cleanup-caller-observed) now attributes native-account deletion to `Journal.cleanup`, with two executed source files checked against retained package archives. The controlled result remains unchanged and is consistent with EIP-161 cleanup for this case. Acquisition-side runtime attribution is still missing; this is not a fix or production-readiness result.
+
+
+### Recovery admission ordering — 2026-11-01
+
+The [offline recovery checker](RECOVERY_BUNDLE.md#selection-first-directory-admission--2026-11-01) now verifies the retained selection digest before opening received bundle files. Three new regression cases pass; the full offline suite passes **1,251/1,251 across 73 files** ([evidence](../evidence/RECOVERY_ADMISSION_RESULTS.json)). This improves admission order without changing trust assumptions. Native acquisition-side reproduction remains pending; no Rust compiler was found locally and hosted CI remains deferred.

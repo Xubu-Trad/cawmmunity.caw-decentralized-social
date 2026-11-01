@@ -2,7 +2,7 @@ import { openSync, closeSync, fstatSync, readSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { TextDecoder } from 'node:util';
 import { pathToFileURL } from 'node:url';
-import { RECOVERY_FILES, inspectPinnedRecoveryBundle } from '../reference/recovery-bundle.mjs';
+import { RECOVERY_FILES, inspectPinnedRecoveryBundle, verifyRecoverySelectionPin } from '../reference/recovery-bundle.mjs';
 
 // No caller-controlled member paths, network requests or environment lookup.
 // The local filesystem and pinned reader code remain the caller's trust boundary.
@@ -20,9 +20,11 @@ function readBounded(path, limit) {
   } finally { closeSync(fd); }
 }
 export function checkRecoveryDirectory(directory, selectionPath, expectedSelectionSha256) {
+  const selectionText = readBounded(resolve(selectionPath), 16384);
+  verifyRecoverySelectionPin(selectionText, expectedSelectionSha256);
   const parts = Object.create(null);
   for (const file of RECOVERY_FILES) parts[file] = readBounded(resolve(directory, file), 1048576);
-  const result = inspectPinnedRecoveryBundle(parts, readBounded(resolve(selectionPath), 16384), expectedSelectionSha256);
+  const result = inspectPinnedRecoveryBundle(parts, selectionText, expectedSelectionSha256);
   // Emit explicit boundaries, not the potentially large/private input history.
   const { checked, ...summary } = result;
   summary.successfulPostCount = checked.post_history.successfulPostCount;

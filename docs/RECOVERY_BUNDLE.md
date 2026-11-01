@@ -74,3 +74,12 @@ The selection-pinning increment adds replacement of both package and selection b
 An initial child-process CLI test could not launch under the single-process guard. That failed harness result is retained; the guard was not relaxed. The directory test and separate supervised CLI invocation replace that test arrangement.
 
 Successful output leaves `endpointAuthenticated`, `acquisitionIndependent`, `accountAuthorityVerified`, `executionVerified`, `finalityVerified` and `productionAccepted` false. Only byte agreement with the supplied selection and conditional fixture reconstruction are established. All nine [operator-independence rows](OPERATOR_INDEPENDENCE.md) remain open; this is partial evidence for OI-03, not completion of OUT-08. The next step is an independently supplied package/trust-selection review, followed by an explicit acquisition and authority design rather than automatic state adoption.
+
+
+## Selection-first directory admission — 2026-11-01
+
+The directory checker now reads the bounded selection once and verifies its separately retained digest before resolving or opening bundle members. An altered selection or malformed pin therefore rejects even when the bundle path is absent. The same captured selection text is then reused for full bundle validation; it is not reread after the member files.
+
+`verifyRecoverySelectionPin(selectionText, digest)` is an admission-only helper. It checks the digest format, byte limit and exact byte hash. It does not validate selection schema, authenticate its provenance or accept a bundle. The pinned bundle reader still performs all existing checks, and matching the pin does not bypass missing files or corrupt content.
+
+Three new regression cases cover selection substitution before bundle-path handling, malformed/matching pins with missing bundle files, and malformed selection UTF-8. Focused checks pass 24/24; the full offline suite passes 1,251/1,251 across 73 files. [Result and source identities](../evidence/RECOVERY_ADMISSION_RESULTS.json). No fresh chain acquisition, protocol deployment or stronger trust claim follows. The local filesystem remains a trust boundary; this change does not claim protection against every filesystem race or special-file condition.

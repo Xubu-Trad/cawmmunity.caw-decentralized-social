@@ -52,11 +52,19 @@ export function inspectRecoveryBundle(parts, selectionText) {
 // A digest retained outside the received package detects substitution of both
 // the package and its selection. It does not establish the digest's provenance.
 export function inspectPinnedRecoveryBundle(parts, selectionText, expectedSelectionSha256) {
-  need(arguments.length === 3 && typeof expectedSelectionSha256 === 'string'
+  need(arguments.length === 3, 'PIN');
+  verifyRecoverySelectionPin(selectionText, expectedSelectionSha256);
+  return Object.freeze({ ...inspectRecoveryBundle(parts, selectionText), selectionPinMatched: true,
+    selectionTrust: 'caller-retained-digest; provenance-not-authenticated' });
+}
+
+// Admission only: matching bytes do not validate the selection schema or bundle.
+// Filesystem callers can apply this before opening any received bundle member.
+export function verifyRecoverySelectionPin(selectionText, expectedSelectionSha256) {
+  need(arguments.length === 2 && typeof expectedSelectionSha256 === 'string'
     && /^[0-9a-f]{64}$/.test(expectedSelectionSha256), 'PIN');
   need(typeof selectionText === 'string' && selectionText.length <= 16384
     && Buffer.byteLength(selectionText, 'utf8') <= 16384, 'LIMIT');
   need(sha(selectionText) === expectedSelectionSha256, 'SELECTION_PIN');
-  return Object.freeze({ ...inspectRecoveryBundle(parts, selectionText), selectionPinMatched: true,
-    selectionTrust: 'caller-retained-digest; provenance-not-authenticated' });
+  return expectedSelectionSha256;
 }

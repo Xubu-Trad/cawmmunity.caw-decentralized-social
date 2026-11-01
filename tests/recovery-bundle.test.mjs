@@ -75,3 +75,25 @@ test('missing and malformed pins reject',()=>{
 test('oversized selection rejects before hashing',()=>assert.throws(()=>inspectPinnedRecoveryBundle({},'x'.repeat(16385),'0'.repeat(64)),e=>e.code==='RECOVERY_BUNDLE_LIMIT'));
 test('selection whitespace change rejects against exact retained bytes',()=>{const s=sample(),text=JSON.stringify(s.selection);assert.throws(()=>inspectPinnedRecoveryBundle(s.parts,text+'\n',sha(text)),e=>e.code==='RECOVERY_BUNDLE_SELECTION_PIN');});
 test('null manifest has a stable schema rejection',()=>{const s=sample();s.parts['manifest.json']='null';s.selection.sha256['manifest.json']=sha('null');reject(s,'RECOVERY_BUNDLE_SCHEMA');});
+
+test('directory rejects a substituted selection before touching the bundle path',()=>{
+  const s=sample(),text=JSON.stringify(s.selection),dir=mkdtempSync(join(tmpdir(),'caw-pin-first-'));
+  const selected=join(dir,'selection.json');writeFileSync(selected,text+'\n');
+  let touched=false;
+  const bundle={toString(){touched=true;throw Error('BUNDLE_PATH_ACCESSED');}};
+  assert.throws(()=>checkRecoveryDirectory(bundle,selected,sha(text)),e=>e.code==='RECOVERY_BUNDLE_SELECTION_PIN');
+  assert.equal(touched,false);
+});
+
+test('directory pin admission precedes missing bundle files but does not replace their validation',()=>{
+  const s=sample(),text=JSON.stringify(s.selection),dir=mkdtempSync(join(tmpdir(),'caw-pin-files-'));
+  const selected=join(dir,'selection.json'),absent=join(dir,'absent');writeFileSync(selected,text);
+  assert.throws(()=>checkRecoveryDirectory(absent,selected,'invalid'),e=>e.code==='RECOVERY_BUNDLE_PIN');
+  assert.throws(()=>checkRecoveryDirectory(absent,selected,sha(text)),e=>e.code==='ENOENT');
+});
+
+test('directory rejects invalid UTF-8 selection before reading received bundle members',()=>{
+  const dir=mkdtempSync(join(tmpdir(),'caw-pin-utf8-')),selected=join(dir,'selection.json');
+  writeFileSync(selected,Buffer.from([0xff]));
+  assert.throws(()=>checkRecoveryDirectory(join(dir,'absent'),selected,'0'.repeat(64)),e=>e.code==='ERR_ENCODING_INVALID_ENCODED_DATA');
+});
