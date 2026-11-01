@@ -28,10 +28,16 @@ for(const method of ['getAccount','putAccount','deleteAccount','checkpoint','com
   const selected=args[0]?.toString()===native;
   const lifecycle=['checkpoint','commit','revert'].includes(method);
   const candidate=selected&&method==='putAccount'?summary(args[1]):undefined;
+  // Retain only function labels, never local paths or full stack strings.
+  const callers=selected&&method==='deleteAccount'
+   ? String(new Error().stack).split('\n').slice(1,9).flatMap(line=>{
+      const match=/^\s*at (?:async )?([A-Za-z_$][\w.$<>]*) \(/.exec(line);
+      return match?[match[1]]:[];
+     }):undefined;
   const result=await Reflect.apply(original,this,args);
   if(selected||lifecycle) {
    assert.ok(events.length<128,'TRACE_EVENT_BOUND');
-   events.push({method,...(selected?{address:native}:{}),...(candidate?{account:candidate}:{}),...(selected&&method==='getAccount'?{account:summary(result)}:{})});
+   events.push({method,...(callers?{callers}:{}),...(selected?{address:native}:{}),...(candidate?{account:candidate}:{}),...(selected&&method==='getAccount'?{account:summary(result)}:{})});
   }
   return result;
  };
@@ -44,7 +50,10 @@ assert.deepEqual(result.receipt,baselineResult.receipt);
 assert.equal(result.totalGasSpent,baselineResult.totalGasSpent);
 assert.equal(await baselineManager.getAccount(createAddressFromString(native)),undefined);
 assert.ok(events.some(e=>e.method==='getAccount'&&e.account.exists===false));
-assert.ok(events.some(e=>e.method==='deleteAccount'));
+const targetEvents=events.filter(e=>e.address===native);
+assert.deepEqual(targetEvents.map(e=>e.method),['getAccount','putAccount','getAccount','deleteAccount']);
+assert.ok(targetEvents.at(-1).callers.includes('Journal.cleanup'));
+assert.ok(targetEvents.at(-1).callers.includes('Journal.deleteAccount'));
 
 assert.equal(result.receipt.status,1);assert.equal(result.totalGasSpent,BigInt(d.row.receipt.gasUsed));
 assert.equal(result.receipt.cumulativeBlockGasUsed,BigInt(d.row.receipt.cumulativeGasUsed));
@@ -56,4 +65,4 @@ for(const w of d.childWitnesses.witnesses){
 const child=inspectHeaderBoundStateProof(JSON.stringify({header:d.child,proof:d.childProof}),JSON.stringify({schema:'caw-header-state-selection/1',profile:'london-16',hash:d.child.hash,address:native,storageKeys:[]})).proof;
 assert.equal(child.accountExists,true);assert.equal(await stateManager.getAccount(createAddressFromString(native)),undefined);
 const computed=bytesToHex(await stateManager.getStateRoot());assert.notEqual(computed,d.child.stateRoot);
-console.log(JSON.stringify({schema:'caw-native-runtime-trace/1',events,observerControlMatched:true,acquisitionRuntimeObserved:false,parentRootMatched:true,receiptAndGasMatched:true,senderAndFeeRecipientMatched:true,capturedNativeExists:true,replayedNativeExists:false,computedPostTransactionRoot:computed,capturedChildRoot:d.child.stateRoot,rootsMatch:false,experimentalAdapterUsed:false,wholeBlockExecutionVerified:false,independentOperator:false,productionAccepted:false}));
+console.log(JSON.stringify({schema:'caw-native-runtime-trace/2',events,observerControlMatched:true,acquisitionRuntimeObserved:false,parentRootMatched:true,receiptAndGasMatched:true,senderAndFeeRecipientMatched:true,capturedNativeExists:true,replayedNativeExists:false,computedPostTransactionRoot:computed,capturedChildRoot:d.child.stateRoot,rootsMatch:false,experimentalAdapterUsed:false,wholeBlockExecutionVerified:false,independentOperator:false,productionAccepted:false}));
