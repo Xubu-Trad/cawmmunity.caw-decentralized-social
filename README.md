@@ -23,6 +23,8 @@ by teh ppl. for teh ppl.
 
 ## current review — 2026-11-01
 
+A new [native-account runtime trace](docs/NATIVE_RUNTIME_TRACE.md) observes an empty-account write followed by deletion in the replay engine. An uninstrumented control matches its receipt, gas and root. The captured node still retains the empty account: the discrepancy is narrowed, not resolved. This standalone experiment adds no passes to the 1,248-test suite; acquisition-side runtime observation and deferred Rust/CI work remain open.
+
 The [owner-controlled migration review](docs/CRYPTO_MIGRATION_REVIEW.md) now defines seven proposed invariants and twelve threat cases covering transfers, double claims, compromised old keys, recovery and underlying-chain failures. [Issue #15](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues/15) requests specification review before implementation. This is design work; the last executed suite remains 1,248/1,248 and no new runtime result or release readiness is claimed.
 
 The latest security increment adds a [quantum/AI threat inventory and migration gates](docs/QUANTUM_AI_RESILIENCE.md), plus five tests confirming crypto-provider failures cannot silently authorize actions or spend delegated budgets. **1,248/1,248 offline tests across 73 files passed** ([evidence](evidence/CRYPTO_RESILIENCE_20261101.json)). This strengthens tested failure handling; it does not implement post-quantum signatures or establish production security. Owner-controlled migration without developer upgrade powers remains an open design decision (C-016).
