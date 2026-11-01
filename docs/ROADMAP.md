@@ -1,5 +1,9 @@
 # Current gates
 
+## Active priority — 2026-11-01
+
+[One independently reproducible public action](PUBLIC_ACTION_MILESTONE.md) is the next integrated milestone. Reconcile the asset/registration boundary and exact economics before freezing a candidate. Reuse existing evidence and issues; do not deploy the three-account probe unchanged or treat offline test counts as acceptance. Crypto migration stays under review, alongside core settlement and recovery work. The dated entries below preserve prior scoped results; they are not a current completion percentage.
+
 Initial review: [alpha.20 at `91479b6dc8c9a264411d75177d43029e0266c354`](REVIEW_BASELINE.md). State recorded 2026-09-20. This is an evidence checklist, not a completion estimate.
 
 | Gate | Current state | Evidence needed next |
