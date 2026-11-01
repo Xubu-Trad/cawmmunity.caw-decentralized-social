@@ -276,3 +276,8 @@ The signed local ledger evidence now needs an explicit [anchor-authority decisio
 ### commit reproduction prepared -- 2026-10-30
 
 [A small Rust reproduction](experiments/native-commit/README.md) now targets the reviewed database version directly, with four characterization cases and a separate desired-cleanup oracle. It is unexecuted: the checked local environments lack Rust, and the transitive dependency lock remains to be generated and verified. No new pass count or confirmed root cause is claimed.
+
+
+### native-state investigation — 2026-11-01
+
+[Source tracing](docs/NATIVE_CALL_TOUCH_PATH.md) now identifies the default zero-value call path that touches the native target before precompile execution, and the executor's handoff to database commit. This narrows the hypothesis; actual runtime flags, block-completion effects and source/binary equivalence remain unverified. The retained mismatch is unresolved. No new test-pass or release-readiness claim follows.
