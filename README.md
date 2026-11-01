@@ -23,6 +23,8 @@ by teh ppl. for teh ppl.
 
 ## current review — 2026-11-01
 
+The [owner-controlled migration review](docs/CRYPTO_MIGRATION_REVIEW.md) now defines seven proposed invariants and twelve threat cases covering transfers, double claims, compromised old keys, recovery and underlying-chain failures. [Issue #15](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues/15) requests specification review before implementation. This is design work; the last executed suite remains 1,248/1,248 and no new runtime result or release readiness is claimed.
+
 The latest security increment adds a [quantum/AI threat inventory and migration gates](docs/QUANTUM_AI_RESILIENCE.md), plus five tests confirming crypto-provider failures cannot silently authorize actions or spend delegated budgets. **1,248/1,248 offline tests across 73 files passed** ([evidence](evidence/CRYPTO_RESILIENCE_20261101.json)). This strengthens tested failure handling; it does not implement post-quantum signatures or establish production security. Owner-controlled migration without developer upgrade powers remains an open design decision (C-016).
 
 Four contributions from WD-27 have received review: [Unicode examples (#11)](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/11), [mixed-content boundary tests (#12)](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/12), [sequential post replay tests (#13)](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/13), and [gas/payer evidence (#14)](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/14). Each PR's conversation records the reviewed commit and independent checks.
