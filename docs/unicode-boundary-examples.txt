@@ -1,0 +1,22 @@
+# Unicode boundary examples (synthetic text only).
+# Each sample is preceded by a label line. The newline sample spans the two lines between [newline] and [/newline].
+[ASCII]
+Hello, CAW!
+[composed]
+é
+[decomposed]
+é
+[emoji]
+😀
+[ZWJ]
+👩‍🔬
+[flag]
+🇯🇵
+[RTL]
+مرحبا
+[newline]
+a
+b
+[/newline]
+[URL]
+https://example.invalid/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
