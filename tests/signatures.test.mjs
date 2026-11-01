@@ -422,3 +422,25 @@ test('signing lab: unavailable native Ed25519 fails closed without another key-g
   await assert.rejects(createDemoSigner(), code('CRYPTO_UNAVAILABLE'));
   assert.equal(unsupported.mock.callCount(), 1);
 });
+
+for (const operation of ['importKey', 'verify']) {
+  test(`signing lab: ${operation} outage cannot consume a nonce or select a fallback`, async t => {
+    const signer = await createDemoSigner();
+    t.after(() => signer.revoke());
+    const packet = await signer.sign(action());
+    const verifier = createActionVerifier(context(signer), () => NOW);
+    t.after(() => verifier.revoke());
+    const before = verifier.status();
+    const unavailable = new Error('Synthetic crypto-provider outage');
+    const engine = globalThis.crypto?.subtle ?? webcrypto.subtle;
+    const blocked = t.mock.method(engine, operation, async () => { throw unavailable; });
+    try {
+      await assert.rejects(verifier.accept(packet), error => error === unavailable);
+      assert.equal(blocked.mock.callCount(), 1);
+      assert.deepEqual(verifier.status(), before);
+    } finally { blocked.mock.restore(); }
+    // The same legitimate action remains usable after service returns.
+    assert.equal((await verifier.accept(packet)).nextNonce, 1);
+    await assert.rejects(verifier.accept(packet), code('STALE_NONCE'));
+  });
+}

@@ -197,3 +197,15 @@ Integrity proofs demonstrate unchanged content; they do not themselves ensure an
 **Acceptance:** no official partnership badge, privileged creator identity or claim that publication alone proves community acceptance.
 
 **Decision:** OPEN interpretation; safe local naming follows the user's current instruction. M-049, R2-003–R2-005.
+
+## C-016
+
+**Cryptographic migration without privileged upgrades.** The manifesto/R2 requirement to remove special developer authority does not specify algorithm migration, compromised classical keys or cross-generation identity and balance continuity. This is a newly identified design question, not an assertion that the source mandates a specific PQ algorithm.
+
+**Gate:** any production migration mechanism or post-quantum protection claim.
+
+**Proposal:** investigate owner-controlled migration to a reviewed immutable generation with explicit precommitment/recovery/transfer semantics. No admin upgrade, silent fallback or automatic adoption. A broken old signature cannot authenticate the rightful owner against an attacker.
+
+**Acceptance:** resolve account/NFT/balance/history continuity, old-generation exposure, underlying-chain assumptions, loss/recovery authority and downgrade resistance; independently review test vectors, resource bounds and migration negatives. See [quantum and AI resilience](../docs/QUANTUM_AI_RESILIENCE.md).
+
+**Decision:** OPEN. No scheme selected, no protocol cryptography changed and no migration implemented.

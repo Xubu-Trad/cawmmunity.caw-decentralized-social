@@ -24,6 +24,22 @@ async function setup(t,{clock=()=>NOW,balance,terms=permission()}={}){
 function tuple(ledger){return JSON.stringify([ledger.status(),ledger.exportRecord()]);}
 async function saved(ledger){const s=ledger.exportRecord();return {...s,checkpoint:await createLabRecordCheckpoint(s.recordText,s.canonicalText)};}
 const recover=s=>verifyLabRecord(s.recordText,s.checkpoint,s.binding,s.delegation,s.ownerAuthority);
+
+for (const operation of ['importKey','verify','digest']) {
+  test(`owner grant: ${operation} outage cannot bypass owner consent or spend delegated budget`, async t=>{
+    const f=await setup(t),before=tuple(f.ledger);
+    const unavailable=new Error('Synthetic owner-authorization crypto outage');
+    const blocked=t.mock.method(crypto.subtle,operation,async()=>{throw unavailable;});
+    try {
+      await assert.rejects(f.ledger.accept(f.packet),error=>error===unavailable);
+      assert.equal(blocked.mock.callCount(),1);
+      assert.equal(tuple(f.ledger),before);
+    } finally { blocked.mock.restore(); }
+    await f.ledger.accept(f.packet);
+    assert.equal(f.ledger.status().nextNonce,1);
+    assert.equal(f.ledger.status().delegation.spent,FEE);
+  });
+}
 function hold(t,operation='verify',call=1){
   let entered,release,count=0;const start=new Promise(r=>{entered=r;}),gate=new Promise(r=>{release=r;}),subtle=crypto.subtle,original=subtle[operation];
   const mock=t.mock.method(subtle,operation,async function(...args){if(++count===call){entered();await gate;}return Reflect.apply(original,this,args);});

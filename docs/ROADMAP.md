@@ -420,3 +420,8 @@ The [copied-build checker](STATIC_RECOVERY.md) now checks a fixed asset set agai
 ### native call boundary — 2026-11-01
 
 [The call-to-commit source path](NATIVE_CALL_TOUCH_PATH.md) identifies where to observe the native target's state and flags. Next reproduce the unmodified pinned build before tracing load, transfer, precompile completion, journal finalization, commit and block completion. Preserve any divergence; do not force replay agreement. Rust/CI execution remains pending and no release gate closes.
+
+
+### Quantum and AI resilience — 2026-11-01
+
+[Cryptographic inventory and migration gates](QUANTUM_AI_RESILIENCE.md) now identify classical-signature and underlying-chain exposure. Five provider-failure regression cases passed; the full offline suite passed **1,248/1,248 across 73 files**. [Evidence](../evidence/CRYPTO_RESILIENCE_20261101.json). Next: independently review C-016 owner-controlled migration, hybrid/downgrade rules, signature resource bounds and remaining authority paths. No PQ scheme is implemented or selected. Existing native-account replay, public-test, CI and production gates remain unchanged.

@@ -11,3 +11,7 @@ Production gates include authorization and replay tests; actual token/custody be
 If a suspected vulnerability involves live third-party infrastructure, do not attack it or publish a usable exploit here. Preserve a restricted, redacted report and propose a responsible-disclosure destination and scope for approval. No contact address or bug bounty has been configured; do not invent one. Exposed secrets require authorized revocation/rotation and a recorded cleanup assessment. No automatic history rewrite or deletion is permitted.
 
 Public releases must state exactly what was implemented, tested, independently reproduced and left unresolved, with pinned source/deployment versions. Apply the same standard to this implementation as to every reference implementation.
+
+## Quantum and AI-assisted attacks
+
+[Threat inventory and migration gates](docs/QUANTUM_AI_RESILIENCE.md) track current classical signatures, underlying-chain exposure, AI-assisted software attacks and C-016. No post-quantum authentication or advanced-AI immunity is claimed. Cryptographic-provider exceptions must reject without state changes or fallback authorization. AI tools receive no autonomous owner, deployment or withdrawal authority. Migration must not introduce a developer upgrade key.
