@@ -1,0 +1,88 @@
+{
+  "schema": "caw-fixed-reward-evidence/1",
+  "modelSha256": "05061e4f08631c6355d2d640f1c3058be98e6231abc6331841bdfaa91917600c",
+  "negativeModelSha256": "653fe9aafb60f38be0b878d2f4be0450237de362298b436100ca59b7ed57143d",
+  "negativeMutation": "discard retained fractional entitlement at claim",
+  "negativeExpected": "MODEL_DISAGREEMENT",
+  "runs": {
+    "negative": {
+      "mode": "negative",
+      "runtime": "Python 3.12.14",
+      "runtime_sha256": "f8b45d63047da9d9adf09892e4cc4317b859e86a93a478cc9616bc69d3b176e5",
+      "exit_code": 1,
+      "seconds": 0.11,
+      "observed_peak_bytes": 11587584,
+      "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk",
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "97e8232cace458fbdd0c01c90a5ff82ab47d62a1a1b1f7bf5741588b617b8e0a"
+    },
+    "positive": {
+      "mode": "positive",
+      "runtime": "Python 3.12.14",
+      "runtime_sha256": "f8b45d63047da9d9adf09892e4cc4317b859e86a93a478cc9616bc69d3b176e5",
+      "exit_code": 0,
+      "seconds": 0.172,
+      "observed_peak_bytes": 12980224,
+      "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk",
+      "stdoutSha256": "a7cdb49e1ff0eaf240a1fc27007830ba7ee93acb1212d6dfd91cb6cf10c40f6e",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "result": {
+    "schema": "caw-fixed-reward-model/1",
+    "scale": "18446744073709551616",
+    "stakeCap": "79228162514264337593543950335",
+    "totalStakeCap": "340282366920938463463374607431768211455",
+    "indexCap": "1461501637330902918203684832734729763729642094592",
+    "cases": [
+      {
+        "accounts": 3,
+        "operations": 160,
+        "posts": 80,
+        "stakeChanges": 40,
+        "claims": 40,
+        "maxStoredOrEntitlementBits": 144,
+        "scaledAgreementAndConservation": true
+      },
+      {
+        "accounts": 8,
+        "operations": 160,
+        "posts": 80,
+        "stakeChanges": 40,
+        "claims": 40,
+        "maxStoredOrEntitlementBits": 143,
+        "scaledAgreementAndConservation": true
+      },
+      {
+        "accounts": 64,
+        "operations": 160,
+        "posts": 80,
+        "stakeChanges": 40,
+        "claims": 40,
+        "maxStoredOrEntitlementBits": 143,
+        "scaledAgreementAndConservation": true
+      },
+      {
+        "accounts": 256,
+        "operations": 160,
+        "posts": 80,
+        "stakeChanges": 40,
+        "claims": 40,
+        "maxStoredOrEntitlementBits": 143,
+        "scaledAgreementAndConservation": true
+      }
+    ],
+    "rejectionCases": 5,
+    "indexBoundaryIsInjectedNotHistorical": true,
+    "repeatedClaimPaysZero": true,
+    "retainedFractionScaled": "12297829382473034410",
+    "firstClaimBaseUnits": "1666666666666666666666",
+    "roundingPolicy": "floor global per-stake increment; retain per-account claim fraction; never redistribute global remainder",
+    "contractExecuted": false,
+    "gasMeasured": false,
+    "custodyImplemented": false,
+    "productionAccepted": false,
+    "specificationDecisionMade": false
+  },
+  "fullNodeSuiteRerun": false
+}
