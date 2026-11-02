@@ -23,6 +23,8 @@ by teh ppl. for teh ppl.
 
 ## current review — 2026-11-02
 
+The [staking accumulator comparison](docs/STAKING_ACCUMULATOR_REVIEW.md) now tests account-excluding reward arithmetic against a per-recipient model. It also exposes values beyond 256 bits and a payout difference from moving rounding to claim time. This is research evidence for issue #5, not deployable settlement; integer bounds and rounding remain unresolved. The 1,251-test Node-suite count is unchanged.
+
 The [candidate asset and economics packet](docs/CANDIDATE_TERMS_REVIEW.md) now makes payer exclusion, stake-commitment changes and dust consequences concrete, with executable integer comparisons. [Issue #5](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues/5) requests decisions; no alternative is adopted. The Node-suite total below is unchanged.
 
 **Current priority: [one complete, independently reproducible CAW action](docs/PUBLIC_ACTION_MILESTONE.md).** Freeze the asset/registration boundary and one-action rules, then demonstrate settlement, independent acquisition and operation without the original builder. The existing probe is not ready to deploy unchanged.
