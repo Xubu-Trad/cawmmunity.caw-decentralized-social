@@ -459,3 +459,8 @@ The [offline recovery checker](RECOVERY_BUNDLE.md#selection-first-directory-admi
 ### Reward accumulator feasibility — 2026-11-02
 
 The [staking accumulator comparison](STAKING_ACCUMULATOR_REVIEW.md) now tests account-excluding reward arithmetic against a per-recipient model. It also exposes values beyond 256 bits and a payout difference from moving rounding to claim time. This is research evidence for issue #5, not deployable settlement; integer bounds and rounding remain unresolved. The 1,251-test Node-suite count is unchanged.
+
+
+### Fixed-point reward research — 2026-11-02
+
+The [bounded-integer reward experiment](STAKING_FIXED_REVIEW.md) now preserves fractional claims and matches a per-recipient reference across four finite operation sequences. A deliberately broken fraction-retention variant fails. Precision, dust disposition and lifetime caps remain unresolved; this is not a deployed staking contract or a selected economic rule. Next review the precision/error budget and long-lived index strategy before implementing settlement. The 1,251-test Node count is unchanged; no release gate closes.
