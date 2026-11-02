@@ -1,0 +1,74 @@
+{
+  "schema": "caw-staking-model-evidence/1",
+  "baseline": "478d2c61717362d3a22f0ff696708af4e69cfc35",
+  "result": {
+    "schema": "caw-rational-staking-model/1",
+    "cases": [
+      {
+        "accounts": 3,
+        "operations": 96,
+        "posts": 64,
+        "logicalAccountsWrittenPerPost": 1,
+        "maxRationalBitsObserved": 117,
+        "exactEntitlementsMatch": true
+      },
+      {
+        "accounts": 8,
+        "operations": 96,
+        "posts": 64,
+        "logicalAccountsWrittenPerPost": 1,
+        "maxRationalBitsObserved": 159,
+        "exactEntitlementsMatch": true
+      },
+      {
+        "accounts": 64,
+        "operations": 96,
+        "posts": 64,
+        "logicalAccountsWrittenPerPost": 1,
+        "maxRationalBitsObserved": 268,
+        "exactEntitlementsMatch": true
+      },
+      {
+        "accounts": 256,
+        "operations": 96,
+        "posts": 64,
+        "logicalAccountsWrittenPerPost": 1,
+        "maxRationalBitsObserved": 366,
+        "exactEntitlementsMatch": true
+      }
+    ],
+    "zeroPoolRejectsWithoutMutation": true,
+    "roundingCounterexample": {
+      "fee": "5000000000000000000000",
+      "posts": 2,
+      "recipientWeights": [
+        1,
+        2
+      ],
+      "perPostFloor": [
+        "3333333333333333333332",
+        "6666666666666666666666"
+      ],
+      "floorAtClaim": [
+        "3333333333333333333333",
+        "6666666666666666666666"
+      ],
+      "perPostDust": "2",
+      "deferredDust": "1"
+    },
+    "contractExecuted": false,
+    "gasMeasured": false,
+    "boundedIntegerDesign": false,
+    "productionAccepted": false,
+    "specificationDecisionMade": false
+  },
+  "runtime": "Python 3.12.14",
+  "runtimeSha256": "f8b45d63047da9d9adf09892e4cc4317b859e86a93a478cc9616bc69d3b176e5",
+  "seconds": 0.375,
+  "observedPeakBytes": 13406208,
+  "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk",
+  "negativeControl": "omitted payer debt correction rejected: PAYER_REWARDED",
+  "sourceSha256": "890e5345957facd1b8fddcaa9cc2d47199060036a140c0e33d4e32055e323cb5",
+  "stdoutSha256": "08eef5f115dd78510fcf0cb4477e7ca1dcd20567c3a240f094f066b3be5a63bd",
+  "negativeStderrSha256": "611bc946c80eb7e7c175113445eb53d78773db17681599570bbf75378bfe2fe0"
+}
