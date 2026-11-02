@@ -454,3 +454,8 @@ The [offline recovery checker](RECOVERY_BUNDLE.md#selection-first-directory-admi
 ### Candidate asset and economic terms — 2026-11-02
 
 [Decision packet](CANDIDATE_TERMS_REVIEW.md) maps current code to open asset/registration, exclusion, snapshot, dust, submission and text choices. Exact integer examples and an intentionally failing dust check are retained. Review continues in existing issues #1/#5/#7/#8; no synthetic asset, burn workaround or scalable design is selected. No new EVM/full-suite/public deployment result is claimed. Next resolve an explicit provisional action profile before implementing a replacement for the three-account probe.
+
+
+### Reward accumulator feasibility — 2026-11-02
+
+The [staking accumulator comparison](STAKING_ACCUMULATOR_REVIEW.md) now tests account-excluding reward arithmetic against a per-recipient model. It also exposes values beyond 256 bits and a payout difference from moving rounding to claim time. This is research evidence for issue #5, not deployable settlement; integer bounds and rounding remain unresolved. The 1,251-test Node-suite count is unchanged.
