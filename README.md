@@ -23,6 +23,8 @@ by teh ppl. for teh ppl.
 
 ## current review — 2026-11-02
 
+The [bounded-integer reward experiment](docs/STAKING_FIXED_REVIEW.md) now preserves fractional claims and matches a per-recipient reference across four finite operation sequences. A deliberately broken fraction-retention variant fails. Precision, dust disposition and lifetime caps remain unresolved; this is not a deployed staking contract or a selected economic rule.
+
 The [staking accumulator comparison](docs/STAKING_ACCUMULATOR_REVIEW.md) now tests account-excluding reward arithmetic against a per-recipient model. It also exposes values beyond 256 bits and a payout difference from moving rounding to claim time. This is research evidence for issue #5, not deployable settlement; integer bounds and rounding remain unresolved. The 1,251-test Node-suite count is unchanged.
 
 The [candidate asset and economics packet](docs/CANDIDATE_TERMS_REVIEW.md) now makes payer exclusion, stake-commitment changes and dust consequences concrete, with executable integer comparisons. [Issue #5](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues/5) requests decisions; no alternative is adopted. The Node-suite total below is unchanged.
@@ -101,7 +103,7 @@ next: obtain [independent executor reproduction](docs/INDEPENDENT_EXECUTOR_REVIE
 
 this repo is trying to make the difficult parts visible early.
 
-**source before assumption.** the current review map traces [59 manifesto/R2 requirements](docs/MANIFESTO_R2_ALIGNMENT_REVIEW.md) and keeps [15 specification conflicts](sources/SPEC_CONFLICTS.md) open where the source does not give a defensible single answer.
+**source before assumption.** the current review map traces [59 manifesto/R2 requirements](docs/MANIFESTO_R2_ALIGNMENT_REVIEW.md) and keeps [16 specification conflicts](sources/SPEC_CONFLICTS.md) open where the source does not give a defensible single answer.
 
 **authority is part of the implementation.** owners, delegates, wallet modes, approvals, withdrawal rights, recovery paths and external dependencies are being treated as things that must be proven or removed, not explained away after deployment.
 
