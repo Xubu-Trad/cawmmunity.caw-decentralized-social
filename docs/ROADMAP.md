@@ -449,3 +449,8 @@ The [replay cleanup follow-up](NATIVE_RUNTIME_TRACE.md#follow-up-cleanup-caller-
 ### Recovery admission ordering — 2026-11-01
 
 The [offline recovery checker](RECOVERY_BUNDLE.md#selection-first-directory-admission--2026-11-01) now verifies the retained selection digest before opening received bundle files. Three new regression cases pass; the full offline suite passes **1,251/1,251 across 73 files** ([evidence](../evidence/RECOVERY_ADMISSION_RESULTS.json)). This improves admission order without changing trust assumptions. Native acquisition-side reproduction remains pending; no Rust compiler was found locally and hosted CI remains deferred.
+
+
+### Candidate asset and economic terms — 2026-11-02
+
+[Decision packet](CANDIDATE_TERMS_REVIEW.md) maps current code to open asset/registration, exclusion, snapshot, dust, submission and text choices. Exact integer examples and an intentionally failing dust check are retained. Review continues in existing issues #1/#5/#7/#8; no synthetic asset, burn workaround or scalable design is selected. No new EVM/full-suite/public deployment result is claimed. Next resolve an explicit provisional action profile before implementing a replacement for the three-account probe.
