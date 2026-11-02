@@ -1,0 +1,95 @@
+{
+  "schema": "caw-candidate-terms-evidence/1",
+  "baseline": "1cec8df581f302d9d3bd9dc6dc7970ae5a4490fc",
+  "result": {
+    "schema": "caw-candidate-economic-comparison/1",
+    "scope": "three-account integer examples; owner exclusion is an unimplemented alternative",
+    "feeBaseUnits": "5000000000000000000000",
+    "owners": [
+      "owner-a",
+      "owner-a",
+      "owner-b"
+    ],
+    "stakesBaseUnits": [
+      "10",
+      "1",
+      "2"
+    ],
+    "payerAccountId": 1,
+    "accountExclusion": {
+      "outcome": "allocated",
+      "allocations": [
+        "0",
+        "1666666666666666666666",
+        "3333333333333333333333"
+      ],
+      "dust": "1",
+      "charged": "5000000000000000000000"
+    },
+    "ownerExclusionAlternative": {
+      "outcome": "allocated",
+      "allocations": [
+        "0",
+        "0",
+        "5000000000000000000000"
+      ],
+      "dust": "0",
+      "charged": "5000000000000000000000"
+    },
+    "payerStakeChange": {
+      "before": "10",
+      "after": "11",
+      "allocationUnchanged": true,
+      "signedStakeVectorChanges": true,
+      "signatureOrHashEvaluated": false
+    },
+    "onlyAnotherAccountOfSameOwnerStakes": {
+      "account": {
+        "outcome": "allocated",
+        "allocations": [
+          "0",
+          "5000000000000000000000",
+          "0"
+        ],
+        "dust": "0",
+        "charged": "5000000000000000000000"
+      },
+      "owner": {
+        "outcome": "no-eligible-stake",
+        "allocations": [
+          "0",
+          "0",
+          "0"
+        ],
+        "dust": "0",
+        "charged": "0"
+      }
+    },
+    "productionAccepted": false,
+    "contractExecuted": false,
+    "specificationDecisionMade": false,
+    "limitations": [
+      "No scalable accounting algorithm",
+      "Address equality is not proof of human identity",
+      "Does not evaluate pending-action ordering or public mempool liveness",
+      "Owner exclusion is a comparison, not a proposed identity oracle"
+    ]
+  },
+  "positive": {
+    "exitCode": 0,
+    "seconds": 0.11
+  },
+  "deliberatelyIncorrectDust": {
+    "exitCode": 1,
+    "expectedAssertionFailed": true
+  },
+  "runtime": "Python 3.12.14",
+  "runtimeSha256": "f8b45d63047da9d9adf09892e4cc4317b859e86a93a478cc9616bc69d3b176e5",
+  "limits": "300 seconds, hard 512 MiB owned process, 10 MiB output, 768 MiB startup memory, 2 GiB disk",
+  "sourceSha256": {
+    "experiments/paid-action/compare_candidate_terms.py": "d3ca275e019734dade7304070d2f2231748a51b9e5a7c0bf8bef87f4b30a8007",
+    "experiments/paid-action/CawPaidActionProbe.sol": "e48f8f8f816aae21e0e9865a8be0aa2e47204ea04b4c12b4124e5b0452412da1"
+  },
+  "stdoutSha256": "6f226780479bb01b552ca1a26a813ace67374e1f43be9dda47bb3bacd630e3f7",
+  "negativeStderrSha256": "485197ec00bfcd1a74f075787fffd37684596871324c0de93e4a3ab3ba51a435"
+}
