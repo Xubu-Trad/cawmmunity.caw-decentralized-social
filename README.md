@@ -21,7 +21,9 @@ the best version of this repo should eventually contain decisions and code that 
 by teh ppl. for teh ppl.
 
 
-## current review — 2026-11-01
+## current review — 2026-11-02
+
+The [candidate asset and economics packet](docs/CANDIDATE_TERMS_REVIEW.md) now makes payer exclusion, stake-commitment changes and dust consequences concrete, with executable integer comparisons. [Issue #5](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues/5) requests decisions; no alternative is adopted. The Node-suite total below is unchanged.
 
 **Current priority: [one complete, independently reproducible CAW action](docs/PUBLIC_ACTION_MILESTONE.md).** Freeze the asset/registration boundary and one-action rules, then demonstrate settlement, independent acquisition and operation without the original builder. The existing probe is not ready to deploy unchanged.
 
