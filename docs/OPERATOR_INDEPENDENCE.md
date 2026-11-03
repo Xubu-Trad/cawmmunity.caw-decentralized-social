@@ -45,3 +45,8 @@ Record the source commit, input parent hashes, transformation, output SHA-256/si
 ## Current source review -- 2026-10-26
 
 [Known authority/dependency surfaces](CURRENT_AUTHORITY_DEPENDENCIES.md) reconcile the original register with the current local executor and separate paid-action probe. All nine rows remain OPEN. Recent proof, replay, process and inspection work supplies partial OI-03/OI-04/OI-09 evidence only. The three-ID registry/distribution probe remains experimental. [Independent executor reproduction](INDEPENDENT_EXECUTOR_REVIEW.md) is the next outside evidence task; public anchor/finality and production account authority remain unresolved design prerequisites. No new execution tests or independent reviewer receipt are claimed by this review.
+
+
+## Builder-absent rehearsal — 2026-11-03
+
+Community engineering has resumed with a [builder-absent rehearsal plan](BUILDER_ABSENT_REHEARSAL.md): eight explicit loss scenarios, successor inputs and scoped acceptance/refusal criteria. Retained-fixture portability can be reviewed now; the integrated public action still requires candidate asset, economics and authority decisions. No new test passes or recovery completion are claimed.
