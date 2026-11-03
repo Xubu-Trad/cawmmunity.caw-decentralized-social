@@ -464,3 +464,8 @@ The [staking accumulator comparison](STAKING_ACCUMULATOR_REVIEW.md) now tests ac
 ### Fixed-point reward research — 2026-11-02
 
 The [bounded-integer reward experiment](STAKING_FIXED_REVIEW.md) now preserves fractional claims and matches a per-recipient reference across four finite operation sequences. A deliberately broken fraction-retention variant fails. Precision, dust disposition and lifetime caps remain unresolved; this is not a deployed staking contract or a selected economic rule. Next review the precision/error budget and long-lived index strategy before implementing settlement. The 1,251-test Node count is unchanged; no release gate closes.
+
+
+## Builder-absent rehearsal — 2026-11-03
+
+Community engineering has resumed with a [builder-absent rehearsal plan](BUILDER_ABSENT_REHEARSAL.md): eight explicit loss scenarios, successor inputs and scoped acceptance/refusal criteria. Retained-fixture portability can be reviewed now; the integrated public action still requires candidate asset, economics and authority decisions. No new test passes or recovery completion are claimed.
