@@ -31,6 +31,9 @@ The [staking accumulator comparison](docs/STAKING_ACCUMULATOR_REVIEW.md) now tes
 
 The [candidate asset and economics packet](docs/CANDIDATE_TERMS_REVIEW.md) now makes payer exclusion, stake-commitment changes and dust consequences concrete, with executable integer comparisons. [Issue #5](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues/5) requests decisions; no alternative is adopted. The Node-suite total below is unchanged.
 
+
+The [portable recovery fixture](docs/PORTABLE_RECOVERY_FIXTURE.md) now exports the existing reader and pinned synthetic inputs without a dependency installation. Four export tests and a fresh-directory CLI run passed; altered inputs and a missing reader reject. This is same-operator portability evidence, with independent builder reproduction still open. The recorded full Node-suite count is unchanged.
+
 **Current priority: [one complete, independently reproducible CAW action](docs/PUBLIC_ACTION_MILESTONE.md).** Freeze the asset/registration boundary and one-action rules, then demonstrate settlement, independent acquisition and operation without the original builder. The existing probe is not ready to deploy unchanged.
 
 | Area | Current evidence | Remaining gate |
