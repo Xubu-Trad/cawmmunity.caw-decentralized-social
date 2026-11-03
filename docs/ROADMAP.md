@@ -469,3 +469,8 @@ The [bounded-integer reward experiment](STAKING_FIXED_REVIEW.md) now preserves f
 ## Builder-absent rehearsal — 2026-11-03
 
 Community engineering has resumed with a [builder-absent rehearsal plan](BUILDER_ABSENT_REHEARSAL.md): eight explicit loss scenarios, successor inputs and scoped acceptance/refusal criteria. Retained-fixture portability can be reviewed now; the integrated public action still requires candidate asset, economics and authority decisions. No new test passes or recovery completion are claimed.
+
+
+## Retained-fixture portability — 2026-11-03
+
+The [portable recovery exporter](PORTABLE_RECOVERY_FIXTURE.md) packages the existing reader and pinned synthetic fixture. Four Python export checks and the separate-directory reader passed; three negative copies reject. BA-01 now has an executable handoff package, but independent operator execution remains NOT_RUN. No asset, economic, authority or release decision changed. Next: obtain a separately selected second-builder receipt while resolving the integrated candidate's existing specification gates.
