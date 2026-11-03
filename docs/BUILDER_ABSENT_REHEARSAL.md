@@ -45,3 +45,8 @@ Track A's supported fixture must continue reporting `endpointAuthenticated`, `ac
 
 The next independent contribution is BA-01 using the existing commands and a separately retained receipt, not a new checker. In parallel, package 1/2 of the one-action milestone needs explicit candidate rules before settlement integration. Candidate contracts must not acquire an administrator recovery key to solve liveness. The native replay discrepancy and deferred acquisition-side build/CI remain open. No additional test pass is claimed by this plan; the recorded full Node suite remains 1,251 across 73 files.
 
+
+
+## Track A packaging evidence — 2026-11-03
+
+The [portable fixture exporter](PORTABLE_RECOVERY_FIXTURE.md) provides the exact reader dependency closure, retained input and byte inventory. Same-operator separate-directory execution passed and three negative copies reject; four export tests passed. This is local preparation for BA-01. Outside execution remains NOT_RUN, and no row closes. Inventory and selection digests must be retained independently of a received package; source and runtime trust remain separate.
