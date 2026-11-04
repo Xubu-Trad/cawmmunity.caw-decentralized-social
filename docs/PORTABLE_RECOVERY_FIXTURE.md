@@ -40,3 +40,8 @@ The explicit source list contains the current reader's dependency closure, inclu
 These runs used the same Windows operator and pinned runtimes. No original checkout was deleted and no hostile host, physical outage or independent operator was simulated. A second builder should select the code and input identities independently, run without the original checkout/configuration, and retain actual commands, environment and outputs using the [rehearsal receipt](BUILDER_ABSENT_REHEARSAL.md). BA-01 remains open until that evidence exists. The existing full-suite result remains 1,251/1,251; this change adds four separately run Python export tests and CLI checks, not a new full-suite result.
 
 No economic rule, production code path, state adoption or release gate changed. Integrated public-action candidate decisions remain unresolved.
+
+
+## Corrected linked-path reader — 2026-11-03
+
+The [CLI entry fix](RECOVERY_BUNDLE.md#linked-entry-paths--2026-11-03) prevents an empty success when launched through a directory junction. A fresh export includes this corrected reader and passed its positive CLI check. The fixture selection digest is unchanged; the source inventory changes because the reader changed. [Updated export identity and run evidence](../evidence/RECOVERY_CLI_PATH_RESULTS.json) retain that distinction. Earlier exports remain historical evidence and should be regenerated from the reviewed corrected source before new use.
