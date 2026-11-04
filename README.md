@@ -37,6 +37,8 @@ The [portable recovery fixture](docs/PORTABLE_RECOVERY_FIXTURE.md) now exports t
 
 [WD-27 reports an independent rerun of the 72-case adversarial experiment](docs/PAID_ACTION_REGRESSION.md#outside-reproduction-report--2026-11-03). The reported outcomes match the retained experiment; the new raw trace and comparison outputs have not yet been inspected here. Issue #2 stays open for remaining coverage, and this report does not change the full-suite count or deployment gates.
 
+The [recovery CLI now handles linked folder paths](docs/RECOVERY_BUNDLE.md#linked-entry-paths--2026-11-03), fixing a reproduced case that exited successfully without running checks. Twenty-five focused tests and separate CLI cases passed; a corrected portable export also ran. These results do not change the historical full-suite count or independent-recovery gates.
+
 **Current priority: [one complete, independently reproducible CAW action](docs/PUBLIC_ACTION_MILESTONE.md).** Freeze the asset/registration boundary and one-action rules, then demonstrate settlement, independent acquisition and operation without the original builder. The existing probe is not ready to deploy unchanged.
 
 | Area | Current evidence | Remaining gate |
