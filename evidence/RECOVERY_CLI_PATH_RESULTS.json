@@ -1,0 +1,138 @@
+{
+  "base": "e9410c0355f3e1d65d3d94b29473b8420f7aeeb1",
+  "scope": "Same-operator Windows junction/CLI checks; trusted local filesystem. No production or independent acquisition result.",
+  "focusedTests": 25,
+  "focusedFailures": 0,
+  "fullSuiteRerun": false,
+  "runtimeChange": {
+    "operation": "corrected-export",
+    "initialResult": "STOPPED_BEFORE_CHILD_START_RUNTIME_PIN_MISMATCH",
+    "priorPythonExeSha256": "f8b45d63047da9d9adf09892e4cc4317b859e86a93a478cc9616bc69d3b176e5",
+    "currentPythonExeSha256": "b8ad68cef7709b8d8178136e891942f8db37adf8f6a5538f0e5c442136bf8eea",
+    "reportedVersion": "Python 3.12.14",
+    "authenticodeStatus": "Valid",
+    "signer": "OpenAI OpCo, LLC",
+    "decision": "Accept explicitly recorded signed host-runtime identity for the fixture export; retain exact hash verification and all resource guards.",
+    "limit": "Executable signature and version do not attest all runtime libraries or establish equivalence to the prior executable. Node reader remains on its unchanged pin."
+  },
+  "runs": [
+    {
+      "case": "before-linked-noargs",
+      "exit": 0,
+      "expectedExit": 0,
+      "runtimeSha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
+      "seconds": 0.407,
+      "observedPeakBytes": 40869888,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "case": "after-linked-noargs",
+      "exit": 1,
+      "expectedExit": 1,
+      "runtimeSha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
+      "seconds": 0.109,
+      "observedPeakBytes": 30699520,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "c09ecf3088c524dd8dd0c82b26378182b60fb86ec4fd10874fb64cac5d202b8e"
+    },
+    {
+      "case": "after-direct-noargs",
+      "exit": 1,
+      "expectedExit": 1,
+      "runtimeSha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
+      "seconds": 0.125,
+      "observedPeakBytes": 26902528,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "c09ecf3088c524dd8dd0c82b26378182b60fb86ec4fd10874fb64cac5d202b8e"
+    },
+    {
+      "case": "after-preserved-link-noargs",
+      "exit": 1,
+      "expectedExit": 1,
+      "runtimeSha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
+      "seconds": 0.109,
+      "observedPeakBytes": 27308032,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "c09ecf3088c524dd8dd0c82b26378182b60fb86ec4fd10874fb64cac5d202b8e"
+    },
+    {
+      "case": "after-import",
+      "exit": 0,
+      "expectedExit": 0,
+      "runtimeSha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
+      "seconds": 0.109,
+      "observedPeakBytes": 36302848,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "case": "after-linked-valid",
+      "exit": 0,
+      "expectedExit": 0,
+      "runtimeSha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
+      "seconds": 0.359,
+      "observedPeakBytes": 56225792,
+      "stdoutSha256": "93465d90c40c3058f0dc372461a041d9aca00404852f7c64fcd07d492b8e1176",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "case": "after-linked-badpin",
+      "exit": 1,
+      "expectedExit": 1,
+      "runtimeSha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
+      "seconds": 0.125,
+      "observedPeakBytes": 35876864,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "88286ba0bbb461e5c5bfd40a05c9348c6e16a6108b33413ad9b594ad6ea1cdea"
+    },
+    {
+      "case": "focused",
+      "exit": 0,
+      "expectedExit": 0,
+      "runtimeSha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
+      "seconds": 1.328,
+      "observedPeakBytes": 97992704,
+      "stdoutSha256": "aa14c39179b3b04defe85e5d6477e6c10f204abb14af0b522ecdf014a5277b26",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "case": "corrected-export",
+      "exit": 0,
+      "expectedExit": 0,
+      "runtimeSha256": "b8ad68cef7709b8d8178136e891942f8db37adf8f6a5538f0e5c442136bf8eea",
+      "seconds": 0.203,
+      "observedPeakBytes": 24207360,
+      "stdoutSha256": "43f5238f3c41ae785e0985f62a5252e9fc7efd5abdb64fc30e5261d9854c7e02",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "case": "corrected-kit",
+      "exit": 0,
+      "expectedExit": 0,
+      "runtimeSha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
+      "seconds": 0.578,
+      "observedPeakBytes": 53116928,
+      "stdoutSha256": "93465d90c40c3058f0dc372461a041d9aca00404852f7c64fcd07d492b8e1176",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "sourceIdentities": {
+    "scripts/check-recovery-bundle.mjs": {
+      "sha256": "b67496788afb53a0c9a90977d801ce2a0558233e67f6dd7b4367eb44d74b8bd5",
+      "size": 2698
+    },
+    "tests/recovery-bundle.test.mjs": {
+      "sha256": "2bc975f00d4b321aad3a26fac979c2a7807f96f008641c03eaf0e7e4b9393602",
+      "size": 9966
+    }
+  },
+  "export": {
+    "files": 22,
+    "independentReproduction": false,
+    "inventorySha256": "bbb4b9c6b3e43c5a476e4acbfbc1b61ea4505e00eec416ba4412bfcae33ffd16",
+    "productionAccepted": false,
+    "schema": "caw-retained-fixture-export/1",
+    "selectionSha256": "6e764f9fd0f6cfa66f1b021feabe92f5fa001ed8c527470570b4f1a96e3270ac"
+  }
+}
