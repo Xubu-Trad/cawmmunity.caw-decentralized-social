@@ -83,3 +83,16 @@ The directory checker now reads the bounded selection once and verifies its sepa
 `verifyRecoverySelectionPin(selectionText, digest)` is an admission-only helper. It checks the digest format, byte limit and exact byte hash. It does not validate selection schema, authenticate its provenance or accept a bundle. The pinned bundle reader still performs all existing checks, and matching the pin does not bypass missing files or corrupt content.
 
 Three new regression cases cover selection substitution before bundle-path handling, malformed/matching pins with missing bundle files, and malformed selection UTF-8. Focused checks pass 24/24; the full offline suite passes 1,251/1,251 across 73 files. [Result and source identities](../evidence/RECOVERY_ADMISSION_RESULTS.json). No fresh chain acquisition, protocol deployment or stronger trust claim follows. The local filesystem remains a trust boundary; this change does not claim protection against every filesystem race or special-file condition.
+
+
+## Linked entry paths — 2026-11-03
+
+A Windows directory-junction launch of the old CLI with no arguments returned exit0 and no output: the lexical entry path did not match Node's resolved module URL, so validation never ran. This is a wrapper-startup defect, not a demonstrated acceptance of forged history. A similar CLI issue was independently identified by tentencaw in [upstream PR327](https://github.com/GilgameshCaw/Caw/pull/327#issuecomment-6255748069); that review motivated checking this separate community reader.
+
+The CLI now compares the real filesystem paths of both its entry argument and module URL. It handles default resolution and `--preserve-symlinks-main`; imports remain inert when the entry argument is missing, nonexistent or another file. The local filesystem remains trusted, and this does not claim race resistance or module authenticity.
+
+[Evidence and source identities](../evidence/RECOVERY_CLI_PATH_RESULTS.json): the original empty exit0 is retained; direct and junction no-argument launches now reject with usage/exit1; preserved-junction mode also rejects; importing with a nonexistent entry remains safe; a valid fixture through the junction reports three posts; a wrong pin rejects. All25 focused tests pass, including a persistent linked-path regression. A newly exported corrected kit also passed. This run exercised a Windows directory junction, not every OS or link type.
+
+Reproduce the focused checks with the existing command above. On Windows, create a directory junction to a disposable reviewed checkout using `New-Item -ItemType Junction`, then invoke `node LINK/scripts/check-recovery-bundle.mjs` without arguments. Expect exit1 and a usage error, never empty success. Repeat with `node --preserve-symlinks-main LINK/scripts/check-recovery-bundle.mjs`. Use the retained fixture and its separately retained pin for the positive case.
+
+The export initially stopped at a changed Python executable hash. Python still reported3.12.14 and Windows verified its OpenAI OpCo signature; the new executable identity was explicitly recorded before rerunning. This does not attest every runtime library. Node remained on its existing24.20.0 executable pin. The prior full-suite1251/1251 result remains historical; no full-suite rerun or new deployment gate is claimed.
