@@ -1,7 +1,7 @@
-import { openSync, closeSync, fstatSync, readSync } from 'node:fs';
+import { openSync, closeSync, fstatSync, readSync, realpathSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { TextDecoder } from 'node:util';
-import { pathToFileURL } from 'node:url';
+import { fileURLToPath } from 'node:url';
 import { RECOVERY_FILES, inspectPinnedRecoveryBundle, verifyRecoverySelectionPin } from '../reference/recovery-bundle.mjs';
 
 // No caller-controlled member paths, network requests or environment lookup.
@@ -30,7 +30,16 @@ export function checkRecoveryDirectory(directory, selectionPath, expectedSelecti
   summary.successfulPostCount = checked.post_history.successfulPostCount;
   return summary;
 }
-if (process.argv[1] && pathToFileURL(resolve(process.argv[1])).href === import.meta.url) {
+// Compare resolved filesystem identities so linked entry paths cannot silently
+// bypass the CLI. Resolve both sides for --preserve-symlinks-main as well.
+// Importing the module must remain safe when argv[1] is absent or not a file.
+export function isRecoveryCliInvocation(entryPath) {
+  if (typeof entryPath !== 'string' || !entryPath) return false;
+  try {
+    return realpathSync(entryPath) === realpathSync(fileURLToPath(import.meta.url));
+  } catch { return false; }
+}
+if (isRecoveryCliInvocation(process.argv[1])) {
   try {
     if (process.argv.length !== 5) throw new Error('usage: node scripts/check-recovery-bundle.mjs BUNDLE_DIRECTORY SEPARATE_SELECTION_JSON RETAINED_SELECTION_SHA256');
     process.stdout.write(JSON.stringify(checkRecoveryDirectory(process.argv[2], process.argv[3], process.argv[4])) + '\n');
