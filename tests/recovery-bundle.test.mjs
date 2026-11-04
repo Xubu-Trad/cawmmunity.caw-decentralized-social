@@ -1,12 +1,27 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { readFileSync, writeFileSync, mkdtempSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdtempSync, mkdirSync, symlinkSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { gunzipSync } from 'node:zlib';
+import { fileURLToPath } from 'node:url';
 import { inspectRecoveryBundle, inspectPinnedRecoveryBundle, RECOVERY_FILES } from '../reference/recovery-bundle.mjs';
-import { checkRecoveryDirectory } from '../scripts/check-recovery-bundle.mjs';
+import { checkRecoveryDirectory, isRecoveryCliInvocation } from '../scripts/check-recovery-bundle.mjs';
+
+test('CLI entry recognizes the real file and linked directory without admitting unrelated imports', () => {
+  const script = fileURLToPath(new URL('../scripts/check-recovery-bundle.mjs', import.meta.url));
+  const directory = fileURLToPath(new URL('../scripts/', import.meta.url));
+  const temp = mkdtempSync(join(tmpdir(), 'caw-cli-entry-'));
+  const link = join(temp, 'linked');
+  symlinkSync(directory, link, process.platform === 'win32' ? 'junction' : 'dir');
+  assert.equal(isRecoveryCliInvocation(script), true);
+  assert.equal(isRecoveryCliInvocation(join(link, 'check-recovery-bundle.mjs')), true);
+  assert.equal(isRecoveryCliInvocation(undefined), false);
+  assert.equal(isRecoveryCliInvocation(''), false);
+  assert.equal(isRecoveryCliInvocation(join(temp, 'missing.mjs')), false);
+  assert.equal(isRecoveryCliInvocation(fileURLToPath(import.meta.url)), false);
+});
 const root = new URL('../experiments/paid-signed-body-acquisition/', import.meta.url);
 const sha = x => createHash('sha256').update(x).digest('hex');
 const raw = readFileSync(new URL('body-captures.json', root));
