@@ -34,6 +34,9 @@ The [candidate asset and economics packet](docs/CANDIDATE_TERMS_REVIEW.md) now m
 
 The [portable recovery fixture](docs/PORTABLE_RECOVERY_FIXTURE.md) now exports the existing reader and pinned synthetic inputs without a dependency installation. Four export tests and a fresh-directory CLI run passed; altered inputs and a missing reader reject. This is same-operator portability evidence, with independent builder reproduction still open. The recorded full Node-suite count is unchanged.
 
+
+[WD-27 reports an independent rerun of the 72-case adversarial experiment](docs/PAID_ACTION_REGRESSION.md#outside-reproduction-report--2026-11-03). The reported outcomes match the retained experiment; the new raw trace and comparison outputs have not yet been inspected here. Issue #2 stays open for remaining coverage, and this report does not change the full-suite count or deployment gates.
+
 **Current priority: [one complete, independently reproducible CAW action](docs/PUBLIC_ACTION_MILESTONE.md).** Freeze the asset/registration boundary and one-action rules, then demonstrate settlement, independent acquisition and operation without the original builder. The existing probe is not ready to deploy unchanged.
 
 | Area | Current evidence | Remaining gate |
