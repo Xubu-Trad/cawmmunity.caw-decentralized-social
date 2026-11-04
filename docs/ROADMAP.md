@@ -474,3 +474,8 @@ Community engineering has resumed with a [builder-absent rehearsal plan](BUILDER
 ## Retained-fixture portability — 2026-11-03
 
 The [portable recovery exporter](PORTABLE_RECOVERY_FIXTURE.md) packages the existing reader and pinned synthetic fixture. Four Python export checks and the separate-directory reader passed; three negative copies reject. BA-01 now has an executable handoff package, but independent operator execution remains NOT_RUN. No asset, economic, authority or release decision changed. Next: obtain a separately selected second-builder receipt while resolving the integrated candidate's existing specification gates.
+
+
+## Recovery CLI linked-path correction — 2026-11-03
+
+Fixed a reproduced empty-success launch through a Windows directory junction. The CLI now resolves both entry paths;25focused tests and guarded positive/negative CLI checks pass, with the original failure preserved. A corrected portable export also ran successfully. [Evidence and limits](RECOVERY_BUNDLE.md#linked-entry-paths--2026-11-03). This closes a bounded reader-startup defect only: independent acquisition, BA-01 outside execution and integrated-action decisions remain open. The full-suite total is the previous run.
