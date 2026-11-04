@@ -59,3 +59,12 @@ Disposable native gas balances and local account impersonation are test controls
 This finite case set found no unexpected state transition. It does not establish that no vulnerability exists. The checker trusts the supplied capture and fixture code; it does not independently reacquire history or verify chain consensus. The registry mutation cases show rejection under signature `STATICCALL`, not an execution trace proving the precise internal exception or a bounded non-static positive control.
 
 Standalone NFT receiver callbacks, broader registry/token behavior, fuzzed call sequences, current-EVM delegated-wallet compatibility, reorg recovery and independent acquisition remain further work. Source decisions, authentic registration, scalable distribution and production review remain open. No interface behavior, real wallet connection, public-chain deployment or permanence claim is added.
+
+
+## Outside reproduction report — 2026-11-03
+
+[WD-27 reports an independent Windows rerun](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues/2#issuecomment-6607923335) at source `8562713`, with Python 3.12.10, hash-checked Anvil 1.8.1 and cryptography 50.0.1. The report states 72/72 cases, 47/47 expected rejections preserving state, 11 successful posts, 208 transactions, 40 final-state values and 16 input hashes matching, plus a passing offline verifier on the new record.
+
+These are attributed reviewer results. The author has not independently inspected the new trace, raw comparison output or runtime installation. WD-27 attributes 13 additional local RPC requests (983 versus 970) to receipt retries after null responses and explicitly distinguishes differing transaction/whole-file hashes from matching outcomes. Exact commands, full source identity and output hashes were requested in the [follow-up](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues/2#issuecomment-6618830137); the report is not a byte-identical reproduction claim.
+
+Issue #2 remains open. Standalone NFT receiver callbacks, fuzzing, EIP-7702 execution and external audit remain outside this report. No new author-run test count, protocol acceptance or production guarantee follows.
