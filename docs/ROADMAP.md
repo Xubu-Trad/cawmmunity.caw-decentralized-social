@@ -529,3 +529,8 @@ Fixed a reproduced empty-success launch through a Windows directory junction. Th
 ## Capella structural composition — 2026-11-06
 
 [Payload/body/header binding](CAPELLA_BINDING_REVIEW.md) passes 39 focused checks including seven composition cases. Next external corresponding combined vectors and explicit network/fork policy. Bootstrap, committee signatures, freshness and finality remain unresolved. PR16 unchanged; await requested comparison corrections before merge.
+
+
+## External combined bootstrap — 2026-11-06
+
+[Official minimal Capella fixture](EXTERNAL_CAPELLA_BINDING.md) passes the complete structural path; 41 Node and four decoder checks pass. Next bootstrap committee/root binding and explicit profile rules; no signature/update/finality or live trust claim.

@@ -2,6 +2,8 @@
 
 ## Current engineering update — 2026-11-06
 
+[An official combined Capella bootstrap fixture](docs/EXTERNAL_CAPELLA_BINDING.md) now passes the payload-to-beacon path against its published root: 41 focused Node checks and four decoder checks pass. This adds external structural evidence; committee/signature validation and live checkpoint trust remain unfinished.
+
 [Payload-to-beacon structural binding](docs/CAPELLA_BINDING_REVIEW.md) now connects the three proof components. All 39 focused checks across four files pass. The combined fixture is synthetic; the selected root is still unauthenticated, so this does not establish a working light client or trusted chain recovery.
 
 [Review of WD-27’s independent regression evidence](docs/PR16_EVIDENCE_REVIEW.md): the submitted trace passes our offline checker (72 cases, 208 transactions), and all sixteen inputs match. Two negative controls expose acceptance gaps in the new comparison script, so corrections are requested before merging. This is evidence validation, not another EVM run or production approval.

@@ -5,6 +5,19 @@ import { inspectCapellaHeaderBinding } from '../reference/capella-header-binding
 const fixture=JSON.parse(readFileSync(new URL('../evidence/CAPELLA_BINDING_FIXTURE.json',import.meta.url)));
 const input=()=>structuredClone(fixture.input);
 const run=p=>inspectCapellaHeaderBinding(JSON.stringify(p),fixture.selectedBeaconRoot);
+const external=JSON.parse(readFileSync(new URL('../evidence/consensus-capella-bootstrap/binding.json',import.meta.url)));
+test('official minimal Capella bootstrap binds to its published metadata root',()=>{
+ const r=inspectCapellaHeaderBinding(JSON.stringify(external.input),external.selectedBeaconRoot);
+ assert.equal(r.structuralBindingVerified,true);
+ assert.equal(r.rootAuthenticated,false);assert.equal(r.consensusVerified,false);assert.equal(r.finalityVerified,false);
+});
+test('external bootstrap altered payload, branch or metadata root reject',()=>{
+ const p=structuredClone(external.input);p.execution.timestamp=String(BigInt(p.execution.timestamp)+1n);
+ assert.throws(()=>inspectCapellaHeaderBinding(JSON.stringify(p),external.selectedBeaconRoot),/ROOT_MISMATCH/);
+ const q=structuredClone(external.input);q.executionBranch[0]='0x'+'ff'.repeat(32);
+ assert.throws(()=>inspectCapellaHeaderBinding(JSON.stringify(q),external.selectedBeaconRoot),/ROOT_MISMATCH/);
+ assert.throws(()=>inspectCapellaHeaderBinding(JSON.stringify(external.input),'0x'+'00'.repeat(32)),/ROOT_MISMATCH/);
+});
 test('synthetic complete linkage passes without authentication',()=>{
  const r=run(input());assert.equal(r.structuralBindingVerified,true);
  for(const k of ['rootAuthenticated','forkScheduleVerified','executionVerified','consensusVerified','finalityVerified','productionAccepted'])assert.equal(r[k],false);

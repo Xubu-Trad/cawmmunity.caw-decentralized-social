@@ -1,0 +1,20 @@
+{
+  "commit": "bc5c1a7fb2a8871aaffd4b16ee4dd9c72bb81908",
+  "files": [
+    {
+      "path": "tests/minimal/capella/light_client/sync/pyspec_tests/advance_finality_without_sync_committee/bootstrap.ssz_snappy",
+      "sha256": "45ba17153383454e7c6dbfa582a37a60bef2a8481087e84223a09d6130d1bfe1",
+      "size": 2264
+    },
+    {
+      "path": "tests/minimal/capella/light_client/sync/pyspec_tests/advance_finality_without_sync_committee/config.yaml",
+      "sha256": "4a8e4e5d0fd4961b87ea5d1ff8ce3a28240ab6e2184eea754acccf50131f4a1a",
+      "size": 1533
+    },
+    {
+      "path": "tests/minimal/capella/light_client/sync/pyspec_tests/advance_finality_without_sync_committee/meta.yaml",
+      "sha256": "bcff01d2477f557370c2013028934f90e1b0ae8bcd2f4833adcbb509119dbc29",
+      "size": 251
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "nodeChecksPassed": 41,
+  "pythonChecksPassed": 4,
+  "officialCombinedFixture": "tests/minimal/capella/light_client/sync/pyspec_tests/advance_finality_without_sync_committee",
+  "vectorCommit": "bc5c1a7fb2a8871aaffd4b16ee4dd9c72bb81908",
+  "sourceSha256": {
+    "scripts/decode-capella-bootstrap-fixture.py": "5f6c43b2159caccaa4d9603d87e69de48f06cd5560e23cfd5d0332d7ca06985c",
+    "tests/test_bootstrap_fixture_decoder.py": "b739149382b3afc491b4bdf2a146eb9802107608361906c6cc7a1b78310b9e2d",
+    "tests/capella-header-binding.test.mjs": "e49045769cc80ee545e0815c8f8ad1a6566c1369de69ec36a09fb8922c4e7cd2",
+    "evidence/consensus-capella-bootstrap/binding.json": "daebe8c8c75addf020f0c00c49ec5772174109aba588e83d5aabf40f119163a5",
+    "evidence/consensus-capella-bootstrap/bootstrap.ssz_snappy": "45ba17153383454e7c6dbfa582a37a60bef2a8481087e84223a09d6130d1bfe1",
+    "evidence/consensus-capella-bootstrap/config.yaml": "4a8e4e5d0fd4961b87ea5d1ff8ce3a28240ab6e2184eea754acccf50131f4a1a",
+    "evidence/consensus-capella-bootstrap/LICENSE": "feb87a2e0c305de3464cc44077da5393c52d8ca6362d37427157d04ec6f4510d",
+    "evidence/consensus-capella-bootstrap/meta.yaml": "bcff01d2477f557370c2013028934f90e1b0ae8bcd2f4833adcbb509119dbc29",
+    "evidence/consensus-capella-bootstrap/provenance.json": "cff52392770ff55e3fbb966045cc2df86a1188dfd69ac0acfc35aef5af81f453"
+  },
+  "runtimes": [
+    {
+      "runtime": "Python 3.12.14",
+      "sha256": "3c48fbdcc2ed5c55290e39bef50bd6b1da76f43f3069a4a2624d0b8876a605f5"
+    },
+    {
+      "runtime": "Node.js 24.20.0",
+      "sha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5"
+    }
+  ],
+  "consensusVerified": false,
+  "committeeVerified": false,
+  "fullSuiteRerun": false
+}
