@@ -1,0 +1,92 @@
+{
+  "pr": 16,
+  "head": "e3748350c6b6e8865bb3d3252ef3060649f3d4bc",
+  "baseline": "85627137cda2e79390f57dc6e05c7ceb7809e049",
+  "checkerMatchesPinnedSource": true,
+  "retainedCopiesMatchPinnedSource": true,
+  "hashChecks": {
+    "files": {
+      "independent-run.json": "e9cf0f605958a78b79fb0f9fba46e145c88d8ce62a25caa87e1c669e9506e9da",
+      "retained/execution-trace.json": "5b639707c113b23fa7025a85c098693a6be3431781f175cf1f13b22d1b22b2dc",
+      "retained/execution-summary.json": "1946ebb82978eb424086dcb81dc969dd62ad0e76108e06f2880396fb86ad30a9",
+      "retained/experiment-inputs.json": "2637376a27b2a175d1995e98ff71c026f9925dff8a01729943b9f62bd9056bde"
+    },
+    "inputFilesMatched": 16
+  },
+  "ownChecker": {
+    "result": {
+      "schema": "caw-paid-adversarial-validation/1",
+      "cases": 72,
+      "rejectedCases": 47,
+      "successfulPosts": 11,
+      "transactions": 208,
+      "localCalls": 983,
+      "finalSnapshot": [
+        "675735228106198118082450491161504164777867755126",
+        "2",
+        "94999999999999999999998",
+        "0",
+        "11",
+        "0",
+        "675735228106198118082450491161504164777867755126",
+        "0",
+        "18333333333333333333336",
+        "1",
+        "0",
+        "0",
+        "410616348190352450794687599881239480518724796019",
+        "0",
+        "36666666666666666666673",
+        "2",
+        "0",
+        "0",
+        "150000000000000000000007",
+        "11",
+        "11",
+        "150000000000000000000018",
+        "149999999999999999999992",
+        "299999999999999999999990",
+        "0",
+        "0",
+        "149999999999999999999984",
+        "299999999999999999999990",
+        "0",
+        "0",
+        "600000000000000000000000",
+        "0",
+        "0",
+        "0",
+        "0",
+        "2",
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      "syntheticOnly": true,
+      "authenticatesChain": false,
+      "reexecutesContract": false
+    },
+    "tamperedStateRejected": true
+  },
+  "comparisonProbes": [
+    {
+      "case": "original",
+      "exitCode": 0,
+      "verdict": "PASS"
+    },
+    {
+      "case": "unexpected-rpc",
+      "exitCode": 0,
+      "verdict": "PASS"
+    },
+    {
+      "case": "wrong-summary-hash",
+      "exitCode": 0,
+      "verdict": "PASS"
+    }
+  ],
+  "newEvmExecution": false,
+  "independentMachineProvenanceAuthenticated": false,
+  "mergeRecommended": false
+}

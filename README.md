@@ -2,6 +2,8 @@
 
 ## Current engineering update — 2026-11-06
 
+[Review of WD-27’s independent regression evidence](docs/PR16_EVIDENCE_REVIEW.md): the submitted trace passes our offline checker (72 cases, 208 transactions), and all sixteen inputs match. Two negative controls expose acceptance gaps in the new comparison script, so corrections are requested before merging. This is evidence validation, not another EVM run or production approval.
+
 [Capella payload-header hashing](docs/CAPELLA_PAYLOAD_REVIEW.md) now matches five official Ethereum fixture roots with eleven focused checks. This verifies the selected format and commitment, not transaction execution or current-mainnet compatibility. Linking it to a beacon header and authenticating the chain remain unfinished.
 
 [Beacon-header verification](docs/BEACON_HEADER_REVIEW.md) now matches five official Ethereum test-vector roots and passes ten focused checks. It binds the body root to a caller-selected header root. Execution-payload binding and authentication of that selected root remain unfinished; this is not a working light client.

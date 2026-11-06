@@ -519,3 +519,8 @@ Fixed a reproduced empty-success launch through a Windows directory junction. Th
 ## Capella payload root — 2026-11-06
 
 [Five official payload roots and eleven focused checks](CAPELLA_PAYLOAD_REVIEW.md) verify the explicit fifteen-field format. Next compose the execution inclusion branch with a corresponding beacon header; retain separate fork/bootstrap/signature/finality gates. No current-mainnet or execution-validity claim.
+
+
+## PR #16 evidence review — 2026-11-06
+
+[Independent packet review](PR16_EVIDENCE_REVIEW.md): original trace checks pass, but unexpected-RPC and wrong-summary-hash controls incorrectly pass its comparison script. Await bounded corrections and rerun both negatives before merge. Preserve receipt provenance; issue #2 remains open.
