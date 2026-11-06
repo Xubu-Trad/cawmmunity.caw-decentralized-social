@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { reconstruct } from '../reference/paid-action-reader.mjs';
+import { keccak256Hex } from '../reference/keccak256.mjs';
 
 // Retained local experiment only. These tests never import or execute a runner,
 // compiler, Python reader, wallet library or live transport.
@@ -73,6 +74,22 @@ const rawLabels = new Map(trace.local_calls.map(row => [row.label, row]));
 const allTransactions = history.blocks.flatMap(block => block.transactions);
 const byHash = new Map(allTransactions.map(row => [row.receipt.transactionHash, row]));
 const traceByLabel = new Map(trace.transactions.map(row => [row.label, row]));
+
+test('retained stake restoration restores the value commitment, not evidence of signature cancellation', () => {
+  const changed = item('stale_pool'), restored = item('unicode_419');
+  const committed = '0x' + requestParts(captured('stale_pool').transaction).bytes.subarray(224, 256).toString('hex');
+  const stakeHash = stakes => keccak256Hex('0x' + stakes.map(word).join(''));
+  prefix('stale_pool', false); prefix('unicode_419', false);
+  assert.notEqual(stakeHash(changed.before.stakes), committed);
+  assert.equal(changed.errorData, ERRORS.stale_pool);
+  assert.deepEqual(changed.after, changed.before);
+  assert.equal(stakeHash(restored.before.stakes), committed);
+  assert.deepEqual(restored.before.nonces, changed.before.nonces);
+  assert.deepEqual(restored.before.epochs, changed.before.epochs);
+  // The retained next post has different text. It proves commitment restoration,
+  // not an executed replay of this old signed intent or all remaining gates.
+  assert.notEqual(captured('unicode_419').transaction.data, captured('stale_pool').transaction.data);
+});
 function item(label) { const value = byLabel.get(label); assert.ok(value, label); return value; }
 function captured(label) { const value = byHash.get(item(label).transactionHash); assert.ok(value, label); return value; }
 function rpc(label) { const value = rawLabels.get(label); assert.ok(value, label); return value; }

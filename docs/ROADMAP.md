@@ -479,3 +479,8 @@ The [portable recovery exporter](PORTABLE_RECOVERY_FIXTURE.md) packages the exis
 ## Recovery CLI linked-path correction — 2026-11-03
 
 Fixed a reproduced empty-success launch through a Windows directory junction. The CLI now resolves both entry paths;25focused tests and guarded positive/negative CLI checks pass, with the original failure preserved. A corrected portable export also ran successfully. [Evidence and limits](RECOVERY_BUNDLE.md#linked-entry-paths--2026-11-03). This closes a bounded reader-startup defect only: independent acquisition, BA-01 outside execution and integrated-action decisions remain open. The full-suite total is the previous run.
+
+
+## Authorization lifetime and reviewer follow-up — 2026-11-05
+
+[Current review](AUTHORIZATION_LIFETIME_REVIEW.md) records outside receipts and unresolved stake/delegate revocation semantics. A retained-history commitment regression passes with 13 focused checks. Next obtain reproducible outside evidence and settle explicit cancellation semantics before changing the candidate. No new EVM/full-suite/release claim; CI remains deferred.

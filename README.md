@@ -1,5 +1,9 @@
 # cawmmunity.caw - decentralized - social
 
+## Current engineering update — 2026-11-05
+
+Community work has resumed with [authorization-lifetime review](docs/AUTHORIZATION_LIFETIME_REVIEW.md), responses to outside callback, wallet and relay experiments, and a retained-state regression showing why restoring a stake commitment is not permanent cancellation. The focused file passes 13 checks; this is offline evidence, not a new EVM run or full-suite total. Outside reports remain attributed until their raw artifacts can be checked. The local frontend is a simulation; the public test candidate and production remain blocked.
+
 cawmmunity.caw is a public implementation of the caw manifesto and the reproduced r2 message, being built from the ground up with decentralization treated as an architectural requirement rather than something to remove at the end.
 
 the repository brings the application and protocol work into one place: a working local alpha frontend, experimental contracts and accounting, independent readers, recovery tooling, signed-action and authority tests, retained evidence, and a requirement map back to the source material.
