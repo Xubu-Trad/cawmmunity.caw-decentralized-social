@@ -2,6 +2,8 @@
 
 ## Current engineering update — 2026-11-06
 
+A [bounded SHA-256 branch checker](docs/SHA256_BRANCH_REVIEW.md) now supplies one prerequisite for researching checkpoint proofs. Eleven focused tests pass against synthetic Python-generated vectors and rejection cases. It verifies inclusion under a supplied root, not that the root is trustworthy; no light client or production trust path is implemented.
+
 [Outside recovery observations now reproduce locally](docs/EXTERNAL_HISTORY_REVIEW.md): our current readers passed 20 focused checks on five supplied histories, including twelve malformed-history cases and a conflicting checkpoint. This checks saved data, not fresh acquisition or trusted public-chain selection. The initial review-harness failure is documented and preserved.
 
 [Four outside review packets](docs/EXTERNAL_REVIEW_PACKETS.md) now have independently checked archive hashes and 911 matching listed file hashes. A reusable checker passes four focused tests. This makes the submitted evidence inspectable; it does not independently rerun its contract results or resolve registration, checkpoint trust, wallet or relay gates.

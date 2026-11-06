@@ -504,3 +504,8 @@ Fixed a reproduced empty-success launch through a Windows directory junction. Th
 ## Retained outside history — 2026-11-06
 
 [Twenty current-reader checks](EXTERNAL_HISTORY_REVIEW.md) reproduce bounded reconstruction on outside retained data. Next evaluate an independently justified initial checkpoint, stale updates and conflicting evidence. Existing caller-pin tests already cover self-selected replacements; no new authority or canonicality claim.
+
+
+## Checkpoint proof prerequisite — 2026-11-06
+
+[SHA-256 branch inclusion](SHA256_BRANCH_REVIEW.md) adds an isolated bounded primitive with eleven focused checks. Next: external conformance vectors, fork-specific SSZ/header binding, then bootstrap and signature/update review. No caller-selected root is promoted to authority; production design remains open.

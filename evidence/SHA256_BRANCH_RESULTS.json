@@ -1,0 +1,18 @@
+{
+  "schema": "caw-sha256-branch-evidence/1",
+  "testsPassed": 11,
+  "runtime": "Node.js 24.20.0",
+  "runtimeSha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
+  "specCommit": "204fb4a19774eabb7a2e91505365deed6b8afef8",
+  "sourceSha256": {
+    "reference/sha256-branch.mjs": "38595f3697ffc590167a4ae41f4f5f7029dc5531187882311d05aa73e9630821",
+    "tests/sha256-branch.test.mjs": "bcf00f4b911e76f56fde1c023cea6758d11f2042a4808915c95331718ddf8cb1",
+    "evidence/SHA256_BRANCH_VECTORS.json": "74fe2a57c80b4613d2abca5b8e80859664c03316a19d7ef02443a059046918fc",
+    "scripts/generate-sha256-branch-vectors.py": "b1d5b160173c4ef43ebe259f412bac2399e5d77a89c838e6e11831094a622d3d"
+  },
+  "syntheticVectors": true,
+  "officialConsensusVectorsRun": false,
+  "lightClientImplemented": false,
+  "rootAuthenticated": false,
+  "fullSuiteRerun": false
+}
