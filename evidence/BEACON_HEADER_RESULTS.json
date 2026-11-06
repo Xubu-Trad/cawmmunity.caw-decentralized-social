@@ -1,0 +1,28 @@
+{
+  "testsPassed": 10,
+  "officialHeaderCasesMatched": 5,
+  "sourceCommit": "f01399d287e826228755b81e330b27c8ace8e288",
+  "vectorRepository": "ethereum/consensus-spec-tests",
+  "vectorCommit": "bc5c1a7fb2a8871aaffd4b16ee4dd9c72bb81908",
+  "runtime": "Node.js 24.20.0",
+  "runtimeSha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
+  "sourceSha256": {
+    "reference/beacon-header-root.mjs": "f44e13c4ffbed44526b11405b93e5759f1d81d3d616f2df738329c0f7418392e",
+    "tests/beacon-header-root.test.mjs": "f60972bafb67396c61720cd6fa445036108613e13aa102e1cbd82c56c34afe03",
+    "evidence/consensus-beacon-header/case_0_roots.yaml": "c9f22a0fd88f71825cc5dfaea99c0c057e42bbd4ccb605af41537aec653991dc",
+    "evidence/consensus-beacon-header/case_0_value.yaml": "d90a13a7962546a8e0dbffab8a67c47ac002dfb8b6efa15cb51418bb600e67b9",
+    "evidence/consensus-beacon-header/case_1_roots.yaml": "c8018413d4f8c2e311eae95d7dd8db45c48264ce3150c4729e9e786ce6d6df39",
+    "evidence/consensus-beacon-header/case_1_value.yaml": "c6d76ef4d39e4c9a524404d03245260489744aa83e680cd4c575c908d49ee0d7",
+    "evidence/consensus-beacon-header/case_2_roots.yaml": "38d573b1e90d64f06e140699e2287a1f9df24e95c2cf028171c7f72fb1a1bc88",
+    "evidence/consensus-beacon-header/case_2_value.yaml": "fa22eaecf33963fc5c855a559b92a430d95646f00d3a460758a275fdc7f25c15",
+    "evidence/consensus-beacon-header/case_3_roots.yaml": "0bc1445d792f3c740bfbe6b6c739c46f449b1d29ac1e4ef13d258c06af0b6a7f",
+    "evidence/consensus-beacon-header/case_3_value.yaml": "85c8e2daba930352515cd12bf2c7f36f415ac7c014e52eda06c05af4789b80e7",
+    "evidence/consensus-beacon-header/case_4_roots.yaml": "e4931f5c4362a9471721719a80dc140a3fef0b296a2b82d6f60caacc924b638d",
+    "evidence/consensus-beacon-header/case_4_value.yaml": "b8b70827d987719b7a6cf72254fa21b9a7acfcd095e0b0b731f95e828146c182",
+    "evidence/consensus-beacon-header/LICENSE": "feb87a2e0c305de3464cc44077da5393c52d8ca6362d37427157d04ec6f4510d",
+    "evidence/consensus-beacon-header/vectors.json": "74e20a8f10132b8037bc2bed5f1b3cd40adda31a8531010d353e74b7c4e4a3a2"
+  },
+  "fullSuiteRerun": false,
+  "executionPayloadVerified": false,
+  "rootAuthenticated": false
+}

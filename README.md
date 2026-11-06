@@ -2,6 +2,8 @@
 
 ## Current engineering update — 2026-11-06
 
+[Beacon-header verification](docs/BEACON_HEADER_REVIEW.md) now matches five official Ethereum test-vector roots and passes ten focused checks. It binds the body root to a caller-selected header root. Execution-payload binding and authentication of that selected root remain unfinished; this is not a working light client.
+
 A [bounded SHA-256 branch checker](docs/SHA256_BRANCH_REVIEW.md) now supplies one prerequisite for researching checkpoint proofs. Eleven focused tests pass against synthetic Python-generated vectors and rejection cases. It verifies inclusion under a supplied root, not that the root is trustworthy; no light client or production trust path is implemented.
 
 [Outside recovery observations now reproduce locally](docs/EXTERNAL_HISTORY_REVIEW.md): our current readers passed 20 focused checks on five supplied histories, including twelve malformed-history cases and a conflicting checkpoint. This checks saved data, not fresh acquisition or trusted public-chain selection. The initial review-harness failure is documented and preserved.

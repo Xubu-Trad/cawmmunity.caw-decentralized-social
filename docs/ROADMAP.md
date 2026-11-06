@@ -509,3 +509,8 @@ Fixed a reproduced empty-success launch through a Windows directory junction. Th
 ## Checkpoint proof prerequisite — 2026-11-06
 
 [SHA-256 branch inclusion](SHA256_BRANCH_REVIEW.md) adds an isolated bounded primitive with eleven focused checks. Next: external conformance vectors, fork-specific SSZ/header binding, then bootstrap and signature/update review. No caller-selected root is promoted to authority; production design remains open.
+
+
+## External beacon-header vectors — 2026-11-06
+
+[Five official root matches and ten focused checks](BEACON_HEADER_REVIEW.md) cover header hashing and derived body-root inclusion. Next: explicit fork-specific execution-payload header hashing and its inclusion branch. Bootstrap, signatures, finality and freshness remain open; no recovery-adoption policy changed.

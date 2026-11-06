@@ -1,0 +1,86 @@
+{
+  "repository": "ethereum/consensus-spec-tests",
+  "commit": "bc5c1a7fb2a8871aaffd4b16ee4dd9c72bb81908",
+  "cases": [
+    {
+      "case": 0,
+      "sourcePath": "tests/mainnet/capella/ssz_static/BeaconBlockHeader/ssz_random/case_0",
+      "header": {
+        "slot": "16101738745833384750",
+        "proposer_index": "15310703651237606601",
+        "parent_root": "0xcaf0db22470a8e987fef3d78ce7a14bbd7714570b78d5d5bc4421ea2b657f986",
+        "state_root": "0x77134de1d4dc7a8ffb098e305ae5ccfb7cb27cba5866712f95756ddbc044d328",
+        "body_root": "0x934af84956d1a252aa767406a8bae9e26b083a81be4b1703f157a70abcfb6085"
+      },
+      "root": "0xa2672769763d19c79dd7a584f37fd3391c0510c1fd6eba54ec0cd78748a84800",
+      "sha256": {
+        "value.yaml": "d90a13a7962546a8e0dbffab8a67c47ac002dfb8b6efa15cb51418bb600e67b9",
+        "roots.yaml": "c9f22a0fd88f71825cc5dfaea99c0c057e42bbd4ccb605af41537aec653991dc"
+      }
+    },
+    {
+      "case": 1,
+      "sourcePath": "tests/mainnet/capella/ssz_static/BeaconBlockHeader/ssz_random/case_1",
+      "header": {
+        "slot": "17808166723807388994",
+        "proposer_index": "10746357511329297864",
+        "parent_root": "0xb37609132844ec4145fb798b74fe81d4936be5ef63a59c0057b97e7c0ef554b7",
+        "state_root": "0xfa06745fd0bd392ba9ce27618013d187fdc65cd40df857c668773d94ad7e9520",
+        "body_root": "0xc0f52000ab06779154caabcede2b05b72b37d20b927928d3e55083e7159bf10e"
+      },
+      "root": "0xc57d5786044bbb36e7278262e0c5f998284e892e3980949582b87a0539ec71c5",
+      "sha256": {
+        "value.yaml": "c6d76ef4d39e4c9a524404d03245260489744aa83e680cd4c575c908d49ee0d7",
+        "roots.yaml": "c8018413d4f8c2e311eae95d7dd8db45c48264ce3150c4729e9e786ce6d6df39"
+      }
+    },
+    {
+      "case": 2,
+      "sourcePath": "tests/mainnet/capella/ssz_static/BeaconBlockHeader/ssz_random/case_2",
+      "header": {
+        "slot": "5027098936825851838",
+        "proposer_index": "5435322292063299509",
+        "parent_root": "0xb8ee7d4f0650b9912e22036f5729cbafc5adc54f69dfa96860745e288fd57126",
+        "state_root": "0xdd3b69108f33f8c4cfb0d0aaa44d4791e83376d02f0ade13ff658ea1594cf287",
+        "body_root": "0x44147ec6f2cac8a191954cfece077a7d55318c7d1f5569f536e0294f4a81d817"
+      },
+      "root": "0x61b2e967e8d7e64bdbf3619f16f6764eda1a9883dd94bb7fc079d3643f933b52",
+      "sha256": {
+        "value.yaml": "fa22eaecf33963fc5c855a559b92a430d95646f00d3a460758a275fdc7f25c15",
+        "roots.yaml": "38d573b1e90d64f06e140699e2287a1f9df24e95c2cf028171c7f72fb1a1bc88"
+      }
+    },
+    {
+      "case": 3,
+      "sourcePath": "tests/mainnet/capella/ssz_static/BeaconBlockHeader/ssz_random/case_3",
+      "header": {
+        "slot": "9124072573131599545",
+        "proposer_index": "18114878371055317742",
+        "parent_root": "0x23156c086b3174c9522ef5e0d494b735750e328a2b50a869923354f9ad6b4154",
+        "state_root": "0x3776b50715ca91d5f52eaeac0f8b11b99695d990cf34f44fe4d9b2a4ecf0fc4f",
+        "body_root": "0xed2944570e253d77b4af5dd66ea5e22e4be142243152641f6a5fc771dc2bcd2c"
+      },
+      "root": "0x7a3eef51172e7a551bd79b21476b5d35ad58db753d354a27a1ce6e1b3f99d3b7",
+      "sha256": {
+        "value.yaml": "85c8e2daba930352515cd12bf2c7f36f415ac7c014e52eda06c05af4789b80e7",
+        "roots.yaml": "0bc1445d792f3c740bfbe6b6c739c46f449b1d29ac1e4ef13d258c06af0b6a7f"
+      }
+    },
+    {
+      "case": 4,
+      "sourcePath": "tests/mainnet/capella/ssz_static/BeaconBlockHeader/ssz_random/case_4",
+      "header": {
+        "slot": "14537857883637307725",
+        "proposer_index": "992438693097213392",
+        "parent_root": "0xfb73fd8b09688832e869b06de86cb10e3f5d8cd0c68207a2717c172235e73d81",
+        "state_root": "0x836d6c97bafd55506f3c90a9b21b47411d791c1820df17e3e03c7af7a6b65a07",
+        "body_root": "0x38355df0a4c131072285e9d6a2187381ebc5cd40b85e3a0108abcec8d478230f"
+      },
+      "root": "0xbca7ed2c911fa206a325569cc8cdec66021b58071e7ed8abf559043096df2b38",
+      "sha256": {
+        "value.yaml": "b8b70827d987719b7a6cf72254fa21b9a7acfcd095e0b0b731f95e828146c182",
+        "roots.yaml": "e4931f5c4362a9471721719a80dc140a3fef0b296a2b82d6f60caacc924b638d"
+      }
+    }
+  ]
+}
