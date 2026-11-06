@@ -494,3 +494,8 @@ Fixed a reproduced empty-success launch through a Windows directory junction. Th
 ## Frozen reward checkpoint — 2026-11-05
 
 [Checkpoint research](STAKING_CHECKPOINT_REVIEW.md) preserves frozen-state entitlements across batched normalization and later operations in six Python tests. Total work remains linear, and live concurrency, authenticated state cuts, authority and lifetime-funded limits remain unsolved. Use this as an accounting oracle when comparing future designs; no protocol reset rule adopted.
+
+
+## Outside review packets — 2026-11-06
+
+[Integrity review](EXTERNAL_REVIEW_PACKETS.md): four archives and 911 listed hashes verified without executing supplied code. Prioritize source/harness review and independent checkpoint trust before promoting acquisition evidence. Issues #1/#3/#6/#7 remain open; no production or policy gate changed.

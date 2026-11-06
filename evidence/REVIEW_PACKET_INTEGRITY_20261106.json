@@ -1,0 +1,124 @@
+{
+  "packets": [
+    {
+      "issue": 1,
+      "comment": "https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues/1#issuecomment-6677463273",
+      "url": "https://github.com/user-attachments/files/34461427/CAWmmunity_Issue1_E01_GitHub_Attachment.zip",
+      "sha256": "306154db6ae3645d89f28a5f54aa2ae7f63c017bf334d2e8e5980e7f882ee810",
+      "size": 163577,
+      "members": 58,
+      "manifestCandidates": [
+        "CAWmmunity_Issue1_E01_Evidence/SOURCE/sources/primary/manifesto-pinned.md",
+        "CAWmmunity_Issue1_E01_Evidence/SOURCE_MANIFEST.json",
+        "CAWmmunity_Issue1_E01_Evidence/SHA256_MANIFEST.json",
+        "README_THIRD_PARTY_REPRODUCTION.md"
+      ]
+    },
+    {
+      "issue": 3,
+      "comment": "https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues/3#issuecomment-6676455487",
+      "url": "https://github.com/user-attachments/files/34459706/CAWmmunity_Issue3_E01_GitHub_Attachment.zip",
+      "sha256": "be872611c3bc096ed6aa1930a11f214d443c7fff08aa0dc718ded6e35f965a65",
+      "size": 1143305,
+      "members": 219,
+      "manifestCandidates": [
+        "CAWmmunity_Issue3_E01_Evidence/SOURCE_MANIFEST.json",
+        "CAWmmunity_Issue3_E01_Evidence/SHA256_MANIFEST.json"
+      ]
+    },
+    {
+      "issue": 6,
+      "comment": "https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues/6#issuecomment-6675991546",
+      "url": "https://github.com/user-attachments/files/34458930/CAWmmunity_Issue6_E01_GitHub_Attachment.zip",
+      "sha256": "cca343fbef9277600215f910663b9bf367d5ed47303820a8c7039874187af7b4",
+      "size": 395633,
+      "members": 85,
+      "manifestCandidates": [
+        "issue6-e01/README.md",
+        "issue6-e01/SHA256_MANIFEST.json",
+        "issue6-e01/SOURCE_MANIFEST.json",
+        "issue6-e01/attempts/01-harness-authorization-recovery-error/SOURCE_MANIFEST.json"
+      ]
+    },
+    {
+      "issue": 7,
+      "comment": "https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues/7#issuecomment-6676031726",
+      "url": "https://github.com/user-attachments/files/34459021/CAWmmunity_Issue7_E01_GitHub_Attachment.zip",
+      "sha256": "216c5ffde44fc6bd07d6c7a61b949ba0999322d51b6a7a205257264f8fd5c939",
+      "size": 1649369,
+      "members": 577,
+      "manifestCandidates": [
+        "CAWmmunity_Issue7_E01_Evidence/ATTEMPTS/01-abi-result-harness-error/SOURCE_MANIFEST.json",
+        "CAWmmunity_Issue7_E01_Evidence/ATTEMPTS/02-ipc-bigint-harness-error/SOURCE_MANIFEST.json",
+        "CAWmmunity_Issue7_E01_Evidence/ATTEMPTS/03-incomplete-summary-index/SOURCE_MANIFEST.json",
+        "CAWmmunity_Issue7_E01_Evidence/README.md",
+        "CAWmmunity_Issue7_E01_Evidence/SHA256_MANIFEST.json",
+        "CAWmmunity_Issue7_E01_Evidence/SOURCE_MANIFEST.json"
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "issue": 1,
+      "archiveSha256": "306154db6ae3645d89f28a5f54aa2ae7f63c017bf334d2e8e5980e7f882ee810",
+      "matchedEntries": 51,
+      "unlistedMembers": [
+        "ORIGINAL_ARCHIVE_PROVENANCE.json",
+        "PUBLICATION_REVIEW.md",
+        "README_THIRD_PARTY_REPRODUCTION.md",
+        "SOURCE_LICENSE_AND_PROVENANCE.md",
+        "SOURCE_LICENSE_XUBU_MIT.txt",
+        "verify_offline.py"
+      ],
+      "executedArchiveCode": false,
+      "executionResultsVerified": false
+    },
+    {
+      "issue": 3,
+      "archiveSha256": "be872611c3bc096ed6aa1930a11f214d443c7fff08aa0dc718ded6e35f965a65",
+      "matchedEntries": 212,
+      "unlistedMembers": [
+        "ORIGINAL_ARCHIVE_PROVENANCE.json",
+        "PUBLICATION_REVIEW.md",
+        "SOURCE_LICENSE_AND_PROVENANCE.md",
+        "SOURCE_LICENSE_XUBU_MIT.txt",
+        "THIRD_PARTY_REPRODUCTION.md",
+        "verify_offline.py"
+      ],
+      "executedArchiveCode": false,
+      "executionResultsVerified": false
+    },
+    {
+      "issue": 6,
+      "archiveSha256": "cca343fbef9277600215f910663b9bf367d5ed47303820a8c7039874187af7b4",
+      "matchedEntries": 78,
+      "unlistedMembers": [
+        "ORIGINAL_ARCHIVE_PROVENANCE.json",
+        "PUBLICATION_REVIEW.md",
+        "SOURCE_LICENSE_AND_PROVENANCE.md",
+        "SOURCE_LICENSE_XUBU_MIT.txt",
+        "THIRD_PARTY_REPRODUCTION.md",
+        "verify_offline.py"
+      ],
+      "executedArchiveCode": false,
+      "executionResultsVerified": false
+    },
+    {
+      "issue": 7,
+      "archiveSha256": "216c5ffde44fc6bd07d6c7a61b949ba0999322d51b6a7a205257264f8fd5c939",
+      "matchedEntries": 570,
+      "unlistedMembers": [
+        "ORIGINAL_ARCHIVE_PROVENANCE.json",
+        "PUBLICATION_REVIEW.md",
+        "SOURCE_LICENSE_AND_PROVENANCE.md",
+        "SOURCE_LICENSE_XUBU_MIT.txt",
+        "THIRD_PARTY_REPRODUCTION.md",
+        "verify_offline.py"
+      ],
+      "executedArchiveCode": false,
+      "executionResultsVerified": false
+    }
+  ],
+  "checkerTestsPassed": 4,
+  "evmRerun": false
+}

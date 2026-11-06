@@ -1,6 +1,8 @@
 # cawmmunity.caw - decentralized - social
 
-## Current engineering update — 2026-11-05
+## Current engineering update — 2026-11-06
+
+[Four outside review packets](docs/EXTERNAL_REVIEW_PACKETS.md) now have independently checked archive hashes and 911 matching listed file hashes. A reusable checker passes four focused tests. This makes the submitted evidence inspectable; it does not independently rerun its contract results or resolve registration, checkpoint trust, wallet or relay gates.
 
 A [frozen-state checkpoint experiment](docs/STAKING_CHECKPOINT_REVIEW.md) now preserves accrued staking rewards and claim fractions while normalizing the research index. Six Python tests pass. It is an accounting reference, not a live migration, scalable settlement contract or solution to all lifetime limits.
 
