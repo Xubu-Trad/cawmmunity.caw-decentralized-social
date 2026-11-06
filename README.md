@@ -2,6 +2,8 @@
 
 ## Current engineering update — 2026-11-05
 
+A [frozen-state checkpoint experiment](docs/STAKING_CHECKPOINT_REVIEW.md) now preserves accrued staking rewards and claim fractions while normalizing the research index. Six Python tests pass. It is an accounting reference, not a live migration, scalable settlement contract or solution to all lifetime limits.
+
 The [staking budget review](docs/STAKING_BUDGET_REVIEW.md) now quantifies rounding and finite counter capacity in the experimental accumulator. Five Python checks pass; no contract economics or deployment rule has been selected.
 
 Community work has resumed with [authorization-lifetime review](docs/AUTHORIZATION_LIFETIME_REVIEW.md), responses to outside callback, wallet and relay experiments, and a retained-state regression showing why restoring a stake commitment is not permanent cancellation. The focused file passes 13 checks; this is offline evidence, not a new EVM run or full-suite total. Outside reports remain attributed until their raw artifacts can be checked. The local frontend is a simulation; the public test candidate and production remain blocked.

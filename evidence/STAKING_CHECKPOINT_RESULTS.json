@@ -1,0 +1,16 @@
+{
+  "schema": "caw-staking-checkpoint-research/1",
+  "testsPassed": 6,
+  "runtime": "Python 3.12.14",
+  "runtimeSha256": "7e9b92ec5384dbffbe0bd4fd8d52dc25d7defc60024140605f450b403423c40b",
+  "contractExecuted": false,
+  "liveMigrationImplemented": false,
+  "authorityImplemented": false,
+  "lifetimeFundingLimitRemoved": false,
+  "fullNodeSuiteRerun": false,
+  "sourceSha256": {
+    "experiments/paid-action/staking_checkpoint.py": "a083ffc0ebe0147f626f17e9983b4d9dfa7f6faa911686b8fc066f5975516ef8",
+    "experiments/paid-action/staking_fixed_model.py": "05061e4f08631c6355d2d640f1c3058be98e6231abc6331841bdfaa91917600c",
+    "tests/test_staking_checkpoint.py": "7871715a76792c505507b4a14ae042d2477c33c000670c3485c0329f2555e148"
+  }
+}

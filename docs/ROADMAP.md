@@ -489,3 +489,8 @@ Fixed a reproduced empty-success launch through a Windows directory junction. Th
 ## Reward precision and lifetime budget — 2026-11-05
 
 [Analytical budget](STAKING_BUDGET_REVIEW.md) exposes the fixed-point model's stake-dependent index ceiling and separate funded-counter limit. Five Python tests pass, including an injected near-cap rejection. Next review a permissionless entitlement-preserving lifetime strategy and dust policy; no rollover, minimum stake or economic change is adopted. No new EVM/full-suite result.
+
+
+## Frozen reward checkpoint — 2026-11-05
+
+[Checkpoint research](STAKING_CHECKPOINT_REVIEW.md) preserves frozen-state entitlements across batched normalization and later operations in six Python tests. Total work remains linear, and live concurrency, authenticated state cuts, authority and lifetime-funded limits remain unsolved. Use this as an accounting oracle when comparing future designs; no protocol reset rule adopted.
