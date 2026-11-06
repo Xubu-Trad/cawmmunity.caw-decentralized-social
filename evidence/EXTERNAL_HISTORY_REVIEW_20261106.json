@@ -1,0 +1,126 @@
+{
+  "schema": "caw-external-history-review/1",
+  "inputs": [
+    {
+      "label": "branchA-A",
+      "sha256": "dc2174b03b350ea72641fb8c3de0b7010d806adb4e519b1c2d868a97c9a2e1cb",
+      "size": 127224
+    },
+    {
+      "label": "branchA-B",
+      "sha256": "69d153432676c524f9ebdf40aa39935748b9f72921b065cc39a5a99945d4e549",
+      "size": 153051
+    },
+    {
+      "label": "branchB-A",
+      "sha256": "70441df68f6fbf7ccce48f1e465aad2bda327055e2d9eb55b12a26fc9709139f",
+      "size": 127224
+    },
+    {
+      "label": "branchB-B",
+      "sha256": "ad9cd34006f42ecf9dafd9e2df9d2064a818a9e5b039723ad911bdf81bebd033",
+      "size": 153051
+    },
+    {
+      "label": "older-prefix",
+      "sha256": "5b243f2b54d4acfd44f81b5b89d6d12b623547800677ee825a20c77bfe46b8f4",
+      "size": 116584
+    }
+  ],
+  "checks": [
+    {
+      "id": "reconstruct-and-header-check-branchA-A",
+      "passed": true
+    },
+    {
+      "id": "reconstruct-and-header-check-branchA-B",
+      "passed": true
+    },
+    {
+      "id": "reconstruct-and-header-check-branchB-A",
+      "passed": true
+    },
+    {
+      "id": "reconstruct-and-header-check-branchB-B",
+      "passed": true
+    },
+    {
+      "id": "reconstruct-and-header-check-older-prefix",
+      "passed": true
+    },
+    {
+      "id": "two-collector-equal-history-and-manifest-A",
+      "passed": true
+    },
+    {
+      "id": "two-collector-equal-history-and-manifest-B",
+      "passed": true
+    },
+    {
+      "id": "missing-block",
+      "passed": true
+    },
+    {
+      "id": "duplicate-block",
+      "passed": true
+    },
+    {
+      "id": "reordered-block",
+      "passed": true
+    },
+    {
+      "id": "missing-transaction",
+      "passed": true
+    },
+    {
+      "id": "duplicate-transaction",
+      "passed": true
+    },
+    {
+      "id": "reordered-transaction",
+      "passed": true
+    },
+    {
+      "id": "missing-receipt",
+      "passed": true
+    },
+    {
+      "id": "duplicate-receipt",
+      "passed": true
+    },
+    {
+      "id": "reordered-receipt",
+      "passed": true
+    },
+    {
+      "id": "missing-log",
+      "passed": true
+    },
+    {
+      "id": "duplicate-log",
+      "passed": true
+    },
+    {
+      "id": "reordered-log",
+      "passed": true
+    },
+    {
+      "id": "conflicting-branch-rejected-under-original-manifest",
+      "passed": true
+    }
+  ],
+  "scope": "retained observations; current local readers; no supplied executable",
+  "freshAcquisition": false,
+  "independentProviderVerified": false,
+  "endpointAuthenticated": false,
+  "consensusVerified": false,
+  "finalityVerified": false,
+  "evmReexecuted": false,
+  "productionAccepted": false,
+  "runtime": {
+    "name": "Node.js 24.20.0",
+    "sha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5"
+  },
+  "sourceCommit": "346cb1c731366f655e37e44734cbb9c8814ffc18",
+  "scriptSha256": "b85f2cb3fa6c1a7acd8747f0334a7301e61e8785e2a2ac77bbec6ea9f0232fa5"
+}

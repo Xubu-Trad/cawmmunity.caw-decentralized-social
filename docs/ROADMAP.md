@@ -499,3 +499,8 @@ Fixed a reproduced empty-success launch through a Windows directory junction. Th
 ## Outside review packets — 2026-11-06
 
 [Integrity review](EXTERNAL_REVIEW_PACKETS.md): four archives and 911 listed hashes verified without executing supplied code. Prioritize source/harness review and independent checkpoint trust before promoting acquisition evidence. Issues #1/#3/#6/#7 remain open; no production or policy gate changed.
+
+
+## Retained outside history — 2026-11-06
+
+[Twenty current-reader checks](EXTERNAL_HISTORY_REVIEW.md) reproduce bounded reconstruction on outside retained data. Next evaluate an independently justified initial checkpoint, stale updates and conflicting evidence. Existing caller-pin tests already cover self-selected replacements; no new authority or canonicality claim.

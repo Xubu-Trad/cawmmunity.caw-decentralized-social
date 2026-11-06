@@ -2,6 +2,8 @@
 
 ## Current engineering update — 2026-11-06
 
+[Outside recovery observations now reproduce locally](docs/EXTERNAL_HISTORY_REVIEW.md): our current readers passed 20 focused checks on five supplied histories, including twelve malformed-history cases and a conflicting checkpoint. This checks saved data, not fresh acquisition or trusted public-chain selection. The initial review-harness failure is documented and preserved.
+
 [Four outside review packets](docs/EXTERNAL_REVIEW_PACKETS.md) now have independently checked archive hashes and 911 matching listed file hashes. A reusable checker passes four focused tests. This makes the submitted evidence inspectable; it does not independently rerun its contract results or resolve registration, checkpoint trust, wallet or relay gates.
 
 A [frozen-state checkpoint experiment](docs/STAKING_CHECKPOINT_REVIEW.md) now preserves accrued staking rewards and claim fractions while normalizing the research index. Six Python tests pass. It is an accounting reference, not a live migration, scalable settlement contract or solution to all lifetime limits.
