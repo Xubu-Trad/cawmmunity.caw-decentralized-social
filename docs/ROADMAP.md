@@ -514,3 +514,8 @@ Fixed a reproduced empty-success launch through a Windows directory junction. Th
 ## External beacon-header vectors — 2026-11-06
 
 [Five official root matches and ten focused checks](BEACON_HEADER_REVIEW.md) cover header hashing and derived body-root inclusion. Next: explicit fork-specific execution-payload header hashing and its inclusion branch. Bootstrap, signatures, finality and freshness remain open; no recovery-adoption policy changed.
+
+
+## Capella payload root — 2026-11-06
+
+[Five official payload roots and eleven focused checks](CAPELLA_PAYLOAD_REVIEW.md) verify the explicit fifteen-field format. Next compose the execution inclusion branch with a corresponding beacon header; retain separate fork/bootstrap/signature/finality gates. No current-mainnet or execution-validity claim.

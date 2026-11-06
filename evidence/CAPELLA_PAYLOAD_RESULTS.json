@@ -1,0 +1,28 @@
+{
+  "testsPassed": 11,
+  "officialPayloadCasesMatched": 5,
+  "sourceCommit": "9d2c29b907bbb9fde04e2d1383eb6c1f242aa04f",
+  "vectorCommit": "bc5c1a7fb2a8871aaffd4b16ee4dd9c72bb81908",
+  "runtime": "Node.js 24.20.0",
+  "runtimeSha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
+  "sourceSha256": {
+    "reference/capella-payload-root.mjs": "4bace77d99b8c1828be4ce0e3de57e606ac4f3a270b8b5fdd33d36acb34fdda0",
+    "tests/capella-payload-root.test.mjs": "e5884bc561fdea1016952589eaaee962df62bc7e873e398bf7102fc59402e2b1",
+    "evidence/consensus-capella-payload/case_0_roots.yaml": "42929207c36e1db20030f3fe935c3741064afea4bbd75655507d4993353aae73",
+    "evidence/consensus-capella-payload/case_0_value.yaml": "efdddef38d97d9031f77539de54cf94eb9fbac727add2462923e220808c03b2d",
+    "evidence/consensus-capella-payload/case_1_roots.yaml": "4afd1cb069a426d8b28ed51efa0793c21760c060636bece64d29d55dd3f68a71",
+    "evidence/consensus-capella-payload/case_1_value.yaml": "02c1ab8783654f741467f22788bbde4d41850d8f8e9150a38b15f3da472c311c",
+    "evidence/consensus-capella-payload/case_2_roots.yaml": "501603950ecc00a1e4220cc3b8fc4d764f4993d1ce5173feb75ca375c9d85b36",
+    "evidence/consensus-capella-payload/case_2_value.yaml": "d8d65e4ba34ee89ab1f463a74353389ba7907f5c19903c687231529ef9aa5a66",
+    "evidence/consensus-capella-payload/case_3_roots.yaml": "17d8ebe5ea49b20586dc9452cf73be9f8b9ec7f32f2d279ee8a4144caf0ddd76",
+    "evidence/consensus-capella-payload/case_3_value.yaml": "318595dddfae8715e34ff2500cc5ca5866d7102c24cbe831a966636d39ee7606",
+    "evidence/consensus-capella-payload/case_4_roots.yaml": "45c7dc7caaec677748b4f5b4a0d09394fb91797c69b60f493da37083bb5acc3e",
+    "evidence/consensus-capella-payload/case_4_value.yaml": "9ba13d1646cd0700f039437ad422271acd82fa8725ed1a7ddd2ebd3b96ebe010",
+    "evidence/consensus-capella-payload/LICENSE": "feb87a2e0c305de3464cc44077da5393c52d8ca6362d37427157d04ec6f4510d",
+    "evidence/consensus-capella-payload/vectors.json": "ed789552b9d8ab9c0b5a75bba596b5505d7f278f3f1cbe01b019662f23132651"
+  },
+  "fullSuiteRerun": false,
+  "beaconBindingVerified": false,
+  "executionVerified": false,
+  "rootAuthenticated": false
+}

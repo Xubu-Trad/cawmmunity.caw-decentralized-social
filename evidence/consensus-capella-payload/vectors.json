@@ -1,0 +1,136 @@
+{
+  "repository": "ethereum/consensus-spec-tests",
+  "commit": "bc5c1a7fb2a8871aaffd4b16ee4dd9c72bb81908",
+  "cases": [
+    {
+      "case": 0,
+      "sourcePath": "tests/mainnet/capella/ssz_static/ExecutionPayloadHeader/ssz_random/case_0",
+      "header": {
+        "parent_hash": "0xc8c0bcda7fe9d4306bd5c6196da76312bdc6099905eca2d47cb6a4aae1a6939c",
+        "fee_recipient": "0x6ee8f2742d4d07b7bc1e054d1a03164fe5a5ec1f",
+        "state_root": "0xba99c456c56ed0c49a3b0955417dbd649c53a18f3f77e152640afb33b798a53b",
+        "receipts_root": "0x120b7f6ffe64b862b64600459a8742201dc5d33cc561994e5d5ac667b0eb9df6",
+        "logs_bloom": "0x46d09350d6591f3f9ea9aa635d23b72cbd883d2c731120fa70f411bcbbfdf042522aaaa8027fb5f2a4fd0031b49adfe1e0ced2a52f0a3c33b55ef68a8a303a39d6a39ed02f2ad733cb41b8f2b50db6d9f5e42726c1324c748ecdbd568693d5cd64f860c19b7becc5f176bb656d7d86b8a7e5374a4488fce4bc90dcf635921b66e35044c319243a8b165a4b888c3cb0d74553b56c71a066c0faaa13da40b3f689abfdb1b31940ab8c1a54c4c76315e9a1c7e3cbb4aa09e3b6a5f24b9e7168dcb8e3fe9da52affde28c846ece97f04096e30b7bd6641c7aa828110e5ddef3a06f4b9038b28a72918866c3e84b99a8d1aee81d022a54bc52ac7e2e46434e50845ea",
+        "prev_randao": "0xfe8d2168de396b1557e160e134fbd75125baaac1aa83ba0a48ed864e181ac10d",
+        "block_number": "15843583170969711263",
+        "gas_limit": "11163162000895556446",
+        "gas_used": "1080704082344505275",
+        "timestamp": "14315948492896875546",
+        "extra_data": "0x120ac3bbab9deeb7f091b2b5581783fe8136",
+        "base_fee_per_gas": "20491245703927049272843026261444468806699351627497328009039379501165267345529",
+        "block_hash": "0x99d1b4611c738b6900735ae476af175e3b758e1d02a39bd769d9bb787e4f126d",
+        "transactions_root": "0x369313fdd0d3ad43bec28796be4076a9e551ef9e57d08e25e27da51a86ffdfa0",
+        "withdrawals_root": "0xffb3177034e915f507d9cbab51d2286809199145ff2730827fd600aa7f79396a"
+      },
+      "root": "0x6cb5026d3b38098affeff2560b589f9306b18208e678f159d2f1287818a5d8f8",
+      "sha256": {
+        "value.yaml": "efdddef38d97d9031f77539de54cf94eb9fbac727add2462923e220808c03b2d",
+        "roots.yaml": "42929207c36e1db20030f3fe935c3741064afea4bbd75655507d4993353aae73"
+      }
+    },
+    {
+      "case": 1,
+      "sourcePath": "tests/mainnet/capella/ssz_static/ExecutionPayloadHeader/ssz_random/case_1",
+      "header": {
+        "parent_hash": "0x5dd14bed46ad274c57ce51d6a0e9703ba1ce0653b9e2b084c4685891ab97ba00",
+        "fee_recipient": "0x347eac58b72da2e221c5fe76b8f8f305a81c6408",
+        "state_root": "0xfbcbc7d3bfde5488e22560d1caad7f7454aeec3b25df335948f7cc62265e136f",
+        "receipts_root": "0x655df7d38788f68f8eb643d493d4e34cf340e4e806b9de9813ac3cffdb4c661d",
+        "logs_bloom": "0x54e0e18dd35ecd43fb8d1677ffd482e8eaf975608708162b3a607cab285848c63a619cfce17215116fc48ec86f563b31f9fcba7060888d014739928b5fb96e96fd0efc2795f6004d5359dc9df82ba8561a4d0daf472b7f9fd06495ff687b22f6ee7006c6cdbe662e9a9e85e45547344f623d5f5d7174bf6ea606fb41dd79a65f19b64fb5af9594bbe6d34489c870574d1a437b88ae97e52580a74a266558a0964c4fa5b4f4fba392cfb3eac7baf5492cc5fdfcf190611558ccb676a14a833de049bed398a3af32f1b681e85a57a69f34eaa9c7646f2a644abdbbbbac41fa789309cd741620ade88372be0d20249b8aa49b0acfb78dc7953f4ba339e409498e1c",
+        "prev_randao": "0x5fc5e2ccaf018b164d4be67e3750d9e0167210752247222ba3f98af9019350b7",
+        "block_number": "14836541150301106290",
+        "gas_limit": "4419677629039526983",
+        "gas_used": "869042696277584438",
+        "timestamp": "528681488167343878",
+        "extra_data": "0xd3aa1334f5c4",
+        "base_fee_per_gas": "102926803915419423594867329793422992981080663761020583644719144891940279208863",
+        "block_hash": "0xb386bf7d7fdda70379ad82151292a2e7780807f83fee7ae437214469bf9b371f",
+        "transactions_root": "0x6ca88d1e5e6ba58fbba668476220d4577c90293e809929e270265cb0a73b393b",
+        "withdrawals_root": "0xeb1aa82495883ad33cbc0158f2a5c408a8bdd404f0530dba714761850be45c8e"
+      },
+      "root": "0xa3bfba92c943ac4db46098120268a77d4e10f4ee125180b99f3df764229d9246",
+      "sha256": {
+        "value.yaml": "02c1ab8783654f741467f22788bbde4d41850d8f8e9150a38b15f3da472c311c",
+        "roots.yaml": "4afd1cb069a426d8b28ed51efa0793c21760c060636bece64d29d55dd3f68a71"
+      }
+    },
+    {
+      "case": 2,
+      "sourcePath": "tests/mainnet/capella/ssz_static/ExecutionPayloadHeader/ssz_random/case_2",
+      "header": {
+        "parent_hash": "0xaae6974bab2875fcd7ed7cdc192531e307aacf602fc783db1af6d69c9571ae3c",
+        "fee_recipient": "0xdf18a4b8e54b64677bf8eec6ca0d11cc6e25261c",
+        "state_root": "0x14fea0bfaae4e4bca1403fe004b74c27e25b6413a88cc9930f4af2c41d3557a4",
+        "receipts_root": "0x4d8e7e029bb438002569e6ba6e799bfe42c4ceb2ed2d85ba583b8717829951e2",
+        "logs_bloom": "0x65817494d0678843b65b34afca6eb8c7d7d86fdd32796a0a0dd6be42188957dfb0da8ed1eac7bd3d5b9bb9309aa1b1d29d5abd796d0c50388d717800bad84e6982b06f174ccf4b8d11da11fd928676c884be66fe1e4b4a1428f1f6822a1180e04b80b4eae6b354ef4b3c86ac06cbcfe315557db464135a093836f98ce9df7b76f256479ed40812edd6dcebaef8703d73e814396379e565afcb280a573ac2ecaff01266084fa3029e81d1daf0cab1b54e1d0985ad459c3bf8b7ff6b3bbabaf223b4af19caaccb573428a7a66007be0b266e54a7e6f123b1d110eed60a004d49b8e985c891b0536e9925f543ab9b729623ed68a8b796ccec6428ef2d0c71a50b0b",
+        "prev_randao": "0xbbdd0a0a7a78f6b500a4775903081b26e9fea4bdd1a7b9e0dbe95c6e82063919",
+        "block_number": "1796218489474485376",
+        "gas_limit": "49235701778825785",
+        "gas_used": "6446650220279535110",
+        "timestamp": "5593028598201937387",
+        "extra_data": "0x276c7bcffcfac6aeea16",
+        "base_fee_per_gas": "108215345671600934944457111098622918859762454545962147083951390767433440386577",
+        "block_hash": "0xb497358d8f32f6203a44f7ab5626bc67c57af8c9f0ee87b9e7282ee805563a7d",
+        "transactions_root": "0x68b73304ee90bf096eec92e8a3fc7c179eca294b83816df2ee541eee7299f743",
+        "withdrawals_root": "0xae36712f439a2a750ec91e427483550e204a85db29b34d80b96e3b34f832702d"
+      },
+      "root": "0xd091c0565d180c8932bc353800fb1e7dd53da1bec1ebf15a71f2625d8035e664",
+      "sha256": {
+        "value.yaml": "d8d65e4ba34ee89ab1f463a74353389ba7907f5c19903c687231529ef9aa5a66",
+        "roots.yaml": "501603950ecc00a1e4220cc3b8fc4d764f4993d1ce5173feb75ca375c9d85b36"
+      }
+    },
+    {
+      "case": 3,
+      "sourcePath": "tests/mainnet/capella/ssz_static/ExecutionPayloadHeader/ssz_random/case_3",
+      "header": {
+        "parent_hash": "0xe745b715ae5e4613989d106cc9f4e9f8076dae52278d48fc00f35ead903ea60f",
+        "fee_recipient": "0xe0eb2b810230e8bb00275ad17bcf95de0243ca5c",
+        "state_root": "0x98edbf1c46eda2342c042c91f4c5855654e03c0959d901fdcdef1d0a730b8f4f",
+        "receipts_root": "0x747283fba86ddc83777b15916195590fe9c421adb96fd05e984633cf7d8fc74a",
+        "logs_bloom": "0xccb4533fd4802ad484f4d1cd1e46cd7a5fc2141edd2c1199adc50c095d865f049966cff1a6a901e9727e1ecf9549219cf8e290e3bd94a0b113d430664bf211054f623ac3deb7b4a1457657bc3ff93bbe89b86ed9c07b752d3f067bf3bac9a6bb502b20cd5ad6e1ca20d4912c1cc12c0c3398438037d92cecf9ca1f48118866fbbabac82c77ea14c8d8b62ef10093bbba092b0fd15fc42e0c3880f7ca6d31d75561ddb5c46813c7167047c701e7177bb1864cac8240806ee4c9692724059ffb27287d0abc09186e2c4d14d1b6182166560df7725b369434f3ab03c2a3ec3a840275b9bd43ef8eb71bcddf5ffb55a322b3c34bc0be519545717591d2c3359402e5",
+        "prev_randao": "0x261bb86b47503529a0c098b14bd4c9df36b30c72b3920ee3dd91d35b38afbdfc",
+        "block_number": "15563865579023175108",
+        "gas_limit": "15777765400628692126",
+        "gas_used": "9968055515790170301",
+        "timestamp": "16064152562715078980",
+        "extra_data": "0xdeed64e00a1170ee5d3ea90899742dc63f5d7583",
+        "base_fee_per_gas": "21995876272780685148619128805574162425159994972924706827025970481214024316083",
+        "block_hash": "0x60873636417560e1a5ff4d854da1b33bc2e16492f2358624bb825ef5af68014d",
+        "transactions_root": "0xa9a9ef1c684bd10cae05c557bb04fc0cc55e40f7e02b1013530c8796cb4001ee",
+        "withdrawals_root": "0xadede2685b694d9818d3fd86e7dd8657ce51f2a6307d098f1e336d3d58bab0d0"
+      },
+      "root": "0x5b073aa9f7f8a57870d87b1dab462aad9b7760ca8a81ad79cdbc23aeb81c775b",
+      "sha256": {
+        "value.yaml": "318595dddfae8715e34ff2500cc5ca5866d7102c24cbe831a966636d39ee7606",
+        "roots.yaml": "17d8ebe5ea49b20586dc9452cf73be9f8b9ec7f32f2d279ee8a4144caf0ddd76"
+      }
+    },
+    {
+      "case": 4,
+      "sourcePath": "tests/mainnet/capella/ssz_static/ExecutionPayloadHeader/ssz_random/case_4",
+      "header": {
+        "parent_hash": "0xefadebfb0dedf4f894ff05203deac20346d1a2a52dcd2950f54943a621caf5d8",
+        "fee_recipient": "0x093e5730e0b865198b1e6d453a1d90da9e3d2fe6",
+        "state_root": "0x474b759cf62a5c42108c2ecaf694ffebe3151b6937ff998025bd2a449da890a6",
+        "receipts_root": "0xdb987da22a06ed94601f17eb6c068d349beeea8e1f9ce56f8f152baecd16434b",
+        "logs_bloom": "0xb154b822cdfb88baafc79d2307a368e5b826abcd17dff46cabe16be90265673923ce988610b3d15584baead6a1ab1b192d3c6024538acde021b178636ff82740a47958e7da0bc7b58ca946a9d972a619e12f295adc214c703defb6b5d420f1d76cbb79099f08828aa16bc520b39796c67c7dba9b1f4d41f98a54363a5e0f0d59c05d2b849053795b933464cd7b59f3af5d74395ecd3579321ea2b3ab3f71b3e00e60ecf0cb1c10e61a144cefd51a25848b8ccca609f21ef3bfbc713833224ced1a979c65f830418fe612543552cc21968ef409adeef9bf54c2a8bea5fb6f3491c351a84106f6dd78616b21832b5dd9f10799ca31d3d71e04dcf6c476c51dbeba",
+        "prev_randao": "0x31a73d22f81b2c9fc2af6c20521d2c5783e59b56deb76140e14424fe06166076",
+        "block_number": "3411490893783914549",
+        "gas_limit": "18033644166903597491",
+        "gas_used": "4715408052816925927",
+        "timestamp": "11270229830689748061",
+        "extra_data": "0x0411dff649623505e8ad",
+        "base_fee_per_gas": "51460030106465912778487346978875279294233859405496054019210396814725230806721",
+        "block_hash": "0xee0497a22aa0110c0586f6a3dad00c634f2eeb4c5dd83cfa43e3e49e08e46bd7",
+        "transactions_root": "0x1f0f72920be6141ae30a8e1d7bce3458f53e54d6fa517890ee492b1c9caf003d",
+        "withdrawals_root": "0xfe3b7c910f925b1d09a0f9d6b4d900df00254378ea0a625f5f44b08526f96cfa"
+      },
+      "root": "0x1c63c606376135ad428967c0dde6f0d86d5f551dbec0ca02f6d02b0620f550cb",
+      "sha256": {
+        "value.yaml": "9ba13d1646cd0700f039437ad422271acd82fa8725ed1a7ddd2ebd3b96ebe010",
+        "roots.yaml": "45c7dc7caaec677748b4f5b4a0d09394fb91797c69b60f493da37083bb5acc3e"
+      }
+    }
+  ]
+}
