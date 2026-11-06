@@ -484,3 +484,8 @@ Fixed a reproduced empty-success launch through a Windows directory junction. Th
 ## Authorization lifetime and reviewer follow-up — 2026-11-05
 
 [Current review](AUTHORIZATION_LIFETIME_REVIEW.md) records outside receipts and unresolved stake/delegate revocation semantics. A retained-history commitment regression passes with 13 focused checks. Next obtain reproducible outside evidence and settle explicit cancellation semantics before changing the candidate. No new EVM/full-suite/release claim; CI remains deferred.
+
+
+## Reward precision and lifetime budget — 2026-11-05
+
+[Analytical budget](STAKING_BUDGET_REVIEW.md) exposes the fixed-point model's stake-dependent index ceiling and separate funded-counter limit. Five Python tests pass, including an injected near-cap rejection. Next review a permissionless entitlement-preserving lifetime strategy and dust policy; no rollover, minimum stake or economic change is adopted. No new EVM/full-suite result.

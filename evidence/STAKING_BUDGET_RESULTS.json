@@ -1,0 +1,95 @@
+{
+  "schema": "caw-staking-budget/1",
+  "scale": "18446744073709551616",
+  "cases": [
+    {
+      "name": "one-base-unit eligible pool",
+      "feeBaseUnits": "5000000000000000000000",
+      "eligibleBaseUnits": "1",
+      "admitted": true,
+      "increment": "92233720368547758080000000000000000000000",
+      "unassignedScaledPerPost": "0",
+      "unassignedBaseUnitsPerPost": "0",
+      "unassignedFractionOfFee": "0",
+      "postsBeforeIndexCap": "15845632",
+      "postsBeforeFundingCap": "1255420347077336152767157884641533283",
+      "postsBeforeCounterCap": "15845632",
+      "limitingCounters": [
+        "index"
+      ]
+    },
+    {
+      "name": "one-token eligible pool",
+      "feeBaseUnits": "5000000000000000000000",
+      "eligibleBaseUnits": "1000000000000000000",
+      "admitted": true,
+      "increment": "92233720368547758080000",
+      "unassignedScaledPerPost": "0",
+      "unassignedBaseUnitsPerPost": "0",
+      "unassignedFractionOfFee": "0",
+      "postsBeforeIndexCap": "15845632502852867518708790",
+      "postsBeforeFundingCap": "1255420347077336152767157884641533283",
+      "postsBeforeCounterCap": "15845632502852867518708790",
+      "limitingCounters": [
+        "index"
+      ]
+    },
+    {
+      "name": "uneven three-base-unit pool",
+      "feeBaseUnits": "5000000000000000000000",
+      "eligibleBaseUnits": "3",
+      "admitted": true,
+      "increment": "30744573456182586026666666666666666666666",
+      "unassignedScaledPerPost": "2",
+      "unassignedBaseUnitsPerPost": "1/9223372036854775808",
+      "unassignedFractionOfFee": "1/46116860184273879040000000000000000000000",
+      "postsBeforeIndexCap": "47536897",
+      "postsBeforeFundingCap": "1255420347077336152767157884641533283",
+      "postsBeforeCounterCap": "47536897",
+      "limitingCounters": [
+        "index"
+      ]
+    },
+    {
+      "name": "maximum total eligible pool",
+      "feeBaseUnits": "5000000000000000000000",
+      "eligibleBaseUnits": "340282366920938463463374607431768211455",
+      "admitted": true,
+      "increment": "271",
+      "unassignedScaledPerPost": "17198932973434481425481385990814695695",
+      "unassignedBaseUnitsPerPost": "17198932973434481425481385990814695695/18446744073709551616",
+      "unassignedFractionOfFee": "3439786594686896285096277198162939139/18446744073709551616000000000000000000000",
+      "postsBeforeIndexCap": "5392994971700748775659353626327416102323402563",
+      "postsBeforeFundingCap": "1255420347077336152767157884641533283",
+      "postsBeforeCounterCap": "1255420347077336152767157884641533283",
+      "limitingCounters": [
+        "funded"
+      ]
+    },
+    {
+      "name": "tiny fee large eligible pool",
+      "feeBaseUnits": "1",
+      "eligibleBaseUnits": "79228162514264337593543950335",
+      "admitted": false,
+      "reason": "ZERO_INCREMENT",
+      "postsBeforeCounterCap": "0"
+    }
+  ],
+  "assumptions": "constant fee/eligible stake; zero starting counters; no rollover",
+  "horizonIsLivenessGuarantee": false,
+  "contractExecuted": false,
+  "gasMeasured": false,
+  "specificationDecisionMade": false,
+  "validation": {
+    "pythonTestsPassed": 5,
+    "pythonVersion": "3.12.14",
+    "runtimeSha256": "7e9b92ec5384dbffbe0bd4fd8d52dc25d7defc60024140605f450b403423c40b",
+    "evmRun": false,
+    "fullNodeSuiteRerun": false
+  },
+  "sourceSha256": {
+    "experiments/paid-action/staking_budget.py": "48e6a5e8eb1c0d4d78a101edb6047e067d33f49dcdf2dc8b220f8138b2a6e650",
+    "experiments/paid-action/staking_fixed_model.py": "05061e4f08631c6355d2d640f1c3058be98e6231abc6331841bdfaa91917600c",
+    "tests/test_staking_budget.py": "d7c172fadf6088af9eff2e14323d369982044ebdf02d26e2b4235e14243109ed"
+  }
+}
