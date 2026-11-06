@@ -524,3 +524,8 @@ Fixed a reproduced empty-success launch through a Windows directory junction. Th
 ## PR #16 evidence review — 2026-11-06
 
 [Independent packet review](PR16_EVIDENCE_REVIEW.md): original trace checks pass, but unexpected-RPC and wrong-summary-hash controls incorrectly pass its comparison script. Await bounded corrections and rerun both negatives before merge. Preserve receipt provenance; issue #2 remains open.
+
+
+## Capella structural composition — 2026-11-06
+
+[Payload/body/header binding](CAPELLA_BINDING_REVIEW.md) passes 39 focused checks including seven composition cases. Next external corresponding combined vectors and explicit network/fork policy. Bootstrap, committee signatures, freshness and finality remain unresolved. PR16 unchanged; await requested comparison corrections before merge.

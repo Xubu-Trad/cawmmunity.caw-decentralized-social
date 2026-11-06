@@ -1,0 +1,18 @@
+{
+  "testsPassed": 39,
+  "filesTested": 4,
+  "newCompositionTests": 7,
+  "runtime": "Node.js 24.20.0",
+  "runtimeSha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
+  "specCommit": "204fb4a19774eabb7a2e91505365deed6b8afef8",
+  "sourceSha256": {
+    "reference/capella-header-binding.mjs": "921b83c3ad767b82b6712c71f0ef8d6973cf77d664a277b1e4732b479e3cd52d",
+    "scripts/generate-capella-binding-fixture.py": "58b73f7045e4557bb77fe8dff97dd9dc1534cfe11089279cc3a7b2dbab2622b1",
+    "tests/capella-header-binding.test.mjs": "202c40ba86bea79e2c19309ce24868623161444d282c26bc3c211be101a3603e",
+    "evidence/CAPELLA_BINDING_FIXTURE.json": "fbd57c4f30e3a77fbebfb0b0d6b5916a6e01fdbca491fc9d9f25882371fdc0a9"
+  },
+  "compositionFixtureSynthetic": true,
+  "officialCombinedFixtureTested": false,
+  "fullSuiteRerun": false,
+  "rootAuthenticated": false
+}
