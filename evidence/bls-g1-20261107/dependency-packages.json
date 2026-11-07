@@ -1,0 +1,26 @@
+[
+  {
+    "name": "@noble/curves",
+    "version": "1.9.7",
+    "url": "https://registry.npmjs.org/@noble/curves/-/curves-1.9.7.tgz",
+    "sha256": "c4c5545645b8d58a080d2faf84982f6fe5dc3a0516e11de8dc571b38cab565e9",
+    "size": 362302,
+    "integrity": "sha512-gbKGcRUYIjA3/zCCNaWDciTMFI0dCkvou3TL8Zmy5Nc7sJ47a0jtOeZoTaMxkuqRo9cRhjOdZJXegxYE5FN/xw==",
+    "gitHeadRegistryClaim": "a0ac59846ee76c52f7c18886f4963e1211345d48",
+    "installedFilesMatched": 239,
+    "registrySignatureVerified": false,
+    "sourceBuildReproduced": false
+  },
+  {
+    "name": "@noble/hashes",
+    "version": "1.8.0",
+    "url": "https://registry.npmjs.org/@noble/hashes/-/hashes-1.8.0.tgz",
+    "sha256": "e8a765d92c04faaccba8776411c5038cb195f812ee629fce07e1d2e6aec80ea0",
+    "size": 155326,
+    "integrity": "sha512-jCs9ldd7NwzpgXDIf6P3+NrHh9/sD6CQdxHyjQI+h/6rDNo88ypBxxz45UDuZHz9r3tNz7N/VInSVoVdtXEI4A==",
+    "gitHeadRegistryClaim": "32f700f38ec49d7e6b2ab687904d6b2d7d60d80a",
+    "installedFilesMatched": 247,
+    "registrySignatureVerified": false,
+    "sourceBuildReproduced": false
+  }
+]

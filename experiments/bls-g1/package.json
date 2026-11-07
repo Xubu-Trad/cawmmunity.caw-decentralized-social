@@ -1,0 +1,12 @@
+{
+  "name": "caw-bls-g1-research",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --max-old-space-size=256 --test --test-reporter=tap --test-concurrency=1 --test-timeout=30000 g1.test.mjs"
+  },
+  "dependencies": {
+    "@noble/curves": "1.9.7",
+    "@noble/hashes": "1.8.0"
+  }
+}

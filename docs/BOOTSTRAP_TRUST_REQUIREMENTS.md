@@ -41,3 +41,8 @@ FACT — The corrected research verifier admits the exact 46-key layout of the r
 INFERENCE — ForkData consistency is not proof of the intended live network, trusted checkpoint, authoritative fork schedule, BLS validity, freshness or consensus. Matching four digest bytes cannot establish those properties.
 
 NEXT — Independently justify anchor provenance, define a real supported network and fork schedule, and verify BLS and update-transition requirements before any adoption. Public-test and production gates remain blocked. Hosted CI remains deferred.
+
+
+## Individual BLS G1 prerequisite — 2026-11-07
+
+[The isolated G1 adapter](BLS_G1_VALIDATION_20261107.md) matches all thirteen retained external decoder vectors after canonical re-encoding checks; 30 final focused and separate 44 regression tests pass. The initial raw-library mismatch remains documented, with 28 passes/1 failure preserved. Individual curve/subgroup validity does not establish committee membership, aggregate relationship or signatures. Next retained minimal-committee composition and aggregate-key relation, then G2/domain/signature and trust-policy gates. No root dependencies or acceptance changes; full suite/declared runtime not run, CI deferred.

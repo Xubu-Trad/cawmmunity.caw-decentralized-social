@@ -1,0 +1,7 @@
+{
+  "rawSha256": "b7e5e2b5982f4149fd6406ff206a9dcfbdd5079ad0c4242d8bc1084f5c793c58",
+  "rawSize": 7018,
+  "publicSha256": "a0db292b4c6fd679387289359a3c4d024b703d71b606cee0f62e3dc86ace23ec",
+  "publicSize": 6952,
+  "transform": "replace the executor checkout absolute path with <CHECKOUT>; original raw log preserved locally; test failure unchanged"
+}

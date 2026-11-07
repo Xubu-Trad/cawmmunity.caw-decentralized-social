@@ -1,0 +1,385 @@
+{
+  "schema": "caw-bls-g1-evidence/1",
+  "parentCommit": "ac280a5f882586aa85406674e372f99e8760a7b4",
+  "status": "SCOPED_ADAPTER_PASS_WITH_RAW_LIBRARY_MISMATCH",
+  "initialRun": {
+    "checks": 29,
+    "passed": 28,
+    "failed": 1,
+    "rawDecoderMatches": 12,
+    "rawDecoderCases": 13
+  },
+  "finalGroups": [
+    {
+      "name": "focused",
+      "command": [
+        "node",
+        "--max-old-space-size=256",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "--test-timeout=30000",
+        "experiments/bls-g1/g1.test.mjs"
+      ],
+      "exitCode": 0,
+      "passed": 30,
+      "log": "evidence/bls-g1-20261107/focused.tap"
+    },
+    {
+      "name": "regression",
+      "command": [
+        "node",
+        "--max-old-space-size=256",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "--test-timeout=30000",
+        "tests/verified-import-boundary.test.mjs",
+        "tests/dependency-substitution.test.mjs",
+        "tests/source-commitment-inspection.test.mjs",
+        "tests/pinned-fixture-operator-policy.test.mjs",
+        "tests/operator-genesis-reference.test.mjs",
+        "tests/retained-fixture-genesis-binding.test.mjs",
+        "tests/fork-data-root.test.mjs"
+      ],
+      "exitCode": 0,
+      "passed": 44,
+      "log": "evidence/bls-g1-20261107/regression.tap"
+    }
+  ],
+  "externalDecoderCases": 13,
+  "adapterMatches": 13,
+  "rawLibraryMismatch": "deserialization_fails_with_b_flag_and_a_flag_true.json",
+  "runtime": {
+    "node": "v24.22.1",
+    "binarySha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+    "declaredNode": "24.20.0",
+    "declaredRuntimeRun": false
+  },
+  "rootDependenciesChanged": false,
+  "fullSuiteRerun": false,
+  "ciRun": false,
+  "committeeMembershipAuthenticated": false,
+  "aggregatePublicKeyRelationshipVerified": false,
+  "signaturesVerified": false,
+  "blsValidated": false,
+  "rootAuthenticated": false,
+  "networkAuthenticated": false,
+  "finalityVerified": false,
+  "updatesAccepted": false,
+  "productionAccepted": false,
+  "provenanceLimits": [
+    "release asset observed and hashed; generator not reproduced",
+    "package integrity and 486 installed files checked; signatures/attestations not verified",
+    "one npm TypeScript source matches Git blob; complete build origin not reproduced",
+    "pinned library versions selected for research, no production security clearance"
+  ],
+  "artifacts": [
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "authored adapter, harness, lock or provenance record",
+      "SHA256": "0c6365eb2d689faf778f500214d580eeec5cc0dee71572af44e9774631dd9644",
+      "SIZE": 2005,
+      "PATH": "experiments/bls-g1/g1.mjs"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "authored adapter, harness, lock or provenance record",
+      "SHA256": "262c124e03b46fb59eb41a9917d508b43183875d9338d2828341b2fdc3375740",
+      "SIZE": 3855,
+      "PATH": "experiments/bls-g1/g1.test.mjs"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "authored adapter, harness, lock or provenance record",
+      "SHA256": "6dc3d691db64d6bc5bef4ee85d8fbbbdc0327b960fec423f189799ecfb435c27",
+      "SIZE": 304,
+      "PATH": "experiments/bls-g1/package.json"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "authored adapter, harness, lock or provenance record",
+      "SHA256": "303999ac0c2d24d3f8151226bfe33b7a410b8eeacc2a2a514dbdd096624ce205",
+      "SIZE": 1179,
+      "PATH": "experiments/bls-g1/package-lock.json"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "retain upstream license notice unchanged",
+      "SHA256": "36ffd9dc085d529a7e60e1276d73ae5a030b020313e6c5408593a6ae2af39673",
+      "SIZE": 6555,
+      "PATH": "evidence/bls-g1-20261107/VECTORS_LICENSE"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "authored adapter, harness, lock or provenance record",
+      "SHA256": "9a478a78a9a8e53c88e5e5fd59b3a75316dc802006bc9c924743d5a3205c0bb4",
+      "SIZE": 202,
+      "PATH": "evidence/bls-g1-20261107/archive-identity.json"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "authored adapter, harness, lock or provenance record",
+      "SHA256": "0bf1cf2a1add1402f5b849fb7a1272c565ae41a2d6f95a7cc35a492b9a45c632",
+      "SIZE": 1326,
+      "PATH": "evidence/bls-g1-20261107/attempt-1-module.mjs"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "authored adapter, harness, lock or provenance record",
+      "SHA256": "45b1ea3fbe228afe02c16472d3eb10f5fb50578834959e2542f4c8c66d2e1edb",
+      "SIZE": 3032,
+      "PATH": "evidence/bls-g1-20261107/attempt-1-test.mjs"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "retain upstream license notice unchanged",
+      "SHA256": "4f221aee6e072336700c408c68ab3b96a3fc09f6aebe6f48f1bd99e5ef13faec",
+      "SIZE": 1109,
+      "PATH": "evidence/bls-g1-20261107/curves-LICENSE"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "authored adapter, harness, lock or provenance record",
+      "SHA256": "a95a825cecf73905f91e4734027909ebc129695b28fc7d6a943ffa510b34ae97",
+      "SIZE": 78992,
+      "PATH": "evidence/bls-g1-20261107/dependency-inventory.json"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "authored adapter, harness, lock or provenance record",
+      "SHA256": "7a38662ff03cd485c7a92a96f6fd74247b3d35edde1d30261a6031a0eb01b229",
+      "SIZE": 1073,
+      "PATH": "evidence/bls-g1-20261107/dependency-packages.json"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "authored adapter, harness, lock or provenance record",
+      "SHA256": "f10ce2b6f2ab38d5192f975252dffe0c9864c616e57feef25d568d79ac480cb6",
+      "SIZE": 339,
+      "PATH": "evidence/bls-g1-20261107/deserialization_G1_format.md"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "authored adapter, harness, lock or provenance record",
+      "SHA256": "b4e18e1d41e0172f3d81aad77ac2a02ec34db6a4c89f1174081e804ad5f62c2a",
+      "SIZE": 351,
+      "PATH": "evidence/bls-g1-20261107/failure-log-provenance.json"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "initial failed 29-check run; replace executor checkout prefix with <CHECKOUT>; see failure-log-provenance.json",
+      "SHA256": "a0db292b4c6fd679387289359a3c4d024b703d71b606cee0f62e3dc86ace23ec",
+      "SIZE": 6952,
+      "PATH": "evidence/bls-g1-20261107/focused-attempt-1.public.tap"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "authored adapter, harness, lock or provenance record",
+      "SHA256": "77bbd9c57a61ec902a0da1c7c47be9be58e30590f2564dba196b3a442439c124",
+      "SIZE": 250,
+      "PATH": "evidence/bls-g1-20261107/focused-command.json"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "node --max-old-space-size=256 --test --test-reporter=tap --test-concurrency=1 --test-timeout=30000 experiments/bls-g1/g1.test.mjs; stdout/stderr retained; 45-second deadline",
+      "SHA256": "d481f867403f499e496f1a52ee644fb8ee379d13e802295a071b020d9c18bf2a",
+      "SIZE": 6401,
+      "PATH": "evidence/bls-g1-20261107/focused.tap"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "retain upstream license notice unchanged",
+      "SHA256": "4f221aee6e072336700c408c68ab3b96a3fc09f6aebe6f48f1bd99e5ef13faec",
+      "SIZE": 1109,
+      "PATH": "evidence/bls-g1-20261107/hashes-LICENSE"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "authored adapter, harness, lock or provenance record",
+      "SHA256": "f50744165492520d50f5d9d2ccb3dcb9599d3cfc4588f17e5b0534bda680a42b",
+      "SIZE": 331,
+      "PATH": "evidence/bls-g1-20261107/npm-install.log"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "node --max-old-space-size=256 --test --test-reporter=tap --test-concurrency=1 --test-timeout=30000 tests/verified-import-boundary.test.mjs tests/dependency-substitution.test.mjs tests/source-commitment-inspection.test.mjs tests/pinned-fixture-operator-policy.test.mjs tests/operator-genesis-reference.test.mjs tests/retained-fixture-genesis-binding.test.mjs tests/fork-data-root.test.mjs; stdout/stderr retained; 45-second deadline",
+      "SHA256": "09fb8ffc2ee1fb6d88f59a0a888635dfbbad02969ff4ea718d845d4844799198",
+      "SIZE": 8223,
+      "PATH": "evidence/bls-g1-20261107/regression.tap"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "authored adapter, harness, lock or provenance record",
+      "SHA256": "2945eb5473c47c4a315c8db646bda53baf5714a93b3a55e64abca0aea0352e4e",
+      "SIZE": 1588,
+      "PATH": "evidence/bls-g1-20261107/run.json"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "authored adapter, harness, lock or provenance record",
+      "SHA256": "7e53799e73404ea55e2b77311d2076e089b3452475ba405f70038977a0871689",
+      "SIZE": 3809,
+      "PATH": "evidence/bls-g1-20261107/vector-inventory.json"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "extract unchanged deserialization_G1 member from release archive SHA256 0dc1dfabfa7b3e0f8e8029f9cb2bb8733597526fa085b18f160d2c4eb0b448bc",
+      "SHA256": "4f370805b31cef0fd2e32b7957f9ca45b04e6f7b3a848e66e5c141108529f737",
+      "SIZE": 138,
+      "PATH": "evidence/bls-g1-20261107/vectors/deserialization_fails_infinity_with_false_b_flag.json"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "extract unchanged deserialization_G1 member from release archive SHA256 0dc1dfabfa7b3e0f8e8029f9cb2bb8733597526fa085b18f160d2c4eb0b448bc",
+      "SHA256": "52e16d37f8712463fe33e1fdab7348b75bf9f2b8226dd7a3efb23d6ee8317e95",
+      "SIZE": 138,
+      "PATH": "evidence/bls-g1-20261107/vectors/deserialization_fails_infinity_with_true_b_flag.json"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "extract unchanged deserialization_G1 member from release archive SHA256 0dc1dfabfa7b3e0f8e8029f9cb2bb8733597526fa085b18f160d2c4eb0b448bc",
+      "SHA256": "342a52c85f94c6de967242502bec60a1bad20e8617453db78e34164f66857607",
+      "SIZE": 138,
+      "PATH": "evidence/bls-g1-20261107/vectors/deserialization_fails_not_in_G1.json"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "extract unchanged deserialization_G1 member from release archive SHA256 0dc1dfabfa7b3e0f8e8029f9cb2bb8733597526fa085b18f160d2c4eb0b448bc",
+      "SHA256": "38e05a91c2279d1421cae8f7c85b60506c6a0ccafde2c66a4a5c991451cef1d0",
+      "SIZE": 138,
+      "PATH": "evidence/bls-g1-20261107/vectors/deserialization_fails_not_in_curve.json"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "extract unchanged deserialization_G1 member from release archive SHA256 0dc1dfabfa7b3e0f8e8029f9cb2bb8733597526fa085b18f160d2c4eb0b448bc",
+      "SHA256": "0637bc43aa6796c344bc408c8535f55c08113508403de51212db8797ff00401c",
+      "SIZE": 136,
+      "PATH": "evidence/bls-g1-20261107/vectors/deserialization_fails_too_few_bytes.json"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "extract unchanged deserialization_G1 member from release archive SHA256 0dc1dfabfa7b3e0f8e8029f9cb2bb8733597526fa085b18f160d2c4eb0b448bc",
+      "SHA256": "45173bd2c81ce35e3d6a4f19566b4bf264d6fdbd80f5152730c3d2005749df41",
+      "SIZE": 140,
+      "PATH": "evidence/bls-g1-20261107/vectors/deserialization_fails_too_many_bytes.json"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "extract unchanged deserialization_G1 member from release archive SHA256 0dc1dfabfa7b3e0f8e8029f9cb2bb8733597526fa085b18f160d2c4eb0b448bc",
+      "SHA256": "6151af6cfd8e9d3506f2b5782b97cd88cdbb07cbd7f46bedd25db17ef716adaa",
+      "SIZE": 138,
+      "PATH": "evidence/bls-g1-20261107/vectors/deserialization_fails_with_b_flag_and_a_flag_true.json"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "extract unchanged deserialization_G1 member from release archive SHA256 0dc1dfabfa7b3e0f8e8029f9cb2bb8733597526fa085b18f160d2c4eb0b448bc",
+      "SHA256": "80ad78f08e430e5087bd3e8d66779d7400ac1eb407ef04eac5b39564153000b1",
+      "SIZE": 138,
+      "PATH": "evidence/bls-g1-20261107/vectors/deserialization_fails_with_b_flag_and_x_nonzero.json"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "extract unchanged deserialization_G1 member from release archive SHA256 0dc1dfabfa7b3e0f8e8029f9cb2bb8733597526fa085b18f160d2c4eb0b448bc",
+      "SHA256": "2e05e442bd845a80f25fe77d9ee96130d24b8df7f7fd764b7142c0d43ba7343f",
+      "SIZE": 138,
+      "PATH": "evidence/bls-g1-20261107/vectors/deserialization_fails_with_wrong_c_flag.json"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "extract unchanged deserialization_G1 member from release archive SHA256 0dc1dfabfa7b3e0f8e8029f9cb2bb8733597526fa085b18f160d2c4eb0b448bc",
+      "SHA256": "becb6cd9a66708f791f7e2a8c0562819c9b6e9b2e2519d5cc50251e23248fdd3",
+      "SIZE": 138,
+      "PATH": "evidence/bls-g1-20261107/vectors/deserialization_fails_x_equal_to_modulus.json"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "extract unchanged deserialization_G1 member from release archive SHA256 0dc1dfabfa7b3e0f8e8029f9cb2bb8733597526fa085b18f160d2c4eb0b448bc",
+      "SHA256": "afc23807023f97c7742b73cd81a3bb529a3c92a385801d2885c1de8525e167ce",
+      "SIZE": 138,
+      "PATH": "evidence/bls-g1-20261107/vectors/deserialization_fails_x_greater_than_modulus.json"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "extract unchanged deserialization_G1 member from release archive SHA256 0dc1dfabfa7b3e0f8e8029f9cb2bb8733597526fa085b18f160d2c4eb0b448bc",
+      "SHA256": "bb488460b420125c9401b7aef19b5d241ce16b833acea790b74ea3bf4a1c6c80",
+      "SIZE": 137,
+      "PATH": "evidence/bls-g1-20261107/vectors/deserialization_succeeds_correct_point.json"
+    },
+    {
+      "PARENTS": [
+        "ac280a5f882586aa85406674e372f99e8760a7b4"
+      ],
+      "TRANSFORM": "extract unchanged deserialization_G1 member from release archive SHA256 0dc1dfabfa7b3e0f8e8029f9cb2bb8733597526fa085b18f160d2c4eb0b448bc",
+      "SHA256": "e1588f732eab672ef6bcf3837dc88e34b49693fae20db33801539707536492b9",
+      "SIZE": 137,
+      "PATH": "evidence/bls-g1-20261107/vectors/deserialization_succeeds_infinity_with_true_b_flag.json"
+    }
+  ]
+}

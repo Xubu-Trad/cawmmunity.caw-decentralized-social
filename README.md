@@ -1,5 +1,7 @@
 # cawmmunity.caw - decentralized - social
 
+[BLS public-key validation research](docs/BLS_G1_VALIDATION_20261107.md) now checks compressed G1 encoding, curve/subgroup membership and nonidentity against external vectors. A raw-decoder mismatch is preserved; the canonical adapter passes 30 focused checks plus a separate 44-check regression. This does not verify committee authority or signatures.
+
 [A captured-source fixture prototype](docs/CAPTURED_FIXTURE_EXECUTION_20261107.md) now runs the retained five modules without rereading acquired source files. Seventeen focused checks and a separate 44-check regression passed. This experimental, explicitly trusted-host mechanism is not a hostile-code sandbox or live-chain authentication.
 
 [The next execution experiment now has an explicit threat model](docs/EXECUTION_THREAT_MODEL_20261107.md): protect captured fixture code from acquisition-file replacement while keeping runtime and manifest trust assumptions visible. The plan defines twelve review cases; no loader is implemented or new tests claimed.

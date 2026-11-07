@@ -1,0 +1,190 @@
+TAP version 13
+# Subtest: external deserialization: deserialization_fails_infinity_with_false_b_flag.json
+ok 1 - external deserialization: deserialization_fails_infinity_with_false_b_flag.json
+  ---
+  duration_ms: 3.16699
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_infinity_with_false_b_flag.json
+ok 2 - nonidentity key policy: deserialization_fails_infinity_with_false_b_flag.json
+  ---
+  duration_ms: 1.61375
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_infinity_with_true_b_flag.json
+ok 3 - external deserialization: deserialization_fails_infinity_with_true_b_flag.json
+  ---
+  duration_ms: 0.326654
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_infinity_with_true_b_flag.json
+ok 4 - nonidentity key policy: deserialization_fails_infinity_with_true_b_flag.json
+  ---
+  duration_ms: 0.119537
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_not_in_G1.json
+ok 5 - external deserialization: deserialization_fails_not_in_G1.json
+  ---
+  duration_ms: 1.522084
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_not_in_G1.json
+ok 6 - nonidentity key policy: deserialization_fails_not_in_G1.json
+  ---
+  duration_ms: 2.117927
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_not_in_curve.json
+ok 7 - external deserialization: deserialization_fails_not_in_curve.json
+  ---
+  duration_ms: 0.440362
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_not_in_curve.json
+ok 8 - nonidentity key policy: deserialization_fails_not_in_curve.json
+  ---
+  duration_ms: 0.485429
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_too_few_bytes.json
+ok 9 - external deserialization: deserialization_fails_too_few_bytes.json
+  ---
+  duration_ms: 0.133268
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_too_few_bytes.json
+ok 10 - nonidentity key policy: deserialization_fails_too_few_bytes.json
+  ---
+  duration_ms: 0.223361
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_too_many_bytes.json
+ok 11 - external deserialization: deserialization_fails_too_many_bytes.json
+  ---
+  duration_ms: 0.112156
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_too_many_bytes.json
+ok 12 - nonidentity key policy: deserialization_fails_too_many_bytes.json
+  ---
+  duration_ms: 0.075612
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_with_b_flag_and_a_flag_true.json
+ok 13 - external deserialization: deserialization_fails_with_b_flag_and_a_flag_true.json
+  ---
+  duration_ms: 0.282708
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_with_b_flag_and_a_flag_true.json
+ok 14 - nonidentity key policy: deserialization_fails_with_b_flag_and_a_flag_true.json
+  ---
+  duration_ms: 0.144744
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_with_b_flag_and_x_nonzero.json
+ok 15 - external deserialization: deserialization_fails_with_b_flag_and_x_nonzero.json
+  ---
+  duration_ms: 0.110213
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_with_b_flag_and_x_nonzero.json
+ok 16 - nonidentity key policy: deserialization_fails_with_b_flag_and_x_nonzero.json
+  ---
+  duration_ms: 0.078406
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_with_wrong_c_flag.json
+ok 17 - external deserialization: deserialization_fails_with_wrong_c_flag.json
+  ---
+  duration_ms: 0.057064
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_with_wrong_c_flag.json
+ok 18 - nonidentity key policy: deserialization_fails_with_wrong_c_flag.json
+  ---
+  duration_ms: 0.086268
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_x_equal_to_modulus.json
+ok 19 - external deserialization: deserialization_fails_x_equal_to_modulus.json
+  ---
+  duration_ms: 0.987302
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_x_equal_to_modulus.json
+ok 20 - nonidentity key policy: deserialization_fails_x_equal_to_modulus.json
+  ---
+  duration_ms: 1.118947
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_x_greater_than_modulus.json
+ok 21 - external deserialization: deserialization_fails_x_greater_than_modulus.json
+  ---
+  duration_ms: 0.755515
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_x_greater_than_modulus.json
+ok 22 - nonidentity key policy: deserialization_fails_x_greater_than_modulus.json
+  ---
+  duration_ms: 0.333935
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_succeeds_correct_point.json
+ok 23 - external deserialization: deserialization_succeeds_correct_point.json
+  ---
+  duration_ms: 2.253608
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_succeeds_correct_point.json
+ok 24 - nonidentity key policy: deserialization_succeeds_correct_point.json
+  ---
+  duration_ms: 1.663773
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_succeeds_infinity_with_true_b_flag.json
+ok 25 - external deserialization: deserialization_succeeds_infinity_with_true_b_flag.json
+  ---
+  duration_ms: 0.123893
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_succeeds_infinity_with_true_b_flag.json
+ok 26 - nonidentity key policy: deserialization_succeeds_infinity_with_true_b_flag.json
+  ---
+  duration_ms: 0.193887
+  type: 'test'
+  ...
+# Subtest: API rejects non-buffer and unsupported lengths
+ok 27 - API rejects non-buffer and unsupported lengths
+  ---
+  duration_ms: 0.410147
+  type: 'test'
+  ...
+# Subtest: no extra argument can override key rejection
+ok 28 - no extra argument can override key rejection
+  ---
+  duration_ms: 0.224723
+  type: 'test'
+  ...
+# Subtest: result retains the original bytes after caller mutation
+ok 29 - result retains the original bytes after caller mutation
+  ---
+  duration_ms: 2.578999
+  type: 'test'
+  ...
+# Subtest: retained raw-library discrepancy: noncanonical infinity sign bit
+ok 30 - retained raw-library discrepancy: noncanonical infinity sign bit
+  ---
+  duration_ms: 0.393843
+  type: 'test'
+  ...
+1..30
+# tests 30
+# suites 0
+# pass 30
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 188.697497

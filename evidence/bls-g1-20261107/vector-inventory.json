@@ -1,0 +1,80 @@
+[
+  {
+    "archivePath": "./deserialization_G1/deserialization_fails_infinity_with_false_b_flag.json",
+    "path": "evidence/bls-g1-20261107/vectors/deserialization_fails_infinity_with_false_b_flag.json",
+    "size": 138,
+    "sha256": "4f370805b31cef0fd2e32b7957f9ca45b04e6f7b3a848e66e5c141108529f737"
+  },
+  {
+    "archivePath": "./deserialization_G1/deserialization_fails_infinity_with_true_b_flag.json",
+    "path": "evidence/bls-g1-20261107/vectors/deserialization_fails_infinity_with_true_b_flag.json",
+    "size": 138,
+    "sha256": "52e16d37f8712463fe33e1fdab7348b75bf9f2b8226dd7a3efb23d6ee8317e95"
+  },
+  {
+    "archivePath": "./deserialization_G1/deserialization_fails_not_in_G1.json",
+    "path": "evidence/bls-g1-20261107/vectors/deserialization_fails_not_in_G1.json",
+    "size": 138,
+    "sha256": "342a52c85f94c6de967242502bec60a1bad20e8617453db78e34164f66857607"
+  },
+  {
+    "archivePath": "./deserialization_G1/deserialization_fails_not_in_curve.json",
+    "path": "evidence/bls-g1-20261107/vectors/deserialization_fails_not_in_curve.json",
+    "size": 138,
+    "sha256": "38e05a91c2279d1421cae8f7c85b60506c6a0ccafde2c66a4a5c991451cef1d0"
+  },
+  {
+    "archivePath": "./deserialization_G1/deserialization_fails_too_few_bytes.json",
+    "path": "evidence/bls-g1-20261107/vectors/deserialization_fails_too_few_bytes.json",
+    "size": 136,
+    "sha256": "0637bc43aa6796c344bc408c8535f55c08113508403de51212db8797ff00401c"
+  },
+  {
+    "archivePath": "./deserialization_G1/deserialization_fails_too_many_bytes.json",
+    "path": "evidence/bls-g1-20261107/vectors/deserialization_fails_too_many_bytes.json",
+    "size": 140,
+    "sha256": "45173bd2c81ce35e3d6a4f19566b4bf264d6fdbd80f5152730c3d2005749df41"
+  },
+  {
+    "archivePath": "./deserialization_G1/deserialization_fails_with_b_flag_and_a_flag_true.json",
+    "path": "evidence/bls-g1-20261107/vectors/deserialization_fails_with_b_flag_and_a_flag_true.json",
+    "size": 138,
+    "sha256": "6151af6cfd8e9d3506f2b5782b97cd88cdbb07cbd7f46bedd25db17ef716adaa"
+  },
+  {
+    "archivePath": "./deserialization_G1/deserialization_fails_with_b_flag_and_x_nonzero.json",
+    "path": "evidence/bls-g1-20261107/vectors/deserialization_fails_with_b_flag_and_x_nonzero.json",
+    "size": 138,
+    "sha256": "80ad78f08e430e5087bd3e8d66779d7400ac1eb407ef04eac5b39564153000b1"
+  },
+  {
+    "archivePath": "./deserialization_G1/deserialization_fails_with_wrong_c_flag.json",
+    "path": "evidence/bls-g1-20261107/vectors/deserialization_fails_with_wrong_c_flag.json",
+    "size": 138,
+    "sha256": "2e05e442bd845a80f25fe77d9ee96130d24b8df7f7fd764b7142c0d43ba7343f"
+  },
+  {
+    "archivePath": "./deserialization_G1/deserialization_fails_x_equal_to_modulus.json",
+    "path": "evidence/bls-g1-20261107/vectors/deserialization_fails_x_equal_to_modulus.json",
+    "size": 138,
+    "sha256": "becb6cd9a66708f791f7e2a8c0562819c9b6e9b2e2519d5cc50251e23248fdd3"
+  },
+  {
+    "archivePath": "./deserialization_G1/deserialization_fails_x_greater_than_modulus.json",
+    "path": "evidence/bls-g1-20261107/vectors/deserialization_fails_x_greater_than_modulus.json",
+    "size": 138,
+    "sha256": "afc23807023f97c7742b73cd81a3bb529a3c92a385801d2885c1de8525e167ce"
+  },
+  {
+    "archivePath": "./deserialization_G1/deserialization_succeeds_correct_point.json",
+    "path": "evidence/bls-g1-20261107/vectors/deserialization_succeeds_correct_point.json",
+    "size": 137,
+    "sha256": "bb488460b420125c9401b7aef19b5d241ce16b833acea790b74ea3bf4a1c6c80"
+  },
+  {
+    "archivePath": "./deserialization_G1/deserialization_succeeds_infinity_with_true_b_flag.json",
+    "path": "evidence/bls-g1-20261107/vectors/deserialization_succeeds_infinity_with_true_b_flag.json",
+    "size": 137,
+    "sha256": "e1588f732eab672ef6bcf3837dc88e34b49693fae20db33801539707536492b9"
+  }
+]

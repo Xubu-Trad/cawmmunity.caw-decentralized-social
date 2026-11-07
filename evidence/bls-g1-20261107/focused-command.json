@@ -1,0 +1,13 @@
+{
+  "command": [
+    "node",
+    "--max-old-space-size=256",
+    "--test",
+    "--test-reporter=tap",
+    "--test-concurrency=1",
+    "--test-timeout=30000",
+    "experiments/bls-g1/g1.test.mjs"
+  ],
+  "exitCode": 1,
+  "processDeadlineSeconds": 45
+}

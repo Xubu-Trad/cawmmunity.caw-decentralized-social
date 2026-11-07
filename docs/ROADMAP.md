@@ -586,3 +586,8 @@ Fixed a reproduced empty-success launch through a Windows directory junction. Th
 ## Captured fixture execution — 2026-11-07
 
 [The bounded prototype](CAPTURED_FIXTURE_EXECUTION_20261107.md) passes 17 focused and a separate 44 regression checks on Node v24.22.1. It evaluates copied, hash-checked fixture sources through explicit import edges without a writable execution tree. Manifest, checker, host objects and runtime remain trusted assumptions; this is not a hostile-code sandbox or application integration. Next independent review/provenance and the separate checkpoint, real-network/fork, recency and BLS gates. Declared runtime/full suite not run; CI deferred.
+
+
+## Individual BLS G1 prerequisite — 2026-11-07
+
+[The isolated G1 adapter](BLS_G1_VALIDATION_20261107.md) matches all thirteen retained external decoder vectors after canonical re-encoding checks; 30 final focused and separate 44 regression tests pass. The initial raw-library mismatch remains documented, with 28 passes/1 failure preserved. Individual curve/subgroup validity does not establish committee membership, aggregate relationship or signatures. Next retained minimal-committee composition and aggregate-key relation, then G2/domain/signature and trust-policy gates. No root dependencies or acceptance changes; full suite/declared runtime not run, CI deferred.
