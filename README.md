@@ -1,5 +1,7 @@
 # cawmmunity.caw - decentralized - social
 
+[Verification-to-import testing](docs/VERIFIED_IMPORT_BOUNDARY_20261107.md) now reproduces a dependency change after inspection. Captured verified bytes resist changes to the acquisition files, but a writable execution copy remains vulnerable. Four new checks and a separate 40-check regression passed; no secure-loader or live-trust claim.
+
 [Dependency substitution is now reproduced](docs/DEPENDENCY_SUBSTITUTION_20261107.md): unchanged entrypoint bytes can load altered behavior. A retained five-file inventory detects the tested change. Five new checks and a separate 35-check regression passed; this remains isolated research, not a secure loader or live-chain authentication.
 
 A new [source-replacement experiment](docs/SOURCE_COMMITMENT_INSPECTION_20261107.md) shows what a previously retained code hash can detect: 9 focused checks and a separate 26-check regression passed. This is research byte inspection, not a secure loader or live-chain authentication.

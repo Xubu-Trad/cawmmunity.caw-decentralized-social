@@ -58,3 +58,8 @@ The [retained source experiment](SOURCE_COMMITMENT_INSPECTION_20261107.md) detec
 ## Dependency substitution — 2026-11-07
 
 [Five focused checks and a separate 35-check regression](DEPENDENCY_SUBSTITUTION_20261107.md) passed on Node v24.22.1. A matching entrypoint hash does not verify its imports. The retained inventory detects the tested altered dependency, but neither comparison gates application recovery or binds verified bytes to execution. No full-suite or declared-runtime run, new adoption behavior, BLS or production claim; CI deferred.
+
+
+## Verification-to-import boundary — 2026-11-07
+
+[Four controlled scenarios and a separate 40-check regression](VERIFIED_IMPORT_BOUNDARY_20261107.md) pass on Node v24.22.1. Capturing the checked bytes isolates later acquisition-file changes; a writable snapshot still permits substitution before import. Next define the actor and execution-isolation assumptions before implementing a loader. No production source, authentication or adoption change; full suite and declared runtime not run, CI deferred.

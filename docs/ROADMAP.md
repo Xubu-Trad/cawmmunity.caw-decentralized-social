@@ -571,3 +571,8 @@ Fixed a reproduced empty-success launch through a Windows directory junction. Th
 ## Dependency substitution — 2026-11-07
 
 [Five focused checks and a separate 35-check regression](DEPENDENCY_SUBSTITUTION_20261107.md) passed on Node v24.22.1. Next hold the inventory fixed and isolate dependency replacement between inspection and import. Independent manifest authority, runtime identity and binding checked bytes to execution remain open. No full-suite or declared-runtime run, new adoption behavior, BLS or production claim; CI deferred.
+
+
+## Verification-to-import boundary — 2026-11-07
+
+[Four controlled scenarios and a separate 40-check regression](VERIFIED_IMPORT_BOUNDARY_20261107.md) pass on Node v24.22.1. Capturing the checked bytes isolates later acquisition-file changes; a writable snapshot still permits substitution before import. Next define the actor and execution-isolation assumptions before implementing a loader. No production source, authentication or adoption change; full suite and declared runtime not run, CI deferred.
