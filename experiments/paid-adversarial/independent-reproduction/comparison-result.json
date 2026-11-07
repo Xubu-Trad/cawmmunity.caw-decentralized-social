@@ -1,0 +1,67 @@
+{
+  "schema": "caw-paid-adversarial-comparison/1",
+  "baseline_commit": "91479b6dc8c9a264411d75177d43029e0266c354",
+  "verdict": "PASS",
+  "checks": [
+    {
+      "check": "case_pass_fail",
+      "status": "MATCH",
+      "detail": "cases retained=72 independent=72; all pass in both: True"
+    },
+    {
+      "check": "case_fields_excluding_tx_hash",
+      "status": "MATCH",
+      "detail": "cases differing in label/expected/effect/error/before/after: []"
+    },
+    {
+      "check": "rejections_state_invariant",
+      "status": "MATCH",
+      "detail": "rejected cases retained=47 (state unchanged 47), independent=47 (state unchanged 47)"
+    },
+    {
+      "check": "successful_posts",
+      "status": "MATCH",
+      "detail": "successful post cases retained=11 independent=11 summary=11"
+    },
+    {
+      "check": "transaction_receipts_status_gas",
+      "status": "MATCH",
+      "detail": "transactions retained=208 independent=208; receipt (status, gasUsed) pairs identical: True"
+    },
+    {
+      "check": "final_snapshot_40_slots",
+      "status": "MATCH",
+      "detail": "40 slots identical: True; totalCredits slot[18]=150000000000000000000007, dust slot[19]=11, vault(token balance of probe) slot[21]=150000000000000000000018; summary final credits=150000000000000000000007, vault=150000000000000000000018, dust=11"
+    },
+    {
+      "check": "inputs_manifest_16_files",
+      "status": "MATCH",
+      "detail": "input entries retained=16 independent=16; identical: True"
+    },
+    {
+      "check": "transaction_hash_differences",
+      "status": "EXPECTED_DIFFERENCE",
+      "detail": "25/72 case transaction hashes differ (signed content depends on block timestamps): ['initial_post', 'duplicate_other_submitter', 'underbacked_post', 'old_epoch_after_wallet_transfer', 'wallet_mode_1', 'wallet_mode_2', 'wallet_mode_3', 'wallet_mode_5', 'wallet_mode_0', 'wallet_mode_4', 'wallet_signature_bytes_0', 'wallet_signature_bytes_4096', 'wallet_signature_bytes_4097', 'wallet_nested_1_caught', 'wallet_nested_2_caught', 'wallet_nested_3_caught', 'wallet_nested_4_caught', 'wallet_nested_5_caught', 'wallet_nested_1_propagate', 'wallet_nested_2_propagate', 'wallet_nested_3_propagate', 'wallet_nested_4_propagate', 'wallet_nested_5_propagate', 'wallet_registry_caught', 'wallet_registry_propagate']"
+    },
+    {
+      "check": "rpc_call_counts",
+      "status": "EXPECTED_DIFFERENCE",
+      "detail": "local calls retained=970 independent=983; method count differences (retained, independent): {'eth_getTransactionReceipt': (208, 221)}; first receipt polls returning null: retained=0 independent=13"
+    },
+    {
+      "check": "trace_file_sha256",
+      "status": "EXPECTED_DIFFERENCE",
+      "detail": "retained trace file sha256=5b639707c113b23fa7025a85c098693a6be3431781f175cf1f13b22d1b22b2dc (summary capture_sha256=5b639707c113b23fa7025a85c098693a6be3431781f175cf1f13b22d1b22b2dc, consistent: True); independent trace file sha256=e9cf0f605958a78b79fb0f9fba46e145c88d8ce62a25caa87e1c669e9506e9da (differs because the trace contains run timestamps)"
+    },
+    {
+      "check": "node_configuration",
+      "status": "MATCH",
+      "detail": "anvil/chain config identical: True; performance counters (retained, independent): {'wall_seconds': (38.094, 22.75), 'peak_node_memory_bytes': (26873856, 27279360), 'node_output_bytes': (264991, 265927), 'local_request_count': (970, 983)}"
+    },
+    {
+      "check": "run_completeness_flags",
+      "status": "MATCH",
+      "detail": "both traces: complete=true, failure=null, synthetic_only=true, real_wallet_used=false"
+    }
+  ]
+}
