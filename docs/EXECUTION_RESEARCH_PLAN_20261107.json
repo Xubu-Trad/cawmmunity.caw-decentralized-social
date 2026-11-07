@@ -1,0 +1,137 @@
+{
+  "schema": "caw-execution-research-plan/1",
+  "status": "PROPOSED_NOT_IMPLEMENTED",
+  "parentCommit": "d5f3d229098d4318c22a33af3fc5007f3ea7d24b",
+  "profile": "retained-five-module-fixture-only",
+  "entrypoint": "reference/pinned-fixture-operator-policy.mjs",
+  "inventoryPath": "evidence/dependency-substitution-20261107/retained-source-inventory.json",
+  "inventorySha256": "bf8ad46e19fb2c551971a54e86a9b11cca66bdb9d2f739e01339a2101ed5a945",
+  "threatModel": {
+    "supportedActor": "may replace acquisition files before or after capture; cannot change retained inventory, checker, captured private state or runtime",
+    "assumedTrusted": [
+      "operator-retained inventory and its selection",
+      "reviewed checker/linker",
+      "host Node runtime and builtins",
+      "process memory and OS isolation boundary"
+    ],
+    "notProtectedAgainst": [
+      "same-process arbitrary code or memory modification",
+      "same-identity or privileged actor able to replace checker/runtime",
+      "malicious manifest or release selection",
+      "hostile-code sandbox escape"
+    ],
+    "independentAuthorityEstablished": false
+  },
+  "moduleEdges": {
+    "reference/pinned-fixture-operator-policy.mjs": {
+      "./operator-genesis-reference.mjs": "reference/operator-genesis-reference.mjs",
+      "node:crypto": "HOST:createHash"
+    },
+    "reference/operator-genesis-reference.mjs": {
+      "./bootstrap-fixture-metadata-selection.mjs": "reference/bootstrap-fixture-metadata-selection.mjs",
+      "./fork-data-root.mjs": "reference/fork-data-root.mjs",
+      "node:crypto": "HOST:createHash"
+    },
+    "reference/bootstrap-fixture-metadata-selection.mjs": {
+      "./bootstrap-profile-selection.mjs": "reference/bootstrap-profile-selection.mjs",
+      "node:crypto": "HOST:createHash"
+    },
+    "reference/bootstrap-profile-selection.mjs": {},
+    "reference/fork-data-root.mjs": {
+      "node:crypto": "HOST:createHash"
+    }
+  },
+  "proposedLimits": {
+    "moduleCount": 5,
+    "maximumSourceBytesPerModule": 65536,
+    "maximumSourceBytesTotal": 327680,
+    "heapMiB": 256,
+    "testTimeoutMs": 30000,
+    "processDeadlineSeconds": 45
+  },
+  "requiredExperiments": [
+    {
+      "id": "EX-01",
+      "trigger": "original captured graph",
+      "expected": "entire fixture result equals retained direct-call control",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "EX-02",
+      "trigger": "replace dependency before capture",
+      "expected": "digest mismatch rejects before any module evaluation",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "EX-03",
+      "trigger": "replace acquisition dependency after capture",
+      "expected": "captured original result unchanged; no source reread",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "EX-04",
+      "trigger": "supply missing or extra module",
+      "expected": "reject exact module inventory before evaluation",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "EX-05",
+      "trigger": "request unlisted static import, path alias or alternate builtin",
+      "expected": "reject exact parent/specifier edge; no default resolver",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "EX-06",
+      "trigger": "request dynamic import",
+      "expected": "reject without filesystem or network fallback",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "EX-07",
+      "trigger": "mutate caller-owned buffers after admission",
+      "expected": "private captured copy result unchanged",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "EX-08",
+      "trigger": "link or evaluation failure",
+      "expected": "return failure, no partial result or alternate loader",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "EX-09",
+      "trigger": "fresh repeated execution",
+      "expected": "no module cache shared across attempts",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "EX-10",
+      "trigger": "attempt source read/write/network during execution",
+      "expected": "no explicit I/O capabilities supplied; do not claim a hostile-code sandbox",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "EX-11",
+      "trigger": "runtime API unavailable or wrong supported runtime",
+      "expected": "refuse unsupported mode; record NOT_RUN, no native-import fallback",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "EX-12",
+      "trigger": "replace retained inventory or checker/runtime",
+      "expected": "outside supported protection; negative demonstration must not be called authenticated execution",
+      "status": "NOT_RUN"
+    }
+  ],
+  "executionMechanismSelected": false,
+  "runtimeCapabilityVerified": false,
+  "executedBytesBound": false,
+  "dependencyClosureVerified": false,
+  "rootAuthenticated": false,
+  "networkAuthenticated": false,
+  "blsValidated": false,
+  "updatesAccepted": false,
+  "productionAccepted": false,
+  "fullSuiteRerun": false,
+  "ciRun": false
+}

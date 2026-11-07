@@ -576,3 +576,8 @@ Fixed a reproduced empty-success launch through a Windows directory junction. Th
 ## Verification-to-import boundary — 2026-11-07
 
 [Four controlled scenarios and a separate 40-check regression](VERIFIED_IMPORT_BOUNDARY_20261107.md) pass on Node v24.22.1. Capturing the checked bytes isolates later acquisition-file changes; a writable snapshot still permits substitution before import. Next define the actor and execution-isolation assumptions before implementing a loader. No production source, authentication or adoption change; full suite and declared runtime not run, CI deferred.
+
+
+## Execution threat model — 2026-11-07
+
+[The proposed five-module execution plan](EXECUTION_THREAT_MODEL_20261107.md) fixes the acquisition-file adversary, trusted host assumptions, exact import edges and twelve candidate review cases. Next verify a runtime API can evaluate captured source with explicit resolution, then test the bounded prototype. No API selected, runtime execution, loader implementation, new test total or production policy in this documentation increment. Independent manifest/checkpoint authority and BLS remain open; CI deferred.

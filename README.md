@@ -1,5 +1,7 @@
 # cawmmunity.caw - decentralized - social
 
+[The next execution experiment now has an explicit threat model](docs/EXECUTION_THREAT_MODEL_20261107.md): protect captured fixture code from acquisition-file replacement while keeping runtime and manifest trust assumptions visible. The plan defines twelve review cases; no loader is implemented or new tests claimed.
+
 [Verification-to-import testing](docs/VERIFIED_IMPORT_BOUNDARY_20261107.md) now reproduces a dependency change after inspection. Captured verified bytes resist changes to the acquisition files, but a writable execution copy remains vulnerable. Four new checks and a separate 40-check regression passed; no secure-loader or live-trust claim.
 
 [Dependency substitution is now reproduced](docs/DEPENDENCY_SUBSTITUTION_20261107.md): unchanged entrypoint bytes can load altered behavior. A retained five-file inventory detects the tested change. Five new checks and a separate 35-check regression passed; this remains isolated research, not a secure loader or live-chain authentication.
