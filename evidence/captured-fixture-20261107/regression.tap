@@ -1,0 +1,274 @@
+TAP version 13
+# Subtest: all five retained local source identities match
+ok 1 - all five retained local source identities match
+  ---
+  duration_ms: 2.074042
+  type: 'test'
+  ...
+# Subtest: unchanged entrypoint inspection misses changed dependency bytes
+ok 2 - unchanged entrypoint inspection misses changed dependency bytes
+  ---
+  duration_ms: 1.790543
+  type: 'test'
+  ...
+# Subtest: controlled import substitution changes a reported flag without changing inputs
+ok 3 - controlled import substitution changes a reported flag without changing inputs
+  ---
+  duration_ms: 9.860437
+  type: 'test'
+  ...
+# Subtest: missing dependency rejects exact inventory comparison
+ok 4 - missing dependency rejects exact inventory comparison
+  ---
+  duration_ms: 0.719356
+  type: 'test'
+  ...
+# Subtest: unexpected file rejects exact inventory comparison
+ok 5 - unexpected file rejects exact inventory comparison
+  ---
+  duration_ms: 0.510516
+  type: 'test'
+  ...
+# Subtest: official minimal Capella fork-data root matches independent oracle, without authority
+ok 6 - official minimal Capella fork-data root matches independent oracle, without authority
+  ---
+  duration_ms: 2.508896
+  type: 'test'
+  ...
+# Subtest: changed fork version rejects with fresh synthetic config pin
+ok 7 - changed fork version rejects with fresh synthetic config pin
+  ---
+  duration_ms: 0.840675
+  type: 'test'
+  ...
+# Subtest: changed genesis validators root rejects with fresh synthetic metadata pin
+ok 8 - changed genesis validators root rejects with fresh synthetic metadata pin
+  ---
+  duration_ms: 0.483636
+  type: 'test'
+  ...
+# Subtest: changed bootstrap digest rejects with fresh synthetic metadata pin
+ok 9 - changed bootstrap digest rejects with fresh synthetic metadata pin
+  ---
+  duration_ms: 0.395586
+  type: 'test'
+  ...
+# Subtest: changed store digest rejects with fresh synthetic metadata pin
+ok 10 - changed store digest rejects with fresh synthetic metadata pin
+  ---
+  duration_ms: 0.341616
+  type: 'test'
+  ...
+# Subtest: malformed fork-version encoding rejects with fresh synthetic pin
+ok 11 - malformed fork-version encoding rejects with fresh synthetic pin
+  ---
+  duration_ms: 0.251323
+  type: 'test'
+  ...
+# Subtest: extra metadata authority field rejects with fresh synthetic pin
+ok 12 - extra metadata authority field rejects with fresh synthetic pin
+  ---
+  duration_ms: 0.307315
+  type: 'test'
+  ...
+# Subtest: wrong input pin rejects before metadata parsing
+ok 13 - wrong input pin rejects before metadata parsing
+  ---
+  duration_ms: 0.375566
+  type: 'test'
+  ...
+# Subtest: unsupported preset/epoch and duplicate fork-field reject
+ok 14 - unsupported preset/epoch and duplicate fork-field reject
+  ---
+  duration_ms: 0.502204
+  type: 'test'
+  ...
+# Subtest: extra config authority field rejects with a fresh pin
+ok 15 - extra config authority field rejects with a fresh pin
+  ---
+  duration_ms: 0.289448
+  type: 'test'
+  ...
+# Subtest: replacement of a known config key rejects
+ok 16 - replacement of a known config key rejects
+  ---
+  duration_ms: 0.327565
+  type: 'test'
+  ...
+# Subtest: coherent alternative fork remains unauthenticated
+ok 17 - coherent alternative fork remains unauthenticated
+  ---
+  duration_ms: 0.42531
+  type: 'test'
+  ...
+# Subtest: non-selected config value does not validate schedule
+ok 18 - non-selected config value does not validate schedule
+  ---
+  duration_ms: 1.547112
+  type: 'test'
+  ...
+# Subtest: baseline operator reference matches fixture only
+ok 19 - baseline operator reference matches fixture only
+  ---
+  duration_ms: 2.674031
+  type: 'test'
+  ...
+# Subtest: coherent provider genesis substitution rejects
+ok 20 - coherent provider genesis substitution rejects
+  ---
+  duration_ms: 1.668772
+  type: 'test'
+  ...
+# Subtest: altered operator bytes reject with unchanged pin
+ok 21 - altered operator bytes reject with unchanged pin
+  ---
+  duration_ms: 1.171385
+  type: 'test'
+  ...
+# Subtest: changed authority field rejects despite fresh hash
+ok 22 - changed authority field rejects despite fresh hash
+  ---
+  duration_ms: 0.231012
+  type: 'test'
+  ...
+# Subtest: extra operator field rejects despite fresh hash
+ok 23 - extra operator field rejects despite fresh hash
+  ---
+  duration_ms: 0.744743
+  type: 'test'
+  ...
+# Subtest: malformed expected operator pin rejects
+ok 24 - malformed expected operator pin rejects
+  ---
+  duration_ms: 0.323389
+  type: 'test'
+  ...
+# Subtest: baseline passes only as fixture consistency
+ok 25 - baseline passes only as fixture consistency
+  ---
+  duration_ms: 3.457372
+  type: 'test'
+  ...
+# Subtest: published comparator accepts coherent dual repin
+ok 26 - published comparator accepts coherent dual repin
+  ---
+  duration_ms: 0.417519
+  type: 'test'
+  ...
+# Subtest: source-pinned gate rejects identical dual-repinned data
+ok 27 - source-pinned gate rejects identical dual-repinned data
+  ---
+  duration_ms: 0.60104
+  type: 'test'
+  ...
+# Subtest: source-pinned gate rejects altered operator alone
+ok 28 - source-pinned gate rejects altered operator alone
+  ---
+  duration_ms: 0.239845
+  type: 'test'
+  ...
+# Subtest: extra caller replacement pin cannot override source pin
+ok 29 - extra caller replacement pin cannot override source pin
+  ---
+  duration_ms: 0.148821
+  type: 'test'
+  ...
+# Subtest: published fixture binds to retained full genesis root
+ok 30 - published fixture binds to retained full genesis root
+  ---
+  duration_ms: 4.166132
+  type: 'test'
+  ...
+# Subtest: coherent genesis replacement rejects against fixed reference
+ok 31 - coherent genesis replacement rejects against fixed reference
+  ---
+  duration_ms: 2.688963
+  type: 'test'
+  ...
+# Subtest: retained source matches without elevating authority or execution claims
+ok 32 - retained source matches without elevating authority or execution claims
+  ---
+  duration_ms: 1.721069
+  type: 'test'
+  ...
+# Subtest: coherent source replacement rejects against unchanged retained commitment
+ok 33 - coherent source replacement rejects against unchanged retained commitment
+  ---
+  duration_ms: 1.375157
+  type: 'test'
+  ...
+# Subtest: replacing the external commitment too remains an explicit trust boundary
+ok 34 - replacing the external commitment too remains an explicit trust boundary
+  ---
+  duration_ms: 0.296039
+  type: 'test'
+  ...
+# Subtest: controlled source replacement changes fixture outcome with inputs fixed
+ok 35 - controlled source replacement changes fixture outcome with inputs fixed
+  ---
+  duration_ms: 5.918247
+  type: 'test'
+  ...
+# Subtest: non-buffer inputs reject
+ok 36 - non-buffer inputs reject
+  ---
+  duration_ms: 0.776561
+  type: 'test'
+  ...
+# Subtest: empty and oversized bytes reject even with their matching digest
+ok 37 - empty and oversized bytes reject even with their matching digest
+  ---
+  duration_ms: 0.482675
+  type: 'test'
+  ...
+# Subtest: malformed or missing commitments reject
+ok 38 - malformed or missing commitments reject
+  ---
+  duration_ms: 0.381575
+  type: 'test'
+  ...
+# Subtest: extra override argument rejects
+ok 39 - extra override argument rejects
+  ---
+  duration_ms: 0.334605
+  type: 'test'
+  ...
+# Subtest: later buffer mutation does not become an execution binding
+ok 40 - later buffer mutation does not become an execution binding
+  ---
+  duration_ms: 0.246035
+  type: 'test'
+  ...
+# Subtest: unchanged inspected tree returns original unauthenticated result
+ok 41 - unchanged inspected tree returns original unauthenticated result
+  ---
+  duration_ms: 5.363155
+  type: 'test'
+  ...
+# Subtest: substitution after inspection changes the later imported result
+ok 42 - substitution after inspection changes the later imported result
+  ---
+  duration_ms: 5.642147
+  type: 'test'
+  ...
+# Subtest: captured verified bytes preserve behavior when acquisition files change
+ok 43 - captured verified bytes preserve behavior when acquisition files change
+  ---
+  duration_ms: 6.95284
+  type: 'test'
+  ...
+# Subtest: writable snapshot destination still permits substitution after its check
+ok 44 - writable snapshot destination still permits substitution after its check
+  ---
+  duration_ms: 3.469249
+  type: 'test'
+  ...
+1..44
+# tests 44
+# suites 0
+# pass 44
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 719.274852

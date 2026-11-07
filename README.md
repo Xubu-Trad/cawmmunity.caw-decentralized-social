@@ -1,5 +1,7 @@
 # cawmmunity.caw - decentralized - social
 
+[A captured-source fixture prototype](docs/CAPTURED_FIXTURE_EXECUTION_20261107.md) now runs the retained five modules without rereading acquired source files. Seventeen focused checks and a separate 44-check regression passed. This experimental, explicitly trusted-host mechanism is not a hostile-code sandbox or live-chain authentication.
+
 [The next execution experiment now has an explicit threat model](docs/EXECUTION_THREAT_MODEL_20261107.md): protect captured fixture code from acquisition-file replacement while keeping runtime and manifest trust assumptions visible. The plan defines twelve review cases; no loader is implemented or new tests claimed.
 
 [Verification-to-import testing](docs/VERIFIED_IMPORT_BOUNDARY_20261107.md) now reproduces a dependency change after inspection. Captured verified bytes resist changes to the acquisition files, but a writable execution copy remains vulnerable. Four new checks and a separate 40-check regression passed; no secure-loader or live-trust claim.

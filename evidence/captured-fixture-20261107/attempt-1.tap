@@ -1,0 +1,90 @@
+TAP version 13
+# (node:13) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: EX-01 retained captured graph matches direct fixture result
+ok 1 - EX-01 retained captured graph matches direct fixture result
+  ---
+  duration_ms: 14.170345
+  type: 'test'
+  ...
+# Subtest: EX-02 changed dependency rejects before graph execution
+ok 2 - EX-02 changed dependency rejects before graph execution
+  ---
+  duration_ms: 1.12184
+  type: 'test'
+  ...
+# Subtest: EX-03 deleted acquisition tree cannot alter captured evaluation
+ok 3 - EX-03 deleted acquisition tree cannot alter captured evaluation
+  ---
+  duration_ms: 7.093643
+  type: 'test'
+  ...
+# Subtest: EX-04 missing extra renamed and malformed modules reject
+ok 4 - EX-04 missing extra renamed and malformed modules reject
+  ---
+  duration_ms: 2.097283
+  type: 'test'
+  ...
+# Subtest: EX-05 authored controls reject unlisted static imports and path aliases
+ok 5 - EX-05 authored controls reject unlisted static imports and path aliases
+  ---
+  duration_ms: 4.653213
+  type: 'test'
+  ...
+# Subtest: EX-06 dynamic import reaches rejecting callback without default fallback
+ok 6 - EX-06 dynamic import reaches rejecting callback without default fallback
+  ---
+  duration_ms: 1.155679
+  type: 'test'
+  ...
+# Subtest: EX-07 caller buffer mutation after capture cannot change private source strings
+ok 7 - EX-07 caller buffer mutation after capture cannot change private source strings
+  ---
+  duration_ms: 4.622818
+  type: 'test'
+  ...
+# Subtest: EX-08 parse evaluation and invocation failure return no partial result
+ok 8 - EX-08 parse evaluation and invocation failure return no partial result
+  ---
+  duration_ms: 3.628427
+  type: 'test'
+  ...
+# Subtest: EX-09 separate executions have fresh module state
+ok 9 - EX-09 separate executions have fresh module state
+  ---
+  duration_ms: 6.506805
+  type: 'test'
+  ...
+# Subtest: EX-10 no explicit filesystem process require or fetch capabilities supplied
+ok 10 - EX-10 no explicit filesystem process require or fetch capabilities supplied
+  ---
+  duration_ms: 2.01462
+  type: 'test'
+  ...
+# Subtest: EX-11 missing experimental flag rejects in a fresh process
+ok 11 - EX-11 missing experimental flag rejects in a fresh process
+  ---
+  duration_ms: 65.261749
+  type: 'test'
+  ...
+# Subtest: EX-11 unsupported version label rejects, without claiming another runtime run
+ok 12 - EX-11 unsupported version label rejects, without claiming another runtime run
+  ---
+  duration_ms: 74.73078
+  type: 'test'
+  ...
+# Subtest: EX-12 raw engine can report an invented authority claim without establishing it
+ok 13 - EX-12 raw engine can report an invented authority claim without establishing it
+  ---
+  duration_ms: 1.609921
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 336.254237

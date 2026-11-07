@@ -13,6 +13,7 @@
     "build": "node --max-old-space-size=128 scripts/build.mjs",
     "verify:static": "node --max-old-space-size=128 scripts/check-static-dist.mjs",
     "package:static": "node --max-old-space-size=128 scripts/package-static.mjs",
-    "protocol:check": "node --max-old-space-size=256 experiments/execution-engine/selected-executor-check.mjs ."
+    "protocol:check": "node --max-old-space-size=256 experiments/execution-engine/selected-executor-check.mjs .",
+    "test:captured-fixture": "node --experimental-vm-modules --max-old-space-size=256 --test --test-reporter=tap --test-concurrency=1 --test-timeout=30000 tests/captured-fixture-execution.test.mjs"
   }
 }

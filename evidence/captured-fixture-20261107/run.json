@@ -1,0 +1,60 @@
+{
+  "schema": "caw-captured-fixture-run/1",
+  "parentCommit": "b8d66ce0eb96112b0e7eceff2a6467e3fa176d72",
+  "runtime": {
+    "node": "v24.22.1",
+    "binarySha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+    "declaredNode": "24.20.0",
+    "declaredRuntimeRun": false,
+    "experimentalVmFlagRequired": true
+  },
+  "guards": {
+    "diskMinimumBytes": 2147483648,
+    "memoryMinimumBytes": 1073741824,
+    "heapMiB": 256,
+    "processDeadlineSeconds": 45,
+    "vmSynchronousTimeoutMs": 1000
+  },
+  "groups": [
+    {
+      "name": "focused",
+      "command": [
+        "node",
+        "--experimental-vm-modules",
+        "--max-old-space-size=256",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "--test-timeout=30000",
+        "tests/captured-fixture-execution.test.mjs"
+      ],
+      "exitCode": 0,
+      "passed": 17,
+      "log": "evidence/captured-fixture-20261107/focused.tap"
+    },
+    {
+      "name": "regression",
+      "command": [
+        "node",
+        "--max-old-space-size=256",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "--test-timeout=30000",
+        "tests/verified-import-boundary.test.mjs",
+        "tests/dependency-substitution.test.mjs",
+        "tests/source-commitment-inspection.test.mjs",
+        "tests/pinned-fixture-operator-policy.test.mjs",
+        "tests/operator-genesis-reference.test.mjs",
+        "tests/retained-fixture-genesis-binding.test.mjs",
+        "tests/fork-data-root.test.mjs"
+      ],
+      "exitCode": 0,
+      "passed": 44,
+      "log": "evidence/captured-fixture-20261107/regression.tap"
+    }
+  ],
+  "fullSuiteRerun": false,
+  "ciRun": false,
+  "inputsUnchanged": true
+}

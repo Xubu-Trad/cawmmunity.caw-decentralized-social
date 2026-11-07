@@ -68,3 +68,8 @@ The [retained source experiment](SOURCE_COMMITMENT_INSPECTION_20261107.md) detec
 ## Execution threat model — 2026-11-07
 
 [The proposed five-module execution plan](EXECUTION_THREAT_MODEL_20261107.md) fixes the acquisition-file adversary, trusted host assumptions, exact import edges and twelve candidate review cases. Next verify a runtime API can evaluate captured source with explicit resolution, then test the bounded prototype. No API selected, runtime execution, loader implementation, new test total or production policy in this documentation increment. Independent manifest/checkpoint authority and BLS remain open; CI deferred.
+
+
+## Captured fixture execution — 2026-11-07
+
+[The bounded prototype](CAPTURED_FIXTURE_EXECUTION_20261107.md) passes 17 focused and a separate 44 regression checks on Node v24.22.1. It evaluates copied, hash-checked fixture sources through explicit import edges without a writable execution tree. Manifest, checker, host objects and runtime remain trusted assumptions; this is not a hostile-code sandbox or application integration. Next independent review/provenance and the separate checkpoint, real-network/fork, recency and BLS gates. Declared runtime/full suite not run; CI deferred.

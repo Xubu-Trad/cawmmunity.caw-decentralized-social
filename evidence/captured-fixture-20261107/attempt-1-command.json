@@ -1,0 +1,14 @@
+{
+  "command": [
+    "node",
+    "--experimental-vm-modules",
+    "--max-old-space-size=256",
+    "--test",
+    "--test-reporter=tap",
+    "--test-concurrency=1",
+    "--test-timeout=30000",
+    "tests/captured-fixture-execution.test.mjs"
+  ],
+  "exitCode": 0,
+  "processTimeoutSeconds": 45
+}
