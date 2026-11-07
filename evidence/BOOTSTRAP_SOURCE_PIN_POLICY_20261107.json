@@ -1,0 +1,125 @@
+{
+  "artifacts": [
+    {
+      "PARENTS": [
+        "727040cd06f1a1c8c42af86252a628a7909aa8d4"
+      ],
+      "PATH": "reference/pinned-fixture-operator-policy.mjs",
+      "SHA256": "59741781544a672c7500a4480dad037d1262f79ebacbc84450056c3028015980",
+      "SIZE": 1196,
+      "TRANSFORM": "saved hash-verified local source"
+    },
+    {
+      "PARENTS": [
+        "727040cd06f1a1c8c42af86252a628a7909aa8d4"
+      ],
+      "PATH": "tests/pinned-fixture-operator-policy.test.mjs",
+      "SHA256": "80f8826a9dfc98f063f75e68342d4cebda8e78edf6536bd5f07fb0cad8481618",
+      "SIZE": 3410,
+      "TRANSFORM": "saved hash-verified five-case test source"
+    },
+    {
+      "PARENTS": [
+        "727040cd06f1a1c8c42af86252a628a7909aa8d4"
+      ],
+      "PATH": "evidence/bootstrap-source-pin-policy-20261107/policy.tap",
+      "SHA256": "e81e6a25507247361bd08e2c407e6f49c2def695cb0351e1dbe6fa3cfe4acdb5",
+      "SIZE": 898,
+      "TRANSFORM": "copy exact byte-sealed local evidence"
+    },
+    {
+      "PARENTS": [
+        "727040cd06f1a1c8c42af86252a628a7909aa8d4"
+      ],
+      "PATH": "evidence/bootstrap-source-pin-policy-20261107/comparator.tap",
+      "SHA256": "1846854596c12a07555795dd6f4d841f3742393669689f4f8e5dc9f601f0d47b",
+      "SIZE": 1010,
+      "TRANSFORM": "copy exact byte-sealed local evidence"
+    },
+    {
+      "PARENTS": [
+        "727040cd06f1a1c8c42af86252a628a7909aa8d4"
+      ],
+      "PATH": "evidence/bootstrap-source-pin-policy-20261107/retained.tap",
+      "SHA256": "7a9d69d0936c4a9aef81b06a8970a6decd95192729bb6f1e637055d6e032ea41",
+      "SIZE": 457,
+      "TRANSFORM": "copy exact byte-sealed local evidence"
+    },
+    {
+      "PARENTS": [
+        "727040cd06f1a1c8c42af86252a628a7909aa8d4"
+      ],
+      "PATH": "evidence/bootstrap-source-pin-policy-20261107/forkdata.tap",
+      "SHA256": "62324ac4c11d8830580e2f62bf5a9dbd4ec91c92d20295457dbd53b20bf6a074",
+      "SIZE": 2395,
+      "TRANSFORM": "copy exact byte-sealed local evidence"
+    },
+    {
+      "PARENTS": [
+        "727040cd06f1a1c8c42af86252a628a7909aa8d4"
+      ],
+      "PATH": "evidence/bootstrap-source-pin-policy-20261107/synthetic_metadata.yaml",
+      "SHA256": "bb1ee5c4ee0fc17b024140cffe880a9d1bf5487674020a32394ad9d010b3df7a",
+      "SIZE": 251,
+      "TRANSFORM": "copy exact byte-sealed local evidence"
+    },
+    {
+      "PARENTS": [
+        "727040cd06f1a1c8c42af86252a628a7909aa8d4"
+      ],
+      "PATH": "evidence/bootstrap-source-pin-policy-20261107/synthetic_operator.json",
+      "SHA256": "fd9fad0b1958cfbbd794123dd32e82acc2777a81ebd6c45f62a8311dc59b5be5",
+      "SIZE": 282,
+      "TRANSFORM": "copy exact byte-sealed local evidence"
+    },
+    {
+      "PARENTS": [
+        "727040cd06f1a1c8c42af86252a628a7909aa8d4"
+      ],
+      "PATH": "evidence/bootstrap-source-pin-policy-20261107/dual_repin_probe.mjs",
+      "SHA256": "c541bacbc83856629fc636b63991e033a44ca7d7f804ba0e02f230ce0eff44e1",
+      "SIZE": 4184,
+      "TRANSFORM": "copy exact byte-sealed local evidence"
+    },
+    {
+      "PARENTS": [
+        "727040cd06f1a1c8c42af86252a628a7909aa8d4"
+      ],
+      "PATH": "evidence/bootstrap-source-pin-policy-20261107/dual_repin_results.log",
+      "SHA256": "55bf6cbb2a7f69a20ad744df2b4ce560339c408573c5f364c68ff7d54eaad3cc",
+      "SIZE": 422,
+      "TRANSFORM": "copy exact byte-sealed local evidence"
+    }
+  ],
+  "bls_verified": false,
+  "dual_repin_manifest_sha256": "d7f5d79c593d67d27fa4ee5b93ce703ec5ef3d12fbf87fc25139c685da44d7fe",
+  "focused_checks": {
+    "forkdata": {
+      "failed": 0,
+      "passed": 13
+    },
+    "operator_comparator": {
+      "failed": 0,
+      "passed": 6
+    },
+    "retained_genesis": {
+      "failed": 0,
+      "passed": 2
+    },
+    "source_pinned_policy": {
+      "failed": 0,
+      "passed": 5
+    }
+  },
+  "full_suite_rerun": false,
+  "gate_provenance_manifest_sha256": "e61f130516ad6c01d4a83a81c3f9b95ca8f2eba9deeb1232051bc1546d1973e4",
+  "independent_source_authority_established": false,
+  "live_network_authenticated": false,
+  "operator_node": "v20.20.2",
+  "operator_reference_pin_sha256": "7dd1be57f1e1624a656cc3ef685945929e5d5bc610211ab8b101af7119f56982",
+  "parent_commit": "727040cd06f1a1c8c42af86252a628a7909aa8d4",
+  "production_accepted": false,
+  "schema": "caw-source-pinned-fixture-policy/1",
+  "status": "research-only",
+  "updates_accepted": false
+}

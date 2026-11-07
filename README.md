@@ -1,5 +1,9 @@
 # cawmmunity.caw - decentralized - social
 
+## Source-pinned fixture operator policy — 2026-11-07
+
+[The source-pinned research gate](docs/BOOTSTRAP_SOURCE_PIN_POLICY_20261107.md) passed 5 new focused checks, alongside separate 6, 2 and 13 case regressions. It rejects caller-side operator-pin replacement under a fixed fixture-source assumption, not independent live network authority. Full-suite and release gates remain open.
+
 ## Operator-reference fixture comparison — 2026-11-07
 
 [The operator-reference comparison](docs/BOOTSTRAP_OPERATOR_REFERENCE_20261107.md) passed 6 focused Node checks, plus separate 2-case retained-genesis and 13-case fork-data regressions. It separates a provider claim from a supplied operator reference without authenticating the reference itself. Full-suite and release gates remain open.

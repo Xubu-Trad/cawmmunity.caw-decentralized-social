@@ -557,3 +557,7 @@ Fixed a reproduced empty-success launch through a Windows directory junction. Th
 ## Operator-reference comparison — 2026-11-07
 
 [Focused results](BOOTSTRAP_OPERATOR_REFERENCE_20261107.md) passed 6/6 new checks, 2/2 retained-genesis regression and 13/13 fork-data regression. A supplied expected SHA-256 is not independently authenticated authority. Live network identity, checkpoint provenance, BLS, finality, update acceptance, production and public-test gates remain blocked. Full suite not rerun; hosted CI deferred.
+
+## Source-pinned operator fixture — 2026-11-07
+
+[The source-pinned fixture experiment](BOOTSTRAP_SOURCE_PIN_POLICY_20261107.md) passed separate 5/6/2/13 focused checks. Fixed source commitment rejects the tested dual-repin input, but does not establish trusted software delivery, independent reference provenance, live network selection, BLS, finality or update acceptance. Full suite not rerun; CI deferred.

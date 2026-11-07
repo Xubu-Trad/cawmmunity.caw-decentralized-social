@@ -1,0 +1,75 @@
+TAP version 13
+# Subtest: official minimal Capella fork-data root matches independent oracle, without authority
+ok 1 - official minimal Capella fork-data root matches independent oracle, without authority
+  ---
+  duration_ms: 5.266688
+  ...
+# Subtest: changed fork version rejects with fresh synthetic config pin
+ok 2 - changed fork version rejects with fresh synthetic config pin
+  ---
+  duration_ms: 3.660738
+  ...
+# Subtest: changed genesis validators root rejects with fresh synthetic metadata pin
+ok 3 - changed genesis validators root rejects with fresh synthetic metadata pin
+  ---
+  duration_ms: 0.790813
+  ...
+# Subtest: changed bootstrap digest rejects with fresh synthetic metadata pin
+ok 4 - changed bootstrap digest rejects with fresh synthetic metadata pin
+  ---
+  duration_ms: 0.922861
+  ...
+# Subtest: changed store digest rejects with fresh synthetic metadata pin
+ok 5 - changed store digest rejects with fresh synthetic metadata pin
+  ---
+  duration_ms: 3.82144
+  ...
+# Subtest: malformed fork-version encoding rejects with fresh synthetic pin
+ok 6 - malformed fork-version encoding rejects with fresh synthetic pin
+  ---
+  duration_ms: 0.746926
+  ...
+# Subtest: extra metadata authority field rejects with fresh synthetic pin
+ok 7 - extra metadata authority field rejects with fresh synthetic pin
+  ---
+  duration_ms: 0.516313
+  ...
+# Subtest: wrong input pin rejects before metadata parsing
+ok 8 - wrong input pin rejects before metadata parsing
+  ---
+  duration_ms: 0.725881
+  ...
+# Subtest: unsupported preset/epoch and duplicate fork-field reject
+ok 9 - unsupported preset/epoch and duplicate fork-field reject
+  ---
+  duration_ms: 2.735593
+  ...
+# Subtest: extra config authority field rejects with a fresh pin
+ok 10 - extra config authority field rejects with a fresh pin
+  ---
+  duration_ms: 0.650124
+  ...
+# Subtest: replacement of a known config key rejects
+ok 11 - replacement of a known config key rejects
+  ---
+  duration_ms: 0.314583
+  ...
+# Subtest: coherent alternative fork remains unauthenticated
+ok 12 - coherent alternative fork remains unauthenticated
+  ---
+  duration_ms: 0.904701
+  ...
+# Subtest: non-selected config value does not validate schedule
+ok 13 - non-selected config value does not validate schedule
+  ---
+  duration_ms: 0.737547
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 186.353866
