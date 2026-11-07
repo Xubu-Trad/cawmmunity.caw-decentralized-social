@@ -1,0 +1,11 @@
+PASS 1: pinned fixture
+PASS 2: changed fork version rejected
+PASS 3: changed genesis root rejected
+PASS 4: changed bootstrap digest rejected
+PASS 5: changed store digest rejected
+PASS 6: malformed fork version rejected
+PASS 7: injected authority field rejected
+FORK_DATA_ROOT=856842be987cb7f12d34e84282045bdf06fb0c6a88889e41b889ca90dd583c92
+FORK_DIGEST=0x856842be
+PASS: 7/7 checks
+ROOT_AUTHENTICATED=false

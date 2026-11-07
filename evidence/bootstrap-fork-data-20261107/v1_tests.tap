@@ -1,0 +1,55 @@
+TAP version 13
+# Subtest: official minimal Capella fork-data root matches independent oracle, without authority
+ok 1 - official minimal Capella fork-data root matches independent oracle, without authority
+  ---
+  duration_ms: 6.724155
+  ...
+# Subtest: changed fork version rejects with fresh synthetic config pin
+ok 2 - changed fork version rejects with fresh synthetic config pin
+  ---
+  duration_ms: 1.866413
+  ...
+# Subtest: changed genesis validators root rejects with fresh synthetic metadata pin
+ok 3 - changed genesis validators root rejects with fresh synthetic metadata pin
+  ---
+  duration_ms: 2.536614
+  ...
+# Subtest: changed bootstrap digest rejects with fresh synthetic metadata pin
+ok 4 - changed bootstrap digest rejects with fresh synthetic metadata pin
+  ---
+  duration_ms: 0.431009
+  ...
+# Subtest: changed store digest rejects with fresh synthetic metadata pin
+ok 5 - changed store digest rejects with fresh synthetic metadata pin
+  ---
+  duration_ms: 44.094809
+  ...
+# Subtest: malformed fork-version encoding rejects with fresh synthetic pin
+ok 6 - malformed fork-version encoding rejects with fresh synthetic pin
+  ---
+  duration_ms: 0.761766
+  ...
+# Subtest: extra metadata authority field rejects with fresh synthetic pin
+ok 7 - extra metadata authority field rejects with fresh synthetic pin
+  ---
+  duration_ms: 0.350629
+  ...
+# Subtest: wrong input pin rejects before metadata parsing
+ok 8 - wrong input pin rejects before metadata parsing
+  ---
+  duration_ms: 0.396454
+  ...
+# Subtest: unsupported preset/epoch and duplicate fork-field reject
+ok 9 - unsupported preset/epoch and duplicate fork-field reject
+  ---
+  duration_ms: 6.076977
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 225.947989

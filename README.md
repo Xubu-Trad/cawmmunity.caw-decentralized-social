@@ -2,7 +2,7 @@
 
 ## Next verification gate — 2026-11-07
 
-[Bootstrap trust requirements](docs/BOOTSTRAP_TRUST_REQUIREMENTS.md) now separate matching proof data from knowing it belongs to the intended live chain. Network/fork selection, checkpoint origin and freshness, BLS checks and update acceptance remain open. New fork-metadata checks are staged locally but untested; no additional test passes or release readiness are claimed.
+[Bootstrap trust requirements](docs/BOOTSTRAP_TRUST_REQUIREMENTS.md) now separate matching proof data from knowing it belongs to the intended live chain. Network/fork selection, checkpoint origin and freshness, BLS checks and update acceptance remain open. Subsequent [fixture fork-data checks](docs/BOOTSTRAP_FORK_DATA_CONSISTENCY_20261107.md) passed separate runs of 7 Python oracle, 9 initial JavaScript and 13 corrected JavaScript checks. The corrected verifier rejects unexpected config keys, but a coherent alternative fork still passes as unauthenticated data consistency. No live checkpoint authentication, complete fork schedule, full-suite rerun or release readiness is claimed.
 
 ## Bootstrap selection and composition — 2026-11-07
 

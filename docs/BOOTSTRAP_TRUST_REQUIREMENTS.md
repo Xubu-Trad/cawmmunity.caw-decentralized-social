@@ -32,8 +32,12 @@ UNRESOLVED — Which external trust model, network configuration and freshness r
 
 Proposed behavior pending that decision: remain in research/inspection mode, retain conflicting evidence, and refuse live acceptance rather than silently choose a winner. This is a design proposal; there is no live adoption path added here.
 
-## Next bounded experiment
+## Fixture fork-data follow-up — 2026-11-07
 
-A local fork-data root/digest consistency module and six test cases have been prepared but **not executed or published**. The resource guard stopped before test startup because free disk space remained below its existing 2 GiB minimum. No new passing count is claimed. The proposed cases compare the pinned fixture's fork version and full genesis root to its recorded digest, then alter each input, encoding and unsupported authority fields. Even a passing result would establish metadata consistency only.
+FACT — The original staged experiment was stopped by the disk-space guard before execution. After moving the worktree to Linux storage without reducing the guard, a separate [fork-data consistency experiment](BOOTSTRAP_FORK_DATA_CONSISTENCY_20261107.md) passed 7 Python oracle checks, 9 initial JavaScript checks, and 13 corrected JavaScript checks. The failed intermediate patch attempt and its 9-test rerun remain historical evidence, not a corrected V2 pass.
 
-After reconciling the latest source snapshot, run those checks under the unchanged guard and review the short-digest limitation before integration. Then define supported network/schedule inputs and obtain independently reviewable trust-anchor/BLS requirements. Hosted CI remains deferred. Public test candidate and production remain blocked.
+FACT — The corrected research verifier admits the exact 46-key layout of the retained minimal Capella config and rejects added or replaced keys. The fixture computes digest `0x856842be`. A coherent alternative fork/digest also passes its narrow consistency check while every authentication and acceptance flag remains false. Other config values, including slot duration, are not fully validated.
+
+INFERENCE — ForkData consistency is not proof of the intended live network, trusted checkpoint, authoritative fork schedule, BLS validity, freshness or consensus. Matching four digest bytes cannot establish those properties.
+
+NEXT — Independently justify anchor provenance, define a real supported network and fork schedule, and verify BLS and update-transition requirements before any adoption. Public-test and production gates remain blocked. Hosted CI remains deferred.

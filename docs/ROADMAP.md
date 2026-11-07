@@ -548,4 +548,4 @@ Fixed a reproduced empty-success launch through a Windows directory junction. Th
 
 ## Bootstrap trust gate — 2026-11-07
 
-[Proposed acceptance checklist](BOOTSTRAP_TRUST_REQUIREMENTS.md) separates network identity, fork/slot policy, checkpoint provenance/recency, BLS validation, update transitions and operator independence. Fork-data consistency experiment is staged only; test startup blocked by disk guard. No new pass count or policy adoption.
+[Proposed acceptance checklist](BOOTSTRAP_TRUST_REQUIREMENTS.md) separates network identity, fork/slot policy, checkpoint provenance/recency, BLS validation, update transitions and operator independence. Initial execution was blocked by the disk guard; a subsequent Linux-backed [fixture fork-data experiment](BOOTSTRAP_FORK_DATA_CONSISTENCY_20261107.md) passed separate 7/9/13 focused checks and sealed its evidence. Strict 46-key layout admission now rejects unexpected config keys. Coherent alternative forks remain unauthenticated, and network selection, BLS, freshness, finality and update acceptance are unresolved. No full-suite rerun or policy adoption; CI deferred.

@@ -1,0 +1,89 @@
+{
+  "artifacts": [
+    {
+      "path": "evidence/bootstrap-fork-data-20261107/oracle.log",
+      "sha256": "0c1b1a14dfcaa094082c687eafa6fb76c937282eff61789d2e25e0d343071b89",
+      "size": 406,
+      "transform": "copy exact retained local evidence bytes"
+    },
+    {
+      "path": "evidence/bootstrap-fork-data-20261107/oracle.py",
+      "sha256": "183df723f2b6e2a7f65ce87a4df192dc708ed6e40e973c2307d837d6be38c12d",
+      "size": 3508,
+      "transform": "copy exact retained local evidence bytes"
+    },
+    {
+      "path": "evidence/bootstrap-fork-data-20261107/v1_boundary.log",
+      "sha256": "b6c955b59a999562a78c3f58e87d67845c231891889866e832b50467c9b231f9",
+      "size": 190,
+      "transform": "copy exact retained local evidence bytes"
+    },
+    {
+      "path": "evidence/bootstrap-fork-data-20261107/v1_boundary_probe.mjs",
+      "sha256": "51da31a8d2350b3e0e1ce1d7417b4401fad30ddff6d051a5d05367810bd0ada9",
+      "size": 2333,
+      "transform": "copy exact retained local evidence bytes"
+    },
+    {
+      "path": "evidence/bootstrap-fork-data-20261107/v1_module.mjs",
+      "sha256": "6037b497682a1c428153d2232a0b10575084f0d3fdbfd7ebe27773d9a5ad1c52",
+      "size": 2675,
+      "transform": "copy exact retained local evidence bytes"
+    },
+    {
+      "path": "evidence/bootstrap-fork-data-20261107/v1_test.mjs",
+      "sha256": "6fd762b9e9f1473f5d25e46b43a712575299ddfa375b5e376eaee4c2f7d84e84",
+      "size": 3740,
+      "transform": "copy exact retained local evidence bytes"
+    },
+    {
+      "path": "evidence/bootstrap-fork-data-20261107/v1_tests.tap",
+      "sha256": "42592bf46029013587b51b79ba62f1391bd81eac8f353c291b54061f6dba12c3",
+      "size": 1776,
+      "transform": "copy exact retained local evidence bytes"
+    },
+    {
+      "path": "evidence/bootstrap-fork-data-20261107/v3_tests.tap",
+      "sha256": "37cb53a8757a1f49bca3bba9b27d8b2c8174d97a41e66345e658794279b18d9d",
+      "size": 2394,
+      "transform": "copy exact retained local evidence bytes"
+    }
+  ],
+  "authentication_established": false,
+  "bls_verified": false,
+  "checks": {
+    "corrected_javascript": {
+      "failed": 0,
+      "passed": 13
+    },
+    "initial_javascript": {
+      "failed": 0,
+      "passed": 9
+    },
+    "python_oracle": {
+      "failed": 0,
+      "passed": 7
+    }
+  },
+  "fork_data_root": "0x856842be987cb7f12d34e84282045bdf06fb0c6a88889e41b889ca90dd583c92",
+  "fork_digest": "0x856842be",
+  "fork_schedule_verified": false,
+  "full_suite_rerun": false,
+  "local_sealed_manifest_sha256": "9412ba4cdf441fecc36c68c926e327e013402d1b7f6e7ac55fbd2700a8e8b9b3",
+  "negative_boundary_results": [
+    "initial V1 extra config authority field accepted but not adopted",
+    "coherent alternate fork/digest accepted as consistency only",
+    "corrected V3 rejects unexpected config key"
+  ],
+  "operator_runtime": {
+    "node": "v20.20.2",
+    "python": "3.10.12"
+  },
+  "parent_commit": "3bf313c20633e972dca1fd1a03490ee2d807fe30",
+  "production_accepted": false,
+  "schema": "caw-fork-data-fixture-evidence/1",
+  "status": "research-only",
+  "updates_accepted": false,
+  "v3_module_sha256": "fcae14704319a6da56eb170fbd8f7367e715e6afeb291a3a0d59ba29540db45d",
+  "v3_tests_sha256": "8ef536dac5c053994a88fef9a4593f30b6b8708509a75278b5aa0b80d207aaf8"
+}
