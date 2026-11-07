@@ -1,0 +1,7 @@
+{
+  "schema": "caw-operator-genesis-reference/1",
+  "network": "ethereum-minimal-capella-fixture",
+  "genesisValidatorsRoot": "0x0a08c27fe4ece2483f9e581f78c66379a06f96e9c24cd1390594ff939b26f95b",
+  "sourceClass": "retained-minimal-capella-fixture",
+  "authority": "research-only"
+}

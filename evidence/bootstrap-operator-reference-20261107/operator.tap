@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: baseline operator reference matches fixture only
+ok 1 - baseline operator reference matches fixture only
+  ---
+  duration_ms: 5.700764
+  ...
+# Subtest: coherent provider genesis substitution rejects
+ok 2 - coherent provider genesis substitution rejects
+  ---
+  duration_ms: 5.538822
+  ...
+# Subtest: altered operator bytes reject with unchanged pin
+ok 3 - altered operator bytes reject with unchanged pin
+  ---
+  duration_ms: 0.388004
+  ...
+# Subtest: changed authority field rejects despite fresh hash
+ok 4 - changed authority field rejects despite fresh hash
+  ---
+  duration_ms: 0.299954
+  ...
+# Subtest: extra operator field rejects despite fresh hash
+ok 5 - extra operator field rejects despite fresh hash
+  ---
+  duration_ms: 0.33672
+  ...
+# Subtest: malformed expected operator pin rejects
+ok 6 - malformed expected operator pin rejects
+  ---
+  duration_ms: 0.141142
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 218.036933

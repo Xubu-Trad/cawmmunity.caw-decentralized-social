@@ -1,5 +1,9 @@
 # cawmmunity.caw - decentralized - social
 
+## Operator-reference fixture comparison — 2026-11-07
+
+[The operator-reference comparison](docs/BOOTSTRAP_OPERATOR_REFERENCE_20261107.md) passed 6 focused Node checks, plus separate 2-case retained-genesis and 13-case fork-data regressions. It separates a provider claim from a supplied operator reference without authenticating the reference itself. Full-suite and release gates remain open.
+
 ## Retained genesis-root fixture binding — 2026-11-07
 
 [The retained minimal Capella genesis-root check](docs/BOOTSTRAP_RETAINED_GENESIS_BINDING_20261107.md) passed 2 focused Node checks, with the unchanged fork-data regression passing 13. It rejects coherent genesis-root re-pinning against a fixed research fixture reference, not an independently authenticated live network. Full suite and release gates remain open.

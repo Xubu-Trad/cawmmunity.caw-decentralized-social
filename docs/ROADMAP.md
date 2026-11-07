@@ -553,3 +553,7 @@ Fixed a reproduced empty-success launch through a Windows directory junction. Th
 ## Retained genesis-root fixture binding — 2026-11-07
 
 [Focused evidence](BOOTSTRAP_RETAINED_GENESIS_BINDING_20261107.md) passed 2/2 new identity-binding checks and 13/13 unchanged fork-data checks. A coherent synthetic genesis-root substitution now rejects against a fixed retained fixture reference. This is not live checkpoint authentication or fork-schedule policy. Full suite, BLS, update acceptance, production and public-test readiness remain blocked; hosted CI deferred.
+
+## Operator-reference comparison — 2026-11-07
+
+[Focused results](BOOTSTRAP_OPERATOR_REFERENCE_20261107.md) passed 6/6 new checks, 2/2 retained-genesis regression and 13/13 fork-data regression. A supplied expected SHA-256 is not independently authenticated authority. Live network identity, checkpoint provenance, BLS, finality, update acceptance, production and public-test gates remain blocked. Full suite not rerun; hosted CI deferred.

@@ -1,0 +1,112 @@
+{
+  "artifacts": [
+    {
+      "PARENTS": [
+        "675da9c9832aeac9ac7c0c2004e5fa5bcf505dfe"
+      ],
+      "PATH": "reference/operator-genesis-reference.mjs",
+      "SHA256": "b8d013e71d898acb26b43c22e436c5b24c753ec471437c52a2fbf8c2aa04f9fa",
+      "SIZE": 2668,
+      "TRANSFORM": "saved source from sealed operator module lane"
+    },
+    {
+      "PARENTS": [
+        "675da9c9832aeac9ac7c0c2004e5fa5bcf505dfe"
+      ],
+      "PATH": "tests/operator-genesis-reference.test.mjs",
+      "SHA256": "fe2b48e3beadd9fa2fdd941d13abf53f092bf202abc650924a45ee2290d2c410",
+      "SIZE": 4174,
+      "TRANSFORM": "saved six-case test source from sealed module lane"
+    },
+    {
+      "PARENTS": [
+        "675da9c9832aeac9ac7c0c2004e5fa5bcf505dfe"
+      ],
+      "PATH": "evidence/bootstrap-operator-reference-20261107/operator_reference.json",
+      "SHA256": "7dd1be57f1e1624a656cc3ef685945929e5d5bc610211ab8b101af7119f56982",
+      "SIZE": 282,
+      "TRANSFORM": "copy retained operator record from boundary lane"
+    },
+    {
+      "PARENTS": [
+        "675da9c9832aeac9ac7c0c2004e5fa5bcf505dfe"
+      ],
+      "PATH": "evidence/bootstrap-operator-reference-20261107/operator.tap",
+      "SHA256": "49f72c53b2f5d83b8784cf6d3a82006ef621612e69bcdf3d61a7de89eda8c816",
+      "SIZE": 1010,
+      "TRANSFORM": "copy six-case Node TAP from module lane"
+    },
+    {
+      "PARENTS": [
+        "675da9c9832aeac9ac7c0c2004e5fa5bcf505dfe"
+      ],
+      "PATH": "evidence/bootstrap-operator-reference-20261107/retained_regression.tap",
+      "SHA256": "adfbfa4ee97e9e3dc6b907eee3fa153fd7b2cd8301f92e3ae24d5455e4f55e9c",
+      "SIZE": 457,
+      "TRANSFORM": "copy two-case Node TAP from module lane"
+    },
+    {
+      "PARENTS": [
+        "675da9c9832aeac9ac7c0c2004e5fa5bcf505dfe"
+      ],
+      "PATH": "evidence/bootstrap-operator-reference-20261107/forkdata_regression.tap",
+      "SHA256": "9de425f9235c917a1599db468abf6e787738f017216d2f6d15fbe2566e781e6f",
+      "SIZE": 2395,
+      "TRANSFORM": "copy thirteen-case Node TAP from module lane"
+    },
+    {
+      "PARENTS": [
+        "675da9c9832aeac9ac7c0c2004e5fa5bcf505dfe"
+      ],
+      "PATH": "evidence/bootstrap-operator-reference-20261107/boundary_probe.mjs",
+      "SHA256": "724ecf3bbd037d9059efd4f25c50cbc42922e21a3f5806aaf9317cbdf7e7f8ed",
+      "SIZE": 6035,
+      "TRANSFORM": "copy original synthetic boundary probe"
+    },
+    {
+      "PARENTS": [
+        "675da9c9832aeac9ac7c0c2004e5fa5bcf505dfe"
+      ],
+      "PATH": "evidence/bootstrap-operator-reference-20261107/boundary_results.log",
+      "SHA256": "b5e0a6c797eb57d31a988ca7f3cea00c2c95c97b064ea90647291730ad5dc9fa",
+      "SIZE": 482,
+      "TRANSFORM": "copy original synthetic boundary results"
+    },
+    {
+      "PARENTS": [
+        "675da9c9832aeac9ac7c0c2004e5fa5bcf505dfe"
+      ],
+      "PATH": "evidence/bootstrap-operator-reference-20261107/synthetic_provider_metadata.yaml",
+      "SHA256": "bb1ee5c4ee0fc17b024140cffe880a9d1bf5487674020a32394ad9d010b3df7a",
+      "SIZE": 251,
+      "TRANSFORM": "copy exact synthetic provider metadata"
+    }
+  ],
+  "bls_validated": false,
+  "boundary_manifest_sha256": "41a458950832ed4cb053aea210384061eb0dca4700a4eac242d2ad230d88472a",
+  "checks": {
+    "forkdata": {
+      "failed": 0,
+      "passed": 13
+    },
+    "operator_reference": {
+      "failed": 0,
+      "passed": 6
+    },
+    "retained_genesis": {
+      "failed": 0,
+      "passed": 2
+    }
+  },
+  "full_suite_run": false,
+  "independent_pin_authority_established": false,
+  "network_authenticated": false,
+  "node": "v20.20.2",
+  "operator_pin_sha256": "7dd1be57f1e1624a656cc3ef685945929e5d5bc610211ab8b101af7119f56982",
+  "parent_commit": "675da9c9832aeac9ac7c0c2004e5fa5bcf505dfe",
+  "production_accepted": false,
+  "schema": "caw-operator-reference-publication/1",
+  "source_manifest_sha256": "16f92b3b69b0da0dc3cb23806b520ca7f05cc3e6da300fabfaced73b7b5b30ea",
+  "status": "research-only",
+  "updates_accepted": false
+}
