@@ -1,5 +1,9 @@
 # cawmmunity.caw - decentralized - social
 
+## Retained genesis-root fixture binding — 2026-11-07
+
+[The retained minimal Capella genesis-root check](docs/BOOTSTRAP_RETAINED_GENESIS_BINDING_20261107.md) passed 2 focused Node checks, with the unchanged fork-data regression passing 13. It rejects coherent genesis-root re-pinning against a fixed research fixture reference, not an independently authenticated live network. Full suite and release gates remain open.
+
 ## Next verification gate — 2026-11-07
 
 [Bootstrap trust requirements](docs/BOOTSTRAP_TRUST_REQUIREMENTS.md) now separate matching proof data from knowing it belongs to the intended live chain. Network/fork selection, checkpoint origin and freshness, BLS checks and update acceptance remain open. Subsequent [fixture fork-data checks](docs/BOOTSTRAP_FORK_DATA_CONSISTENCY_20261107.md) passed separate runs of 7 Python oracle, 9 initial JavaScript and 13 corrected JavaScript checks. The corrected verifier rejects unexpected config keys, but a coherent alternative fork still passes as unauthenticated data consistency. No live checkpoint authentication, complete fork schedule, full-suite rerun or release readiness is claimed.

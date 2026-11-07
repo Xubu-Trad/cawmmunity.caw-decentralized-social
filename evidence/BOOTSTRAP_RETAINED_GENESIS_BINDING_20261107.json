@@ -1,0 +1,80 @@
+{
+  "artifacts": [
+    {
+      "PARENTS": [
+        "5d8f488c328066e67ad97263f6277564f03c0030"
+      ],
+      "PATH": "reference/retained-fixture-genesis-binding.mjs",
+      "SHA256": "e24ebfc7994209f8a0e56b7f9e0e5bc9d44e3a84fe3bd412c4f8036ef284ce41",
+      "SIZE": 1485,
+      "TRANSFORM": "saved local research-only JS module"
+    },
+    {
+      "PARENTS": [
+        "5d8f488c328066e67ad97263f6277564f03c0030"
+      ],
+      "PATH": "tests/retained-fixture-genesis-binding.test.mjs",
+      "SHA256": "4ce09deba47aa2113a0404858bcbc76006b571872586f8b1ff269a44fce87d39",
+      "SIZE": 3316,
+      "TRANSFORM": "saved local focused Node tests"
+    },
+    {
+      "PARENTS": [
+        "5d8f488c328066e67ad97263f6277564f03c0030"
+      ],
+      "PATH": "evidence/bootstrap-retained-genesis-20261107/identity.tap",
+      "SHA256": "8575b6bc228b9c197f5f8ba60ced6841fa1912349f3954787cf0fb1e69c38ca1",
+      "SIZE": 456,
+      "TRANSFORM": "copy local 2-case Node test log"
+    },
+    {
+      "PARENTS": [
+        "5d8f488c328066e67ad97263f6277564f03c0030"
+      ],
+      "PATH": "evidence/bootstrap-retained-genesis-20261107/forkdata_regression.tap",
+      "SHA256": "5a085b41bfc91444bf98e902cf8ec2f776824bef909eb318f320ba289cf56401",
+      "SIZE": 2394,
+      "TRANSFORM": "copy local 13-case Node regression log"
+    },
+    {
+      "PARENTS": [
+        "5d8f488c328066e67ad97263f6277564f03c0030"
+      ],
+      "PATH": "evidence/bootstrap-retained-genesis-20261107/repin_probe.mjs",
+      "SHA256": "9006554ff86c718913ab498ebfe4e10ed0cf734ee181ada879a5ccca321f2b7b",
+      "SIZE": 4153,
+      "TRANSFORM": "copy prior synthetic substitution probe"
+    },
+    {
+      "PARENTS": [
+        "5d8f488c328066e67ad97263f6277564f03c0030"
+      ],
+      "PATH": "evidence/bootstrap-retained-genesis-20261107/repin_results.log",
+      "SHA256": "43148a2f9fd6bf519b9cb513db4b386461e788234190d72d07bb71c38bfda35d",
+      "SIZE": 290,
+      "TRANSFORM": "copy prior bounded probe result"
+    }
+  ],
+  "declared_node_tested": false,
+  "full_suite_run": false,
+  "network_authenticated": false,
+  "operator_node": "v20.20.2",
+  "original_genesis_root": "0x0a08c27fe4ece2483f9e581f78c66379a06f96e9c24cd1390594ff939b26f95b",
+  "parent_commit": "5d8f488c328066e67ad97263f6277564f03c0030",
+  "production_accepted": false,
+  "reference_is_live_network_authority": false,
+  "schema": "caw-retained-fixture-genesis-evidence/1",
+  "source_reference": "pinned minimal Capella fixture",
+  "status": "research-only",
+  "synthetic_changed_digest": "0x51369403",
+  "tests": {
+    "identity_binding": {
+      "failed": 0,
+      "passed": 2
+    },
+    "unchanged_forkdata": {
+      "failed": 0,
+      "passed": 13
+    }
+  }
+}

@@ -549,3 +549,7 @@ Fixed a reproduced empty-success launch through a Windows directory junction. Th
 ## Bootstrap trust gate — 2026-11-07
 
 [Proposed acceptance checklist](BOOTSTRAP_TRUST_REQUIREMENTS.md) separates network identity, fork/slot policy, checkpoint provenance/recency, BLS validation, update transitions and operator independence. Initial execution was blocked by the disk guard; a subsequent Linux-backed [fixture fork-data experiment](BOOTSTRAP_FORK_DATA_CONSISTENCY_20261107.md) passed separate 7/9/13 focused checks and sealed its evidence. Strict 46-key layout admission now rejects unexpected config keys. Coherent alternative forks remain unauthenticated, and network selection, BLS, freshness, finality and update acceptance are unresolved. No full-suite rerun or policy adoption; CI deferred.
+
+## Retained genesis-root fixture binding — 2026-11-07
+
+[Focused evidence](BOOTSTRAP_RETAINED_GENESIS_BINDING_20261107.md) passed 2/2 new identity-binding checks and 13/13 unchanged fork-data checks. A coherent synthetic genesis-root substitution now rejects against a fixed retained fixture reference. This is not live checkpoint authentication or fork-schedule policy. Full suite, BLS, update acceptance, production and public-test readiness remain blocked; hosted CI deferred.
