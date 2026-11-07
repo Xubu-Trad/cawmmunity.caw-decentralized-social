@@ -544,3 +544,8 @@ Fixed a reproduced empty-success launch through a Windows directory junction. Th
 ## Pinned bootstrap composition — 2026-11-07
 
 [V1–V3 selection/metadata/committee composition](BOOTSTRAP_PROFILE_COMPOSITION_20261107.md) is published with unchanged sealed source bytes and separately recorded focused reruns (8/18/47 Node and four Python checks). The [historical binding checksum correction](BOOTSTRAP_BINDING_PROVENANCE_CORRECTION_20261107.md) is additive. Next: independently justified anchor sourcing/retention, explicit real network/fork configuration and BLS/consensus validation prerequisites before update acceptance. Matching provider labels/digests are not authority. Full suite not rerun; production and public-test gates remain blocked; CI deferred.
+
+
+## Bootstrap trust gate — 2026-11-07
+
+[Proposed acceptance checklist](BOOTSTRAP_TRUST_REQUIREMENTS.md) separates network identity, fork/slot policy, checkpoint provenance/recency, BLS validation, update transitions and operator independence. Fork-data consistency experiment is staged only; test startup blocked by disk guard. No new pass count or policy adoption.

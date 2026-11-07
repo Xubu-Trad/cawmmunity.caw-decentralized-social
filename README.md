@@ -1,5 +1,9 @@
 # cawmmunity.caw - decentralized - social
 
+## Next verification gate — 2026-11-07
+
+[Bootstrap trust requirements](docs/BOOTSTRAP_TRUST_REQUIREMENTS.md) now separate matching proof data from knowing it belongs to the intended live chain. Network/fork selection, checkpoint origin and freshness, BLS checks and update acceptance remain open. New fork-metadata checks are staged locally but untested; no additional test passes or release readiness are claimed.
+
 ## Bootstrap selection and composition — 2026-11-07
 
 [The fixture bootstrap checks now compose](docs/BOOTSTRAP_PROFILE_COMPOSITION_20261107.md): explicit profile selection, saved metadata bytes and committee inclusion are checked together. The four focused groups passed separately here (8, 18, 47 Node checks and four Python checks), matching the supplied WSL logs. This checks a research fixture; it does not authenticate a live chain or enable production acceptance. A [dated correction](docs/BOOTSTRAP_BINDING_PROVENANCE_CORRECTION_20261107.md) records the historical fixture-hash discrepancy without rewriting the old evidence.
