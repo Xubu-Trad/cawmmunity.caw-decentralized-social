@@ -1,5 +1,7 @@
 # cawmmunity.caw - decentralized - social
 
+A new [source-replacement experiment](docs/SOURCE_COMMITMENT_INSPECTION_20261107.md) shows what a previously retained code hash can detect: 9 focused checks and a separate 26-check regression passed. This is research byte inspection, not a secure loader or live-chain authentication.
+
 ## Source-pinned fixture operator policy — 2026-11-07
 
 [The source-pinned research gate](docs/BOOTSTRAP_SOURCE_PIN_POLICY_20261107.md) passed 5 new focused checks, alongside separate 6, 2 and 13 case regressions. It rejects caller-side operator-pin replacement under a fixed fixture-source assumption, not independent live network authority. Full-suite and release gates remain open.

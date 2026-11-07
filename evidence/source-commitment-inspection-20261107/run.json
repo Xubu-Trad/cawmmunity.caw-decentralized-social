@@ -1,0 +1,51 @@
+{
+  "schema": "caw-source-inspection-run/1",
+  "parentCommit": "0037310bf7e422fe0d8e4e762b8ff23a482ce87c",
+  "runtime": {
+    "node": "v24.22.1",
+    "nodeSha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+    "declaredNode": "24.20.0",
+    "declaredRuntimeRun": false
+  },
+  "resourceGuards": {
+    "freeDiskMinimumBytes": 2147483648,
+    "availableMemoryMinimumBytes": 1073741824,
+    "heapMiB": 256,
+    "timeoutSeconds": 45
+  },
+  "groups": [
+    {
+      "name": "inspection",
+      "command": [
+        "node",
+        "--max-old-space-size=256",
+        "--test",
+        "--test-concurrency=1",
+        "--test-timeout=30000",
+        "tests/source-commitment-inspection.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "evidence/source-commitment-inspection-20261107/inspection.log"
+    },
+    {
+      "name": "regression",
+      "command": [
+        "node",
+        "--max-old-space-size=256",
+        "--test",
+        "--test-concurrency=1",
+        "--test-timeout=30000",
+        "tests/pinned-fixture-operator-policy.test.mjs",
+        "tests/operator-genesis-reference.test.mjs",
+        "tests/retained-fixture-genesis-binding.test.mjs",
+        "tests/fork-data-root.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "evidence/source-commitment-inspection-20261107/regression.log"
+    }
+  ],
+  "fullSuiteRerun": false,
+  "buildRun": false,
+  "ciRun": false,
+  "inputBytesUnchanged": true
+}

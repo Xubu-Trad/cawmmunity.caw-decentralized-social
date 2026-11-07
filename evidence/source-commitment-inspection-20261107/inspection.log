@@ -1,0 +1,17 @@
+✔ retained source matches without elevating authority or execution claims (2.015063ms)
+✔ coherent source replacement rejects against unchanged retained commitment (0.941558ms)
+✔ replacing the external commitment too remains an explicit trust boundary (0.290372ms)
+✔ controlled source replacement changes fixture outcome with inputs fixed (6.753302ms)
+✔ non-buffer inputs reject (0.298307ms)
+✔ empty and oversized bytes reject even with their matching digest (0.562981ms)
+✔ malformed or missing commitments reject (0.399606ms)
+✔ extra override argument rejects (0.201496ms)
+✔ later buffer mutation does not become an execution binding (0.346346ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 128.24615

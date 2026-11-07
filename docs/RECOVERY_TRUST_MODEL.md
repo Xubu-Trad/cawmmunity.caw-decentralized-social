@@ -48,3 +48,8 @@ The next implementation review must identify the selected profile and anchor ass
 ## Profile/metadata composition follow-up — 2026-11-07
 
 [The pinned composition](BOOTSTRAP_PROFILE_COMPOSITION_20261107.md) now checks supplied metadata bytes and explicit fixture selection before the existing structural committee/header checks. It adds no authenticated anchor, live network/fork policy, BLS verification or recovery adoption. [The additive provenance correction](BOOTSTRAP_BINDING_PROVENANCE_CORRECTION_20261107.md) records the historical binding-file digest discrepancy; original evidence remains unchanged. For read-only verification, run the Python decoder tests rather than the decoder's main command, which rewrites `binding.json`.
+
+
+## Software commitment boundary — 2026-11-07
+
+The [retained source experiment](SOURCE_COMMITMENT_INSPECTION_20261107.md) detects a changed fixture policy under an unchanged source commitment. It does not connect inspected bytes to executed bytes, verify dependencies/runtime, or independently establish the commitment's authority. The recovery application does not invoke this research inspector. A matching source hash alone must not be represented as authenticated recovery, consensus or permission to adopt a checkpoint.

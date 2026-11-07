@@ -561,3 +561,8 @@ Fixed a reproduced empty-success launch through a Windows directory junction. Th
 ## Source-pinned operator fixture — 2026-11-07
 
 [The source-pinned fixture experiment](BOOTSTRAP_SOURCE_PIN_POLICY_20261107.md) passed separate 5/6/2/13 focused checks. Fixed source commitment rejects the tested dual-repin input, but does not establish trusted software delivery, independent reference provenance, live network selection, BLS, finality or update acceptance. Full suite not rerun; CI deferred.
+
+
+## Retained source commitment — 2026-11-07
+
+[Source replacement experiment](SOURCE_COMMITMENT_INSPECTION_20261107.md): 9 new focused checks and a separate 26-check regression pass on Node v24.22.1. A single embedded-pin substitution changes fixture admission but rejects against the unchanged retained source hash. Replacing that external hash too still passes as byte equality only. Next isolate dependency substitution and verified-byte execution binding, while independent software distribution and checkpoint authority remain unresolved. No production adoption, full-suite or declared-runtime run; CI deferred.

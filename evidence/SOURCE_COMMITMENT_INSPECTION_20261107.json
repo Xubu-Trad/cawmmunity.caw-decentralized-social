@@ -1,0 +1,245 @@
+{
+  "schema": "caw-source-commitment-evidence/1",
+  "parentCommit": "0037310bf7e422fe0d8e4e762b8ff23a482ce87c",
+  "status": "SCOPED_PASS",
+  "testGroups": [
+    {
+      "name": "inspection",
+      "passed": 9,
+      "failed": 0
+    },
+    {
+      "name": "regression",
+      "passed": 26,
+      "failed": 0
+    }
+  ],
+  "runtime": {
+    "node": "v24.22.1",
+    "nodeSha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+    "declaredNode": "24.20.0",
+    "declaredRuntimeRun": false
+  },
+  "fullSuiteRerun": false,
+  "buildRun": false,
+  "ciRun": false,
+  "commitmentAuthorityEstablished": false,
+  "dependencyClosureVerified": false,
+  "executedBytesBound": false,
+  "rootAuthenticated": false,
+  "networkAuthenticated": false,
+  "independentAcquisitionVerified": false,
+  "forkScheduleVerified": false,
+  "blsValidated": false,
+  "signaturesVerified": false,
+  "finalityVerified": false,
+  "updatesAccepted": false,
+  "productionAccepted": false,
+  "controlledReplacement": {
+    "transform": "replace exactly one OLD_OPERATOR literal with NEW_OPERATOR as specified in tests/source-commitment-inspection.test.mjs; all call inputs and dependencies held fixed",
+    "sha256": "dcf8fe58a286176a05f1de2b83acd1e81f3b2c7d13bd2f011f741e7ef0f97b34",
+    "size": 1196,
+    "originalOutcome": "PINNED_FIXTURE_POLICY_REJECTED",
+    "replacementOutcome": "fixture consistency only",
+    "unchangedExternalCommitmentOutcome": "SOURCE_COMMITMENT_REJECTED",
+    "replacementExternalCommitmentOutcome": "byte equality only"
+  },
+  "limitations": [
+    "same-operator retained commitment, not independent authority",
+    "partial pinned source snapshot",
+    "inspection does not gate or bind application execution",
+    "dependencies, runtime, checker and software distribution remain trust assumptions",
+    "no full suite, declared runtime, build, EVM, live acquisition or CI run"
+  ],
+  "artifacts": [
+    {
+      "PARENTS": [
+        "0037310bf7e422fe0d8e4e762b8ff23a482ce87c"
+      ],
+      "TRANSFORM": "authored research byte inspector and controlled source-replacement tests",
+      "SHA256": "cab88216b2005fc6435d56eaea4079a6fcaa30716774ffdf61f1d1f024daf8a6",
+      "SIZE": 1252,
+      "PATH": "reference/source-commitment-inspection.mjs"
+    },
+    {
+      "PARENTS": [
+        "0037310bf7e422fe0d8e4e762b8ff23a482ce87c"
+      ],
+      "TRANSFORM": "authored research byte inspector and controlled source-replacement tests",
+      "SHA256": "4ee3da5c10a300d8a9433a23ab893730d1f39b8e243b20a7b0bfac5c3ee22b0b",
+      "SIZE": 6052,
+      "PATH": "tests/source-commitment-inspection.test.mjs"
+    },
+    {
+      "PARENTS": [
+        "0037310bf7e422fe0d8e4e762b8ff23a482ce87c"
+      ],
+      "TRANSFORM": "retained parent Git blob, decoded from GitHub base64 with Git blob SHA-1 checked",
+      "SHA256": "59741781544a672c7500a4480dad037d1262f79ebacbc84450056c3028015980",
+      "SIZE": 1196,
+      "PATH": "reference/pinned-fixture-operator-policy.mjs"
+    },
+    {
+      "PARENTS": [
+        "0037310bf7e422fe0d8e4e762b8ff23a482ce87c"
+      ],
+      "TRANSFORM": "retained parent Git blob, decoded from GitHub base64 with Git blob SHA-1 checked",
+      "SHA256": "b8d013e71d898acb26b43c22e436c5b24c753ec471437c52a2fbf8c2aa04f9fa",
+      "SIZE": 2668,
+      "PATH": "reference/operator-genesis-reference.mjs"
+    },
+    {
+      "PARENTS": [
+        "0037310bf7e422fe0d8e4e762b8ff23a482ce87c"
+      ],
+      "TRANSFORM": "retained parent Git blob, decoded from GitHub base64 with Git blob SHA-1 checked",
+      "SHA256": "35cc48473d793b88d24215a62a8153dd17fe4d64d5a5eb17e7239ef22be2d8ab",
+      "SIZE": 1476,
+      "PATH": "reference/bootstrap-profile-selection.mjs"
+    },
+    {
+      "PARENTS": [
+        "0037310bf7e422fe0d8e4e762b8ff23a482ce87c"
+      ],
+      "TRANSFORM": "retained parent Git blob, decoded from GitHub base64 with Git blob SHA-1 checked",
+      "SHA256": "45fed5181c4945b7eb3b4f0344e078d4f1bd927a0243fc55ec9d3561fd85d791",
+      "SIZE": 1612,
+      "PATH": "reference/bootstrap-fixture-metadata-selection.mjs"
+    },
+    {
+      "PARENTS": [
+        "0037310bf7e422fe0d8e4e762b8ff23a482ce87c"
+      ],
+      "TRANSFORM": "retained parent Git blob, decoded from GitHub base64 with Git blob SHA-1 checked",
+      "SHA256": "fcae14704319a6da56eb170fbd8f7367e715e6afeb291a3a0d59ba29540db45d",
+      "SIZE": 4500,
+      "PATH": "reference/fork-data-root.mjs"
+    },
+    {
+      "PARENTS": [
+        "0037310bf7e422fe0d8e4e762b8ff23a482ce87c"
+      ],
+      "TRANSFORM": "retained parent Git blob, decoded from GitHub base64 with Git blob SHA-1 checked",
+      "SHA256": "e24ebfc7994209f8a0e56b7f9e0e5bc9d44e3a84fe3bd412c4f8036ef284ce41",
+      "SIZE": 1485,
+      "PATH": "reference/retained-fixture-genesis-binding.mjs"
+    },
+    {
+      "PARENTS": [
+        "0037310bf7e422fe0d8e4e762b8ff23a482ce87c"
+      ],
+      "TRANSFORM": "retained parent Git blob, decoded from GitHub base64 with Git blob SHA-1 checked",
+      "SHA256": "8ef536dac5c053994a88fef9a4593f30b6b8708509a75278b5aa0b80d207aaf8",
+      "SIZE": 5238,
+      "PATH": "tests/fork-data-root.test.mjs"
+    },
+    {
+      "PARENTS": [
+        "0037310bf7e422fe0d8e4e762b8ff23a482ce87c"
+      ],
+      "TRANSFORM": "retained parent Git blob, decoded from GitHub base64 with Git blob SHA-1 checked",
+      "SHA256": "fe2b48e3beadd9fa2fdd941d13abf53f092bf202abc650924a45ee2290d2c410",
+      "SIZE": 4174,
+      "PATH": "tests/operator-genesis-reference.test.mjs"
+    },
+    {
+      "PARENTS": [
+        "0037310bf7e422fe0d8e4e762b8ff23a482ce87c"
+      ],
+      "TRANSFORM": "retained parent Git blob, decoded from GitHub base64 with Git blob SHA-1 checked",
+      "SHA256": "80f8826a9dfc98f063f75e68342d4cebda8e78edf6536bd5f07fb0cad8481618",
+      "SIZE": 3410,
+      "PATH": "tests/pinned-fixture-operator-policy.test.mjs"
+    },
+    {
+      "PARENTS": [
+        "0037310bf7e422fe0d8e4e762b8ff23a482ce87c"
+      ],
+      "TRANSFORM": "retained parent Git blob, decoded from GitHub base64 with Git blob SHA-1 checked",
+      "SHA256": "4ce09deba47aa2113a0404858bcbc76006b571872586f8b1ff269a44fce87d39",
+      "SIZE": 3316,
+      "PATH": "tests/retained-fixture-genesis-binding.test.mjs"
+    },
+    {
+      "PARENTS": [
+        "0037310bf7e422fe0d8e4e762b8ff23a482ce87c"
+      ],
+      "TRANSFORM": "retained parent Git blob, decoded from GitHub base64 with Git blob SHA-1 checked",
+      "SHA256": "4a8e4e5d0fd4961b87ea5d1ff8ce3a28240ab6e2184eea754acccf50131f4a1a",
+      "SIZE": 1533,
+      "PATH": "evidence/consensus-capella-bootstrap/config.yaml"
+    },
+    {
+      "PARENTS": [
+        "0037310bf7e422fe0d8e4e762b8ff23a482ce87c"
+      ],
+      "TRANSFORM": "retained parent Git blob, decoded from GitHub base64 with Git blob SHA-1 checked",
+      "SHA256": "bcff01d2477f557370c2013028934f90e1b0ae8bcd2f4833adcbb509119dbc29",
+      "SIZE": 251,
+      "PATH": "evidence/consensus-capella-bootstrap/meta.yaml"
+    },
+    {
+      "PARENTS": [
+        "0037310bf7e422fe0d8e4e762b8ff23a482ce87c"
+      ],
+      "TRANSFORM": "retained parent Git blob, decoded from GitHub base64 with Git blob SHA-1 checked",
+      "SHA256": "7dd1be57f1e1624a656cc3ef685945929e5d5bc610211ab8b101af7119f56982",
+      "SIZE": 282,
+      "PATH": "evidence/bootstrap-operator-reference-20261107/operator_reference.json"
+    },
+    {
+      "PARENTS": [
+        "0037310bf7e422fe0d8e4e762b8ff23a482ce87c"
+      ],
+      "TRANSFORM": "retained parent Git blob, decoded from GitHub base64 with Git blob SHA-1 checked",
+      "SHA256": "bb1ee5c4ee0fc17b024140cffe880a9d1bf5487674020a32394ad9d010b3df7a",
+      "SIZE": 251,
+      "PATH": "evidence/bootstrap-operator-reference-20261107/synthetic_provider_metadata.yaml"
+    },
+    {
+      "PARENTS": [
+        "0037310bf7e422fe0d8e4e762b8ff23a482ce87c"
+      ],
+      "TRANSFORM": "retained parent Git blob, decoded from GitHub base64 with Git blob SHA-1 checked",
+      "SHA256": "bb1ee5c4ee0fc17b024140cffe880a9d1bf5487674020a32394ad9d010b3df7a",
+      "SIZE": 251,
+      "PATH": "evidence/bootstrap-source-pin-policy-20261107/synthetic_metadata.yaml"
+    },
+    {
+      "PARENTS": [
+        "0037310bf7e422fe0d8e4e762b8ff23a482ce87c"
+      ],
+      "TRANSFORM": "retained parent Git blob, decoded from GitHub base64 with Git blob SHA-1 checked",
+      "SHA256": "fd9fad0b1958cfbbd794123dd32e82acc2777a81ebd6c45f62a8311dc59b5be5",
+      "SIZE": 282,
+      "PATH": "evidence/bootstrap-source-pin-policy-20261107/synthetic_operator.json"
+    },
+    {
+      "PARENTS": [
+        "0037310bf7e422fe0d8e4e762b8ff23a482ce87c"
+      ],
+      "TRANSFORM": "node --max-old-space-size=256 --test --test-concurrency=1 --test-timeout=30000 tests/source-commitment-inspection.test.mjs (stdout and stderr, 45-second deadline)",
+      "SHA256": "18b4e2628202a89b9a909a1c218282074afc781e184cf54d5f1eea39c27f821a",
+      "SIZE": 779,
+      "PATH": "evidence/source-commitment-inspection-20261107/inspection.log"
+    },
+    {
+      "PARENTS": [
+        "0037310bf7e422fe0d8e4e762b8ff23a482ce87c"
+      ],
+      "TRANSFORM": "node --max-old-space-size=256 --test --test-concurrency=1 --test-timeout=30000 tests/pinned-fixture-operator-policy.test.mjs tests/operator-genesis-reference.test.mjs tests/retained-fixture-genesis-binding.test.mjs tests/fork-data-root.test.mjs (stdout and stderr, 45-second deadline)",
+      "SHA256": "7824d945c312a60031e21a6fe3eaa9d5bf9cf7bd57318a3d0af3b4cfc5550cf1",
+      "SIZE": 1996,
+      "PATH": "evidence/source-commitment-inspection-20261107/regression.log"
+    },
+    {
+      "PARENTS": [
+        "0037310bf7e422fe0d8e4e762b8ff23a482ce87c"
+      ],
+      "TRANSFORM": "record runtime, guards, executed commands and unchanged-input check as JSON",
+      "SHA256": "d4a2884fed292ea2a4a7a48db22235f0446323b55ae8e78fbed4b4d7a17009b4",
+      "SIZE": 1440,
+      "PATH": "evidence/source-commitment-inspection-20261107/run.json"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+✔ official minimal Capella fork-data root matches independent oracle, without authority (2.690384ms)
+✔ changed fork version rejects with fresh synthetic config pin (1.189301ms)
+✔ changed genesis validators root rejects with fresh synthetic metadata pin (3.058104ms)
+✔ changed bootstrap digest rejects with fresh synthetic metadata pin (1.863136ms)
+✔ changed store digest rejects with fresh synthetic metadata pin (0.392353ms)
+✔ malformed fork-version encoding rejects with fresh synthetic pin (0.328664ms)
+✔ extra metadata authority field rejects with fresh synthetic pin (0.537193ms)
+✔ wrong input pin rejects before metadata parsing (0.511295ms)
+✔ unsupported preset/epoch and duplicate fork-field reject (0.632661ms)
+✔ extra config authority field rejects with a fresh pin (0.430033ms)
+✔ replacement of a known config key rejects (3.714086ms)
+✔ coherent alternative fork remains unauthenticated (0.559865ms)
+✔ non-selected config value does not validate schedule (1.365941ms)
+✔ baseline operator reference matches fixture only (3.233999ms)
+✔ coherent provider genesis substitution rejects (1.956654ms)
+✔ altered operator bytes reject with unchanged pin (0.40147ms)
+✔ changed authority field rejects despite fresh hash (0.586303ms)
+✔ extra operator field rejects despite fresh hash (0.510643ms)
+✔ malformed expected operator pin rejects (0.239858ms)
+✔ baseline passes only as fixture consistency (4.944454ms)
+✔ published comparator accepts coherent dual repin (1.128548ms)
+✔ source-pinned gate rejects identical dual-repinned data (1.340223ms)
+✔ source-pinned gate rejects altered operator alone (0.283158ms)
+✔ extra caller replacement pin cannot override source pin (0.201125ms)
+✔ published fixture binds to retained full genesis root (2.806461ms)
+✔ coherent genesis replacement rejects against fixed reference (1.911891ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 495.369122
