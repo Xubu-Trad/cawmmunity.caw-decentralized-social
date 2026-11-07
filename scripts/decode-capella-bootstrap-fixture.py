@@ -64,6 +64,8 @@ def decode():
     selected=re.search(r"trusted_block_root: '(0x[0-9a-f]{64})'",(D/'meta.yaml').read_text()).group(1)
     return {'origin':'official minimal Capella bootstrap; selected root copied from metadata; committee and signatures not verified',
       'decompressedSha256':hashlib.sha256(raw).hexdigest(),'decompressedSize':len(raw),'selectedBeaconRoot':selected,
+      'committee':{'pubkeys':[hx(raw[i:i+48]) for i in range(4,1540,48)],'aggregate_pubkey':hx(raw[1540:1588])},
+      'committeeBranch':[hx(raw[i:i+32])for i in range(1588,1748,32)],
       'input':{'schema':'caw-capella-header-binding/1','profile':'capella-structural-only','beacon':beacon,'execution':values,'executionRoot':payload_root,'executionBranch':branch}}
 if __name__=='__main__':
     result=decode();(D/'binding.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps({'bytes':result['decompressedSize'],'root':result['selectedBeaconRoot']}))

@@ -534,3 +534,8 @@ Fixed a reproduced empty-success launch through a Windows directory junction. Th
 ## External combined bootstrap — 2026-11-06
 
 [Official minimal Capella fixture](EXTERNAL_CAPELLA_BINDING.md) passes the complete structural path; 41 Node and four decoder checks pass. Next bootstrap committee/root binding and explicit profile rules; no signature/update/finality or live trust claim.
+
+
+## Minimal bootstrap committee inclusion — 2026-11-07
+
+[Fixed-profile structural committee binding](MINIMAL_CAPELLA_BOOTSTRAP.md) passes official fixture and negative cases: 47 focused Node checks and four decoder checks. Next supported-network/bootstrap policy, trust-anchor sourcing and BLS validation boundary. No live trust, update acceptance, full-suite rerun or release clearance.

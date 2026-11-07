@@ -1,0 +1,29 @@
+{
+  "nodeChecksPassed": 47,
+  "nodeTestFiles": 5,
+  "pythonChecksPassed": 4,
+  "specCommit": "204fb4a19774eabb7a2e91505365deed6b8afef8",
+  "vectorCommit": "bc5c1a7fb2a8871aaffd4b16ee4dd9c72bb81908",
+  "sourceSha256": {
+    "reference/minimal-capella-bootstrap.mjs": "be519e4c05ade86cae9573ccaff49ffd39f9758d39d2aabba1992bff4a408509",
+    "tests/minimal-capella-bootstrap.test.mjs": "e70ddee18d84c2521d87e60039dd24405ac486749966934e2eb892a42d006a34",
+    "scripts/decode-capella-bootstrap-fixture.py": "181b6e1bad9b4f0fea6d7e868d6ca4e8659e1fcd41295edcf791bf622f9058fa",
+    "evidence/consensus-capella-bootstrap/binding.json": "4af4d87a19a141e78511aade1b80a1d8377d4785b23edbb60968fd906f64f426"
+  },
+  "runtimes": [
+    {
+      "runtime": "Python 3.12.14",
+      "sha256": "3c48fbdcc2ed5c55290e39bef50bd6b1da76f43f3069a4a2624d0b8876a605f5"
+    },
+    {
+      "runtime": "Node.js 24.20.0",
+      "sha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5"
+    }
+  ],
+  "committeeInclusionVerified": true,
+  "publicKeysValidated": false,
+  "signaturesVerified": false,
+  "rootAuthenticated": false,
+  "consensusVerified": false,
+  "fullSuiteRerun": false
+}

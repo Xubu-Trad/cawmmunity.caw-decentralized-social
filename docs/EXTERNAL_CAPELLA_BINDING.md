@@ -21,3 +21,8 @@ The decoder deterministically rewrites `binding.json` only. Its Snappy handling 
 This removes the synthetic-only boundary for the combined structural test. It does not implement a light client, run the upstream sync suite, authenticate the fixture's trust root, validate committees/BLS signatures, or prove live consensus/finality/freshness. The metadata root is a test expectation. No current-mainnet or operator-independent acquisition is claimed. The stored config is provenance, not an implemented fork-schedule decision.
 
 Next review bootstrap committee/root binding and explicit supported-profile rules with external negative cases before any signature/update work. Preserve the distinction between an authenticated trust source and successful inclusion beneath an assumed root. Public test and production remain blocked; hosted CI deferred. Historical full-suite totals are unchanged. PR #16 remains at its previously reviewed revision with changes requested.
+
+
+## Follow-up — 2026-11-07
+
+The original experiment above skipped committee data. The subsequent [minimal bootstrap committee experiment](MINIMAL_CAPELLA_BOOTSTRAP.md) now exposes and verifies its structural inclusion. BLS key/signature validation and root authentication remain unimplemented. The original 41/4 results above remain historical evidence.

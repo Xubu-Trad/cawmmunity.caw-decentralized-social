@@ -1,6 +1,8 @@
 # cawmmunity.caw - decentralized - social
 
-## Current engineering update — 2026-11-06
+## Current engineering update — 2026-11-07
+
+[Bootstrap committee inclusion](docs/MINIMAL_CAPELLA_BOOTSTRAP.md) now passes against the preserved official minimal Capella fixture. In plain terms, the supplied committee data matches the recorded state commitment. 47 focused Node checks and four decoder checks pass. This does **not** yet validate committee signatures or establish a trustworthy live starting point. PR #16 remains at its reviewed revision with changes requested; no new author revision was available at this check.
 
 [An official combined Capella bootstrap fixture](docs/EXTERNAL_CAPELLA_BINDING.md) now passes the payload-to-beacon path against its published root: 41 focused Node checks and four decoder checks pass. This adds external structural evidence; committee/signature validation and live checkpoint trust remain unfinished.
 
