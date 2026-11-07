@@ -1,0 +1,32 @@
+{
+  "schema": "caw-fixture-source-inventory/1",
+  "parentCommit": "e6804788fcafc3ea1c37a08f5794b4e0c44f8bc8",
+  "scope": "five reviewed local modules; excludes Node builtins, runtime and checker",
+  "files": [
+    {
+      "path": "reference/bootstrap-fixture-metadata-selection.mjs",
+      "size": 1612,
+      "sha256": "45fed5181c4945b7eb3b4f0344e078d4f1bd927a0243fc55ec9d3561fd85d791"
+    },
+    {
+      "path": "reference/bootstrap-profile-selection.mjs",
+      "size": 1476,
+      "sha256": "35cc48473d793b88d24215a62a8153dd17fe4d64d5a5eb17e7239ef22be2d8ab"
+    },
+    {
+      "path": "reference/fork-data-root.mjs",
+      "size": 4500,
+      "sha256": "fcae14704319a6da56eb170fbd8f7367e715e6afeb291a3a0d59ba29540db45d"
+    },
+    {
+      "path": "reference/operator-genesis-reference.mjs",
+      "size": 2668,
+      "sha256": "b8d013e71d898acb26b43c22e436c5b24c753ec471437c52a2fbf8c2aa04f9fa"
+    },
+    {
+      "path": "reference/pinned-fixture-operator-policy.mjs",
+      "size": 1196,
+      "sha256": "59741781544a672c7500a4480dad037d1262f79ebacbc84450056c3028015980"
+    }
+  ]
+}

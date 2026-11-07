@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: all five retained local source identities match
+ok 1 - all five retained local source identities match
+  ---
+  duration_ms: 2.238494
+  type: 'test'
+  ...
+# Subtest: unchanged entrypoint inspection misses changed dependency bytes
+ok 2 - unchanged entrypoint inspection misses changed dependency bytes
+  ---
+  duration_ms: 2.397953
+  type: 'test'
+  ...
+# Subtest: controlled import substitution changes a reported flag without changing inputs
+ok 3 - controlled import substitution changes a reported flag without changing inputs
+  ---
+  duration_ms: 19.567075
+  type: 'test'
+  ...
+# Subtest: missing dependency rejects exact inventory comparison
+ok 4 - missing dependency rejects exact inventory comparison
+  ---
+  duration_ms: 1.022111
+  type: 'test'
+  ...
+# Subtest: unexpected file rejects exact inventory comparison
+ok 5 - unexpected file rejects exact inventory comparison
+  ---
+  duration_ms: 1.009958
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 141.356573

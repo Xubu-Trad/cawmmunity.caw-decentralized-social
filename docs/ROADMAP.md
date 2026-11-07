@@ -566,3 +566,8 @@ Fixed a reproduced empty-success launch through a Windows directory junction. Th
 ## Retained source commitment — 2026-11-07
 
 [Source replacement experiment](SOURCE_COMMITMENT_INSPECTION_20261107.md): 9 new focused checks and a separate 26-check regression pass on Node v24.22.1. A single embedded-pin substitution changes fixture admission but rejects against the unchanged retained source hash. Replacing that external hash too still passes as byte equality only. Next isolate dependency substitution and verified-byte execution binding, while independent software distribution and checkpoint authority remain unresolved. No production adoption, full-suite or declared-runtime run; CI deferred.
+
+
+## Dependency substitution — 2026-11-07
+
+[Five focused checks and a separate 35-check regression](DEPENDENCY_SUBSTITUTION_20261107.md) passed on Node v24.22.1. Next hold the inventory fixed and isolate dependency replacement between inspection and import. Independent manifest authority, runtime identity and binding checked bytes to execution remain open. No full-suite or declared-runtime run, new adoption behavior, BLS or production claim; CI deferred.

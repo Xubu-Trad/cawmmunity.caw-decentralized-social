@@ -53,3 +53,8 @@ The next implementation review must identify the selected profile and anchor ass
 ## Software commitment boundary — 2026-11-07
 
 The [retained source experiment](SOURCE_COMMITMENT_INSPECTION_20261107.md) detects a changed fixture policy under an unchanged source commitment. It does not connect inspected bytes to executed bytes, verify dependencies/runtime, or independently establish the commitment's authority. The recovery application does not invoke this research inspector. A matching source hash alone must not be represented as authenticated recovery, consensus or permission to adopt a checkpoint.
+
+
+## Dependency substitution — 2026-11-07
+
+[Five focused checks and a separate 35-check regression](DEPENDENCY_SUBSTITUTION_20261107.md) passed on Node v24.22.1. A matching entrypoint hash does not verify its imports. The retained inventory detects the tested altered dependency, but neither comparison gates application recovery or binds verified bytes to execution. No full-suite or declared-runtime run, new adoption behavior, BLS or production claim; CI deferred.

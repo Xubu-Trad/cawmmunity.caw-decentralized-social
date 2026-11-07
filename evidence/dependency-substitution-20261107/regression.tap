@@ -1,0 +1,220 @@
+TAP version 13
+# Subtest: official minimal Capella fork-data root matches independent oracle, without authority
+ok 1 - official minimal Capella fork-data root matches independent oracle, without authority
+  ---
+  duration_ms: 2.816314
+  type: 'test'
+  ...
+# Subtest: changed fork version rejects with fresh synthetic config pin
+ok 2 - changed fork version rejects with fresh synthetic config pin
+  ---
+  duration_ms: 1.366755
+  type: 'test'
+  ...
+# Subtest: changed genesis validators root rejects with fresh synthetic metadata pin
+ok 3 - changed genesis validators root rejects with fresh synthetic metadata pin
+  ---
+  duration_ms: 0.53524
+  type: 'test'
+  ...
+# Subtest: changed bootstrap digest rejects with fresh synthetic metadata pin
+ok 4 - changed bootstrap digest rejects with fresh synthetic metadata pin
+  ---
+  duration_ms: 1.46578
+  type: 'test'
+  ...
+# Subtest: changed store digest rejects with fresh synthetic metadata pin
+ok 5 - changed store digest rejects with fresh synthetic metadata pin
+  ---
+  duration_ms: 0.332802
+  type: 'test'
+  ...
+# Subtest: malformed fork-version encoding rejects with fresh synthetic pin
+ok 6 - malformed fork-version encoding rejects with fresh synthetic pin
+  ---
+  duration_ms: 0.378889
+  type: 'test'
+  ...
+# Subtest: extra metadata authority field rejects with fresh synthetic pin
+ok 7 - extra metadata authority field rejects with fresh synthetic pin
+  ---
+  duration_ms: 0.372216
+  type: 'test'
+  ...
+# Subtest: wrong input pin rejects before metadata parsing
+ok 8 - wrong input pin rejects before metadata parsing
+  ---
+  duration_ms: 0.530902
+  type: 'test'
+  ...
+# Subtest: unsupported preset/epoch and duplicate fork-field reject
+ok 9 - unsupported preset/epoch and duplicate fork-field reject
+  ---
+  duration_ms: 0.606344
+  type: 'test'
+  ...
+# Subtest: extra config authority field rejects with a fresh pin
+ok 10 - extra config authority field rejects with a fresh pin
+  ---
+  duration_ms: 0.488623
+  type: 'test'
+  ...
+# Subtest: replacement of a known config key rejects
+ok 11 - replacement of a known config key rejects
+  ---
+  duration_ms: 0.322973
+  type: 'test'
+  ...
+# Subtest: coherent alternative fork remains unauthenticated
+ok 12 - coherent alternative fork remains unauthenticated
+  ---
+  duration_ms: 0.511677
+  type: 'test'
+  ...
+# Subtest: non-selected config value does not validate schedule
+ok 13 - non-selected config value does not validate schedule
+  ---
+  duration_ms: 1.106148
+  type: 'test'
+  ...
+# Subtest: baseline operator reference matches fixture only
+ok 14 - baseline operator reference matches fixture only
+  ---
+  duration_ms: 3.758075
+  type: 'test'
+  ...
+# Subtest: coherent provider genesis substitution rejects
+ok 15 - coherent provider genesis substitution rejects
+  ---
+  duration_ms: 3.010968
+  type: 'test'
+  ...
+# Subtest: altered operator bytes reject with unchanged pin
+ok 16 - altered operator bytes reject with unchanged pin
+  ---
+  duration_ms: 0.293157
+  type: 'test'
+  ...
+# Subtest: changed authority field rejects despite fresh hash
+ok 17 - changed authority field rejects despite fresh hash
+  ---
+  duration_ms: 0.339515
+  type: 'test'
+  ...
+# Subtest: extra operator field rejects despite fresh hash
+ok 18 - extra operator field rejects despite fresh hash
+  ---
+  duration_ms: 0.27317
+  type: 'test'
+  ...
+# Subtest: malformed expected operator pin rejects
+ok 19 - malformed expected operator pin rejects
+  ---
+  duration_ms: 0.200013
+  type: 'test'
+  ...
+# Subtest: baseline passes only as fixture consistency
+ok 20 - baseline passes only as fixture consistency
+  ---
+  duration_ms: 3.42915
+  type: 'test'
+  ...
+# Subtest: published comparator accepts coherent dual repin
+ok 21 - published comparator accepts coherent dual repin
+  ---
+  duration_ms: 0.647711
+  type: 'test'
+  ...
+# Subtest: source-pinned gate rejects identical dual-repinned data
+ok 22 - source-pinned gate rejects identical dual-repinned data
+  ---
+  duration_ms: 0.942422
+  type: 'test'
+  ...
+# Subtest: source-pinned gate rejects altered operator alone
+ok 23 - source-pinned gate rejects altered operator alone
+  ---
+  duration_ms: 0.221574
+  type: 'test'
+  ...
+# Subtest: extra caller replacement pin cannot override source pin
+ok 24 - extra caller replacement pin cannot override source pin
+  ---
+  duration_ms: 1.807369
+  type: 'test'
+  ...
+# Subtest: published fixture binds to retained full genesis root
+ok 25 - published fixture binds to retained full genesis root
+  ---
+  duration_ms: 3.02238
+  type: 'test'
+  ...
+# Subtest: coherent genesis replacement rejects against fixed reference
+ok 26 - coherent genesis replacement rejects against fixed reference
+  ---
+  duration_ms: 1.664411
+  type: 'test'
+  ...
+# Subtest: retained source matches without elevating authority or execution claims
+ok 27 - retained source matches without elevating authority or execution claims
+  ---
+  duration_ms: 2.458716
+  type: 'test'
+  ...
+# Subtest: coherent source replacement rejects against unchanged retained commitment
+ok 28 - coherent source replacement rejects against unchanged retained commitment
+  ---
+  duration_ms: 1.256008
+  type: 'test'
+  ...
+# Subtest: replacing the external commitment too remains an explicit trust boundary
+ok 29 - replacing the external commitment too remains an explicit trust boundary
+  ---
+  duration_ms: 0.314257
+  type: 'test'
+  ...
+# Subtest: controlled source replacement changes fixture outcome with inputs fixed
+ok 30 - controlled source replacement changes fixture outcome with inputs fixed
+  ---
+  duration_ms: 7.27554
+  type: 'test'
+  ...
+# Subtest: non-buffer inputs reject
+ok 31 - non-buffer inputs reject
+  ---
+  duration_ms: 0.300662
+  type: 'test'
+  ...
+# Subtest: empty and oversized bytes reject even with their matching digest
+ok 32 - empty and oversized bytes reject even with their matching digest
+  ---
+  duration_ms: 0.52445
+  type: 'test'
+  ...
+# Subtest: malformed or missing commitments reject
+ok 33 - malformed or missing commitments reject
+  ---
+  duration_ms: 0.55277
+  type: 'test'
+  ...
+# Subtest: extra override argument rejects
+ok 34 - extra override argument rejects
+  ---
+  duration_ms: 0.260848
+  type: 'test'
+  ...
+# Subtest: later buffer mutation does not become an execution binding
+ok 35 - later buffer mutation does not become an execution binding
+  ---
+  duration_ms: 0.521334
+  type: 'test'
+  ...
+1..35
+# tests 35
+# suites 0
+# pass 35
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 578.453835
