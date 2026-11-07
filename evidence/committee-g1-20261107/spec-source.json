@@ -1,0 +1,13 @@
+{
+  "repository": "ethereum/consensus-specs",
+  "commit": "204fb4a19774eabb7a2e91505365deed6b8afef8",
+  "path": "specs/altair/beacon-chain.md",
+  "gitBlob": "265b7e1d4b243c2b1bac21c9ca7c6445579fa7df",
+  "sha256": "7479e9f279d42beebd0dc899a0742fa34a81b8adc31308ad0439215b59cfa196",
+  "size": 31099,
+  "observedSections": [
+    "get_next_sync_committee_indices",
+    "get_next_sync_committee"
+  ],
+  "finding": "sampling can repeat validator indices; get_next_sync_committee collects pubkeys including duplicates and calls eth_aggregate_pubkeys"
+}

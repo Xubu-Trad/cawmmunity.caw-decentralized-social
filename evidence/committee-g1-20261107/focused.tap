@@ -1,0 +1,82 @@
+TAP version 13
+# Subtest: retained 32 keys and supplied aggregate satisfy the point sum
+ok 1 - retained 32 keys and supplied aggregate satisfy the point sum
+  ---
+  duration_ms: 84.26435
+  type: 'test'
+  ...
+# Subtest: composition preserves metadata and structural evidence without authority claims
+ok 2 - composition preserves metadata and structural evidence without authority claims
+  ---
+  duration_ms: 81.255335
+  type: 'test'
+  ...
+# Subtest: one valid member replacement fails the unchanged aggregate relation
+ok 3 - one valid member replacement fails the unchanged aggregate relation
+  ---
+  duration_ms: 72.18133
+  type: 'test'
+  ...
+# Subtest: valid but wrong aggregate point rejects
+ok 4 - valid but wrong aggregate point rejects
+  ---
+  duration_ms: 72.766857
+  type: 'test'
+  ...
+# Subtest: off-curve and wrong-subgroup members reject
+ok 5 - off-curve and wrong-subgroup members reject
+  ---
+  duration_ms: 2.319975
+  type: 'test'
+  ...
+# Subtest: identity member and identity aggregate independently reject
+ok 6 - identity member and identity aggregate independently reject
+  ---
+  duration_ms: 69.295137
+  type: 'test'
+  ...
+# Subtest: malformed and noncanonical member encodings reject
+ok 7 - malformed and noncanonical member encodings reject
+  ---
+  duration_ms: 0.670673
+  type: 'test'
+  ...
+# Subtest: unsupported sizes and injected authority fields reject
+ok 8 - unsupported sizes and injected authority fields reject
+  ---
+  duration_ms: 0.885962
+  type: 'test'
+  ...
+# Subtest: repeated members are counted with multiplicity, not deduplicated
+ok 9 - repeated members are counted with multiplicity, not deduplicated
+  ---
+  duration_ms: 145.364334
+  type: 'test'
+  ...
+# Subtest: permutation preserves point sum but fails the original ordered inclusion proof
+ok 10 - permutation preserves point sum but fails the original ordered inclusion proof
+  ---
+  duration_ms: 74.984842
+  type: 'test'
+  ...
+# Subtest: valid key relation cannot bypass a changed proof or unsupported profile
+ok 11 - valid key relation cannot bypass a changed proof or unsupported profile
+  ---
+  duration_ms: 1.565387
+  type: 'test'
+  ...
+# Subtest: composition still rejects metadata mutation and selected-root mismatch
+ok 12 - composition still rejects metadata mutation and selected-root mismatch
+  ---
+  duration_ms: 0.292263
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 828.197481

@@ -26,3 +26,8 @@ Next: specify and test the supported-network/bootstrap policy, independently sou
 ## Profile/metadata composition follow-up — 2026-11-07
 
 [The pinned composition](BOOTSTRAP_PROFILE_COMPOSITION_20261107.md) now checks supplied metadata bytes and explicit fixture selection before the existing structural committee/header checks. It adds no authenticated anchor, live network/fork policy, BLS verification or recovery adoption. [The additive provenance correction](BOOTSTRAP_BINDING_PROVENANCE_CORRECTION_20261107.md) records the historical binding-file digest discrepancy; original evidence remains unchanged. For read-only verification, run the Python decoder tests rather than the decoder's main command, which rewrites `binding.json`.
+
+
+## Minimal committee key composition — 2026-11-07
+
+[The isolated G1/aggregate composition](MINIMAL_COMMITTEE_G1_20261107.md) passes 12 new, separate 30 G1 and 73 bootstrap regression checks. The supplied32-member aggregate matches the sum with repeated members counted. Ordered inclusion and aggregate equality remain distinct. Old structural modules are unchanged; only the new research result reports checked key/aggregate properties. Next external G2/signature vectors and explicit ciphersuite/domain behavior, with checkpoint/network/fork/recency and update gates still open. Full suite/declared runtime not run; CI deferred.

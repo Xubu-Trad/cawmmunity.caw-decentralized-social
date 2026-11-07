@@ -591,3 +591,8 @@ Fixed a reproduced empty-success launch through a Windows directory junction. Th
 ## Individual BLS G1 prerequisite — 2026-11-07
 
 [The isolated G1 adapter](BLS_G1_VALIDATION_20261107.md) matches all thirteen retained external decoder vectors after canonical re-encoding checks; 30 final focused and separate 44 regression tests pass. The initial raw-library mismatch remains documented, with 28 passes/1 failure preserved. Individual curve/subgroup validity does not establish committee membership, aggregate relationship or signatures. Next retained minimal-committee composition and aggregate-key relation, then G2/domain/signature and trust-policy gates. No root dependencies or acceptance changes; full suite/declared runtime not run, CI deferred.
+
+
+## Minimal committee key composition — 2026-11-07
+
+[The isolated G1/aggregate composition](MINIMAL_COMMITTEE_G1_20261107.md) passes 12 new, separate 30 G1 and 73 bootstrap regression checks. The supplied32-member aggregate matches the sum with repeated members counted. Ordered inclusion and aggregate equality remain distinct. Old structural modules are unchanged; only the new research result reports checked key/aggregate properties. Next external G2/signature vectors and explicit ciphersuite/domain behavior, with checkpoint/network/fork/recency and update gates still open. Full suite/declared runtime not run; CI deferred.

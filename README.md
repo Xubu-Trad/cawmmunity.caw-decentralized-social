@@ -1,5 +1,7 @@
 # cawmmunity.caw - decentralized - social
 
+[The retained minimal committee now passes G1 and aggregate checks](docs/MINIMAL_COMMITTEE_G1_20261107.md), composed with metadata and structural inclusion. Separate runs passed 12 new, 30 G1 and 73 bootstrap checks. This validates the retained keys and their sum, not signatures or trusted consensus.
+
 [BLS public-key validation research](docs/BLS_G1_VALIDATION_20261107.md) now checks compressed G1 encoding, curve/subgroup membership and nonidentity against external vectors. A raw-decoder mismatch is preserved; the canonical adapter passes 30 focused checks plus a separate 44-check regression. This does not verify committee authority or signatures.
 
 [A captured-source fixture prototype](docs/CAPTURED_FIXTURE_EXECUTION_20261107.md) now runs the retained five modules without rereading acquired source files. Seventeen focused checks and a separate 44-check regression passed. This experimental, explicitly trusted-host mechanism is not a hostile-code sandbox or live-chain authentication.

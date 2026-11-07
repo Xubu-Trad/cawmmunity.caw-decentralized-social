@@ -1,0 +1,372 @@
+{
+  "schema": "caw-minimal-committee-g1-evidence/1",
+  "parentCommit": "382b5602c3de32c928fcc94411ea3f202711b6c3",
+  "status": "SCOPED_PASS",
+  "groups": [
+    {
+      "name": "committee",
+      "command": [
+        "node",
+        "--max-old-space-size=256",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "--test-timeout=30000",
+        "experiments/bls-g1/committee.test.mjs"
+      ],
+      "passed": 12,
+      "failed": 0,
+      "exitCode": 0,
+      "log": "evidence/committee-g1-20261107/focused.tap"
+    },
+    {
+      "name": "g1-regression",
+      "command": [
+        "node",
+        "--max-old-space-size=256",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "--test-timeout=30000",
+        "experiments/bls-g1/g1.test.mjs"
+      ],
+      "passed": 30,
+      "failed": 0,
+      "exitCode": 0,
+      "log": "evidence/committee-g1-20261107/g1-regression.tap"
+    },
+    {
+      "name": "bootstrap-regression",
+      "command": [
+        "node",
+        "--max-old-space-size=256",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "--test-timeout=30000",
+        "tests/sha256-branch.test.mjs",
+        "tests/beacon-header-root.test.mjs",
+        "tests/capella-payload-root.test.mjs",
+        "tests/capella-header-binding.test.mjs",
+        "tests/minimal-capella-bootstrap.test.mjs",
+        "tests/bootstrap-profile-selection.test.mjs",
+        "tests/bootstrap-fixture-metadata-selection.test.mjs",
+        "tests/pinned-minimal-capella-bootstrap.test.mjs"
+      ],
+      "passed": 73,
+      "failed": 0,
+      "exitCode": 0,
+      "log": "evidence/committee-g1-20261107/bootstrap-regression.tap"
+    }
+  ],
+  "runtime": {
+    "node": "v24.22.1",
+    "binarySha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+    "declaredNode": "24.20.0",
+    "declaredRuntimeRun": false
+  },
+  "publicKeysValidated": true,
+  "aggregatePubkeyValidated": true,
+  "aggregatePublicKeyRelationshipVerified": true,
+  "committeeMembershipAuthenticated": false,
+  "rootAuthenticated": false,
+  "networkAuthenticated": false,
+  "signaturesVerified": false,
+  "blsValidated": false,
+  "finalityVerified": false,
+  "updatesAccepted": false,
+  "productionAccepted": false,
+  "fullSuiteRerun": false,
+  "ciRun": false,
+  "rootDependenciesChanged": false,
+  "priorStructuralSourcesChanged": false,
+  "limitations": [
+    "fixed32-member retained fixture only",
+    "aggregate equality does not bind ordering or authenticate membership",
+    "identity aggregate unsupported by this research profile",
+    "no signatures,G2,domain,consensus,freshness or update verification",
+    "prior raw-library decoder mismatch and build provenance limits remain",
+    "no full suite, declared runtime, build,EVM,live acquisition or CI"
+  ],
+  "artifacts": [
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "authored isolated committee aggregation, composed checker, controls or opt-in commands",
+      "SHA256": "ced6c4683b5bc4201d38a5e11f6526de136f3e7adc4b9e66fed6d4a340855295",
+      "SIZE": 2664,
+      "PATH": "experiments/bls-g1/committee.mjs"
+    },
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "authored isolated committee aggregation, composed checker, controls or opt-in commands",
+      "SHA256": "7b06a778060471739066ba818d4eafedd8bf9979f97c652b1bdeeef0ba786a66",
+      "SIZE": 6583,
+      "PATH": "experiments/bls-g1/committee.test.mjs"
+    },
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "authored isolated committee aggregation, composed checker, controls or opt-in commands",
+      "SHA256": "4992d7bb43c2af633c803721dc91c153f027bf641a1affdfb87abc1e6c5331d2",
+      "SIZE": 1321,
+      "PATH": "experiments/bls-g1/check-retained-committee.mjs"
+    },
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "retained parent Git blob; exact hash identity verified",
+      "SHA256": "0c6365eb2d689faf778f500214d580eeec5cc0dee71572af44e9774631dd9644",
+      "SIZE": 2005,
+      "PATH": "experiments/bls-g1/g1.mjs"
+    },
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "authored isolated committee aggregation, composed checker, controls or opt-in commands",
+      "SHA256": "2e61ef75600c65269f118f6e9c574821c7028d8719a2f779818a7ace93658190",
+      "SIZE": 534,
+      "PATH": "experiments/bls-g1/package.json"
+    },
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "retained parent Git blob; exact hash identity verified",
+      "SHA256": "303999ac0c2d24d3f8151226bfe33b7a410b8eeacc2a2a514dbdd096624ce205",
+      "SIZE": 1179,
+      "PATH": "experiments/bls-g1/package-lock.json"
+    },
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "retained parent Git blob; exact hash identity verified",
+      "SHA256": "96f107e5a94bd2a9bfa47f84ff257cbd18995ae8947440cac91804823236c6f8",
+      "SIZE": 6690,
+      "PATH": "evidence/consensus-capella-bootstrap/binding.json"
+    },
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "retained parent Git blob; exact hash identity verified",
+      "SHA256": "bcff01d2477f557370c2013028934f90e1b0ae8bcd2f4833adcbb509119dbc29",
+      "SIZE": 251,
+      "PATH": "evidence/consensus-capella-bootstrap/meta.yaml"
+    },
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "retained parent Git blob; exact hash identity verified",
+      "SHA256": "a95a825cecf73905f91e4734027909ebc129695b28fc7d6a943ffa510b34ae97",
+      "SIZE": 78992,
+      "PATH": "evidence/bls-g1-20261107/dependency-inventory.json"
+    },
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "retained parent Git blob; exact hash identity verified",
+      "SHA256": "8093a85c588f207afcd174f2b7095c235cebdd134e5da080710805bc4cae20c3",
+      "SIZE": 15768,
+      "PATH": "evidence/BLS_G1_VALIDATION_20261107.json"
+    },
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "retained parent Git blob; exact hash identity verified",
+      "SHA256": "f44e13c4ffbed44526b11405b93e5759f1d81d3d616f2df738329c0f7418392e",
+      "SIZE": 2355,
+      "PATH": "reference/beacon-header-root.mjs"
+    },
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "retained parent Git blob; exact hash identity verified",
+      "SHA256": "45fed5181c4945b7eb3b4f0344e078d4f1bd927a0243fc55ec9d3561fd85d791",
+      "SIZE": 1612,
+      "PATH": "reference/bootstrap-fixture-metadata-selection.mjs"
+    },
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "retained parent Git blob; exact hash identity verified",
+      "SHA256": "35cc48473d793b88d24215a62a8153dd17fe4d64d5a5eb17e7239ef22be2d8ab",
+      "SIZE": 1476,
+      "PATH": "reference/bootstrap-profile-selection.mjs"
+    },
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "retained parent Git blob; exact hash identity verified",
+      "SHA256": "921b83c3ad767b82b6712c71f0ef8d6973cf77d664a277b1e4732b479e3cd52d",
+      "SIZE": 1907,
+      "PATH": "reference/capella-header-binding.mjs"
+    },
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "retained parent Git blob; exact hash identity verified",
+      "SHA256": "4bace77d99b8c1828be4ce0e3de57e606ac4f3a270b8b5fdd33d36acb34fdda0",
+      "SIZE": 3039,
+      "PATH": "reference/capella-payload-root.mjs"
+    },
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "retained parent Git blob; exact hash identity verified",
+      "SHA256": "fcae14704319a6da56eb170fbd8f7367e715e6afeb291a3a0d59ba29540db45d",
+      "SIZE": 4500,
+      "PATH": "reference/fork-data-root.mjs"
+    },
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "retained parent Git blob; exact hash identity verified",
+      "SHA256": "be519e4c05ade86cae9573ccaff49ffd39f9758d39d2aabba1992bff4a408509",
+      "SIZE": 2451,
+      "PATH": "reference/minimal-capella-bootstrap.mjs"
+    },
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "retained parent Git blob; exact hash identity verified",
+      "SHA256": "b8d013e71d898acb26b43c22e436c5b24c753ec471437c52a2fbf8c2aa04f9fa",
+      "SIZE": 2668,
+      "PATH": "reference/operator-genesis-reference.mjs"
+    },
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "retained parent Git blob; exact hash identity verified",
+      "SHA256": "59741781544a672c7500a4480dad037d1262f79ebacbc84450056c3028015980",
+      "SIZE": 1196,
+      "PATH": "reference/pinned-fixture-operator-policy.mjs"
+    },
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "retained parent Git blob; exact hash identity verified",
+      "SHA256": "67df44add3fcea6fa39cf8f918586aace49ea3517af957e3eff6096e999eb338",
+      "SIZE": 2185,
+      "PATH": "reference/pinned-minimal-capella-bootstrap.mjs"
+    },
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "retained parent Git blob; exact hash identity verified",
+      "SHA256": "e24ebfc7994209f8a0e56b7f9e0e5bc9d44e3a84fe3bd412c4f8036ef284ce41",
+      "SIZE": 1485,
+      "PATH": "reference/retained-fixture-genesis-binding.mjs"
+    },
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "retained parent Git blob; exact hash identity verified",
+      "SHA256": "38595f3697ffc590167a4ae41f4f5f7029dc5531187882311d05aa73e9630821",
+      "SIZE": 1927,
+      "PATH": "reference/sha256-branch.mjs"
+    },
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "retained parent Git blob; exact hash identity verified",
+      "SHA256": "cab88216b2005fc6435d56eaea4079a6fcaa30716774ffdf61f1d1f024daf8a6",
+      "SIZE": 1252,
+      "PATH": "reference/source-commitment-inspection.mjs"
+    },
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "retained parent Git blob; exact hash identity verified",
+      "SHA256": "73312692245add67ea140ef1393efe9577d337d917867f9edca02ce82af8b051",
+      "SIZE": 6122,
+      "PATH": "public/bounded-json.mjs"
+    },
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "node --max-old-space-size=256 --test --test-reporter=tap --test-concurrency=1 --test-timeout=30000 tests/sha256-branch.test.mjs tests/beacon-header-root.test.mjs tests/capella-payload-root.test.mjs tests/capella-header-binding.test.mjs tests/minimal-capella-bootstrap.test.mjs tests/bootstrap-profile-selection.test.mjs tests/bootstrap-fixture-metadata-selection.test.mjs tests/pinned-minimal-capella-bootstrap.test.mjs; stdout/stderr retained;45-second process deadline",
+      "SHA256": "ffda46ee7a06fd189ac72da58a1e188ba97976825a7ebe4c9422ca539af1dc1e",
+      "SIZE": 11205,
+      "PATH": "evidence/committee-g1-20261107/bootstrap-regression.tap"
+    },
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "node --max-old-space-size=256 experiments/bls-g1/check-retained-committee.mjs; stdout retained;45-second process deadline",
+      "SHA256": "1b55028545ffe4f005e985188130998c0e8d34cbd4d284fd66520cfe18925879",
+      "SIZE": 1014,
+      "PATH": "evidence/committee-g1-20261107/fixture-result.json"
+    },
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "record pinned specification identity or runtime/guard metadata",
+      "SHA256": "89b2c9831b0e2c018c66109c827c522da5da48966f1a018a4afc2d317ac03ed4",
+      "SIZE": 250,
+      "PATH": "evidence/committee-g1-20261107/focused-command.json"
+    },
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "node --max-old-space-size=256 --test --test-reporter=tap --test-concurrency=1 --test-timeout=30000 experiments/bls-g1/committee.test.mjs; stdout/stderr retained;45-second process deadline",
+      "SHA256": "5a295df79174b0f8e1260490ebf185d6f74504ff00f628fe0bf5a5888ad007ae",
+      "SIZE": 2453,
+      "PATH": "evidence/committee-g1-20261107/focused.tap"
+    },
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "node --max-old-space-size=256 --test --test-reporter=tap --test-concurrency=1 --test-timeout=30000 experiments/bls-g1/g1.test.mjs; stdout/stderr retained;45-second process deadline",
+      "SHA256": "e85ab39a278bedfaf89ad3c71083317c2398b33c4f700d290da7aab7817b73fd",
+      "SIZE": 6398,
+      "PATH": "evidence/committee-g1-20261107/g1-regression.tap"
+    },
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "record pinned specification identity or runtime/guard metadata",
+      "SHA256": "cd80d2157838e57e5cc3f6f5f1bc0223361885dd735d7f54d27cb01d29d5bb46",
+      "SIZE": 2168,
+      "PATH": "evidence/committee-g1-20261107/run.json"
+    },
+    {
+      "PARENTS": [
+        "382b5602c3de32c928fcc94411ea3f202711b6c3"
+      ],
+      "TRANSFORM": "record pinned specification identity or runtime/guard metadata",
+      "SHA256": "d66cf9006b6b6902adaca405915de389f9ce51b3e88ed881528bf27780a8fb34",
+      "SIZE": 546,
+      "PATH": "evidence/committee-g1-20261107/spec-source.json"
+    }
+  ]
+}
