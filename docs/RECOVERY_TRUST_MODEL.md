@@ -43,3 +43,8 @@ The next implementation review must identify the selected profile and anchor ass
 ## decision record -- 2026-10-28
 
 [Anchor-authority review](ANCHOR_DECISION_REVIEW.md) consolidates the required decisions as AT-01 through AT-08 after joint signed-ledger acquisition. It adopts no production trust path and changes no flags.
+
+
+## Profile/metadata composition follow-up — 2026-11-07
+
+[The pinned composition](BOOTSTRAP_PROFILE_COMPOSITION_20261107.md) now checks supplied metadata bytes and explicit fixture selection before the existing structural committee/header checks. It adds no authenticated anchor, live network/fork policy, BLS verification or recovery adoption. [The additive provenance correction](BOOTSTRAP_BINDING_PROVENANCE_CORRECTION_20261107.md) records the historical binding-file digest discrepancy; original evidence remains unchanged. For read-only verification, run the Python decoder tests rather than the decoder's main command, which rewrites `binding.json`.

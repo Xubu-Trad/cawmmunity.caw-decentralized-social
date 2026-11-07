@@ -1,0 +1,26 @@
+✔ fixture metadata binds root without authority (2.168751ms)
+✔ one-byte metadata mutation rejects (0.809266ms)
+✔ wrong retained digest rejects (0.381679ms)
+✔ wrong descriptor digest rejects (0.516335ms)
+✔ changed selected root rejects (0.220839ms)
+✔ missing metadata rejects (0.214403ms)
+✔ injected authority rejects (0.153204ms)
+✔ selection remains non-authoritative (1.93653ms)
+✔ unknown network rejects (0.719638ms)
+✔ wrong profile rejects (0.172948ms)
+✔ missing anchor rejects (0.168807ms)
+✔ mismatched anchor rejects (0.280319ms)
+✔ wrong root encoding rejects (0.167829ms)
+✔ zero root rejects (0.521823ms)
+✔ undeclared authority rejects (0.542737ms)
+✔ untrusted provenance rejects (0.234779ms)
+✔ extra anchor claim rejects (0.650546ms)
+✔ invalid digest rejects (0.21941ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 250.483856

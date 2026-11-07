@@ -1,0 +1,375 @@
+{
+  "schema": "caw-bootstrap-profile-composition-evidence/1",
+  "date": "2026-11-07",
+  "parentCommit": "2e0180b917519502d7f6fe3976a76abf61d634f9",
+  "status": "SCOPED_PASS",
+  "profile": "minimal-capella-32-structural-only",
+  "evidenceScope": "separate focused groups; offline retained fixture; no independent build-origin authentication",
+  "receipt": {
+    "sha256": "53565f17f5df2423eaa9c61ccfbe9fc6baff4d836ead95e5ec8a7dde7e7a34a0",
+    "size": 6202,
+    "artifactCount": 15
+  },
+  "transferSha256": "1f0455ac75f18eb46881b5999c3dcf380058e9a7544f2520ead490ec421af37f",
+  "originalOperatorRun": {
+    "nodeVersion": "v20.20.2",
+    "pythonVersion": "Python 3.10.12",
+    "counts": {
+      "composition": 8,
+      "profileAndMetadata": 18,
+      "existingStructural": 47,
+      "pythonDecoder": 4
+    },
+    "attribution": "supplied operator logs, hashes verified; not executed here on those runtimes"
+  },
+  "publicationRun": {
+    "runtimes": {
+      "node": {
+        "version": "v24.22.1",
+        "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d"
+      },
+      "python3": {
+        "version": "Python 3.12.14",
+        "sha256": "fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7"
+      }
+    },
+    "counts": {
+      "composition": 8,
+      "profileAndMetadata": 18,
+      "existingStructural": 47,
+      "pythonDecoder": 4
+    },
+    "groups": {
+      "composition": {
+        "command": [
+          "node",
+          "--max-old-space-size=256",
+          "--test",
+          "--test-concurrency=1",
+          "--test-timeout=30000",
+          "tests/pinned-minimal-capella-bootstrap.test.mjs"
+        ],
+        "exitCode": 0,
+        "logSha256": "82588262e1e37f4e1e73c6b4fdf079facd40b5b04658313ceb326aee4796d9f4",
+        "logSize": 555
+      },
+      "selection": {
+        "command": [
+          "node",
+          "--max-old-space-size=256",
+          "--test",
+          "--test-concurrency=1",
+          "--test-timeout=30000",
+          "tests/bootstrap-profile-selection.test.mjs",
+          "tests/bootstrap-fixture-metadata-selection.test.mjs"
+        ],
+        "exitCode": 0,
+        "logSha256": "fa6c267e45b2ce916029da1f7596c0993715799c4959e9701922b32c6bebeb89",
+        "logSize": 931
+      },
+      "structural": {
+        "command": [
+          "node",
+          "--max-old-space-size=256",
+          "--test",
+          "--test-concurrency=1",
+          "--test-timeout=30000",
+          "tests/sha256-branch.test.mjs",
+          "tests/beacon-header-root.test.mjs",
+          "tests/capella-payload-root.test.mjs",
+          "tests/capella-header-binding.test.mjs",
+          "tests/minimal-capella-bootstrap.test.mjs"
+        ],
+        "exitCode": 0,
+        "logSha256": "0850436d6ef09abeeb9a218293e82686b3f04a588d3c70d04b10afac89944f43",
+        "logSize": 3095
+      },
+      "decoder": {
+        "command": [
+          "python3",
+          "-I",
+          "-B",
+          "tests/test_bootstrap_fixture_decoder.py"
+        ],
+        "exitCode": 0,
+        "logSha256": "56e03afda220e7ba78bbcecf9a2e53a0149cfc3e311fa10bbd01b25e8e5ba671",
+        "logSize": 102
+      }
+    },
+    "sourcesUnchanged": true,
+    "sourceAcquisition": "partial Git-blob-verified snapshot at parent plus sealed additions",
+    "declaredRepositoryNode": "24.20.0",
+    "declaredNodePinRerun": false,
+    "limits": {
+      "minimumDiskBytes": 2147483648,
+      "minimumAvailableMemoryBytes": 1073741824,
+      "nodeHeapMiB": 256,
+      "testConcurrency": 1,
+      "processTimeoutSeconds": 45
+    }
+  },
+  "historicalSourceAudit": [
+    {
+      "PATH": "reference/minimal-capella-bootstrap.mjs",
+      "RECORDED_SHA256": "be519e4c05ade86cae9573ccaff49ffd39f9758d39d2aabba1992bff4a408509",
+      "ACTUAL_SHA256": "be519e4c05ade86cae9573ccaff49ffd39f9758d39d2aabba1992bff4a408509",
+      "SIZE": 2451,
+      "STATUS": "MATCH"
+    },
+    {
+      "PATH": "tests/minimal-capella-bootstrap.test.mjs",
+      "RECORDED_SHA256": "e70ddee18d84c2521d87e60039dd24405ac486749966934e2eb892a42d006a34",
+      "ACTUAL_SHA256": "e70ddee18d84c2521d87e60039dd24405ac486749966934e2eb892a42d006a34",
+      "SIZE": 2180,
+      "STATUS": "MATCH"
+    },
+    {
+      "PATH": "scripts/decode-capella-bootstrap-fixture.py",
+      "RECORDED_SHA256": "181b6e1bad9b4f0fea6d7e868d6ca4e8659e1fcd41295edcf791bf622f9058fa",
+      "ACTUAL_SHA256": "181b6e1bad9b4f0fea6d7e868d6ca4e8659e1fcd41295edcf791bf622f9058fa",
+      "SIZE": 4369,
+      "STATUS": "MATCH"
+    },
+    {
+      "PATH": "evidence/consensus-capella-bootstrap/binding.json",
+      "RECORDED_SHA256": "4af4d87a19a141e78511aade1b80a1d8377d4785b23edbb60968fd906f64f426",
+      "ACTUAL_SHA256": "96f107e5a94bd2a9bfa47f84ff257cbd18995ae8947440cac91804823236c6f8",
+      "SIZE": 6690,
+      "STATUS": "MISMATCH"
+    }
+  ],
+  "limitations": [
+    "caller-supplied digest/root are not independently authenticated authority",
+    "metadata genesis root and fork digests do not establish real network/fork configuration",
+    "ordinary JSON-like selection objects only; executable getters/proxies/coercion hooks and hidden properties are outside scope",
+    "committee inclusion commits bytes without BLS point/subgroup/aggregate/signature validation",
+    "no live acquisition, consensus, finality, freshness, update or production acceptance",
+    "no full-suite total inferred from separate focused groups"
+  ],
+  "artifacts": [
+    {
+      "PARENTS": [
+        "2e0180b917519502d7f6fe3976a76abf61d634f9",
+        "sealed local V3 receipt SHA256 53565f17f5df2423eaa9c61ccfbe9fc6baff4d836ead95e5ec8a7dde7e7a34a0"
+      ],
+      "TRANSFORM": "read bytes from verified transfer; preserve verbatim",
+      "SHA256": "35cc48473d793b88d24215a62a8153dd17fe4d64d5a5eb17e7239ef22be2d8ab",
+      "SIZE": 1476,
+      "PATH": "reference/bootstrap-profile-selection.mjs"
+    },
+    {
+      "PARENTS": [
+        "2e0180b917519502d7f6fe3976a76abf61d634f9",
+        "sealed local V3 receipt SHA256 53565f17f5df2423eaa9c61ccfbe9fc6baff4d836ead95e5ec8a7dde7e7a34a0"
+      ],
+      "TRANSFORM": "read bytes from verified transfer; preserve verbatim",
+      "SHA256": "45fed5181c4945b7eb3b4f0344e078d4f1bd927a0243fc55ec9d3561fd85d791",
+      "SIZE": 1612,
+      "PATH": "reference/bootstrap-fixture-metadata-selection.mjs"
+    },
+    {
+      "PARENTS": [
+        "2e0180b917519502d7f6fe3976a76abf61d634f9",
+        "sealed local V3 receipt SHA256 53565f17f5df2423eaa9c61ccfbe9fc6baff4d836ead95e5ec8a7dde7e7a34a0"
+      ],
+      "TRANSFORM": "read bytes from verified transfer; preserve verbatim",
+      "SHA256": "67df44add3fcea6fa39cf8f918586aace49ea3517af957e3eff6096e999eb338",
+      "SIZE": 2185,
+      "PATH": "reference/pinned-minimal-capella-bootstrap.mjs"
+    },
+    {
+      "PARENTS": [
+        "2e0180b917519502d7f6fe3976a76abf61d634f9",
+        "sealed local V3 receipt SHA256 53565f17f5df2423eaa9c61ccfbe9fc6baff4d836ead95e5ec8a7dde7e7a34a0"
+      ],
+      "TRANSFORM": "read bytes from verified transfer; preserve verbatim",
+      "SHA256": "cc7a8db2f1786f46c96615f699013219f96d06390599d20307423d13d2d0f945",
+      "SIZE": 1735,
+      "PATH": "tests/bootstrap-profile-selection.test.mjs"
+    },
+    {
+      "PARENTS": [
+        "2e0180b917519502d7f6fe3976a76abf61d634f9",
+        "sealed local V3 receipt SHA256 53565f17f5df2423eaa9c61ccfbe9fc6baff4d836ead95e5ec8a7dde7e7a34a0"
+      ],
+      "TRANSFORM": "read bytes from verified transfer; preserve verbatim",
+      "SHA256": "afec77f7b1b7e6166da89ee86df831c07247f31b841f111eaa34d34e2fdb60a6",
+      "SIZE": 2213,
+      "PATH": "tests/bootstrap-fixture-metadata-selection.test.mjs"
+    },
+    {
+      "PARENTS": [
+        "2e0180b917519502d7f6fe3976a76abf61d634f9",
+        "sealed local V3 receipt SHA256 53565f17f5df2423eaa9c61ccfbe9fc6baff4d836ead95e5ec8a7dde7e7a34a0"
+      ],
+      "TRANSFORM": "read bytes from verified transfer; preserve verbatim",
+      "SHA256": "df3986a33d045bbefdf3b619f1bf252c9456312daa3b557a030a10cd3fa94f03",
+      "SIZE": 3232,
+      "PATH": "tests/pinned-minimal-capella-bootstrap.test.mjs"
+    },
+    {
+      "PARENTS": [
+        "2e0180b917519502d7f6fe3976a76abf61d634f9",
+        "sealed local V3 receipt SHA256 53565f17f5df2423eaa9c61ccfbe9fc6baff4d836ead95e5ec8a7dde7e7a34a0"
+      ],
+      "TRANSFORM": "read bytes from verified transfer; preserve verbatim",
+      "SHA256": "bcff01d2477f557370c2013028934f90e1b0ae8bcd2f4833adcbb509119dbc29",
+      "SIZE": 251,
+      "PATH": "evidence/consensus-capella-bootstrap/meta.yaml"
+    },
+    {
+      "PARENTS": [
+        "2e0180b917519502d7f6fe3976a76abf61d634f9",
+        "sealed local V3 receipt SHA256 53565f17f5df2423eaa9c61ccfbe9fc6baff4d836ead95e5ec8a7dde7e7a34a0"
+      ],
+      "TRANSFORM": "read bytes from verified transfer; preserve verbatim",
+      "SHA256": "96f107e5a94bd2a9bfa47f84ff257cbd18995ae8947440cac91804823236c6f8",
+      "SIZE": 6690,
+      "PATH": "evidence/consensus-capella-bootstrap/binding.json"
+    },
+    {
+      "PARENTS": [
+        "2e0180b917519502d7f6fe3976a76abf61d634f9",
+        "six sealed V1-V3 additions"
+      ],
+      "TRANSFORM": "operator-recorded focused execution; received verbatim",
+      "SHA256": "ab3a660392277f059df457455be9a7fa8efdedbf9a6983d35ede16b475443706",
+      "SIZE": 1161,
+      "PATH": "evidence/bootstrap-profile-composition-20261107/wsl-composition.log"
+    },
+    {
+      "PARENTS": [
+        "2e0180b917519502d7f6fe3976a76abf61d634f9",
+        "six sealed V1-V3 additions"
+      ],
+      "TRANSFORM": "node --max-old-space-size=256 --test --test-concurrency=1 --test-timeout=30000 tests/pinned-minimal-capella-bootstrap.test.mjs",
+      "SHA256": "82588262e1e37f4e1e73c6b4fdf079facd40b5b04658313ceb326aee4796d9f4",
+      "SIZE": 555,
+      "PATH": "evidence/bootstrap-profile-composition-20261107/publication-composition.log"
+    },
+    {
+      "PARENTS": [
+        "2e0180b917519502d7f6fe3976a76abf61d634f9",
+        "six sealed V1-V3 additions"
+      ],
+      "TRANSFORM": "operator-recorded focused execution; received verbatim",
+      "SHA256": "4fe79ceb4d7303d98424ee9edea334ad9a69538ac6fe2ed2c61fa2d4b7a82288",
+      "SIZE": 2121,
+      "PATH": "evidence/bootstrap-profile-composition-20261107/wsl-selection.log"
+    },
+    {
+      "PARENTS": [
+        "2e0180b917519502d7f6fe3976a76abf61d634f9",
+        "six sealed V1-V3 additions"
+      ],
+      "TRANSFORM": "node --max-old-space-size=256 --test --test-concurrency=1 --test-timeout=30000 tests/bootstrap-profile-selection.test.mjs tests/bootstrap-fixture-metadata-selection.test.mjs",
+      "SHA256": "fa6c267e45b2ce916029da1f7596c0993715799c4959e9701922b32c6bebeb89",
+      "SIZE": 931,
+      "PATH": "evidence/bootstrap-profile-composition-20261107/publication-selection.log"
+    },
+    {
+      "PARENTS": [
+        "2e0180b917519502d7f6fe3976a76abf61d634f9",
+        "six sealed V1-V3 additions"
+      ],
+      "TRANSFORM": "operator-recorded focused execution; received verbatim",
+      "SHA256": "1de236554c086647ffea3d2797dc8d8606fb5ee5a2bbdc44d843eb336c46d182",
+      "SIZE": 7052,
+      "PATH": "evidence/bootstrap-profile-composition-20261107/wsl-structural.log"
+    },
+    {
+      "PARENTS": [
+        "2e0180b917519502d7f6fe3976a76abf61d634f9",
+        "six sealed V1-V3 additions"
+      ],
+      "TRANSFORM": "node --max-old-space-size=256 --test --test-concurrency=1 --test-timeout=30000 tests/sha256-branch.test.mjs tests/beacon-header-root.test.mjs tests/capella-payload-root.test.mjs tests/capella-header-binding.test.mjs tests/minimal-capella-bootstrap.test.mjs",
+      "SHA256": "0850436d6ef09abeeb9a218293e82686b3f04a588d3c70d04b10afac89944f43",
+      "SIZE": 3095,
+      "PATH": "evidence/bootstrap-profile-composition-20261107/publication-structural.log"
+    },
+    {
+      "PARENTS": [
+        "2e0180b917519502d7f6fe3976a76abf61d634f9",
+        "six sealed V1-V3 additions"
+      ],
+      "TRANSFORM": "operator-recorded focused execution; received verbatim",
+      "SHA256": "03e2ce7efb78ca7222db4c9a68781f9953dd3bd674b491cc52a8a4986d74e6f4",
+      "SIZE": 102,
+      "PATH": "evidence/bootstrap-profile-composition-20261107/wsl-decoder.log"
+    },
+    {
+      "PARENTS": [
+        "2e0180b917519502d7f6fe3976a76abf61d634f9",
+        "six sealed V1-V3 additions"
+      ],
+      "TRANSFORM": "python3 -I -B tests/test_bootstrap_fixture_decoder.py",
+      "SHA256": "56e03afda220e7ba78bbcecf9a2e53a0149cfc3e311fa10bbd01b25e8e5ba671",
+      "SIZE": 102,
+      "PATH": "evidence/bootstrap-profile-composition-20261107/publication-decoder.log"
+    }
+  ],
+  "unchangedParentSourceSha256": {
+    "public/bounded-json.mjs": "73312692245add67ea140ef1393efe9577d337d917867f9edca02ce82af8b051",
+    "tests/test_bootstrap_fixture_decoder.py": "b739149382b3afc491b4bdf2a146eb9802107608361906c6cc7a1b78310b9e2d",
+    "tests/beacon-header-root.test.mjs": "f60972bafb67396c61720cd6fa445036108613e13aa102e1cbd82c56c34afe03",
+    "tests/sha256-branch.test.mjs": "bcf00f4b911e76f56fde1c023cea6758d11f2042a4808915c95331718ddf8cb1",
+    "tests/capella-payload-root.test.mjs": "e5884bc561fdea1016952589eaaee962df62bc7e873e398bf7102fc59402e2b1",
+    "tests/capella-header-binding.test.mjs": "e49045769cc80ee545e0815c8f8ad1a6566c1369de69ec36a09fb8922c4e7cd2",
+    "tests/minimal-capella-bootstrap.test.mjs": "e70ddee18d84c2521d87e60039dd24405ac486749966934e2eb892a42d006a34",
+    "scripts/decode-capella-bootstrap-fixture.py": "181b6e1bad9b4f0fea6d7e868d6ca4e8659e1fcd41295edcf791bf622f9058fa",
+    "reference/sha256-branch.mjs": "38595f3697ffc590167a4ae41f4f5f7029dc5531187882311d05aa73e9630821",
+    "reference/capella-payload-root.mjs": "4bace77d99b8c1828be4ce0e3de57e606ac4f3a270b8b5fdd33d36acb34fdda0",
+    "reference/minimal-capella-bootstrap.mjs": "be519e4c05ade86cae9573ccaff49ffd39f9758d39d2aabba1992bff4a408509",
+    "reference/beacon-header-root.mjs": "f44e13c4ffbed44526b11405b93e5759f1d81d3d616f2df738329c0f7418392e",
+    "reference/capella-header-binding.mjs": "921b83c3ad767b82b6712c71f0ef8d6973cf77d664a277b1e4732b479e3cd52d",
+    "evidence/MINIMAL_CAPELLA_BOOTSTRAP_RESULTS.json": "b377016263886226d09ac0465c11f476e125edffd65998e4cc476e66421d5965",
+    "evidence/SHA256_BRANCH_VECTORS.json": "102c7927f6e9b462a4ed5aadfa480bb97a2b01b14424dc287e5d11466b9d2c50",
+    "evidence/CAPELLA_BINDING_FIXTURE.json": "1c7e3f87b1067aef45b33b189b9d31be36f1e0245a69804e13ed61a3867d43fc",
+    "evidence/consensus-capella-payload/vectors.json": "ed789552b9d8ab9c0b5a75bba596b5505d7f278f3f1cbe01b019662f23132651",
+    "evidence/consensus-capella-payload/case_1_value.yaml": "02c1ab8783654f741467f22788bbde4d41850d8f8e9150a38b15f3da472c311c",
+    "evidence/consensus-capella-payload/case_3_roots.yaml": "17d8ebe5ea49b20586dc9452cf73be9f8b9ec7f32f2d279ee8a4144caf0ddd76",
+    "evidence/consensus-capella-payload/case_0_roots.yaml": "42929207c36e1db20030f3fe935c3741064afea4bbd75655507d4993353aae73",
+    "evidence/consensus-capella-payload/case_4_value.yaml": "9ba13d1646cd0700f039437ad422271acd82fa8725ed1a7ddd2ebd3b96ebe010",
+    "evidence/consensus-capella-payload/case_0_value.yaml": "efdddef38d97d9031f77539de54cf94eb9fbac727add2462923e220808c03b2d",
+    "evidence/consensus-capella-payload/case_2_roots.yaml": "501603950ecc00a1e4220cc3b8fc4d764f4993d1ce5173feb75ca375c9d85b36",
+    "evidence/consensus-capella-payload/case_3_value.yaml": "318595dddfae8715e34ff2500cc5ca5866d7102c24cbe831a966636d39ee7606",
+    "evidence/consensus-capella-payload/case_1_roots.yaml": "4afd1cb069a426d8b28ed51efa0793c21760c060636bece64d29d55dd3f68a71",
+    "evidence/consensus-capella-payload/case_2_value.yaml": "d8d65e4ba34ee89ab1f463a74353389ba7907f5c19903c687231529ef9aa5a66",
+    "evidence/consensus-capella-payload/LICENSE": "feb87a2e0c305de3464cc44077da5393c52d8ca6362d37427157d04ec6f4510d",
+    "evidence/consensus-capella-payload/case_4_roots.yaml": "45c7dc7caaec677748b4f5b4a0d09394fb91797c69b60f493da37083bb5acc3e",
+    "evidence/consensus-beacon-header/vectors.json": "74e20a8f10132b8037bc2bed5f1b3cd40adda31a8531010d353e74b7c4e4a3a2",
+    "evidence/consensus-beacon-header/case_1_value.yaml": "c6d76ef4d39e4c9a524404d03245260489744aa83e680cd4c575c908d49ee0d7",
+    "evidence/consensus-beacon-header/case_3_roots.yaml": "0bc1445d792f3c740bfbe6b6c739c46f449b1d29ac1e4ef13d258c06af0b6a7f",
+    "evidence/consensus-beacon-header/case_0_roots.yaml": "c9f22a0fd88f71825cc5dfaea99c0c057e42bbd4ccb605af41537aec653991dc",
+    "evidence/consensus-beacon-header/case_4_value.yaml": "b8b70827d987719b7a6cf72254fa21b9a7acfcd095e0b0b731f95e828146c182",
+    "evidence/consensus-beacon-header/case_0_value.yaml": "d90a13a7962546a8e0dbffab8a67c47ac002dfb8b6efa15cb51418bb600e67b9",
+    "evidence/consensus-beacon-header/case_2_roots.yaml": "38d573b1e90d64f06e140699e2287a1f9df24e95c2cf028171c7f72fb1a1bc88",
+    "evidence/consensus-beacon-header/case_3_value.yaml": "85c8e2daba930352515cd12bf2c7f36f415ac7c014e52eda06c05af4789b80e7",
+    "evidence/consensus-beacon-header/case_1_roots.yaml": "c8018413d4f8c2e311eae95d7dd8db45c48264ce3150c4729e9e786ce6d6df39",
+    "evidence/consensus-beacon-header/case_2_value.yaml": "fa22eaecf33963fc5c855a559b92a430d95646f00d3a460758a275fdc7f25c15",
+    "evidence/consensus-beacon-header/LICENSE": "feb87a2e0c305de3464cc44077da5393c52d8ca6362d37427157d04ec6f4510d",
+    "evidence/consensus-beacon-header/case_4_roots.yaml": "e4931f5c4362a9471721719a80dc140a3fef0b296a2b82d6f60caacc924b638d",
+    "evidence/consensus-capella-bootstrap/meta.yaml": "bcff01d2477f557370c2013028934f90e1b0ae8bcd2f4833adcbb509119dbc29",
+    "evidence/consensus-capella-bootstrap/config.yaml": "4a8e4e5d0fd4961b87ea5d1ff8ce3a28240ab6e2184eea754acccf50131f4a1a",
+    "evidence/consensus-capella-bootstrap/provenance.json": "cff52392770ff55e3fbb966045cc2df86a1188dfd69ac0acfc35aef5af81f453",
+    "evidence/consensus-capella-bootstrap/binding.json": "96f107e5a94bd2a9bfa47f84ff257cbd18995ae8947440cac91804823236c6f8",
+    "evidence/consensus-capella-bootstrap/LICENSE": "feb87a2e0c305de3464cc44077da5393c52d8ca6362d37427157d04ec6f4510d",
+    "evidence/consensus-capella-bootstrap/bootstrap.ssz_snappy": "45ba17153383454e7c6dbfa582a37a60bef2a8481087e84223a09d6130d1bfe1"
+  },
+  "rootAuthenticated": false,
+  "independentAcquisitionVerified": false,
+  "blsValidated": false,
+  "publicKeysValidated": false,
+  "aggregatePubkeyValidated": false,
+  "signaturesVerified": false,
+  "forkScheduleVerified": false,
+  "consensusVerified": false,
+  "updatesAccepted": false,
+  "finalityVerified": false,
+  "freshnessVerified": false,
+  "mainnet512Supported": false,
+  "productionAccepted": false,
+  "fullSuiteRerun": false,
+  "buildRerun": false,
+  "hostedCIRun": false
+}

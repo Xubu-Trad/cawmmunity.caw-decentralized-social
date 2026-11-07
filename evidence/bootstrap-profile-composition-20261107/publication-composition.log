@@ -1,0 +1,16 @@
+✔ official pinned fixture binds committee without adopting root (9.518051ms)
+✔ one changed metadata byte rejects (3.364668ms)
+✔ wrong retained metadata digest rejects (0.38035ms)
+✔ altered committee member rejects (1.56397ms)
+✔ altered committee branch rejects (2.717013ms)
+✔ altered header state root rejects (0.849258ms)
+✔ unsupported bootstrap profile rejects (2.149059ms)
+✔ injected authority claim rejects (1.470688ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 177.246414

@@ -1,5 +1,9 @@
 # cawmmunity.caw - decentralized - social
 
+## Bootstrap selection and composition — 2026-11-07
+
+[The fixture bootstrap checks now compose](docs/BOOTSTRAP_PROFILE_COMPOSITION_20261107.md): explicit profile selection, saved metadata bytes and committee inclusion are checked together. The four focused groups passed separately here (8, 18, 47 Node checks and four Python checks), matching the supplied WSL logs. This checks a research fixture; it does not authenticate a live chain or enable production acceptance. A [dated correction](docs/BOOTSTRAP_BINDING_PROVENANCE_CORRECTION_20261107.md) records the historical fixture-hash discrepancy without rewriting the old evidence.
+
 ## Current engineering update — 2026-11-07
 
 [Bootstrap committee inclusion](docs/MINIMAL_CAPELLA_BOOTSTRAP.md) now passes against the preserved official minimal Capella fixture. In plain terms, the supplied committee data matches the recorded state commitment. 47 focused Node checks and four decoder checks pass. This does **not** yet validate committee signatures or establish a trustworthy live starting point. PR #16 remains at its reviewed revision with changes requested; no new author revision was available at this check.

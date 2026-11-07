@@ -539,3 +539,8 @@ Fixed a reproduced empty-success launch through a Windows directory junction. Th
 ## Minimal bootstrap committee inclusion — 2026-11-07
 
 [Fixed-profile structural committee binding](MINIMAL_CAPELLA_BOOTSTRAP.md) passes official fixture and negative cases: 47 focused Node checks and four decoder checks. Next supported-network/bootstrap policy, trust-anchor sourcing and BLS validation boundary. No live trust, update acceptance, full-suite rerun or release clearance.
+
+
+## Pinned bootstrap composition — 2026-11-07
+
+[V1–V3 selection/metadata/committee composition](BOOTSTRAP_PROFILE_COMPOSITION_20261107.md) is published with unchanged sealed source bytes and separately recorded focused reruns (8/18/47 Node and four Python checks). The [historical binding checksum correction](BOOTSTRAP_BINDING_PROVENANCE_CORRECTION_20261107.md) is additive. Next: independently justified anchor sourcing/retention, explicit real network/fork configuration and BLS/consensus validation prerequisites before update acceptance. Matching provider labels/digests are not authority. Full suite not rerun; production and public-test gates remain blocked; CI deferred.

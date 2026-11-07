@@ -26,3 +26,8 @@ Next review bootstrap committee/root binding and explicit supported-profile rule
 ## Follow-up — 2026-11-07
 
 The original experiment above skipped committee data. The subsequent [minimal bootstrap committee experiment](MINIMAL_CAPELLA_BOOTSTRAP.md) now exposes and verifies its structural inclusion. BLS key/signature validation and root authentication remain unimplemented. The original 41/4 results above remain historical evidence.
+
+
+## Profile/metadata composition follow-up — 2026-11-07
+
+[The pinned composition](BOOTSTRAP_PROFILE_COMPOSITION_20261107.md) now checks supplied metadata bytes and explicit fixture selection before the existing structural committee/header checks. It adds no authenticated anchor, live network/fork policy, BLS verification or recovery adoption. [The additive provenance correction](BOOTSTRAP_BINDING_PROVENANCE_CORRECTION_20261107.md) records the historical binding-file digest discrepancy; original evidence remains unchanged. For read-only verification, run the Python decoder tests rather than the decoder's main command, which rewrites `binding.json`.

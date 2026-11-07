@@ -21,3 +21,8 @@ node --test tests/sha256-branch.test.mjs tests/beacon-header-root.test.mjs tests
 An inclusion proof commits bytes; it does not validate BLS points, subgroups, the aggregate key's mathematical relationship to the members, or signatures. Those result fields remain false. The fixture's metadata root is a test expectation, not an authenticated live checkpoint. Mainnet's 512-member committee, actual fork selection, light-client updates, finality, freshness and independent acquisition are not implemented by this module. It does not adopt an authority or change settlement permissions.
 
 Next: specify and test the supported-network/bootstrap policy, independently sourced trust-anchor requirements and BLS validation boundary before adding update acceptance. No developer override or implicit trust fallback is introduced. Public test candidate and production remain blocked; hosted CI remains deferred.
+
+
+## Profile/metadata composition follow-up — 2026-11-07
+
+[The pinned composition](BOOTSTRAP_PROFILE_COMPOSITION_20261107.md) now checks supplied metadata bytes and explicit fixture selection before the existing structural committee/header checks. It adds no authenticated anchor, live network/fork policy, BLS verification or recovery adoption. [The additive provenance correction](BOOTSTRAP_BINDING_PROVENANCE_CORRECTION_20261107.md) records the historical binding-file digest discrepancy; original evidence remains unchanged. For read-only verification, run the Python decoder tests rather than the decoder's main command, which rewrites `binding.json`.

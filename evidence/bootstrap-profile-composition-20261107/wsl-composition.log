@@ -1,0 +1,50 @@
+TAP version 13
+# Subtest: official pinned fixture binds committee without adopting root
+ok 1 - official pinned fixture binds committee without adopting root
+  ---
+  duration_ms: 11.706758
+  ...
+# Subtest: one changed metadata byte rejects
+ok 2 - one changed metadata byte rejects
+  ---
+  duration_ms: 1.45182
+  ...
+# Subtest: wrong retained metadata digest rejects
+ok 3 - wrong retained metadata digest rejects
+  ---
+  duration_ms: 0.311409
+  ...
+# Subtest: altered committee member rejects
+ok 4 - altered committee member rejects
+  ---
+  duration_ms: 2.463415
+  ...
+# Subtest: altered committee branch rejects
+ok 5 - altered committee branch rejects
+  ---
+  duration_ms: 4.4577
+  ...
+# Subtest: altered header state root rejects
+ok 6 - altered header state root rejects
+  ---
+  duration_ms: 0.947875
+  ...
+# Subtest: unsupported bootstrap profile rejects
+ok 7 - unsupported bootstrap profile rejects
+  ---
+  duration_ms: 0.666534
+  ...
+# Subtest: injected authority claim rejects
+ok 8 - injected authority claim rejects
+  ---
+  duration_ms: 0.483187
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 173.609402

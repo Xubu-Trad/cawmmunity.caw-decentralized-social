@@ -1,0 +1,100 @@
+TAP version 13
+# Subtest: fixture metadata binds root without authority
+ok 1 - fixture metadata binds root without authority
+  ---
+  duration_ms: 1.965685
+  ...
+# Subtest: one-byte metadata mutation rejects
+ok 2 - one-byte metadata mutation rejects
+  ---
+  duration_ms: 0.791856
+  ...
+# Subtest: wrong retained digest rejects
+ok 3 - wrong retained digest rejects
+  ---
+  duration_ms: 0.214155
+  ...
+# Subtest: wrong descriptor digest rejects
+ok 4 - wrong descriptor digest rejects
+  ---
+  duration_ms: 0.218669
+  ...
+# Subtest: changed selected root rejects
+ok 5 - changed selected root rejects
+  ---
+  duration_ms: 0.230972
+  ...
+# Subtest: missing metadata rejects
+ok 6 - missing metadata rejects
+  ---
+  duration_ms: 0.159544
+  ...
+# Subtest: injected authority rejects
+ok 7 - injected authority rejects
+  ---
+  duration_ms: 0.127027
+  ...
+# Subtest: selection remains non-authoritative
+ok 8 - selection remains non-authoritative
+  ---
+  duration_ms: 1.587349
+  ...
+# Subtest: unknown network rejects
+ok 9 - unknown network rejects
+  ---
+  duration_ms: 0.994689
+  ...
+# Subtest: wrong profile rejects
+ok 10 - wrong profile rejects
+  ---
+  duration_ms: 0.367202
+  ...
+# Subtest: missing anchor rejects
+ok 11 - missing anchor rejects
+  ---
+  duration_ms: 1.389436
+  ...
+# Subtest: mismatched anchor rejects
+ok 12 - mismatched anchor rejects
+  ---
+  duration_ms: 0.15455
+  ...
+# Subtest: wrong root encoding rejects
+ok 13 - wrong root encoding rejects
+  ---
+  duration_ms: 0.097381
+  ...
+# Subtest: zero root rejects
+ok 14 - zero root rejects
+  ---
+  duration_ms: 0.211564
+  ...
+# Subtest: undeclared authority rejects
+ok 15 - undeclared authority rejects
+  ---
+  duration_ms: 0.109364
+  ...
+# Subtest: untrusted provenance rejects
+ok 16 - untrusted provenance rejects
+  ---
+  duration_ms: 0.150073
+  ...
+# Subtest: extra anchor claim rejects
+ok 17 - extra anchor claim rejects
+  ---
+  duration_ms: 0.166698
+  ...
+# Subtest: invalid digest rejects
+ok 18 - invalid digest rejects
+  ---
+  duration_ms: 0.27737
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 110.715694

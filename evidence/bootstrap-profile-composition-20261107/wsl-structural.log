@@ -1,0 +1,245 @@
+TAP version 13
+# Subtest: official Capella BeaconBlockHeader case 0
+ok 1 - official Capella BeaconBlockHeader case 0
+  ---
+  duration_ms: 6.138432
+  ...
+# Subtest: official Capella BeaconBlockHeader case 1
+ok 2 - official Capella BeaconBlockHeader case 1
+  ---
+  duration_ms: 0.969221
+  ...
+# Subtest: official Capella BeaconBlockHeader case 2
+ok 3 - official Capella BeaconBlockHeader case 2
+  ---
+  duration_ms: 0.44788
+  ...
+# Subtest: official Capella BeaconBlockHeader case 3
+ok 4 - official Capella BeaconBlockHeader case 3
+  ---
+  duration_ms: 0.900824
+  ...
+# Subtest: official Capella BeaconBlockHeader case 4
+ok 5 - official Capella BeaconBlockHeader case 4
+  ---
+  duration_ms: 2.083601
+  ...
+# Subtest: each changed header field rejects under original root
+ok 6 - each changed header field rejects under original root
+  ---
+  duration_ms: 1.372841
+  ...
+# Subtest: changed selected root and derived branch reject
+ok 7 - changed selected root and derived branch reject
+  ---
+  duration_ms: 0.858465
+  ...
+# Subtest: uint64 rejects overflow and imprecise or noncanonical JSON representations
+ok 8 - uint64 rejects overflow and imprecise or noncanonical JSON representations
+  ---
+  duration_ms: 0.475882
+  ...
+# Subtest: unknown authority fields and duplicate keys reject
+ok 9 - unknown authority fields and duplicate keys reject
+  ---
+  duration_ms: 0.432443
+  ...
+# Subtest: replacement valid header and root remain unauthenticated
+ok 10 - replacement valid header and root remain unauthenticated
+  ---
+  duration_ms: 0.460448
+  ...
+# Subtest: official minimal Capella bootstrap binds to its published metadata root
+ok 11 - official minimal Capella bootstrap binds to its published metadata root
+  ---
+  duration_ms: 9.206701
+  ...
+# Subtest: external bootstrap altered payload, branch or metadata root reject
+ok 12 - external bootstrap altered payload, branch or metadata root reject
+  ---
+  duration_ms: 2.603325
+  ...
+# Subtest: synthetic complete linkage passes without authentication
+ok 13 - synthetic complete linkage passes without authentication
+  ---
+  duration_ms: 1.641511
+  ...
+# Subtest: payload field change rejects before inclusion can bless it
+ok 14 - payload field change rejects before inclusion can bless it
+  ---
+  duration_ms: 0.844497
+  ...
+# Subtest: another valid payload and its valid root reject under original branch
+ok 15 - another valid payload and its valid root reject under original branch
+  ---
+  duration_ms: 8.189046
+  ...
+# Subtest: changed or reversed branch rejects
+ok 16 - changed or reversed branch rejects
+  ---
+  duration_ms: 2.024713
+  ...
+# Subtest: changed beacon body or selected root rejects
+ok 17 - changed beacon body or selected root rejects
+  ---
+  duration_ms: 1.247132
+  ...
+# Subtest: caller cannot change proof position, body root or add authority flags
+ok 18 - caller cannot change proof position, body root or add authority flags
+  ---
+  duration_ms: 0.502329
+  ...
+# Subtest: unknown profile and incomplete proof reject
+ok 19 - unknown profile and incomplete proof reject
+  ---
+  duration_ms: 0.725235
+  ...
+# Subtest: official Capella payload header 0
+ok 20 - official Capella payload header 0
+  ---
+  duration_ms: 5.28486
+  ...
+# Subtest: official Capella payload header 1
+ok 21 - official Capella payload header 1
+  ---
+  duration_ms: 1.587387
+  ...
+# Subtest: official Capella payload header 2
+ok 22 - official Capella payload header 2
+  ---
+  duration_ms: 1.219085
+  ...
+# Subtest: official Capella payload header 3
+ok 23 - official Capella payload header 3
+  ---
+  duration_ms: 0.660357
+  ...
+# Subtest: official Capella payload header 4
+ok 24 - official Capella payload header 4
+  ---
+  duration_ms: 2.791162
+  ...
+# Subtest: every changed field rejects under selected root
+ok 25 - every changed field rejects under selected root
+  ---
+  duration_ms: 3.720009
+  ...
+# Subtest: fixed lengths, oversized and odd extra data reject
+ok 26 - fixed lengths, oversized and odd extra data reject
+  ---
+  duration_ms: 0.534435
+  ...
+# Subtest: extra-data length participates in hash
+ok 27 - extra-data length participates in hash
+  ---
+  duration_ms: 0.912631
+  ...
+# Subtest: uint64 and uint256 overflow and Number coercion reject
+ok 28 - uint64 and uint256 overflow and Number coercion reject
+  ---
+  duration_ms: 1.278662
+  ...
+# Subtest: later-fork fields and duplicate keys reject
+ok 29 - later-fork fields and duplicate keys reject
+  ---
+  duration_ms: 2.587317
+  ...
+# Subtest: wrong selected root rejects
+ok 30 - wrong selected root rejects
+  ---
+  duration_ms: 0.939033
+  ...
+# Subtest: official minimal fixture committee binds to selected beacon state
+ok 31 - official minimal fixture committee binds to selected beacon state
+  ---
+  duration_ms: 11.199252
+  ...
+# Subtest: changed committee member or aggregate rejects
+ok 32 - changed committee member or aggregate rejects
+  ---
+  duration_ms: 4.491826
+  ...
+# Subtest: wrong committee size and key encoding reject
+ok 33 - wrong committee size and key encoding reject
+  ---
+  duration_ms: 2.09459
+  ...
+# Subtest: altered committee branch rejects
+ok 34 - altered committee branch rejects
+  ---
+  duration_ms: 5.62494
+  ...
+# Subtest: supplied state root cannot bypass header commitment
+ok 35 - supplied state root cannot bypass header commitment
+  ---
+  duration_ms: 1.265005
+  ...
+# Subtest: unsupported profile, proof index and trust claims reject
+ok 36 - unsupported profile, proof index and trust claims reject
+  ---
+  duration_ms: 0.906719
+  ...
+# Subtest: Python whole-tree vectors cover every depth-four position
+ok 37 - Python whole-tree vectors cover every depth-four position
+  ---
+  duration_ms: 6.752096
+  ...
+# Subtest: depth zero and upper supported index verify
+ok 38 - depth zero and upper supported index verify
+  ---
+  duration_ms: 1.284116
+  ...
+# Subtest: changed leaf rejects
+ok 39 - changed leaf rejects
+  ---
+  duration_ms: 3.451697
+  ...
+# Subtest: changed root rejects
+ok 40 - changed root rejects
+  ---
+  duration_ms: 0.96454
+  ...
+# Subtest: changed sibling and branch order reject
+ok 41 - changed sibling and branch order reject
+  ---
+  duration_ms: 0.855842
+  ...
+# Subtest: wrong position rejects
+ok 42 - wrong position rejects
+  ---
+  duration_ms: 0.448721
+  ...
+# Subtest: short and extra branches reject
+ok 43 - short and extra branches reject
+  ---
+  duration_ms: 0.365557
+  ...
+# Subtest: range and number type boundaries reject
+ok 44 - range and number type boundaries reject
+  ---
+  duration_ms: 0.884892
+  ...
+# Subtest: malformed byte strings reject
+ok 45 - malformed byte strings reject
+  ---
+  duration_ms: 0.481992
+  ...
+# Subtest: extra authority claim, duplicate key and oversized input reject
+ok 46 - extra authority claim, duplicate key and oversized input reject
+  ---
+  duration_ms: 0.421622
+  ...
+# Subtest: self-selected replacement root establishes inclusion only
+ok 47 - self-selected replacement root establishes inclusion only
+  ---
+  duration_ms: 0.221991
+  ...
+1..47
+# tests 47
+# suites 0
+# pass 47
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 163.612431
