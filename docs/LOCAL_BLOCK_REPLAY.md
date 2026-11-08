@@ -34,3 +34,8 @@ The output directory must not exist. It receives the summary and serialized synt
 ## Remaining gate
 
 A second execution client must agree on a precisely specified genesis and block sequence before independent-client agreement can be claimed. Source/header authentication remains a separate gate. This draft remains stacked on PR #18; it does not resolve NFT admission, real-token compatibility, open-population economics or release acceptance.
+
+
+## Second execution-engine follow-up
+
+[Geth transition comparison](SECOND_ENGINE_TRANSITIONS.md) now matches all 26 intermediate state roots, transaction/receipt roots and final native balances. This adds second-engine execution evidence, not Geth header validation or consensus authentication. The synthetic fixture changes above remain unchanged.
