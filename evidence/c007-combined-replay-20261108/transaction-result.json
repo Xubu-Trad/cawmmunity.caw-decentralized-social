@@ -1,0 +1,132 @@
+{
+  "schema": "caw-independent-signed-transaction-lifecycle/1",
+  "transactions": 26,
+  "successful": 18,
+  "expectedReverts": 8,
+  "logsAndReceiptGasMatched": true,
+  "totalGas": "8012622",
+  "baseFeeBurn": "3605760036571469",
+  "nativeAccounts": [
+    {
+      "address": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+      "balance": "9999995066028000000000",
+      "nonce": "0xb"
+    },
+    {
+      "address": "0x2b5ad5c4795c026514f8317c7a215e218dccd6cf",
+      "balance": "9999997270204000000000",
+      "nonce": "0x8"
+    },
+    {
+      "address": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "balance": "9999991638524000000000",
+      "nonce": "0x7"
+    },
+    {
+      "address": "0x0000000000000000000000000000000000000000",
+      "balance": "12419483963428531",
+      "nonce": "0x0"
+    }
+  ],
+  "provedStorageFields": 20,
+  "provedNativeAccounts": 4,
+  "zeroFieldsProvenAbsent": 2,
+  "localExecutionStateRoot": "0x439233c611f4f579bed50c3cc3f791bb4007655f093bd4226e43528f04ec192c",
+  "values": {
+    "0xbff9228b938b3676578a88b5962abbd2709c9c46:root": {
+      "value": "49339624040759059576801710786735020818051890267515921943269532534487398936908",
+      "exists": true
+    },
+    "0xbff9228b938b3676578a88b5962abbd2709c9c46:totalStake": {
+      "value": "1011000000000000000000",
+      "exists": true
+    },
+    "0xbff9228b938b3676578a88b5962abbd2709c9c46:liabilities": {
+      "value": "1020000000000000000000",
+      "exists": true
+    },
+    "0xbff9228b938b3676578a88b5962abbd2709c9c46:poolDust": {
+      "value": "1",
+      "exists": true
+    },
+    "0xbff9228b938b3676578a88b5962abbd2709c9c46:credit1": {
+      "value": "1000000000000000000000",
+      "exists": true
+    },
+    "0xbff9228b938b3676578a88b5962abbd2709c9c46:stake1": {
+      "value": "1000000000000000000000",
+      "exists": true
+    },
+    "0xbff9228b938b3676578a88b5962abbd2709c9c46:owner1": {
+      "value": "721457446580647751014191829380889690493307935711",
+      "exists": true
+    },
+    "0xbff9228b938b3676578a88b5962abbd2709c9c46:epoch1": {
+      "value": "2",
+      "exists": true
+    },
+    "0xbff9228b938b3676578a88b5962abbd2709c9c46:credit2": {
+      "value": "10000000000000000000",
+      "exists": true
+    },
+    "0xbff9228b938b3676578a88b5962abbd2709c9c46:stake2": {
+      "value": "3000000000000000000",
+      "exists": true
+    },
+    "0xbff9228b938b3676578a88b5962abbd2709c9c46:owner2": {
+      "value": "247512291986854564435551364600938690683113101007",
+      "exists": true
+    },
+    "0xbff9228b938b3676578a88b5962abbd2709c9c46:epoch2": {
+      "value": "1",
+      "exists": true
+    },
+    "0xbff9228b938b3676578a88b5962abbd2709c9c46:credit3": {
+      "value": "10000000000000000000",
+      "exists": true
+    },
+    "0xbff9228b938b3676578a88b5962abbd2709c9c46:stake3": {
+      "value": "8000000000000000000",
+      "exists": true
+    },
+    "0xbff9228b938b3676578a88b5962abbd2709c9c46:owner3": {
+      "value": "247512291986854564435551364600938690683113101007",
+      "exists": true
+    },
+    "0xbff9228b938b3676578a88b5962abbd2709c9c46:epoch3": {
+      "value": "0",
+      "exists": false
+    },
+    "0xbff9228b938b3676578a88b5962abbd2709c9c46:nonce": {
+      "value": "1",
+      "exists": true
+    },
+    "0x82c839fa4a41e158f613ec8a1a84be3c816d370f:0x7e5f4552091a69125d5dfcb7b8c2659029395bdf": {
+      "value": "0",
+      "exists": false
+    },
+    "0x82c839fa4a41e158f613ec8a1a84be3c816d370f:0x2b5ad5c4795c026514f8317c7a215e218dccd6cf": {
+      "value": "4999999999999999999999",
+      "exists": true
+    },
+    "0x82c839fa4a41e158f613ec8a1a84be3c816d370f:0xbff9228b938b3676578a88b5962abbd2709c9c46": {
+      "value": "1020000000000000000001",
+      "exists": true
+    }
+  },
+  "negativeControls": [
+    "changed_claim",
+    "missing_slot",
+    "changed_proof_node",
+    "original_anvil_root_rejected",
+    "spent_nonce_rejected_without_state_change",
+    "unfunded_sender_rejected",
+    "wrong_chain_rejected"
+  ],
+  "fullTransactionProcessorUsed": true,
+  "nativeGasAccounting": true,
+  "fullBlockReplay": false,
+  "originalHeaderStateRootRepaired": false,
+  "endpointAuthenticated": false,
+  "consensusVerified": false
+}
