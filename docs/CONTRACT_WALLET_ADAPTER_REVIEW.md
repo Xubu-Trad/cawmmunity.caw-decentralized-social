@@ -68,3 +68,15 @@ The reconstructed root is `0x43a1daedd9fd6d3209e537a0f1c81048c4ca49050c855d85d42
 The earlier accounting rejection remains valid for the older reader. The new separate model supersedes that limitation only for this exact test fixture. Next: full-block/second-engine comparison for the wallet variant and a reviewed reproducible raw input package. README remains paused.
 
 The replay command is `node reexecute-transactions.mjs /input-directory /new-output`; input files are acquired-history.json, compiler-output.json and genesis.json from the signed wallet capture. It requires the same pinned VM dependencies as the constructor replay experiment. `check-model.mjs` takes the verified-history file, capture execution directory and a new result path.
+
+## Synthetic full-block replay and second engine
+
+Fresh EthereumJS block replay now matches all 29 constructed synthetic blocks, including their state, transaction and receipt roots. Seven negative controls reject incorrect parent, timestamp, base fee, state root, receipt root, missing transaction and gas usage. The synthetic genesis base fee is 1142857142; 28 timestamps were adjusted to remain strictly increasing. These are explicitly constructed contexts, not a repaired Anvil chain.
+
+Geth evm 1.17.10-stable-1df30b18 matches every transition, all transaction/receipt roots and four final native balances against EthereumJS10.1.3. Both reach `0x43a1daedd9fd6d3209e537a0f1c81048c4ca49050c855d85d427f457d5d29c7e`, with 23 successful and six reverted transactions. Six Geth comparison/execution controls and eight frozen-input integrity checks pass. Geth t8n supplies a separate execution engine; this run does not validate consensus or full headers in Geth, and is not independent human review.
+
+The tool uses the previously publisher-signature-verified local Geth binary; this runner checks its binary hash rather than repeating that signature verification or building Geth from source. The original Anvil state-root mismatch remains unresolved and explicitly separate.
+
+The local replay package contains four hashed inputs (575952 bytes). Its scanner initially flagged `e:/` inside the random bytes of captured block5's state-root hash. Inspection confirmed the exact 32-byte hash field; the second immutable package excludes that exact false positive only. The stopped first package is retained. No general path or credential scan was disabled.
+
+This increment publishes replay code, manifest and result summaries. Raw signed inputs remain local, so the manifest alone is not yet a downloadable reproduction package. Next: publish the reviewed inputs with complete runner dependencies/instructions, then extend wallet validation beyond this deliberately configurable test fixture. Real ERC-1271 signer behavior, EIP-7702 and production release remain unproven. README stays paused.
