@@ -1,0 +1,14 @@
+{
+  "matchedCapturedLifecycleFinal": true,
+  "negatives": [
+    "configuration_from_wrong_controller",
+    "forward_from_wrong_controller",
+    "unexpected_forward_target",
+    "noncanonical_forward_offset",
+    "truncated_forward",
+    "wallet_rejects_successful_post",
+    "changed_wallet_digest",
+    "changed_wallet_signature_hash"
+  ],
+  "boundary": "Semantic model mutations only; edited rows are not cryptographically valid histories."
+}

@@ -54,3 +54,17 @@ The existing accounting model explicitly rejects this fixture with BOUNDED_HISTO
 The first boundary-test wrapper matched only the assertion label; Node also included the differing counts. That wrapper failed and was retained. Matching the label plus actual29/expected26 confirms the intended rejection without changing the accounting reader.
 
 Collector usage: `node run-signed-lifecycle.mjs /new/output http://127.0.0.1:PORT` against the same synthetic genesis/chain/fork setup; it requires ethers6.16.0 in addition to the pinned experiment dependencies. Then `node check-history.mjs /new/output/acquired-history.json /new/verified-history.json`. The complete raw capture remains local pending a reviewed publication package; this increment publishes collector code and scoped summaries only.
+
+## Wallet-aware accounting and transaction replay
+
+A separate 29-transaction model now recognizes the exact test wallet creation code, controller-only configuration and canonical forwarded calls to the token or vault. It preserves the original ordinary-account model. Successful contract-authorized posting is checked against the fixture's configured digest, signature hash and rejection flag; this models that fixture only, not arbitrary ERC-1271 wallets.
+
+Reconstruction matches every final lifecycle balance, stake, owner, epoch, nonce and root. The full EthereumJS transaction processor also matches all 29 receipt outcomes (23 success, six reverts), logs and gas usage. Twenty-one storage values and four native account balances are verified against the reconstructed execution root. Total gas is 10021906. Account one's credit and stake are each 998 tokens; the wallet and new owner each hold one withdrawn token. Vault backing is 6018 tokens, equal to liabilities plus one base unit of dust.
+
+Eight semantic negative controls reject wrong controller configuration/forwarding, an unexpected target, noncanonical offset, truncated forwarding, rejecting wallet state, changed digest and changed signature hash. These edited model inputs are not valid signed histories. Seven existing execution/proof controls also pass, including changed claims/nodes, missing storage, spent nonce, unfunded sender and wrong chain.
+
+The reconstructed root is `0x43a1daedd9fd6d3209e537a0f1c81048c4ca49050c855d85d427f457d5d29c7e`. It differs from the captured Anvil header root; the proof verifier rejects using that original root for these reconstructed proofs. This is transaction execution under selected captured contexts, not a claim to repair or authenticate Anvil headers, perform full block replay, prove consensus/finality, or obtain independent human review. Failed transactions are skipped by the arithmetic model according to receipt status; their failure is separately checked by VM execution.
+
+The earlier accounting rejection remains valid for the older reader. The new separate model supersedes that limitation only for this exact test fixture. Next: full-block/second-engine comparison for the wallet variant and a reviewed reproducible raw input package. README remains paused.
+
+The replay command is `node reexecute-transactions.mjs /input-directory /new-output`; input files are acquired-history.json, compiler-output.json and genesis.json from the signed wallet capture. It requires the same pinned VM dependencies as the constructor replay experiment. `check-model.mjs` takes the verified-history file, capture execution directory and a new result path.
