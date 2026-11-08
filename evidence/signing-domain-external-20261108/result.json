@@ -1,0 +1,71 @@
+{
+  "external": {
+    "officialRootMatches": 10,
+    "mutationControls": 10,
+    "argumentControls": 6,
+    "rows": [
+      {
+        "kind": "ForkData",
+        "case": 0,
+        "root": "0x41a1744b4cead6b1511953c07eed437b74f705c5f0d3e57b1a4dba26816d5cbb"
+      },
+      {
+        "kind": "ForkData",
+        "case": 1,
+        "root": "0x47ef375ab608e3b1dcec6771a3fb7e0c9479aa5146a0b728f516615582a598a7"
+      },
+      {
+        "kind": "ForkData",
+        "case": 2,
+        "root": "0x545a75e831de2526269c64948296607a7a16c941a9aa482acad274379cc6ae1a"
+      },
+      {
+        "kind": "ForkData",
+        "case": 3,
+        "root": "0xfdf4c6a1fdd5ac35c5ff14cc480d2e12ff1325b71adea30bd7b8a993c16fc5b8"
+      },
+      {
+        "kind": "ForkData",
+        "case": 4,
+        "root": "0xdeeb4ae61ddb4752dc3b270b08d5d946ae6fb4cdad10e6cd9c376c12c6e57f3c"
+      },
+      {
+        "kind": "SigningData",
+        "case": 0,
+        "root": "0x2234b1214187c795202c623f7af58f53a88228ee2f6077e8233374a1df6ee996"
+      },
+      {
+        "kind": "SigningData",
+        "case": 1,
+        "root": "0x049eae3be017d542be93037804848793d7e768908aff5846ffb7e0a37da2a18a"
+      },
+      {
+        "kind": "SigningData",
+        "case": 2,
+        "root": "0x83ee18061b40318d2f661b69acea45de172528d7a8030b1a411098afb24eee5e"
+      },
+      {
+        "kind": "SigningData",
+        "case": 3,
+        "root": "0x679eace0fcee1f6e2bacc11c2545e48ba1f7fdc6081e1bbb2dcf9e35cf86f53f"
+      },
+      {
+        "kind": "SigningData",
+        "case": 4,
+        "root": "0x591ccc817d88f3166b3ae2b35552a0fbb4f2b13e81aced5b92d80d399d370d78"
+      }
+    ],
+    "sourceCommit": "bc5c1a7fb2a8871aaffd4b16ee4dd9c72bb81908",
+    "endToEndConsensusDomainVector": false,
+    "signatureVerified": false,
+    "productionAccepted": false
+  },
+  "regression": {
+    "checks": 16,
+    "authoredPythonReferenceVectors": 4,
+    "externalConsensusVectors": false,
+    "updatesAccepted": false,
+    "productionAccepted": false
+  },
+  "node": "v20.20.2"
+}

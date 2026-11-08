@@ -14,3 +14,8 @@ Next: acquire independent external conformance evidence before signature composi
 ## Reproduce this bounded check
 
 Run `node --max-old-space-size=256 experiments/signing-domain/test-signing-domain.mjs experiments/signing-domain/vectors.json`. No third-party package installation is needed. The run used v20.20.2, a 30-second process deadline, 2GiB free-disk and 1GiB available-memory startup gates. No full-suite, BLS regression or declared-runtime result is claimed. The exact helper/test bytes match the prior staged commit. Existing BLS and fork readers were not changed.
+
+
+## External primitive follow-up
+
+[Ten official ForkData/SigningData root matches](SIGNING_DOMAIN_EXTERNAL_CONFORMANCE.md),16negativecontrols and16authoredregressions now pass. This closes the scoped primitive-vector step, not an end-to-end consensus-domain or checkpoint gate.
