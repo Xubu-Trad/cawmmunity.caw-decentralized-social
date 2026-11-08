@@ -1,0 +1,136 @@
+TAP version 13
+# Subtest: external ./fast_aggregate_verify/fast_aggregate_verify_extra_pubkey_4f079f946446fabf.json
+ok 1 - external ./fast_aggregate_verify/fast_aggregate_verify_extra_pubkey_4f079f946446fabf.json
+  ---
+  duration_ms: 68.504604
+  type: 'test'
+  ...
+# Subtest: external ./fast_aggregate_verify/fast_aggregate_verify_extra_pubkey_5a38e6b4017fe4dd.json
+ok 2 - external ./fast_aggregate_verify/fast_aggregate_verify_extra_pubkey_5a38e6b4017fe4dd.json
+  ---
+  duration_ms: 47.034207
+  type: 'test'
+  ...
+# Subtest: external ./fast_aggregate_verify/fast_aggregate_verify_extra_pubkey_a698ea45b109f303.json
+ok 3 - external ./fast_aggregate_verify/fast_aggregate_verify_extra_pubkey_a698ea45b109f303.json
+  ---
+  duration_ms: 42.016489
+  type: 'test'
+  ...
+# Subtest: external ./fast_aggregate_verify/fast_aggregate_verify_infinity_pubkey.json
+ok 4 - external ./fast_aggregate_verify/fast_aggregate_verify_infinity_pubkey.json
+  ---
+  duration_ms: 7.948866
+  type: 'test'
+  ...
+# Subtest: external ./fast_aggregate_verify/fast_aggregate_verify_na_pubkeys_and_infinity_signature.json
+ok 5 - external ./fast_aggregate_verify/fast_aggregate_verify_na_pubkeys_and_infinity_signature.json
+  ---
+  duration_ms: 0.195931
+  type: 'test'
+  ...
+# Subtest: external ./fast_aggregate_verify/fast_aggregate_verify_na_pubkeys_and_na_signature.json
+ok 6 - external ./fast_aggregate_verify/fast_aggregate_verify_na_pubkeys_and_na_signature.json
+  ---
+  duration_ms: 0.196312
+  type: 'test'
+  ...
+# Subtest: external ./fast_aggregate_verify/fast_aggregate_verify_tampered_signature_3d7576f3c0e3570a.json
+ok 7 - external ./fast_aggregate_verify/fast_aggregate_verify_tampered_signature_3d7576f3c0e3570a.json
+  ---
+  duration_ms: 12.407829
+  type: 'test'
+  ...
+# Subtest: external ./fast_aggregate_verify/fast_aggregate_verify_tampered_signature_5e745ad0c6199a6c.json
+ok 8 - external ./fast_aggregate_verify/fast_aggregate_verify_tampered_signature_5e745ad0c6199a6c.json
+  ---
+  duration_ms: 6.730625
+  type: 'test'
+  ...
+# Subtest: external ./fast_aggregate_verify/fast_aggregate_verify_tampered_signature_652ce62f09290811.json
+ok 9 - external ./fast_aggregate_verify/fast_aggregate_verify_tampered_signature_652ce62f09290811.json
+  ---
+  duration_ms: 8.737429
+  type: 'test'
+  ...
+# Subtest: external ./fast_aggregate_verify/fast_aggregate_verify_valid_3d7576f3c0e3570a.json
+ok 10 - external ./fast_aggregate_verify/fast_aggregate_verify_valid_3d7576f3c0e3570a.json
+  ---
+  duration_ms: 44.582427
+  type: 'test'
+  ...
+# Subtest: external ./fast_aggregate_verify/fast_aggregate_verify_valid_5e745ad0c6199a6c.json
+ok 11 - external ./fast_aggregate_verify/fast_aggregate_verify_valid_5e745ad0c6199a6c.json
+  ---
+  duration_ms: 38.160817
+  type: 'test'
+  ...
+# Subtest: external ./fast_aggregate_verify/fast_aggregate_verify_valid_652ce62f09290811.json
+ok 12 - external ./fast_aggregate_verify/fast_aggregate_verify_valid_652ce62f09290811.json
+  ---
+  duration_ms: 44.245482
+  type: 'test'
+  ...
+# Subtest: key permutation leaves same equation without asserting ordered committee membership
+ok 13 - key permutation leaves same equation without asserting ordered committee membership
+  ---
+  duration_ms: 40.89485
+  type: 'test'
+  ...
+# Subtest: one omitted participant rejects original aggregate signature
+ok 14 - one omitted participant rejects original aggregate signature
+  ---
+  duration_ms: 41.00262
+  type: 'test'
+  ...
+# Subtest: one appended duplicate rejects original signature
+ok 15 - one appended duplicate rejects original signature
+  ---
+  duration_ms: 41.609985
+  type: 'test'
+  ...
+# Subtest: same-key multiplicity with doubled signature succeeds, deduplication rejects
+ok 16 - same-key multiplicity with doubled signature succeeds, deduplication rejects
+  ---
+  duration_ms: 127.504759
+  type: 'test'
+  ...
+# Subtest: one message-bit mutation rejects unchanged keys and signature
+ok 17 - one message-bit mutation rejects unchanged keys and signature
+  ---
+  duration_ms: 38.859165
+  type: 'test'
+  ...
+# Subtest: zero-sum public keys reject even with canonical infinity signature
+ok 18 - zero-sum public keys reject even with canonical infinity signature
+  ---
+  duration_ms: 7.707267
+  type: 'test'
+  ...
+# Subtest: unsupported shapes count lengths sparse arrays and overrides reject
+ok 19 - unsupported shapes count lengths sparse arrays and overrides reject
+  ---
+  duration_ms: 8.4568
+  type: 'test'
+  ...
+# Subtest: 32 supplied occurrences supported without claiming mainnet committee support
+ok 20 - 32 supplied occurrences supported without claiming mainnet committee support
+  ---
+  duration_ms: 130.26069
+  type: 'test'
+  ...
+# Subtest: compensating key construction passes equation but proves no participant possession
+ok 21 - compensating key construction passes equation but proves no participant possession
+  ---
+  duration_ms: 39.349674
+  type: 'test'
+  ...
+1..21
+# tests 21
+# suites 0
+# pass 21
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1000.657791

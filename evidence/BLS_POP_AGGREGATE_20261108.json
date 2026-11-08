@@ -1,0 +1,411 @@
+{
+  "schema": "caw-bls-pop-aggregate-evidence/1",
+  "parentCommit": "c4b033719f7d29c729f5614fcde4944d199bcb1b",
+  "status": "SCOPED_PASS",
+  "externalCases": {
+    "total": 12,
+    "expectedTrue": 3,
+    "expectedFalse": 9
+  },
+  "localControls": 9,
+  "run": {
+    "schema": "caw-bls-aggregate-run/1",
+    "parentCommit": "c4b033719f7d29c729f5614fcde4944d199bcb1b",
+    "node": "v24.22.1",
+    "nodeSha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+    "declaredNode": "24.20.0",
+    "declaredRuntimeRun": false,
+    "reusedDependencyFilesVerified": 486,
+    "guards": {
+      "diskMinimumBytes": 2147483648,
+      "memoryMinimumBytes": 1073741824,
+      "heapMiB": 256,
+      "processDeadlineSeconds": 45
+    },
+    "groups": [
+      {
+        "name": "focused",
+        "command": [
+          "node",
+          "--max-old-space-size=256",
+          "--test",
+          "--test-reporter=tap",
+          "--test-concurrency=1",
+          "--test-timeout=30000",
+          "experiments/bls-g1/aggregate.test.mjs"
+        ],
+        "exitCode": 0,
+        "counts": {
+          "pass": 21,
+          "fail": 0
+        },
+        "log": "evidence/bls-aggregate-20261108/focused-attempt-1.tap"
+      },
+      {
+        "name": "bls-regression",
+        "command": [
+          "node",
+          "--max-old-space-size=256",
+          "--test",
+          "--test-reporter=tap",
+          "--test-concurrency=1",
+          "--test-timeout=30000",
+          "experiments/bls-g1/g1.test.mjs",
+          "experiments/bls-g1/committee.test.mjs",
+          "experiments/bls-g1/signature.test.mjs"
+        ],
+        "exitCode": 0,
+        "counts": {
+          "pass": 90,
+          "fail": 0
+        },
+        "log": "evidence/bls-aggregate-20261108/bls-regression-attempt-1.tap"
+      },
+      {
+        "name": "bootstrap-regression",
+        "command": [
+          "node",
+          "--max-old-space-size=256",
+          "--test",
+          "--test-reporter=tap",
+          "--test-concurrency=1",
+          "--test-timeout=30000",
+          "tests/sha256-branch.test.mjs",
+          "tests/beacon-header-root.test.mjs",
+          "tests/capella-payload-root.test.mjs",
+          "tests/capella-header-binding.test.mjs",
+          "tests/minimal-capella-bootstrap.test.mjs",
+          "tests/bootstrap-profile-selection.test.mjs",
+          "tests/bootstrap-fixture-metadata-selection.test.mjs",
+          "tests/pinned-minimal-capella-bootstrap.test.mjs"
+        ],
+        "exitCode": 0,
+        "counts": {
+          "pass": 73,
+          "fail": 0
+        },
+        "log": "evidence/bls-aggregate-20261108/bootstrap-regression-attempt-1.tap"
+      }
+    ],
+    "fullSuiteRerun": false,
+    "ciRun": false
+  },
+  "aggregateEquationVerifiedOnPositiveCases": true,
+  "compensatingKeyControlPassed": true,
+  "participantSetAuthenticated": false,
+  "committeeMembershipAuthenticated": false,
+  "proofOfPossessionVerified": false,
+  "signerAuthorizationVerified": false,
+  "ethereumSigningDomainValidated": false,
+  "signingRootAuthenticated": false,
+  "rootAuthenticated": false,
+  "networkAuthenticated": false,
+  "blsValidated": false,
+  "consensusVerified": false,
+  "finalityVerified": false,
+  "updatesAccepted": false,
+  "productionAccepted": false,
+  "fullSuiteRerun": false,
+  "ciRun": false,
+  "limitations": [
+    "supplied-key equation only; no individual possession or authorization",
+    "1..32 keys only; no mainnet512 or empty-participation wrapper",
+    "supplied message; no consensus-domain/signing-root derivation",
+    "no authenticated committee/participant selection or update integration",
+    "dependency provenance and historical discrepancies remain unchanged"
+  ],
+  "artifacts": [
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b"
+      ],
+      "TRANSFORM": "Retained parent source or authored reviewed research addition; bytes checked against publication tree",
+      "PATH": "experiments/bls-g1/aggregate.mjs",
+      "SIZE": 1704,
+      "SHA256": "ac98bc339e7daf07fcce68e7e030b584e9ad49705076214b1c38740a8ac33c3a"
+    },
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b"
+      ],
+      "TRANSFORM": "Retained parent source or authored reviewed research addition; bytes checked against publication tree",
+      "PATH": "experiments/bls-g1/aggregate.test.mjs",
+      "SIZE": 3946,
+      "SHA256": "7efc9dad8b577d2a7d0555c1c1548d228c6a14546a7ed047ed0805f247ab9b3f"
+    },
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b"
+      ],
+      "TRANSFORM": "Retained parent source or authored reviewed research addition; bytes checked against publication tree",
+      "PATH": "experiments/bls-g1/package.json",
+      "SIZE": 891,
+      "SHA256": "46f2d8286586176d5a5d48a7b4b5e61bdecd01ae41a63a9aaf9b2d6195637c0e"
+    },
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b"
+      ],
+      "TRANSFORM": "Retained parent source or authored reviewed research addition; bytes checked against publication tree",
+      "PATH": "experiments/bls-g1/package-lock.json",
+      "SIZE": 1179,
+      "SHA256": "303999ac0c2d24d3f8151226bfe33b7a410b8eeacc2a2a514dbdd096624ce205"
+    },
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b"
+      ],
+      "TRANSFORM": "Retained parent source or authored reviewed research addition; bytes checked against publication tree",
+      "PATH": "experiments/bls-g1/g1.mjs",
+      "SIZE": 2005,
+      "SHA256": "0c6365eb2d689faf778f500214d580eeec5cc0dee71572af44e9774631dd9644"
+    },
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b"
+      ],
+      "TRANSFORM": "Retained parent source or authored reviewed research addition; bytes checked against publication tree",
+      "PATH": "experiments/bls-g1/signature.mjs",
+      "SIZE": 2057,
+      "SHA256": "42d903245a482f931bc639beca2a0acf9b0368b6f0e225cbf3ecaaa6aabf631a"
+    },
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b"
+      ],
+      "TRANSFORM": "Retained parent source or authored reviewed research addition; bytes checked against publication tree",
+      "PATH": "evidence/bls-g1-20261107/dependency-inventory.json",
+      "SIZE": 78992,
+      "SHA256": "a95a825cecf73905f91e4734027909ebc129695b28fc7d6a943ffa510b34ae97"
+    },
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b"
+      ],
+      "TRANSFORM": "Retained parent source or authored reviewed research addition; bytes checked against publication tree",
+      "PATH": "evidence/bls-g1-20261107/VECTORS_LICENSE",
+      "SIZE": 6555,
+      "SHA256": "36ffd9dc085d529a7e60e1276d73ae5a030b020313e6c5408593a6ae2af39673"
+    },
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b"
+      ],
+      "TRANSFORM": "Retained parent source or authored reviewed research addition; bytes checked against publication tree",
+      "PATH": "evidence/bls-signatures-20261107/upstream-README.md",
+      "SIZE": 2311,
+      "SHA256": "903f34d14344b9b1fe1cf7866bd69b35e2ee0050fccb13b0c01812dae19f6ce2"
+    },
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b"
+      ],
+      "TRANSFORM": "python3 evidence/bls-aggregate-20261108/run-checks.py -> node --max-old-space-size=256 --test --test-reporter=tap --test-concurrency=1 --test-timeout=30000 experiments/bls-g1/g1.test.mjs experiments/bls-g1/committee.test.mjs experiments/bls-g1/signature.test.mjs; stdout/stderr retained",
+      "PATH": "evidence/bls-aggregate-20261108/bls-regression-attempt-1.tap",
+      "SIZE": 18746,
+      "SHA256": "7c4433919a332fd1f87726d8d9e5a30505d2dc663d599cf47f67fc0e5516ed34"
+    },
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b"
+      ],
+      "TRANSFORM": "Retained parent source or authored reviewed research addition; bytes checked against publication tree",
+      "PATH": "evidence/bls-aggregate-20261108/bls-regression-command.json",
+      "SIZE": 458,
+      "SHA256": "064f0324a740b5644ae9c49adef2cc1e4231364c2628a1d1c6b087f080fffd83"
+    },
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b"
+      ],
+      "TRANSFORM": "python3 evidence/bls-aggregate-20261108/run-checks.py -> node --max-old-space-size=256 --test --test-reporter=tap --test-concurrency=1 --test-timeout=30000 tests/sha256-branch.test.mjs tests/beacon-header-root.test.mjs tests/capella-payload-root.test.mjs tests/capella-header-binding.test.mjs tests/minimal-capella-bootstrap.test.mjs tests/bootstrap-profile-selection.test.mjs tests/bootstrap-fixture-metadata-selection.test.mjs tests/pinned-minimal-capella-bootstrap.test.mjs; stdout/stderr retained",
+      "PATH": "evidence/bls-aggregate-20261108/bootstrap-regression-attempt-1.tap",
+      "SIZE": 11204,
+      "SHA256": "bc5219aec6dd8dec91778e6167cd94b4f29a25111070fd163d2e12488b2ab0fd"
+    },
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b"
+      ],
+      "TRANSFORM": "Retained parent source or authored reviewed research addition; bytes checked against publication tree",
+      "PATH": "evidence/bls-aggregate-20261108/bootstrap-regression-command.json",
+      "SIZE": 719,
+      "SHA256": "1d913a11209970bad33348a9730100e6485dcdfdf6020d6da173dd05642f493f"
+    },
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b"
+      ],
+      "TRANSFORM": "python3 evidence/bls-aggregate-20261108/run-checks.py -> node --max-old-space-size=256 --test --test-reporter=tap --test-concurrency=1 --test-timeout=30000 experiments/bls-g1/aggregate.test.mjs; stdout/stderr retained",
+      "PATH": "evidence/bls-aggregate-20261108/focused-attempt-1.tap",
+      "SIZE": 4983,
+      "SHA256": "83161bf4c0a66f82d6727a4af8cf4084fb815776295a25c1c585c22c6e87041f"
+    },
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b"
+      ],
+      "TRANSFORM": "Retained parent source or authored reviewed research addition; bytes checked against publication tree",
+      "PATH": "evidence/bls-aggregate-20261108/focused-command.json",
+      "SIZE": 361,
+      "SHA256": "1d6722f4f5b520fdf14855663549ee97d568fc61d6cfefd967e4842c8258e5dd"
+    },
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b"
+      ],
+      "TRANSFORM": "Retained parent source or authored reviewed research addition; bytes checked against publication tree",
+      "PATH": "evidence/bls-aggregate-20261108/run-checks.py",
+      "SIZE": 2630,
+      "SHA256": "192848434a9334efbabd739260d0e7c451a6b8ecba625fac0386d6b066cf235f"
+    },
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b"
+      ],
+      "TRANSFORM": "Retained parent source or authored reviewed research addition; bytes checked against publication tree",
+      "PATH": "evidence/bls-aggregate-20261108/run.json",
+      "SIZE": 2312,
+      "SHA256": "3ae154190f2ac2f669b946de081c2afa3f0740e94eccaece1414f29e6b3f9731"
+    },
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b",
+        "ethereum/bls12-381-tests@89ff3a86f1a9b89a555495f7535c853cda589320:formats/fast_aggregate_verify.md"
+      ],
+      "TRANSFORM": "GitHub connector fetch_file UTF-8; original content retained",
+      "PATH": "evidence/bls-aggregate-20261108/upstream-format.md",
+      "SIZE": 457,
+      "SHA256": "a47bf83878ba038563cfbfbb539b4505002a23f1b9caad3ecdc27706bb9d4134"
+    },
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b"
+      ],
+      "TRANSFORM": "Retained parent source or authored reviewed research addition; bytes checked against publication tree",
+      "PATH": "evidence/bls-aggregate-20261108/vector-inventory.json",
+      "SIZE": 3837,
+      "SHA256": "c1bce4bc528bb3cd03a007a514301fb600f7d392f86166d605e3a77aacc7f13c"
+    },
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b",
+        "sha256:0dc1dfabfa7b3e0f8e8029f9cb2bb8733597526fa085b18f160d2c4eb0b448bc"
+      ],
+      "TRANSFORM": "Python tarfile.open(archive).extractfile(member).read(); unchanged member path in vector-inventory.json",
+      "PATH": "evidence/bls-aggregate-20261108/vectors/fast_aggregate_verify_extra_pubkey_4f079f946446fabf.json",
+      "SIZE": 639,
+      "SHA256": "4ca7a65e9654102feb3a98c0304e467848ff24496930eec7fd6b698114116df3"
+    },
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b",
+        "sha256:0dc1dfabfa7b3e0f8e8029f9cb2bb8733597526fa085b18f160d2c4eb0b448bc"
+      ],
+      "TRANSFORM": "Python tarfile.open(archive).extractfile(member).read(); unchanged member path in vector-inventory.json",
+      "PATH": "evidence/bls-aggregate-20261108/vectors/fast_aggregate_verify_extra_pubkey_5a38e6b4017fe4dd.json",
+      "SIZE": 741,
+      "SHA256": "79b09e4c6c0b671debde16953f005e57502c657ec7555b0681f1fed27c51d158"
+    },
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b",
+        "sha256:0dc1dfabfa7b3e0f8e8029f9cb2bb8733597526fa085b18f160d2c4eb0b448bc"
+      ],
+      "TRANSFORM": "Python tarfile.open(archive).extractfile(member).read(); unchanged member path in vector-inventory.json",
+      "PATH": "evidence/bls-aggregate-20261108/vectors/fast_aggregate_verify_extra_pubkey_a698ea45b109f303.json",
+      "SIZE": 537,
+      "SHA256": "32a55b57f6a4fa0f95bd9bbb1ac22bc090c3af6bbdcb3568911c353e676d5335"
+    },
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b",
+        "sha256:0dc1dfabfa7b3e0f8e8029f9cb2bb8733597526fa085b18f160d2c4eb0b448bc"
+      ],
+      "TRANSFORM": "Python tarfile.open(archive).extractfile(member).read(); unchanged member path in vector-inventory.json",
+      "PATH": "evidence/bls-aggregate-20261108/vectors/fast_aggregate_verify_infinity_pubkey.json",
+      "SIZE": 741,
+      "SHA256": "69ae53e2df06ac0bd8b14d3e7f74f6e1d07ffe528b8ab4720ace3c6eeed8ed87"
+    },
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b",
+        "sha256:0dc1dfabfa7b3e0f8e8029f9cb2bb8733597526fa085b18f160d2c4eb0b448bc"
+      ],
+      "TRANSFORM": "Python tarfile.open(archive).extractfile(member).read(); unchanged member path in vector-inventory.json",
+      "PATH": "evidence/bls-aggregate-20261108/vectors/fast_aggregate_verify_na_pubkeys_and_infinity_signature.json",
+      "SIZE": 335,
+      "SHA256": "82eafeb45b11d2b28412e235bf787964974b8b4261b0d7d4811e8ee49721287e"
+    },
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b",
+        "sha256:0dc1dfabfa7b3e0f8e8029f9cb2bb8733597526fa085b18f160d2c4eb0b448bc"
+      ],
+      "TRANSFORM": "Python tarfile.open(archive).extractfile(member).read(); unchanged member path in vector-inventory.json",
+      "PATH": "evidence/bls-aggregate-20261108/vectors/fast_aggregate_verify_na_pubkeys_and_na_signature.json",
+      "SIZE": 335,
+      "SHA256": "a3cb927237027f62db194b4b43c31a16aa760954cd79cdbedc65f9938fd35442"
+    },
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b",
+        "sha256:0dc1dfabfa7b3e0f8e8029f9cb2bb8733597526fa085b18f160d2c4eb0b448bc"
+      ],
+      "TRANSFORM": "Python tarfile.open(archive).extractfile(member).read(); unchanged member path in vector-inventory.json",
+      "PATH": "evidence/bls-aggregate-20261108/vectors/fast_aggregate_verify_tampered_signature_3d7576f3c0e3570a.json",
+      "SIZE": 639,
+      "SHA256": "d8b37be4dde164f1bb035f8559c90a9472148f7f45a550c312626770bd8d8da7"
+    },
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b",
+        "sha256:0dc1dfabfa7b3e0f8e8029f9cb2bb8733597526fa085b18f160d2c4eb0b448bc"
+      ],
+      "TRANSFORM": "Python tarfile.open(archive).extractfile(member).read(); unchanged member path in vector-inventory.json",
+      "PATH": "evidence/bls-aggregate-20261108/vectors/fast_aggregate_verify_tampered_signature_5e745ad0c6199a6c.json",
+      "SIZE": 435,
+      "SHA256": "17c8676d7b74613eebf85f9b67bfd8a8a6e231bdc2f79e61e54e2078a8e3b561"
+    },
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b",
+        "sha256:0dc1dfabfa7b3e0f8e8029f9cb2bb8733597526fa085b18f160d2c4eb0b448bc"
+      ],
+      "TRANSFORM": "Python tarfile.open(archive).extractfile(member).read(); unchanged member path in vector-inventory.json",
+      "PATH": "evidence/bls-aggregate-20261108/vectors/fast_aggregate_verify_tampered_signature_652ce62f09290811.json",
+      "SIZE": 537,
+      "SHA256": "126e5c36383407724e5060198137e79971dd563c847c6ce23baf37eb0bf9f1f7"
+    },
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b",
+        "sha256:0dc1dfabfa7b3e0f8e8029f9cb2bb8733597526fa085b18f160d2c4eb0b448bc"
+      ],
+      "TRANSFORM": "Python tarfile.open(archive).extractfile(member).read(); unchanged member path in vector-inventory.json",
+      "PATH": "evidence/bls-aggregate-20261108/vectors/fast_aggregate_verify_valid_3d7576f3c0e3570a.json",
+      "SIZE": 638,
+      "SHA256": "71b158e0d263798db02b5900b6f5ac1cb9e3556880bdb1269c35def19457de34"
+    },
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b",
+        "sha256:0dc1dfabfa7b3e0f8e8029f9cb2bb8733597526fa085b18f160d2c4eb0b448bc"
+      ],
+      "TRANSFORM": "Python tarfile.open(archive).extractfile(member).read(); unchanged member path in vector-inventory.json",
+      "PATH": "evidence/bls-aggregate-20261108/vectors/fast_aggregate_verify_valid_5e745ad0c6199a6c.json",
+      "SIZE": 434,
+      "SHA256": "2fb075aaee82ed1a72315c0952039d155bb33c688035d2ab411c2cd3944c75b2"
+    },
+    {
+      "PARENTS": [
+        "c4b033719f7d29c729f5614fcde4944d199bcb1b",
+        "sha256:0dc1dfabfa7b3e0f8e8029f9cb2bb8733597526fa085b18f160d2c4eb0b448bc"
+      ],
+      "TRANSFORM": "Python tarfile.open(archive).extractfile(member).read(); unchanged member path in vector-inventory.json",
+      "PATH": "evidence/bls-aggregate-20261108/vectors/fast_aggregate_verify_valid_652ce62f09290811.json",
+      "SIZE": 536,
+      "SHA256": "b94f9b580f879b61f7a4668a57ecaa9283f7181a56555cac86c98d372cb6946a"
+    }
+  ]
+}

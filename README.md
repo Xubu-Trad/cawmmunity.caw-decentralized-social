@@ -1,6 +1,6 @@
 # cawmmunity.caw - decentralized - social
 
-[G2 and single-signature research](docs/BLS_POP_SIGNATURES_20261107.md) now passes 48 focused checks with an explicit POP ciphersuite, plus separate 42 key/committee and 73 bootstrap regression checks. A valid signature under supplied inputs still does not authenticate committee membership or the Ethereum consensus signing domain.
+[Aggregate-signature research](docs/BLS_POP_AGGREGATE_20261108.md) now checks supplied-key equations with 21 focused checks and separate 90 BLS / 73 bootstrap regressions. A controlled example shows why a passing equation does not prove participant possession or authorization. Consensus signing domains and trusted checkpoints remain open gates.
 
 [The retained minimal committee now passes G1 and aggregate checks](docs/MINIMAL_COMMITTEE_G1_20261107.md), composed with metadata and structural inclusion. Separate runs passed 12 new, 30 G1 and 73 bootstrap checks. This validates the retained keys and their sum, not signatures or trusted consensus.
 

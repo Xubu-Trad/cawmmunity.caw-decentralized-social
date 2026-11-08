@@ -1,0 +1,550 @@
+TAP version 13
+# Subtest: retained 32 keys and supplied aggregate satisfy the point sum
+ok 1 - retained 32 keys and supplied aggregate satisfy the point sum
+  ---
+  duration_ms: 109.28906
+  type: 'test'
+  ...
+# Subtest: composition preserves metadata and structural evidence without authority claims
+ok 2 - composition preserves metadata and structural evidence without authority claims
+  ---
+  duration_ms: 95.352403
+  type: 'test'
+  ...
+# Subtest: one valid member replacement fails the unchanged aggregate relation
+ok 3 - one valid member replacement fails the unchanged aggregate relation
+  ---
+  duration_ms: 86.973509
+  type: 'test'
+  ...
+# Subtest: valid but wrong aggregate point rejects
+ok 4 - valid but wrong aggregate point rejects
+  ---
+  duration_ms: 80.737568
+  type: 'test'
+  ...
+# Subtest: off-curve and wrong-subgroup members reject
+ok 5 - off-curve and wrong-subgroup members reject
+  ---
+  duration_ms: 2.456131
+  type: 'test'
+  ...
+# Subtest: identity member and identity aggregate independently reject
+ok 6 - identity member and identity aggregate independently reject
+  ---
+  duration_ms: 78.810523
+  type: 'test'
+  ...
+# Subtest: malformed and noncanonical member encodings reject
+ok 7 - malformed and noncanonical member encodings reject
+  ---
+  duration_ms: 0.628855
+  type: 'test'
+  ...
+# Subtest: unsupported sizes and injected authority fields reject
+ok 8 - unsupported sizes and injected authority fields reject
+  ---
+  duration_ms: 0.860138
+  type: 'test'
+  ...
+# Subtest: repeated members are counted with multiplicity, not deduplicated
+ok 9 - repeated members are counted with multiplicity, not deduplicated
+  ---
+  duration_ms: 165.248335
+  type: 'test'
+  ...
+# Subtest: permutation preserves point sum but fails the original ordered inclusion proof
+ok 10 - permutation preserves point sum but fails the original ordered inclusion proof
+  ---
+  duration_ms: 84.908993
+  type: 'test'
+  ...
+# Subtest: valid key relation cannot bypass a changed proof or unsupported profile
+ok 11 - valid key relation cannot bypass a changed proof or unsupported profile
+  ---
+  duration_ms: 1.402094
+  type: 'test'
+  ...
+# Subtest: composition still rejects metadata mutation and selected-root mismatch
+ok 12 - composition still rejects metadata mutation and selected-root mismatch
+  ---
+  duration_ms: 0.28972
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_infinity_with_false_b_flag.json
+ok 13 - external deserialization: deserialization_fails_infinity_with_false_b_flag.json
+  ---
+  duration_ms: 3.314737
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_infinity_with_false_b_flag.json
+ok 14 - nonidentity key policy: deserialization_fails_infinity_with_false_b_flag.json
+  ---
+  duration_ms: 1.848528
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_infinity_with_true_b_flag.json
+ok 15 - external deserialization: deserialization_fails_infinity_with_true_b_flag.json
+  ---
+  duration_ms: 0.16827
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_infinity_with_true_b_flag.json
+ok 16 - nonidentity key policy: deserialization_fails_infinity_with_true_b_flag.json
+  ---
+  duration_ms: 0.233507
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_not_in_G1.json
+ok 17 - external deserialization: deserialization_fails_not_in_G1.json
+  ---
+  duration_ms: 1.680518
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_not_in_G1.json
+ok 18 - nonidentity key policy: deserialization_fails_not_in_G1.json
+  ---
+  duration_ms: 1.874873
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_not_in_curve.json
+ok 19 - external deserialization: deserialization_fails_not_in_curve.json
+  ---
+  duration_ms: 0.424771
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_not_in_curve.json
+ok 20 - nonidentity key policy: deserialization_fails_not_in_curve.json
+  ---
+  duration_ms: 0.595345
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_too_few_bytes.json
+ok 21 - external deserialization: deserialization_fails_too_few_bytes.json
+  ---
+  duration_ms: 0.198595
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_too_few_bytes.json
+ok 22 - nonidentity key policy: deserialization_fails_too_few_bytes.json
+  ---
+  duration_ms: 0.656816
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_too_many_bytes.json
+ok 23 - external deserialization: deserialization_fails_too_many_bytes.json
+  ---
+  duration_ms: 0.131946
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_too_many_bytes.json
+ok 24 - nonidentity key policy: deserialization_fails_too_many_bytes.json
+  ---
+  duration_ms: 0.078176
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_with_b_flag_and_a_flag_true.json
+ok 25 - external deserialization: deserialization_fails_with_b_flag_and_a_flag_true.json
+  ---
+  duration_ms: 0.398803
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_with_b_flag_and_a_flag_true.json
+ok 26 - nonidentity key policy: deserialization_fails_with_b_flag_and_a_flag_true.json
+  ---
+  duration_ms: 0.16858
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_with_b_flag_and_x_nonzero.json
+ok 27 - external deserialization: deserialization_fails_with_b_flag_and_x_nonzero.json
+  ---
+  duration_ms: 0.172647
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_with_b_flag_and_x_nonzero.json
+ok 28 - nonidentity key policy: deserialization_fails_with_b_flag_and_x_nonzero.json
+  ---
+  duration_ms: 0.113078
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_with_wrong_c_flag.json
+ok 29 - external deserialization: deserialization_fails_with_wrong_c_flag.json
+  ---
+  duration_ms: 0.066059
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_with_wrong_c_flag.json
+ok 30 - nonidentity key policy: deserialization_fails_with_wrong_c_flag.json
+  ---
+  duration_ms: 0.116863
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_x_equal_to_modulus.json
+ok 31 - external deserialization: deserialization_fails_x_equal_to_modulus.json
+  ---
+  duration_ms: 0.879448
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_x_equal_to_modulus.json
+ok 32 - nonidentity key policy: deserialization_fails_x_equal_to_modulus.json
+  ---
+  duration_ms: 1.050582
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_x_greater_than_modulus.json
+ok 33 - external deserialization: deserialization_fails_x_greater_than_modulus.json
+  ---
+  duration_ms: 0.32957
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_x_greater_than_modulus.json
+ok 34 - nonidentity key policy: deserialization_fails_x_greater_than_modulus.json
+  ---
+  duration_ms: 0.432062
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_succeeds_correct_point.json
+ok 35 - external deserialization: deserialization_succeeds_correct_point.json
+  ---
+  duration_ms: 1.373612
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_succeeds_correct_point.json
+ok 36 - nonidentity key policy: deserialization_succeeds_correct_point.json
+  ---
+  duration_ms: 1.558547
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_succeeds_infinity_with_true_b_flag.json
+ok 37 - external deserialization: deserialization_succeeds_infinity_with_true_b_flag.json
+  ---
+  duration_ms: 0.155552
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_succeeds_infinity_with_true_b_flag.json
+ok 38 - nonidentity key policy: deserialization_succeeds_infinity_with_true_b_flag.json
+  ---
+  duration_ms: 0.132457
+  type: 'test'
+  ...
+# Subtest: API rejects non-buffer and unsupported lengths
+ok 39 - API rejects non-buffer and unsupported lengths
+  ---
+  duration_ms: 0.325624
+  type: 'test'
+  ...
+# Subtest: no extra argument can override key rejection
+ok 40 - no extra argument can override key rejection
+  ---
+  duration_ms: 0.162051
+  type: 'test'
+  ...
+# Subtest: result retains the original bytes after caller mutation
+ok 41 - result retains the original bytes after caller mutation
+  ---
+  duration_ms: 2.150356
+  type: 'test'
+  ...
+# Subtest: retained raw-library discrepancy: noncanonical infinity sign bit
+ok 42 - retained raw-library discrepancy: noncanonical infinity sign bit
+  ---
+  duration_ms: 0.334808
+  type: 'test'
+  ...
+# Subtest: external ./deserialization_G2/deserialization_fails_infinity_with_false_b_flag.json
+ok 43 - external ./deserialization_G2/deserialization_fails_infinity_with_false_b_flag.json
+  ---
+  duration_ms: 2.122435
+  type: 'test'
+  ...
+# Subtest: external ./deserialization_G2/deserialization_fails_infinity_with_true_b_flag.json
+ok 44 - external ./deserialization_G2/deserialization_fails_infinity_with_true_b_flag.json
+  ---
+  duration_ms: 0.272535
+  type: 'test'
+  ...
+# Subtest: external ./deserialization_G2/deserialization_fails_not_in_G2.json
+ok 45 - external ./deserialization_G2/deserialization_fails_not_in_G2.json
+  ---
+  duration_ms: 8.410342
+  type: 'test'
+  ...
+# Subtest: external ./deserialization_G2/deserialization_fails_not_in_curve.json
+ok 46 - external ./deserialization_G2/deserialization_fails_not_in_curve.json
+  ---
+  duration_ms: 0.759709
+  type: 'test'
+  ...
+# Subtest: external ./deserialization_G2/deserialization_fails_too_few_bytes.json
+ok 47 - external ./deserialization_G2/deserialization_fails_too_few_bytes.json
+  ---
+  duration_ms: 0.254108
+  type: 'test'
+  ...
+# Subtest: external ./deserialization_G2/deserialization_fails_too_many_bytes.json
+ok 48 - external ./deserialization_G2/deserialization_fails_too_many_bytes.json
+  ---
+  duration_ms: 0.435768
+  type: 'test'
+  ...
+# Subtest: external ./deserialization_G2/deserialization_fails_with_b_flag_and_a_flag_true.json
+ok 49 - external ./deserialization_G2/deserialization_fails_with_b_flag_and_a_flag_true.json
+  ---
+  duration_ms: 0.249431
+  type: 'test'
+  ...
+# Subtest: external ./deserialization_G2/deserialization_fails_with_b_flag_and_x_nonzero.json
+ok 50 - external ./deserialization_G2/deserialization_fails_with_b_flag_and_x_nonzero.json
+  ---
+  duration_ms: 0.304883
+  type: 'test'
+  ...
+# Subtest: external ./deserialization_G2/deserialization_fails_with_wrong_c_flag.json
+ok 51 - external ./deserialization_G2/deserialization_fails_with_wrong_c_flag.json
+  ---
+  duration_ms: 0.227468
+  type: 'test'
+  ...
+# Subtest: external ./deserialization_G2/deserialization_fails_xim_equal_to_modulus.json
+ok 52 - external ./deserialization_G2/deserialization_fails_xim_equal_to_modulus.json
+  ---
+  duration_ms: 0.964269
+  type: 'test'
+  ...
+# Subtest: external ./deserialization_G2/deserialization_fails_xim_greater_than_modulus.json
+ok 53 - external ./deserialization_G2/deserialization_fails_xim_greater_than_modulus.json
+  ---
+  duration_ms: 3.735253
+  type: 'test'
+  ...
+# Subtest: external ./deserialization_G2/deserialization_fails_xre_equal_to_modulus.json
+ok 54 - external ./deserialization_G2/deserialization_fails_xre_equal_to_modulus.json
+  ---
+  duration_ms: 0.704657
+  type: 'test'
+  ...
+# Subtest: external ./deserialization_G2/deserialization_fails_xre_greater_than_modulus.json
+ok 55 - external ./deserialization_G2/deserialization_fails_xre_greater_than_modulus.json
+  ---
+  duration_ms: 0.434876
+  type: 'test'
+  ...
+# Subtest: external ./deserialization_G2/deserialization_succeeds_correct_point.json
+ok 56 - external ./deserialization_G2/deserialization_succeeds_correct_point.json
+  ---
+  duration_ms: 4.322755
+  type: 'test'
+  ...
+# Subtest: external ./deserialization_G2/deserialization_succeeds_infinity_with_true_b_flag.json
+ok 57 - external ./deserialization_G2/deserialization_succeeds_infinity_with_true_b_flag.json
+  ---
+  duration_ms: 0.131836
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_infinity_pubkey_and_infinity_signature.json
+ok 58 - external ./verify/verify_infinity_pubkey_and_infinity_signature.json
+  ---
+  duration_ms: 0.505571
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_tampered_signature_case_195246ee3bd3b6ec.json
+ok 59 - external ./verify/verify_tampered_signature_case_195246ee3bd3b6ec.json
+  ---
+  duration_ms: 2.272388
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_tampered_signature_case_2ea479adf8c40300.json
+ok 60 - external ./verify/verify_tampered_signature_case_2ea479adf8c40300.json
+  ---
+  duration_ms: 4.322776
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_tampered_signature_case_2f09d443ab8a3ac2.json
+ok 61 - external ./verify/verify_tampered_signature_case_2f09d443ab8a3ac2.json
+  ---
+  duration_ms: 5.298326
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_tampered_signature_case_3208262581c8fc09.json
+ok 62 - external ./verify/verify_tampered_signature_case_3208262581c8fc09.json
+  ---
+  duration_ms: 2.01848
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_tampered_signature_case_6b3b17f6962a490c.json
+ok 63 - external ./verify/verify_tampered_signature_case_6b3b17f6962a490c.json
+  ---
+  duration_ms: 6.429869
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_tampered_signature_case_6eeb7c52dfd9baf0.json
+ok 64 - external ./verify/verify_tampered_signature_case_6eeb7c52dfd9baf0.json
+  ---
+  duration_ms: 4.478848
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_tampered_signature_case_8761a0b7e920c323.json
+ok 65 - external ./verify/verify_tampered_signature_case_8761a0b7e920c323.json
+  ---
+  duration_ms: 4.968115
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_tampered_signature_case_d34885d766d5f705.json
+ok 66 - external ./verify/verify_tampered_signature_case_d34885d766d5f705.json
+  ---
+  duration_ms: 1.767938
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_tampered_signature_case_e8a50c445c855360.json
+ok 67 - external ./verify/verify_tampered_signature_case_e8a50c445c855360.json
+  ---
+  duration_ms: 1.854997
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_valid_case_195246ee3bd3b6ec.json
+ok 68 - external ./verify/verify_valid_case_195246ee3bd3b6ec.json
+  ---
+  duration_ms: 50.452393
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_valid_case_2ea479adf8c40300.json
+ok 69 - external ./verify/verify_valid_case_2ea479adf8c40300.json
+  ---
+  duration_ms: 33.636992
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_valid_case_2f09d443ab8a3ac2.json
+ok 70 - external ./verify/verify_valid_case_2f09d443ab8a3ac2.json
+  ---
+  duration_ms: 35.564077
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_valid_case_3208262581c8fc09.json
+ok 71 - external ./verify/verify_valid_case_3208262581c8fc09.json
+  ---
+  duration_ms: 34.197206
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_valid_case_6b3b17f6962a490c.json
+ok 72 - external ./verify/verify_valid_case_6b3b17f6962a490c.json
+  ---
+  duration_ms: 31.778208
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_valid_case_6eeb7c52dfd9baf0.json
+ok 73 - external ./verify/verify_valid_case_6eeb7c52dfd9baf0.json
+  ---
+  duration_ms: 33.506628
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_valid_case_8761a0b7e920c323.json
+ok 74 - external ./verify/verify_valid_case_8761a0b7e920c323.json
+  ---
+  duration_ms: 32.459503
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_valid_case_d34885d766d5f705.json
+ok 75 - external ./verify/verify_valid_case_d34885d766d5f705.json
+  ---
+  duration_ms: 31.724909
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_valid_case_e8a50c445c855360.json
+ok 76 - external ./verify/verify_valid_case_e8a50c445c855360.json
+  ---
+  duration_ms: 32.482798
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_wrong_pubkey_case_195246ee3bd3b6ec.json
+ok 77 - external ./verify/verify_wrong_pubkey_case_195246ee3bd3b6ec.json
+  ---
+  duration_ms: 44.987094
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_wrong_pubkey_case_2ea479adf8c40300.json
+ok 78 - external ./verify/verify_wrong_pubkey_case_2ea479adf8c40300.json
+  ---
+  duration_ms: 46.571269
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_wrong_pubkey_case_2f09d443ab8a3ac2.json
+ok 79 - external ./verify/verify_wrong_pubkey_case_2f09d443ab8a3ac2.json
+  ---
+  duration_ms: 33.13692
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_wrong_pubkey_case_3208262581c8fc09.json
+ok 80 - external ./verify/verify_wrong_pubkey_case_3208262581c8fc09.json
+  ---
+  duration_ms: 33.730839
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_wrong_pubkey_case_6b3b17f6962a490c.json
+ok 81 - external ./verify/verify_wrong_pubkey_case_6b3b17f6962a490c.json
+  ---
+  duration_ms: 34.722072
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_wrong_pubkey_case_6eeb7c52dfd9baf0.json
+ok 82 - external ./verify/verify_wrong_pubkey_case_6eeb7c52dfd9baf0.json
+  ---
+  duration_ms: 33.297758
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_wrong_pubkey_case_8761a0b7e920c323.json
+ok 83 - external ./verify/verify_wrong_pubkey_case_8761a0b7e920c323.json
+  ---
+  duration_ms: 32.731149
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_wrong_pubkey_case_d34885d766d5f705.json
+ok 84 - external ./verify/verify_wrong_pubkey_case_d34885d766d5f705.json
+  ---
+  duration_ms: 31.86724
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_wrong_pubkey_case_e8a50c445c855360.json
+ok 85 - external ./verify/verify_wrong_pubkey_case_e8a50c445c855360.json
+  ---
+  duration_ms: 29.591679
+  type: 'test'
+  ...
+# Subtest: external ./verify/verifycase_one_privkey_47117849458281be.json
+ok 86 - external ./verify/verifycase_one_privkey_47117849458281be.json
+  ---
+  duration_ms: 21.848825
+  type: 'test'
+  ...
+# Subtest: explicit POP succeeds while pinned default NUL fails on identical vector
+ok 87 - explicit POP succeeds while pinned default NUL fails on identical vector
+  ---
+  duration_ms: 59.958868
+  type: 'test'
+  ...
+# Subtest: one message-bit mutation rejects the same key and signature
+ok 88 - one message-bit mutation rejects the same key and signature
+  ---
+  duration_ms: 31.646303
+  type: 'test'
+  ...
+# Subtest: unsupported input shapes lengths and ciphersuite override reject
+ok 89 - unsupported input shapes lengths and ciphersuite override reject
+  ---
+  duration_ms: 0.455544
+  type: 'test'
+  ...
+# Subtest: canonical G2 infinity deserializes but cannot be a single signature
+ok 90 - canonical G2 infinity deserializes but cannot be a single signature
+  ---
+  duration_ms: 1.42486
+  type: 'test'
+  ...
+1..90
+# tests 90
+# suites 0
+# pass 90
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2132.17311

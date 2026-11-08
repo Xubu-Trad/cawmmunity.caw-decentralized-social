@@ -601,3 +601,8 @@ Fixed a reproduced empty-success launch through a Windows directory junction. Th
 ## G2 and single-signature POP vectors — 2026-11-07
 
 [The isolated signature adapter](BLS_POP_SIGNATURES_20261107.md) passes 48 focused, separate 42 key/committee and 73 bootstrap checks. Explicit POP succeeds where the pinned default NUL fails on the same positive vector. The BLS ciphersuite tag is not the Ethereum consensus signing domain. No aggregate/participation, checkpoint authority or update acceptance is established. Next external fast-aggregate cases and separately evidenced consensus-domain/signing-root derivation; full suite/declared runtime not run, CI deferred.
+
+
+## Supplied-key aggregate equations — 2026-11-08
+
+[The bounded aggregate experiment](BLS_POP_AGGREGATE_20261108.md) passed 21 focused checks plus separate 90 BLS and 73 bootstrap regressions. Canonical key validation and a passing aggregate equation do not establish each participant's possession or authorization; a compensating-key control preserves that distinction. No participant-selection or update-acceptance integration. Next extend existing ForkData work with consensus-domain/SigningData evidence, and separately define authenticated participant selection and enrollment/possession prerequisites. Full suite and declared runtime remain unrun; CI remains deferred.

@@ -1,0 +1,20 @@
+{
+  "name": "bls-regression",
+  "command": [
+    "node",
+    "--max-old-space-size=256",
+    "--test",
+    "--test-reporter=tap",
+    "--test-concurrency=1",
+    "--test-timeout=30000",
+    "experiments/bls-g1/g1.test.mjs",
+    "experiments/bls-g1/committee.test.mjs",
+    "experiments/bls-g1/signature.test.mjs"
+  ],
+  "exitCode": 0,
+  "counts": {
+    "pass": 90,
+    "fail": 0
+  },
+  "log": "evidence/bls-aggregate-20261108/bls-regression-attempt-1.tap"
+}

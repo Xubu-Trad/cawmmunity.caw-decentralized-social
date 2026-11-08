@@ -1,0 +1,25 @@
+{
+  "name": "bootstrap-regression",
+  "command": [
+    "node",
+    "--max-old-space-size=256",
+    "--test",
+    "--test-reporter=tap",
+    "--test-concurrency=1",
+    "--test-timeout=30000",
+    "tests/sha256-branch.test.mjs",
+    "tests/beacon-header-root.test.mjs",
+    "tests/capella-payload-root.test.mjs",
+    "tests/capella-header-binding.test.mjs",
+    "tests/minimal-capella-bootstrap.test.mjs",
+    "tests/bootstrap-profile-selection.test.mjs",
+    "tests/bootstrap-fixture-metadata-selection.test.mjs",
+    "tests/pinned-minimal-capella-bootstrap.test.mjs"
+  ],
+  "exitCode": 0,
+  "counts": {
+    "pass": 73,
+    "fail": 0
+  },
+  "log": "evidence/bls-aggregate-20261108/bootstrap-regression-attempt-1.tap"
+}
