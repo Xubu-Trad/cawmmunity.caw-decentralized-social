@@ -6,6 +6,8 @@ community.CAW is an open community implementation of decentralized social softwa
 
 ## Current implementation — November 8, 2026
 
+The draft [PR #19](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/19) now reconstructs all26 signed local transactions through the existing readers, checking block links, transaction/receipt roots and recovered senders. Nine altered-history controls reject;167 existing reader tests pass. This is consistency under locally selected headers, not public-chain authentication or final-state replay. Next: reconstruct accounting/ownership transitions and compare final state. The draft remains unmerged.
+
 The [signed local-chain extension](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/19) now records26 transactions:18 successful and8 expected reverts, with raw bytes, receipts and accounting checks. It uses the same constructor candidate. This advances the local integration milestone; independent history reconstruction, NFT admission and scalable economics remain open. The draft PR is not merged.
 
 The main branch retains the published verification and recovery research. [PR #18](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/18) adds signed settlement, staking and text-handling experiments. Its [constructor-based extension](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/19) now executes a local deposit → stake → signed post → reward withdrawal sequence on one normally initialized vault, with ownership-transfer and rejection checks. Both changes remain open for review.

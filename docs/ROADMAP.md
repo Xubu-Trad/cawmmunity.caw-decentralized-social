@@ -614,3 +614,8 @@ Fixed a reproduced empty-success launch through a Windows directory junction. Th
 ## Supplied-key aggregate equations — 2026-11-08
 
 [The bounded aggregate experiment](BLS_POP_AGGREGATE_20261108.md) passed 21 focused checks plus separate 90 BLS and 73 bootstrap regressions. Canonical key validation and a passing aggregate equation do not establish each participant's possession or authorization; a compensating-key control preserves that distinction. No participant-selection or update-acceptance integration. Next extend existing ForkData work with consensus-domain/SigningData evidence, and separately define authenticated participant selection and enrollment/possession prerequisites. Full suite and declared runtime remain unrun; CI remains deferred.
+
+
+### Signed-history reader milestone — November 8, 2026
+
+The draft [PR #19](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/19) now reconstructs all26 signed local transactions through the existing readers, checking block links, transaction/receipt roots and recovered senders. Nine altered-history controls reject;167 existing reader tests pass. This is consistency under locally selected headers, not public-chain authentication or final-state replay. Next: reconstruct accounting/ownership transitions and compare final state. The draft remains unmerged.
