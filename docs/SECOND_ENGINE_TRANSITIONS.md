@@ -60,3 +60,8 @@ Focused input checks, with the same frozen files:
 ```sh
 python3 experiments/c007-transactions/check-geth-selection.py experiments/c007-transactions/compare-geth-transition.py /absolute/path/to/inputs /absolute/path/to/blocks.json /absolute/path/to/new-check-output
 ```
+
+
+## Frozen fixture publication follow-up
+
+The [exact four-file fixture and reproduction guide](../evidence/c007-frozen-replay-20261108/REPRODUCE.md) now supply the previously local inputs. A same-machine separate-directory run of the pinned public runner matches all 26 transitions without passing private credentials. This removes the missing-input dependency; a second operator has not yet reproduced it, and the current runner still assumes the recorded WSL disk-check path. Earlier local-only notes above describe the prior state.
