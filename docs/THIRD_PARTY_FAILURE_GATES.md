@@ -24,3 +24,8 @@ From `experiments/c007-new-owner-post`, run `python3 check-dependency-lock.py pa
 ## Research homage
 
 The model's source comments contain a small CAW acrostic: Carry the record / Ask for proof / Work without a keeper. This is an original homage to reproducibility and shared responsibility, not a recovered riddle message or evidence of authorship. It introduces no executable branch, secret privilege, hidden address or required puzzle. No Solidity source was changed, avoiding even metadata-bytecode drift in the frozen experiments. Future homages must remain documented and inert, outside keys, authorization, balances and consensus rules.
+
+
+## Token failure evidence
+
+[Token rollback experiment](TOKEN_FAILURE_ROLLBACK.md):ten bounded failure cases and five recovery cycles pass for the unchanged vault against a separate fault-injecting token. This establishes tested rollback behavior, not permanent-token availability or production compatibility. The immutable token remains a release-critical dependency.
