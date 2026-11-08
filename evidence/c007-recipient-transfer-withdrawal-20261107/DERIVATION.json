@@ -1,0 +1,15 @@
+{
+  "changes": [
+    "README.md",
+    "verify.sh",
+    "receipt_consistency.py",
+    "DERIVATION.json",
+    "manifest.sha256"
+  ],
+  "controlAfterStateSnapshotRetained": false,
+  "originalArtifactsPreserved": 20,
+  "parentArchiveSha256": "a43e9b093cf06b35c3ffd9fd1aaa4eb3ff28de14c49487ddaa118b55a22738e4",
+  "parentManifestSha256": "1df72a3b229e374815e360d558ecc49f4b2f202efe56d4321118a12c917a2c35",
+  "publicationHold": true,
+  "schema": "caw-c007-reduced-packet-derivation/2"
+}
