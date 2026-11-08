@@ -1,0 +1,18 @@
+{
+  "passed": 11,
+  "cases": [
+    "native_exact_threshold_accepts",
+    "wsl_checks_both_filesystems",
+    "native_low_disk_rejects",
+    "wsl_low_host_rejects",
+    "wsl_low_destination_rejects",
+    "wsl_missing_mount_rejects",
+    "low_memory_rejects",
+    "missing_memory_rejects",
+    "wrong_memory_units_rejects",
+    "duplicate_memory_rejects",
+    "non_linux_rejects"
+  ],
+  "platformTestsMocked": true,
+  "nativeLinuxExecutionPerformed": false
+}

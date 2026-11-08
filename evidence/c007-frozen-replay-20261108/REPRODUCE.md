@@ -15,13 +15,13 @@ No private keys or credentials are needed for replay. These are known synthetic 
 
 Use a pinned checkout containing this directory, Python 3 and the publisher-verified Geth `evm` binary described in `docs/SECOND_ENGINE_TRANSITIONS.md`. Verify its SHA-256 and the archive's publisher signature before use. No wallet connection, running node, Anvil, EthereumJS installation or API credentials are needed for this Geth comparison.
 
-From the repository root, in the recorded WSL environment:
+From the repository root (executed on WSL; native Linux platform logic has mocked coverage):
 
 ```sh
 python3 experiments/c007-transactions/compare-geth-transition.py evidence/c007-frozen-replay-20261108 evidence/c007-frozen-replay-20261108/blocks.json /absolute/path/to/verified/evm /absolute/path/to/new-result
 ```
 
-The output directory must not exist. The runner currently checks its host disk floor at `/mnt/c`; native Linux portability is not claimed by this run. Minimums remain 2 GiB free host disk and 768 MiB available memory. It rejects Python optimized mode, mismatching binary/input digests, and oversized selected inputs. Do not regenerate files, change pins or disable guards to make a mismatch pass.
+The output directory must not exist. The runner now checks 2 GiB free on the output filesystem, and additionally the mounted `/mnt/c` host drive on WSL. It requires 768 MiB available memory. See `docs/REPLAY_RESOURCE_PORTABILITY.md` for exact coverage: native Linux execution has not yet been demonstrated. It rejects Python optimized mode, mismatching binary/input digests, and oversized selected inputs. Do not regenerate files, change pins or disable guards to make a mismatch pass.
 
 Expected: **26 transitions, 18 successes, eight expected reverts**, every intermediate state/transaction/receipt root matched, and four final native-account balances/nonces matched. Six negative controls distinguish comparison failures from execution rejection. Final root: `0xebc1e0dfefcf0625bbe28f9d17d937eaed9a24aa530edf84ed86bb1819127255`.
 

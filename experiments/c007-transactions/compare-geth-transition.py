@@ -1,6 +1,31 @@
 """Bounded second-client transition comparison, not consensus/header validation."""
 from pathlib import Path
-import json,hashlib,subprocess,shutil,sys,time,os
+import json,hashlib,subprocess,shutil,sys,time,os,platform
+
+def resource_preflight(output):
+ # Check the actual destination filesystem on every Linux host. WSL must
+ # additionally retain the existing Windows host-drive guard; no fallback.
+ if platform.system()!='Linux':raise RuntimeError('LINUX_REQUIRED')
+ destination=output.resolve()
+ while not destination.exists():destination=destination.parent
+ if not destination.is_dir():raise RuntimeError('OUTPUT_PARENT_NOT_DIRECTORY')
+ targets=[destination]
+ wsl=any(s in platform.release().lower()for s in ['microsoft','wsl'])
+ if wsl:
+  host=Path('/mnt/c')
+  if not os.path.ismount(host):raise RuntimeError('WSL_HOST_DRIVE_UNAVAILABLE')
+  targets.append(host)
+ disks=[]
+ for target in targets:
+  free=shutil.disk_usage(target).free
+  if free<2*1024**3:raise RuntimeError('DISK_FLOOR: '+str(target))
+  disks.append({'path':str(target),'freeBytes':free})
+ lines=Path('/proc/meminfo').read_text().splitlines()
+ entries=[s.split()for s in lines if s.startswith('MemAvailable:')]
+ if len(entries)!=1 or len(entries[0])!=3 or entries[0][2]!='kB':raise RuntimeError('MEMORY_OBSERVATION_UNAVAILABLE')
+ available=int(entries[0][1])*1024
+ if available<768*1024**2:raise RuntimeError('MEMORY_FLOOR')
+ return {'platform':'WSL'if wsl else'Linux','disks':disks,'availableMemoryBytes':available}
 
 # This revision reproduces the frozen V4 fixture, not arbitrary provider data.
 INPUT_DIGESTS={
@@ -33,9 +58,8 @@ def compare(result,expected):
 
 if __name__=='__main__':
  if not __debug__:raise RuntimeError('OPTIMIZED_PYTHON_UNSUPPORTED: assertions must remain enabled')
- inputs,blocks_path,evm_path,out=map(Path,sys.argv[1:]);assert not out.exists();out.mkdir(parents=True)
- assert shutil.disk_usage('/mnt/c').free>=2*1024**3,'HOST_DISK_FLOOR'
- available=int(next(x.split()[1]for x in Path('/proc/meminfo').read_text().splitlines()if x.startswith('MemAvailable:')));assert available>=768*1024
+ inputs,blocks_path,evm_path,out=(Path(x).resolve()for x in sys.argv[1:]);assert not out.exists()
+ startup=resource_preflight(out);out.mkdir(parents=True)
  assert hashlib.sha256(evm_path.read_bytes()).hexdigest()=='d8cfddad15a8c601e7b069bc5973ad073dbc2d632b8c5ab50e513ef27c53d6da','PINNED_BINARY'
  captured,genesis,previous,block_data=selected_inputs(inputs,blocks_path);expected=block_data['records']
  assert captured['chainId']=='0x7a69' and len(expected)==26 and len(captured['blocks'])==27
@@ -82,5 +106,5 @@ if __name__=='__main__':
   report={'schema':'caw-geth-transition-comparison/1','blocks':26,'successes':sum(x['status']=='0x1'for x in rows),'reverts':sum(x['status']=='0x0'for x in rows),'finalStateRoot':rows[-1]['stateRoot'],'allIntermediateStateRootsMatched':True,'allTransactionAndReceiptRootsMatched':True,'nativeAccountsMatched':4,'controls':controls,'engine':'Geth evm 1.17.10-stable-1df30b18','comparisonEngine':'EthereumJS 10.1.3','scope':'Shanghai state transitions under supplied synthetic block contexts; not Geth header or consensus validation','originalAnvilChainRepaired':False,'binarySignatureVerifiedByThisRunner':False,'inputSelection':'frozen fixture digests; not chain authentication','inputDigests':INPUT_DIGESTS}
   dump(out/'summary.json',report);print(json.dumps(report))
  finally:
-  dump(out/'resource-receipt.json',{'peakRss':peak,'seconds':time.monotonic()-start})
+  dump(out/'resource-receipt.json',{'startup':startup,'peakRss':peak,'seconds':time.monotonic()-start})
   (out/'PROVENANCE.txt').write_text('\n'.join(f'PARENTS=[{inputs},{blocks_path}] TRANSFORM="Geth t8n comparison" SHA256={hashlib.sha256(p.read_bytes()).hexdigest()} SIZE={p.stat().st_size} PATH={p}'for p in out.rglob('*')if p.is_file())+'\n')

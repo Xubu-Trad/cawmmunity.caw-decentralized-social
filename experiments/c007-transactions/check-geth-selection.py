@@ -1,9 +1,9 @@
 from pathlib import Path
 import importlib.util,sys,tempfile,hashlib,json,subprocess,shutil
-script,inputs,blocks,out=map(Path,sys.argv[1:]);assert not out.exists();out.mkdir()
-assert shutil.disk_usage('/mnt/c').free>=2*1024**3
-assert int(next(x.split()[1]for x in Path('/proc/meminfo').read_text().splitlines()if x.startswith('MemAvailable:')))>=768*1024
+if not __debug__:raise RuntimeError('OPTIMIZED_PYTHON_UNSUPPORTED')
+script,inputs,blocks,out=(Path(x).resolve()for x in sys.argv[1:]);assert not out.exists()
 spec=importlib.util.spec_from_file_location('compare',script);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
+m.resource_preflight(out);out.mkdir()
 cases=[]
 assert len(m.selected_inputs(inputs,blocks))==4;cases.append('frozen_inputs_accepted')
 for name in m.INPUT_DIGESTS:
