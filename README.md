@@ -6,13 +6,15 @@ community.CAW is an open community implementation of decentralized social softwa
 
 ## Current implementation — November 8, 2026
 
+The [signed local-chain extension](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/19) now records26 transactions:18 successful and8 expected reverts, with raw bytes, receipts and accounting checks. It uses the same constructor candidate. This advances the local integration milestone; independent history reconstruction, NFT admission and scalable economics remain open. The draft PR is not merged.
+
 The main branch retains the published verification and recovery research. [PR #18](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/18) adds signed settlement, staking and text-handling experiments. Its [constructor-based extension](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/19) now executes a local deposit → stake → signed post → reward withdrawal sequence on one normally initialized vault, with ownership-transfer and rejection checks. Both changes remain open for review.
 
-The extension removes injected vault state from that positive path. It still uses three synthetic accounts, a mock token and local EVM calls. It does not yet provide signed Ethereum transactions, NFT registration, scalable economics, a connected wallet frontend or independently acquired chain history. [PR #16](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/16) retains requested evidence-checker corrections; [PR #17](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/17) preserves separate recipient-transfer evidence.
+The extension removes injected vault state from that positive path. The original call-level result is preserved, and its new signed local-chain extension is separate evidence. Both use three synthetic accounts and a mock token. NFT registration, scalable economics, a connected wallet frontend and independently acquired chain history remain unfinished. [PR #16](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/16) retains requested evidence-checker corrections; [PR #17](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/17) preserves separate recipient-transfer evidence.
 
 ## The next milestones
 
-1. **One reproducible local candidate:** normal deployment, custody and staking, signed paid actions, rewards and withdrawals, transfer-safe authority, rejection tests and reconstruction against the same contract revision. The next step is executing the constructor lifecycle as signed local-chain transactions and checking their receipts with the existing readers.
+1. **One reproducible local candidate:** normal deployment, custody and staking, signed paid actions, rewards and withdrawals, transfer-safe authority, rejection tests and reconstruction against the same contract revision. Signed local-chain execution is now recorded in the draft extension. Next connect the existing readers to verify and reconstruct that exact candidate history.
 2. **An open protocol and public beta:** resolve registration and economic choices, support an open account population and real wallets, provide replaceable submission paths, connect the frontend and prove independently operated recovery.
 3. **A reviewed production candidate:** complete security and compatibility review, reproduce deployment, rehearse the original operator disappearing, and record explicit public release agreement. Publication or passing tests alone do not establish that agreement.
 
