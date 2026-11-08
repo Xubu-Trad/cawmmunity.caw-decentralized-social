@@ -1,0 +1,41 @@
+{
+  "parent": "5ad1334af7d3c94e6e60e78ddb0b75b7c42c7ab9",
+  "files": {
+    "experiments/c007-signer-wallet/DeployedCustodyStakeResearch.sol": {
+      "sha256": "d97dd9157a81611630ac876556684f7354f412e35a7a360662aab6ce2984e02c",
+      "bytes": 17976
+    },
+    "experiments/c007-signer-wallet/SignerWalletFixture.sol": {
+      "sha256": "0f27beab9fa9ca8bc87a7cae857bca75285a92dab32d954f4e7b43d767f1d852",
+      "bytes": 1177
+    },
+    "experiments/c007-signer-wallet/run-wallet.mjs": {
+      "sha256": "b59ccf1185dd76f97e41b144ba20ab058923655b511aaff7b2bbee20584f1f76",
+      "bytes": 5798
+    },
+    "experiments/c007-signer-wallet/run-lifecycle.mjs": {
+      "sha256": "5634b6cf6699e5443cd431d1d6302fd5b640d10b066e34226b4edd681b2f8ec8",
+      "bytes": 11357
+    },
+    "experiments/c007-signer-wallet/package.json": {
+      "sha256": "3cd90dea6c442e62e1eb32e83c412a81d5725be928ecf34bf019702c6fc2f192",
+      "bytes": 215
+    },
+    "experiments/c007-signer-wallet/package-lock.json": {
+      "sha256": "bdb139f0b431b0c820f38fa367443182a19f46107b8fd36f21385f05547972df",
+      "bytes": 14224
+    },
+    "evidence/c007-signer-wallet-20261108/validation.json": {
+      "sha256": "072627be614760f092ec8182e1eb649f9dd9ef90aa9db919d7127bd0e8c7d9d8",
+      "bytes": 1705
+    },
+    "evidence/c007-signer-wallet-20261108/lifecycle.json": {
+      "sha256": "21bf63a4dfd03f489058a6ecb97184d409da6426c1a92a60e19f0db7224ecdd9",
+      "bytes": 3389
+    },
+    "docs/SIGNER_WALLET_REVIEW.md": {
+      "sha256": "a3346f0a751b487fa650e467cb96d974a9730bff1d2bf64e571003f353bddb32",
+      "bytes": 2555
+    }
+  }
+}

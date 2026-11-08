@@ -1,0 +1,75 @@
+{
+  "schema": "caw-signer-wallet-validation/1",
+  "passed": 16,
+  "results": [
+    {
+      "name": "valid_controller_signature",
+      "result": "accepted"
+    },
+    {
+      "name": "wrong_signer",
+      "result": "WALLET_SIGNATURE"
+    },
+    {
+      "name": "changed_message",
+      "result": "WALLET_SIGNATURE"
+    },
+    {
+      "name": "changed_nonce",
+      "result": "WALLET_SIGNATURE"
+    },
+    {
+      "name": "empty_signature",
+      "result": "WALLET_SIGNATURE"
+    },
+    {
+      "name": "short_signature",
+      "result": "WALLET_SIGNATURE"
+    },
+    {
+      "name": "trailing_signature_byte",
+      "result": "WALLET_SIGNATURE"
+    },
+    {
+      "name": "invalid_recovery_id",
+      "result": "WALLET_SIGNATURE"
+    },
+    {
+      "name": "malleable_high_s",
+      "result": "WALLET_SIGNATURE"
+    },
+    {
+      "name": "zero_s",
+      "result": "WALLET_SIGNATURE"
+    },
+    {
+      "name": "zero_r",
+      "result": "WALLET_SIGNATURE"
+    },
+    {
+      "name": "direct_eoa_bypass",
+      "result": "OWNER_CODE"
+    },
+    {
+      "name": "stale_epoch",
+      "result": "EPOCH"
+    },
+    {
+      "name": "wrong_root",
+      "result": "ROOT"
+    },
+    {
+      "name": "other_contract_domain",
+      "result": "WALLET_SIGNATURE"
+    },
+    {
+      "name": "valid_after_rejections",
+      "result": "accepted"
+    }
+  ],
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "sourceSha256": "d97dd9157a81611630ac876556684f7354f412e35a7a360662aab6ce2984e02c",
+  "walletSha256": "0f27beab9fa9ca8bc87a7cae857bca75285a92dab32d954f4e7b43d767f1d852",
+  "scope": "local deployed ECDSA wallet validation calls, not signed transaction lifecycle or EIP-7702",
+  "productionWallet": false
+}
