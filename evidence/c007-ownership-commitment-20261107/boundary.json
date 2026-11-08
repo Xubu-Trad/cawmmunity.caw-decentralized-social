@@ -1,0 +1,22 @@
+{
+  "c001": "BLOCKED",
+  "c007": "OPEN",
+  "candidate_digest_changed": true,
+  "candidate_execution_digest": "0xceefa453826cf45e60d4e6a9a9264383486996b8077dd171da90100ec26026de",
+  "candidate_parent_sha256": "4b84c2974553e2fae385bf03017103f09c94498fb2aa5c03af1d92ef653011ec",
+  "candidate_rule": "hypothetical owner-bound commitment",
+  "candidate_signing_digest": "0x328d3838ec727ad23a239303fdcec780c55162a0eece2a9bd3ef3e26adf1a69c",
+  "conservation": "PASS",
+  "digest_parent_sha256": "62fd78cc59bd78a14c14aeb452b6f559ff773c698625ccb45c4a58d74e01efe8",
+  "evm_executed": false,
+  "fixed_event": "NFT2 owner A to B",
+  "original_digest": "0xf1f18d46be5eb89acd461ce5ba31b12222a1a671fdfbc78b56e4c963af0fd07e",
+  "original_digest_equal": true,
+  "policy_adopted": false,
+  "public_parent": "8073c721545f3b8f661c12a3134117a74636b1e3",
+  "schema": "caw-c007-commitment-boundary-review/1",
+  "signature_verified": false,
+  "source_guard_rejects_candidate_hash": true,
+  "source_rule": "account-ID exclusion; stake-only commitment",
+  "source_sha256": "e48f8f8f816aae21e0e9865a8be0aa2e47204ea04b4c12b4124e5b0452412da1"
+}

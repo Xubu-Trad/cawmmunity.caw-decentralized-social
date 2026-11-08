@@ -1,0 +1,54 @@
+{
+  "actual_signature_digest_computed": false,
+  "c007": "OPEN",
+  "evm_executed": false,
+  "execution_owners": {
+    "1": "A",
+    "2": "B",
+    "3": "B"
+  },
+  "execution_snapshot": {
+    "allocations_base_units": {
+      "1": "0",
+      "2": "1666666666666666666666",
+      "3": "3333333333333333333333"
+    },
+    "dust_base_units": "1",
+    "eligible_ids": [
+      2,
+      3
+    ]
+  },
+  "fixed_event": "NFT2 transfers A to B between signing and execution",
+  "fixed_fee_base_units": "5000000000000000000000",
+  "fixed_stakes_base_units": {
+    "1": "10000000000000000000",
+    "2": "1000000000000000000",
+    "3": "2000000000000000000"
+  },
+  "parent_commit": "8073c721545f3b8f661c12a3134117a74636b1e3",
+  "payer_owner_unchanged": true,
+  "policy": "HYPOTHETICAL wallet-owner exclusion",
+  "production_policy_adopted": false,
+  "schema": "caw-c007-owner-snapshot-timing/1",
+  "signing_owners": {
+    "1": "A",
+    "2": "A",
+    "3": "B"
+  },
+  "signing_snapshot": {
+    "allocations_base_units": {
+      "1": "0",
+      "2": "0",
+      "3": "5000000000000000000000"
+    },
+    "dust_base_units": "0",
+    "eligible_ids": [
+      3
+    ]
+  },
+  "source_sha256": "e48f8f8f816aae21e0e9865a8be0aa2e47204ea04b4c12b4124e5b0452412da1",
+  "source_stake_only_commitment": true,
+  "stake_vector_unchanged": true,
+  "variable": "owner snapshot selected at signing or execution"
+}

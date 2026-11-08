@@ -1,0 +1,59 @@
+{
+  "schema": "caw-c007-owner-bound-commitment/1",
+  "public_parent_commit": "8073c721545f3b8f661c12a3134117a74636b1e3",
+  "parent_results_sha256": "62fd78cc59bd78a14c14aeb452b6f559ff773c698625ccb45c4a58d74e01efe8",
+  "source_sha256": "e48f8f8f816aae21e0e9865a8be0aa2e47204ea04b4c12b4124e5b0452412da1",
+  "variable": "recipient NFT2 ownership A to B",
+  "account_ids": [
+    1,
+    2,
+    3
+  ],
+  "synthetic_addresses": {
+    "A": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "B": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  },
+  "policy": "HYPOTHETICAL owner-bound distributionHash",
+  "source_rule": "account-ID exclusion; stake-only commitment",
+  "fixed_stake_hash": "0x5c062200c9a871b5095dfd6a27e804f25d1c74bb09e203ee223d507792843988",
+  "fixed_request": {
+    "accountId": "1",
+    "deadline": "200",
+    "distributionHash": "0x5c062200c9a871b5095dfd6a27e804f25d1c74bb09e203ee223d507792843988",
+    "epoch": "0",
+    "nonce": "0",
+    "text": "0x6279207465682070706c",
+    "validAfter": "100"
+  },
+  "fixed_selection": {
+    "chainId": "0x7a69",
+    "expectedSigner": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+    "profile": "paid-action-v1-eoa-65-low-s",
+    "schema": "caw-paid-post-selection/1",
+    "verifyingContract": "0x1111111111111111111111111111111111111111"
+  },
+  "existing_digest": "0xf1f18d46be5eb89acd461ce5ba31b12222a1a671fdfbc78b56e4c963af0fd07e",
+  "existing_digest_unchanged": true,
+  "signing": {
+    "encodedOwners": "0x000000000000000000000000aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa000000000000000000000000aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa000000000000000000000000bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "ownerHash": "0x813a8721c1bb5f3bd5efad3801754f889b322ac272f930d8452102ce6e6d23ae",
+    "combinedHash": "0x6494afc6010f6d902289bf1d5a5ad6afea6066f390f250986467454a754830d4",
+    "domain": "0x71dd3a387088eca6fb66a3629c7e63bcd5f3706717b070c27a210ee782f6915f",
+    "structHash": "0x5af24f9cfaa3e76a6ec50e3e563b8f3fbb6af77370684f607f01e5c587f558a6",
+    "digest": "0x328d3838ec727ad23a239303fdcec780c55162a0eece2a9bd3ef3e26adf1a69c"
+  },
+  "execution": {
+    "encodedOwners": "0x000000000000000000000000aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa000000000000000000000000bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb000000000000000000000000bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "ownerHash": "0x4264af544677942fcdb9cc88ef8b4a57f0145b9286b85053d6980c741be0fb62",
+    "combinedHash": "0xe6d68648f39e0f5f639756571485d130239c6dc02ab106c49ab72506e4ac396d",
+    "domain": "0x71dd3a387088eca6fb66a3629c7e63bcd5f3706717b070c27a210ee782f6915f",
+    "structHash": "0x73b8a3dd4da48de65e4f422e698344491f87cc401613114a94f28350b9d86cd7",
+    "digest": "0xceefa453826cf45e60d4e6a9a9264383486996b8077dd171da90100ec26026de"
+  },
+  "candidate_digest_changed": true,
+  "candidate_accepted_by_current_contract": false,
+  "signature_verified": false,
+  "evm_executed": false,
+  "policy_adopted": false,
+  "c007": "OPEN"
+}
