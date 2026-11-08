@@ -1,0 +1,23 @@
+{
+  "parent": "1ffc42979a6af2644e75695c000603bc810e2b20",
+  "inputSha256": "87f359718ae5170fd6b13bec0f501913b2935175cfa4a673d2428ed6c0fac93e",
+  "transform": "existing header/account reader composed with inventory; account-only synthetic projection",
+  "files": {
+    "experiments/c007-asset-inventory/bound-inventory.mjs": {
+      "sha256": "f5586898ea27cf1db64cb4bf05692af883eddc35209745a2ee3760ab03c16f16",
+      "size": 1653
+    },
+    "experiments/c007-asset-inventory/test-bound.mjs": {
+      "sha256": "07ae862601f8d38a4d0a273eeab933deab401fa461b5397a6036e8e21ddc6fb2",
+      "size": 1968
+    },
+    "evidence/c007-bound-asset-20261108/result.json": {
+      "sha256": "3b76026998cdc5fe4d1eb715d5a01f2e55a27cfbd9a22b96372b628495741d77",
+      "size": 1765
+    },
+    "docs/HEADER_BOUND_ASSET_INVENTORY.md": {
+      "sha256": "d93785a716c6014d09a15ac65ccaeb72d76493c938c108633598ecf6a39bf26b",
+      "size": 2949
+    }
+  }
+}
