@@ -1,5 +1,54 @@
 # cawmmunity.caw - decentralized - social
 
+## Completion status and controlling milestone
+
+FACT - Reviewed snapshot: `f4ded7eac2e03ca4fab41eba3e7ee7fabdc29f33`, version `0.1.0-alpha.46`. The repository has substantial settlement, cryptographic verification, recovery and frontend research. It is not yet a complete independently operated decentralized social network. The browser alpha remains synthetic; public-test and production gates remain blocked.
+
+FACT - The last documented full root Node suite passed 1,251 tests across 73 files, before subsequent research additions. The latest aggregate-signature experiment records 21 focused checks with separate 90 BLS and 73 bootstrap regressions. These are retained results, not a fresh integrated run at this commit or proof of live-chain authority.
+
+### Primary engineering objective
+
+IDEA - Make [one independently reproducible CAW action](docs/PUBLIC_ACTION_MILESTONE.md) the controlling completion milestone. Existing verification work must support this goal rather than substitute for an integrated action.
+
+The six work packages are:
+
+1. Establish original CAW token behavior and explicitly resolve or bound username registration.
+2. Freeze provisional account authority, message bytes, fees, eligible stake, payer exclusion, rounding, nonce and direct-submission rules.
+3. Build one reproducible candidate with pinned source, compiler, ABI, bytecode, constructor values and authority graph.
+4. Execute owner authorization, exactly one paid CAW, recipient allocation and authorized withdrawal, with adversarial rejection tests.
+5. Independently acquire and verify complete relevant chain history under an explicit network, checkpoint and finality policy.
+6. Have another operator reproduce, serve, verify and continue the action without original-builder credentials, infrastructure or privileged authority.
+
+Each package requires pinned inputs, reproducible commands, exact evidence and a reported PASS, FAIL, BLOCKED or NOT RUN outcome.
+
+### Critical blockers and decisions
+
+| Gate | Status | Required evidence |
+| --- | --- | --- |
+| [C-001 original CAW registration](docs/C001_DECISION_REQUEST.md) | BLOCKED | Demonstrate a compatible mechanism for the literal zero-address requirement or openly review a specification deviation. A nonzero sink is not automatically a supply burn. |
+| [C-002/C-003/C-004/C-007/C-008](sources/SPEC_CONFLICTS.md) | OPEN | Freeze explicit settlement, cost, text, staking and submission rules without treating recommendations as accepted protocol. |
+| Scalable token economics | BLOCKED | Replace three-account experimental allocation; verify bounded gas, conservation, dust, eligibility and withdrawals. |
+| Authoritative history | BLOCKED | Integrate body, receipt, sender, signature and registry verification with trusted network selection and fail-closed recovery. |
+| [Operator independence](docs/OPERATOR_INDEPENDENCE.md) | BLOCKED | Demonstrate OI-01 through OI-09 through independent builder-absent operation. |
+| Full integration and release security | NOT RUN | Fresh integrated suite, reproducible releases, CI, independent security review and deployment acceptance. |
+
+FACT - [Bootstrap trust requirements](docs/BOOTSTRAP_TRUST_REQUIREMENTS.md) distinguish internally consistent proofs from an authenticated live chain. BLS equations do not establish committee membership or checkpoint authority. [PR #16](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/16) remains under review with recorded comparison-script negative controls.
+
+### Completion stages
+
+- Stage A: local synthetic alpha exists; verified public static hosting is a separate release task.
+- Stage B: one fully specified, settled and independently reproduced protocol action remains incomplete.
+- Stage C: connected public beta, registration, wallet support, scalable accounting, recovery and independent submission remain blocked.
+- Stage D: full manifesto functionality, confidential messaging, durable content, independent operation, external audits and community acceptance remain blocked.
+
+INFERENCE - C-001 original-token registration and C-007 staking rules are the immediate specification priorities. Additional isolated research is justified by a named acceptance gap, not by increasing test counts alone.
+
+FACT - Public source does not itself prove decentralization. Media hashes do not guarantee availability; NFT transfers cannot erase previously decrypted messages. No hidden developer privilege or unilateral release authority is accepted as a completion shortcut.
+
+See the [engineering roadmap](docs/ROADMAP.md), [conflict register](sources/SPEC_CONFLICTS.md), [contribution rules](CONTRIBUTING.md) and [license exclusions](LICENSE_STATUS.md).
+
+## Retained research progress
+
 [Aggregate-signature research](docs/BLS_POP_AGGREGATE_20261108.md) now checks supplied-key equations with 21 focused checks and separate 90 BLS / 73 bootstrap regressions. A controlled example shows why a passing equation does not prove participant possession or authorization. Consensus signing domains and trusted checkpoints remain open gates.
 
 [The retained minimal committee now passes G1 and aggregate checks](docs/MINIMAL_COMMITTEE_G1_20261107.md), composed with metadata and structural inclusion. Separate runs passed 12 new, 30 G1 and 73 bootstrap checks. This validates the retained keys and their sum, not signatures or trusted consensus.
