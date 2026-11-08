@@ -27,3 +27,8 @@ Economics remain PR #18's provisional fixed-pool model: payer account1, recipien
 ## Next integration gate
 
 Execute this same constructor/deposit/stake/post/withdrawal sequence as signed transactions on a controlled local chain. Acquire receipts and transaction bytes through the existing readers, and demonstrate reconstruction against the exact candidate. Then replace synthetic identity with the reviewed NFT authority path. Preserve existing adversarial cases and resolve economics explicitly; do not infer production approval from constructor success.
+
+
+## Follow-up — November 8, 2026
+
+[Signed local-chain execution](SIGNED_LOCAL_LIFECYCLE.md) now extends this original call-level result. Its26 transactions include18 successes and8 expected reverts; the original result above is retained unchanged. Independent history reconstruction remains open.
