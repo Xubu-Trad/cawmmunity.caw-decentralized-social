@@ -31,3 +31,8 @@ The source directory must contain `acquired-history.json` and `compiler-output.j
 ## Next gate
 
 Move from call-level comparison to full transaction processing, including native balances, fees/refunds, transaction validation and final-root comparison under a defined genesis. Preserve the call-level and failed Anvil evidence separately. Independent endpoint authentication, consensus/finality, NFT admission, open-population economics and production review remain open. PR #19 remains draft and stacked on #18.
+
+
+## Full transaction-processor follow-up
+
+[The signed-transaction extension](INDEPENDENT_TRANSACTION_LIFECYCLE.md) now matches 26 outcomes/logs/gas, checks fees and proves four native accounts plus 20 storage fields. This earlier call-only evidence remains unchanged. Complete block/genesis replay is still open.
