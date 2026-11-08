@@ -29,3 +29,8 @@ The model's source comments contain a small CAW acrostic: Carry the record / Ask
 ## Token failure evidence
 
 [Token rollback experiment](TOKEN_FAILURE_ROLLBACK.md):ten bounded failure cases and five recovery cycles pass for the unchanged vault against a separate fault-injecting token. This establishes tested rollback behavior, not permanent-token availability or production compatibility. The immutable token remains a release-critical dependency.
+
+
+## Confirmed external-report limitation
+
+[Dishonest token report reproduction](TOKEN_REPORT_TRUST_BOUNDARY.md) demonstrates that consistent false reports can pass the candidate checks and leave ledger backing/withdrawal delivery incorrect in the adversarial fixture. This is a release-blocking trust requirement for asset selection, not evidence against the actual CAW token. Four gas-failure rollback cases also pass.
