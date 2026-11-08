@@ -1,0 +1,61 @@
+{
+  "account_exclusion": {
+    "allocations": {
+      "1": "0",
+      "2": "1666666666666666666666",
+      "3": "3333333333333333333333"
+    },
+    "conservation": true,
+    "dust_base_units": "1",
+    "eligible_ids": [
+      2,
+      3
+    ],
+    "eligible_stake_base_units": "3000000000000000000",
+    "mode": "exclude_payer_account"
+  },
+  "accounts": [
+    {
+      "id": 1,
+      "owner": "A",
+      "stake": 10000000000000000000
+    },
+    {
+      "id": 2,
+      "owner": "A",
+      "stake": 1000000000000000000
+    },
+    {
+      "id": 3,
+      "owner": "B",
+      "stake": 2000000000000000000
+    }
+  ],
+  "c001_registration": "BLOCKED",
+  "c007_decision": "OPEN",
+  "community_policy_adopted": false,
+  "fee_base_units": "5000000000000000000000",
+  "parent_commit": "7d93e0c74cd18308bd3057f4cdf79d82365aa8cd",
+  "payer_account": 1,
+  "real_token_execution": false,
+  "schema": "caw-c007-exclusion-comparison/1",
+  "solidity_execution": false,
+  "source_path": "experiments/paid-action/CawPaidActionProbe.sol",
+  "source_sha256": "e48f8f8f816aae21e0e9865a8be0aa2e47204ea04b4c12b4124e5b0452412da1",
+  "stake_unit": "18-decimal synthetic model units",
+  "variable": "payer exclusion: NFT account versus wallet owner",
+  "wallet_exclusion": {
+    "allocations": {
+      "1": "0",
+      "2": "0",
+      "3": "5000000000000000000000"
+    },
+    "conservation": true,
+    "dust_base_units": "0",
+    "eligible_ids": [
+      3
+    ],
+    "eligible_stake_base_units": "2000000000000000000",
+    "mode": "exclude_payer_wallet"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "alternatives": {
+    "account_id": {
+      "allocations": {
+        "1": "0",
+        "2": "1666666666666666666666",
+        "3": "3333333333333333333333"
+      },
+      "conservation": true,
+      "dust_base_units": "1",
+      "eligible_ids": [
+        2,
+        3
+      ],
+      "eligible_stake_base_units": "3000000000000000000",
+      "mode": "exclude_payer_account"
+    },
+    "wallet_owner": {
+      "allocations": {
+        "1": "0",
+        "2": "0",
+        "3": "5000000000000000000000"
+      },
+      "conservation": true,
+      "dust_base_units": "0",
+      "eligible_ids": [
+        3
+      ],
+      "eligible_stake_base_units": "2000000000000000000",
+      "mode": "exclude_payer_wallet"
+    }
+  },
+  "c001_registration": "BLOCKED",
+  "community_adoption": false,
+  "conflict": "C-007",
+  "decision": "OPEN",
+  "fixed_accounts": [
+    {
+      "id": 1,
+      "owner": "A",
+      "stake": 10000000000000000000
+    },
+    {
+      "id": 2,
+      "owner": "A",
+      "stake": 1000000000000000000
+    },
+    {
+      "id": 3,
+      "owner": "B",
+      "stake": 2000000000000000000
+    }
+  ],
+  "fixed_fee_base_units": "5000000000000000000000",
+  "local_model_comparison": "PASS",
+  "manifesto_line": 52,
+  "new_evm_execution": "NOT_RUN",
+  "parent_commit": "7d93e0c74cd18308bd3057f4cdf79d82365aa8cd",
+  "parent_experiment_manifest_sha256": "2806cc6c2d1934a6ada9f2ea84fa7642645bf55c51d665a8f38f66451acbdfb3",
+  "production": "BLOCKED",
+  "public_test": "BLOCKED",
+  "scalability_proven": false,
+  "schema": "caw-c007-decision-evidence/1",
+  "source_contract_implements": "account_id",
+  "source_contract_sha256": "e48f8f8f816aae21e0e9865a8be0aa2e47204ea04b4c12b4124e5b0452412da1",
+  "status": "RESEARCH_ONLY",
+  "variable": "payer eligibility exclusion predicate"
+}
