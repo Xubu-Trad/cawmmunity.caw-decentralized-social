@@ -1,0 +1,49 @@
+{
+  "parent": "7497c1917a501a0509eccf58506e3f18e43e5f69",
+  "files": {
+    "experiments/c007-new-owner-post/DeployedCustodyStakeResearch.sol": {
+      "sha256": "d97dd9157a81611630ac876556684f7354f412e35a7a360662aab6ce2984e02c",
+      "bytes": 17976
+    },
+    "experiments/c007-new-owner-post/SignerWalletFixture.sol": {
+      "sha256": "0f27beab9fa9ca8bc87a7cae857bca75285a92dab32d954f4e7b43d767f1d852",
+      "bytes": 1177
+    },
+    "experiments/c007-new-owner-post/run-lifecycle.mjs": {
+      "sha256": "84a4958f2bf9436bc6b018cce41aa7954434d21b12d23467e665b10fa7f7b3f9",
+      "bytes": 14343
+    },
+    "experiments/c007-new-owner-post/run-signed-lifecycle.mjs": {
+      "sha256": "4878789404791fbe09727ba94f11c848ef80fe28cf37459e5ea614ee9f4302fa",
+      "bytes": 20020
+    },
+    "experiments/c007-new-owner-post/reconstruct-accounting.mjs": {
+      "sha256": "9558ff180595a09003bd3fdf923d3515bbe88abd692583e7a0ed3cd4c7b156ed",
+      "bytes": 11519
+    },
+    "experiments/c007-new-owner-post/reexecute-transactions.mjs": {
+      "sha256": "7501bbdfac380fa9d25639ad7b0f82ddad659617b9f465fc4beb5dc53cbdb6ae",
+      "bytes": 10235
+    },
+    "experiments/c007-new-owner-post/package.json": {
+      "sha256": "3cd90dea6c442e62e1eb32e83c412a81d5725be928ecf34bf019702c6fc2f192",
+      "bytes": 215
+    },
+    "experiments/c007-new-owner-post/package-lock.json": {
+      "sha256": "bdb139f0b431b0c820f38fa367443182a19f46107b8fd36f21385f05547972df",
+      "bytes": 14224
+    },
+    "evidence/c007-new-owner-post-20261108/transaction-replay.json": {
+      "sha256": "a0b59b6399a008cc11bf18453167c5b070b04c7e7fcaf72ee7bfd21a4fc2c3d8",
+      "bytes": 4452
+    },
+    "evidence/c007-new-owner-post-20261108/accounting-summary.json": {
+      "sha256": "429b1749d0d27e05f0dc664a22b12aeae3c89b9eeecebde2e71523bc209ed81e",
+      "bytes": 1963
+    },
+    "docs/NEW_OWNER_PAID_POST_REVIEW.md": {
+      "sha256": "2b2874a8e22c00f057bbc040c8f4bef40a9c2db8f57fe1d9a270b375ababea1f",
+      "bytes": 2334
+    }
+  }
+}
