@@ -107,4 +107,13 @@ await call(vault,'transferAccount',[1,1,BigInt(A.toString())],B);
 const returned=await state();await call(vault,'settleFixedPool1',[],relay,'EPOCH',nextData);assert.deepEqual(await state(),returned);
 const final=await state();invariant(final);
 save('results.json',{schema:'caw-signed-local-lifecycle-research/1',sourceSha256:hex(H(Buffer.from(source))),compiler:solc.version(),node:process.version,initial,before,after,final,rows,constructorExecuted:true,directCodeOrStorageWrites:false,signedPublicAction:true,signedEthereumTransactions:true,networkRecords,realNft:false,realToken:false,policyAdopted:false});
+const acquired=[];
+const tip=Number(BigInt(await rpc('eth_blockNumber',[])));
+for(let n=0;n<=tip;n++){
+ const block=await rpc('eth_getBlockByNumber',['0x'+n.toString(16),false]);assert(block);
+ const rawTransactions=[],receipts=[];
+ for(const hash of block.transactions){rawTransactions.push(await rpc('eth_getRawTransactionByHash',[hash]));receipts.push(await rpc('eth_getTransactionReceipt',[hash]));}
+ acquired.push({block,rawTransactions,receipts});
+}
+save('acquired-history.json',{schema:'caw-local-signed-acquisition/1',chainId:await rpc('eth_chainId',[]),blocks:acquired});
 save('network-records.json',networkRecords); console.log('SIGNED_LOCAL_TRANSACTIONS='+networkRecords.length+' PASS');

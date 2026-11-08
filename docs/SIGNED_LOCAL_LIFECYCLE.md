@@ -29,3 +29,8 @@ node --max-old-space-size=256 run-signed-lifecycle.mjs /absolute/path/to/new-out
 This is one locally operated chain. The signing library also performs sender recovery; this is not an independent implementation comparison. Block-body/receipt-root verification and independent history reconstruction through the existing community readers are next. No claim is made about public inclusion, finality, provider independence, clean-machine reproducibility or a full regression run.
 
 Three synthetic accounts, the unrestricted mock token, fixed-pool arithmetic and provisional text policy remain. NFT registration, original CAW compatibility, open-population economics, wallet compatibility and production review are unfinished. No new policy or developer authority is introduced. The validity window in this run spans the local chain's advancing blocks; narrow-window boundary evidence remains in PR #18.
+
+
+## Reader follow-up
+
+The fresh [signed history reconstruction](SIGNED_HISTORY_RECONSTRUCTION.md) now checks complete transaction/receipt roots and independently recovers senders for blocks1–26. The original capture above is unchanged. Final-state replay, independent acquisition and authenticated endpoints remain open.
