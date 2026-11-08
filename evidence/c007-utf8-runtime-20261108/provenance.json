@@ -1,0 +1,245 @@
+{
+  "schema": "caw-artifact-provenance/1",
+  "artifacts": [
+    {
+      "PARENTS": [
+        "3ad4f232887ebab696c73bf9a8e69343bd7c6463",
+        "archive-sha256:6b2927c833e6c1070846f5b532b4c3c3c9a8f8bd490720220480de856edf085f"
+      ],
+      "TRANSFORM": "authored source, documentation or recorded execution metadata",
+      "PATH": "docs/C007_UTF8_RUNTIME_REVIEW_20261108.md",
+      "SIZE": 6974,
+      "SHA256": "2f91063d47633201173dfdf1faf082b4c7f04e01ecc66bb32549368cde47aa7f"
+    },
+    {
+      "PARENTS": [
+        "3ad4f232887ebab696c73bf9a8e69343bd7c6463",
+        "archive-sha256:6b2927c833e6c1070846f5b532b4c3c3c9a8f8bd490720220480de856edf085f"
+      ],
+      "TRANSFORM": "authored source, documentation or recorded execution metadata",
+      "PATH": "evidence/c007-utf8-runtime-20261108/audit.log",
+      "SIZE": 157,
+      "SHA256": "703e4ccdc5f808f03b7b9f1e9cd8f470358f4aa25e2c942af4d3497d5d8eefd0"
+    },
+    {
+      "PARENTS": [
+        "3ad4f232887ebab696c73bf9a8e69343bd7c6463",
+        "archive-sha256:6b2927c833e6c1070846f5b532b4c3c3c9a8f8bd490720220480de856edf085f"
+      ],
+      "TRANSFORM": "authored source, documentation or recorded execution metadata",
+      "PATH": "evidence/c007-utf8-runtime-20261108/derivation.json",
+      "SIZE": 514,
+      "SHA256": "03881dda9670fc7502a324c79ac595234c769137a87e0c22acda6635ac3356e9"
+    },
+    {
+      "PARENTS": [
+        "3ad4f232887ebab696c73bf9a8e69343bd7c6463",
+        "archive-sha256:6b2927c833e6c1070846f5b532b4c3c3c9a8f8bd490720220480de856edf085f"
+      ],
+      "TRANSFORM": "authored source, documentation or recorded execution metadata",
+      "PATH": "evidence/c007-utf8-runtime-20261108/negative-control/rebuild.json",
+      "SIZE": 97,
+      "SHA256": "1469fb6e9ef535e0dc7e91de3bba1508830acc13156e995601311ea09ed491cf"
+    },
+    {
+      "PARENTS": [
+        "3ad4f232887ebab696c73bf9a8e69343bd7c6463",
+        "archive-sha256:6b2927c833e6c1070846f5b532b4c3c3c9a8f8bd490720220480de856edf085f"
+      ],
+      "TRANSFORM": "authored source, documentation or recorded execution metadata",
+      "PATH": "evidence/c007-utf8-runtime-20261108/negative-control/result.json",
+      "SIZE": 136,
+      "SHA256": "27732c54a85646bb18bf6f2900098fd8955ca2d1d793c5efee0cc05e024ceb98"
+    },
+    {
+      "PARENTS": [
+        "3ad4f232887ebab696c73bf9a8e69343bd7c6463",
+        "archive-sha256:6b2927c833e6c1070846f5b532b4c3c3c9a8f8bd490720220480de856edf085f"
+      ],
+      "TRANSFORM": "replace scratch workspace prefix in retained raw negative-control stderr/stdout with <WORKSPACE>",
+      "PATH": "evidence/c007-utf8-runtime-20261108/negative-control/tests.public.log",
+      "SIZE": 428,
+      "SHA256": "70dc00530bf5ae68bf8966cf6064769e9cbc14b8b41cd31df731ab94dff0e6d2"
+    },
+    {
+      "PARENTS": [
+        "3ad4f232887ebab696c73bf9a8e69343bd7c6463",
+        "archive-sha256:6b2927c833e6c1070846f5b532b4c3c3c9a8f8bd490720220480de856edf085f"
+      ],
+      "TRANSFORM": "node --max-old-space-size=512 experiments/c007-utf8/run.mjs; see runtime.json command",
+      "PATH": "evidence/c007-utf8-runtime-20261108/results.json",
+      "SIZE": 193437,
+      "SHA256": "14b94efd9de49af4ac4bf77954ffedf8a32e75972e1d9e321f7f063563fcfbdd"
+    },
+    {
+      "PARENTS": [
+        "3ad4f232887ebab696c73bf9a8e69343bd7c6463",
+        "archive-sha256:6b2927c833e6c1070846f5b532b4c3c3c9a8f8bd490720220480de856edf085f"
+      ],
+      "TRANSFORM": "copy verified archive member COMMUNITY_C007_TEXT_BYTES_EVM_20261108_V2/replay/results.json without byte changes",
+      "PATH": "evidence/c007-utf8-runtime-20261108/retained-text-results.json",
+      "SIZE": 116364,
+      "SHA256": "27d16289e5c55b8eab252b38abcb861597cfda73f12bf2456a255f5d57fb563d"
+    },
+    {
+      "PARENTS": [
+        "3ad4f232887ebab696c73bf9a8e69343bd7c6463",
+        "archive-sha256:6b2927c833e6c1070846f5b532b4c3c3c9a8f8bd490720220480de856edf085f"
+      ],
+      "TRANSFORM": "authored source, documentation or recorded execution metadata",
+      "PATH": "evidence/c007-utf8-runtime-20261108/run.log",
+      "SIZE": 260,
+      "SHA256": "6492c5873b9e27450cb076e99965b0c5c432845ea15ff2f76b0165c351362e32"
+    },
+    {
+      "PARENTS": [
+        "3ad4f232887ebab696c73bf9a8e69343bd7c6463",
+        "archive-sha256:6b2927c833e6c1070846f5b532b4c3c3c9a8f8bd490720220480de856edf085f"
+      ],
+      "TRANSFORM": "authored source, documentation or recorded execution metadata",
+      "PATH": "evidence/c007-utf8-runtime-20261108/runtime.json",
+      "SIZE": 876,
+      "SHA256": "0ab7687aa588d807be1252295a35146e2b68bcf54fc7a55919544e4c72e87115"
+    },
+    {
+      "PARENTS": [
+        "3ad4f232887ebab696c73bf9a8e69343bd7c6463",
+        "archive-sha256:6b2927c833e6c1070846f5b532b4c3c3c9a8f8bd490720220480de856edf085f"
+      ],
+      "TRANSFORM": "copy verified archive member COMMUNITY_C007_UTF8_SCALAR_COMPILE_20261108_V1/work/IntegratedCustodyStakeResearch.sol without byte changes",
+      "PATH": "experiments/c007-utf8/IntegratedCustodyStakeResearch.sol",
+      "SIZE": 15456,
+      "SHA256": "ac956a70048e02177c74f78ad4a1244476c095d48fbd38e9d114592cbad55e69"
+    },
+    {
+      "PARENTS": [
+        "3ad4f232887ebab696c73bf9a8e69343bd7c6463",
+        "archive-sha256:6b2927c833e6c1070846f5b532b4c3c3c9a8f8bd490720220480de856edf085f"
+      ],
+      "TRANSFORM": "authored source, documentation or recorded execution metadata",
+      "PATH": "experiments/c007-utf8/audit.py",
+      "SIZE": 2341,
+      "SHA256": "c43da3d9df888cf253659cd7c3360b92fb44a38b52a3f85fd66fb10bdbd366eb"
+    },
+    {
+      "PARENTS": [
+        "3ad4f232887ebab696c73bf9a8e69343bd7c6463",
+        "archive-sha256:6b2927c833e6c1070846f5b532b4c3c3c9a8f8bd490720220480de856edf085f"
+      ],
+      "TRANSFORM": "copy verified archive member COMMUNITY_C007_UTF8_SCALAR_COMPILE_20261108_V1/replay/compiler-input.json without byte changes",
+      "PATH": "experiments/c007-utf8/compile/compiler-input.json",
+      "SIZE": 16549,
+      "SHA256": "80a145a4f51c93bceaf14cb3a8e190f19804ff823258f7f6686882469000da5a"
+    },
+    {
+      "PARENTS": [
+        "3ad4f232887ebab696c73bf9a8e69343bd7c6463",
+        "archive-sha256:6b2927c833e6c1070846f5b532b4c3c3c9a8f8bd490720220480de856edf085f"
+      ],
+      "TRANSFORM": "copy verified archive member COMMUNITY_C007_UTF8_SCALAR_COMPILE_20261108_V1/replay/compiler-output.json without byte changes",
+      "PATH": "experiments/c007-utf8/compile/compiler-output.json",
+      "SIZE": 55673,
+      "SHA256": "0d6799150caca0cd0b819099e0aaf86e908917dde0fc97ec6a9ffbdb3e514fa5"
+    },
+    {
+      "PARENTS": [
+        "3ad4f232887ebab696c73bf9a8e69343bd7c6463",
+        "archive-sha256:6b2927c833e6c1070846f5b532b4c3c3c9a8f8bd490720220480de856edf085f"
+      ],
+      "TRANSFORM": "copy verified archive member COMMUNITY_C007_UTF8_SCALAR_COMPILE_20261108_V1/replay/results.json without byte changes",
+      "PATH": "experiments/c007-utf8/compile/results.json",
+      "SIZE": 556,
+      "SHA256": "719d61f1df169625e9ea9027c8fd8a13e145ea32f6237486dac23958308ee38e"
+    },
+    {
+      "PARENTS": [
+        "3ad4f232887ebab696c73bf9a8e69343bd7c6463",
+        "archive-sha256:6b2927c833e6c1070846f5b532b4c3c3c9a8f8bd490720220480de856edf085f"
+      ],
+      "TRANSFORM": "authored source, documentation or recorded execution metadata",
+      "PATH": "experiments/c007-utf8/compile-control.mjs",
+      "SIZE": 1557,
+      "SHA256": "47a47cb9a21f0da757f30c0531529c388791c6ecc7b35dc7e15e87303e138d91"
+    },
+    {
+      "PARENTS": [
+        "3ad4f232887ebab696c73bf9a8e69343bd7c6463",
+        "archive-sha256:6b2927c833e6c1070846f5b532b4c3c3c9a8f8bd490720220480de856edf085f"
+      ],
+      "TRANSFORM": "authored source, documentation or recorded execution metadata",
+      "PATH": "experiments/c007-utf8/derive-fixtures.py",
+      "SIZE": 1714,
+      "SHA256": "755d9f27acee4a8a7b872fd2a3a97b161abaa73b7610413e4fc6a34fafa2a84a"
+    },
+    {
+      "PARENTS": [
+        "3ad4f232887ebab696c73bf9a8e69343bd7c6463",
+        "archive-sha256:6b2927c833e6c1070846f5b532b4c3c3c9a8f8bd490720220480de856edf085f"
+      ],
+      "TRANSFORM": "python3 experiments/c007-utf8/derive-fixtures.py retained-text-results.json NEW_INPUT_DIRECTORY",
+      "PATH": "experiments/c007-utf8/fixtures/derived-fixtures.json",
+      "SIZE": 10151,
+      "SHA256": "9bf6de6a70909f4fe0952de9fe64444fb866c9fc716fd1a07f7ba916cc56d210"
+    },
+    {
+      "PARENTS": [
+        "3ad4f232887ebab696c73bf9a8e69343bd7c6463",
+        "archive-sha256:6b2927c833e6c1070846f5b532b4c3c3c9a8f8bd490720220480de856edf085f"
+      ],
+      "TRANSFORM": "python3 experiments/c007-utf8/derive-fixtures.py retained-text-results.json NEW_INPUT_DIRECTORY",
+      "PATH": "experiments/c007-utf8/fixtures/derived-text.json",
+      "SIZE": 1551,
+      "SHA256": "8aec8cb9d73679dcf68c202c38faaf04c1d9d7400a73e850eef172f77d26c7a5"
+    },
+    {
+      "PARENTS": [
+        "3ad4f232887ebab696c73bf9a8e69343bd7c6463",
+        "archive-sha256:6b2927c833e6c1070846f5b532b4c3c3c9a8f8bd490720220480de856edf085f"
+      ],
+      "TRANSFORM": "python3 experiments/c007-utf8/derive-fixtures.py retained-text-results.json NEW_INPUT_DIRECTORY",
+      "PATH": "experiments/c007-utf8/fixtures/derived-window.json",
+      "SIZE": 1867,
+      "SHA256": "908a2af693b673ba4d2e22f6418241e9f413304067703e6c02c36b35ec9561f0"
+    },
+    {
+      "PARENTS": [
+        "3ad4f232887ebab696c73bf9a8e69343bd7c6463",
+        "archive-sha256:6b2927c833e6c1070846f5b532b4c3c3c9a8f8bd490720220480de856edf085f"
+      ],
+      "TRANSFORM": "copy verified archive member COMMUNITY_C007_UTF8_SCALAR_COMPILE_20261108_V1/utf8_vectors.json without byte changes",
+      "PATH": "experiments/c007-utf8/fixtures/utf8_vectors.json",
+      "SIZE": 18753,
+      "SHA256": "9b1547d45a24430b20a931cb57fe96594658ecddf2e2b5284482e91de17f345d"
+    },
+    {
+      "PARENTS": [
+        "3ad4f232887ebab696c73bf9a8e69343bd7c6463",
+        "archive-sha256:6b2927c833e6c1070846f5b532b4c3c3c9a8f8bd490720220480de856edf085f"
+      ],
+      "TRANSFORM": "copy verified archive member COMMUNITY_C007_UTF8_SCALAR_COMPILE_20261108_V1/work/package-lock.json without byte changes",
+      "PATH": "experiments/c007-utf8/package-lock.json",
+      "SIZE": 10306,
+      "SHA256": "075099ec10674e1af3a00dbec5232321dede046d4f84d846d1419135ef8a8c9c"
+    },
+    {
+      "PARENTS": [
+        "3ad4f232887ebab696c73bf9a8e69343bd7c6463",
+        "archive-sha256:6b2927c833e6c1070846f5b532b4c3c3c9a8f8bd490720220480de856edf085f"
+      ],
+      "TRANSFORM": "copy verified archive member COMMUNITY_C007_UTF8_SCALAR_COMPILE_20261108_V1/work/package.json without byte changes",
+      "PATH": "experiments/c007-utf8/package.json",
+      "SIZE": 191,
+      "SHA256": "41819c975ded66c0d9eb6e2e7fc405f38c58a59a2fd2b09b1feb871de295faab"
+    },
+    {
+      "PARENTS": [
+        "3ad4f232887ebab696c73bf9a8e69343bd7c6463",
+        "archive-sha256:6b2927c833e6c1070846f5b532b4c3c3c9a8f8bd490720220480de856edf085f"
+      ],
+      "TRANSFORM": "authored source, documentation or recorded execution metadata",
+      "PATH": "experiments/c007-utf8/run.mjs",
+      "SIZE": 19579,
+      "SHA256": "1591cc1a054ab7f49b5052b9c0d6322a8b2490d07bc414fc74a269fe1f5c267b"
+    }
+  ]
+}

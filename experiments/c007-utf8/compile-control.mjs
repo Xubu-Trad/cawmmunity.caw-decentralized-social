@@ -1,0 +1,17 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';import crypto from 'node:crypto';import solc from 'solc';
+const [parent,out]=process.argv.slice(2);assert(!fs.existsSync(out));fs.mkdirSync(out);
+const input=JSON.parse(fs.readFileSync(parent+'/compile/compiler-input.json'));
+const pinned=JSON.parse(fs.readFileSync(parent+'/compile/compiler-output.json'));
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const write=(p,x)=>fs.writeFileSync(out+'/'+p,JSON.stringify(x,null,2)+'\n',{flag:'wx'});
+const rebuilt=JSON.parse(solc.compile(JSON.stringify(input)));assert.deepEqual(rebuilt,pinned);
+write('rebuild.json',{compiler:solc.version(),entireCompilerOutputEqual:true});
+const name='IntegratedCustodyStakeResearch.sol';const s=input.sources[name].content;
+assert.equal(s.split('_validateUtf8Text(text);').length,2);
+input.sources[name].content=s.replace('_validateUtf8Text(text);','/* mutation: validation call removed */');
+fs.mkdirSync(out+'/compile');write('compile/compiler-input.json',input);
+const c=JSON.parse(solc.compile(JSON.stringify(input)));write('compile/compiler-output.json',c);
+assert(!(c.errors??[]).some(e=>e.severity==='error'));
+const code=Buffer.from(c.contracts[name].AccountRootBoundaryResearch.evm.deployedBytecode.object,'hex');
+write('compile/results.json',{schema:'caw-c007-utf8-scalar-compile/1',runtimeSha256:sha(code),runtimeBytes:code.length,mutation:'one validation call removed'});
+console.log('PINNED_COMPILER_OUTPUT=EXACT_REBUILD');console.log('MUTANT_COMPILED=VALIDATOR_CALL_REMOVED');

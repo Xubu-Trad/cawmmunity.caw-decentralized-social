@@ -1,0 +1,24 @@
+{
+  "nodeVersion": "v20.20.2",
+  "nodeSha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+  "command": [
+    "node",
+    "--max-old-space-size=512",
+    "experiments/c007-utf8/run.mjs",
+    "experiments/c007-utf8",
+    "experiments/c007-utf8/fixtures/derived-fixtures.json",
+    "NEW_UTF8_OUTPUT",
+    "experiments/c007-utf8/fixtures/derived-window.json",
+    "experiments/c007-utf8/fixtures/derived-text.json",
+    "experiments/c007-utf8/fixtures/utf8_vectors.json"
+  ],
+  "exitCode": 0,
+  "cpuSeconds": 60,
+  "wallSeconds": 90,
+  "heapMiB": 512,
+  "sealedInputsUnchanged": true,
+  "executedInternally": true,
+  "commandNote": "Repository-relative equivalent; internal run used scratch-relative paths.",
+  "negativeRawLogSha256": "6c1a2e5a1d668c48d56f38d4781cbad1dd1a9e67de62a00d38a3736d9c854da3",
+  "compilerRebuild": "entire output object equal"
+}

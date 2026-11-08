@@ -1,0 +1,85 @@
+{
+  "schema": "caw-c007-signed-window-oracle/1",
+  "cases": [
+    {
+      "label": "before_open",
+      "validAfter": "10",
+      "deadline": "20",
+      "timestamp": "9",
+      "signatureMode": "matching",
+      "expected": "WINDOW"
+    },
+    {
+      "label": "exact_open",
+      "validAfter": "10",
+      "deadline": "20",
+      "timestamp": "10",
+      "signatureMode": "matching",
+      "expected": "OK"
+    },
+    {
+      "label": "inside",
+      "validAfter": "10",
+      "deadline": "20",
+      "timestamp": "15",
+      "signatureMode": "matching",
+      "expected": "OK"
+    },
+    {
+      "label": "last_valid",
+      "validAfter": "10",
+      "deadline": "20",
+      "timestamp": "19",
+      "signatureMode": "matching",
+      "expected": "OK"
+    },
+    {
+      "label": "exact_deadline",
+      "validAfter": "10",
+      "deadline": "20",
+      "timestamp": "20",
+      "signatureMode": "matching",
+      "expected": "WINDOW"
+    },
+    {
+      "label": "after_deadline",
+      "validAfter": "10",
+      "deadline": "20",
+      "timestamp": "21",
+      "signatureMode": "matching",
+      "expected": "WINDOW"
+    },
+    {
+      "label": "equal_interval",
+      "validAfter": "15",
+      "deadline": "15",
+      "timestamp": "15",
+      "signatureMode": "matching",
+      "expected": "WINDOW"
+    },
+    {
+      "label": "inverted_interval",
+      "validAfter": "20",
+      "deadline": "10",
+      "timestamp": "15",
+      "signatureMode": "matching",
+      "expected": "WINDOW"
+    },
+    {
+      "label": "altered_valid_after",
+      "validAfter": "11",
+      "deadline": "20",
+      "timestamp": "15",
+      "signatureMode": "base",
+      "expected": "SIGNER"
+    },
+    {
+      "label": "altered_deadline",
+      "validAfter": "10",
+      "deadline": "21",
+      "timestamp": "15",
+      "signatureMode": "base",
+      "expected": "SIGNER"
+    }
+  ]
+}
