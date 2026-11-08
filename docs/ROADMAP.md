@@ -618,4 +618,9 @@ Fixed a reproduced empty-success launch through a Windows directory junction. Th
 
 ### Signed-history reader milestone — November 8, 2026
 
-The draft [PR #19](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/19) now reconstructs all26 signed local transactions through the existing readers, checking block links, transaction/receipt roots and recovered senders. Nine altered-history controls reject;167 existing reader tests pass. This is consistency under locally selected headers, not public-chain authentication or final-state replay. Next: reconstruct accounting/ownership transitions and compare final state. The draft remains unmerged.
+The draft [PR #19](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/19) now reconstructs all26 signed local transactions through the existing readers, checking block links, transaction/receipt roots and recovered senders. Nine altered-history controls reject;167 existing reader tests pass. This is consistency under locally selected headers, not public-chain authentication or final-state replay. Accounting/ownership reconstruction now matches all 18 local snapshot fields; next prove final storage against the selected state root. The draft remains unmerged.
+
+
+### Accounting reconstruction — November 8, 2026
+
+Draft PR #19 matches all 18 final snapshot fields from the same 26 signed transactions. Ten semantic controls and the nine existing raw-history controls reject. Next gate: selected-state-root proofs for final custody/storage and token wallet balances. Local RPC comparison is not authenticated state or full EVM replay. No new full-suite run; release gates remain open.
