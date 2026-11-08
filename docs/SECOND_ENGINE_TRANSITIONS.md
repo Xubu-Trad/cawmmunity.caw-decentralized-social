@@ -39,3 +39,24 @@ Only code, acquisition metadata and the bounded result summary are published her
 ## Next gate
 
 Independently authenticate the execution-tool artifact and tighten the input/genesis/header selection boundary. Then test acquisition and replay without relying on Xubu's machine or selected endpoint. Real NFT/token admission, open-population economics and release review remain unresolved. PR #19 remains draft and stacked on #18.
+
+
+## Verified publisher and frozen-input follow-up
+
+The archive signature has now been verified with GnuPG against Linux-builder primary fingerprint `FDE5A1A044FA13D2F7ADA019A61A13569BA28146`, selected from the official HTTPS download page. The signed archive has the previously recorded SHA-256, and its extracted `evm` bytes match the already-used local binary. A one-byte archive mutation fails signature verification. This establishes a signature under the selected publisher key; it is not a source rebuild or independent certification of publisher identity. The earlier unverified acquisition record remains historical evidence. See [signature result](../evidence/c007-geth-selection-20261108/signature.json).
+
+The comparison runner now pins SHA-256 digests for the four exact inputs: acquired history, funding genesis, prior transaction summary and serialized synthetic block package. Each JSON input is read once with an 8 MiB bound; the same bytes are hashed and parsed. A valid selection therefore cannot silently substitute a changed file between hashing and parsing. This does not defend against a malicious local process replacing the executable after its hash check.
+
+Python optimized mode is explicitly refused before argument processing because this research harness relies on assertions. Eight focused checks pass: unchanged fixture acceptance, four changed-file rejections, truncation rejection, oversized-input rejection and optimized-mode rejection. The complete 26-transition comparison still passes through the new input gate. Its existing six controls remain passing. No full repository suite was rerun.
+
+### Reproducibility limitation
+
+This version intentionally accepts only the frozen V4 inputs named by those digests. A fresh capture with different timestamps or serialized metadata is rejected and needs a separately reviewed fixture selection; the harness does not automatically trust a newly generated manifest. **The complete frozen inputs are currently local, so the public repository alone does not yet allow another builder to reproduce this retained result.** Generating a similar capture is not an exact replay of this evidence. The earlier reproduction command applies once the matching frozen files are available.
+
+The next concrete gate is a reviewed, minimal, self-contained synthetic input package with all four matching hashes, plus reproduction from a clean location. Tool signature verification and file integrity do not authenticate a chain, genesis choice, consensus, finality or provider. The application remains a draft research candidate.
+
+Focused input checks, with the same frozen files:
+
+```sh
+python3 experiments/c007-transactions/check-geth-selection.py experiments/c007-transactions/compare-geth-transition.py /absolute/path/to/inputs /absolute/path/to/blocks.json /absolute/path/to/new-check-output
+```

@@ -1,0 +1,31 @@
+{
+  "parent": "d6dd139dcdd79da23d5538e4d1530221f42f5866",
+  "transform": "publisher signature verification, frozen-input regressions and full transition rerun",
+  "files": {
+    "experiments/c007-transactions/compare-geth-transition.py": {
+      "sha256": "70babf7fe9d3f83a26c8b88d214fd998c811f84b51d9d27dfc15322876a84588",
+      "size": 7139
+    },
+    "experiments/c007-transactions/check-geth-selection.py": {
+      "sha256": "8c143fcfd09b81695370fc5d4ec5a8351474d790807db9e2b6d913115416161b",
+      "size": 2081
+    },
+    "evidence/c007-geth-selection-20261108/result.json": {
+      "sha256": "c38e9460b02955434e791d50d2821716ce36cd5fe0fe98c4744272e85d6f7bea",
+      "size": 1259
+    },
+    "evidence/c007-geth-selection-20261108/input-checks.json": {
+      "sha256": "ab6ada97cd8826eab3167792feb0f694b9c3198740dee52d153f0cae6959456a",
+      "size": 375
+    },
+    "evidence/c007-geth-selection-20261108/signature.json": {
+      "sha256": "9d66fa8d0bb21707cc7bca16daac8f07fcf97cb0cca1cb5f020ae06495e76540",
+      "size": 852
+    },
+    "docs/SECOND_ENGINE_TRANSITIONS.md": {
+      "sha256": "a95be2940f81cdce90aa8fb64e6c6a1a83e2b1897f174a7daa21ee8aebb92ee3",
+      "size": 7173
+    }
+  },
+  "signatureStatusSha256": "36060d5c78ac62d3180780a19b8b87e2db9819ff88454a5d805840c7f02cd03a"
+}

@@ -2,6 +2,22 @@
 from pathlib import Path
 import json,hashlib,subprocess,shutil,sys,time,os
 
+# This revision reproduces the frozen V4 fixture, not arbitrary provider data.
+INPUT_DIGESTS={
+ 'acquired-history.json':'d4524317e9de7ef8e0a362b6d2a444a6d7ba5618703405658e8bfb83ce980cfe',
+ 'genesis.json':'7a113bfbcce39f22659ab8021ed687553b51924930206c1f7e15dd5bdd7a2a11',
+ 'transaction-result.json':'a9d0824323a97919a9c6368bddf455225c5bcf274fcac0daa3f1892e3a768f55',
+ 'blocks.json':'a3936951d64ed84cdcc021a72ffa800453fe4f67d189cf602798fd03ff2920d8',
+}
+def load_selected(p,digest):
+ # Hash and parse the same bounded read; never reopen after verification.
+ with p.open('rb')as f:data=f.read(8*1024**2+1)
+ if len(data)>8*1024**2:raise ValueError('SELECTED_INPUT_SIZE')
+ if hashlib.sha256(data).hexdigest()!=digest:raise ValueError('SELECTED_INPUT_DIGEST')
+ return json.loads(data)
+def selected_inputs(inputs,blocks_path):
+ return tuple(load_selected(inputs/n,INPUT_DIGESTS[n])for n in ['acquired-history.json','genesis.json','transaction-result.json'])+(load_selected(blocks_path,INPUT_DIGESTS['blocks.json']),)
+
 def load(p):
  assert p.stat().st_size<8*1024**2
  return json.loads(p.read_text())
@@ -16,11 +32,12 @@ def compare(result,expected):
  assert int(result['gasUsed'],0)==int(expected['gasUsed']),'gasUsed'
 
 if __name__=='__main__':
+ if not __debug__:raise RuntimeError('OPTIMIZED_PYTHON_UNSUPPORTED: assertions must remain enabled')
  inputs,blocks_path,evm_path,out=map(Path,sys.argv[1:]);assert not out.exists();out.mkdir(parents=True)
  assert shutil.disk_usage('/mnt/c').free>=2*1024**3,'HOST_DISK_FLOOR'
  available=int(next(x.split()[1]for x in Path('/proc/meminfo').read_text().splitlines()if x.startswith('MemAvailable:')));assert available>=768*1024
  assert hashlib.sha256(evm_path.read_bytes()).hexdigest()=='d8cfddad15a8c601e7b069bc5973ad073dbc2d632b8c5ab50e513ef27c53d6da','PINNED_BINARY'
- captured=load(inputs/'acquired-history.json');genesis=load(inputs/'genesis.json');expected=load(blocks_path)['records'];previous=load(inputs/'transaction-result.json')
+ captured,genesis,previous,block_data=selected_inputs(inputs,blocks_path);expected=block_data['records']
  assert captured['chainId']=='0x7a69' and len(expected)==26 and len(captured['blocks'])==27
  alloc={a:{'balance':v['balance'],'nonce':'0x0'}for a,v in genesis['alloc'].items()};assert len(alloc)==3 and all(list(v)==['balance']for v in genesis['alloc'].values())
  initial=out/'genesis-alloc.json';dump(initial,alloc);prestate=initial;rows=[];peak=0;start=time.monotonic()
@@ -62,7 +79,7 @@ if __name__=='__main__':
   first=captured['blocks'][1];env=load(out/'block-01/env.json')
   for name,pre,chain in [('wrong_chain',initial,31338),('spent_nonce',out/'block-01/alloc.json',31337)]:
    lane,bad=execute(name,pre,env,first['rawTransactions'][0],chain);assert len(bad.get('rejected',[]))==1 and not bad['receipts'];controls.append(name)
-  report={'schema':'caw-geth-transition-comparison/1','blocks':26,'successes':sum(x['status']=='0x1'for x in rows),'reverts':sum(x['status']=='0x0'for x in rows),'finalStateRoot':rows[-1]['stateRoot'],'allIntermediateStateRootsMatched':True,'allTransactionAndReceiptRootsMatched':True,'nativeAccountsMatched':4,'controls':controls,'engine':'Geth evm 1.17.10-stable-1df30b18','comparisonEngine':'EthereumJS 10.1.3','scope':'Shanghai state transitions under supplied synthetic block contexts; not Geth header or consensus validation','originalAnvilChainRepaired':False,'pgpBinarySignatureVerified':False}
+  report={'schema':'caw-geth-transition-comparison/1','blocks':26,'successes':sum(x['status']=='0x1'for x in rows),'reverts':sum(x['status']=='0x0'for x in rows),'finalStateRoot':rows[-1]['stateRoot'],'allIntermediateStateRootsMatched':True,'allTransactionAndReceiptRootsMatched':True,'nativeAccountsMatched':4,'controls':controls,'engine':'Geth evm 1.17.10-stable-1df30b18','comparisonEngine':'EthereumJS 10.1.3','scope':'Shanghai state transitions under supplied synthetic block contexts; not Geth header or consensus validation','originalAnvilChainRepaired':False,'binarySignatureVerifiedByThisRunner':False,'inputSelection':'frozen fixture digests; not chain authentication','inputDigests':INPUT_DIGESTS}
   dump(out/'summary.json',report);print(json.dumps(report))
  finally:
   dump(out/'resource-receipt.json',{'peakRss':peak,'seconds':time.monotonic()-start})
