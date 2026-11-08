@@ -42,3 +42,15 @@ node --max-old-space-size=256 run-wallet-lifecycle.mjs /absolute/path/to/new-wal
 ```
 
 The fixture's configurable digest/signature hash is not a real wallet signer implementation. This is deployed local-EVM call execution, without direct storage injection, but not signed Ethereum transaction replay, public-chain acquisition, independent reproduction, EIP-7702 proof or full-suite certification. The next gate is signed capture and reconstruction for this exact wallet variant. README remains unchanged.
+
+## Signed wallet capture and history commitments
+
+The same fixture now executes as 29 signed legacy Ethereum transactions on a temporary loopback Anvil chain (31337, Shanghai), using synthetic funded genesis accounts. No impersonation, deployed-code injection or storage injection is used. The controller signs wallet-forwarding transactions; the contract's application-signature decision still uses the test fixture's configured digest/hash, not a real custody signer scheme. All local services were stopped after capture.
+
+The existing header/body/receipt/sender readers accept the 29-transaction capture. Nine negative controls reject missing or reordered blocks, changed raw bytes, missing transactions/receipts, changed receipt status, wrong chain and altered event bytes. The fixture-count assertion changed from 26 to 29; the underlying cryptographic readers did not change. Start/end hashes are selected from this local capture, not independently authenticated checkpoints. Genesis remains preserved; header-chain verification begins at block one because the existing Shanghai reader does not accept the extra genesis fields exposed by Anvil.
+
+The existing accounting model explicitly rejects this fixture with BOUNDED_HISTORY (29 versus 26). Its ordinary-account rules do not yet model the wallet deployment, configuration and forwarded calls. Final balances above are lifecycle assertions, **not independently reconstructed wallet accounting**. Do not remove the count guard and treat that as wallet support. Next: extend a separate bounded model for the exact wallet fixture, then compare storage proofs and transaction replay. No full-block replay or consensus/finality proof is claimed.
+
+The first boundary-test wrapper matched only the assertion label; Node also included the differing counts. That wrapper failed and was retained. Matching the label plus actual29/expected26 confirms the intended rejection without changing the accounting reader.
+
+Collector usage: `node run-signed-lifecycle.mjs /new/output http://127.0.0.1:PORT` against the same synthetic genesis/chain/fork setup; it requires ethers6.16.0 in addition to the pinned experiment dependencies. Then `node check-history.mjs /new/output/acquired-history.json /new/verified-history.json`. The complete raw capture remains local pending a reviewed publication package; this increment publishes collector code and scoped summaries only.
