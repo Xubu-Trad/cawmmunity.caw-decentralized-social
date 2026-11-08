@@ -89,3 +89,10 @@ budget. Do not silently change the existing format. Registration churn, root
 authentication, scalable exact-floor payouts, C-001/C-007 decisions and a complete
 independently reproduced action remain open. No full-suite rerun, production
 integration, public deployment or hosted CI occurred.
+
+## Compact representation follow-up
+
+[The separately labeled compact experiment](COMPACT_STAKE_PROOF_RESEARCH.md) preserves
+these roots while omitting default siblings. It lowers the sparse examples' combined
+cost metric but increases execution gas, runtime size and dense-proof cost. The
+original verifier and evidence remain unchanged; neither format is adopted.
