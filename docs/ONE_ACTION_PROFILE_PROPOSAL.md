@@ -116,6 +116,12 @@ identities before signing. The old three-stake `distributionHash()` is not an
 open-population encoding. A replacement needs a distinct signed profile; old
 signatures must not migrate implicitly.
 
+A subsequent [stake-commitment research kernel](STAKE_COMMITMENT_RESEARCH.md)
+tests a fixed-depth account/stake tree with bounded logical path updates. It is
+not integrated into the model's intent, an accepted signed encoding or a
+settlement algorithm; registration churn, root authentication and EVM costs
+remain explicit review gates.
+
 ## Acceptance cases — not executed by this proposal
 
 Each negative run changes one cause and retains before/after state. Comparisons

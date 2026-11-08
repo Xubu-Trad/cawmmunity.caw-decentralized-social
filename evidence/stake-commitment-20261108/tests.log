@@ -1,0 +1,13 @@
+test_each_sibling_hash_mutation_rejected (__main__.Commitment.test_each_sibling_hash_mutation_rejected) ... ok
+test_empty_zero_present_and_absent (__main__.Commitment.test_empty_zero_present_and_absent) ... ok
+test_independent_rebuild_across_updates (__main__.Commitment.test_independent_rebuild_across_updates) ... ok
+test_instrumented_operation_counts (__main__.Commitment.test_instrumented_operation_counts) ... ok
+test_order_restoration_and_stale_proof (__main__.Commitment.test_order_restoration_and_stale_proof) ... ok
+test_overflow_and_invalid_updates_are_atomic (__main__.Commitment.test_overflow_and_invalid_updates_are_atomic) ... ok
+test_single_field_negatives (__main__.Commitment.test_single_field_negatives) ... ok
+test_strict_proof_shapes (__main__.Commitment.test_strict_proof_shapes) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 1.210s
+
+OK
