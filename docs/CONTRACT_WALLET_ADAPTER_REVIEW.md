@@ -80,3 +80,8 @@ The tool uses the previously publisher-signature-verified local Geth binary; thi
 The local replay package contains four hashed inputs (575952 bytes). Its scanner initially flagged `e:/` inside the random bytes of captured block5's state-root hash. Inspection confirmed the exact 32-byte hash field; the second immutable package excludes that exact false positive only. The stopped first package is retained. No general path or credential scan was disabled.
 
 This increment publishes replay code, manifest and result summaries. Raw signed inputs remain local, so the manifest alone is not yet a downloadable reproduction package. Next: publish the reviewed inputs with complete runner dependencies/instructions, then extend wallet validation beyond this deliberately configurable test fixture. Real ERC-1271 signer behavior, EIP-7702 and production release remain unproven. README stays paused.
+
+
+## Downloadable reproduction package
+
+The four frozen synthetic inputs are now published in `evidence/c007-wallet-replay-20261108/`. Follow [wallet replay reproduction](WALLET_REPLAY_REPRODUCTION.md) for the no-RPC Geth comparison. Earlier statements that inputs remained local describe the prior increments. Real wallet signer testing remains pending.
