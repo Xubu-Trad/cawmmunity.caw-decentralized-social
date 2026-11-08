@@ -18,3 +18,13 @@ node --max-old-space-size=256 run-lifecycle.mjs /absolute/path/to/new-lifecycle-
 ```
 
 Recorded Node20.20.2, Solidity0.8.30, EthereumJS10.1.3 under Shanghai using pinned existing dependencies. No clean dependency installation or full repository suite is claimed. Next: signed transaction capture and model/replay support for this exact signer fixture. EIP-7702, arbitrary wallets, key recovery, quantum resistance, production readiness and independent review remain unproven. ECDSA validation is not a post-quantum defense. README updates remain paused.
+
+## Signed capture and accounting follow-up
+
+The exact signer fixture now has27signed legacy transactions on a temporary local Shanghai chain:21successes and6expected reverts. The two configurable-wallet setup transactions are absent. Local services stopped after capture. Sender/header/body/receipt readers pass with nine corruption controls. The application signature is recovered independently by the bounded accounting model against the fixture controller; there is no configured-digest acceptance path in this model.
+
+Full transaction execution matches outcomes, logs and gas9908964. Twenty-one storage values and four native account balances verify against reconstructed root `0x5b433f3bcc261ae030028f2d003f1433c34aec9284fa7d26c4d386728ecf4340`. Final accounting matches the capture. Five model controls reject wrong forwarding controller, unexpected target, noncanonical offset, truncated forwarding and a wrong application signer. Seven transaction/proof controls pass. Model mutation tests deliberately alter semantic inputs and do not represent valid signed histories.
+
+The arithmetic model skips receipt-failed transactions; VM execution separately checks those failures. The original Anvil root still differs from reconstructed execution and is rejected by the proof check. No full-block or second-engine result for this signer bytecode is claimed yet. Earlier configurable-wallet results cannot substitute for it. Raw signer inputs remain local; this increment publishes code and summaries. Next: separate frozen signer package, full-block replay and Geth comparison. README remains paused.
+
+The collector requires ethers6.16.0 in addition to the existing dependencies and the same loopback Anvil31337/Shanghai synthetic-genesis setup. The accounting/replay runner requires the constructor experiment's pinned VM dependencies. This increment used installed pinned dependencies; it does not claim a clean installation or independent external reproduction.
