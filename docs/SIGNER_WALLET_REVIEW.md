@@ -63,3 +63,18 @@ Final ownership returns to walletA at epoch2; account-one credit/stake remain998
 The first collector run stopped because it propagated an expected read-only RPC revert as an unhandled error. The second collector represents that revert as a rejected call, using its returned revert data; both contract sources are unchanged, and the failed first lane is retained. This correction does not manufacture a transaction or success receipt.
 
 Code is under `experiments/c007-wallet-transfer/`. Raw transfer inputs remain local. The previous27transaction reproduction package is unchanged and does not cover this sequence. Next: transfer-specific model corruption controls and fresh block/second-engine replay. The original Anvil-root mismatch, production NFT integration and external review remain unresolved. README stays paused.
+
+## Transfer-specific corruption controls and second-engine package
+
+The two-wallet model now rejects eight altered semantic inputs, including the wrong controller of walletB, a stale epoch on the return transfer and an attempt to return ownership through the wrong wallet. The reconstructed final state matches the capture. These are deliberately edited model inputs, not valid signed histories. Nine cryptographic history-corruption controls also pass.
+
+Fresh synthetic block replay and Geth comparison match all32transitions (23successes,9reverts), every state/transaction/receipt root and four final native balances. Seven block controls, six Geth controls and eight input-integrity checks pass. The final root is `0x6c2aad21af54a9c8ddadd543d099414d1eb7a85b0d116cb7ddb7d325ad302bd6`. The constructed chain uses31timestamp adjustments and synthetic genesis fee1142857142; it does not repair the original Anvil chain or prove consensus.
+
+Four frozen inputs totaling602665bytes are published under `evidence/c007-transfer-replay-20261108/`. No path/credential scan matches were found; all senders are the known disposable synthetic actors. Follow the pinned Linux Geth tool instructions in [wallet reproduction](WALLET_REPLAY_REPRODUCTION.md). From the checkout root:
+
+```sh
+python3 experiments/c007-wallet-transfer/check-replay-inputs.py experiments/c007-wallet-transfer/compare-geth-transition.py evidence/c007-transfer-replay-20261108 evidence/c007-transfer-replay-20261108/blocks.json /absolute/path/to/new-check-output
+python3 experiments/c007-wallet-transfer/compare-geth-transition.py evidence/c007-transfer-replay-20261108 evidence/c007-transfer-replay-20261108/blocks.json /absolute/path/to/evm /absolute/path/to/new-replay-output
+```
+
+This validates the frozen transfer experiment, not arbitrary wallet code or production NFT integration. The prior27transaction signer package remains unchanged. Only one paid post is executed in this sequence; the next useful gate is an actual paid post by the new contract-wallet owner, with funding and stale-intent rejection checked together. README stays paused.
