@@ -1,0 +1,57 @@
+{
+  "schema": "caw-settlement-callback/1",
+  "rows": [
+    {
+      "variant": "Baseline.sol",
+      "action": "deposit",
+      "nestedSettlementAccepted": true,
+      "outerCustodyPassed": true,
+      "ledgerAndBackingMatched": true,
+      "standaloneSettlementPassed": false,
+      "replayedIntentRejected": false,
+      "vaultSourceHash": "eb58ac82f5812413fde719e09fb5abe2218fa2269597309c7ae4a7eb086e9eaa",
+      "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+      "scope": "creation/call-level EVM with signed application intent, not signed Ethereum transactions",
+      "theftDemonstrated": false
+    },
+    {
+      "variant": "Baseline.sol",
+      "action": "withdraw",
+      "nestedSettlementAccepted": true,
+      "outerCustodyPassed": true,
+      "ledgerAndBackingMatched": true,
+      "standaloneSettlementPassed": false,
+      "replayedIntentRejected": false,
+      "vaultSourceHash": "eb58ac82f5812413fde719e09fb5abe2218fa2269597309c7ae4a7eb086e9eaa",
+      "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+      "scope": "creation/call-level EVM with signed application intent, not signed Ethereum transactions",
+      "theftDemonstrated": false
+    },
+    {
+      "variant": "DeployedCustodyStakeResearch.sol",
+      "action": "deposit",
+      "nestedSettlementAccepted": false,
+      "outerCustodyPassed": true,
+      "ledgerAndBackingMatched": true,
+      "standaloneSettlementPassed": true,
+      "replayedIntentRejected": true,
+      "vaultSourceHash": "e4149f2ddb09e5f83c999e20dc14180f8f7c254584f401e2249bead0c2e45cfa",
+      "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+      "scope": "creation/call-level EVM with signed application intent, not signed Ethereum transactions",
+      "theftDemonstrated": false
+    },
+    {
+      "variant": "DeployedCustodyStakeResearch.sol",
+      "action": "withdraw",
+      "nestedSettlementAccepted": false,
+      "outerCustodyPassed": true,
+      "ledgerAndBackingMatched": true,
+      "standaloneSettlementPassed": true,
+      "replayedIntentRejected": true,
+      "vaultSourceHash": "e4149f2ddb09e5f83c999e20dc14180f8f7c254584f401e2249bead0c2e45cfa",
+      "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+      "scope": "creation/call-level EVM with signed application intent, not signed Ethereum transactions",
+      "theftDemonstrated": false
+    }
+  ]
+}
