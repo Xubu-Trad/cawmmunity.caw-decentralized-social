@@ -21,3 +21,15 @@ node --max-old-space-size=256 run-lifecycle.mjs /absolute/path/to/new-output
 ```
 
 Recorded Node20.20.2/Solidity0.8.30/EthereumJS10.1.3, Shanghai, existing pinned dependencies. No clean-install, CVE audit, full-suite or production compatibility claim. Next: malformed token returns and failing balance queries, while preserving rollback evidence. README remains paused.
+
+## Malformed responses and failing balance queries
+
+A separate extended fixture now passes22failure cases and11recovery cycles, retaining the original10cases and adding12. Both deposit and withdrawal reject: empty transfer return data,31byte transfer return data, a32byte invalid boolean value2, a reverting balance query, a31byte balance response, and a balance query that starts reverting only after transfer changes token state.
+
+The fixture exposes raw balances separately so the test can inspect state even while balanceOf fails. Comparisons cover vault account state, raw token balances, allowance and a token mutation flag. Token return-data failures happen after attempted balance/allowance changes; all changes and the flag roll back. Failed operations emit no logs. Normal operation restored between cases allows all11deposit/withdraw cycles. Final user balance is1000units; vault balance/credit/liabilities are zero; allowance is900from an initial2000after11successful100unit deposits. Rejected deposits consume no allowance.
+
+The vault source is unchanged. This is local EVM call evidence with a separate fault token, not signed transaction or second-engine coverage of the faults. The raw-balance accessor is a test observation mechanism, not part of the production token interface. Production token compatibility remains unproven.
+
+An important consequence: successful token transfers that return no data are rejected by the current typed interface. These tests do not justify silently treating empty return data as success. Any optional-return adapter must be a separate reviewed change with exact supported-token behavior and balance invariants. Reverting or malformed balanceOf also blocks operations; rollback preserves credit but cannot restore availability. Dishonest but well-formed balance reporting and gas exhaustion remain untested here.
+
+Run the same lifecycle command in `experiments/c007-token-responses/` with a new output directory. Earlier failure fixtures and evidence remain unchanged. Next: bounded gas-exhaustion tests and the limitations of trusting external balance reports, without adding an administrator or migration bypass. README remains paused.
