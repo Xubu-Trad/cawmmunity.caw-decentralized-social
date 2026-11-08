@@ -1,0 +1,12 @@
+{
+  "packages": 32,
+  "negativeControls": [
+    "install_script",
+    "missing_integrity",
+    "other_registry",
+    "version_drift",
+    "direct_range",
+    "linked_package"
+  ],
+  "vulnerabilityAssessment": false
+}

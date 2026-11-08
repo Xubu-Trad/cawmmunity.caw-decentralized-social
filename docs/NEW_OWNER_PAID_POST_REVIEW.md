@@ -9,3 +9,8 @@ Final action nonce is2. Ownership returns to walletA at epoch2. Account1credit/s
 Both contract sources are unchanged. Earlier packages remain preserved. This sequence has not yet received its own full-block/Geth comparison or downloadable raw-input package. The original Anvil-root mismatch remains unresolved. EIP-7702, production NFT integration, wallet recovery and external review are not established.
 
 Code is in `experiments/c007-new-owner-post/`; local lifecycle uses its pinned Node dependencies and `node run-lifecycle.mjs /absolute/path/to/new-output`. Signed capture additionally needs ethers6.16.0 and the established loopback Anvil31337Shanghai setup. The replay uses constructor VM dependencies and acquired-history/compiler-output/genesis inputs. No clean install or full-suite result is claimed. Next: second-post-specific negative controls, then block/second-engine reproduction. README remains paused.
+
+
+## Additional controls and dependency review
+
+Eleven semantic negative controls now pass, including second-post previous-controller, stale-epoch and reused-nonce rejection. Nine history corruption checks also pass. See [third-party failure gates](THIRD_PARTY_FAILURE_GATES.md) for the scoped dependency inventory, six selection controls and inert source-comment homage. No clean-build/CVE or production guarantee is implied.
