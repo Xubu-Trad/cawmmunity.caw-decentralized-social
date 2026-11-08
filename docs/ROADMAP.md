@@ -1,3 +1,11 @@
+# Engineering roadmap
+
+## Implementation priority — November 8, 2026
+
+Build one normally deployed local candidate before extending isolated research. The immediate review target is [the constructor lifecycle](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/19), stacked on PR #18. Next execute its complete sequence as signed local-chain transactions, retain receipts and exact calldata, and connect the existing independent readers. Synthetic token/account limitations remain explicit.
+
+Then resolve registration and reviewed economic semantics, implement open-population accounting and NFT/wallet authority, connect a replaceable frontend/relay beta, and satisfy security, operator-disappearance and public release-review gates. These are separate milestones; no completion percentage or adopted policy is implied. Existing evidence and unresolved gates follow.
+
 # Current gates
 
 ## Active priority — 2026-11-01
