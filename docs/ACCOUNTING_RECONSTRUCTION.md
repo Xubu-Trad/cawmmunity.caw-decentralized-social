@@ -47,3 +47,8 @@ The model and checker are deliberately bounded to this 26-transaction experiment
 Matching the final local RPC snapshot is not a storage proof against the final header state root. Locally selected headers are still not an independently authenticated chain or finality proof. Failed receipts are trusted as already-checked committed status; their revert reasons are not independently executed by this model. The model does not emulate general uint256 execution, gas, native balances, arbitrary contracts or malicious token behavior. Signature recovery plus this synthetic ownership model does not establish real NFT authority.
 
 Next: bind final account/storage reads to the selected final header state root, including wallet token balances, then compare those proven values with the reconstruction. Independent acquisition and endpoint trust remain separate gates. NFT admission, original-token compatibility, open-population economics, real wallets and release review remain unfinished. No policy adoption or deployment approval is implied.
+
+
+## Final-state proof follow-up
+
+The [new proof diagnostic](FINAL_STATE_PROOF_DIAGNOSTIC.md) accepts 18 of 20 storage fields but rejects two present zero-valued leaves from the local capture. Complete state verification remains false; no reader rule was weakened.

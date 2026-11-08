@@ -12,7 +12,7 @@ import {Wallet, Transaction} from 'ethers';
 const out=process.argv[2];assert(out&&!fs.existsSync(out));fs.mkdirSync(out);
 const save=(n,v)=>fs.writeFileSync(`${out}/${n}`,JSON.stringify(v,(_,x)=>typeof x==='bigint'?x.toString():x,2)+'\n');
 const source=fs.readFileSync(new URL('./DeployedCustodyStakeResearch.sol',import.meta.url),'utf8');
-const input={language:'Solidity',sources:{'DeployedCustodyStakeResearch.sol':{content:source}},settings:{optimizer:{enabled:true,runs:200},evmVersion:'shanghai',outputSelection:{'*':{'*':['abi','evm.bytecode.object','evm.deployedBytecode.object','evm.methodIdentifiers']}}}};
+const input={language:'Solidity',sources:{'DeployedCustodyStakeResearch.sol':{content:source}},settings:{optimizer:{enabled:true,runs:200},evmVersion:'shanghai',outputSelection:{'*':{'*':['abi','evm.bytecode.object','evm.deployedBytecode.object','evm.methodIdentifiers','storageLayout','evm.deployedBytecode.immutableReferences']}}}};
 assert(solc.version().startsWith('0.8.30+'));save('compiler-input.json',input);
 const compiled=JSON.parse(solc.compile(JSON.stringify(input)));save('compiler-output.json',compiled);
 assert(!(compiled.errors??[]).some(x=>x.severity==='error'),JSON.stringify(compiled.errors));
@@ -115,5 +115,22 @@ for(let n=0;n<=tip;n++){
  for(const hash of block.transactions){rawTransactions.push(await rpc('eth_getRawTransactionByHash',[hash]));receipts.push(await rpc('eth_getTransactionReceipt',[hash]));}
  acquired.push({block,rawTransactions,receipts});
 }
+// Final-state proofs are bound to the captured tip, never an unqualified latest.
+const finalHeader=acquired.at(-1).block;
+const entries=[];
+for(const label of ['root','totalStake','liabilities','poolDust','credit1','credit2','credit3','stake1','stake2','stake3','owner1','owner2','owner3','epoch1','epoch2','epoch3']){
+ const x=contracts[cname].storageLayout.storage.find(x=>x.label===label);assert(x);entries.push({label,slot:'0x'+hex(W(x.slot)),offset:x.offset,bytes:Number(contracts[cname].storageLayout.types[x.type].numberOfBytes)});
+}
+const nonceSlot=contracts[cname].storageLayout.storage.find(x=>x.label==='postNonces').slot;
+entries.push({label:'nonce',slot:'0x'+hex(K(Buffer.concat([W(1),W(nonceSlot)]))),offset:0,bytes:32});
+const balanceSlot=contracts.MockTokenResearch.storageLayout.storage.find(x=>x.label==='balanceOf').slot;
+const balances=[A.toString(),B.toString(),vault.toString()].map(address=>({label:address,slot:'0x'+hex(K(Buffer.concat([W(BigInt(address)),W(balanceSlot)]))),offset:0,bytes:32}));
+const batches=[];
+for(const [address,items]of [[vault.toString(),entries],[token.toString(),balances]])for(let i=0;i<items.length;i+=16){
+ const fields=items.slice(i,i+16),proof=await rpc('eth_getProof',[address,fields.map(x=>x.slot),finalHeader.number]);
+ batches.push({address,fields,proof,code:await rpc('eth_getCode',[address,finalHeader.number])});
+}
+assert.equal((await rpc('eth_getBlockByNumber',[finalHeader.number,false])).hash,finalHeader.hash);
+save('final-proof-batches.json',{schema:'caw-synthetic-final-proofs/1',header:finalHeader,batches});
 save('acquired-history.json',{schema:'caw-local-signed-acquisition/1',chainId:await rpc('eth_chainId',[]),blocks:acquired});
 save('network-records.json',networkRecords); console.log('SIGNED_LOCAL_TRANSACTIONS='+networkRecords.length+' PASS');
