@@ -32,3 +32,8 @@ Create the input with the [final-proof capture instructions](FINAL_STATE_PROOF_D
 ## Decision and next step
 
 Keep the strict reader unchanged. The existing capture still has two rejected fields and `completeFinalStateProof=false`. Do not remove zero leaves and recompute a replacement root while claiming it belongs to the original signed header. Next independently execute the candidate lifecycle with canonical zero-storage handling, collect new proofs, and compare all reconstructed balances against that new execution's final root. Endpoint authentication, consensus/finality and production readiness remain separate gates.
+
+
+## Independent execution follow-up
+
+[Call-level lifecycle execution](INDEPENDENT_CALL_LIFECYCLE.md) now matches all 26 outcomes/logs and verifies all 20 final fields under its separate local state root. This does not repair the original Anvil header or establish full transaction equivalence.
