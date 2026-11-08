@@ -1,0 +1,44 @@
+{
+  "parent": "180b981dc842072f2b2d50f52524b6f8fab82b6d",
+  "sourceCommit": "bc5c1a7fb2a8871aaffd4b16ee4dd9c72bb81908",
+  "rawCompressedSha256": "a29c6994d97f8d9fb621f15cf4e5457d216c6a279d664127dc99616867726e17",
+  "transform": "bounded minimal update extraction and supplied-committee equation",
+  "files": {
+    "evidence/consensus-signature-20261108/case.json": {
+      "sha256": "06cafc95f8b8520a861ea6897cfc0264255cb22a5b219ce094a8d5c267278d3d",
+      "size": 4747
+    },
+    "evidence/consensus-signature-20261108/result.json": {
+      "sha256": "8018e60150ec8e112b60e2c46f883099d2f4ecd9a0722c2331599b3527e0ff0c",
+      "size": 875
+    },
+    "evidence/consensus-signature-20261108/config.yaml": {
+      "sha256": "4a8e4e5d0fd4961b87ea5d1ff8ce3a28240ab6e2184eea754acccf50131f4a1a",
+      "size": 1533
+    },
+    "evidence/consensus-signature-20261108/meta.yaml": {
+      "sha256": "bcff01d2477f557370c2013028934f90e1b0ae8bcd2f4833adcbb509119dbc29",
+      "size": 251
+    },
+    "evidence/consensus-signature-20261108/steps.yaml": {
+      "sha256": "712c2b0d9743db6bd18d60c0ea3afacbbc52af382c9f67b1de638ebb92835588",
+      "size": 3165
+    },
+    "evidence/consensus-signature-20261108/update.ssz_snappy.hex": {
+      "sha256": "59eeffbb012cd4507e51b2da668ddb6c49e4858baccc89e0f9e4aaf93aaa3257",
+      "size": 6039
+    },
+    "evidence/consensus-signature-20261108/LICENSE": {
+      "sha256": "feb87a2e0c305de3464cc44077da5393c52d8ca6362d37427157d04ec6f4510d",
+      "size": 1057
+    },
+    "experiments/bls-g1/check-consensus-signature.mjs": {
+      "sha256": "c4f2e95a6199e46b3bf356b37bfe3c97c9d9295ceca850893e194c677e9f80d6",
+      "size": 1403
+    },
+    "docs/CONSENSUS_SIGNATURE_CASE.md": {
+      "sha256": "b1521c2ffe1d92aa76abf52ac211d8fc20bd4b12d534d335ac86a8f7e4578978",
+      "size": 3614
+    }
+  }
+}

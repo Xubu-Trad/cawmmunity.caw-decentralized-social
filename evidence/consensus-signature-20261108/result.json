@@ -1,0 +1,28 @@
+{
+  "officialFixtureEquationVerified": true,
+  "context": {
+    "schema": "caw-signing-context-research/1",
+    "forkDataRoot": "0x856842be987cb7f12d34e84282045bdf06fb0c6a88889e41b889ca90dd583c92",
+    "domain": "0x07000000856842be987cb7f12d34e84282045bdf06fb0c6a88889e41b889ca90",
+    "signingRoot": "0x00523ff78738757a35831bebf0620aa2f9f7a6ceb8938d9466c7ac3a2fb94f1b",
+    "objectRootDerived": false,
+    "networkAuthenticated": false,
+    "forkScheduleVerified": false,
+    "signatureVerified": false,
+    "participantSetAuthenticated": false,
+    "updatesAccepted": false,
+    "productionAccepted": false
+  },
+  "participants": 32,
+  "negativeControls": [
+    "domain",
+    "fork",
+    "genesis",
+    "message",
+    "missing participant"
+  ],
+  "committeeAuthenticated": false,
+  "fullUpdateValidated": false,
+  "finalityVerified": false,
+  "productionAccepted": false
+}
