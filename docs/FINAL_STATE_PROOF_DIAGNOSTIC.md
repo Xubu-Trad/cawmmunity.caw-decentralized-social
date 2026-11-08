@@ -32,3 +32,8 @@ The retained [diagnostic summary](../evidence/c007-final-proof-diagnostic-202611
 ## Next gate
 
 Resolve zero-storage proof representation using an independently checked execution-client/reference fixture, preserve both outcomes, and retain fail-closed behavior until the evidence supports a change. Then require all final storage values, including wallet A's zero balance, to verify. Independent endpoint selection, consensus/finality, general execution replay, real NFT/token admission and release review remain separate gates.
+
+
+## Independent-reference follow-up
+
+[The independent comparison](ZERO_STORAGE_REFERENCE_COMPARISON.md) confirms the two included-zero leaves and demonstrates accepted zero-absence proofs from a separate state manager. The original capture remains incomplete. The strict reader is unchanged.

@@ -1,0 +1,29 @@
+{
+  "parent": "1d04f86a901af863728d475624c5a971c848f782",
+  "transform": "independent trie comparison and state-manager zero controls",
+  "sources": {
+    "geth-state-object.go": "6c9d2ee26498ce08f91cfebfd62a6e9cfa7b2834c0891941ea2813a7b70f0f65",
+    "anvil-state.rs": "316b7797d0ea1296754a0de1d9d0856492320e20e3cb07187606f2ed65bda537",
+    "anvil-mem.rs": "42616ab7fcdb8ce5ee1ec64782df6917ecf0212c04821668175f2a27665fd86f",
+    "reference-inventory.json": "2b26063304d2c5bf12dc7523340b7b077dff2add4c61b7554b5019afa32bfd4c"
+  },
+  "files": {
+    "experiments/c007-constructor/compare-zero-proofs.mjs": {
+      "sha256": "68b70249b2b50e07a3eec1cae4a99c24d30a84fd3d5b0f9dfffab6686c346d28",
+      "size": 4781
+    },
+    "evidence/c007-zero-reference-20261108/result.json": {
+      "sha256": "07585b909379d9dea7c576e5c089f0afe4170b11d213dfa38914065f0250221b",
+      "size": 6906
+    },
+    "docs/ZERO_STORAGE_REFERENCE_COMPARISON.md": {
+      "sha256": "312348f412edc1c75f0c09b14d29e9a3023f6a9c766fdcfd90b8674c8ef932c4",
+      "size": 4138
+    },
+    "docs/FINAL_STATE_PROOF_DIAGNOSTIC.md": {
+      "sha256": "1df32a54e6d2009bbd807ebf76041dd6be39988ad5d6912f9751809ab2fefb56",
+      "size": 3943
+    }
+  },
+  "originalCaptureRepaired": false
+}
