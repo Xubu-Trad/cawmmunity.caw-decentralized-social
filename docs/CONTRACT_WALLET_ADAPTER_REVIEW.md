@@ -10,7 +10,7 @@ Sixteen deployed local-EVM validation cases pass: valid wallet, rejecting direct
 
 The configurable wallet fixture compares the expected digest and signature hash; it is not a deployable custody wallet or a demonstration of a real wallet's signer scheme. Its large-return case returns 8192 bytes, while the caller copies one word. Validation failure does not fall back to EOA recovery.
 
-The unchanged ordinary-account constructor/lifecycle harness also passes with the new dispatcher. That covers existing EOA settlement and normal operations. **A complete contract-owned deposit/stake/post/withdraw lifecycle has not yet been executed.** Neither the earlier signed/two-engine fixture nor this call-level result proves EIP-7702 authorization handling, NFT admission or general wallet compatibility.
+The unchanged ordinary-account constructor/lifecycle harness also passes with the new dispatcher. That covers existing EOA settlement and normal operations. A subsequent contract-owned deposit/stake/post/withdraw call-level lifecycle now passes, including rejected-validation rollback and ownership transfer; see below. Neither the earlier signed/two-engine fixture nor this call-level result proves EIP-7702 authorization handling, NFT admission or general wallet compatibility.
 
 The first wallet harness run mistakenly used the dispatcher when testing the explicit EOA entry point, producing the wrong expected error. The failed lane is preserved; correcting the test target produced the passing run. No contract change was made to accommodate that test mistake. No full repository suite, clean dependency installation or signed transaction run is claimed for this increment.
 
@@ -28,3 +28,17 @@ Recorded Node20.20.2/Solidity0.8.30/EthereumJS10.1.3, Shanghai. Existing resourc
 ## Next gate
 
 Execute a complete contract-owned lifecycle through the wallet, then verify failure rollback and ownership-transfer behavior before signed capture. Review gas/signature/return-profile choices explicitly; do not claim standard-wide support. EIP-7702 needs its own fork-aware execution lane. The existing Issue #6 outside packet and evidence must be reused rather than replaced by this narrower test.
+
+## Contract-owned lifecycle follow-up
+
+The unchanged adapter source was exercised through a separate test wallet whose controller can forward calls and configure validation. Constructor creation, token approval/deposit, staking, wallet-authorized posting, unstaking, withdrawal and account transfer all execute. The test checks the exact fee split and rounding dust, backing versus liabilities, stake versus credits, nonce advancement and final balances.
+
+Negative cases reject wallet validation, replay, a direct withdrawal by the wallet controller, an unauthorized forwarding caller, old-wallet access after transfer and an old-epoch intent. Each failed action leaves the observed account state unchanged and emits no logs. After transfer, the new ordinary owner passes EOA signature validation, unstakes and withdraws. A second paid action by that owner is not claimed.
+
+Final account-one credit and stake are each 998 tokens; the previous wallet and new owner each received one token through withdrawal. This uses the mock token's 18-decimal units. Other accounts retain the checked fee rewards; one base unit remains rounding dust.
+
+```sh
+node --max-old-space-size=256 run-wallet-lifecycle.mjs /absolute/path/to/new-wallet-lifecycle-output
+```
+
+The fixture's configurable digest/signature hash is not a real wallet signer implementation. This is deployed local-EVM call execution, without direct storage injection, but not signed Ethereum transaction replay, public-chain acquisition, independent reproduction, EIP-7702 proof or full-suite certification. The next gate is signed capture and reconstruction for this exact wallet variant. README remains unchanged.
