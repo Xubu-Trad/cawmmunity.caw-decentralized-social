@@ -1,0 +1,224 @@
+{
+  "schema": "caw-stake-proof-evm/1",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "node": "v24.22.1",
+  "hardfork": "Shanghai",
+  "runtimeBytes": 1325,
+  "runtimeSha256": "248dc4daca7b9e74c3227855de9a15b472507cd70ba26dba6ff5a42891e301f1",
+  "cases": [
+    {
+      "label": "positive_0",
+      "expected": "true",
+      "exception": null,
+      "returnHex": "0000000000000000000000000000000000000000000000000000000000000001",
+      "executionGas": "356051",
+      "calldataBytes": 16580,
+      "shanghaiIntrinsicGas": "185948"
+    },
+    {
+      "label": "positive_1",
+      "expected": "true",
+      "exception": null,
+      "returnHex": "0000000000000000000000000000000000000000000000000000000000000001",
+      "executionGas": "356062",
+      "calldataBytes": 16580,
+      "shanghaiIntrinsicGas": "185960"
+    },
+    {
+      "label": "positive_2",
+      "expected": "true",
+      "exception": null,
+      "returnHex": "0000000000000000000000000000000000000000000000000000000000000001",
+      "executionGas": "356062",
+      "calldataBytes": 16580,
+      "shanghaiIntrinsicGas": "185984"
+    },
+    {
+      "label": "positive_3",
+      "expected": "true",
+      "exception": null,
+      "returnHex": "0000000000000000000000000000000000000000000000000000000000000001",
+      "executionGas": "358867",
+      "calldataBytes": 16580,
+      "shanghaiIntrinsicGas": "186332"
+    },
+    {
+      "label": "positive_4",
+      "expected": "true",
+      "exception": null,
+      "returnHex": "0000000000000000000000000000000000000000000000000000000000000001",
+      "executionGas": "355624",
+      "calldataBytes": 16580,
+      "shanghaiIntrinsicGas": "185936"
+    },
+    {
+      "label": "namespace",
+      "expected": "ROOT",
+      "exception": "revert",
+      "returnHex": "08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000004524f4f5400000000000000000000000000000000000000000000000000000000",
+      "executionGas": "356093",
+      "calldataBytes": 16580,
+      "shanghaiIntrinsicGas": "185960"
+    },
+    {
+      "label": "root",
+      "expected": "ROOT",
+      "exception": "revert",
+      "returnHex": "08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000004524f4f5400000000000000000000000000000000000000000000000000000000",
+      "executionGas": "356093",
+      "calldataBytes": 16580,
+      "shanghaiIntrinsicGas": "185960"
+    },
+    {
+      "label": "account",
+      "expected": "ROOT",
+      "exception": "revert",
+      "returnHex": "08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000004524f4f5400000000000000000000000000000000000000000000000000000000",
+      "executionGas": "356082",
+      "calldataBytes": 16580,
+      "shanghaiIntrinsicGas": "185948"
+    },
+    {
+      "label": "total",
+      "expected": "TOTAL",
+      "exception": "revert",
+      "returnHex": "08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000005544f54414c000000000000000000000000000000000000000000000000000000",
+      "executionGas": "355092",
+      "calldataBytes": 16580,
+      "shanghaiIntrinsicGas": "185960"
+    },
+    {
+      "label": "stake",
+      "expected": "TOTAL",
+      "exception": "revert",
+      "returnHex": "08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000005544f54414c000000000000000000000000000000000000000000000000000000",
+      "executionGas": "355092",
+      "calldataBytes": 16580,
+      "shanghaiIntrinsicGas": "185960"
+    },
+    {
+      "label": "presence",
+      "expected": "ABSENT_STAKE",
+      "exception": "revert",
+      "returnHex": "08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000c414253454e545f5354414b450000000000000000000000000000000000000000",
+      "executionGas": "541",
+      "calldataBytes": 16580,
+      "shanghaiIntrinsicGas": "185948"
+    },
+    {
+      "label": "invalid_bool",
+      "expected": "abi",
+      "exception": "revert",
+      "returnHex": "",
+      "executionGas": "289",
+      "calldataBytes": 16580,
+      "shanghaiIntrinsicGas": "185960"
+    },
+    {
+      "label": "sibling_hash_0",
+      "expected": "ROOT",
+      "exception": "revert",
+      "returnHex": "08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000004524f4f5400000000000000000000000000000000000000000000000000000000",
+      "executionGas": "356093",
+      "calldataBytes": 16580,
+      "shanghaiIntrinsicGas": "185960"
+    },
+    {
+      "label": "sibling_hash_1",
+      "expected": "ROOT",
+      "exception": "revert",
+      "returnHex": "08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000004524f4f5400000000000000000000000000000000000000000000000000000000",
+      "executionGas": "356093",
+      "calldataBytes": 16580,
+      "shanghaiIntrinsicGas": "185960"
+    },
+    {
+      "label": "sibling_hash_31",
+      "expected": "ROOT",
+      "exception": "revert",
+      "returnHex": "08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000004524f4f5400000000000000000000000000000000000000000000000000000000",
+      "executionGas": "356093",
+      "calldataBytes": 16580,
+      "shanghaiIntrinsicGas": "185960"
+    },
+    {
+      "label": "sibling_hash_63",
+      "expected": "ROOT",
+      "exception": "revert",
+      "returnHex": "08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000004524f4f5400000000000000000000000000000000000000000000000000000000",
+      "executionGas": "356093",
+      "calldataBytes": 16580,
+      "shanghaiIntrinsicGas": "185960"
+    },
+    {
+      "label": "sibling_hash_127",
+      "expected": "ROOT",
+      "exception": "revert",
+      "returnHex": "08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000004524f4f5400000000000000000000000000000000000000000000000000000000",
+      "executionGas": "356093",
+      "calldataBytes": 16580,
+      "shanghaiIntrinsicGas": "185960"
+    },
+    {
+      "label": "sibling_hash_191",
+      "expected": "ROOT",
+      "exception": "revert",
+      "returnHex": "08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000004524f4f5400000000000000000000000000000000000000000000000000000000",
+      "executionGas": "356093",
+      "calldataBytes": 16580,
+      "shanghaiIntrinsicGas": "185960"
+    },
+    {
+      "label": "sibling_hash_254",
+      "expected": "ROOT",
+      "exception": "revert",
+      "returnHex": "08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000004524f4f5400000000000000000000000000000000000000000000000000000000",
+      "executionGas": "356093",
+      "calldataBytes": 16580,
+      "shanghaiIntrinsicGas": "185960"
+    },
+    {
+      "label": "sibling_hash_255",
+      "expected": "ROOT",
+      "exception": "revert",
+      "returnHex": "08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000004524f4f5400000000000000000000000000000000000000000000000000000000",
+      "executionGas": "356093",
+      "calldataBytes": 16580,
+      "shanghaiIntrinsicGas": "185960"
+    },
+    {
+      "label": "sibling_sum",
+      "expected": "TOTAL",
+      "exception": "revert",
+      "returnHex": "08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000005544f54414c000000000000000000000000000000000000000000000000000000",
+      "executionGas": "355092",
+      "calldataBytes": 16580,
+      "shanghaiIntrinsicGas": "185972"
+    },
+    {
+      "label": "overflow",
+      "expected": "overflow",
+      "exception": "revert",
+      "returnHex": "4e487b710000000000000000000000000000000000000000000000000000000000000011",
+      "executionGas": "5132",
+      "calldataBytes": 16580,
+      "shanghaiIntrinsicGas": "186344"
+    },
+    {
+      "label": "truncated_proof",
+      "expected": "abi",
+      "exception": "revert",
+      "returnHex": "",
+      "executionGas": "169",
+      "calldataBytes": 16548,
+      "shanghaiIntrinsicGas": "185820"
+    }
+  ],
+  "passed": 23,
+  "transactionExecution": false,
+  "contractDeployment": false,
+  "rootAuthenticated": false,
+  "settlementImplemented": false,
+  "fullSuiteRerun": false,
+  "productionAccepted": false
+}

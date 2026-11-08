@@ -130,3 +130,9 @@ Original code/documentation use the repository MIT license. The
 [provenance inventory](../evidence/stake-commitment-20261108/provenance.json) records
 source parents, transforms and byte identities. No settlement implementation,
 economic acceptance, authenticated network or production-readiness claim follows.
+
+## Solidity follow-up — 2026-11-08
+
+[The isolated proof verifier](STAKE_PROOF_EVM_RESEARCH.md) now has 23 passing local
+bytecode calls and measured Shanghai execution gas. This follow-up measures proof
+checking only; tree updates, authenticated roots and settlement remain unimplemented.

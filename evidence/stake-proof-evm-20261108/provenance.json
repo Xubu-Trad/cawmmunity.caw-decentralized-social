@@ -1,0 +1,113 @@
+{
+  "schema": "caw-artifact-provenance/1",
+  "artifacts": [
+    {
+      "PATH": "docs/STAKE_COMMITMENT_RESEARCH.md",
+      "SIZE": 8076,
+      "SHA256": "5c337212562db8447da66af6c4ec9916fe910994cd5976f8f47599d6b59e2193",
+      "PARENTS": [
+        "341dbc5921fa76d944259f337e96eb49df1632be"
+      ],
+      "TRANSFORM": "authored research source/documentation or recorded dependency/runtime identity"
+    },
+    {
+      "PATH": "docs/STAKE_PROOF_EVM_RESEARCH.md",
+      "SIZE": 5353,
+      "SHA256": "d483c45c3cf45b12f3444e56ab5e17bfebbb9732647e6c48b59870f6e32a054a",
+      "PARENTS": [
+        "341dbc5921fa76d944259f337e96eb49df1632be"
+      ],
+      "TRANSFORM": "authored research source/documentation or recorded dependency/runtime identity"
+    },
+    {
+      "PATH": "evidence/stake-proof-evm-20261108/compiler-input.json",
+      "SIZE": 1874,
+      "SHA256": "528f62c08e3e8dd1d68f20751567eeb04e3df563213e3a98b081d4234133bedd",
+      "PARENTS": [
+        "341dbc5921fa76d944259f337e96eb49df1632be"
+      ],
+      "TRANSFORM": "authored research source/documentation or recorded dependency/runtime identity"
+    },
+    {
+      "PATH": "evidence/stake-proof-evm-20261108/compiler-output.json",
+      "SIZE": 4853,
+      "SHA256": "cfa8bf393835a3e7742ce48beafe7d4dc6ab254b34b759217ddf9f79462800d4",
+      "PARENTS": [
+        "341dbc5921fa76d944259f337e96eb49df1632be"
+      ],
+      "TRANSFORM": "solc.compile standard JSON in run.mjs"
+    },
+    {
+      "PATH": "evidence/stake-proof-evm-20261108/results.json",
+      "SIZE": 8958,
+      "SHA256": "31dfbac90389d400f104b942ff8967520521d369ca4b9c52d36c5f7af30842d7",
+      "PARENTS": [
+        "341dbc5921fa76d944259f337e96eb49df1632be"
+      ],
+      "TRANSFORM": "run.mjs isolated EVM execution"
+    },
+    {
+      "PATH": "evidence/stake-proof-evm-20261108/runtime.json",
+      "SIZE": 8540,
+      "SHA256": "c0011ec8e90237ae1b7ef72129fcdb7cc995bf73070719e542274c705fa20b32",
+      "PARENTS": [
+        "341dbc5921fa76d944259f337e96eb49df1632be"
+      ],
+      "TRANSFORM": "authored research source/documentation or recorded dependency/runtime identity"
+    },
+    {
+      "PATH": "evidence/stake-proof-evm-20261108/vectors.json",
+      "SIZE": 197463,
+      "SHA256": "f1689520cc8d3c029a72cd3d73bf74e99ba63e86ad1de03f59033f8c5c352603",
+      "PARENTS": [
+        "341dbc5921fa76d944259f337e96eb49df1632be"
+      ],
+      "TRANSFORM": "vectors.py retained Python kernel"
+    },
+    {
+      "PATH": "experiments/stake-commitment-evm/StakeProofResearch.sol",
+      "SIZE": 1438,
+      "SHA256": "d4ea3c1269f6817510c5bb5568514cf619c04aab767de9367532fd491fb86c74",
+      "PARENTS": [
+        "341dbc5921fa76d944259f337e96eb49df1632be"
+      ],
+      "TRANSFORM": "authored research source/documentation or recorded dependency/runtime identity"
+    },
+    {
+      "PATH": "experiments/stake-commitment-evm/package-lock.json",
+      "SIZE": 10306,
+      "SHA256": "075099ec10674e1af3a00dbec5232321dede046d4f84d846d1419135ef8a8c9c",
+      "PARENTS": [
+        "341dbc5921fa76d944259f337e96eb49df1632be"
+      ],
+      "TRANSFORM": "authored research source/documentation or recorded dependency/runtime identity"
+    },
+    {
+      "PATH": "experiments/stake-commitment-evm/package.json",
+      "SIZE": 191,
+      "SHA256": "41819c975ded66c0d9eb6e2e7fc405f38c58a59a2fd2b09b1feb871de295faab",
+      "PARENTS": [
+        "341dbc5921fa76d944259f337e96eb49df1632be"
+      ],
+      "TRANSFORM": "authored research source/documentation or recorded dependency/runtime identity"
+    },
+    {
+      "PATH": "experiments/stake-commitment-evm/run.mjs",
+      "SIZE": 4400,
+      "SHA256": "d24ec0ee48860e48ecc048b32cd105c8fe8d4cd0b1aa837332c3017375708deb",
+      "PARENTS": [
+        "341dbc5921fa76d944259f337e96eb49df1632be"
+      ],
+      "TRANSFORM": "authored research source/documentation or recorded dependency/runtime identity"
+    },
+    {
+      "PATH": "experiments/stake-commitment-evm/vectors.py",
+      "SIZE": 994,
+      "SHA256": "7c0e914c3acca8fad2b431e8b61e9139265da69c567b5c57480f1c404c132dd3",
+      "PARENTS": [
+        "341dbc5921fa76d944259f337e96eb49df1632be"
+      ],
+      "TRANSFORM": "authored research source/documentation or recorded dependency/runtime identity"
+    }
+  ]
+}
