@@ -1,0 +1,32 @@
+{
+  "parent": "e5f4cb217cdb1a5616d2cb386867f590c480bde9",
+  "transform": "bounded semantic reconstruction of existing approved synthetic history",
+  "files": {
+    "experiments/c007-constructor/reconstruct-accounting.mjs": {
+      "sha256": "41bb2bc52d6a56ccd5cb1d6eb6eeb4c5fa84e41cd823d3300e149a421b350012",
+      "size": 10066
+    },
+    "experiments/c007-constructor/check-accounting.mjs": {
+      "sha256": "39dca0331446a3992c9646eb851401fd39d33cd92af5e90dfdf7ffabc18a02ff",
+      "size": 4367
+    },
+    "evidence/c007-accounting-20261108/expected-final.json": {
+      "sha256": "64f5c0af9b3dc6564c01c75a4a8b2926a90275a8abde82da5f6cb979e1f8aa35",
+      "size": 717
+    },
+    "evidence/c007-accounting-20261108/result.json": {
+      "sha256": "f773b0902e6e9bc9170d776ea300f65876961c877a16731a781a1bd10e3bb14f",
+      "size": 2209
+    },
+    "docs/ACCOUNTING_RECONSTRUCTION.md": {
+      "sha256": "6af1e9dca0038fa5dfdc02807b8bfe357704c5c66b119e4ef119eeea611451a2",
+      "size": 5157
+    },
+    "docs/SIGNED_HISTORY_RECONSTRUCTION.md": {
+      "sha256": "ab20c9b6646c5b860f575b5999890ba960133aa7b77a30e5014601adea2ab782",
+      "size": 3543
+    }
+  },
+  "finalSnapshotAuthenticated": false,
+  "evmExecutionReplayed": false
+}

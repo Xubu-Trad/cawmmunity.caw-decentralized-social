@@ -1,0 +1,55 @@
+{
+  "schema": "caw-synthetic-accounting-reconstruction/1",
+  "final": {
+    "root": "49339624040759059576801710786735020818051890267515921943269532534487398936908",
+    "totalStake": "1011000000000000000000",
+    "liabilities": "1020000000000000000000",
+    "poolDust": "1",
+    "nonce": "1",
+    "balance": "1020000000000000000001",
+    "credit1": "1000000000000000000000",
+    "stake1": "1000000000000000000000",
+    "owner1": "721457446580647751014191829380889690493307935711",
+    "epoch1": "2",
+    "credit2": "10000000000000000000",
+    "stake2": "3000000000000000000",
+    "owner2": "247512291986854564435551364600938690683113101007",
+    "epoch2": "1",
+    "credit3": "10000000000000000000",
+    "stake3": "8000000000000000000",
+    "owner3": "247512291986854564435551364600938690683113101007",
+    "epoch3": "0"
+  },
+  "token": "0x82c839fa4a41e158f613ec8a1a84be3c816d370f",
+  "vault": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+  "wallets": {
+    "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf": "0",
+    "0x2b5ad5c4795c026514f8317c7a215e218dccd6cf": "4999999999999999999999",
+    "0xbff9228b938b3676578a88b5962abbd2709c9c46": "1020000000000000000001"
+  },
+  "allowances": {
+    "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf:0xbff9228b938b3676578a88b5962abbd2709c9c46": "0",
+    "0x2b5ad5c4795c026514f8317c7a215e218dccd6cf:0xbff9228b938b3676578a88b5962abbd2709c9c46": "0"
+  },
+  "failedTransactionsSkipped": 8,
+  "matchedSnapshotFields": 18,
+  "negativeControls": [
+    "reordered_ownership_history",
+    "apply_failed_withdrawal",
+    "omit_successful_withdrawal_effect",
+    "wrong_successful_withdrawal_sender",
+    "alter_fee_event_allocation",
+    "alter_stake_proof",
+    "unknown_successful_target",
+    "reverted_transaction_with_log",
+    "constructor_code_mismatch",
+    "one_unit_final_balance_mismatch"
+  ],
+  "source": "verified transaction inputs and receipt status/logs; constructor bytes from pinned compiler output",
+  "finalSnapshotAuthenticated": false,
+  "evmExecutionReplayed": false,
+  "nativeGasBalancesReconstructed": false,
+  "tokenWalletBalancesCompared": false,
+  "transactions": 26,
+  "modelStepsSha256": "9b766b1ce7605a30f0d86b2f9f55e4ff95682fe38447668e6cc7a5bcad0c1aa3"
+}
