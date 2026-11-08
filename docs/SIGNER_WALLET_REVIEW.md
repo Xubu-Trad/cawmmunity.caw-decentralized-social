@@ -53,3 +53,13 @@ Transferring the account back to walletA advances epoch to2. The exact original 
 The vault and signer-wallet contract sources are unchanged. Run `node run-wallet-transfer.mjs /absolute/path/to/new-output` from the signer experiment using its pinned dependencies. This increment executes local EVM calls, not a signed transaction capture or second-engine replay of the round trip. Existing27transaction evidence covers the earlier lifecycle only. Signature validation after transfer is not a second paid-action execution. The current-root checks isolate epoch rejection around the final transfer; an additional check retains the exact older pre-transfer signature.
 
 Next: capture and reconstruct this transfer sequence, including both wallet controllers and monotonic epochs. Account transfer remains a research account operation, not proof of production NFT admission/transfer integration. No recovery administrator or special key was added. README stays paused.
+
+## Signed wallet-to-wallet round trip
+
+A separate capture executes32signed transactions:23successes and9expected reverts. The model now maps both exact deployed wallet instances to their immutable controllers, rather than assuming one contract wallet. Replay matches every receipt outcome, log and gas charge (10396198gas). Twenty-two storage values and four native balances verify against reconstructed root `0x6c2aad21af54a9c8ddadd543d099414d1eb7a85b0d116cb7ddb7d325ad302bd6`. Seven existing replay/proof controls pass.
+
+Final ownership returns to walletA at epoch2; account-one credit/stake remain998tokens and each wallet holds1withdrawn token. The source contracts remain unchanged. Read-only validation checks are not included in the32signed-transaction count. There is still only one paid post; acceptance of a later signature does not claim a second settlement.
+
+The first collector run stopped because it propagated an expected read-only RPC revert as an unhandled error. The second collector represents that revert as a rejected call, using its returned revert data; both contract sources are unchanged, and the failed first lane is retained. This correction does not manufacture a transaction or success receipt.
+
+Code is under `experiments/c007-wallet-transfer/`. Raw transfer inputs remain local. The previous27transaction reproduction package is unchanged and does not cover this sequence. Next: transfer-specific model corruption controls and fresh block/second-engine replay. The original Anvil-root mismatch, production NFT integration and external review remain unresolved. README stays paused.
