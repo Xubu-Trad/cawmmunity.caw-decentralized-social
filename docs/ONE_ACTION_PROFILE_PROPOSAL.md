@@ -1,7 +1,7 @@
 # One-action profile proposal: account entitlements
 
 Prepared 2026-11-08 against `832e3eb88ca75694a55da0478c9106046b41ba56`.
-Status: **IDEA / PROPOSED, NOT FROZEN OR IMPLEMENTED**. Review identifier:
+Status: **IDEA / PROPOSED, NOT FROZEN OR IMPLEMENTED IN A CONTRACT**. Review identifier:
 `draft-account-entitlements-1`. This is a review label, not a deployed or signed
 protocol identifier. It extends [candidate terms](CANDIDATE_TERMS_REVIEW.md) and
 work package 2 of the [public-action milestone](PUBLIC_ACTION_MILESTONE.md).
@@ -165,6 +165,9 @@ failures and compare payouts to this oracle. A14 then tests builder absence;
 public acquisition and authenticated history still require later milestone
 evidence. Hosted CI remains deferred. No case above is claimed to have passed.
 
-This document adds no test passes, EVM transactions, accepted economics or release
-claim. The next review question is which proposed term or scaling requirement
-must change before this candidate can be implemented faithfully.
+The initial document added no test passes. A subsequent [executable transition
+oracle](ONE_ACTION_MODEL.md) now exercises a limited model subset of these cases;
+it does not satisfy their contract, signature or independent-reader requirements.
+No EVM transactions, accepted economics or release claim follow. The next review
+question is which proposed term or scaling requirement must change before a
+contract candidate can implement it faithfully.

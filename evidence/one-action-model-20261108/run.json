@@ -1,0 +1,27 @@
+{
+  "schema": "caw-one-action-model-run/1",
+  "parentCommit": "4bbd69bad5cd6abc51fc5b9efff23336e88a5fc0",
+  "runtime": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "pythonSha256": "fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7",
+  "command": "python3 -I -B tests/test_one_action_model.py",
+  "resourceGuards": {
+    "diskMinimumBytes": 2147483648,
+    "memoryAvailableMinimumBytes": 1073741824,
+    "addressSpaceBytes": 536870912,
+    "cpuSeconds": 15,
+    "timeoutSeconds": 30
+  },
+  "focusedTests": 10,
+  "exitCode": 0,
+  "sourceHashes": {
+    "experiments/paid-action/one_action_model.py": "ce8b0594a785a088fc4cd8a31e9d38c09253ff3c02a6aa3398c0d5bc6dc1dab8",
+    "tests/test_one_action_model.py": "2bb60f5d525abaf9500463145d28484021477d1fb428afb5158fd84f43370b4b"
+  },
+  "inputBytesUnchanged": true,
+  "signatureVerification": false,
+  "evmExecuted": false,
+  "fullSuiteRerun": false,
+  "scalableSettlement": false,
+  "economicPolicyAccepted": false,
+  "productionAccepted": false
+}
