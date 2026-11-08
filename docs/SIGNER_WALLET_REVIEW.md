@@ -28,3 +28,18 @@ Full transaction execution matches outcomes, logs and gas9908964. Twenty-one sto
 The arithmetic model skips receipt-failed transactions; VM execution separately checks those failures. The original Anvil root still differs from reconstructed execution and is rejected by the proof check. No full-block or second-engine result for this signer bytecode is claimed yet. Earlier configurable-wallet results cannot substitute for it. Raw signer inputs remain local; this increment publishes code and summaries. Next: separate frozen signer package, full-block replay and Geth comparison. README remains paused.
 
 The collector requires ethers6.16.0 in addition to the existing dependencies and the same loopback Anvil31337/Shanghai synthetic-genesis setup. The accounting/replay runner requires the constructor experiment's pinned VM dependencies. This increment used installed pinned dependencies; it does not claim a clean installation or independent external reproduction.
+
+## Signer-specific block replay and Geth comparison
+
+Fresh replay of27constructed synthetic blocks matches every state root and transaction/receipt root. Seven block corruption controls pass. Geth1.17.10 matches all27transitions against EthereumJS10.1.3, with21successes,6reverts, four native balances and six comparison/execution controls. Eight input-integrity checks pass. The final root is `0x5b433f3bcc261ae030028f2d003f1433c34aec9284fa7d26c4d386728ecf4340`.
+
+The four frozen inputs (566318bytes) are published separately in `evidence/c007-signer-replay-20261108/`. Their exact digests are pinned in the signer comparison script. The data scan found no path/credential-pattern matches; all transaction senders are the known disposable synthetic actors. This is reviewed synthetic data, not production wallet history.
+
+Use Python3 standard library on Linux amd64 and the pinned Geth evm binary described in [tool acquisition instructions](WALLET_REPLAY_REPRODUCTION.md). No Node, RPC or credentials are needed for this comparison. From the checkout root:
+
+```sh
+python3 experiments/c007-signer-wallet/check-replay-inputs.py experiments/c007-signer-wallet/compare-geth-transition.py evidence/c007-signer-replay-20261108 evidence/c007-signer-replay-20261108/blocks.json /absolute/path/to/new-check-output
+python3 experiments/c007-signer-wallet/compare-geth-transition.py evidence/c007-signer-replay-20261108 evidence/c007-signer-replay-20261108/blocks.json /absolute/path/to/evm /absolute/path/to/new-replay-output
+```
+
+The prior configurable-wallet package is unchanged. Synthetic genesis fee1142857142 and26timestamp adjustments define this new constructed chain; it does not repair or authenticate the original Anvil chain. Geth t8n validates transitions under supplied contexts, not consensus/full headers. This is not external human review, a clean source build, general wallet compatibility, key recovery or EIP-7702 certification. README remains paused.
