@@ -1,4 +1,6 @@
 import test from "node:test";
+import { createHash } from "node:crypto";
+import { keccak256Hex } from "../reference/keccak256.mjs";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import {
@@ -341,4 +343,60 @@ test("oversized event collections are rejected before any replay workload", () =
   envelope.events = Array.from({ length: 257 }, () => ({}));
   envelope.expectedEventCount = 257;
   assert.throws(() => rebuild(FIXTURE, envelope), code("INVALID_SCHEMA"));
+});
+
+// Cross-profile evidence comparison: actual demo execution + retained local-EVM
+// receipts. This does not execute Solidity or establish production authority.
+test("C-004 cross-profile text acceptance matches retained Probe evidence", () => {
+  const packet = JSON.parse(readFileSync(new URL("./fixtures/c004-cross-profile.json", import.meta.url), "utf8"));
+  const probe = readFileSync(new URL("../experiments/paid-action/CawPaidActionProbe.sol", import.meta.url));
+  assert.equal(createHash("sha256").update(probe).digest("hex"), packet.probeSha256);
+  assert.equal(packet.cases.length, 10);
+  const hexBytes = hex => {
+    assert.match(hex, /^0x(?:[0-9a-f]{2})*$/i);
+    return Buffer.from(hex.slice(2), "hex");
+  };
+  const word = (bytes, offset) => {
+    assert.ok(Number.isSafeInteger(offset) && offset >= 0 && offset + 32 <= bytes.length);
+    return BigInt("0x" + bytes.subarray(offset, offset + 32).toString("hex"));
+  };
+  const offset = value => { assert.ok(value <= BigInt(Number.MAX_SAFE_INTEGER)); return Number(value); };
+  const dynamicBytes = (bytes, base, pointer) => {
+    const relative = offset(word(bytes, pointer));
+    assert.equal(relative % 32, 0);
+    const start = base + relative, length = offset(word(bytes, start));
+    assert.ok(start + 32 + length <= bytes.length);
+    return bytes.subarray(start + 32, start + 32 + length);
+  };
+  const postTopic = keccak256Hex("0x" + Buffer.from("Posted(uint256,uint256,address,uint256,uint256,bytes,uint256,bytes32,uint256,uint256,uint256,uint256)").toString("hex"));
+  assert.deepEqual(packet.cases.map(row => row.id), ["empty", "spaces", "tab", "whitespace", "ascii", "surrounding", "composed", "decomposed", "ascii-420", "ascii-421"]);
+  for (const row of packet.cases) {
+    const raw = Buffer.from(row.text, "utf8");
+    assert.equal(raw.toString("hex"), row.utf8Hex, row.id + ": bytes");
+    assert.equal(raw.length, row.bytes, row.id + ": byte count");
+    assert.equal(countCharacters(row.text), row.scalars, row.id + ": scalars");
+    let actual = "ACCEPT", next;
+    try { next = apply(start(), "pioneer", "caw", { text: row.text }); }
+    catch (error) { actual = error.code; }
+    assert.equal(actual, row.demoExpected, row.id + ": demo result mismatch");
+    if (actual === "ACCEPT") assert.equal(next.posts.at(-1).text, row.text, row.id + ": preserved demo text");
+    const call = hexBytes(row.calldata);
+    assert.equal(call.subarray(0, 4).toString("hex"), "62f509b3");
+    const args = call.subarray(4), tuple = offset(word(args, 0));
+    assert.deepEqual(dynamicBytes(args, tuple, tuple + 6 * 32), raw, row.id + ": calldata text");
+    const accepted = row.receipt.status === "0x1";
+    assert.ok(accepted || row.receipt.status === "0x0", row.id + ": receipt status");
+    assert.equal(accepted ? "ACCEPT" : "InvalidText", row.probeExpected, row.id + ": Probe receipt mismatch");
+    const posted = row.receipt.logs.filter(log => log.topics[0] === postTopic);
+    if (accepted) {
+      assert.equal(row.callError, null, row.id + ": successful call");
+      assert.equal(posted.length, 1, row.id + ": Posted count");
+      assert.equal(posted[0].address.toLowerCase(), row.receipt.to.toLowerCase());
+      const data = hexBytes(posted[0].data);
+      assert.deepEqual(dynamicBytes(data, 0, 2 * 32), raw, row.id + ": exact Posted bytes");
+    } else {
+      assert.match(row.callError, /7a2a029c/, row.id + ": recorded InvalidText eth_call data");
+      assert.equal(posted.length, 0, row.id + ": no Posted event");
+    }
+  }
 });
