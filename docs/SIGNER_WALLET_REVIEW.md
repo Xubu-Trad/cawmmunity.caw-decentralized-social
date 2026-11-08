@@ -43,3 +43,13 @@ python3 experiments/c007-signer-wallet/compare-geth-transition.py evidence/c007-
 ```
 
 The prior configurable-wallet package is unchanged. Synthetic genesis fee1142857142 and26timestamp adjustments define this new constructed chain; it does not repair or authenticate the original Anvil chain. Geth t8n validates transitions under supplied contexts, not consensus/full headers. This is not external human review, a clean source build, general wallet compatibility, key recovery or EIP-7702 certification. README remains paused.
+
+## Contract-wallet ownership round trip
+
+A separate local-call regression deploys two signer wallets with different controllers. After account1 transfers from walletA to walletB, walletA can neither withdraw nor transfer the account. An intent that validated before the transfer fails with EPOCH. Signing the current epoch with the previous controller fails wallet validation; the new controller's signature passes. Unauthorized forwarding through walletB fails, while its controller can unstake and withdraw.
+
+Transferring the account back to walletA advances epoch to2. The exact original previously valid signature remains rejected with EPOCH. A walletB signature validated immediately before return is also rejected. With the current epoch, controllerB fails and controllerA passes. WalletB can no longer withdraw. Failed attempts preserve the observed account state and emit no logs. Final credit/stake remain998tokens each, and both wallets hold one withdrawn token.
+
+The vault and signer-wallet contract sources are unchanged. Run `node run-wallet-transfer.mjs /absolute/path/to/new-output` from the signer experiment using its pinned dependencies. This increment executes local EVM calls, not a signed transaction capture or second-engine replay of the round trip. Existing27transaction evidence covers the earlier lifecycle only. Signature validation after transfer is not a second paid-action execution. The current-root checks isolate epoch rejection around the final transfer; an additional check retains the exact older pre-transfer signature.
+
+Next: capture and reconstruct this transfer sequence, including both wallet controllers and monotonic epochs. Account transfer remains a research account operation, not proof of production NFT admission/transfer integration. No recovery administrator or special key was added. README stays paused.
