@@ -46,3 +46,8 @@ NEXT — Independently justify anchor provenance, define a real supported networ
 ## Individual BLS G1 prerequisite — 2026-11-07
 
 [The isolated G1 adapter](BLS_G1_VALIDATION_20261107.md) matches all thirteen retained external decoder vectors after canonical re-encoding checks; 30 final focused and separate 44 regression tests pass. The initial raw-library mismatch remains documented, with 28 passes/1 failure preserved. Individual curve/subgroup validity does not establish committee membership, aggregate relationship or signatures. Next retained minimal-committee composition and aggregate-key relation, then G2/domain/signature and trust-policy gates. No root dependencies or acceptance changes; full suite/declared runtime not run, CI deferred.
+
+
+## G2 and single-signature POP vectors — 2026-11-07
+
+[The isolated signature adapter](BLS_POP_SIGNATURES_20261107.md) passes 48 focused, separate 42 key/committee and 73 bootstrap checks. Explicit POP succeeds where the pinned default NUL fails on the same positive vector. The BLS ciphersuite tag is not the Ethereum consensus signing domain. No aggregate/participation, checkpoint authority or update acceptance is established. Next external fast-aggregate cases and separately evidenced consensus-domain/signing-root derivation; full suite/declared runtime not run, CI deferred.

@@ -1,0 +1,83 @@
+{
+  "schema": "caw-bls-signatures-run/1",
+  "parentCommit": "d8b72610f210d8226bb9b5e288c0aaceb07caa02",
+  "runtime": {
+    "node": "v24.22.1",
+    "binarySha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+    "declaredNode": "24.20.0",
+    "declaredRuntimeRun": false
+  },
+  "groups": [
+    {
+      "name": "focused",
+      "command": [
+        "node",
+        "--max-old-space-size=256",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "--test-timeout=30000",
+        "experiments/bls-g1/signature.test.mjs"
+      ],
+      "passed": 48,
+      "failed": 0,
+      "exitCode": 0,
+      "log": "evidence/bls-signatures-20261107/focused-attempt-1.tap"
+    },
+    {
+      "name": "key-committee-regression",
+      "command": [
+        "node",
+        "--max-old-space-size=256",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "--test-timeout=30000",
+        "experiments/bls-g1/g1.test.mjs",
+        "experiments/bls-g1/committee.test.mjs"
+      ],
+      "passed": 42,
+      "failed": 0,
+      "exitCode": 0,
+      "log": "evidence/bls-signatures-20261107/key-committee-regression.tap"
+    },
+    {
+      "name": "bootstrap-regression",
+      "command": [
+        "node",
+        "--max-old-space-size=256",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "--test-timeout=30000",
+        "tests/sha256-branch.test.mjs",
+        "tests/beacon-header-root.test.mjs",
+        "tests/capella-payload-root.test.mjs",
+        "tests/capella-header-binding.test.mjs",
+        "tests/minimal-capella-bootstrap.test.mjs",
+        "tests/bootstrap-profile-selection.test.mjs",
+        "tests/bootstrap-fixture-metadata-selection.test.mjs",
+        "tests/pinned-minimal-capella-bootstrap.test.mjs"
+      ],
+      "passed": 73,
+      "failed": 0,
+      "exitCode": 0,
+      "log": "evidence/bls-signatures-20261107/bootstrap-regression.tap"
+    }
+  ],
+  "guards": {
+    "diskMinimumBytes": 2147483648,
+    "memoryMinimumBytes": 1073741824,
+    "heapMiB": 256,
+    "processDeadlineSeconds": 45
+  },
+  "fullSuiteRerun": false,
+  "ciRun": false,
+  "reusedDependencyFilesVerified": 486,
+  "rawDecoderProbeCommand": [
+    "node",
+    "--max-old-space-size=256",
+    "experiments/bls-g1/probe-raw-g2.mjs"
+  ],
+  "regressionInputsUnchanged": true
+}

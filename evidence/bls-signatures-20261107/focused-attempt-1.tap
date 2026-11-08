@@ -1,0 +1,298 @@
+TAP version 13
+# Subtest: external ./deserialization_G2/deserialization_fails_infinity_with_false_b_flag.json
+ok 1 - external ./deserialization_G2/deserialization_fails_infinity_with_false_b_flag.json
+  ---
+  duration_ms: 2.335217
+  type: 'test'
+  ...
+# Subtest: external ./deserialization_G2/deserialization_fails_infinity_with_true_b_flag.json
+ok 2 - external ./deserialization_G2/deserialization_fails_infinity_with_true_b_flag.json
+  ---
+  duration_ms: 0.238594
+  type: 'test'
+  ...
+# Subtest: external ./deserialization_G2/deserialization_fails_not_in_G2.json
+ok 3 - external ./deserialization_G2/deserialization_fails_not_in_G2.json
+  ---
+  duration_ms: 4.083151
+  type: 'test'
+  ...
+# Subtest: external ./deserialization_G2/deserialization_fails_not_in_curve.json
+ok 4 - external ./deserialization_G2/deserialization_fails_not_in_curve.json
+  ---
+  duration_ms: 0.677225
+  type: 'test'
+  ...
+# Subtest: external ./deserialization_G2/deserialization_fails_too_few_bytes.json
+ok 5 - external ./deserialization_G2/deserialization_fails_too_few_bytes.json
+  ---
+  duration_ms: 0.153548
+  type: 'test'
+  ...
+# Subtest: external ./deserialization_G2/deserialization_fails_too_many_bytes.json
+ok 6 - external ./deserialization_G2/deserialization_fails_too_many_bytes.json
+  ---
+  duration_ms: 0.109602
+  type: 'test'
+  ...
+# Subtest: external ./deserialization_G2/deserialization_fails_with_b_flag_and_a_flag_true.json
+ok 7 - external ./deserialization_G2/deserialization_fails_with_b_flag_and_a_flag_true.json
+  ---
+  duration_ms: 0.150994
+  type: 'test'
+  ...
+# Subtest: external ./deserialization_G2/deserialization_fails_with_b_flag_and_x_nonzero.json
+ok 8 - external ./deserialization_G2/deserialization_fails_with_b_flag_and_x_nonzero.json
+  ---
+  duration_ms: 0.241098
+  type: 'test'
+  ...
+# Subtest: external ./deserialization_G2/deserialization_fails_with_wrong_c_flag.json
+ok 9 - external ./deserialization_G2/deserialization_fails_with_wrong_c_flag.json
+  ---
+  duration_ms: 0.151726
+  type: 'test'
+  ...
+# Subtest: external ./deserialization_G2/deserialization_fails_xim_equal_to_modulus.json
+ok 10 - external ./deserialization_G2/deserialization_fails_xim_equal_to_modulus.json
+  ---
+  duration_ms: 0.780529
+  type: 'test'
+  ...
+# Subtest: external ./deserialization_G2/deserialization_fails_xim_greater_than_modulus.json
+ok 11 - external ./deserialization_G2/deserialization_fails_xim_greater_than_modulus.json
+  ---
+  duration_ms: 3.086141
+  type: 'test'
+  ...
+# Subtest: external ./deserialization_G2/deserialization_fails_xre_equal_to_modulus.json
+ok 12 - external ./deserialization_G2/deserialization_fails_xre_equal_to_modulus.json
+  ---
+  duration_ms: 0.374105
+  type: 'test'
+  ...
+# Subtest: external ./deserialization_G2/deserialization_fails_xre_greater_than_modulus.json
+ok 13 - external ./deserialization_G2/deserialization_fails_xre_greater_than_modulus.json
+  ---
+  duration_ms: 0.589686
+  type: 'test'
+  ...
+# Subtest: external ./deserialization_G2/deserialization_succeeds_correct_point.json
+ok 14 - external ./deserialization_G2/deserialization_succeeds_correct_point.json
+  ---
+  duration_ms: 4.292047
+  type: 'test'
+  ...
+# Subtest: external ./deserialization_G2/deserialization_succeeds_infinity_with_true_b_flag.json
+ok 15 - external ./deserialization_G2/deserialization_succeeds_infinity_with_true_b_flag.json
+  ---
+  duration_ms: 0.131215
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_infinity_pubkey_and_infinity_signature.json
+ok 16 - external ./verify/verify_infinity_pubkey_and_infinity_signature.json
+  ---
+  duration_ms: 0.599219
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_tampered_signature_case_195246ee3bd3b6ec.json
+ok 17 - external ./verify/verify_tampered_signature_case_195246ee3bd3b6ec.json
+  ---
+  duration_ms: 1.883857
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_tampered_signature_case_2ea479adf8c40300.json
+ok 18 - external ./verify/verify_tampered_signature_case_2ea479adf8c40300.json
+  ---
+  duration_ms: 4.073017
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_tampered_signature_case_2f09d443ab8a3ac2.json
+ok 19 - external ./verify/verify_tampered_signature_case_2f09d443ab8a3ac2.json
+  ---
+  duration_ms: 5.996688
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_tampered_signature_case_3208262581c8fc09.json
+ok 20 - external ./verify/verify_tampered_signature_case_3208262581c8fc09.json
+  ---
+  duration_ms: 2.051436
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_tampered_signature_case_6b3b17f6962a490c.json
+ok 21 - external ./verify/verify_tampered_signature_case_6b3b17f6962a490c.json
+  ---
+  duration_ms: 4.542073
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_tampered_signature_case_6eeb7c52dfd9baf0.json
+ok 22 - external ./verify/verify_tampered_signature_case_6eeb7c52dfd9baf0.json
+  ---
+  duration_ms: 5.329552
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_tampered_signature_case_8761a0b7e920c323.json
+ok 23 - external ./verify/verify_tampered_signature_case_8761a0b7e920c323.json
+  ---
+  duration_ms: 5.48004
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_tampered_signature_case_d34885d766d5f705.json
+ok 24 - external ./verify/verify_tampered_signature_case_d34885d766d5f705.json
+  ---
+  duration_ms: 1.81867
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_tampered_signature_case_e8a50c445c855360.json
+ok 25 - external ./verify/verify_tampered_signature_case_e8a50c445c855360.json
+  ---
+  duration_ms: 1.708978
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_valid_case_195246ee3bd3b6ec.json
+ok 26 - external ./verify/verify_valid_case_195246ee3bd3b6ec.json
+  ---
+  duration_ms: 49.558793
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_valid_case_2ea479adf8c40300.json
+ok 27 - external ./verify/verify_valid_case_2ea479adf8c40300.json
+  ---
+  duration_ms: 34.866611
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_valid_case_2f09d443ab8a3ac2.json
+ok 28 - external ./verify/verify_valid_case_2f09d443ab8a3ac2.json
+  ---
+  duration_ms: 32.371628
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_valid_case_3208262581c8fc09.json
+ok 29 - external ./verify/verify_valid_case_3208262581c8fc09.json
+  ---
+  duration_ms: 31.506153
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_valid_case_6b3b17f6962a490c.json
+ok 30 - external ./verify/verify_valid_case_6b3b17f6962a490c.json
+  ---
+  duration_ms: 32.605265
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_valid_case_6eeb7c52dfd9baf0.json
+ok 31 - external ./verify/verify_valid_case_6eeb7c52dfd9baf0.json
+  ---
+  duration_ms: 30.86519
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_valid_case_8761a0b7e920c323.json
+ok 32 - external ./verify/verify_valid_case_8761a0b7e920c323.json
+  ---
+  duration_ms: 33.359565
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_valid_case_d34885d766d5f705.json
+ok 33 - external ./verify/verify_valid_case_d34885d766d5f705.json
+  ---
+  duration_ms: 32.869567
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_valid_case_e8a50c445c855360.json
+ok 34 - external ./verify/verify_valid_case_e8a50c445c855360.json
+  ---
+  duration_ms: 35.095391
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_wrong_pubkey_case_195246ee3bd3b6ec.json
+ok 35 - external ./verify/verify_wrong_pubkey_case_195246ee3bd3b6ec.json
+  ---
+  duration_ms: 48.252545
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_wrong_pubkey_case_2ea479adf8c40300.json
+ok 36 - external ./verify/verify_wrong_pubkey_case_2ea479adf8c40300.json
+  ---
+  duration_ms: 45.464834
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_wrong_pubkey_case_2f09d443ab8a3ac2.json
+ok 37 - external ./verify/verify_wrong_pubkey_case_2f09d443ab8a3ac2.json
+  ---
+  duration_ms: 31.359365
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_wrong_pubkey_case_3208262581c8fc09.json
+ok 38 - external ./verify/verify_wrong_pubkey_case_3208262581c8fc09.json
+  ---
+  duration_ms: 32.317798
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_wrong_pubkey_case_6b3b17f6962a490c.json
+ok 39 - external ./verify/verify_wrong_pubkey_case_6b3b17f6962a490c.json
+  ---
+  duration_ms: 33.164895
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_wrong_pubkey_case_6eeb7c52dfd9baf0.json
+ok 40 - external ./verify/verify_wrong_pubkey_case_6eeb7c52dfd9baf0.json
+  ---
+  duration_ms: 32.78437
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_wrong_pubkey_case_8761a0b7e920c323.json
+ok 41 - external ./verify/verify_wrong_pubkey_case_8761a0b7e920c323.json
+  ---
+  duration_ms: 31.836414
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_wrong_pubkey_case_d34885d766d5f705.json
+ok 42 - external ./verify/verify_wrong_pubkey_case_d34885d766d5f705.json
+  ---
+  duration_ms: 33.668662
+  type: 'test'
+  ...
+# Subtest: external ./verify/verify_wrong_pubkey_case_e8a50c445c855360.json
+ok 43 - external ./verify/verify_wrong_pubkey_case_e8a50c445c855360.json
+  ---
+  duration_ms: 32.946421
+  type: 'test'
+  ...
+# Subtest: external ./verify/verifycase_one_privkey_47117849458281be.json
+ok 44 - external ./verify/verifycase_one_privkey_47117849458281be.json
+  ---
+  duration_ms: 23.276586
+  type: 'test'
+  ...
+# Subtest: explicit POP succeeds while pinned default NUL fails on identical vector
+ok 45 - explicit POP succeeds while pinned default NUL fails on identical vector
+  ---
+  duration_ms: 61.02833
+  type: 'test'
+  ...
+# Subtest: one message-bit mutation rejects the same key and signature
+ok 46 - one message-bit mutation rejects the same key and signature
+  ---
+  duration_ms: 31.853828
+  type: 'test'
+  ...
+# Subtest: unsupported input shapes lengths and ciphersuite override reject
+ok 47 - unsupported input shapes lengths and ciphersuite override reject
+  ---
+  duration_ms: 0.52516
+  type: 'test'
+  ...
+# Subtest: canonical G2 infinity deserializes but cannot be a single signature
+ok 48 - canonical G2 infinity deserializes but cannot be a single signature
+  ---
+  duration_ms: 2.092206
+  type: 'test'
+  ...
+1..48
+# tests 48
+# suites 0
+# pass 48
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1057.042557

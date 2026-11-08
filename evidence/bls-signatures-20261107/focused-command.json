@@ -1,0 +1,13 @@
+{
+  "command": [
+    "node",
+    "--max-old-space-size=256",
+    "--test",
+    "--test-reporter=tap",
+    "--test-concurrency=1",
+    "--test-timeout=30000",
+    "experiments/bls-g1/signature.test.mjs"
+  ],
+  "exitCode": 0,
+  "processDeadlineSeconds": 45
+}

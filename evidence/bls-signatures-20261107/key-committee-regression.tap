@@ -1,0 +1,262 @@
+TAP version 13
+# Subtest: retained 32 keys and supplied aggregate satisfy the point sum
+ok 1 - retained 32 keys and supplied aggregate satisfy the point sum
+  ---
+  duration_ms: 83.370911
+  type: 'test'
+  ...
+# Subtest: composition preserves metadata and structural evidence without authority claims
+ok 2 - composition preserves metadata and structural evidence without authority claims
+  ---
+  duration_ms: 86.072386
+  type: 'test'
+  ...
+# Subtest: one valid member replacement fails the unchanged aggregate relation
+ok 3 - one valid member replacement fails the unchanged aggregate relation
+  ---
+  duration_ms: 75.037035
+  type: 'test'
+  ...
+# Subtest: valid but wrong aggregate point rejects
+ok 4 - valid but wrong aggregate point rejects
+  ---
+  duration_ms: 72.10527
+  type: 'test'
+  ...
+# Subtest: off-curve and wrong-subgroup members reject
+ok 5 - off-curve and wrong-subgroup members reject
+  ---
+  duration_ms: 2.185703
+  type: 'test'
+  ...
+# Subtest: identity member and identity aggregate independently reject
+ok 6 - identity member and identity aggregate independently reject
+  ---
+  duration_ms: 71.911533
+  type: 'test'
+  ...
+# Subtest: malformed and noncanonical member encodings reject
+ok 7 - malformed and noncanonical member encodings reject
+  ---
+  duration_ms: 0.710861
+  type: 'test'
+  ...
+# Subtest: unsupported sizes and injected authority fields reject
+ok 8 - unsupported sizes and injected authority fields reject
+  ---
+  duration_ms: 0.964076
+  type: 'test'
+  ...
+# Subtest: repeated members are counted with multiplicity, not deduplicated
+ok 9 - repeated members are counted with multiplicity, not deduplicated
+  ---
+  duration_ms: 160.497426
+  type: 'test'
+  ...
+# Subtest: permutation preserves point sum but fails the original ordered inclusion proof
+ok 10 - permutation preserves point sum but fails the original ordered inclusion proof
+  ---
+  duration_ms: 72.53832
+  type: 'test'
+  ...
+# Subtest: valid key relation cannot bypass a changed proof or unsupported profile
+ok 11 - valid key relation cannot bypass a changed proof or unsupported profile
+  ---
+  duration_ms: 1.337198
+  type: 'test'
+  ...
+# Subtest: composition still rejects metadata mutation and selected-root mismatch
+ok 12 - composition still rejects metadata mutation and selected-root mismatch
+  ---
+  duration_ms: 0.333152
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_infinity_with_false_b_flag.json
+ok 13 - external deserialization: deserialization_fails_infinity_with_false_b_flag.json
+  ---
+  duration_ms: 2.762295
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_infinity_with_false_b_flag.json
+ok 14 - nonidentity key policy: deserialization_fails_infinity_with_false_b_flag.json
+  ---
+  duration_ms: 1.643451
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_infinity_with_true_b_flag.json
+ok 15 - external deserialization: deserialization_fails_infinity_with_true_b_flag.json
+  ---
+  duration_ms: 0.193646
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_infinity_with_true_b_flag.json
+ok 16 - nonidentity key policy: deserialization_fails_infinity_with_true_b_flag.json
+  ---
+  duration_ms: 0.135049
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_not_in_G1.json
+ok 17 - external deserialization: deserialization_fails_not_in_G1.json
+  ---
+  duration_ms: 1.503554
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_not_in_G1.json
+ok 18 - nonidentity key policy: deserialization_fails_not_in_G1.json
+  ---
+  duration_ms: 1.999948
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_not_in_curve.json
+ok 19 - external deserialization: deserialization_fails_not_in_curve.json
+  ---
+  duration_ms: 0.395905
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_not_in_curve.json
+ok 20 - nonidentity key policy: deserialization_fails_not_in_curve.json
+  ---
+  duration_ms: 0.424568
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_too_few_bytes.json
+ok 21 - external deserialization: deserialization_fails_too_few_bytes.json
+  ---
+  duration_ms: 0.232594
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_too_few_bytes.json
+ok 22 - nonidentity key policy: deserialization_fails_too_few_bytes.json
+  ---
+  duration_ms: 0.313133
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_too_many_bytes.json
+ok 23 - external deserialization: deserialization_fails_too_many_bytes.json
+  ---
+  duration_ms: 0.242929
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_too_many_bytes.json
+ok 24 - nonidentity key policy: deserialization_fails_too_many_bytes.json
+  ---
+  duration_ms: 0.076223
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_with_b_flag_and_a_flag_true.json
+ok 25 - external deserialization: deserialization_fails_with_b_flag_and_a_flag_true.json
+  ---
+  duration_ms: 0.31121
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_with_b_flag_and_a_flag_true.json
+ok 26 - nonidentity key policy: deserialization_fails_with_b_flag_and_a_flag_true.json
+  ---
+  duration_ms: 0.165755
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_with_b_flag_and_x_nonzero.json
+ok 27 - external deserialization: deserialization_fails_with_b_flag_and_x_nonzero.json
+  ---
+  duration_ms: 0.139476
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_with_b_flag_and_x_nonzero.json
+ok 28 - nonidentity key policy: deserialization_fails_with_b_flag_and_x_nonzero.json
+  ---
+  duration_ms: 0.152095
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_with_wrong_c_flag.json
+ok 29 - external deserialization: deserialization_fails_with_wrong_c_flag.json
+  ---
+  duration_ms: 0.115601
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_with_wrong_c_flag.json
+ok 30 - nonidentity key policy: deserialization_fails_with_wrong_c_flag.json
+  ---
+  duration_ms: 0.093909
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_x_equal_to_modulus.json
+ok 31 - external deserialization: deserialization_fails_x_equal_to_modulus.json
+  ---
+  duration_ms: 0.935834
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_x_equal_to_modulus.json
+ok 32 - nonidentity key policy: deserialization_fails_x_equal_to_modulus.json
+  ---
+  duration_ms: 0.86552
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_fails_x_greater_than_modulus.json
+ok 33 - external deserialization: deserialization_fails_x_greater_than_modulus.json
+  ---
+  duration_ms: 0.310749
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_fails_x_greater_than_modulus.json
+ok 34 - nonidentity key policy: deserialization_fails_x_greater_than_modulus.json
+  ---
+  duration_ms: 0.366692
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_succeeds_correct_point.json
+ok 35 - external deserialization: deserialization_succeeds_correct_point.json
+  ---
+  duration_ms: 1.443334
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_succeeds_correct_point.json
+ok 36 - nonidentity key policy: deserialization_succeeds_correct_point.json
+  ---
+  duration_ms: 1.359842
+  type: 'test'
+  ...
+# Subtest: external deserialization: deserialization_succeeds_infinity_with_true_b_flag.json
+ok 37 - external deserialization: deserialization_succeeds_infinity_with_true_b_flag.json
+  ---
+  duration_ms: 0.118966
+  type: 'test'
+  ...
+# Subtest: nonidentity key policy: deserialization_succeeds_infinity_with_true_b_flag.json
+ok 38 - nonidentity key policy: deserialization_succeeds_infinity_with_true_b_flag.json
+  ---
+  duration_ms: 0.130132
+  type: 'test'
+  ...
+# Subtest: API rejects non-buffer and unsupported lengths
+ok 39 - API rejects non-buffer and unsupported lengths
+  ---
+  duration_ms: 0.217342
+  type: 'test'
+  ...
+# Subtest: no extra argument can override key rejection
+ok 40 - no extra argument can override key rejection
+  ---
+  duration_ms: 0.138314
+  type: 'test'
+  ...
+# Subtest: result retains the original bytes after caller mutation
+ok 41 - result retains the original bytes after caller mutation
+  ---
+  duration_ms: 2.015771
+  type: 'test'
+  ...
+# Subtest: retained raw-library discrepancy: noncanonical infinity sign bit
+ok 42 - retained raw-library discrepancy: noncanonical infinity sign bit
+  ---
+  duration_ms: 0.416797
+  type: 'test'
+  ...
+1..42
+# tests 42
+# suites 0
+# pass 42
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 970.888977

@@ -5,7 +5,9 @@
   "scripts": {
     "test": "node --max-old-space-size=256 --test --test-reporter=tap --test-concurrency=1 --test-timeout=30000 g1.test.mjs",
     "test:committee": "node --max-old-space-size=256 --test --test-reporter=tap --test-concurrency=1 --test-timeout=30000 committee.test.mjs",
-    "inspect:committee": "node --max-old-space-size=256 check-retained-committee.mjs"
+    "inspect:committee": "node --max-old-space-size=256 check-retained-committee.mjs",
+    "test:signatures": "node --max-old-space-size=256 --test --test-reporter=tap --test-concurrency=1 --test-timeout=30000 signature.test.mjs",
+    "probe:raw-g2": "node --max-old-space-size=256 probe-raw-g2.mjs"
   },
   "dependencies": {
     "@noble/curves": "1.9.7",

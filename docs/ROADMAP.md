@@ -596,3 +596,8 @@ Fixed a reproduced empty-success launch through a Windows directory junction. Th
 ## Minimal committee key composition — 2026-11-07
 
 [The isolated G1/aggregate composition](MINIMAL_COMMITTEE_G1_20261107.md) passes 12 new, separate 30 G1 and 73 bootstrap regression checks. The supplied32-member aggregate matches the sum with repeated members counted. Ordered inclusion and aggregate equality remain distinct. Old structural modules are unchanged; only the new research result reports checked key/aggregate properties. Next external G2/signature vectors and explicit ciphersuite/domain behavior, with checkpoint/network/fork/recency and update gates still open. Full suite/declared runtime not run; CI deferred.
+
+
+## G2 and single-signature POP vectors — 2026-11-07
+
+[The isolated signature adapter](BLS_POP_SIGNATURES_20261107.md) passes 48 focused, separate 42 key/committee and 73 bootstrap checks. Explicit POP succeeds where the pinned default NUL fails on the same positive vector. The BLS ciphersuite tag is not the Ethereum consensus signing domain. No aggregate/participation, checkpoint authority or update acceptance is established. Next external fast-aggregate cases and separately evidenced consensus-domain/signing-root derivation; full suite/declared runtime not run, CI deferred.
