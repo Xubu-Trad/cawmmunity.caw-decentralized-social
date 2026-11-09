@@ -28,3 +28,8 @@ FACT — The largest global-index numerator or denominator reached894bits in thi
 - Four finite rejected inputs and480 finite transitions do not prove all sequences or arithmetic bounds. No uint256 implementation, deployment or immutable release is established.
 
 NEXT — Before proposing contract code, choose a reviewed representation and explicit rounding/carry rule, bound precision/overflow/error, and compare it against this exact reference under adversarial operation ordering. Include tiny fees, very large and rapidly changing weights, repeated claims, payer exclusion and near-maximum integers. A fixed-point scale alone is not a proof; it can create unallocated dust and inconsistent entitlement. Keep C-007 open and preserve the current frozen acceptance baseline.
+
+
+## Fixed-point follow-up
+
+[Fixed-point limits](C007_FIXED_INDEX_LIMITS.md) records measured shortfalls, zero-reward fees, cross-membership carry and overflow counterexamples. The production arithmetic decision remains open.
