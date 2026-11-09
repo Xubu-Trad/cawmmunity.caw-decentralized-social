@@ -27,3 +27,8 @@ The harness refuses an existing output directory and emits compiler input, signe
 This is a single-engine, synthetic-context experiment, separate from the earlier61-operation two-engine fixture. Its new20 operations have not yet been independently reconstructed or compared with Geth. Safe-receiver rejection/forwarding, full ABA callback, invalid registry deployment and broader registration remain pending. Existing older evidence does not automatically cover the adapter.
 
 Next: extend registry-specific negative cases, independently reconstruct registry and custody history, then compare execution engines. Real CAW compatibility, authentic public state, adopted economics/entitlement policy and release approval remain open. The fixed payer and supplied stake root are research constraints. No production readiness or manifesto compliance certification is claimed.
+
+
+## Follow-up receiver coverage
+
+The separate [28-operation hook fixture](REGISTRY_WITHDRAWAL_HOOKS.md) adds full ABA callback rejection, rejected receiver rollback and accepted forwarding with epoch invalidation. The20-operation evidence above remains unchanged. Independent reconstruction and second-engine replay for the new fixture remain pending.
