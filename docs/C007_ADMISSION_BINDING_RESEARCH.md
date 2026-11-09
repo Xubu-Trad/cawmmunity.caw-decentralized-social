@@ -37,3 +37,8 @@ The generator imports the adjacent snapshot and tree reference modules. [Saved r
 Receipt inclusion/success and event order, chain/deployment authentication, sender/signature authorization, nonce consumption, actual fee debit/backing and stake membership all remain separate. A production adapter must compose those checks rather than treating this output label as a trusted capability. The research SHA256 identifier is not silently substituted for the frozen EIP-712 signed intent. No admitted event exists on-chain for this candidate yet.
 
 NEXT — Specify and test the boundary between receipt-validated observations and candidate admission/claim application. Keep malformed/failed/orphaned observations from affecting balances, and retain all unresolved economic and ownership choices. README updates remain paused; CI remains deferred.
+
+
+## Receipt integration follow-up
+
+[Receipt-commitment adapter](C007_RECEIPT_EVENT_ADAPTER.md) now calls the existing reader before decoding. Synthetic fixture passes do not prove execution, signature or fee backing.

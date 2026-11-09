@@ -1,0 +1,38 @@
+{
+  "parent": "d5f6c022310f1b38cca47b0efef57ddc3132a5fa",
+  "transform": "unchanged receipt-reader composition with synthetic candidate event commitments",
+  "files": {
+    "integration/core-baseline-v1/c007-receipt-events.mjs": {
+      "sha256": "ae4ab0ce75c37eb236c7aab5e24455dc835238b44bbb91ff92104c3c77eb715b",
+      "size": 2043
+    },
+    "integration/core-baseline-v1/test-c007-receipt-events.mjs": {
+      "sha256": "59dcaa474feb1735eff336af9715fffe56f2242c9f27a3f36147037f1f89a3fc",
+      "size": 2650
+    },
+    "integration/core-baseline-v1/make-claim-receipt-fixtures.py": {
+      "sha256": "211c4432e0a49a3eadc9fff76668b05f4a2356bd562702bd114f3051136b4990",
+      "size": 1738
+    },
+    "docs/C007_RECEIPT_EVENT_ADAPTER.md": {
+      "sha256": "4bfee1ee220a605ba1654ec20f1133b0722bd9279c59079bb1c27c6423f84f70",
+      "size": 4314
+    },
+    "evidence/claim-receipts-20261108/source-pins.json": {
+      "sha256": "98cd7cfa95af5226bdc4835ac1694efd604f479ee1384fddc6977fde38bcd24a",
+      "size": 663
+    },
+    "evidence/claim-receipts-20261108/fixtures.json": {
+      "sha256": "b93f3b257df4776fcd518bd39e4628733cee7ff556e0e6f3d2cc72151f2c25e9",
+      "size": 26733
+    },
+    "evidence/claim-receipts-20261108/result.json": {
+      "sha256": "6f522179de73cb073af48142724bfe03d83e55775a3e3d41cbb74a86e6c94f4f",
+      "size": 787
+    },
+    "docs/C007_ADMISSION_BINDING_RESEARCH.md": {
+      "sha256": "c921acadb69a50ea9e47c8708c83856d8b3a50b1a45e616fbc680e672cdf219b",
+      "size": 4092
+    }
+  }
+}
