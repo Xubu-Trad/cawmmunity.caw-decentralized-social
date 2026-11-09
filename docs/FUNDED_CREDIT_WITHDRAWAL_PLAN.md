@@ -43,3 +43,8 @@ Also test transfer A to B to A with monotonically increasing epoch (old epoch ne
 ## Review disposition
 
 No new contract or token transfer is implemented by this plan, and no new test pass count is claimed. This is a source review and integration specification. The next engineering increment can implement the bounded account-bound hypothesis with the above limits; an adopted NFT/production withdrawal release still requires explicit decisions, review and authenticated asset evidence. README remains paused; hosted CI remains deferred.
+
+
+## Experimental implementation
+
+[The separate withdrawal fixture](FUNDED_WITHDRAWAL_RESEARCH.md) now exercises61 signed local transactions, including transfer/claim/withdrawal interleaving and outbound callback rejection. This is not policy adoption or NFT registry integration.
