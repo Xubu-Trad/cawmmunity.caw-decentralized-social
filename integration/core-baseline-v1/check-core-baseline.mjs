@@ -22,4 +22,5 @@ for(const [source,contracts]of Object.entries(m.artifacts))for(const [name,expec
  assert.deepEqual(a.abi,expected.abi,'ABI');
  assert.deepEqual(a.evm.deployedBytecode.immutableReferences,expected.immutableReferences,'IMMUTABLE_LAYOUT');
 }
+if(process.argv[4])fs.writeFileSync(process.argv[4],JSON.stringify(output),{flag:'wx'});
 console.log(JSON.stringify({artifactCount:Object.values(m.artifacts).reduce((n,v)=>n+Object.keys(v).length,0),recompiledAgainstRetainedArtifacts:true,deployedRuntimeVerified:false,lifecycleRerun:false,productionAccepted:false}));

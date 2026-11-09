@@ -1,0 +1,26 @@
+{
+  "parent": "c21e5c20959c0dbcdd4f2fa572e3d0426d491f03",
+  "transform": "fresh public input acquisition, baseline rebuild, creation binding, pinned Geth replay",
+  "files": {
+    "integration/core-baseline-v1/check-core-baseline.mjs": {
+      "sha256": "db1ff26a0bebc0cfda12d6f5b5bd01cb8509f054ecb141d407ab6e7a2a2bf297",
+      "size": 1914
+    },
+    "integration/core-baseline-v1/check-replay-baseline.mjs": {
+      "sha256": "df34bf376edc2867c4397d69a98a342f5a24aab81108b2314648c458d21ae0bd",
+      "size": 1479
+    },
+    "integration/core-baseline-v1/accept-core-baseline.py": {
+      "sha256": "88add25854a358fb961a61b55954560cd5d77267c44c29e734ff3cd26d459279",
+      "size": 1909
+    },
+    "evidence/core-acceptance-20261108/result.json": {
+      "sha256": "6e9904f2a3f705711e96e97b6db31003ccf7b7824091479ee254902eb6b9b322",
+      "size": 1629
+    },
+    "docs/CORE_BASELINE_ACCEPTANCE.md": {
+      "sha256": "09a94f5234fc5d4a334a12fc30843be3bf06a2daaacaf56c21940632b32235ed",
+      "size": 2595
+    }
+  }
+}
