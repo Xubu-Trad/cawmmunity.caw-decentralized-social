@@ -1,53 +1,45 @@
 # cawmmunity.caw - decentralized - social
 
-## Completion status and controlling milestone
+## What we are building
 
-FACT - Reviewed snapshot: `f4ded7eac2e03ca4fab41eba3e7ee7fabdc29f33`, version `0.1.0-alpha.46`. The repository has substantial settlement, cryptographic verification, recovery and frontend research. It is not yet a complete independently operated decentralized social network. The browser alpha remains synthetic; public-test and production gates remain blocked.
+community.CAW is an open community effort to build decentralized social software guided by the CAW manifesto and reproducibly recovered R2 message. The goal is a system people can inspect, operate and continue without depending on its original builders. It is research software with a simulated frontend, not an official CAW release or a production-ready network.
 
-FACT - The last documented full root Node suite passed 1,251 tests across 73 files, before subsequent research additions. The latest aggregate-signature experiment records 21 focused checks with separate 90 BLS and 73 bootstrap regressions. These are retained results, not a fresh integrated run at this commit or proof of live-chain authority.
+## Current progress — November 8, 2026
 
-### Primary engineering objective
+The newest work in [draft PR #19](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/19) connects funded reward records, proof-checked account credits, ownership changes and withdrawals in a local experimental contract. A new owner can withdraw the account's credits while unclaimed rewards stay funded. Old-owner and stale-epoch attempts reject, including transfer away and back.
 
-IDEA - Make [one independently reproducible CAW action](docs/PUBLIC_ACTION_MILESTONE.md) the controlling completion milestone. Existing verification work must support this goal rather than substitute for an integrated action.
+**The latest61-transaction fixture is reconstructed from signed history and matches across two execution engines.** EthereumJS and Geth agree on every intermediate state, gas charge, outcome and event log. A separate accounting reader derives the same ownership epochs, balances, credits and liabilities. Final mock-token balances total100; all credits, reward budgets and unpaid liabilities clear to0.
 
-The six work packages are:
-
-1. Establish original CAW token behavior and explicitly resolve or bound username registration.
-2. Freeze provisional account authority, message bytes, fees, eligible stake, payer exclusion, rounding, nonce and direct-submission rules.
-3. Build one reproducible candidate with pinned source, compiler, ABI, bytecode, constructor values and authority graph.
-4. Execute owner authorization, exactly one paid CAW, recipient allocation and authorized withdrawal, with adversarial rejection tests.
-5. Independently acquire and verify complete relevant chain history under an explicit network, checkpoint and finality policy.
-6. Have another operator reproduce, serve, verify and continue the action without original-builder credentials, infrastructure or privileged authority.
-
-Each package requires pinned inputs, reproducible commands, exact evidence and a reported PASS, FAIL, BLOCKED or NOT RUN outcome.
-
-### Critical blockers and decisions
-
-| Gate | Status | Required evidence |
+| Area | Evidence available | Still missing |
 | --- | --- | --- |
-| [C-001 original CAW registration](docs/C001_DECISION_REQUEST.md) | BLOCKED | Demonstrate a compatible mechanism for the literal zero-address requirement or openly review a specification deviation. A nonzero sink is not automatically a supply burn. |
-| [C-002/C-003/C-004/C-007/C-008](sources/SPEC_CONFLICTS.md) | OPEN | Freeze explicit settlement, cost, text, staking and submission rules without treating recommendations as accepted protocol. |
-| Scalable token economics | BLOCKED | Replace three-account experimental allocation; verify bounded gas, conservation, dust, eligibility and withdrawals. |
-| Authoritative history | BLOCKED | Integrate body, receipt, sender, signature and registry verification with trusted network selection and fail-closed recovery. |
-| [Operator independence](docs/OPERATOR_INDEPENDENCE.md) | BLOCKED | Demonstrate OI-01 through OI-09 through independent builder-absent operation. |
-| Full integration and release security | NOT RUN | Fresh integrated suite, reproducible releases, CI, independent security review and deployment acceptance. |
+| Funded rewards and withdrawals |61 signed local transactions; six admission, eight claim and fourteen withdrawal/transfer rejection cases; four outbound callback paths blocked | Real CAW compatibility, adopted reward rules and production review |
+| History reconstruction | All61 operations reconcile;19 altered histories reject | Authenticated public-chain acquisition and finality |
+| Execution comparison | Every transition matches EthereumJS/Geth; seven rejection controls and two startup checks | Independent external review and valid public-chain deployment |
+| Account authority | Constructor-owner fixture, monotonic epochs, transfer-safe direct withdrawals | Integration with the existing NFT registry experiments and final registration design |
+| Frontend | Local social alpha and source available | Connected public protocol, real-wallet flow and independently operated services |
 
-FACT - [Bootstrap trust requirements](docs/BOOTSTRAP_TRUST_REQUIREMENTS.md) distinguish internally consistent proofs from an authenticated live chain. BLS equations do not establish committee membership or checkpoint authority. [PR #16](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/16) remains under review with recorded comparison-script negative controls.
+These are **separate research fixtures**, not a complete decentralized social network. The latest withdrawal experiment has a fixed payer, constructor-selected owners, supplied stake snapshot, mock token and provisional fee/allocation behavior. It does not implement username registration or a production NFT registry. It uses repeated synthetic execution contexts, not a verified public blockchain. The earlier frozen paid-action baseline remains separate and unchanged.
 
-### Completion stages
+## Where developers should start
 
-- Stage A: local synthetic alpha exists; verified public static hosting is a separate release task.
-- Stage B: one fully specified, settled and independently reproduced protocol action remains incomplete.
-- Stage C: connected public beta, registration, wallet support, scalable accounting, recovery and independent submission remain blocked.
-- Stage D: full manifesto functionality, confidential messaging, durable content, independent operation, external audits and community acceptance remain blocked.
+Main retains the published alpha and earlier verification/recovery work. PR #19 is a stacked, **unmerged draft**; these latest experimental files are not presented as merged main functionality. Start with the pinned [withdrawal implementation](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/93569f7d5947a9ff0fa1c5960c261df860af2d64/docs/FUNDED_WITHDRAWAL_RESEARCH.md), [history and execution verification](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/93569f7d5947a9ff0fa1c5960c261df860af2d64/docs/FUNDED_WITHDRAWAL_VERIFICATION.md), [frozen specification and decision register](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/93569f7d5947a9ff0fa1c5960c261df860af2d64/docs/PROTOCOL_SPEC_V1.md), and [integration plan](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/93569f7d5947a9ff0fa1c5960c261df860af2d64/docs/FUNDED_CREDIT_WITHDRAWAL_PLAN.md). Each records reproduction commands, inputs and limits. Review the exact commit before comparing results.
 
-INFERENCE - C-001 original-token registration and C-007 staking rules are the immediate specification priorities. Additional isolated research is justified by a named acceptance gap, not by increasing test counts alone.
+The latest work uses Node20.20.2, solc0.8.30, ethers6.16.0 and EthereumJS10.1.3, with a pinned Geth evm binary for the second execution. No new full-suite pass is claimed. The last documented full root Node run remains1,251 tests across73 files; subsequent focused experiments are separate. Hosted CI remains deferred.
 
-FACT - Public source does not itself prove decentralization. Media hashes do not guarantee availability; NFT transfers cannot erase previously decrypted messages. No hidden developer privilege or unilateral release authority is accepted as a completion shortcut.
+## Next milestones and release gates
 
-See the [engineering roadmap](docs/ROADMAP.md), [conflict register](sources/SPEC_CONFLICTS.md), [contribution rules](CONTRIBUTING.md) and [license exclusions](LICENSE_STATUS.md).
+1. **Connect registry authority to the funded lifecycle.** Reuse existing NFT-owner/epoch evidence, reject approval-only spending, and recheck authority around external token calls. Avoid a second owner database or developer override.
+2. **Resolve the open protocol decisions.** Original-token registration, stake/fee allocation, pending entitlement across ownership transfer, signing/session policy and other source conflicts need explicit review. Tests do not settle these choices.
+3. **Demonstrate one independently operated public action.** Combine the selected immutable candidate, real wallets, replaceable submission/storage paths and authenticated history, then have another operator reproduce it without builder credentials.
+4. **Complete the social protocol and release review.** Registration, broader social actions, confidential messaging, durable media, independent recovery, security review and an explicit public release agreement remain necessary.
+
+Public beta and production remain blocked. There is no claimed completion percentage, external audit or community acceptance. Do not fund the experimental contracts. See the [roadmap](docs/ROADMAP.md), [conflict register](sources/SPEC_CONFLICTS.md), [operator-independence requirements](docs/OPERATOR_INDEPENDENCE.md) and [contribution guide](CONTRIBUTING.md).
+
+by teh ppl. for teh ppl.
 
 ## Retained research progress
+
+Historical records below retain their original scope and dates. Their next-step language is not the current roadmap; use the progress and milestones above. Results must not be added together as one integrated test run.
 
 [Aggregate-signature research](docs/BLS_POP_AGGREGATE_20261108.md) now checks supplied-key equations with 21 focused checks and separate 90 BLS / 73 bootstrap regressions. A controlled example shows why a passing equation does not prove participant possession or authorization. Consensus signing domains and trusted checkpoints remain open gates.
 
