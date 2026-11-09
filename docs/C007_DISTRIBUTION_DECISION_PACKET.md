@@ -51,3 +51,8 @@ R2-004, `8f9da9c32b3aa4ff9f3fb095d9995fd38a8f54a6`, layers/R2-020_hex_transposit
 R2-005, `8f9da9c32b3aa4ff9f3fb095d9995fd38a8f54a6`, layers/R2-020_hex_transposition/EVIDENCE/reading_rotation.txt:L7:
 
 > 3- eventually we have a thing that is solid, peer reviewed, contributed to by many and it is agreed to be released
+
+
+## Follow-up research
+
+[Exact-rational reward index](C007_REWARD_INDEX_RESEARCH.md) compares a recipient-loop-free candidate with eager allocation. Its arithmetic exceeds256bits and its fractional carry differs from per-action flooring. No policy is adopted.
