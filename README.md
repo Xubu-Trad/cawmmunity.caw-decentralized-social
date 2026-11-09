@@ -4,21 +4,29 @@
 
 community.CAW is an open community effort to build decentralized social software guided by the CAW manifesto and reproducibly recovered R2 message. The goal is a system people can inspect, operate and continue without depending on its original builders. It is research software with a simulated frontend, not an official CAW release or a production-ready network.
 
-## Current progress — November 8, 2026
+## Current progress — November 9, 2026
 
 The newest work in [draft PR #19](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/19) connects funded reward records, proof-checked account credits, ownership changes and withdrawals in a local experimental contract. A new owner can withdraw the account's credits while unclaimed rewards stay funded. Old-owner and stale-epoch attempts reject, including transfer away and back.
 
-**The latest61-transaction fixture is reconstructed from signed history and matches across two execution engines.** EthereumJS and Geth agree on every intermediate state, gas charge, outcome and event log. A separate accounting reader derives the same ownership epochs, balances, credits and liabilities. Final mock-token balances total100; all credits, reward budgets and unpaid liabilities clear to0.
+**The earlier61-transaction fixture is reconstructed from signed history and matches across two execution engines.** EthereumJS and Geth agree on every intermediate state, gas charge, outcome and event log. A separate accounting reader derives the same ownership epochs, balances, credits and liabilities. Final mock-token balances total100; all credits, reward budgets and unpaid liabilities clear to0.
 
 | Area | Evidence available | Still missing |
 | --- | --- | --- |
 | Funded rewards and withdrawals |61 signed local transactions; six admission, eight claim and fourteen withdrawal/transfer rejection cases; four outbound callback paths blocked | Real CAW compatibility, adopted reward rules and production review |
 | History reconstruction | All61 operations reconcile;19 altered histories reject | Authenticated public-chain acquisition and finality |
 | Execution comparison | Every transition matches EthereumJS/Geth; seven rejection controls and two startup checks | Independent external review and valid public-chain deployment |
-| Account authority | Constructor-owner fixture, monotonic epochs, transfer-safe direct withdrawals | Integration with the existing NFT registry experiments and final registration design |
+| Account authority | Separate registry adapter with owner/epoch callback checks | Broader registry cases, independent reconstruction and final registration design |
 | Frontend | Local social alpha and source available | Connected public protocol, real-wallet flow and independently operated services |
 
 These are **separate research fixtures**, not a complete decentralized social network. The latest withdrawal experiment has a fixed payer, constructor-selected owners, supplied stake snapshot, mock token and provisional fee/allocation behavior. It does not implement username registration or a production NFT registry. It uses repeated synthetic execution contexts, not a verified public blockchain. The earlier frozen paid-action baseline remains separate and unchanged.
+
+## Latest registry integration and peer review
+
+A new, separate [registry-backed withdrawal experiment](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/1c4725fd34f0268a840d143a29b34e35ed45bec9/docs/REGISTRY_FUNDED_WITHDRAWAL.md) passed20 local transactions. It uses one registry for ownership, refuses withdrawal by a transfer-approved operator, and reverses payment if ownership or its transfer counter changes during the token call. The new owner withdrew2 mock units;8 remain held for unpaid rewards. This is not public registration or a real-token deployment.
+
+These20 operations have **single-engine coverage only**. Independent history reconstruction, Geth comparison, safe-receiver cases and full ABA callbacks remain next. They are not part of the earlier61-operation two-engine result.
+
+Review responses are recorded on [PR19](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/19#issuecomment-6738658071), [PR18](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/18#issuecomment-6738658584) and [C-001](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues/1#issuecomment-6738659224). External review reports retain their exact commit and test scope; reviewer-reported runs are not newly reproduced here. WD-27's C-001 package hashes and saved-output consistency were checked, but its chain proof was not independently authenticated and the specification conflict remains open.
 
 ## Where developers should start
 
@@ -28,7 +36,7 @@ The latest work uses Node20.20.2, solc0.8.30, ethers6.16.0 and EthereumJS10.1.3,
 
 ## Next milestones and release gates
 
-1. **Connect registry authority to the funded lifecycle.** Reuse existing NFT-owner/epoch evidence, reject approval-only spending, and recheck authority around external token calls. Avoid a second owner database or developer override.
+1. **Verify the registry integration more deeply.** Extend safe-receiver and ABA cases, reconstruct its signed history independently, and compare engines. The bounded adapter is implemented; production registration and authority remain unresolved.
 2. **Resolve the open protocol decisions.** Original-token registration, stake/fee allocation, pending entitlement across ownership transfer, signing/session policy and other source conflicts need explicit review. Tests do not settle these choices.
 3. **Demonstrate one independently operated public action.** Combine the selected immutable candidate, real wallets, replaceable submission/storage paths and authenticated history, then have another operator reproduce it without builder credentials.
 4. **Complete the social protocol and release review.** Registration, broader social actions, confidential messaging, durable media, independent recovery, security review and an explicit public release agreement remain necessary.
