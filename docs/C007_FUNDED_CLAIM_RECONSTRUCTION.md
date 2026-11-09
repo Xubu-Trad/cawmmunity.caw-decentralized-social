@@ -34,3 +34,8 @@ The first command emits reconstructed JSON; compare it with the saved [result](.
 The observations are hash-pinned local transaction/log records, not authenticated receipts or canonical public history. Signature recovery does not establish the legitimacy of the constructor snapshot or adopted economics. No withdrawal beneficiary, NFT ownership, actual CAW compatibility or general arbitrary-fee arithmetic is established. README remains unchanged and hosted CI deferred.
 
 Next replay this exact29-operation claim contract in the second engine before expanding custody or withdrawal behavior. The previous15-operation admission comparison does not cover the new claims.
+
+
+## Subsequent second-engine replay
+
+[The exact29-operation comparison](C007_CLAIMS_GETH_COMPARISON.md) now matches both engines at every transition. This adds local execution evidence without changing the earlier reconstruction or establishing public-chain authentication.

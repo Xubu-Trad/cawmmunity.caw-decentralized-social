@@ -1,0 +1,34 @@
+{
+  "parent": "e07c689ecc179ac7b0d1affd3194d337e9565a8a",
+  "transform": "record roots for identical signed claim sequence and replay with pinned Geth",
+  "files": {
+    "docs/C007_CLAIMS_GETH_COMPARISON.md": {
+      "sha256": "e4331fbedda23289f98082871138c537db4407b28215671b1c0d24a5d19cc4ea",
+      "size": 3698
+    },
+    "integration/core-baseline-v1/replay-claims-geth.py": {
+      "sha256": "82d7a9eaef3535ca9fcfcda44e14f410c6a94c471fa4f908e289f8adc1c869d4",
+      "size": 5070
+    },
+    "integration/core-baseline-v1/test-funded-claims-roots.mjs": {
+      "sha256": "234b4853e2583af1fbdd7908a88779ee081070aaf00329fa06d4e703c962c9bf",
+      "size": 10225
+    },
+    "evidence/claims-geth-20261108/fixture.json": {
+      "sha256": "ba77e2beec9399439608e4f0772644ef875c467175169b8bfc83f7bb6d3be60d",
+      "size": 961696
+    },
+    "evidence/claims-geth-20261108/result.json": {
+      "sha256": "f09f6d20240f36cc226627f0f71970dd9b12dc9bcd4cc4bf4a2e1a57eeb5fe74",
+      "size": 541
+    },
+    "evidence/claims-geth-20261108/selection-controls.json": {
+      "sha256": "6c99f62ecccea33e8babfe2a8956cc8323ce39b57ad8b7998bf213261e781e58",
+      "size": 68
+    },
+    "docs/C007_FUNDED_CLAIM_RECONSTRUCTION.md": {
+      "sha256": "555bc472e935730a467283b1cd98e1689fc1f35d19bcf71347d0d0d1d4b98613",
+      "size": 4191
+    }
+  }
+}
