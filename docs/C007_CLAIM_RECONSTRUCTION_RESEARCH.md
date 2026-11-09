@@ -31,3 +31,8 @@ Before a chain adapter can be accepted:
 4. Test replacement branches from retained raw captures, including orphaned fee admissions, claims and transfers. Rebuild claim markers and budgets from the selected branch without an administrator reset.
 
 No external audit, real token backing, production rollback, resource-hardening proof, NFT beneficiary rule or C-007 resolution is claimed. README updates remain paused.
+
+
+## Candidate event codec
+
+[Draft event layout](C007_CLAIM_EVENT_SCHEMA.md) provides a tested unverified decoder and producer/reader integration gates. It is not an authenticated event adapter or deployed ABI.
