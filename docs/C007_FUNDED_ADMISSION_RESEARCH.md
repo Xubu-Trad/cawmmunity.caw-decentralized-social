@@ -42,3 +42,8 @@ Use the same existing solc0.8.30/Node20.20.2/ethers6.16.0/EthereumJS10.1.3 versi
 [Compiler input](../evidence/funded-admission-20261108/compiler-input.json), [signed operations](../evidence/funded-admission-20261108/operations.json) and [result](../evidence/funded-admission-20261108/result.json) preserve the successful run. Output must be new. Publicly known test keys are local fixtures only; never fund or broadcast them.
 
 NEXT — Reconstruct these actual mock admission budgets/nonces from the executed observations and compare with queried state, preserving the distinction between an execution log and authenticated chain history. Claims, withdrawal rights, transfer semantics, independent execution, real-token proof and C-007 agreement remain gates. README updates remain paused; CI remains deferred.
+
+
+## Accounting reconstruction
+
+[Separate mock accounting model](C007_FUNDED_ADMISSION_RECONSTRUCTION.md) matches all15 saved operations and queried final budgets/balances. It does not add receipt proofs or a second EVM execution.
