@@ -31,3 +31,8 @@ The output directory must not exist. [Compiler input](../evidence/unfunded-emitt
 An actual candidate must prove the exact authorized payer/account debit, correct asset and amount, successful atomic custody/accounting transition, and backing/claim liabilities against reviewed state semantics. Token balance responses alone also depend on verified token behavior; existing malicious-token and original-asset proof gates remain relevant. Do not infer these properties from matching event fields or a successful receipt.
 
 Next compare an explicitly funded mock-token admission transition with failure cases that leave no fee record or spendable credit. Keep that experiment separate from C-007 adoption, NFT identity and production registration. README updates remain paused; hosted CI remains deferred.
+
+
+## Funded comparison
+
+[Fixed-payer mock admission](C007_FUNDED_ADMISSION_RESEARCH.md) tests exact token deltas, budget creation and rollback on rejected payment. It does not implement production claims or withdrawals.

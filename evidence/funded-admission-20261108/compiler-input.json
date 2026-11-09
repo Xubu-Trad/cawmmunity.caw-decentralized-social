@@ -1,0 +1,23 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "FundedAdmissionResearch.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity 0.8.30;\n\n// Disposable test token, including an intentionally unsafe failure-mode switch.\ncontract AdmissionTokenFixture {\n    mapping(address => uint256) public balanceOf;\n    mapping(address => mapping(address => uint256)) public allowance;\n    bool public returnFalse;\n    constructor() { balanceOf[msg.sender] = 100; }\n    function setReturnFalse(bool value) external { returnFalse = value; }\n    function approve(address spender,uint256 amount) external returns(bool) {\n        allowance[msg.sender][spender]=amount;return true;\n    }\n    function transfer(address to,uint256 amount) external returns(bool) {\n        require(balanceOf[msg.sender]>=amount,\"FUNDS\");\n        balanceOf[msg.sender]-=amount;balanceOf[to]+=amount;return true;\n    }\n    function transferFrom(address from,address to,uint256 amount) external returns(bool) {\n        require(allowance[from][msg.sender]>=amount,\"ALLOWANCE\");\n        require(balanceOf[from]>=amount,\"FUNDS\");\n        allowance[from][msg.sender]-=amount;balanceOf[from]-=amount;balanceOf[to]+=amount;\n        return !returnFalse; // false AFTER mutation exercises transaction rollback\n    }\n}\ninterface IAdmissionTokenResearch {\n    function balanceOf(address) external view returns(uint256);\n    function transferFrom(address,address,uint256) external returns(bool);\n}\n\n// One fixed research payer; no NFT registration, staking, claims or withdrawal.\n// Five mock base units are an experimental input, not an adopted CAW fee.\ncontract FundedAdmissionResearch {\n    IAdmissionTokenResearch public immutable token;\n    address public immutable payer;\n    bytes32 public immutable snapshotRoot;\n    uint256 public nextNonce;\n    uint256 public unclaimedLiability;\n    mapping(bytes32=>uint256) public budgets;\n    uint256 private entered;\n    bytes32 public constant PROFILE=0x3333333333333333333333333333333333333333333333333333333333333333;\n    event ResearchFeeAdmitted(bytes32 indexed recordId,uint256 indexed payerAccount,uint256 epoch,uint256 nonce,uint256 fee,bytes32 stakeRoot,uint256 totalStake,uint256 payerStake,bytes32 profile);\n    constructor(address token_,address payer_,bytes32 root_) {\n        require(token_.code.length!=0 && payer_!=address(0));\n        token=IAdmissionTokenResearch(token_);payer=payer_;snapshotRoot=root_;\n    }\n    function recordIdFor(uint256 nonce) public view returns(bytes32) {\n        return sha256(abi.encodePacked(\"CAW_C007_CLAIM_RECORD_RESEARCH_V1\",bytes1(0),\n            uint256(block.chainid),address(this),PROFILE,uint256(1),uint256(0),nonce,\n            uint256(5),snapshotRoot,uint256(10)));\n    }\n    function admit(uint256 nonce) external {\n        require(entered==0,\"REENTRY\");entered=1;\n        require(msg.sender==payer,\"PAYER\");require(nonce==nextNonce,\"NONCE\");\n        bytes32 id=recordIdFor(nonce);require(budgets[id]==0,\"DUPLICATE\");\n        uint256 beforePayer=token.balanceOf(payer);\n        uint256 beforeVault=token.balanceOf(address(this));\n        require(beforePayer>=5,\"FUNDS\");\n        require(token.transferFrom(payer,address(this),5),\"TOKEN_FALSE\");\n        require(token.balanceOf(payer)==beforePayer-5,\"DEBIT\");\n        require(token.balanceOf(address(this))==beforeVault+5,\"CREDIT\");\n        nextNonce=nonce+1;budgets[id]=5;unclaimedLiability+=5;\n        require(token.balanceOf(address(this))>=unclaimedLiability,\"BACKING\");\n        emit ResearchFeeAdmitted(id,1,0,nonce,5,snapshotRoot,10,2,PROFILE);\n        entered=0;\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "evmVersion": "shanghai",
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode.object"
+        ]
+      }
+    }
+  }
+}

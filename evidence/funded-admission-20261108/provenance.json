@@ -1,0 +1,34 @@
+{
+  "parent": "2da2f0a5e0510fef0d8fe8836f93e11d4595be14",
+  "transform": "single local EVM funded mock admission and rollback controls",
+  "files": {
+    "integration/core-baseline-v1/FundedAdmissionResearch.sol": {
+      "sha256": "a2d99e8731157c2c26c46d13b81448ef2d08ef430aaf76c22e197aec7814fd7b",
+      "size": 3499
+    },
+    "integration/core-baseline-v1/test-funded-admission.mjs": {
+      "sha256": "c73ded6803dd22a47073af8131cfa44d1ac5436c323c82aee5825d63813a43c6",
+      "size": 7109
+    },
+    "docs/C007_FUNDED_ADMISSION_RESEARCH.md": {
+      "sha256": "a3e0dfb4919370f96d8da81999f5ecb1cc162fada08925b2d2f65f1ed3a41c2d",
+      "size": 4707
+    },
+    "evidence/funded-admission-20261108/compiler-input.json": {
+      "sha256": "7475779daf41164c5a88b517b4f2ddd80b28b9402e4a691db721e3abd1bb248a",
+      "size": 3947
+    },
+    "evidence/funded-admission-20261108/operations.json": {
+      "sha256": "a309870d84e4a7c3dafbdc7d77bac8c194cb6c5ed68f007d17d69eb72713fa6d",
+      "size": 17343
+    },
+    "evidence/funded-admission-20261108/result.json": {
+      "sha256": "62a78ed6a0350399fec32db918df3fcad37dda84a4c5bf63eb3f8270ef7d2536",
+      "size": 868
+    },
+    "docs/C007_UNFUNDED_EMITTER_CONTROL.md": {
+      "sha256": "42dd58680daa0b0bd02bde9e09d05b73b014479bfbef5d3790dcceae85e96049",
+      "size": 4318
+    }
+  }
+}
