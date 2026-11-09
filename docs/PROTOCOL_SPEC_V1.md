@@ -31,3 +31,8 @@ Record exact source passage/requirement IDs; competing interpretations; proposed
 Eight constant observations are mechanically matched to exact frozen source literals. All16conflict IDs and section hashes are checked. Four authored negative controls reject fee drift, missing conflict coverage, an unsupported adoption label and a source-hash mismatch. This is not a parser proving full Solidity semantics, an economics audit, or a test of every statement in the table. The JSON verifier deliberately cannot authorize a release; a future adopted schema needs separate review.
 
 Next: turn C-001 and C-007 into concrete reviewable decision packets, with existing compatibility/rounding evidence and alternatives. Keep the one-command baseline acceptance gate as the starting point for subsequent implementation changes. No financial behavior changed. CI remains deferred and README edits paused.
+
+
+## Review packets
+
+[C-001 registration](C001_REGISTRATION_DECISION_PACKET.md) and [C-007 distribution](C007_DISTRIBUTION_DECISION_PACKET.md) enumerate alternatives and acceptance evidence. Both remain unresolved; no constants or contracts changed.
