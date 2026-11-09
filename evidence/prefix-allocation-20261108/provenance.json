@@ -1,0 +1,23 @@
+{
+  "parent": "9d7ffd8d5051e377e87a9cea8581f20289cbb7d8",
+  "frozenSourceSha256": "d97dd9157a81611630ac876556684f7354f412e35a7a360662aab6ce2984e02c",
+  "transform": "frozen tree encoding plus proposed prefix allocation compared with integer-ticket enumeration",
+  "files": {
+    "integration/core-baseline-v1/c007-prefix-allocation.py": {
+      "sha256": "0a519dad2b277bf5067010fe493d9baec6d989cd05e7575419aeb645a7e0d382",
+      "size": 4924
+    },
+    "docs/C007_PREFIX_ALLOCATION_RESEARCH.md": {
+      "sha256": "8f0db3ac0291b14c7c245b66fe9ef00df1cb8534468d95d6a84cebb86deaedac",
+      "size": 4981
+    },
+    "evidence/prefix-allocation-20261108/result.json": {
+      "sha256": "e6d59627167972e7640115ef63c15dc8543d793d9f77283447e4fba12779fc87",
+      "size": 1062
+    },
+    "docs/C007_DISTRIBUTION_DECISION_PACKET.md": {
+      "sha256": "c65ce59aadaf2bc8b4ec7fae729d80d24c7824809a54fc0c43417a3838dd5c15",
+      "size": 6158
+    }
+  }
+}

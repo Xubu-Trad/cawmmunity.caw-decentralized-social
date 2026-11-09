@@ -56,3 +56,6 @@ R2-005, `8f9da9c32b3aa4ff9f3fb095d9995fd38a8f54a6`, layers/R2-020_hex_transposit
 ## Follow-up research
 
 [Exact-rational reward index](C007_REWARD_INDEX_RESEARCH.md) compares a recipient-loop-free candidate with eager allocation. Its arithmetic exceeds256bits and its fractional carry differs from per-action flooring. No policy is adopted.
+
+
+[Stake-prefix allocation research](C007_PREFIX_ALLOCATION_RESEARCH.md) explores exact per-fee allocation using the existing tree encoding. Numeric account order affects rounding; snapshot/claim semantics and implementation remain unresolved.
