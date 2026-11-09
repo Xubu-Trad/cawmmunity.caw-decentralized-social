@@ -37,3 +37,8 @@ The local wrapper enforced2GiB free disk,1GiB available memory and a120second ti
 This is one-engine local evidence. The prior29-operation two-engine comparison does not cover this new contract or sequence. Constructor ownership is not ERC-721 integration; snapshot authority, original CAW compatibility, C-007 allocation policy and production readiness remain unresolved. The source's claim comment means no token transfer occurs during claim; the shared invariant guard does call the token's view balance function.
 
 Next reconstruct the61-operation ownership/epoch/credit/withdrawal history using the existing readers, then compare exact execution in the second engine. README updates remain paused and hosted CI deferred. Do not fund this research fixture.
+
+
+## Verification follow-up
+
+[Separate history reconstruction and exact second-engine replay](FUNDED_WITHDRAWAL_VERIFICATION.md) now cover the61-operation fixture. The original one-engine record remains unchanged; production and real-registry boundaries remain open.
