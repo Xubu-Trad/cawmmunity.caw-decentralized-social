@@ -38,3 +38,8 @@ To regenerate fixtures into a new path:
 Bind these observations to verified raw transaction bodies/senders and an authenticated deployment/checkpoint; preserve ABI generation and ordered-event completeness. Then connect authorized fee debits and stake membership to claim-state reconstruction and independently reconcile real backing. No production producer exists for these candidate events yet. Do not treat receipt inclusion or the chainId context field as an authorization or canonical-chain decision.
 
 C-007, real-token evidence, NFT beneficiary/withdrawal rules and mainnet readiness remain unresolved. README updates remain paused; CI remains deferred.
+
+
+## Body and sender follow-up
+
+[Body/receipt/sender composition](C007_BLOCK_EVENT_COMPOSITION.md) checks retained signed history and rejects receipt-only substitution. No positive candidate event or funded admission is established yet.

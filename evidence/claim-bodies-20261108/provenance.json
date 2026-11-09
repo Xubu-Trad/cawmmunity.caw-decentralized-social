@@ -1,0 +1,31 @@
+{
+  "parent": "befb4c530bd54dde7251874e43985ca96ff4fba4",
+  "inputSha256": "689f880143cdc55f3016dcad42b70bb188af35ad296305e4ee42a9f058a76742",
+  "transform": "unchanged body/receipt/sender reader composition against retained signed local capture",
+  "files": {
+    "integration/core-baseline-v1/c007-block-events.mjs": {
+      "sha256": "41c93146583ad7a0ab568d8f8934c1fc493e52176efb07f5769ebf8925b4a4ef",
+      "size": 2382
+    },
+    "integration/core-baseline-v1/test-c007-block-events.mjs": {
+      "sha256": "6c3252a8dd05fa59df7f0a620f12d4d99337c5fe413bbced69caa09cb52ef7a1",
+      "size": 3543
+    },
+    "docs/C007_BLOCK_EVENT_COMPOSITION.md": {
+      "sha256": "b3ff2f9286f6626ab56a706fc1c59cafaded09224237fc083e68cb7f55171e83",
+      "size": 3855
+    },
+    "evidence/claim-bodies-20261108/source-pins.json": {
+      "sha256": "c81ae5dfa54041bffbe83eb3026b2be504454145a108de8bcd8f9eb3d3d4e391",
+      "size": 632
+    },
+    "evidence/claim-bodies-20261108/result.json": {
+      "sha256": "cf7abc2e40044f4f011bfed3d848ccb145a9aac7350e8ffea14d6da4f54390b1",
+      "size": 726
+    },
+    "docs/C007_RECEIPT_EVENT_ADAPTER.md": {
+      "sha256": "1cb3f217e37b4466c9f5439abd47d60190a762abe86b6a99430b8e165951b946",
+      "size": 4551
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "status": "RETAINED_LOCAL_SIGNED_HISTORY_CHECK",
+  "blocks": 38,
+  "transactions": 38,
+  "failedReceipts": 11,
+  "candidateEvents": 0,
+  "rejected": [
+    "altered raw transaction",
+    "missing body",
+    "duplicate body",
+    "missing receipt",
+    "changed status",
+    "wrong signature chain",
+    "mismatched event context chain",
+    "caller verified selection flag",
+    "synthetic receipt-only fixture lacks matching body"
+  ],
+  "untrustedRpcLabelsIgnored": true,
+  "executionReplayed": false,
+  "limits": "Existing signed local capture; no fresh chain run. No candidate events exist in this capture, so positive event-to-sender projection is not covered here. No CAW authority, payment or canonicality proof."
+}

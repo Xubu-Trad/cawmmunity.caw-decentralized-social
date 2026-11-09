@@ -1,0 +1,10 @@
+{
+  "parent": "befb4c530bd54dde7251874e43985ca96ff4fba4",
+  "files": {
+    "reference/ethereum-block-transactions.mjs": "bed33246e3708ac6838cddd5a7a2c88692b54cd998a3fc2e647497bf96c94cd5",
+    "reference/ethereum-block-receipts.mjs": "92b108bdc18d138ec8f8ee6569402045ee91460d0d80a2cc8f012fbdacf55ddd",
+    "reference/ethereum-execution-header.mjs": "dd69f58be27f861939432a2a140298fde3be1393e8d9bbd8b6dfb88c69cb34eb",
+    "reference/keccak256.mjs": "6ed8268eb811eddb3345ebb47e824346c00585d6bed2ec3767e1783d31615edf",
+    "reference/ethereum-block-senders.mjs": "65c787449418ace3091a79bb062e7cd5898f39fb53bfff48ef395adcc2d7befc"
+  }
+}
