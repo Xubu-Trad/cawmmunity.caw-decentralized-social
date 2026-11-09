@@ -19,3 +19,8 @@ Keep claims tied to an account under the disclosed experimental entitlement choi
 Reuse the existing registry source/semantics with changes separately documented for compiler and account-ID mapping. The funded snapshot currently contains accounts1/2/3/4, whereas the retained registry only creates1/2/3. Select an explicit test mapping before execution rather than treating missing account4 as registered. Either add a clearly labelled constructor-only zero-weight account4 to a derived fixture or use a separate new snapshot; preserve the older roots and transactions.
 
 Test owner/operator distinction, stale epochs, ordinary transfer, self-transfer, safe-receiver rejection/forward transfer, registry change during a token callback and A-to-B-to-A callback. Include post-call authority failure with full rollback. Reconstruct the same registry/custody history and compare engines after the bounded adapter passes. No username-burn resolution or live NFT authority is inferred from this fixture.
+
+
+## November9 implementation update
+
+The [separate registry-backed fixture](REGISTRY_FUNDED_WITHDRAWAL.md) now covers20 local transactions and five rejection cases. The earlier source-review boundary above is historical; safe receivers, full ABA callback and independent reconstruction remain pending.

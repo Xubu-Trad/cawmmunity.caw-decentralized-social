@@ -1,0 +1,39 @@
+{
+  "parent": "567796117c70f14a2a42b0361eaea663da30e9ff",
+  "transform": "local registry-bound withdrawal experiment, V2 after comment correction; V1 retained",
+  "artifacts": {
+    "compiler-input.json": {
+      "sha256": "fd5596d9e34eaca7f7757a5888d383a2da202512535fc4f3d9def2a6b0c08964",
+      "size": 15161,
+      "publication": "local only"
+    },
+    "operations.json": {
+      "sha256": "3401822fab52d8e3ac6d73f0f54bdc14943cd5ce8a8f47bac7cc715e9ed023c9",
+      "size": 181021,
+      "publication": "local only"
+    },
+    "result.json": {
+      "sha256": "70bc69c54ef85043e48015ac69fd0dd6e4e1b59115048561a9ed1d9c3ce28113",
+      "size": 743,
+      "publication": "included"
+    }
+  },
+  "files": {
+    "docs/REGISTRY_FUNDED_WITHDRAWAL.md": {
+      "sha256": "b3990c9d67a92053574c52207805d635b1015990e15d61c8cf063398668b2c1a",
+      "size": 3646
+    },
+    "integration/core-baseline-v1/RegistryFundedResearch.sol": {
+      "sha256": "57346fd0267a71d32495b1f22f68c9919f5f113716f1b31d659bacb352a3e745",
+      "size": 14442
+    },
+    "integration/core-baseline-v1/test-registry-funded.mjs": {
+      "sha256": "061757ded2e933a1442a4697845e4da0576c2ae3d9b2a91a018003cbb47fe790",
+      "size": 8066
+    },
+    "evidence/registry-funded-20261109/result.json": {
+      "sha256": "70bc69c54ef85043e48015ac69fd0dd6e4e1b59115048561a9ed1d9c3ce28113",
+      "size": 743
+    }
+  }
+}
