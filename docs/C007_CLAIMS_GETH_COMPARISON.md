@@ -31,3 +31,8 @@ Five comparison mutations reject altered state root, gas, status, logs and signe
 The repeated block context is synthetic, not an assembled valid chain. No header/consensus authentication, external independent review, real CAW compatibility or production acceptance is established. The constructor stake root and order-sensitive allocation remain experimental assumptions. No NFT withdrawal beneficiary or adopted C-007 rule is introduced. The frozen protocol and README remain unchanged; hosted CI remains deferred.
 
 Next review the existing ownership/withdrawal decision boundary before connecting account credits to any transfer of tokens. Crediting an account does not establish who may withdraw, whether entitlement follows an NFT transfer or what signed authorization must bind. Do not add a developer escape key or silently choose those policies.
+
+
+## Ownership integration review
+
+[The next integration plan](FUNDED_CREDIT_WITHDRAWAL_PLAN.md) identifies the outstanding-budget accounting boundary and an explicitly experimental account-bound withdrawal sequence. No new withdrawal behavior or policy adoption is claimed.

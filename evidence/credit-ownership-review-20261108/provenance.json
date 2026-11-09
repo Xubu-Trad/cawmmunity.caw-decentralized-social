@@ -1,0 +1,21 @@
+{
+  "parent": "bf2e09815bddc960b1dcfa1ffd3dc538d884a4ae",
+  "inputSha256": {
+    "sources/SPEC_CONFLICTS.md": "97ef7b7fc5c0540ae218684f9b2bd1f91f34e75658610ce8065f795ed02671b9",
+    "sources/MANIFESTO_REQUIREMENTS.tsv": "13687fb5b9b8b7ad034b0398f16c7befa0a0ac2189a58e168862f8ec08ef6eac",
+    "integration/core-baseline-v1/compiler-input.json": "cbb8cda2141cb274227308ad944c1e763b1ed38a88b68163ac6a6f37383dbea8",
+    "docs/C007_OWNERSHIP_COMMITMENT_BOUNDARY_20261107.md": "aa3ba6f4d7c38f030fdc8a5843c0de55c9a3395863397e2f9acbeb90c9efcd4f",
+    "docs/SIGNED_WITHDRAWAL_ACQUISITION.md": "1b8d3770d6cfb98ce3983858ab1475f5e58150714f2c64b80c3549e88b77a259"
+  },
+  "transform": "source review and proposed integration obligations, not execution",
+  "files": {
+    "docs/FUNDED_CREDIT_WITHDRAWAL_PLAN.md": {
+      "sha256": "bc1463337fdf94131bc6b22589a51fa86b8a9dddcc9b084b409d63b375593f37",
+      "size": 7448
+    },
+    "docs/C007_CLAIMS_GETH_COMPARISON.md": {
+      "sha256": "cdf79f73fba6d3b06915925810030cee70ae6107dfd59cc14e6a8033d9669e60",
+      "size": 3973
+    }
+  }
+}
