@@ -1,0 +1,38 @@
+{
+  "parent": "966ee96d4c058431cc4db2a497e15b68e8e2d779",
+  "transform": "separate fixed-snapshot funded claims; local signed EVM operations",
+  "files": {
+    "docs/C007_FUNDED_CLAIMS_RESEARCH.md": {
+      "sha256": "1770fd0387346c4975d845fe07f3634b5c15b73200a7a9c0e650385ede544c52",
+      "size": 5083
+    },
+    "integration/core-baseline-v1/FundedClaimResearch.sol": {
+      "sha256": "543c667ad0857418b68accfc3879dd69f1d0268c55bcfa179bcbc2912cb64157",
+      "size": 5984
+    },
+    "integration/core-baseline-v1/test-funded-claims.mjs": {
+      "sha256": "833157d40c03c1dd9a6138a41d06f008cc31950be9ed4ef4ba54269a6ce311a3",
+      "size": 10176
+    },
+    "evidence/funded-claims-20261108/compiler-input.json": {
+      "sha256": "94727324edc5eae990f6d89509ebde448f5146f6de71e99a92a9e6b84c6b8018",
+      "size": 6492
+    },
+    "evidence/funded-claims-20261108/operations.json": {
+      "sha256": "a512c5639a344fff4ac1440de26abd466ba099e50d8d02235177641ee48ca568",
+      "size": 957790
+    },
+    "evidence/funded-claims-20261108/result.json": {
+      "sha256": "e2124fb70a4badcfc1523a7239379aeeb108695210aa1968ffda1a112b50edaa",
+      "size": 1444
+    },
+    "evidence/funded-claims-20261108/proofs.json": {
+      "sha256": "735d37ee57447ab8a15e25fe55327566e77a7b9da9d9ee638a44c5568059af20",
+      "size": 93655
+    },
+    "evidence/funded-claims-20261108/vectors.json": {
+      "sha256": "472ef013e7be3b6dd5f2eee8ba1deaed4b9244206c52491cfc8c0a9b6411750a",
+      "size": 334
+    }
+  }
+}
