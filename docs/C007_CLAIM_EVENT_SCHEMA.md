@@ -45,3 +45,8 @@ An altered fee999 encoded correctly and remained explicitly unverified. This con
 4. Verify claim allocation against the earning snapshot, reconcile credited/unclaimed totals with independently observed contract state and backing, and preserve transfer/withdrawal rights under reviewed rules.
 
 No contract or parameter changed. Original-token proof and C-007 decisions remain open. README updates remain paused; hosted CI remains deferred.
+
+
+## Record consistency follow-up
+
+[Cross-language admission binding](C007_ADMISSION_BINDING_RESEARCH.md) checks the research record commitment. It does not authenticate a receipt, signature, debit or payer stake.
