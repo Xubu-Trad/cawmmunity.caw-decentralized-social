@@ -1,0 +1,19 @@
+{
+  "status": "SYNTHETIC_NOT_EXECUTED_EVENT_PROJECTION",
+  "events": 2,
+  "transactionHash": "0x7bde0202cfbd483c4aa70d3cad12bfca929b2a67704c82ed79a68185312ebb35",
+  "recoveredSender": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+  "ethersSenderAgrees": true,
+  "rejected": [
+    "changed raw signature",
+    "changed receipt event",
+    "removed candidate log",
+    "reordered candidate logs",
+    "duplicated candidate log"
+  ],
+  "rpcLabelsIgnored": true,
+  "executionVerified": false,
+  "cawActionAuthorityVerified": false,
+  "feeBackingVerified": false,
+  "limits": "Positive projection over synthetic receipt/header commitments and retained signed bytes. Logs were not produced by that transaction. No execution or funding claim."
+}

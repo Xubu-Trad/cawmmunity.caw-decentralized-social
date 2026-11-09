@@ -31,3 +31,8 @@ With existing ethers6.16.0 available:
 ## Open gate
 
 A positive candidate event-to-sender fixture is still needed, clearly distinguishing a synthetic commitment from real executed evidence. Actual admission integration additionally requires the reviewed producer, authorized fee debit, authenticated deployment/checkpoint, stake membership and account-authority semantics. Keep C-007 open. Do not invent accepted economics to produce a green integration result. README updates remain paused; CI remains deferred.
+
+
+## Positive projection follow-up
+
+[Explicitly synthetic event projection](C007_POSITIVE_EVENT_PROJECTION.md) now exercises both event-to-sender rows. It deliberately does not claim that its constructed receipts were executed or funded.
