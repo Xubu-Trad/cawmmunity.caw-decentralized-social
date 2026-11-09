@@ -27,3 +27,8 @@ Source compiler key remains FundedAdmissionResearch.sol intentionally. Public di
 Result and generated-artifact hashes are published; signed operations and compiler input remain in the retained local evidence lane and are emitted by the reproduction command. No hosted-CI run is claimed.
 
 UNRESOLVED — invalid registry deployment controls, independent reconstruction and second-engine replay for this28-operation fixture remain pending. The earlier61-operation fixture's Geth comparison does not cover this code. Runtime hash matching does not authenticate registry policy or state. Real CAW, public registration, public-chain evidence, economic decisions and release acceptance remain open.
+
+
+## Follow-up verification
+
+[Independent reconstruction and two-engine replay](REGISTRY_WITHDRAWAL_VERIFICATION.md) now cover this exact28-operation fixture. The original single-engine limitations above describe its initial test stage; public-chain and production gates remain open.
