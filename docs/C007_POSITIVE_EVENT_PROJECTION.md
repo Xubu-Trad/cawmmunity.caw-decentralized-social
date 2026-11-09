@@ -33,3 +33,8 @@ The generator verifies the original capture hash and refuses to overwrite its ou
 The adapter's positive projection path now has finite coverage, while actual funded admission remains absent. Next work must validate the proposed producer's authorization/debit/state transitions or expose a deliberately unfunded producer as a negative control. Neither a decoder, a matching commitment nor an emitted event alone proves payment. Do not change accepted economics, NFT ownership rules or deployment authority to bypass these gates.
 
 No contracts, constants or README changed. C-007 and original-token proof remain open; hosted CI remains deferred.
+
+
+## Executed negative control
+
+[Unfunded local emitter](C007_UNFUNDED_EMITTER_CONTROL.md) actually emits consistent records without moving mock tokens. This confirms why execution must remain separate from economic authorization and backing.
