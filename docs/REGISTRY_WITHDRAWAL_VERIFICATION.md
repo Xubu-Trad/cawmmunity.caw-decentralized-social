@@ -32,3 +32,8 @@ The output directory must not exist. Replay checks Geth SHA-256 `d8cfddad15a8c60
 ## Remaining gates
 
 Repeated block1/time1 contexts are not valid canonical-chain history. There is no header/finality verification, real-token proof, adopted entitlement/economic policy, public registration or external audit. Matching engines does not prove source requirements correct or rule out shared mistakes. Constructor rejection coverage and adversarial registry trust boundaries remain next; no developer override is introduced. README remains deliberately unchanged during this engineering increment.
+
+
+## Constructor and trust-boundary follow-up
+
+[A separate26-operation test](REGISTRY_TRUST_BOUNDARIES.md) now records constructor rejection and a deliberately dishonest registry passing code-hash checks. It is single-engine evidence and does not expand this28-operation two-engine result.
