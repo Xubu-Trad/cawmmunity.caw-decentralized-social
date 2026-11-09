@@ -1,0 +1,36 @@
+{
+  "status": "RESEARCH_NOT_ADOPTED",
+  "records": [
+    "41eaec8beee3d2665dd71fbd64f1d93aac34ddadacef33c8d160076e369a0021",
+    "681249ebdf8fdfa24d4ac0365337a362330c9e5e03e50fa383cdbe643d491f8c"
+  ],
+  "record_field_binding_checks": 9,
+  "atomic_rejections": [
+    "unknown record",
+    "replacement fee cannot reuse action",
+    "replacement snapshot cannot reuse action",
+    "foreign chain",
+    "foreign contract",
+    "foreign profile",
+    "current proof for earlier fee",
+    "old proof for later fee",
+    "wrong payer weight",
+    "wrong recipient weight",
+    "payer claim",
+    "duplicate claim",
+    "duplicate zero claim"
+  ],
+  "claim_order_permutations": 6,
+  "final_account_credits": {
+    "2": 1,
+    "4": 0,
+    "3": 11
+  },
+  "final_unclaimed_budgets": {
+    "41eaec8beee3d2665dd71fbd64f1d93aac34ddadacef33c8d160076e369a0021": 0,
+    "681249ebdf8fdfa24d4ac0365337a362330c9e5e03e50fa383cdbe643d491f8c": 0
+  },
+  "fee_input": 12,
+  "credited": 12,
+  "limits": "Synthetic admission and account credits only. No signed debit, token backing, chain-root authentication, ownership withdrawal, reorg rollback or EVM execution."
+}

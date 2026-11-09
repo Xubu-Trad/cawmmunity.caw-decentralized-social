@@ -34,3 +34,8 @@ Seven altered inputs were rejected: sibling sum, sibling hash, shortened proof, 
 Compare three recorded alternatives: exact fractional carry (unbounded rational representation), fixed-point carry (precision/reserve attribution problems), and per-fee interval allocation (ordering and claim-cost problems). None is adopted or a drop-in replacement for the frozen floor/dust profile. Document which economics, beneficiary identity, rounding fairness, storage and liveness constraints are required before selecting one.
 
 The next bounded engineering item is a snapshot-bound claim-state reference with duplicate-claim and stale-root negatives, explicitly labelled under this candidate's assumptions. It must not be represented as production settlement or used to close C-007. README updates remain paused.
+
+
+## Snapshot-claim follow-up
+
+[Snapshot-bound claim reference](C007_SNAPSHOT_CLAIMS_RESEARCH.md) checks duplicate and wrong-snapshot rejection with synthetic account credits. It adds no token backing, withdrawal authority or production admission.
