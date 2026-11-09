@@ -1,0 +1,30 @@
+{
+  "parent": "61631f107de47d975006931a80a37a1fd3202d39",
+  "transform": "retained signed-lifecycle compiler input rebuilt and pinned",
+  "files": {
+    "integration/core-baseline-v1/manifest.json": {
+      "sha256": "9b32ece7f8e6dab79a4fb991783973f2579d166431cecbe223a48c008c2ff954",
+      "size": 28788
+    },
+    "integration/core-baseline-v1/compiler-input.json": {
+      "sha256": "cbb8cda2141cb274227308ad944c1e763b1ed38a88b68163ac6a6f37383dbea8",
+      "size": 20492
+    },
+    "integration/core-baseline-v1/result.json": {
+      "sha256": "54f304d891e4cf20205ea272e656ebf482be3a808931d6ea3430311e5c10e9cd",
+      "size": 288
+    },
+    "integration/core-baseline-v1/check-core-baseline.mjs": {
+      "sha256": "b6ddc0375f0a8d8ac05b6bc8285c19781466a8c4d6aa0502210d966c88b1e7ed",
+      "size": 1825
+    },
+    "docs/CORE_INTEGRATION_BASELINE.md": {
+      "sha256": "13487462bcb9a786523de502d85aa0e25cf2305f4d8d35099d9db1040532507f",
+      "size": 3972
+    },
+    "docs/ROADMAP.md": {
+      "sha256": "cf2d6c26b849201cd5ab3c945c6d9a376b2882e2c752fffdc159a7f2a9df378f",
+      "size": 54304
+    }
+  }
+}

@@ -1,0 +1,1042 @@
+{
+  "schema": "caw-core-research-baseline/1",
+  "status": "RESEARCH_ONLY",
+  "parent": "61631f107de47d975006931a80a37a1fd3202d39",
+  "compilerVersion": "0.8.30+commit.73712a01.Emscripten.clang",
+  "soljsonSha256": "3bb491a777f76dff9b2fe73ce29ca20e21a971b59a2f2cf8f73415424f00be06",
+  "compilerInputSha256": "cbb8cda2141cb274227308ad944c1e763b1ed38a88b68163ac6a6f37383dbea8",
+  "sources": {
+    "DeployedCustodyStakeResearch.sol": "d97dd9157a81611630ac876556684f7354f412e35a7a360662aab6ce2984e02c",
+    "SignerWalletFixture.sol": "0f27beab9fa9ca8bc87a7cae857bca75285a92dab32d954f4e7b43d767f1d852"
+  },
+  "artifacts": {
+    "DeployedCustodyStakeResearch.sol": {
+      "DeployedCustodyStakeResearch": {
+        "creationSha256": "929e97ec9dfb90ea432f7f481536fdad319618f87b6fcc53355741dba84e4cae",
+        "runtimeTemplateSha256": "2c09bbb7ef5c86ca715ffabae563b17733cfd0dc667510a8af6339c68f123ac5",
+        "abi": [
+          {
+            "inputs": [
+              {
+                "internalType": "address",
+                "name": "token",
+                "type": "address"
+              },
+              {
+                "internalType": "address[3]",
+                "name": "owners",
+                "type": "address[3]"
+              }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "constructor"
+          },
+          {
+            "anonymous": false,
+            "inputs": [
+              {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "payerAccount",
+                "type": "uint256"
+              },
+              {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "nonce",
+                "type": "uint256"
+              },
+              {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "allocation2",
+                "type": "uint256"
+              },
+              {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "allocation3",
+                "type": "uint256"
+              },
+              {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "dust",
+                "type": "uint256"
+              },
+              {
+                "indexed": false,
+                "internalType": "bytes32",
+                "name": "textHash",
+                "type": "bytes32"
+              }
+            ],
+            "name": "ExperimentalFeeSettled",
+            "type": "event"
+          },
+          {
+            "anonymous": false,
+            "inputs": [
+              {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "payerAccount",
+                "type": "uint256"
+              },
+              {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "nonce",
+                "type": "uint256"
+              },
+              {
+                "indexed": false,
+                "internalType": "bytes",
+                "name": "text",
+                "type": "bytes"
+              }
+            ],
+            "name": "ExperimentalTextPublished",
+            "type": "event"
+          },
+          {
+            "inputs": [],
+            "name": "SIGNED_FEE",
+            "outputs": [
+              {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [],
+            "name": "SIGNED_PROFILE",
+            "outputs": [
+              {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [],
+            "name": "TOKEN",
+            "outputs": [
+              {
+                "internalType": "contract IERC20Research",
+                "name": "",
+                "type": "address"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [
+              {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "expectedEpoch",
+                "type": "uint256"
+              },
+              {
+                "internalType": "bool",
+                "name": "increase",
+                "type": "bool"
+              },
+              {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+              },
+              {
+                "internalType": "bool",
+                "name": "injectedRevert",
+                "type": "bool"
+              },
+              {
+                "components": [
+                  {
+                    "internalType": "bytes32",
+                    "name": "hash",
+                    "type": "bytes32"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "sum",
+                    "type": "uint256"
+                  }
+                ],
+                "internalType": "struct DeployedCustodyStakeResearch.Node[256]",
+                "name": "proof",
+                "type": "tuple[256]"
+              }
+            ],
+            "name": "changeStake",
+            "outputs": [
+              {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+              }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+          },
+          {
+            "inputs": [],
+            "name": "credit1",
+            "outputs": [
+              {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [],
+            "name": "credit2",
+            "outputs": [
+              {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [],
+            "name": "credit3",
+            "outputs": [
+              {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [
+              {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "epoch",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+              }
+            ],
+            "name": "deposit",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+          },
+          {
+            "inputs": [],
+            "name": "epoch1",
+            "outputs": [
+              {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [],
+            "name": "epoch2",
+            "outputs": [
+              {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [],
+            "name": "epoch3",
+            "outputs": [
+              {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [],
+            "name": "liabilities",
+            "outputs": [
+              {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [],
+            "name": "owner1",
+            "outputs": [
+              {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [],
+            "name": "owner2",
+            "outputs": [
+              {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [],
+            "name": "owner3",
+            "outputs": [
+              {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [],
+            "name": "poolDust",
+            "outputs": [
+              {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [
+              {
+                "components": [
+                  {
+                    "internalType": "uint256",
+                    "name": "accountId",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "epoch",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "nonce",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "validAfter",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "deadline",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "bytes32",
+                    "name": "stakeRoot",
+                    "type": "bytes32"
+                  },
+                  {
+                    "internalType": "bytes32",
+                    "name": "textHash",
+                    "type": "bytes32"
+                  }
+                ],
+                "internalType": "struct DeployedCustodyStakeResearch.PostIntent",
+                "name": "req",
+                "type": "tuple"
+              }
+            ],
+            "name": "postDigest",
+            "outputs": [
+              {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [
+              {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+              }
+            ],
+            "name": "postNonces",
+            "outputs": [
+              {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [],
+            "name": "root",
+            "outputs": [
+              {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [
+              {
+                "components": [
+                  {
+                    "internalType": "uint256",
+                    "name": "accountId",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "epoch",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "nonce",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "validAfter",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "deadline",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "bytes32",
+                    "name": "stakeRoot",
+                    "type": "bytes32"
+                  },
+                  {
+                    "internalType": "bytes32",
+                    "name": "textHash",
+                    "type": "bytes32"
+                  }
+                ],
+                "internalType": "struct DeployedCustodyStakeResearch.PostIntent",
+                "name": "req",
+                "type": "tuple"
+              },
+              {
+                "internalType": "bytes",
+                "name": "signature",
+                "type": "bytes"
+              },
+              {
+                "internalType": "bytes",
+                "name": "text",
+                "type": "bytes"
+              }
+            ],
+            "name": "settleFixedPool1",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+          },
+          {
+            "inputs": [],
+            "name": "stake1",
+            "outputs": [
+              {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [],
+            "name": "stake2",
+            "outputs": [
+              {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [],
+            "name": "stake3",
+            "outputs": [
+              {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [],
+            "name": "totalStake",
+            "outputs": [
+              {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [
+              {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "expectedEpoch",
+                "type": "uint256"
+              },
+              {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+              }
+            ],
+            "name": "transferAccount",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+          },
+          {
+            "inputs": [
+              {
+                "components": [
+                  {
+                    "internalType": "uint256",
+                    "name": "accountId",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "epoch",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "nonce",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "validAfter",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "deadline",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "bytes32",
+                    "name": "stakeRoot",
+                    "type": "bytes32"
+                  },
+                  {
+                    "internalType": "bytes32",
+                    "name": "textHash",
+                    "type": "bytes32"
+                  }
+                ],
+                "internalType": "struct DeployedCustodyStakeResearch.PostIntent",
+                "name": "req",
+                "type": "tuple"
+              },
+              {
+                "internalType": "bytes",
+                "name": "signature",
+                "type": "bytes"
+              }
+            ],
+            "name": "verifyPost",
+            "outputs": [
+              {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [
+              {
+                "components": [
+                  {
+                    "internalType": "uint256",
+                    "name": "accountId",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "epoch",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "nonce",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "validAfter",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "deadline",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "bytes32",
+                    "name": "stakeRoot",
+                    "type": "bytes32"
+                  },
+                  {
+                    "internalType": "bytes32",
+                    "name": "textHash",
+                    "type": "bytes32"
+                  }
+                ],
+                "internalType": "struct DeployedCustodyStakeResearch.PostIntent",
+                "name": "req",
+                "type": "tuple"
+              },
+              {
+                "internalType": "bytes",
+                "name": "signature",
+                "type": "bytes"
+              }
+            ],
+            "name": "verifyPostEOA",
+            "outputs": [
+              {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [
+              {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "epoch",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+              }
+            ],
+            "name": "withdraw",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+          }
+        ],
+        "immutableReferences": {
+          "234": [
+            {
+              "length": 32,
+              "start": 720
+            },
+            {
+              "length": 32,
+              "start": 1480
+            },
+            {
+              "length": 32,
+              "start": 1630
+            },
+            {
+              "length": 32,
+              "start": 1827
+            },
+            {
+              "length": 32,
+              "start": 2186
+            },
+            {
+              "length": 32,
+              "start": 5266
+            },
+            {
+              "length": 32,
+              "start": 5667
+            },
+            {
+              "length": 32,
+              "start": 6428
+            },
+            {
+              "length": 32,
+              "start": 6575
+            },
+            {
+              "length": 32,
+              "start": 6766
+            },
+            {
+              "length": 32,
+              "start": 6965
+            },
+            {
+              "length": 32,
+              "start": 7167
+            },
+            {
+              "length": 32,
+              "start": 7422
+            }
+          ]
+        }
+      },
+      "MockTokenResearch": {
+        "creationSha256": "9f5456701b79b4e97a3294635a111c8d8b7460c3c8702bc8ac4ab97a58aaa4ac",
+        "runtimeTemplateSha256": "b9f41ae0e20e421a4f989a3679edf285099e5ef7e8d08bca8214ed302dfde236",
+        "abi": [
+          {
+            "inputs": [
+              {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+              },
+              {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+              }
+            ],
+            "name": "allowance",
+            "outputs": [
+              {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [
+              {
+                "internalType": "address",
+                "name": "spender",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+              }
+            ],
+            "name": "approve",
+            "outputs": [
+              {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+              }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+          },
+          {
+            "inputs": [
+              {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+              }
+            ],
+            "name": "balanceOf",
+            "outputs": [
+              {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [
+              {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+              }
+            ],
+            "name": "mint",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+          },
+          {
+            "inputs": [
+              {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+              }
+            ],
+            "name": "transfer",
+            "outputs": [
+              {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+              }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+          },
+          {
+            "inputs": [
+              {
+                "internalType": "address",
+                "name": "from",
+                "type": "address"
+              },
+              {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+              }
+            ],
+            "name": "transferFrom",
+            "outputs": [
+              {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+              }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+          }
+        ],
+        "immutableReferences": {}
+      }
+    },
+    "SignerWalletFixture.sol": {
+      "SignerWalletFixture": {
+        "creationSha256": "c7b0c96bd0929b01e6849415ce8de54108873d882175a17dcb5e0910a7d2c13d",
+        "runtimeTemplateSha256": "aa7417ae44f31f9129bcabc1679babc17ba9272a16d8e7306b19d124acfca2f8",
+        "abi": [
+          {
+            "inputs": [
+              {
+                "internalType": "address",
+                "name": "c",
+                "type": "address"
+              }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "constructor"
+          },
+          {
+            "inputs": [],
+            "name": "controller",
+            "outputs": [
+              {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "inputs": [
+              {
+                "internalType": "address",
+                "name": "target",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+              }
+            ],
+            "name": "execute",
+            "outputs": [
+              {
+                "internalType": "bytes",
+                "name": "",
+                "type": "bytes"
+              }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+          },
+          {
+            "inputs": [
+              {
+                "internalType": "bytes32",
+                "name": "digest",
+                "type": "bytes32"
+              },
+              {
+                "internalType": "bytes",
+                "name": "signature",
+                "type": "bytes"
+              }
+            ],
+            "name": "isValidSignature",
+            "outputs": [
+              {
+                "internalType": "bytes4",
+                "name": "",
+                "type": "bytes4"
+              }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+          }
+        ],
+        "immutableReferences": {
+          "2143": [
+            {
+              "length": 32,
+              "start": 153
+            },
+            {
+              "length": 32,
+              "start": 479
+            },
+            {
+              "length": 32,
+              "start": 585
+            }
+          ]
+        }
+      }
+    }
+  },
+  "productionAccepted": false,
+  "blockers": [
+    "C-001 unresolved",
+    "fixed three accounts",
+    "provisional economics",
+    "no permissionless NFT registry",
+    "not scalable settlement",
+    "no current token account proof",
+    "no accepted release"
+  ]
+}

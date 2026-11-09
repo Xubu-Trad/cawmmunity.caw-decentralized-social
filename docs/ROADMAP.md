@@ -606,3 +606,8 @@ Fixed a reproduced empty-success launch through a Windows directory junction. Th
 ## Supplied-key aggregate equations — 2026-11-08
 
 [The bounded aggregate experiment](BLS_POP_AGGREGATE_20261108.md) passed 21 focused checks plus separate 90 BLS and 73 bootstrap regressions. Canonical key validation and a passing aggregate equation do not establish each participant's possession or authorization; a compensating-key control preserves that distinction. No participant-selection or update-acceptance integration. Next extend existing ForkData work with consensus-domain/SigningData evidence, and separately define authenticated participant selection and enrollment/possession prerequisites. Full suite and declared runtime remain unrun; CI remains deferred.
+
+
+## Integration-first routing —2026-11-08
+
+Primary engineering now follows [the frozen core research baseline](CORE_INTEGRATION_BASELINE.md). Three existing artifacts rebuilt identically; constructor binding and lifecycle linkage remain next. Prioritize one complete NFT/custody/signed-action/recovery journey, with C-001 and economics decisions explicit. Preserve isolated research; do not prioritize additional BLS cases absent a selected integration requirement. This is planning direction, not community adoption or release clearance. README remains paused.
