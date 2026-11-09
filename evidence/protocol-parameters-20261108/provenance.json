@@ -1,0 +1,22 @@
+{
+  "parent": "c7677cbaa58b758072eaa596291316e1b2a9f7ba",
+  "transform": "source-backed draft parameter and conflict register",
+  "files": {
+    "sources/PROTOCOL_PARAMETERS_V1.json": {
+      "sha256": "bd8307b2a9aa2dbef4f672456609373bbc711e09a58aeacf840481c6b1d45d10",
+      "size": 8239
+    },
+    "integration/core-baseline-v1/check-protocol-parameters.py": {
+      "sha256": "c70376e982578332aed855e39d42347e98478ebf67d2a7fc96b338a781aa683d",
+      "size": 1825
+    },
+    "evidence/protocol-parameters-20261108/result.json": {
+      "sha256": "9bcfb3a3a4e47c2411b9c0b56b77b2b9dc97a853d32851423501a099f0dfd5f3",
+      "size": 206
+    },
+    "docs/PROTOCOL_SPEC_V1.md": {
+      "sha256": "d465283a246c9e95e8a936dcc2332a0677df84bb98e2c6bcdd900d3e7074d3d4",
+      "size": 4592
+    }
+  }
+}

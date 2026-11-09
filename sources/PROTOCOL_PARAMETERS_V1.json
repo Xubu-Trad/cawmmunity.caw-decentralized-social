@@ -1,0 +1,164 @@
+{
+  "schema": "caw-protocol-parameters/1",
+  "status": "DRAFT_RESEARCH_NOT_ADOPTED",
+  "baselineCommit": "c7677cbaa58b758072eaa596291316e1b2a9f7ba",
+  "sourceSha256": "d97dd9157a81611630ac876556684f7354f412e35a7a360662aab6ce2984e02c",
+  "conflictsSha256": "97ef7b7fc5c0540ae218684f9b2bd1f91f34e75658610ce8065f795ed02671b9",
+  "observedConstants": {
+    "postFeeExpression": "5000 * 10**18",
+    "profileLabel": "CAW_C007_SYNTHETIC_POST_V1",
+    "domainName": "CAW C007 Synthetic Action",
+    "domainVersion": "1",
+    "textScalarLimit": "420",
+    "walletSignatureByteLimit": "4096",
+    "walletCallGas": "100000",
+    "settlementAccountId": "1"
+  },
+  "decisions": [
+    {
+      "id": "C-001",
+      "subject": "CAW burn destination and actual token compatibility.",
+      "status": "UNRESOLVED",
+      "source": "sources/SPEC_CONFLICTS.md#c-001",
+      "sourceSectionSha256": "654b2729c9be205024d227f500316b2947df4d32eff499228e509fdd0f635df0",
+      "acceptanceEvidence": [],
+      "nextAction": "Record explicit interpretation, alternatives, implementation effects, source mapping and review evidence before marking resolved."
+    },
+    {
+      "id": "C-002",
+      "subject": "Like and reCAW allocation conflict.",
+      "status": "UNRESOLVED",
+      "source": "sources/SPEC_CONFLICTS.md#c-002",
+      "sourceSectionSha256": "861c724faea7650d625c0f06ca0109231b2d8c1f0e4babb01d5c9d2a78cf71fd",
+      "acceptanceEvidence": [],
+      "nextAction": "Record explicit interpretation, alternatives, implementation effects, source mapping and review evidence before marking resolved."
+    },
+    {
+      "id": "C-003",
+      "subject": "Recommended prices, immutable costs and the 8+ plateau.",
+      "status": "UNRESOLVED",
+      "source": "sources/SPEC_CONFLICTS.md#c-003",
+      "sourceSectionSha256": "e18f58e95093f4c23f578dab3104369e05e4c4f2a571ae269b27e96683878852",
+      "acceptanceEvidence": [],
+      "nextAction": "Record explicit interpretation, alternatives, implementation effects, source mapping and review evidence before marking resolved."
+    },
+    {
+      "id": "C-004",
+      "subject": "420 characters versus \u201cmax xxx Characters.\u201d",
+      "status": "UNRESOLVED",
+      "source": "sources/SPEC_CONFLICTS.md#c-004",
+      "sourceSectionSha256": "c4487ddaa2ab57e56fadf2cce5de718561fbe2fb78261c001eea1be8baac6ec6",
+      "acceptanceEvidence": [],
+      "nextAction": "Record explicit interpretation, alternatives, implementation effects, source mapping and review evidence before marking resolved."
+    },
+    {
+      "id": "C-005",
+      "subject": "NFT ownership, confidential DMs and transferred history.",
+      "status": "UNRESOLVED",
+      "source": "sources/SPEC_CONFLICTS.md#c-005",
+      "sourceSectionSha256": "27bfed33974f274646d006bfe1cca88ceb65be772dee26c76d3af7cff7d59722",
+      "acceptanceEvidence": [],
+      "nextAction": "Record explicit interpretation, alternatives, implementation effects, source mapping and review evidence before marking resolved."
+    },
+    {
+      "id": "C-006",
+      "subject": "\u201cAll data,\u201d on-chain association, external media and permanence.",
+      "status": "UNRESOLVED",
+      "source": "sources/SPEC_CONFLICTS.md#c-006",
+      "sourceSectionSha256": "2bd60635e286dd337bdb295090381fc925b0e83ed1ad2f0081c525ed046dfeab",
+      "acceptanceEvidence": [],
+      "nextAction": "Record explicit interpretation, alternatives, implementation effects, source mapping and review evidence before marking resolved."
+    },
+    {
+      "id": "C-007",
+      "subject": "Stake pool, recipient timing and edge cases are underspecified.",
+      "status": "UNRESOLVED",
+      "source": "sources/SPEC_CONFLICTS.md#c-007",
+      "sourceSectionSha256": "5bfbd2dd9c77043b68becbd65fd8aa307df247b78decbb2a9bdb2d9bfbcd9e29",
+      "acceptanceEvidence": [],
+      "nextAction": "Record explicit interpretation, alternatives, implementation effects, source mapping and review evidence before marking resolved."
+    },
+    {
+      "id": "C-008",
+      "subject": "Mostly gasless usage versus real execution/storage costs.",
+      "status": "UNRESOLVED",
+      "source": "sources/SPEC_CONFLICTS.md#c-008",
+      "sourceSectionSha256": "75b837b2db6bfba1f1da333a69ae64e1bfb8f3fdbf301d1ac36596ba82090888",
+      "acceptanceEvidence": [],
+      "nextAction": "Record explicit interpretation, alternatives, implementation effects, source mapping and review evidence before marking resolved."
+    },
+    {
+      "id": "C-009",
+      "subject": "Fast invisible signatures versus explicit spending authority.",
+      "status": "UNRESOLVED",
+      "source": "sources/SPEC_CONFLICTS.md#c-009",
+      "sourceSectionSha256": "2692857d9be6a5b134d833a3addc6faf7f37ed2848648a7dcf6079edcb66ce90",
+      "acceptanceEvidence": [],
+      "nextAction": "Record explicit interpretation, alternatives, implementation effects, source mapping and review evidence before marking resolved."
+    },
+    {
+      "id": "C-010",
+      "subject": "Moderation and historical legal rhetoric.",
+      "status": "UNRESOLVED",
+      "source": "sources/SPEC_CONFLICTS.md#c-010",
+      "sourceSectionSha256": "7ca560c46f6e322a342ef3cdb05ac63154c3ff06f757f5f804ade214c7fb4daf",
+      "acceptanceEvidence": [],
+      "nextAction": "Record explicit interpretation, alternatives, implementation effects, source mapping and review evidence before marking resolved."
+    },
+    {
+      "id": "C-011",
+      "subject": "Agreed changes, peer review and community acceptance.",
+      "status": "UNRESOLVED",
+      "source": "sources/SPEC_CONFLICTS.md#c-011",
+      "sourceSectionSha256": "3814ae0b79da4574502a8cf3d52afa7766d17a2f064c87ddfbbc5478c575da0d",
+      "acceptanceEvidence": [],
+      "nextAction": "Record explicit interpretation, alternatives, implementation effects, source mapping and review evidence before marking resolved."
+    },
+    {
+      "id": "C-012",
+      "subject": "No special power across the full dependency graph.",
+      "status": "UNRESOLVED",
+      "source": "sources/SPEC_CONFLICTS.md#c-012",
+      "sourceSectionSha256": "961e55e8eb0cee9714e548c6a0d1efc9fdab391d8694bd017202a5aa8ac67ec6",
+      "acceptanceEvidence": [],
+      "nextAction": "Record explicit interpretation, alternatives, implementation effects, source mapping and review evidence before marking resolved."
+    },
+    {
+      "id": "C-013",
+      "subject": "Username bounds and account lifecycle.",
+      "status": "UNRESOLVED",
+      "source": "sources/SPEC_CONFLICTS.md#c-013",
+      "sourceSectionSha256": "5b582b2559485735458fe67395c8b7d9a0270495abbd132ce087d1dcbf5aac68",
+      "acceptanceEvidence": [],
+      "nextAction": "Record explicit interpretation, alternatives, implementation effects, source mapping and review evidence before marking resolved."
+    },
+    {
+      "id": "C-014",
+      "subject": "External URL shortening versus durable references and privacy.",
+      "status": "UNRESOLVED",
+      "source": "sources/SPEC_CONFLICTS.md#c-014",
+      "sourceSectionSha256": "28eabe7965ea1a22a088361642fed9452c5755fca0fc25636915049a6b5f2a67",
+      "acceptanceEvidence": [],
+      "nextAction": "Record explicit interpretation, alternatives, implementation effects, source mapping and review evidence before marking resolved."
+    },
+    {
+      "id": "C-015",
+      "subject": "No official releases versus community implementation release.",
+      "status": "UNRESOLVED",
+      "source": "sources/SPEC_CONFLICTS.md#c-015",
+      "sourceSectionSha256": "3976fb89c00dac7d8f26e7a394c882d192a487f9687347d674b8ec46ef6f9dd9",
+      "acceptanceEvidence": [],
+      "nextAction": "Record explicit interpretation, alternatives, implementation effects, source mapping and review evidence before marking resolved."
+    },
+    {
+      "id": "C-016",
+      "subject": "Cryptographic migration without privileged upgrades.",
+      "status": "UNRESOLVED",
+      "source": "sources/SPEC_CONFLICTS.md#c-016",
+      "sourceSectionSha256": "e800bd02ae756c95e04d2d490906fc8432457b8daf668fdffa30f42a7d472d4f",
+      "acceptanceEvidence": [],
+      "nextAction": "Record explicit interpretation, alternatives, implementation effects, source mapping and review evidence before marking resolved."
+    }
+  ],
+  "productionAccepted": false
+}
