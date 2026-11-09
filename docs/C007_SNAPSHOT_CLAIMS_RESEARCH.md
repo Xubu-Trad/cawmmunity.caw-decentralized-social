@@ -28,3 +28,8 @@ After each tested transition, the model checks each fee equals remaining budget 
 The account-order rounding tradeoff remains unchanged. Both code and tests were authored here; there is no new external review or deployed-EVM result. Python object immutability and methods are not a production security boundary. No token custody, signed admission, transfer/epoch withdrawal rule, malicious external callback, gas bound, authenticated chain history or reorg rollback is supplied.
 
 NEXT — Define replayable admission/claim events and reconstruct this fixture with the existing history-reader boundaries. Test rejection/rollback of orphaned admissions and claims without inventing token backing or deciding NFT beneficiaries. A production candidate must bind admission to the exact authorized fee debit and earning root, keep claim availability independent of a builder, and preserve withdrawal rights under an explicitly reviewed ownership rule. C-007 remains open; README updates remain paused.
+
+
+## Reconstruction follow-up
+
+[Synthetic journal reconstruction](C007_CLAIM_RECONSTRUCTION_RESEARCH.md) checks branch replacement and orphaned claim-state removal. Ethereum event integration remains explicitly gated.
