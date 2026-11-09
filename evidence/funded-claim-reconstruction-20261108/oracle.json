@@ -1,0 +1,16 @@
+{
+  "status": "FIXED_SNAPSHOT_TICKET_ORACLE_MATCH",
+  "claims": 6,
+  "credits": {
+    "2": 2,
+    "3": 8,
+    "4": 0
+  },
+  "rejected": [
+    "amount",
+    "account",
+    "missing",
+    "duplicate"
+  ],
+  "limits": "Same-author different-language enumeration; no independent external review, execution or ownership proof."
+}

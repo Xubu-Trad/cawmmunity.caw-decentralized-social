@@ -37,3 +37,8 @@ The Solidity compiler input retains the historical source key `FundedAdmissionRe
 ## Open gates
 
 This is a bounded fixed-fee, fixed-payer allocation experiment. No arbitrary-fee overflow proof, live stake authentication, original CAW compatibility, NFT ownership/withdrawal semantics, second-engine claim replay, public-chain authentication or production readiness is claimed. Do not fund it. Next reconstruct these new claim credits from the signed operations and existing event readers, then compare independent execution before expanding custody or beneficiary behavior. README unchanged; hosted CI deferred.
+
+
+## Reconstruction follow-up
+
+[Separate history reconstruction](C007_FUNDED_CLAIM_RECONSTRUCTION.md) now matches all29 operations and account credits, with a Python allocation cross-check. It does not add authenticated receipts or second-engine claim execution.
