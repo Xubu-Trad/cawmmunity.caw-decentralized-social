@@ -40,3 +40,8 @@ With existing solc0.8.30 and ethers6.16.0:
 This is a same-author accounting model over hash-pinned local observations, not a second EVM, independent external audit or complete canonical-history acquisition. Receipt statuses/logs come from the saved VM observation file: no receipt/header proof is added in this step. Hash pins establish which observations were checked, not that they occurred on a public chain. Native gas accounting is intentionally separate and not reconstructed here.
 
 The fixed payer, fee5, root and mock token remain experimental assumptions. No registration, NFT ownership, claims, withdrawals, actual-token compatibility or C-007 agreement is established. Next obtain independent execution/state comparison for this exact fixture before expanding its scope. Keep the earlier failed evidence and original frozen baseline intact. README updates remain paused; hosted CI remains deferred.
+
+
+## Subsequent execution comparison
+
+[Second-engine comparison](C007_FUNDED_GETH_COMPARISON.md) now reproduces all15 exact signed operations and intermediate states. The earlier model boundaries remain as recorded; the new result does not add chain authentication or production acceptance.

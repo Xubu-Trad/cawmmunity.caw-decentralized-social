@@ -1,0 +1,6 @@
+{
+  "rejectedBeforeOutputCreation": [
+    "changed_fixture",
+    "optimized_python"
+  ]
+}
