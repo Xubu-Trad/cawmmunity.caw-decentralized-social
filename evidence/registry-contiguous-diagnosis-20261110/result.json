@@ -1,0 +1,74 @@
+{
+  "schema": "caw-contiguous-rejection-diagnosis/1",
+  "storage": {
+    "label": "approved2",
+    "key": "0x679795a0195a1b76cdebb7c51d74e058aee92919b8c3389af86ef24535e8a28c",
+    "independentLeafValue": "0x80",
+    "canonicalZeroRequiresAbsence": true,
+    "strictRejectionPreserved": true
+  },
+  "transactions": [
+    {
+      "index": 6,
+      "encodedBytes": 33230,
+      "dataBytes": 33124,
+      "type": 2,
+      "from": "0x1efF47bc3a10a45D4B230B5d10E37751FE6AA718",
+      "to": "0x985D0CE92f2af930e309F5Ff89139490aC2d9E94",
+      "independentTransactionRootMatches": true,
+      "signatureRecovered": true,
+      "encodedLimit": 32768,
+      "dataLimit": 24576
+    },
+    {
+      "index": 10,
+      "encodedBytes": 33231,
+      "dataBytes": 33124,
+      "type": 2,
+      "from": "0x1efF47bc3a10a45D4B230B5d10E37751FE6AA718",
+      "to": "0x985D0CE92f2af930e309F5Ff89139490aC2d9E94",
+      "independentTransactionRootMatches": true,
+      "signatureRecovered": true,
+      "encodedLimit": 32768,
+      "dataLimit": 24576
+    }
+  ],
+  "boundary": [
+    {
+      "size": 32767,
+      "code": "BLOCK_TRANSACTIONS_TYPE"
+    },
+    {
+      "size": 32768,
+      "code": "BLOCK_TRANSACTIONS_TYPE"
+    },
+    {
+      "size": 32769,
+      "code": "BLOCK_TRANSACTIONS_TRANSACTION_ENCODED_LIMIT"
+    }
+  ],
+  "dataBoundary": [
+    {
+      "size": 24575,
+      "code": "BLOCK_TRANSACTIONS_ROOT_MISMATCH"
+    },
+    {
+      "size": 24576,
+      "code": "BLOCK_TRANSACTIONS_ROOT_MISMATCH"
+    },
+    {
+      "size": 24577,
+      "code": "BLOCK_TRANSACTIONS_DATA_LIMIT"
+    }
+  ],
+  "controls": [
+    "wrong storage root rejects",
+    "changed proof node rejects",
+    "canonical unwritten/nonzero/cleared storage and root restoration pass"
+  ],
+  "readerChanged": false,
+  "captureRepaired": false,
+  "completeHistoryVerified": false,
+  "chainAuthenticated": false,
+  "limits": "Independent library checks diagnose rejected input; they do not promote the bounded CAW reader result or prove consensus/finality. Boundary payloads are deliberately altered and not valid signed executions."
+}
