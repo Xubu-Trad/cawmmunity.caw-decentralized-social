@@ -345,6 +345,41 @@ test("oversized event collections are rejected before any replay workload", () =
   assert.throws(() => rebuild(FIXTURE, envelope), code("INVALID_SCHEMA"));
 });
 
+function assertInvalidTextCallError(wrapper, label) {
+  const prefix = "Error: ";
+  assert.ok(
+    typeof wrapper === "string" && wrapper.startsWith(prefix + "{") && wrapper.endsWith("}"),
+    label,
+  );
+  let error;
+  assert.doesNotThrow(() => { error = JSON.parse(wrapper.slice(prefix.length)); }, label);
+  assert.ok(Object.hasOwn(error, "data"), label);
+  assert.equal(error.data, "0x7a2a029c", label);
+}
+
+test("C-004 InvalidText evidence requires exact revert data in the error wrapper", () => {
+  const wrap = data => "Error: " + JSON.stringify({ message: "diagnostic 7a2a029c", data });
+  const valid = 'Error: {"message":"unrelated diagnostic","data":"0x7a2a029c"}';
+  assertInvalidTextCallError(valid, "exact data with an unrelated message");
+  const invalid = [
+    ["wrong data with selector in message", wrap("0xdeadbeef")],
+    ["missing data", wrap(undefined)],
+    ["null data", wrap(null)],
+    ["numeric data", wrap(7)],
+    ["array data", wrap(["0x7a2a029c"])],
+    ["object data", wrap({ data: "0x7a2a029c" })],
+    ["truncated data", wrap("0x7a2a02")],
+    ["extra data bytes", wrap("0x7a2a029c00")],
+    ["invalid hex", wrap("0x7a2a029g")],
+    ["malformed JSON", 'Error: {"data" "0x7a2a029c"}'],
+    ["wrong prefix", "RPC " + valid],
+    ["trailing content", valid + " trailing"],
+  ];
+  for (const [label, wrapper] of invalid) {
+    assert.throws(() => assertInvalidTextCallError(wrapper, label), { code: "ERR_ASSERTION" }, label);
+  }
+});
+
 // Cross-profile evidence comparison: actual demo execution + retained local-EVM
 // receipts. This does not execute Solidity or establish production authority.
 test("C-004 cross-profile text acceptance matches retained Probe evidence", () => {
@@ -395,7 +430,7 @@ test("C-004 cross-profile text acceptance matches retained Probe evidence", () =
       const data = hexBytes(posted[0].data);
       assert.deepEqual(dynamicBytes(data, 0, 2 * 32), raw, row.id + ": exact Posted bytes");
     } else {
-      assert.match(row.callError, /7a2a029c/, row.id + ": recorded InvalidText eth_call data");
+      assertInvalidTextCallError(row.callError, row.id + ": recorded InvalidText eth_call data");
       assert.equal(posted.length, 0, row.id + ": no Posted event");
     }
   }
