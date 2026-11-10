@@ -41,17 +41,22 @@
     {
       "check": "transaction_hash_differences",
       "status": "EXPECTED_DIFFERENCE",
-      "detail": "25/72 case transaction hashes differ (signed content depends on block timestamps): ['initial_post', 'duplicate_other_submitter', 'underbacked_post', 'old_epoch_after_wallet_transfer', 'wallet_mode_1', 'wallet_mode_2', 'wallet_mode_3', 'wallet_mode_5', 'wallet_mode_0', 'wallet_mode_4', 'wallet_signature_bytes_0', 'wallet_signature_bytes_4096', 'wallet_signature_bytes_4097', 'wallet_nested_1_caught', 'wallet_nested_2_caught', 'wallet_nested_3_caught', 'wallet_nested_4_caught', 'wallet_nested_5_caught', 'wallet_nested_1_propagate', 'wallet_nested_2_propagate', 'wallet_nested_3_propagate', 'wallet_nested_4_propagate', 'wallet_nested_5_propagate', 'wallet_registry_caught', 'wallet_registry_propagate']"
+      "detail": "25/72 case transaction hashes differ; all differing cases are within the bounded signed-submission set (25 cases whose signed payload commits to the block timestamp): True; unexplained differences: []; differing: ['initial_post', 'duplicate_other_submitter', 'underbacked_post', 'old_epoch_after_wallet_transfer', 'wallet_mode_1', 'wallet_mode_2', 'wallet_mode_3', 'wallet_mode_5', 'wallet_mode_0', 'wallet_mode_4', 'wallet_signature_bytes_0', 'wallet_signature_bytes_4096', 'wallet_signature_bytes_4097', 'wallet_nested_1_caught', 'wallet_nested_2_caught', 'wallet_nested_3_caught', 'wallet_nested_4_caught', 'wallet_nested_5_caught', 'wallet_nested_1_propagate', 'wallet_nested_2_propagate', 'wallet_nested_3_propagate', 'wallet_nested_4_propagate', 'wallet_nested_5_propagate', 'wallet_registry_caught', 'wallet_registry_propagate']"
     },
     {
       "check": "rpc_call_counts",
       "status": "EXPECTED_DIFFERENCE",
-      "detail": "local calls retained=970 independent=983; method count differences (retained, independent): {'eth_getTransactionReceipt': (208, 221)}; first receipt polls returning null: retained=0 independent=13"
+      "detail": "local calls retained=970 independent=983; method sets identical: True; receipt-poll difference: 13; null receipt polls retained=0 independent=13; every null-polled transaction has an eventual receipt: True; problems: []"
+    },
+    {
+      "check": "retained_capture_sha256",
+      "status": "MATCH",
+      "detail": "sha256 of the retained trace file=5b639707c113b23fa7025a85c098693a6be3431781f175cf1f13b22d1b22b2dc; summary capture_sha256=5b639707c113b23fa7025a85c098693a6be3431781f175cf1f13b22d1b22b2dc; equal: True"
     },
     {
       "check": "trace_file_sha256",
       "status": "EXPECTED_DIFFERENCE",
-      "detail": "retained trace file sha256=5b639707c113b23fa7025a85c098693a6be3431781f175cf1f13b22d1b22b2dc (summary capture_sha256=5b639707c113b23fa7025a85c098693a6be3431781f175cf1f13b22d1b22b2dc, consistent: True); independent trace file sha256=e9cf0f605958a78b79fb0f9fba46e145c88d8ce62a25caa87e1c669e9506e9da (differs because the trace contains run timestamps)"
+      "detail": "independent trace file sha256=e9cf0f605958a78b79fb0f9fba46e145c88d8ce62a25caa87e1c669e9506e9da (differs from the retained file because the trace contains run timestamps)"
     },
     {
       "check": "node_configuration",

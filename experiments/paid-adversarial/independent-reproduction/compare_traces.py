@@ -37,6 +37,44 @@ DIFFER = "DIFFER"
 EXPECTED_DIFFERENCE = "EXPECTED_DIFFERENCE"
 NOT_COMPARABLE = "NOT_COMPARABLE"
 
+# Cases whose single transaction is a wallet-signed submission. The signed
+# payload commits to the block timestamp, so the transaction hash is
+# expected to differ between two runs even when every deterministic
+# outcome (case fields, before/after snapshots, receipt status/gasUsed)
+# is identical. A differing transaction hash in ANY other case is a
+# failure, and in these cases the hash is the ONLY field allowed to
+# differ (enforced by checks 2 and 5). This list is the recorded set
+# from the retained-vs-independent comparison of 2026-11-04.
+EXPECTED_TX_HASH_DIFF_CASES = frozenset({
+    "initial_post",
+    "duplicate_other_submitter",
+    "underbacked_post",
+    "old_epoch_after_wallet_transfer",
+    "wallet_mode_0",
+    "wallet_mode_1",
+    "wallet_mode_2",
+    "wallet_mode_3",
+    "wallet_mode_4",
+    "wallet_mode_5",
+    "wallet_signature_bytes_0",
+    "wallet_signature_bytes_4096",
+    "wallet_signature_bytes_4097",
+    "wallet_nested_1_caught",
+    "wallet_nested_2_caught",
+    "wallet_nested_3_caught",
+    "wallet_nested_4_caught",
+    "wallet_nested_5_caught",
+    "wallet_nested_1_propagate",
+    "wallet_nested_2_propagate",
+    "wallet_nested_3_propagate",
+    "wallet_nested_4_propagate",
+    "wallet_nested_5_propagate",
+    "wallet_registry_caught",
+    "wallet_registry_propagate",
+})
+
+RECEIPT_METHOD = "eth_getTransactionReceipt"
+
 
 def sha256_file(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
@@ -164,57 +202,113 @@ def main():
             detail += f"; problems: {bad}"
     record("inputs_manifest_16_files", status, detail)
 
-    # 8. Transaction hash differences (nondeterministic) -----------------------
+    # 8. Transaction hash differences (bounded exception) ----------------------
     hash_diffs = [
         a["label"]
         for a, b in zip(ret["cases"], ind["cases"])
         if a["transaction_hash"] != b["transaction_hash"]
     ]
+    unexplained_hash_diffs = [l for l in hash_diffs if l not in EXPECTED_TX_HASH_DIFF_CASES]
+    if len(ret["cases"]) != len(ind["cases"]):
+        hash_status = DIFFER
+    elif unexplained_hash_diffs:
+        hash_status = DIFFER
+    elif hash_diffs:
+        hash_status = EXPECTED_DIFFERENCE
+    else:
+        hash_status = MATCH
     record(
         "transaction_hash_differences",
-        EXPECTED_DIFFERENCE,
-        f"{len(hash_diffs)}/72 case transaction hashes differ "
-        f"(signed content depends on block timestamps): {hash_diffs}",
+        hash_status,
+        f"{len(hash_diffs)}/{len(ret['cases'])} case transaction hashes differ; "
+        f"all differing cases are within the bounded signed-submission set "
+        f"({len(EXPECTED_TX_HASH_DIFF_CASES)} cases whose signed payload commits "
+        f"to the block timestamp): {not unexplained_hash_diffs}; "
+        f"unexplained differences: {unexplained_hash_diffs}; differing: {hash_diffs}",
     )
 
-    # 9. RPC call counts (nondeterministic polling) -----------------------------
+    # 9. RPC call counts (enforced allowlist) -------------------------------------
     def method_hist(trace):
         return Counter((c.get("request") or {}).get("method") for c in trace["local_calls"])
 
-    def receipt0_nulls(trace):
-        return sum(
-            1
-            for c in trace["local_calls"]
-            if str(c.get("label", "")).endswith(".receipt0")
+    def null_receipt_polls(trace):
+        return [
+            c for c in trace["local_calls"]
+            if (c.get("request") or {}).get("method") == RECEIPT_METHOD
             and (c.get("response") or {}).get("result") is None
+        ]
+
+    def eventual_receipts_ok(trace):
+        """Every transaction hash that was polled and returned null must
+        also appear with a non-null receipt response in the same trace."""
+        nonnull_hashes = {
+            (c.get("request") or {}).get("params", [None])[0]
+            for c in trace["local_calls"]
+            if (c.get("request") or {}).get("method") == RECEIPT_METHOD
+            and (c.get("response") or {}).get("result") is not None
+        }
+        return all(
+            (c.get("request") or {}).get("params", [None])[0] in nonnull_hashes
+            for c in null_receipt_polls(trace)
         )
 
     mr, mi = method_hist(ret), method_hist(ind)
-    method_diffs = {
+    method_sets_equal = set(mr) == set(mi)
+    other_method_diffs = {
         k: (mr.get(k, 0), mi.get(k, 0))
         for k in set(mr) | set(mi)
-        if mr.get(k, 0) != mi.get(k, 0)
+        if k != RECEIPT_METHOD and mr.get(k, 0) != mi.get(k, 0)
     }
+    receipt_delta = mi.get(RECEIPT_METHOD, 0) - mr.get(RECEIPT_METHOD, 0)
+    null_delta = len(null_receipt_polls(ind)) - len(null_receipt_polls(ret))
+    eventual_ok = eventual_receipts_ok(ret) and eventual_receipts_ok(ind)
+    rpc_problems = []
+    if not method_sets_equal:
+        rpc_problems.append(
+            f"method sets differ (retained only: {sorted(set(mr) - set(mi))}, "
+            f"independent only: {sorted(set(mi) - set(mr))})"
+        )
+    if other_method_diffs:
+        rpc_problems.append(f"non-receipt method count differences: {other_method_diffs}")
+    if receipt_delta != null_delta:
+        rpc_problems.append(
+            f"receipt-poll count difference ({receipt_delta}) is not fully explained "
+            f"by the null-poll difference ({null_delta})"
+        )
+    if not eventual_ok:
+        rpc_problems.append("a null receipt poll has no eventual non-null receipt in its trace")
+    if rpc_problems:
+        rpc_status = DIFFER
+    elif receipt_delta == 0:
+        rpc_status = MATCH
+    else:
+        rpc_status = EXPECTED_DIFFERENCE
     record(
         "rpc_call_counts",
-        EXPECTED_DIFFERENCE,
+        rpc_status,
         f"local calls retained={len(ret['local_calls'])} independent={len(ind['local_calls'])}; "
-        f"method count differences (retained, independent): {method_diffs}; "
-        f"first receipt polls returning null: retained={receipt0_nulls(ret)} "
-        f"independent={receipt0_nulls(ind)}",
+        f"method sets identical: {method_sets_equal}; "
+        f"receipt-poll difference: {receipt_delta}; null receipt polls "
+        f"retained={len(null_receipt_polls(ret))} independent={len(null_receipt_polls(ind))}; "
+        f"every null-polled transaction has an eventual receipt: {eventual_ok}; "
+        f"problems: {rpc_problems}",
     )
 
-    # 10. Whole-file SHA-256 ------------------------------------------------------
+    # 10. Whole-file SHA-256 and the retained capture hash -------------------------
     ret_hash = sha256_file(args.retained_trace)
     ind_hash = sha256_file(args.independent_trace)
     record(
+        "retained_capture_sha256",
+        MATCH if ret_hash == summary["capture_sha256"] else DIFFER,
+        f"sha256 of the retained trace file={ret_hash}; "
+        f"summary capture_sha256={summary['capture_sha256']}; "
+        f"equal: {ret_hash == summary['capture_sha256']}",
+    )
+    record(
         "trace_file_sha256",
         EXPECTED_DIFFERENCE,
-        f"retained trace file sha256={ret_hash} "
-        f"(summary capture_sha256={summary['capture_sha256']}, "
-        f"consistent: {ret_hash == summary['capture_sha256']}); "
         f"independent trace file sha256={ind_hash} "
-        f"(differs because the trace contains run timestamps)",
+        f"(differs from the retained file because the trace contains run timestamps)",
     )
 
     # 11. Node configuration vs performance counters --------------------------------

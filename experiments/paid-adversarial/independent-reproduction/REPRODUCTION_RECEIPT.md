@@ -64,3 +64,40 @@ previously reported in chat only. No hash is stated for any file that does not e
   output file on the Windows PC (only the uploaded copy was hashed here; the
   user can confirm with `Get-FileHash -Algorithm SHA256 <original file>`).
 - Whether the author treats file-hash equality as a reproduction criterion.
+
+## Corrections — 2026-11-07
+
+The sections above are the original receipt of 2026-11-04 and are kept
+unchanged. The following corrections apply:
+
+- **Status.** The receipt was prepared as a local document. The evidence
+  package containing it was submitted to GitHub as pull request #16 of
+  Xubu-Trad/cawmmunity.caw-decentralized-social on 2026-11-07.
+- **Original-file equality (was: unconfirmed).** On 2026-11-07 the
+  reproducer confirmed with PowerShell `Get-FileHash -Algorithm SHA256`
+  that the original output file on the Windows PC has SHA-256
+  `e9cf0f605958a78b79fb0f9fba46e145c88d8ce62a25caa87e1c669e9506e9da`,
+  identical to the packaged `independent-run.json`. The packaged copy is
+  therefore byte-identical to the Windows original.
+- **Environment attribution.** The environment above (Windows 11,
+  Python 3.12.10, cryptography 50.0.1, the pinned Anvil binary) is the
+  reproducer's reported environment. The offline checker and the
+  comparison verify consistency of the recorded traces; they do not by
+  themselves authenticate the machine or operating system used.
+- **Checker output provenance.** The checker output was first produced
+  on 2026-11-04 as a console capture. On 2026-11-07 it was re-produced
+  as pure JSON with `run-checker.mjs` (values verified identical to the
+  original capture); the packaged `checker-result.json` is that
+  2026-11-07 output, SHA-256
+  `230e8cf8d12355118b654c9d054b7feb9fbb239727454fa70b815c388a659cec`.
+- **Comparison acceptance rules.** On 2026-11-07, following the PR #16
+  review, `compare_traces.py` was tightened: unexpected RPC methods or
+  counts now fail; extra receipt polls are accepted only when fully
+  explained by null polls whose transactions have eventual receipts;
+  transaction-hash differences are accepted only for the bounded set of
+  signed-submission cases; and the retained summary's `capture_sha256`
+  must equal the retained trace file's SHA-256. Both negative controls
+  from the review (an appended `eth_unexpected` call; a zeroed
+  `capture_sha256`) now fail, and the unmodified pair still passes.
+- The exact-command limitation above is unchanged: the command line as
+  typed was not recorded.

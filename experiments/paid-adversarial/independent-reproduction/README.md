@@ -1,13 +1,17 @@
 # Independent reproduction evidence — Issue #2 alpha.21 adversarial regression
 
 This package lets a third party verify, offline and without re-running any
-EVM experiment, that the alpha.21 adversarial regression reported by the
-author of
+EVM experiment, that the independent trace agrees with the retained trace
+of the alpha.21 adversarial regression reported by the author of
 [Xubu-Trad/cawmmunity.caw-decentralized-social](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues/2)
-was independently reproduced on a different machine and operating system,
-with identical deterministic outcomes.
+on every deterministic outcome. The independent run itself — on a
+different machine and operating system (Windows 11) — is the
+reproducer's report, recorded in `REPRODUCTION_RECEIPT.md`; the offline
+checks in this package establish consistency of the recorded traces, not
+independent authentication of that environment.
 
-**Status: local evidence package. Nothing in it has been posted to GitHub.**
+**Status: submitted to GitHub as PR #16 on 2026-11-07. (Originally
+prepared as a local-only package; see Corrections — 2026-11-07 below.)**
 
 ## What was reproduced
 
@@ -38,15 +42,15 @@ with identical deterministic outcomes.
 
 | File | Content | SHA-256 |
 |---|---|---|
-| `independent-run.json` | Independent execution trace (byte-identical copy of the original upload) | `e9cf0f605958a78b79fb0f9fba46e145c88d8ce62a25caa87e1c669e9506e9da` |
+| `independent-run.json` | Independent execution trace; byte-identical to the Windows original (SHA-256 confirmed by the reproducer on 2026-11-07) | `e9cf0f605958a78b79fb0f9fba46e145c88d8ce62a25caa87e1c669e9506e9da` |
 | `retained/execution-trace.json` | Author's retained trace at the source commit | `5b639707c113b23fa7025a85c098693a6be3431781f175cf1f13b22d1b22b2dc` |
 | `retained/execution-summary.json` | Author's retained summary | `1946ebb82978eb424086dcb81dc969dd62ad0e76108e06f2880396fb86ad30a9` |
 | `retained/experiment-inputs.json` | Input manifest (16 files, hash-pinned) | `2637376a27b2a175d1995e98ff71c026f9925dff8a01729943b9f62bd9056bde` |
 | `compare_traces.py` | Cross-trace comparison script (this package) | see package listing |
 | `comparison-result.json` | Output of `compare_traces.py` on the packaged files | see package listing |
-| `checker-result.json` | Output of the repository's offline checker on the independent trace, produced by `run-checker.mjs` (pure JSON) | `230e8cf8d12355118b654c9d054b7feb9fbb239727454fa70b815c388a659cec` |
+| `checker-result.json` | Output of the repository's offline checker on the independent trace; first produced 2026-11-04, re-produced as pure JSON by `run-checker.mjs` on 2026-11-07 with identical values | `230e8cf8d12355118b654c9d054b7feb9fbb239727454fa70b815c388a659cec` |
 | `run-checker.mjs` | Driver that re-runs the repository's offline checker against a trace | see package listing |
-| `REPRODUCTION_RECEIPT.md` | Receipt: commit, environment, hashes, unconfirmed items | `9331058988180fa880080b23de6cbccc0064b0590ef6d6461f1d1cd16dbee413` |
+| `REPRODUCTION_RECEIPT.md` | Receipt: commit, environment, hashes, unconfirmed items, with dated corrections appended | `4fcfafc28bfb67e4a6d14138c0b184d14fd2f6c656614f6ab6ad9521f1434f13` |
 
 ## How to verify (two independent layers)
 
@@ -79,7 +83,14 @@ python3 compare_traces.py \
   --out comparison-result.json
 ```
 
-Exit code 0 means every deterministic check MATCHes. Adding
+Exit code 0 means every deterministic check MATCHes and every difference
+falls inside the enforced bounds: the RPC method sets must be identical
+and all non-receipt counts equal; a receipt-poll difference is accepted
+only when it equals the difference in null receipt polls and every
+null-polled transaction has an eventual receipt; transaction-hash
+differences are accepted only for the bounded set of signed-submission
+cases; and the retained summary's `capture_sha256` must equal the
+retained trace file's SHA-256. Adding
 `--experiment-dir <clone>/experiments/paid-adversarial` additionally
 verifies the 16 input files on disk against the manifest hashes.
 `comparison-result.json` in this package was produced by exactly the
@@ -117,3 +128,29 @@ public links, identical to those in the retained trace; the only key
 material is the published public test scalars, identical in both traces.
 The packaged copy is therefore byte-identical to the original (same
 SHA-256) and no redaction was necessary. The original was not modified.
+
+## Corrections — 2026-11-07
+
+Applied after the PR #16 review; the original wording is recorded here
+rather than silently rewritten.
+
+- This README originally stated: "Status: local evidence package.
+  Nothing in it has been posted to GitHub." That was true while the
+  package was local. The package was submitted as PR #16 on
+  2026-11-07, and the status line above now says so.
+- The original text said the offline verification "establishes" a
+  different-machine/OS reproduction. Corrected above: the environment
+  is the reproducer's reported environment (see the receipt); the
+  offline checks establish trace consistency only.
+- Original-file equality was listed as unconfirmed in the receipt.
+  On 2026-11-07 the reproducer confirmed the Windows original's
+  SHA-256 by PowerShell; it matches the packaged file exactly.
+- Checker-output dates: first produced 2026-11-04 (console capture);
+  the packaged pure-JSON output was produced by `run-checker.mjs` on
+  2026-11-07 with identical values.
+- `compare_traces.py` acceptance rules were tightened on 2026-11-07
+  (bounded RPC and transaction-hash exceptions; `capture_sha256` as an
+  acceptance condition). Both negative controls from the PR #16 review —
+  an appended `eth_unexpected` call and a zeroed `capture_sha256` —
+  are now rejected, and the unmodified pair still passes.
+- The exact-command limitation is unchanged.
