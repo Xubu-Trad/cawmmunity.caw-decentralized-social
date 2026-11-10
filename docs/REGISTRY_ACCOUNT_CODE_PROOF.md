@@ -27,3 +27,8 @@ Uses Node20.20.2, ethers6.16.0 and the existing reference modules, including the
 This is a newly assembled synthetic London header, not a mined block. It combines retained deployment observations with the reproduced Geth post-state root. A caller selecting its hash does not supply an independently trusted chain anchor. The account proof uses an empty storage-key list: it commits to the account storage root but does not authenticate individual owners, epochs, approvals, balances or initialization slots.
 
 Next: bind relevant registry initialization/ownership slots to the same root using the compiler layout and independently reconstructed expected values. Keep public-chain checkpoint/finality selection separate and unresolved. No production registry approval, real-token compatibility or adopted protocol policy follows from these tests. README updates remain paused.
+
+
+## Initialization follow-up
+
+[Sixteen selected initialization slots](REGISTRY_INITIALIZATION_PROOF.md) now verify under the same root. This extends the account-only fixture without changing its original scope; later state and public-chain anchoring remain open.
