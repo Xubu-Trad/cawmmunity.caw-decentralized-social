@@ -1,0 +1,44 @@
+{
+  "status": "LOCAL_PIPELINE_VERIFIED_CHAIN_GATE_OPEN",
+  "sourceCommit": "aa4907ed1d4c66b75612a994596e0a7cf67f29e0",
+  "steps": [
+    {
+      "step": "execute",
+      "status": "passed"
+    },
+    {
+      "step": "model",
+      "status": "passed"
+    },
+    {
+      "step": "selection",
+      "status": "passed"
+    },
+    {
+      "step": "initial",
+      "status": "passed"
+    },
+    {
+      "step": "later",
+      "status": "passed"
+    },
+    {
+      "step": "geth",
+      "status": "passed"
+    }
+  ],
+  "transactions": 28,
+  "modelMutations": 8,
+  "initialProofMutations": 14,
+  "laterProofMutations": 16,
+  "gethControls": 7,
+  "chainAuthenticated": false,
+  "finalityVerified": false,
+  "productionAccepted": false,
+  "missing": [
+    "independently trusted chain checkpoint",
+    "valid contiguous chain/header acquisition for selected deployment and later state",
+    "finality policy and evidence"
+  ],
+  "limits": "Six local stages rerun. Saved synthetic headers linked to exact replay state roots, not public-chain deployment. External package supply-chain integrity is not established by this runner."
+}
