@@ -1,0 +1,216 @@
+{
+  "schema": "caw-contiguous-independent-body-reconciliation/1",
+  "status": "LOCAL_FIXTURE_BODY_RECEIPTS_RECONCILED",
+  "rows": [
+    {
+      "index": 0,
+      "hash": "0xa30df7e0026fbad8343ef7a00205550f0ffb92ace76cee6bc5337c6757a5174c",
+      "sender": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "nonce": "0",
+      "status": "0x1"
+    },
+    {
+      "index": 1,
+      "hash": "0x07afc316a9616a5a2dbc695400cacf44ad6f177d29e97dd084ab0938e97cef7f",
+      "sender": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "nonce": "1",
+      "status": "0x1"
+    },
+    {
+      "index": 2,
+      "hash": "0x99479c63586f8c9e87cf322ea7f347be3bc36fdc8f3ebbc35fa333fa6ef961fe",
+      "sender": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "nonce": "2",
+      "status": "0x1"
+    },
+    {
+      "index": 3,
+      "hash": "0xdc24fdccc3c7ac50c758488dbc6d085ba3b64818f61897390408450fa03020f5",
+      "sender": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "nonce": "3",
+      "status": "0x1"
+    },
+    {
+      "index": 4,
+      "hash": "0x5b494d507a4462b58d6cbdac91dad7e0589573e5900149dba4762db47d1ff69d",
+      "sender": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "nonce": "4",
+      "status": "0x1"
+    },
+    {
+      "index": 5,
+      "hash": "0x794001a94361cf375c5ae39618675d4684293af4d2248f80d168c7c6ac6379e2",
+      "sender": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "nonce": "5",
+      "status": "0x1"
+    },
+    {
+      "index": 6,
+      "hash": "0xef15ce68cd8bb842f86be102a797315de6f95daee640185e1aa14cf7004518fb",
+      "sender": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+      "nonce": "0",
+      "status": "0x1"
+    },
+    {
+      "index": 7,
+      "hash": "0xdfe9aa6cb76dc2cf9040af2712c0ba2928ab46b9dc2490b60631eb2477a6c239",
+      "sender": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "nonce": "6",
+      "status": "0x1"
+    },
+    {
+      "index": 8,
+      "hash": "0xb0d6083be224d6eb70a8aca33a2f9dfdeb6546a2e996d0abad91069f7f85f6a0",
+      "sender": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+      "nonce": "1",
+      "status": "0x0"
+    },
+    {
+      "index": 9,
+      "hash": "0x30c76addeb7ac5e0d19d6f7948e03cf61654734d4abd3f0ff7e572a47a7e6d20",
+      "sender": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+      "nonce": "2",
+      "status": "0x1"
+    },
+    {
+      "index": 10,
+      "hash": "0x56a15e9b1249f1ffe4fc972052cbe1aa8d6915812a162c8168886de2cc79c011",
+      "sender": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+      "nonce": "3",
+      "status": "0x1"
+    },
+    {
+      "index": 11,
+      "hash": "0x8846e50195fae8f42bfdf6beea825a6aacd1cf11aadb38a2df6fccb8a07a8a4a",
+      "sender": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "nonce": "7",
+      "status": "0x0"
+    },
+    {
+      "index": 12,
+      "hash": "0x9c3585fbb279ecea6a4ea4e18bb8dc8ba9bf293f33a568fa951e766434d576d2",
+      "sender": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+      "nonce": "4",
+      "status": "0x0"
+    },
+    {
+      "index": 13,
+      "hash": "0x4223857b05c7e8bfb014a3bd100983d852749a340e95c5bee597cad2d853696c",
+      "sender": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+      "nonce": "5",
+      "status": "0x1"
+    },
+    {
+      "index": 14,
+      "hash": "0x6b9e9cf24860878f6863cd68bfc2de603f7d29147aef7a9cc0641f979a1b9f84",
+      "sender": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "nonce": "8",
+      "status": "0x1"
+    },
+    {
+      "index": 15,
+      "hash": "0xc31c99d3a1f70ce005fdcc14f199b76e4b5a25b53edbc3e809d5f03557dfebd3",
+      "sender": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+      "nonce": "6",
+      "status": "0x0"
+    },
+    {
+      "index": 16,
+      "hash": "0xc217d3e8cc2ec584e794f6c865aed705eb5c3e224a8d3a8e93f44c7b49c343b1",
+      "sender": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "nonce": "9",
+      "status": "0x1"
+    },
+    {
+      "index": 17,
+      "hash": "0xcae35d644feeeac1bcadee75e6894f3649af2fe4224b40d623e908fb9cc4e1a8",
+      "sender": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+      "nonce": "7",
+      "status": "0x0"
+    },
+    {
+      "index": 18,
+      "hash": "0xaabd3b489ad4cb61a0f5ff9170ae7dc80aa8ab1a0443eae26e80d30561cb795d",
+      "sender": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "nonce": "10",
+      "status": "0x1"
+    },
+    {
+      "index": 19,
+      "hash": "0xeb8b829bc9a43c6524cf0399b31482da43679619038e583459729cbca38fb2cf",
+      "sender": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+      "nonce": "8",
+      "status": "0x1"
+    },
+    {
+      "index": 20,
+      "hash": "0x579c1087145d9deb37fe18d9cc07f716d6efe529138dee38ad67f30a77c00582",
+      "sender": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "nonce": "11",
+      "status": "0x1"
+    },
+    {
+      "index": 21,
+      "hash": "0x0a18e2631658bcd62db5acbe90654d17b00d4429db0bd59dd122c4abe034dc82",
+      "sender": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+      "nonce": "9",
+      "status": "0x0"
+    },
+    {
+      "index": 22,
+      "hash": "0xcd624c5fb8a15afa80e50d9ce80a99e14179a95db9117b9a51684f0201db897e",
+      "sender": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "nonce": "12",
+      "status": "0x1"
+    },
+    {
+      "index": 23,
+      "hash": "0xddca752b86e13e02ed8fc06ba5861ca9d00d07dbbecc01479f2cdfcb2ca6cd95",
+      "sender": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+      "nonce": "10",
+      "status": "0x0"
+    },
+    {
+      "index": 24,
+      "hash": "0xb8eb2b85d08f1ca2d9d335f4991381a3d71d3f8d7e1efc2ee3b88809229ed427",
+      "sender": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "nonce": "13",
+      "status": "0x1"
+    },
+    {
+      "index": 25,
+      "hash": "0x1e70095e47e63dc75908a61bbf8a78909d2fd2b04315c202582fb93010f8e6a9",
+      "sender": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+      "nonce": "11",
+      "status": "0x1"
+    },
+    {
+      "index": 26,
+      "hash": "0x1ea28e2589af9dc072204bf7e6cd1bb6c9138aca027f42c110c13316e7d415e3",
+      "sender": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+      "nonce": "12",
+      "status": "0x0"
+    },
+    {
+      "index": 27,
+      "hash": "0x9c891d41ba068ee957193a1f9797d708336f324c19baf3a8d0e7f78d792e45e9",
+      "sender": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+      "nonce": "13",
+      "status": "0x1"
+    }
+  ],
+  "totalBytes": 87879,
+  "controls": [
+    "receipt status",
+    "transaction byte",
+    "missing block",
+    "duplicate transaction",
+    "oversized input"
+  ],
+  "originalReaderUnchanged": true,
+  "originalReaderAcceptedBlocks": 26,
+  "storageComplete": false,
+  "chainAuthenticated": false,
+  "finalityVerified": false,
+  "limits": "Separate pinned-fixture diagnostic, not a replacement production reader. EthereumJS checks all signed transaction roots/nonces; existing CAW reader checks receipts and headers. No execution or state transition is rerun."
+}
