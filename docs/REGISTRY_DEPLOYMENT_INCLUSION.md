@@ -27,3 +27,8 @@ Uses the existing reference readers and ethers6.16.0 under Node20.20.2. Chain ID
 3. Initialization and subsequent ownership-state reconstruction under that chain, including any relevant storage proofs and dependency/authority review.
 
 Output explicitly keeps chainAuthenticated, accountCodeProofVerified, consensusVerified and finalityVerified false. Receipt inclusion under a header does not itself prove valid execution or registry policy. No mainnet/testnet deployment, release approval or real-token compatibility is claimed. Next work is account-code proof composition and trusted-anchor selection; the public-chain requirement remains open. README updates stay paused.
+
+
+## Account-code follow-up
+
+[Account-code proof composition](REGISTRY_ACCOUNT_CODE_PROOF.md) now covers the selected registry under a synthetic header containing the retained Geth state root. The original inclusion-only fixture remains unchanged. Trusted public-chain anchoring and individual storage-slot evidence remain open.
