@@ -1,5 +1,7 @@
 # cawmmunity.caw - decentralized - social
 
+**Current verification follow-up:** PR #16 revision `1b5048691cb0204a564d8bd81012cb9a3f2d2e34` passes an independent rerun of all twelve comparator regressions against its packaged traces. This is offline record verification, not a fresh contract execution; nine gas differences remain explicitly reported. Canonical execution-client header acquisition has not run: the existing 2 GiB disk guard stopped the download. The replay-root proofs therefore remain unbound to a canonical client header sequence, and public-chain authentication remains unproven.
+
 ## What we are building
 
 community.CAW is an open community effort to build decentralized social software guided by the CAW manifesto and reproducibly recovered R2 message. The goal is a system people can inspect, operate and continue without depending on its original builders. It is research software with a simulated frontend, not an official CAW release or a production-ready network.
