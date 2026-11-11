@@ -79,3 +79,8 @@ See [PREFIX_RESTART_REVIEW.md](PREFIX_RESTART_REVIEW.md) for the retained abrupt
 ## Active persistence interruption
 
 [Observed database-write interruption and strict recovery](ACTIVE_PERSISTENCE_INTERRUPTION.md) adds a strace-instrumented timing case. Its deliberate delay and exact verification limits are documented.
+
+
+## Multiple observed write points
+
+[Five fresh interruption runs](PERSISTENCE_WRITE_POINTS.md) include explicit header and receipt file selectors. Ordinal counts alone are not stable storage-phase identifiers.
