@@ -1,0 +1,31 @@
+{
+  "schema": "caw-peer-source-outage/1",
+  "unavailable": {
+    "sourceStopped": true,
+    "statuses": [
+      "SYNCING",
+      "SYNCING",
+      "SYNCING"
+    ],
+    "targetAbsent": true,
+    "headRemainsGenesis": true
+  },
+  "recovered": {
+    "sourceClient": "Geth",
+    "destinationClient": "Reth2.10.1",
+    "initialBlock": "0x0",
+    "matchingHeaders": 29,
+    "peerCount": "0x1",
+    "forkchoiceStatuses": [
+      "SYNCING",
+      "VALID"
+    ],
+    "sourceUnavailableChecks": 3,
+    "destinationRestarted": false,
+    "fileImportUsed": false,
+    "targetHashExternallySelected": true,
+    "consensusFinalityVerified": false
+  },
+  "allServicesStopped": true,
+  "scope": "Same-host loopback; source unavailable before first requested acquisition, then restored. Not a mid-download interruption, alternate-provider failover, separate-host test or public consensus authentication."
+}

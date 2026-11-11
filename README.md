@@ -1,5 +1,7 @@
 # cawmmunity.caw - decentralized - social
 
+**Peer availability check:** A fresh Reth client stayed at genesis with the target block absent during three requests while its Geth source was stopped. Restoring the same peer allowed all29headers to synchronize without restarting Reth or importing block files. This adds a bounded source-outage/recovery check to the earlier localhost synchronization and offline-restart evidence. It does not establish alternate-provider failover, interruption halfway through a download, separate-host operation or public-chain finality.
+
 **Local cross-client peer synchronization:** A fresh Reth database acquired the 28-block fixture from Geth over a localhost peer connection, starting at genesis without block-file import. All 29 headers match. After both processes stopped, restarting only Reth with zero peers preserved all headers and independently generated registry proofs for16fields that pass the unchanged strict reader. Geth initiated the successful connection; three outbound/automatic Reth attempts timed out and remain recorded. This verifies bounded local peer acquisition and source-offline readback, not separate-host resilience, public-chain authentication or consensus finality. The target hash was operator-selected.
 
 ## What we are building
