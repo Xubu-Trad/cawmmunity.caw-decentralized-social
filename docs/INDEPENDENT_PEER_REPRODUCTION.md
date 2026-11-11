@@ -74,3 +74,8 @@ See [PREFIX_RESTART_REVIEW.md](PREFIX_RESTART_REVIEW.md) for the retained abrupt
 ## Observed persistence boundary
 
 [Paired pre-trigger and post-commit interruption tests](OBSERVED_PERSISTENCE_BOUNDARY.md) distinguish reported head from persisted history. Both drivers use the same documented arguments and fresh output directories. Neither claims a kill inside an active database write.
+
+
+## Active persistence interruption
+
+[Observed database-write interruption and strict recovery](ACTIVE_PERSISTENCE_INTERRUPTION.md) adds a strace-instrumented timing case. Its deliberate delay and exact verification limits are documented.
