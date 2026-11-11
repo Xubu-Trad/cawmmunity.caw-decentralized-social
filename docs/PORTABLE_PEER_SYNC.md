@@ -34,3 +34,8 @@ The first package run matched all29headers, with SYNCING then VALID, and the unc
 Results: `evidence/portable-peer-20261111/result.json`. An independent operator has not yet run this package. This remains same-host localhost execution with an externally selected target hash and zero safe/finalized hashes. It does not verify public consensus, indefinite storage availability, alternate-provider failover or interrupted partial download. Earlier outage and restart experiments are separate scoped results; this driver does not silently claim to repeat them.
 
 Next: independent operator reproduction, then interruption/replacement-source controls and separate-host execution, followed by authenticated public-chain selection.
+
+
+## Follow-up: replacement peer
+
+See REPLACEMENT_PEER_SYNC.md for the separate staged block14 outage/replacement experiment and runnable driver. It does not change the original run scope above.
