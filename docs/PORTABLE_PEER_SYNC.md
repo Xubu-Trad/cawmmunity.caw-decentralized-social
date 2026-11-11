@@ -44,3 +44,8 @@ See REPLACEMENT_PEER_SYNC.md for the separate staged block14 outage/replacement 
 ## Follow-up: transport truncation
 
 See PEER_TRANSFER_FAULTS.md for original/replacement encrypted-stream cuts and intact retry, including the preserved V1 timing failure.
+
+
+## Reviewer entry point
+
+See INDEPENDENT_PEER_REPRODUCTION.md for the smallest useful run, third-peer recovery, required evidence and reporting boundaries.
