@@ -1,6 +1,6 @@
 # cawmmunity.caw - decentralized - social
 
-**Header-bound storage and second-engine progress:** All 16 selected registry fields verify against the actual final local Geth header using the unchanged strict reader; the cleared approval verifies as absent. Five tampering controls reject changed header roots/hashes, values, missing proofs and altered nodes. A separate EthereumJS 10.1.3 replay from the complete starting allocation reproduces all 28 Geth state roots, gas charges, outcomes and logs from the same signed transactions. This is independent execution-engine agreement, not a second full client's synchronization/consensus test. Public-chain authentication and finality remain unproven.
+**Independent full-client import:** Reth v2.10.1 imported all 28 local Geth blocks and transactions from the same complete genesis into its own database. RPC readback returned all 29 matching headers; Reth-generated proofs for 16 registry fields pass the unchanged strict reader. A separate import rejects a corrupted final state root at block28. This extends the earlier Geth/EthereumJS execution comparison to a second full execution client's file-import and readback path. Peer-to-peer synchronization, public-chain authentication and consensus finality remain unverified; no production readiness is claimed.
 
 ## What we are building
 
