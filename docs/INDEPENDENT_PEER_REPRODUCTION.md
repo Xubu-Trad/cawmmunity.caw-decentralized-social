@@ -69,3 +69,8 @@ See [PREFIX_RESTART_REVIEW.md](PREFIX_RESTART_REVIEW.md) for the retained abrupt
 ## Default-policy rollback recovery
 
 [The separate rollback recovery experiment](PREFIX_ROLLBACK_RECOVERY.md) reacquires the lost prefix and remaining history from a replacement peer while the original stays offline. This does not convert the durable-retention failure into a pass.
+
+
+## Observed persistence boundary
+
+[Paired pre-trigger and post-commit interruption tests](OBSERVED_PERSISTENCE_BOUNDARY.md) distinguish reported head from persisted history. Both drivers use the same documented arguments and fresh output directories. Neither claims a kill inside an active database write.
