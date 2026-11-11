@@ -94,3 +94,8 @@ See [PREFIX_RESTART_REVIEW.md](PREFIX_RESTART_REVIEW.md) for the retained abrupt
 ## Fixed public-input replay
 
 [Public-only input replay and exact inventory](PUBLIC_PERSISTENCE_REPLAY.md) verifies the published fixture/reader closure at a fixed commit. Existing clients were reused; independent reproduction remains pending.
+
+
+## Input and tool preflight
+
+[Preflight and focused rejection tests](PERSISTENCE_PREFLIGHT.md) check the fixed public source set and record tools before running nodes. They do not replace the strict recovery test.
