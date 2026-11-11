@@ -1,6 +1,6 @@
 # cawmmunity.caw - decentralized - social
 
-**Current verification follow-up:** PR #16 revision `1b5048691cb0204a564d8bd81012cb9a3f2d2e34` passes an independent rerun of all twelve comparator regressions against its packaged traces. This is offline record verification, not a fresh contract execution; nine gas differences remain explicitly reported. Canonical execution-client header acquisition has not run: the existing 2 GiB disk guard stopped the download. The replay-root proofs therefore remain unbound to a canonical client header sequence, and public-chain authentication remains unproven.
+**Canonical local-header progress:** A pinned Geth client produced the fixture's genesis plus 28 signed-transaction blocks. The complete starting allocation matches the genesis state root. Sequential Geth transition-tool replay matches all 28 state, transaction and receipt roots, outcomes, gas charges and logs. Independent header hashing verifies all 29 hashes and 28 parent links. This closes the local header/state mismatch for this run; client and replay share Geth, and public-chain authentication, consensus/finality and an independent-client reproduction remain unproven. The earlier rejected Anvil evidence is preserved.
 
 ## What we are building
 
