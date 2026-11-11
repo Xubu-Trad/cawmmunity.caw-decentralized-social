@@ -1,0 +1,89 @@
+{
+  "commit": "1668b964689b7af42bb0b799511cd6d8298b18d7",
+  "files": [
+    {
+      "path": "integration/peer-sync/run-third-peer.py",
+      "gitBlob": "a0fd70e6d2cf29f8094c66f5dce409cc50719df4",
+      "sha256": "cab6024062feb472af2040de626dbda64dc5d7b33dd189ccda84ec8903fafdcf",
+      "size": 12657
+    },
+    {
+      "path": "integration/core-baseline-v1/check-geth-header-proof.mjs",
+      "gitBlob": "326a62a03cb89407ef1a258ef6da4a0892a534fa",
+      "sha256": "5c1376304f97cbabc6e5a1eb60c957b3ed9716b43b4fd034fd0221f7a2e7147e",
+      "size": 1391
+    },
+    {
+      "path": "evidence/registry-later-20261109/result.json",
+      "gitBlob": "285c55e26b5f9a598cb037ff80abe028ca4cba40",
+      "sha256": "de87ecd043b5ceee7089b9e68e01bbca328bf1a3ceeb62c44730ff1078c66120",
+      "size": 4974
+    },
+    {
+      "path": "docs/INDEPENDENT_PEER_REPRODUCTION.md",
+      "gitBlob": "f08c5788161593e60abcd5e8481a2a79ce2ac98e",
+      "sha256": "f21d6e8005adb6239e10ab4cd17b392a2074a40e131df2345e3d372ede8eb120",
+      "size": 4840
+    },
+    {
+      "path": "integration/peer-sync/fixture/SHA256.json",
+      "gitBlob": "09af4c545f8451ecf31897b614b34c20ae655904",
+      "sha256": "5571f203eb4a4a6f76f59152371bbc76e92104192b2779216214f1f93b653e12",
+      "size": 358
+    },
+    {
+      "path": "integration/peer-sync/fixture/blocks.rlp.hex.txt",
+      "gitBlob": "42eda8c4448e56f81e53ff0b42511df0e1191409",
+      "sha256": "ad675efcb6dca9abc65ea51cdd1716e0fe906b00fee93ddb2dce8244fc8e988a",
+      "size": 207969
+    },
+    {
+      "path": "integration/peer-sync/fixture/capture.json",
+      "gitBlob": "a2098e0f88208c7eeeaca7e6b74f8ee19b463926",
+      "sha256": "332fe6093493df66d4aaa21fcfc4f377beef8f4a53155861634fb58ef902f32d",
+      "size": 54049
+    },
+    {
+      "path": "integration/peer-sync/fixture/genesis.json",
+      "gitBlob": "ca5aa7338ea5f3a419e5961c1795cd07372f74fc",
+      "sha256": "131785d5b4376eb45086c21ee3861f93ed891740ba831ccab465ac63990e30cc",
+      "size": 544
+    },
+    {
+      "path": "integration/peer-sync/fixture/proof-request.json",
+      "gitBlob": "48ed57fd6ff692b64a76b169a614b85f89e2229b",
+      "sha256": "0ecf14d06bd3510aecabf34f2f0a8cb1f3f91f58fb6876ce1ad00a895f3ce897",
+      "size": 1350
+    },
+    {
+      "path": "reference/header-bound-state-proof.mjs",
+      "gitBlob": "b69abe0a54efe3e25b1cc3bab57af5bfea8eee1d",
+      "sha256": "244e2f468d02b362246ae8e8bc659801b233c7257d774a695d40e9c1d2428955",
+      "size": 3918
+    },
+    {
+      "path": "public/bounded-json.mjs",
+      "gitBlob": "599f03a7a389850f4ebc39170ee85f7875be5e11",
+      "sha256": "73312692245add67ea140ef1393efe9577d337d917867f9edca02ce82af8b051",
+      "size": 6122
+    },
+    {
+      "path": "reference/ethereum-execution-header.mjs",
+      "gitBlob": "9f353639cbec0c48e5eb071db911879c73684a7b",
+      "sha256": "dd69f58be27f861939432a2a140298fde3be1393e8d9bbd8b6dfb88c69cb34eb",
+      "size": 9631
+    },
+    {
+      "path": "reference/ethereum-state-proof.mjs",
+      "gitBlob": "aa504710d566c62493b8e1c86a247cf43e31329a",
+      "sha256": "56c2278447b1eccef6a29dbeb4da7777ad5330fe5bb67655c1ed9f8564af628f",
+      "size": 12928
+    },
+    {
+      "path": "reference/keccak256.mjs",
+      "gitBlob": "793a08243198ac98a9f9c50256391233876ce689",
+      "sha256": "6ed8268eb811eddb3345ebb47e824346c00585d6bed2ec3767e1783d31615edf",
+      "size": 2961
+    }
+  ]
+}

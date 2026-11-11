@@ -45,3 +45,12 @@ Report the exact checkout SHA, OS/runtime/client versions and executable digests
 Do not upload jwt.hex, database directories or unreviewed logs wholesale. Share only reviewed outputs; keep original failures rather than replacing them with a later success. Do not change assertions, widen timeouts or edit expected hashes to get a pass; report the mismatch first. If a process crashes, record whether cleanup completed. Never call an offline checker rerun an independent full-client reproduction.
 
 Independent operator/live-peer reproduction remains pending. The existing separate-PC proof-check report concerns retained evidence only. Next engineering gates: protocol-aware fault attribution, separate-host execution, untrusted/unknown peer handling and authenticated public-chain selection.
+
+
+## Public-source rerun and receiver restart
+
+At pinned commit `1668b964689b7af42bb0b799511cd6d8298b18d7`, 14 public files (driver, fixture, proof reader and recursively referenced modules, expected storage model and guide) were downloaded and checked against their Git blob IDs. The unchanged driver and reader passed using fresh source and destination databases. No local private source files were substituted. Existing installed client binaries/runtime were reused. This is an author rerun from published materials, not independent operator reproduction or a clean toolchain build. See `evidence/public-peer-repro-20261111/`.
+
+`run-receiver-restart.py` accepts the same arguments as `run-third-peer.py`. It changes one variable: after both earlier sources fail and stop, SIGKILL the receiver and restart it with its own existing database, command and identity. Before the third source connects, require the same peer identity, genesis head, missing target and SYNCING. Then require all 29 matching headers and run the same proof checker against the new output. The original and first replacement stay stopped. All test processes must be stopped in service.json.
+
+The recorded run passed with 16 checked storage fields and five tampering controls. The receiving database held only genesis at the kill point: **this is not a mid-write crash-consistency or partially synchronized database recovery test**. Encrypted byte cuts remain opaque, the third source is pre-allowlisted, and the externally supplied target is not consensus-authenticated. Independent operator and separate-host verification remain pending. Preserve failures and report exact commit, client/runtime versions and digests as above.
