@@ -1,6 +1,6 @@
 # cawmmunity.caw - decentralized - social
 
-**Peer recovery and independent review:** Local tests now recover the complete29-header fixture from a third peer after both the original source and its first replacement suffer transport cuts and are stopped. Reth is not restarted;16storage fields and five proof-tampering controls pass. The draft research branch provides runnable drivers, public fixtures and an independent-reproduction guide. A separate operator has not yet reproduced these live peer tests. Explicitly allowed localhost peers and an externally selected head do not establish automatic discovery, public-chain finality or production readiness.
+**Peer recovery and independent review:** Local tests now recover the complete 29-header fixture from a third peer after both the original source and its first replacement suffer transport cuts and are stopped. Reth is not restarted; 16 storage fields and five proof-tampering controls pass. The draft research branch provides runnable drivers, public fixtures and an independent-reproduction guide. A separate operator has not yet reproduced these live peer tests. Explicitly allowed localhost peers and an externally selected head do not establish automatic discovery, public-chain finality or production readiness.
 
 **Peer availability check:** A fresh Reth client stayed at genesis with the target block absent during three requests while its Geth source was stopped. Restoring the same peer allowed all29headers to synchronize without restarting Reth or importing block files. This adds a bounded source-outage/recovery check to the earlier localhost synchronization and offline-restart evidence. It does not establish alternate-provider failover, interruption halfway through a download, separate-host operation or public-chain finality.
 
@@ -409,3 +409,6 @@ The signed local ledger evidence now needs an explicit [anchor-authority decisio
 ### native-state investigation — 2026-11-01
 
 [Source tracing](docs/NATIVE_CALL_TOUCH_PATH.md) now identifies the default zero-value call path that touches the native target before precompile execution, and the executor's handoff to database commit. This narrows the hypothesis; actual runtime flags, block-completion effects and source/binary equivalence remain unverified. The retained mismatch is unresolved. No new test-pass or release-readiness claim follows.
+
+
+**PR #16 review boundary:** The earlier epoch-to-pool correction remains valid. Independent reproduction of the new R03 label-only mutation still returned comparator exit 0 at `b636118512e40dfc62d37a6a08c6d83bcd757b3b`. Nonreceipt label identity remains a review blocker; this is separate from peer recovery and is not an execution-engine defect. [Review and reproduction scope](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/16#issuecomment-6787103012).
