@@ -219,6 +219,15 @@ def add_preterminal_null_poll(trace):
     raise AssertionError("no terminal receipt found")
 
 
+def mutate_nonreceipt_label(trace, label=None, method=None):
+    for call in trace["local_calls"]:
+        if ((label is not None and call["label"] == label)
+                or (method is not None and call["request"]["method"] == method)):
+            call["label"] += ".receipt999"
+            return
+    raise AssertionError("target non-receipt call not found")
+
+
 def main():
     independent = json.loads(INDEPENDENT_TRACE.read_text())
     summary = json.loads(RETAINED_SUMMARY.read_text())
@@ -274,6 +283,12 @@ def main():
              ind_mutator=mutate_signed_dry_substitution)
     scenario("legitimate preterminal null polling remains accepted", 0,
              ind_mutator=add_preterminal_null_poll)
+    scenario("epoch eth_call receipt-like label suffix is rejected", 1,
+             ind_mutator=lambda t: mutate_nonreceipt_label(t, label="initial_post.epoch"))
+    scenario("signed digest receipt-like label suffix is rejected", 1,
+             ind_mutator=lambda t: mutate_nonreceipt_label(t, label="initial_post.contract_digest"))
+    scenario("eth_getCode receipt-like label suffix is rejected", 1,
+             ind_mutator=lambda t: mutate_nonreceipt_label(t, method="eth_getCode"))
 
     if all(results):
         print(f"All {len(results)} comparison regression tests passed.")

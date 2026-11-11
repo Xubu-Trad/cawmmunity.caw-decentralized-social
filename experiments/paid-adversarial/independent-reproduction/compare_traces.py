@@ -447,10 +447,6 @@ def main():
     #   .epoch and .pool remain content-compared even under these owners.
     #   Exempt records are additionally bound to this fixed evidence pair
     #   by their canonical content digests below, not accepted by count alone.
-    def base_label(label):
-        m = re.match(r"^(.*)\.receipt\d+$", label or "")
-        return m.group(1) if m else (label or "")
-
     # Call labels are "<owner>.<phase>". The owners whose eth_call /
     # eth_sendTransaction traffic embeds timestamp-committed signed
     # material are the signed-submission cases, plus the recorded
@@ -467,7 +463,7 @@ def main():
     }
 
     def signed_owner(label):
-        base = base_label(label)
+        base = label or ""
         for owner in signed_call_owners:
             if base == owner or base.startswith(owner + "."):
                 return owner
@@ -512,7 +508,9 @@ def main():
             method = req.get("method")
             if method == RECEIPT_METHOD:
                 continue
-            base = base_label(call.get("label"))
+            # Receipt methods were handled above. Every other method keeps
+            # its exact recorded label, including any receipt-like suffix.
+            base = call.get("label")
             owner = signed_owner(call.get("label"))
             if signed_payload_call(base, method, owner):
                 exempt_counts[(base, method)] += 1
