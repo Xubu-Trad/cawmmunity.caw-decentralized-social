@@ -19,3 +19,8 @@ This is one local synthetic run per configuration, not a guarantee about kill ti
 ## Reproduce
 
 Run `integration/peer-sync/run-prefix-persist-zero.py` with the same arguments documented in INDEPENDENT_PEER_REPRODUCTION.md and a fresh output directory. It is the original failing prefix-restart driver plus the explicit threshold option. Run the unchanged header-proof checker against the output evidence and expected registry model. Compare the original failure, orderly-shutdown control and zero-threshold run separately. Preserve failures. Next: explicit persistence-boundary observation and controlled kill timing; separate-host and public-chain authentication remain open.
+
+
+## Default-policy rollback recovery
+
+[The separate rollback recovery experiment](PREFIX_ROLLBACK_RECOVERY.md) reacquires the lost prefix and remaining history from a replacement peer while the original stays offline. This does not convert the durable-retention failure into a pass.

@@ -64,3 +64,8 @@ See [PREFIX_RESTART_REVIEW.md](PREFIX_RESTART_REVIEW.md) for the retained abrupt
 ## Persistence-policy follow-up
 
 [The fixed-assertion threshold comparison](PREFIX_PERSISTENCE_REVIEW.md) supports buffered/unpersisted history as the explanation for the earlier abrupt-restart failure. The failure remains preserved; the new control is separately scoped and does not prove general crash durability.
+
+
+## Default-policy rollback recovery
+
+[The separate rollback recovery experiment](PREFIX_ROLLBACK_RECOVERY.md) reacquires the lost prefix and remaining history from a replacement peer while the original stays offline. This does not convert the durable-retention failure into a pass.
