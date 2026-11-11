@@ -39,3 +39,8 @@ Next: independent operator reproduction, then interruption/replacement-source co
 ## Follow-up: replacement peer
 
 See REPLACEMENT_PEER_SYNC.md for the separate staged block14 outage/replacement experiment and runnable driver. It does not change the original run scope above.
+
+
+## Follow-up: transport truncation
+
+See PEER_TRANSFER_FAULTS.md for original/replacement encrypted-stream cuts and intact retry, including the preserved V1 timing failure.
