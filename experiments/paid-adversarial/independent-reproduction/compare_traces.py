@@ -38,6 +38,14 @@ DIFFER = "DIFFER"
 EXPECTED_DIFFERENCE = "EXPECTED_DIFFERENCE"
 NOT_COMPARABLE = "NOT_COMPARABLE"
 
+# Canonical signed-payload RPC record multisets of the packaged retained and
+# independent captures, respectively. These bind permitted per-run differences
+# without exempting arbitrary replacement content. Future evidence needs review.
+PINNED_SIGNED_RPC_DIGESTS = (
+    "b41a83a9b01db36afde940daf0baa45de21c688c1542e22cac3da22af3816f88",
+    "28254ef52aa0bdf288d9c523101e8af665c003f99782bf168ac2238cb7359f40",
+)
+
 # Cases whose single transaction is a wallet-signed submission. The signed
 # payload commits to the block timestamp, so the transaction hash is
 # expected to differ between two runs even when every deterministic
@@ -434,10 +442,11 @@ def main():
     #   per-run block hashes and are not comparable verbatim);
     # - eth_getBlockByNumber results: block objects embed the block
     #   hash and timestamp (params are still compared);
-    # - eth_call / eth_sendTransaction under a signed-submission case
-    #   label: the calldata commits to the block timestamp, so params
-    #   and results differ legitimately; only the per-group call COUNT
-    #   is compared for those groups.
+    # - signed-payload eth_call phases and eth_sendTransaction only:
+    #   calldata commits to timestamps. Deterministic reads such as
+    #   .epoch and .pool remain content-compared even under these owners.
+    #   Exempt records are additionally bound to this fixed evidence pair
+    #   by their canonical content digests below, not accepted by count alone.
     def base_label(label):
         m = re.match(r"^(.*)\.receipt\d+$", label or "")
         return m.group(1) if m else (label or "")
@@ -464,6 +473,18 @@ def main():
                 return owner
         return None
 
+    def signed_payload_call(base, method, owner):
+        if owner is None:
+            return False
+        if method == SEND_METHOD:
+            return True
+        if method != "eth_call":
+            return False
+        return base in {
+            owner + ".contract_digest", owner + ".recover27",
+            owner + ".recover28", owner + ".dry", owner + ".payload.dry",
+        }
+
     def hash_to_label(trace):
         mapping = {}
         for t in trace["transactions"]:
@@ -485,6 +506,7 @@ def main():
         mapping = hash_to_label(trace)
         checked = Counter()
         exempt_counts = Counter()
+        exempt_records = []
         for call in trace["local_calls"]:
             req = call.get("request") or {}
             method = req.get("method")
@@ -492,8 +514,12 @@ def main():
                 continue
             base = base_label(call.get("label"))
             owner = signed_owner(call.get("label"))
-            if method in ("eth_call", SEND_METHOD) and owner is not None:
-                exempt_counts[(owner, method)] += 1
+            if signed_payload_call(base, method, owner):
+                exempt_counts[(base, method)] += 1
+                exempt_records.append([
+                    base, method, req.get("params"),
+                    (call.get("response") or {}).get("result"),
+                ])
                 continue
             params = json.dumps(normalized(req.get("params"), mapping), sort_keys=True)
             if method == "eth_getBlockByNumber":
@@ -504,11 +530,17 @@ def main():
                     sort_keys=True,
                 )
             checked[(base, method, params, result)] += 1
-        return checked, exempt_counts
+        encoded = sorted(json.dumps(x, sort_keys=True, separators=(",", ":"))
+                         for x in exempt_records)
+        digest = hashlib.sha256(json.dumps(encoded, separators=(",", ":")).encode()).hexdigest()
+        return checked, exempt_counts, digest
 
-    ret_checked, ret_exempt = call_multisets(ret)
-    ind_checked, ind_exempt = call_multisets(ind)
+    ret_checked, ret_exempt, ret_digest = call_multisets(ret)
+    ind_checked, ind_exempt, ind_digest = call_multisets(ind)
     identity_problems = []
+    # Exact per-run exceptions for the packaged pair, not future-run policy.
+    if (ret_digest, ind_digest) != PINNED_SIGNED_RPC_DIGESTS:
+        identity_problems.append("signed-payload RPC content differs from pinned pair")
     if ret_checked != ind_checked:
         only_ret = ret_checked - ind_checked
         only_ind = ind_checked - ret_checked
@@ -528,7 +560,7 @@ def main():
         f"with transaction hashes normalized to labels: retained={sum(ret_checked.values())} "
         f"independent={sum(ind_checked.values())}; identical multisets: "
         f"{ret_checked == ind_checked}; signed-submission helper groups "
-        f"count-compared only: {sum(ret_exempt.values())} calls; "
+        f"label/method-count and fixed-pair-content pinned: {sum(ret_exempt.values())} calls; "
         f"problems: {identity_problems}",
     )
 

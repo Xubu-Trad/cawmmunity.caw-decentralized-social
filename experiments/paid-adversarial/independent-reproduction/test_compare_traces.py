@@ -187,6 +187,38 @@ def mutate_consistent_hash_rewrite(trace):
     trace.update(rewrite(trace))
 
 
+def mutate_epoch_substitution(trace):
+    epoch = next(c for c in trace["local_calls"] if c["label"] == "initial_post.epoch")
+    pool = next(c for c in trace["local_calls"] if c["label"] == "initial_post.pool")
+    for key in ("request", "response", "raw_response"):
+        epoch[key] = copy.deepcopy(pool[key])
+
+
+def mutate_epoch_response(trace):
+    call = next(c for c in trace["local_calls"] if c["label"] == "initial_post.epoch")
+    call["response"]["result"] = "0x" + "0" * 63 + "1"
+    call["raw_response"] = json.dumps(call["response"])
+
+
+def mutate_signed_dry_substitution(trace):
+    dry = next(c for c in trace["local_calls"] if c["label"] == "initial_post.dry")
+    pool = next(c for c in trace["local_calls"] if c["label"] == "initial_post.pool")
+    for key in ("request", "response", "raw_response"):
+        dry[key] = copy.deepcopy(pool[key])
+
+
+def add_preterminal_null_poll(trace):
+    for index, call in enumerate(trace["local_calls"]):
+        if (call["request"]["method"] == "eth_getTransactionReceipt"
+                and call["response"].get("result") is not None):
+            extra = copy.deepcopy(call)
+            extra["response"]["result"] = None
+            extra["raw_response"] = json.dumps(extra["response"])
+            trace["local_calls"].insert(index, extra)
+            return
+    raise AssertionError("no terminal receipt found")
+
+
 def main():
     independent = json.loads(INDEPENDENT_TRACE.read_text())
     summary = json.loads(RETAINED_SUMMARY.read_text())
@@ -234,6 +266,14 @@ def main():
              ind_mutator=mutate_poll_before_send)
     scenario("consistently rewritten allowed tx hash is rejected", 1,
              ind_mutator=mutate_consistent_hash_rewrite)
+    scenario("deterministic epoch read replaced by pool read is rejected", 1,
+             ind_mutator=mutate_epoch_substitution)
+    scenario("deterministic epoch response change is rejected", 1,
+             ind_mutator=mutate_epoch_response)
+    scenario("signed dry-call replacement is rejected by fixed-pair pin", 1,
+             ind_mutator=mutate_signed_dry_substitution)
+    scenario("legitimate preterminal null polling remains accepted", 0,
+             ind_mutator=add_preterminal_null_poll)
 
     if all(results):
         print(f"All {len(results)} comparison regression tests passed.")

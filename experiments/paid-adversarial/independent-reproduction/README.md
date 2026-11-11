@@ -47,7 +47,7 @@ prepared as a local-only package; see Corrections — 2026-11-07 below.)**
 | `retained/execution-summary.json` | Author's retained summary | `1946ebb82978eb424086dcb81dc969dd62ad0e76108e06f2880396fb86ad30a9` |
 | `retained/experiment-inputs.json` | Input manifest (16 files, hash-pinned) | `2637376a27b2a175d1995e98ff71c026f9925dff8a01729943b9f62bd9056bde` |
 | `compare_traces.py` | Cross-trace comparison script (this package) | see package listing |
-| `test_compare_traces.py` | Negative regression tests for `compare_traces.py` (12 scenarios; run `python3 test_compare_traces.py`) | see package listing |
+| `test_compare_traces.py` | Comparison regression tests (16 scenarios; run `python3 test_compare_traces.py`) | see package listing |
 | `comparison-result.json` | Output of `compare_traces.py` on the packaged files | see package listing |
 | `checker-result.json` | Output of the repository's offline checker on the independent trace; first produced 2026-11-04, re-produced as pure JSON by `run-checker.mjs` on 2026-11-07 with identical values | `230e8cf8d12355118b654c9d054b7feb9fbb239727454fa70b815c388a659cec` |
 | `run-checker.mjs` | Driver that re-runs the repository's offline checker against a trace | see package listing |
@@ -103,7 +103,8 @@ follow its transaction's send and every null poll must precede that
 transaction's final receipt; and each differing independent
 transaction hash must equal the value recorded for this pinned
 evidence pair in the script. `test_compare_traces.py` exercises the
-genuine pair plus 11 tampered variants that must all be rejected.
+genuine pair, 14 tampered variants that must all be rejected, and legitimate
+additional preterminal null polling that must remain accepted.
 Adding
 `--experiment-dir <clone>/experiments/paid-adversarial` additionally
 verifies the 16 input files on disk against the manifest hashes.
@@ -205,5 +206,28 @@ pushed comparison at PR #16 head `23934eb`. The reproduction itself —
   `compare_traces.py` for this pinned pair only; they are not a
   general acceptance rule for future runs.
 - `test_compare_traces.py` (added to the PR on 2026-11-11) now covers
-  12 scenarios: the genuine pair plus 11 rejection cases, including
-  each mutation class above.
+  16 scenarios: the genuine pair, 14 rejection cases and an accepted
+  additional preterminal null poll.
+
+### R-02 follow-up (2026-11-11)
+
+Independently reproduced the reviewer's counterexample at `1b50486`:
+replacing `initial_post.epoch` request/response with `initial_post.pool`
+while preserving its label and method incorrectly passed comparison.
+
+The signed-submission exemption now covers only the specific digest,
+signature-recovery, dry-run and submission phases. Deterministic `.epoch`,
+`.pool` and other reads retain full content comparison. Exempt counts use
+the exact call label and method rather than only the enclosing owner.
+The 149 exempt records in each original capture are also bound to separate
+canonical SHA-256 multiset digests of label, method, params and result.
+This prevents an arbitrary replacement from hiding inside a permitted
+phase. These constants are deliberately specific to the same fixed pair,
+like the existing transaction-hash pins; they are not future-run acceptance
+policy or independent authentication of execution.
+
+Four added regressions reject the epoch-to-pool substitution, an altered
+epoch response and a substituted signed dry-call, and accept an additional
+legitimate preterminal null poll. All 16 scenarios pass. Original evidence,
+the offline checker and contract sources are unchanged. No RPC, fork or EVM
+experiment was rerun for this correction.

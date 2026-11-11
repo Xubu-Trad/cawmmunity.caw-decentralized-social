@@ -61,7 +61,7 @@
     {
       "check": "rpc_request_identity",
       "status": "MATCH",
-      "detail": "non-poll local calls compared by (label, method, params, result) with transaction hashes normalized to labels: retained=470 independent=470; identical multisets: True; signed-submission helper groups count-compared only: 292 calls; problems: []"
+      "detail": "non-poll local calls compared by (label, method, params, result) with transaction hashes normalized to labels: retained=613 independent=613; identical multisets: True; signed-submission helper groups label/method-count and fixed-pair-content pinned: 149 calls; problems: []"
     },
     {
       "check": "receipt_poll_ordering",
