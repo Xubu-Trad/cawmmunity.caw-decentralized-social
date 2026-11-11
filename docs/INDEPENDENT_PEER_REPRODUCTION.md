@@ -4,7 +4,7 @@ This guide invites reproduction, not endorsement. Run from a fresh checkout pinn
 
 ## Setup and smallest useful contribution
 
-Use Linux, Python3, Geth1.17.10, Reth2.10.1 and Node for the existing proof reader. Require at least2GiB free disk and1GiB available memory; do not weaken the guards. Obtain clients independently and record version, executable SHA-256 and provenance. Runtime/release-signature limits are described in INDEPENDENT_CLIENT_IMPORT.md. The scripts neither install clients nor authenticate your executable downloads.
+Use Linux, Python 3, Geth 1.17.10, Reth 2.10.1 and Node for the existing proof reader. Require at least 2 GiB free disk and 1 GiB available memory; do not weaken the guards. Obtain clients independently and record version, executable SHA-256 and provenance. Runtime/release-signature limits are described in INDEPENDENT_CLIENT_IMPORT.md. The scripts neither install clients nor authenticate your executable downloads.
 
 Create your own trusted JSON command array, e.g. `["/absolute/path/to/reth"]`. Do not execute someone else's command-array file without inspection. Run each driver with the same arguments below but a different, nonexistent output directory:
 
@@ -26,7 +26,7 @@ For a smaller first contribution, run `run-peer-sync.py` with those arguments. A
 | Driver | Additional behavior to check |
 | --- | --- |
 | run-peer-sync.py | Fresh source fixture import; fresh destination peer acquisition |
-| run-replacement-peer.py | Head14 retained with no peers; different source completes28 |
+| run-replacement-peer.py | Head 14 retained with no peers; different source completes 28 |
 | run-transfer-fault.py | Encrypted stream cuts on original/replacement; intact retry |
 | run-third-peer.py | Both faulted sources stay stopped; distinct third source recovers |
 
@@ -34,11 +34,11 @@ For a smaller first contribution, run `run-peer-sync.py` with those arguments. A
 
 Three source databases are separately initialized from the same hash-checked synthetic genesis/RLP fixture. Their peer identities must differ. The third source is briefly started to obtain its identity and then stopped before receiver acquisition; no third-source data reaches the receiver at that stage. Fresh Reth explicitly allows all three identities, with outbound dialing and discovery disabled.
 
-Original and first replacement connections are truncated by the local fault proxy as in PEER_TRANSFER_FAULTS.md. Each is stopped afterward. The receiver retains an absent target and SYNCING status through both faults. The third source then starts and explicitly dials the same receiver process. No receiving-client restart, block-file import or execution-payload injection occurs. Original and first replacement remain stopped. All29headers match and a newly acquired proof passes16fields plus five negative controls. All processes stop on completion/failure.
+Original and first replacement connections are truncated by the local fault proxy as in PEER_TRANSFER_FAULTS.md. Each is stopped afterward. The receiver retains an absent target and SYNCING status through both faults. The third source then starts and explicitly dials the same receiver process. No receiving-client restart, block-file import or execution-payload injection occurs. Original and first replacement remain stopped. All 29 headers match and a newly acquired proof passes 16 fields plus five negative controls. All processes stop on completion/failure.
 
-The recorded run used encrypted cuts of431bytes and24bytes. Exact chunk boundaries and timings can vary. The proxy does not decode messages: it cannot attribute a cut to a particular block or guarantee the replacement's protocol phase. Source imports are setup only; destination acquisition is peer-based. The third source is pre-allowlisted by one operator on the same host. No autonomous discovery, independent chain selection or public consensus/finality is proved.
+The recorded run used encrypted cuts of 431 bytes and 24 bytes. Exact chunk boundaries and timings can vary. The proxy does not decode messages: it cannot attribute a cut to a particular block or guarantee the replacement's protocol phase. Source imports are setup only; destination acquisition is peer-based. The third source is pre-allowlisted by one operator on the same host. No autonomous discovery, independent chain selection or public consensus/finality is proved.
 
-## What to return in PR19
+## What to return in PR #19
 
 Report the exact checkout SHA, OS/runtime/client versions and executable digests; which driver and literal arguments you used (redact personal paths); process exit codes; whether fixture hashes passed; result.json and service.json; proof-checker output; and any failure with the original logs retained. For this driver verify three distinct identities, both earlier sources stopped, destinationRestarted=false, matchingHeaders=29 and allStopped=true. Record the actual stream-cut counts, without expecting identical TCP chunking.
 
