@@ -1,6 +1,6 @@
 # cawmmunity.caw - decentralized - social
 
-**Canonical local-header progress:** A pinned Geth client produced the fixture's genesis plus 28 signed-transaction blocks. The complete starting allocation matches the genesis state root. Sequential Geth transition-tool replay matches all 28 state, transaction and receipt roots, outcomes, gas charges and logs. Independent header hashing verifies all 29 hashes and 28 parent links. This closes the local header/state mismatch for this run; client and replay share Geth, and public-chain authentication, consensus/finality and an independent-client reproduction remain unproven. The earlier rejected Anvil evidence is preserved.
+**Header-bound storage and second-engine progress:** All 16 selected registry fields verify against the actual final local Geth header using the unchanged strict reader; the cleared approval verifies as absent. Five tampering controls reject changed header roots/hashes, values, missing proofs and altered nodes. A separate EthereumJS 10.1.3 replay from the complete starting allocation reproduces all 28 Geth state roots, gas charges, outcomes and logs from the same signed transactions. This is independent execution-engine agreement, not a second full client's synchronization/consensus test. Public-chain authentication and finality remain unproven.
 
 ## What we are building
 
