@@ -1,6 +1,6 @@
 # cawmmunity.caw - decentralized - social
 
-**Independent full-client import:** Reth v2.10.1 imported all 28 local Geth blocks and transactions from the same complete genesis into its own database. RPC readback returned all 29 matching headers; Reth-generated proofs for 16 registry fields pass the unchanged strict reader. A separate import rejects a corrupted final state root at block28. This extends the earlier Geth/EthereumJS execution comparison to a second full execution client's file-import and readback path. Peer-to-peer synchronization, public-chain authentication and consensus finality remain unverified; no production readiness is claimed.
+**Local cross-client peer synchronization:** A fresh Reth database acquired the 28-block fixture from Geth over a localhost peer connection, starting at genesis without block-file import. All 29 headers match. After both processes stopped, restarting only Reth with zero peers preserved all headers and independently generated registry proofs for16fields that pass the unchanged strict reader. Geth initiated the successful connection; three outbound/automatic Reth attempts timed out and remain recorded. This verifies bounded local peer acquisition and source-offline readback, not separate-host resilience, public-chain authentication or consensus finality. The target hash was operator-selected.
 
 ## What we are building
 
