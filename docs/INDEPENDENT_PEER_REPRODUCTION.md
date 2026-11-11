@@ -59,3 +59,8 @@ The recorded run passed with 16 checked storage fields and five tampering contro
 ## Partial-history restart boundary
 
 See [PREFIX_RESTART_REVIEW.md](PREFIX_RESTART_REVIEW.md) for the retained abrupt-restart failure, orderly-shutdown control, and independently reported reproduction of the earlier tests. Earlier statements that independent operator reproduction was pending are superseded only for the reviewer’s fixed synthetic scope; separate-host verification remains pending.
+
+
+## Persistence-policy follow-up
+
+[The fixed-assertion threshold comparison](PREFIX_PERSISTENCE_REVIEW.md) supports buffered/unpersisted history as the explanation for the earlier abrupt-restart failure. The failure remains preserved; the new control is separately scoped and does not prove general crash durability.

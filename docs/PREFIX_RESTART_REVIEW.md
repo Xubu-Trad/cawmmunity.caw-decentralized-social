@@ -14,3 +14,8 @@ The receiver had reported a settled execution head, but no durable persistence b
 ## Independent review of earlier tests
 
 [ahdmesh R03](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/19#issuecomment-6788874338) reports independently executing baseline acquisition, third-peer recovery and genesis-only receiver restart at bf60d21155202f3631cd8c430e73c3c199d3dd24. We verified the supplied ZIP digest 83ec74524189f3801c5b31397c2da415f2a00d06414aff69374d372fc95fb020 and all 139 manifest entries, checked recorded successful driver exits/cleanup, and reran our unchanged strict reader against the three A/B/C-signed proofs: 16 fields plus five mutations pass for each. This is retained-evidence corroboration of the reviewer's independently reported execution, not observation of their machine. Client signature verification is reviewer-reported, not reverified in our archive check. Separate-host operation, public consensus, malicious peers and PR-wide acceptance remain unproven. Their verdict does not cover the new prefix-restart failure.
+
+
+## Persistence-policy follow-up
+
+[The fixed-assertion threshold comparison](PREFIX_PERSISTENCE_REVIEW.md) supports buffered/unpersisted history as the explanation for the earlier abrupt-restart failure. The failure remains preserved; the new control is separately scoped and does not prove general crash durability.
