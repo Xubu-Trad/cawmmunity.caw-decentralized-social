@@ -25,7 +25,7 @@ The public result and actual post-restart proof are under `evidence/registry-p2p
 node --max-old-space-size=256 integration/core-baseline-v1/check-geth-header-proof.mjs evidence/registry-p2p-sync-20261110/evidence.json evidence/registry-later-20261109/result.json
 ```
 
-Full acquisition logs and failed attempts remain preserved in the local evidence lanes. A portable automated two-client driver is still pending. Client/runtime digest checks and unverified release signatures retain the supply-chain limits documented in INDEPENDENT_CLIENT_IMPORT.md.
+Full acquisition logs and failed attempts remain preserved in the local evidence lanes. A portable automated two-client driver has now been run; see PORTABLE_PEER_SYNC.md for commands and exact limits. Client/runtime digest checks and unverified release signatures retain the supply-chain limits documented in INDEPENDENT_CLIENT_IMPORT.md.
 
 ## Next gates
 
