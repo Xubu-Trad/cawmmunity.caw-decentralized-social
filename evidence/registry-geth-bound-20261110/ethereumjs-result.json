@@ -1,0 +1,178 @@
+{
+  "rows": [
+    {
+      "index": 0,
+      "stateRoot": "0x9d8e7aaa06acb635948a47f93caf08356435497151fece23395a4f354ba0ee56",
+      "expectedRoot": "0x9d8e7aaa06acb635948a47f93caf08356435497151fece23395a4f354ba0ee56",
+      "stateRootMatches": true
+    },
+    {
+      "index": 1,
+      "stateRoot": "0x520a34ff213d2bf8dd946228f7ccb0f5d67b9efcf5dfbcb47f80429ca927bdf0",
+      "expectedRoot": "0x520a34ff213d2bf8dd946228f7ccb0f5d67b9efcf5dfbcb47f80429ca927bdf0",
+      "stateRootMatches": true
+    },
+    {
+      "index": 2,
+      "stateRoot": "0x2082d6a4db90828c055b14392144b0f3251d5207c90886d610e2ce10e24e3a23",
+      "expectedRoot": "0x2082d6a4db90828c055b14392144b0f3251d5207c90886d610e2ce10e24e3a23",
+      "stateRootMatches": true
+    },
+    {
+      "index": 3,
+      "stateRoot": "0xaa51c69ad57a4ceddd2b68f558bef86f5e563789da0482ba384732479608dde5",
+      "expectedRoot": "0xaa51c69ad57a4ceddd2b68f558bef86f5e563789da0482ba384732479608dde5",
+      "stateRootMatches": true
+    },
+    {
+      "index": 4,
+      "stateRoot": "0x7f53315f4710dfe75905db74ac1332504edbfcf62732e9f9fba3ad0ef95e4b03",
+      "expectedRoot": "0x7f53315f4710dfe75905db74ac1332504edbfcf62732e9f9fba3ad0ef95e4b03",
+      "stateRootMatches": true
+    },
+    {
+      "index": 5,
+      "stateRoot": "0xca6dcc5a355a1ba7c18bc8c7d93cc1cbf19dbb37da249af95f1fa88a4b39dea5",
+      "expectedRoot": "0xca6dcc5a355a1ba7c18bc8c7d93cc1cbf19dbb37da249af95f1fa88a4b39dea5",
+      "stateRootMatches": true
+    },
+    {
+      "index": 6,
+      "stateRoot": "0xf40d1caa815c5b726eaa99fa90aad84cf22bc30c82091fd6ad4aa0fc84145b4c",
+      "expectedRoot": "0xf40d1caa815c5b726eaa99fa90aad84cf22bc30c82091fd6ad4aa0fc84145b4c",
+      "stateRootMatches": true
+    },
+    {
+      "index": 7,
+      "stateRoot": "0x6c3d9d18ee4bff805493d6dd91b06f223517ea1bbe9a83013c36fad94f851229",
+      "expectedRoot": "0x6c3d9d18ee4bff805493d6dd91b06f223517ea1bbe9a83013c36fad94f851229",
+      "stateRootMatches": true
+    },
+    {
+      "index": 8,
+      "stateRoot": "0x69f47f415ad67001c53f0d343e0ce2dc39e7659d479dfec15a6edeb04f5e3c33",
+      "expectedRoot": "0x69f47f415ad67001c53f0d343e0ce2dc39e7659d479dfec15a6edeb04f5e3c33",
+      "stateRootMatches": true
+    },
+    {
+      "index": 9,
+      "stateRoot": "0x3d992f9ea560b9476e575faa38c63e7efe18f7e8a2715f7a9afebbd1dafe8e6a",
+      "expectedRoot": "0x3d992f9ea560b9476e575faa38c63e7efe18f7e8a2715f7a9afebbd1dafe8e6a",
+      "stateRootMatches": true
+    },
+    {
+      "index": 10,
+      "stateRoot": "0xb858e622cf3e767f1bb14322d968e08d34bc3d59a9cb2b1b90b0d226b0094a0a",
+      "expectedRoot": "0xb858e622cf3e767f1bb14322d968e08d34bc3d59a9cb2b1b90b0d226b0094a0a",
+      "stateRootMatches": true
+    },
+    {
+      "index": 11,
+      "stateRoot": "0x769c5b01d47538e1aeaa24c59c3481a25d3adcecfbd685c8a744e477df0d5754",
+      "expectedRoot": "0x769c5b01d47538e1aeaa24c59c3481a25d3adcecfbd685c8a744e477df0d5754",
+      "stateRootMatches": true
+    },
+    {
+      "index": 12,
+      "stateRoot": "0x06d00e2665dff8c1a5ead154774268ceb879b51c21adb08c98f7deff0580f992",
+      "expectedRoot": "0x06d00e2665dff8c1a5ead154774268ceb879b51c21adb08c98f7deff0580f992",
+      "stateRootMatches": true
+    },
+    {
+      "index": 13,
+      "stateRoot": "0x2fb484a9fb97ee494dc5c8ff377b68e2085979b898268af57c881e80df1fe17b",
+      "expectedRoot": "0x2fb484a9fb97ee494dc5c8ff377b68e2085979b898268af57c881e80df1fe17b",
+      "stateRootMatches": true
+    },
+    {
+      "index": 14,
+      "stateRoot": "0x9daf9493bab0858b5c0c0916cfd40d5fdd95f57aab4eb1ff1a90b1825ce53ff0",
+      "expectedRoot": "0x9daf9493bab0858b5c0c0916cfd40d5fdd95f57aab4eb1ff1a90b1825ce53ff0",
+      "stateRootMatches": true
+    },
+    {
+      "index": 15,
+      "stateRoot": "0x9c2eef11314cce72123a2e09fdece8541ed3d6b9709d2ed2b292eea331a724ba",
+      "expectedRoot": "0x9c2eef11314cce72123a2e09fdece8541ed3d6b9709d2ed2b292eea331a724ba",
+      "stateRootMatches": true
+    },
+    {
+      "index": 16,
+      "stateRoot": "0xaa06d17d2ca577732cdee0bdc3d462ca6d5a18d44648142c932de43fcf9205bc",
+      "expectedRoot": "0xaa06d17d2ca577732cdee0bdc3d462ca6d5a18d44648142c932de43fcf9205bc",
+      "stateRootMatches": true
+    },
+    {
+      "index": 17,
+      "stateRoot": "0xc9ef1d5c0ca0061949c8ecb7c6cecf11eda63910adc0370da67b8f667a122eab",
+      "expectedRoot": "0xc9ef1d5c0ca0061949c8ecb7c6cecf11eda63910adc0370da67b8f667a122eab",
+      "stateRootMatches": true
+    },
+    {
+      "index": 18,
+      "stateRoot": "0x6dc27fa9b27d97a3e8acddf09400bfbd9c1fad6f55be8fd48f1f3595e7970141",
+      "expectedRoot": "0x6dc27fa9b27d97a3e8acddf09400bfbd9c1fad6f55be8fd48f1f3595e7970141",
+      "stateRootMatches": true
+    },
+    {
+      "index": 19,
+      "stateRoot": "0xa03c383274b7811703fa8e0fe6860896201f7325f9764bd94ae71dc742b7e566",
+      "expectedRoot": "0xa03c383274b7811703fa8e0fe6860896201f7325f9764bd94ae71dc742b7e566",
+      "stateRootMatches": true
+    },
+    {
+      "index": 20,
+      "stateRoot": "0x9034de527df2536d7d3ce58c810c94ddbc9afdaa6a5f23028013299a4b4d2f70",
+      "expectedRoot": "0x9034de527df2536d7d3ce58c810c94ddbc9afdaa6a5f23028013299a4b4d2f70",
+      "stateRootMatches": true
+    },
+    {
+      "index": 21,
+      "stateRoot": "0xe85d0d19032536b91eed7b27c2e237e8e63fe4423b7138d14ec370c3c859988b",
+      "expectedRoot": "0xe85d0d19032536b91eed7b27c2e237e8e63fe4423b7138d14ec370c3c859988b",
+      "stateRootMatches": true
+    },
+    {
+      "index": 22,
+      "stateRoot": "0x61a6eeae9cde362d228916720c39e7d21deeb373936c2d6f08f188c1794c3fba",
+      "expectedRoot": "0x61a6eeae9cde362d228916720c39e7d21deeb373936c2d6f08f188c1794c3fba",
+      "stateRootMatches": true
+    },
+    {
+      "index": 23,
+      "stateRoot": "0x6091fa1ef2cf2c7b27fabb5402f9471d5a8044f82d644d693bff5b3e2959e166",
+      "expectedRoot": "0x6091fa1ef2cf2c7b27fabb5402f9471d5a8044f82d644d693bff5b3e2959e166",
+      "stateRootMatches": true
+    },
+    {
+      "index": 24,
+      "stateRoot": "0x5ff63e46f595341a83ada3b156d1d30729ae4e69a7120794971c6468e3f436b0",
+      "expectedRoot": "0x5ff63e46f595341a83ada3b156d1d30729ae4e69a7120794971c6468e3f436b0",
+      "stateRootMatches": true
+    },
+    {
+      "index": 25,
+      "stateRoot": "0x1f257be59f9ebe6db587a05f608d2b1cc1e6a263f6e431e2f5b32d24003fa550",
+      "expectedRoot": "0x1f257be59f9ebe6db587a05f608d2b1cc1e6a263f6e431e2f5b32d24003fa550",
+      "stateRootMatches": true
+    },
+    {
+      "index": 26,
+      "stateRoot": "0x2ed7b330b5aa420a6cd5ffa0732a3454fdd3fc901ceaa3ee4cc1c04a896eed02",
+      "expectedRoot": "0x2ed7b330b5aa420a6cd5ffa0732a3454fdd3fc901ceaa3ee4cc1c04a896eed02",
+      "stateRootMatches": true
+    },
+    {
+      "index": 27,
+      "stateRoot": "0x0e5c8a09a836801852924770722afd33969ed8d0f323a4011ac2a9b30d578552",
+      "expectedRoot": "0x0e5c8a09a836801852924770722afd33969ed8d0f323a4011ac2a9b30d578552",
+      "stateRootMatches": true
+    }
+  ],
+  "matchingStateRoots": 28,
+  "startingRootVerified": true,
+  "executionEngine": "EthereumJS 10.1.3",
+  "fullIndependentClient": false,
+  "chainAuthenticated": false,
+  "finalityVerified": false
+}
