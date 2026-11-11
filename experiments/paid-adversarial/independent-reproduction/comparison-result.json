@@ -24,9 +24,14 @@
       "detail": "successful post cases retained=11 independent=11 summary=11"
     },
     {
-      "check": "transaction_receipts_status_gas",
+      "check": "transaction_receipt_status",
       "status": "MATCH",
-      "detail": "transactions retained=208 independent=208; receipt (status, gasUsed) pairs identical: True"
+      "detail": "transactions retained=208 independent=208; transaction labels identical and in the same order: True; receipt status identical for every transaction: True"
+    },
+    {
+      "check": "transaction_receipt_gas_used",
+      "status": "EXPECTED_DIFFERENCE",
+      "detail": "receipt gasUsed differences: 9 (label, retained, independent): [('initial_post', '0x2aec5', '0x2aed1'), ('duplicate_other_submitter', '0xe40f', '0xe41b'), ('wallet_mode_1', '0x155e2', '0x155d6'), ('wallet_mode_5', '0x2d171', '0x2d165'), ('wallet_mode_0', '0x1d653', '0x1d647'), ('wallet_mode_4', '0x20e20', '0x20e2c'), ('wallet_nested_3_caught', '0x1f797', '0x1f7a3'), ('wallet_nested_1_propagate', '0x17721', '0x17715'), ('wallet_registry_propagate', '0x2078b', '0x20797')]; all differing transactions are within the bounded signed-submission set (the set whose transaction hashes also differ; no cause for the gas differences is asserted): True; unexplained differences: []"
     },
     {
       "check": "final_snapshot_40_slots",
@@ -44,9 +49,24 @@
       "detail": "25/72 case transaction hashes differ; all differing cases are within the bounded signed-submission set (25 cases whose signed payload commits to the block timestamp): True; unexplained differences: []; differing: ['initial_post', 'duplicate_other_submitter', 'underbacked_post', 'old_epoch_after_wallet_transfer', 'wallet_mode_1', 'wallet_mode_2', 'wallet_mode_3', 'wallet_mode_5', 'wallet_mode_0', 'wallet_mode_4', 'wallet_signature_bytes_0', 'wallet_signature_bytes_4096', 'wallet_signature_bytes_4097', 'wallet_nested_1_caught', 'wallet_nested_2_caught', 'wallet_nested_3_caught', 'wallet_nested_4_caught', 'wallet_nested_5_caught', 'wallet_nested_1_propagate', 'wallet_nested_2_propagate', 'wallet_nested_3_propagate', 'wallet_nested_4_propagate', 'wallet_nested_5_propagate', 'wallet_registry_caught', 'wallet_registry_propagate']"
     },
     {
+      "check": "pinned_pair_transaction_hashes",
+      "status": "EXPECTED_DIFFERENCE",
+      "detail": "independent transactions whose hash differs from the retained hash and equals the value recorded for this pinned pair: 28 of 28 pinned; every other independent transaction hash equals the retained hash; case/receipt hash consistency holds in both traces: True; problems: []"
+    },
+    {
       "check": "rpc_call_counts",
       "status": "EXPECTED_DIFFERENCE",
       "detail": "local calls retained=970 independent=983; method sets identical: True; receipt-poll difference: 13; null receipt polls retained=0 independent=13; every null-polled transaction has an eventual receipt: True; problems: []"
+    },
+    {
+      "check": "rpc_request_identity",
+      "status": "MATCH",
+      "detail": "non-poll local calls compared by (label, method, params, result) with transaction hashes normalized to labels: retained=470 independent=470; identical multisets: True; signed-submission helper groups count-compared only: 292 calls; problems: []"
+    },
+    {
+      "check": "receipt_poll_ordering",
+      "status": "MATCH",
+      "detail": "every receipt poll follows its transaction's send and every null poll precedes that transaction's first non-null receipt, in both traces: True; problems: []"
     },
     {
       "check": "retained_capture_sha256",

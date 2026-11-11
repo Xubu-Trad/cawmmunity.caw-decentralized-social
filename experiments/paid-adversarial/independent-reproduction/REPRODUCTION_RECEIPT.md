@@ -101,3 +101,20 @@ unchanged. The following corrections apply:
   `capture_sha256`) now fail, and the unmodified pair still passes.
 - The exact-command limitation above is unchanged: the command line as
   typed was not recorded.
+
+## Corrections — 2026-11-11
+
+- **Comparison acceptance rules, round 2.** Following an independent
+  review (R-01 HOLD, comparator only) of the comparison at PR #16 head
+  `23934eb`, `compare_traces.py` was tightened again: receipt status
+  and gasUsed are now read from the flat receipt objects the traces
+  actually contain (the round-1 reader looked for a nested field that
+  never exists, so its receipt-pair claim was vacuous — see the README
+  corrections of this date); RPC requests are compared by content, not
+  only by method counts; receipt polls must follow their transaction's
+  send and null polls must precede that transaction's final receipt;
+  and the independent hashes of the bounded signed-submission
+  transactions are pinned to the values recorded for this evidence
+  pair. The regression suite (`test_compare_traces.py`) now covers 12
+  scenarios. The unmodified pair still passes, and the 72-case /
+  208-transaction reproduction itself is unchanged.

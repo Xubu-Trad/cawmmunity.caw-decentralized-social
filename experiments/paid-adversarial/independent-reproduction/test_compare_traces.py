@@ -18,6 +18,23 @@ comparison-result.json, and asserts the exit code:
      receipt for that transaction
   6. duplicated non-receipt RPC record (eth_call)   -> exit 1 (FAIL)
 
+Round 2 (R-01 HOLD follow-up, 2026-11-11):
+
+  7. receipt gasUsed changed on a transaction       -> exit 1 (FAIL)
+     outside the bounded set (receipts are flat;
+     the values are really read now)
+  8. receipt status flipped                         -> exit 1 (FAIL)
+  9. required token-code readback replaced by an    -> exit 1 (FAIL)
+     unrelated eth_getCode call (same method, same
+     count, different address)
+ 10. null receipt poll appended AFTER that          -> exit 1 (FAIL)
+     transaction's final receipt
+ 11. non-null receipt poll moved BEFORE its         -> exit 1 (FAIL)
+     transaction's send
+ 12. an allowed transaction hash consistently       -> exit 1 (FAIL)
+     rewritten across every related record (the
+     pinned-pair values in the checker reject it)
+
 Usage: python3 test_compare_traces.py
 Exit code: 0 when every expectation holds; 1 otherwise.
 Standard library only. Python 3.10+.
@@ -88,6 +105,88 @@ def mutate_duplicate_eth_call(trace):
     raise AssertionError("no eth_call record found")
 
 
+def mutate_receipt_gas(trace):
+    receipt = trace["transactions"][0]["receipt"]
+    receipt["gasUsed"] = hex(int(receipt["gasUsed"], 16) + 1)
+
+
+def mutate_receipt_status(trace):
+    receipt = trace["transactions"][0]["receipt"]
+    receipt["status"] = "0x0" if receipt["status"] == "0x1" else "0x1"
+
+
+def mutate_token_code_readback(trace):
+    for record in trace["local_calls"]:
+        req = record.get("request") or {}
+        if req.get("method") == "eth_getCode" and record.get("label") == "installed_token":
+            req["params"][0] = "0x0000000000000000000000000000000000000001"
+            return
+    raise AssertionError("installed_token eth_getCode record not found")
+
+
+def _first_receipted_hash(trace):
+    for record in trace["local_calls"]:
+        req = record.get("request") or {}
+        if req.get("method") == "eth_getTransactionReceipt" and (
+            record.get("response") or {}
+        ).get("result") is not None:
+            return req["params"][0]
+    raise AssertionError("no receipted transaction found")
+
+
+def mutate_late_null_poll(trace):
+    tx_hash = _first_receipted_hash(trace)
+    trace["local_calls"].append(call_record(
+        "late.receipt99", "eth_getTransactionReceipt", [tx_hash], None))
+
+
+def mutate_poll_before_send(trace):
+    calls = trace["local_calls"]
+    send_index = {}
+    for i, record in enumerate(calls):
+        req = record.get("request") or {}
+        res = record.get("response") or {}
+        if req.get("method") == "eth_sendTransaction" and isinstance(
+            res.get("result"), str
+        ):
+            send_index.setdefault(res["result"], i)
+    for i, record in enumerate(calls):
+        req = record.get("request") or {}
+        res = record.get("response") or {}
+        if (
+            req.get("method") == "eth_getTransactionReceipt"
+            and res.get("result") is not None
+        ):
+            tx_hash = req["params"][0]
+            if tx_hash in send_index and send_index[tx_hash] < i:
+                poll = calls.pop(i)
+                calls.insert(send_index[tx_hash], poll)
+                return
+    raise AssertionError("no movable receipt poll found")
+
+
+def mutate_consistent_hash_rewrite(trace):
+    old = None
+    for case in trace["cases"]:
+        if case["label"] == "initial_post":
+            old = case["transaction_hash"]
+            break
+    if old is None:
+        raise AssertionError("case initial_post not found")
+    new = "0x" + "1" * 64
+
+    def rewrite(obj):
+        if isinstance(obj, str):
+            return obj.replace(old, new)
+        if isinstance(obj, list):
+            return [rewrite(x) for x in obj]
+        if isinstance(obj, dict):
+            return {k: rewrite(v) for k, v in obj.items()}
+        return obj
+
+    trace.update(rewrite(trace))
+
+
 def main():
     independent = json.loads(INDEPENDENT_TRACE.read_text())
     summary = json.loads(RETAINED_SUMMARY.read_text())
@@ -123,6 +222,18 @@ def main():
              ind_mutator=mutate_fake_null_poll)
     scenario("duplicated non-receipt RPC record is rejected", 1,
              ind_mutator=mutate_duplicate_eth_call)
+    scenario("receipt gasUsed change outside the bounded set is rejected", 1,
+             ind_mutator=mutate_receipt_gas)
+    scenario("receipt status change is rejected", 1,
+             ind_mutator=mutate_receipt_status)
+    scenario("token-code readback replaced by unrelated call is rejected", 1,
+             ind_mutator=mutate_token_code_readback)
+    scenario("null receipt poll after the final receipt is rejected", 1,
+             ind_mutator=mutate_late_null_poll)
+    scenario("receipt poll before its transaction send is rejected", 1,
+             ind_mutator=mutate_poll_before_send)
+    scenario("consistently rewritten allowed tx hash is rejected", 1,
+             ind_mutator=mutate_consistent_hash_rewrite)
 
     if all(results):
         print(f"All {len(results)} comparison regression tests passed.")
