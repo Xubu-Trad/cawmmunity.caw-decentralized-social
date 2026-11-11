@@ -84,3 +84,8 @@ See [PREFIX_RESTART_REVIEW.md](PREFIX_RESTART_REVIEW.md) for the retained abrupt
 ## Multiple observed write points
 
 [Five fresh interruption runs](PERSISTENCE_WRITE_POINTS.md) include explicit header and receipt file selectors. Ordinal counts alone are not stable storage-phase identifiers.
+
+
+## Combined persistence reproduction
+
+[Header-sync interruption and one-command strict verification](PERSISTENCE_SYNC_REPRODUCTION.md) includes a reviewer receipt checklist. Independent reproduction remains pending.
