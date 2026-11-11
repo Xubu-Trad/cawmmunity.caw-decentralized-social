@@ -89,3 +89,8 @@ See [PREFIX_RESTART_REVIEW.md](PREFIX_RESTART_REVIEW.md) for the retained abrupt
 ## Combined persistence reproduction
 
 [Header-sync interruption and one-command strict verification](PERSISTENCE_SYNC_REPRODUCTION.md) includes a reviewer receipt checklist. Independent reproduction remains pending.
+
+
+## Fixed public-input replay
+
+[Public-only input replay and exact inventory](PUBLIC_PERSISTENCE_REPLAY.md) verifies the published fixture/reader closure at a fixed commit. Existing clients were reused; independent reproduction remains pending.
