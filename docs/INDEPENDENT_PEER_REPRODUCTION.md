@@ -54,3 +54,8 @@ At pinned commit `1668b964689b7af42bb0b799511cd6d8298b18d7`, 14 public files (dr
 `run-receiver-restart.py` accepts the same arguments as `run-third-peer.py`. It changes one variable: after both earlier sources fail and stop, SIGKILL the receiver and restart it with its own existing database, command and identity. Before the third source connects, require the same peer identity, genesis head, missing target and SYNCING. Then require all 29 matching headers and run the same proof checker against the new output. The original and first replacement stay stopped. All test processes must be stopped in service.json.
 
 The recorded run passed with 16 checked storage fields and five tampering controls. The receiving database held only genesis at the kill point: **this is not a mid-write crash-consistency or partially synchronized database recovery test**. Encrypted byte cuts remain opaque, the third source is pre-allowlisted, and the externally supplied target is not consensus-authenticated. Independent operator and separate-host verification remain pending. Preserve failures and report exact commit, client/runtime versions and digests as above.
+
+
+## Partial-history restart boundary
+
+See [PREFIX_RESTART_REVIEW.md](PREFIX_RESTART_REVIEW.md) for the retained abrupt-restart failure, orderly-shutdown control, and independently reported reproduction of the earlier tests. Earlier statements that independent operator reproduction was pending are superseded only for the reviewer’s fixed synthetic scope; separate-host verification remains pending.
