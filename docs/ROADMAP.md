@@ -639,3 +639,8 @@ The21-operation wallet journey is reconstructed and agrees across EthereumJS/Get
 ## Wallet local canonical evidence — 2026-11-12
 
 22 local headers and 21 execution-root comparisons pass; 16 final registry fields and five proof rejection controls verify. Public-chain authentication, custody/wallet storage binding and second-engine canonical-context verification remain open. Independent operator reproduction remains pending.
+
+
+## Wallet custody and canonical-context second engine — 2026-11-12
+
+All21 local state roots match EthereumJS/Geth;18 new token/custody fields and three runtime/account proofs bind to the retained header, with16 rejecting controls. Next independent reader/recovery exercise for this lifecycle. Public-chain authentication and outside reproduction remain open.
