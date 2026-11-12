@@ -3,14 +3,21 @@
 Trust the verifier source and Node executable explicitly. This verifies the selected
 synthetic header/proof, not the operator, process history or public-chain finality.
 """
-import argparse,hashlib,importlib.util,json,subprocess,sys
+import argparse,hashlib,types,json,subprocess,sys
 from pathlib import Path
+
+PREFLIGHT_SHA256="69eea5fbe832aeb6fa8c2a69ac381a4ecb78549ae4189e2e1b43add2e713235f"
 
 def verify(source, evidence, output, summary=None):
     source=Path(source).resolve();evidence=Path(evidence).resolve();output=Path(output).resolve()
     if output.exists():raise ValueError('OUTPUT_EXISTS')
-    spec=importlib.util.spec_from_file_location('pinned_preflight',source/'integration/peer-sync/traced-persistence-preflight.py')
-    preflight=importlib.util.module_from_spec(spec);spec.loader.exec_module(preflight)
+    helper=source/'integration/peer-sync/traced-persistence-preflight.py'
+    helper_bytes=helper.read_bytes()
+    if hashlib.sha256(helper_bytes).hexdigest()!=PREFLIGHT_SHA256:
+        raise ValueError('PREFLIGHT_CODE_MISMATCH')
+    # Execute precisely the verified snapshot, not a second read of the path.
+    preflight=types.ModuleType('pinned_preflight');preflight.__file__=str(helper)
+    exec(compile(helper_bytes,str(helper),'exec'),preflight.__dict__)
     checked=preflight.verify_inputs(source,source/'evidence/traced-inputs-20261112/inputs.json')
     # Snapshot bytes for the reader; never execute code from the received artifact.
     data=evidence.read_bytes()
