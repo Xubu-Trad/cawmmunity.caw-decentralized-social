@@ -40,3 +40,8 @@ For the seven input controls, run the sibling `test-traced-persistence-preflight
 Record the exact source and verifier revisions, manifest fingerprint, tool inventory and environment. Preserve the entire fresh output, including a failed probe or failed execution. Before publishing, remove secret JWT/key material and check logs for personal paths; keep a private original and document any redaction.
 
 Successful execution must retain the wrapper's existing assertions: interruption before the completion marker, isolated restart with original identity, no original source running, a different replacement peer, all 29 matching headers, 16 proof fields and all five negative controls, and stopped services. A preflight-only pass or a trace-only pass is not a recovery pass. Public-chain consensus authentication, finality and power-loss durability remain outside this synthetic experiment.
+
+
+## Single-command option
+
+[The tested runner](TRACED_PERSISTENCE_RUNNER.md) now connects these steps without manually selecting the driver or reader. The historical instructions and manifest remain unchanged.
