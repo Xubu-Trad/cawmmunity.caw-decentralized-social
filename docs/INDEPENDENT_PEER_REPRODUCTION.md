@@ -104,3 +104,8 @@ See [PREFIX_RESTART_REVIEW.md](PREFIX_RESTART_REVIEW.md) for the retained abrupt
 ## Preserved runtime provenance
 
 [Signed Ubuntu metadata and preserved runtime checks](PERSISTENCE_RUNTIME_PROVENANCE.md) add provenance evidence for three historical packages. They do not establish current security patch status or client binary reproducibility.
+
+
+## Client provenance and independent environment blocker
+
+[Verified client signatures and R-04 status](CLIENT_BINARY_PROVENANCE.md). Required local-child ptrace operations must be permitted in an authorized isolated Linux environment. The independent attempt stopped before Reth readiness; offline checks are not recovered-history evidence.

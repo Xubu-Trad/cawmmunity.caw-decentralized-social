@@ -1,0 +1,38 @@
+{
+  "clients": [
+    {
+      "client": "geth",
+      "archiveSource": "https://gethstore.blob.core.windows.net/builds/geth-alltools-linux-amd64-1.17.10-1df30b18.tar.gz",
+      "keyFingerprintSource": "https://geth.ethereum.org/downloads",
+      "primaryFingerprint": "FDE5A1A044FA13D2F7ADA019A61A13569BA28146",
+      "archiveSha256": "f991c32e5b7bb68db97a1b06d50c7c06f6aa9ae84d8f6f9b2301dc02cad2a7cf",
+      "binarySha256": "45335929e149413c9f680209c87fa14adc5750387da6f5f30b7b2bd24d2d54ea",
+      "binaryMatchesSignedArchive": true,
+      "signatureVerified": true,
+      "wrongArchiveRejected": true,
+      "validSignatureStatus": [
+        "[GNUPG:] VALIDSIG FDE5A1A044FA13D2F7ADA019A61A13569BA28146 2026-10-23 1792761367 0 4 0 1 8 00 FDE5A1A044FA13D2F7ADA019A61A13569BA28146"
+      ]
+    },
+    {
+      "client": "reth",
+      "archiveSource": "https://github.com/paradigmxyz/reth/releases/download/v2.10.1/reth-v2.10.1-x86_64-unknown-linux-gnu.tar.gz",
+      "keyFingerprintSource": "https://reth.rs/installation/binaries/",
+      "primaryFingerprint": "50FB7CC55B2E8AFA59FE03B7AA5ED56A7FBF253E",
+      "archiveSha256": "945cfeadc4347e4e024c0605de6436544b876aab389a5f576f3295f8b9b99c12",
+      "binarySha256": "227f6d0fc80dcb8851de04d0204eeb171645833eb0ab7a583378a5f2a78c18b9",
+      "binaryMatchesSignedArchive": true,
+      "signatureVerified": true,
+      "wrongArchiveRejected": true,
+      "validSignatureStatus": [
+        "[GNUPG:] VALIDSIG 50FB7CC55B2E8AFA59FE03B7AA5ED56A7FBF253E 2026-11-06 1793990842 0 4 0 22 10 00 50FB7CC55B2E8AFA59FE03B7AA5ED56A7FBF253E"
+      ]
+    }
+  ],
+  "scope": "publisher-key archive signatures and installed-file identity; not source-to-binary reproducible builds",
+  "limitations": [
+    "Publisher fingerprints were obtained from official HTTPS documentation; this is a trust assumption.",
+    "No client source compilation, security audit or freshness/patch approval is established.",
+    "No independent operator or public-chain verification is established."
+  ]
+}
