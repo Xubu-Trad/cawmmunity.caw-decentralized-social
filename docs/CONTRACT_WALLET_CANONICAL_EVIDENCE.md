@@ -23,3 +23,8 @@ Canonical here means the captured local Geth chain, not a public-chain consensus
 This proof covers selected registry state only: custody liabilities, ERC20 balances, wallet runtime/controller binding and all intermediate storage states are not yet separately proven against these headers. Their previous model/replay agreement is not a substitute for those proofs. No production wallet standard, registration decision, economic-policy agreement or release-readiness gate is closed. Independent operator reproduction remains pending. The full local capture/replay harness is retained in the private workflow; the public command above reproduces final registry proof verification, not the entire acquisition/replay process.
 
 Next: bind custody accounting and wallet runtime/controller selection to the same final root, then replay the actual block contexts with the second execution engine. Preserve failure evidence and verification strictness.
+
+
+## Follow-up: custody, wallet runtime and second engine
+
+[Wallet state proofs](CONTRACT_WALLET_STATE_PROOFS.md) records 18 additional fields, three account/runtime proofs and all21 actual-context EthereumJS state-root matches. It supersedes the corresponding next gates above within this local fixture only.
