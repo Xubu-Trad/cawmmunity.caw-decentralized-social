@@ -629,3 +629,8 @@ Draft PR #19 matches all 18 final snapshot fields from the same 26 signed transa
 ## Current core focus — 2026-11-12
 
 Independent persistence reproduction is pending externally. Primary engineering has moved to the NFT/custody journey: a contract-wallet owner lifecycle passed21 signed synthetic transactions and six rejection cases. Next reconstruct that new history and compare exact signed execution with a second engine. Previous recovery tests are not evidence for this new fixture. No economic decision or production gate changed.
+
+
+## Wallet lifecycle verification — 2026-11-12
+
+The21-operation wallet journey is reconstructed and agrees across EthereumJS/Geth with eight history and seven replay rejection controls. Next canonical-header/state-proof binding for this exact lifecycle; no policy gate or external reproduction claim is closed.
