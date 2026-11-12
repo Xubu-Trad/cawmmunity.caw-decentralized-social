@@ -1,6 +1,6 @@
 # cawmmunity.caw - decentralized - social
 
-**Current core engineering:** A new contract-wallet NFT-owner lifecycle passes21 signed local transactions and six rejection cases. The wallet withdraws credit, transfers the NFT, then loses withdrawal authority; the new owner can withdraw the remaining credit. Balances reconcile. This is a fixed-fixture, single-engine result; independent history reconstruction and second-engine replay are next. No registration, economic or production gate is closed.
+**Current core engineering:** The21-transaction contract-wallet NFT-owner lifecycle now reconciles through a separate signed-history model and exact Geth/EthereumJS replay. All intermediate roots, gas, statuses, logs and signed bytes match; eight altered-history and seven replay controls reject. Final balances reconcile. This is synthetic same-host evidence, not public-chain authentication or production readiness. Next bind the wallet lifecycle to canonical headers and state proofs.
 
 **Peer recovery and persistence:** The refreshed package passes actual local recovery (29 headers, 16 storage fields, five negative proof controls; all services stopped). Offline proof review now checks its helper fingerprint before loading code; eight targeted controls pass, including helper substitution rejection. This verifies saved proof data, not the reported peer-transfer process or operator independence. Independent full reproduction, public-chain authentication and production readiness remain pending. PR #16 still awaits its receipt-error fix.
 
