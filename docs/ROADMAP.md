@@ -624,3 +624,8 @@ The draft [PR #19](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-soc
 ### Accounting reconstruction — November 8, 2026
 
 Draft PR #19 matches all 18 final snapshot fields from the same 26 signed transactions. Ten semantic controls and the nine existing raw-history controls reject. Next gate: selected-state-root proofs for final custody/storage and token wallet balances. Local RPC comparison is not authenticated state or full EVM replay. No new full-suite run; release gates remain open.
+
+
+## Current core focus — 2026-11-12
+
+Independent persistence reproduction is pending externally. Primary engineering has moved to the NFT/custody journey: a contract-wallet owner lifecycle passed21 signed synthetic transactions and six rejection cases. Next reconstruct that new history and compare exact signed execution with a second engine. Previous recovery tests are not evidence for this new fixture. No economic decision or production gate changed.
