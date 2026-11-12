@@ -1,5 +1,5 @@
 {
-  "commit": "5ced0bcc0427672c959b54cb3b7d8ba5fad4b586",
+  "commit": "e250e4061dd822c1a3dc9bf7627343753ebc7ba3",
   "files": {
     "integration/peer-sync/fixture/SHA256.json": {
       "sha256": "5571f203eb4a4a6f76f59152371bbc76e92104192b2779216214f1f93b653e12",
@@ -22,12 +22,12 @@
       "size": 1350
     },
     "integration/peer-sync/reproduce-persistence.py": {
-      "sha256": "a57d968746a17df64cca8bf332da9261d711f4d9ca7d57440a03fbb9edbe7c6c",
-      "size": 2507
+      "sha256": "221e6ea9470197c582a9d07b73eea9eaedaa6b63537dfd98d329304d1912af8e",
+      "size": 2753
     },
     "integration/peer-sync/run-header-sync.py": {
-      "sha256": "e3d9acaeb6ab56dde281cb88a39454022d990be2eb2530b1af66c5d4705240be",
-      "size": 12311
+      "sha256": "ed77d24fdb3b69e5984fabaf119b55a38af53f7387cdd2ee165f91e1d8cf458c",
+      "size": 12437
     },
     "integration/core-baseline-v1/check-geth-header-proof.mjs": {
       "sha256": "5c1376304f97cbabc6e5a1eb60c957b3ed9716b43b4fd034fd0221f7a2e7147e",
@@ -58,16 +58,16 @@
       "size": 4974
     },
     "integration/peer-sync/run-header-sync-early-trace.py": {
-      "sha256": "b1e3ed5c18eb72a0ad7e8abe984b6bdedacd7b559eb2c40f4c4d6dc4c85151d4",
-      "size": 12586
+      "sha256": "7620c76e2909b6698b4be94a5d84f1b7aa791f3cde6173b22d5a4299127ee357",
+      "size": 12712
     },
     "integration/peer-sync/tracing-capability.py": {
-      "sha256": "2d7b1d2d8f2fdbc254d13cc8885f50bf13a17b3d18b6708a1c5f35dc4cafb232",
-      "size": 2481
+      "sha256": "8a8b6a3f5ba316025f9a75d02beb014eb7e98b4e1dcc5a207edb5e7dc8c3c15a",
+      "size": 2607
     },
     "integration/peer-sync/test-tracing-failures.py": {
-      "sha256": "4bd32d472fc897e21b7ef513b61c9bf106cb3427fae2d2735aaf8a37aecfc811",
-      "size": 2218
+      "sha256": "d17364be26784bb612c4c014bccf0e999f4a6f4a4ddb297b0d2a70223ad6b008",
+      "size": 2344
     }
   }
 }

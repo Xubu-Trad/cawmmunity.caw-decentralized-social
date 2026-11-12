@@ -4,8 +4,8 @@ if sys.flags.optimize:
     raise SystemExit("OPTIMIZED_PYTHON_UNSUPPORTED: run without -O, -OO or PYTHONOPTIMIZE")
 import argparse,hashlib,json,platform,shutil,subprocess,sys
 from pathlib import Path
-PIN='5ced0bcc0427672c959b54cb3b7d8ba5fad4b586'
-INVENTORY='7b11dd82432b189a77b9928b60e42c7345a6991d48898941fdc67c3d5185620e'
+PIN='e250e4061dd822c1a3dc9bf7627343753ebc7ba3'
+INVENTORY='68129c10f2d6da410c07e1cfb61584fea5ba1a68ce232c2cd0c6458374d273f4'
 def digest(path):
  h=hashlib.sha256()
  with path.open('rb')as f:
