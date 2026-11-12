@@ -1,6 +1,6 @@
 # cawmmunity.caw - decentralized - social
 
-**Peer recovery and persistence:** A new early tracing gate now stops before any test-node initialization if tracing is unavailable or produces no required evidence. Both negative cases reject. The supported local run recovered all 29 headers with 16 storage checks and five rejection controls unchanged. The earlier independent attempt remains environment-blocked; this change detects that prerequisite sooner without bypassing restrictions. Independent execution and production readiness remain unproven.
+**Peer recovery and persistence:** The early tracing gate now has explicit missing-tool and timeout coverage. Both stop before node initialization; the timeout also terminates its controlled child process. Verification rules are unchanged, and independent recovery remains environment-blocked. PR #20's reviewed text-boundary evidence is now merged after 37 relevant merge-candidate tests passed; that does not resolve C-004 policy or establish production readiness.
 
 **Peer availability check:** A fresh Reth client stayed at genesis with the target block absent during three requests while its Geth source was stopped. Restoring the same peer allowed all29headers to synchronize without restarting Reth or importing block files. This adds a bounded source-outage/recovery check to the earlier localhost synchronization and offline-restart evidence. It does not establish alternate-provider failover, interruption halfway through a download, separate-host operation or public-chain finality.
 
