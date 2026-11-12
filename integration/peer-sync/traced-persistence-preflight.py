@@ -1,4 +1,7 @@
 """Fixed-snapshot input verification and explicitly trusted tool inventory."""
+import sys
+if sys.flags.optimize:
+    raise SystemExit("OPTIMIZED_PYTHON_UNSUPPORTED: run without -O, -OO or PYTHONOPTIMIZE")
 import argparse,hashlib,json,platform,shutil,subprocess,sys
 from pathlib import Path
 PIN='5ced0bcc0427672c959b54cb3b7d8ba5fad4b586'

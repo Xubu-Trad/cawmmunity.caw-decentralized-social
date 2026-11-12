@@ -1,3 +1,6 @@
+import sys
+if sys.flags.optimize:
+    raise SystemExit("OPTIMIZED_PYTHON_UNSUPPORTED: run without -O, -OO or PYTHONOPTIMIZE")
 from pathlib import Path
 import argparse,os,sys,subprocess,json,time
 p=argparse.ArgumentParser()

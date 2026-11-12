@@ -3,6 +3,9 @@
 Run only with trusted verifier scripts, client executables and source directory.
 This orchestrates existing checks; it does not authenticate public-chain finality.
 """
+import sys
+if sys.flags.optimize:
+    raise SystemExit("OPTIMIZED_PYTHON_UNSUPPORTED: run without -O, -OO or PYTHONOPTIMIZE")
 import argparse, importlib.util, json, subprocess, sys
 from pathlib import Path
 

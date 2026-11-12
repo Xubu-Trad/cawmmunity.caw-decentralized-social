@@ -1,0 +1,154 @@
+{
+  "files": [
+    {
+      "path": "integration/peer-sync/reproduce-persistence.py",
+      "assertions": 0,
+      "embeddedAssertion": false,
+      "policy": "reject optimization before work"
+    },
+    {
+      "path": "integration/peer-sync/run-header-sync.py",
+      "assertions": 22,
+      "embeddedAssertion": false,
+      "policy": "reject optimization before work"
+    },
+    {
+      "path": "integration/peer-sync/run-header-sync-early-trace.py",
+      "assertions": 22,
+      "embeddedAssertion": false,
+      "policy": "reject optimization before work"
+    },
+    {
+      "path": "integration/peer-sync/tracing-capability.py",
+      "assertions": 0,
+      "embeddedAssertion": true,
+      "policy": "reject optimization before work"
+    },
+    {
+      "path": "integration/peer-sync/test-tracing-failures.py",
+      "assertions": 6,
+      "embeddedAssertion": false,
+      "policy": "reject optimization before work"
+    },
+    {
+      "path": "integration/peer-sync/reproduce-traced-persistence.py",
+      "assertions": 0,
+      "embeddedAssertion": false,
+      "policy": "reject optimization before work"
+    },
+    {
+      "path": "integration/peer-sync/traced-persistence-preflight.py",
+      "assertions": 0,
+      "embeddedAssertion": false,
+      "policy": "reject optimization before work"
+    }
+  ],
+  "tests": [
+    {
+      "path": "integration/peer-sync/reproduce-persistence.py",
+      "mode": "-O",
+      "rejectedBeforeWork": true
+    },
+    {
+      "path": "integration/peer-sync/reproduce-persistence.py",
+      "mode": "-OO",
+      "rejectedBeforeWork": true
+    },
+    {
+      "path": "integration/peer-sync/reproduce-persistence.py",
+      "mode": "environment",
+      "rejectedBeforeWork": true
+    },
+    {
+      "path": "integration/peer-sync/run-header-sync.py",
+      "mode": "-O",
+      "rejectedBeforeWork": true
+    },
+    {
+      "path": "integration/peer-sync/run-header-sync.py",
+      "mode": "-OO",
+      "rejectedBeforeWork": true
+    },
+    {
+      "path": "integration/peer-sync/run-header-sync.py",
+      "mode": "environment",
+      "rejectedBeforeWork": true
+    },
+    {
+      "path": "integration/peer-sync/run-header-sync-early-trace.py",
+      "mode": "-O",
+      "rejectedBeforeWork": true
+    },
+    {
+      "path": "integration/peer-sync/run-header-sync-early-trace.py",
+      "mode": "-OO",
+      "rejectedBeforeWork": true
+    },
+    {
+      "path": "integration/peer-sync/run-header-sync-early-trace.py",
+      "mode": "environment",
+      "rejectedBeforeWork": true
+    },
+    {
+      "path": "integration/peer-sync/tracing-capability.py",
+      "mode": "-O",
+      "rejectedBeforeWork": true
+    },
+    {
+      "path": "integration/peer-sync/tracing-capability.py",
+      "mode": "-OO",
+      "rejectedBeforeWork": true
+    },
+    {
+      "path": "integration/peer-sync/tracing-capability.py",
+      "mode": "environment",
+      "rejectedBeforeWork": true
+    },
+    {
+      "path": "integration/peer-sync/test-tracing-failures.py",
+      "mode": "-O",
+      "rejectedBeforeWork": true
+    },
+    {
+      "path": "integration/peer-sync/test-tracing-failures.py",
+      "mode": "-OO",
+      "rejectedBeforeWork": true
+    },
+    {
+      "path": "integration/peer-sync/test-tracing-failures.py",
+      "mode": "environment",
+      "rejectedBeforeWork": true
+    },
+    {
+      "path": "integration/peer-sync/reproduce-traced-persistence.py",
+      "mode": "-O",
+      "rejectedBeforeWork": true
+    },
+    {
+      "path": "integration/peer-sync/reproduce-traced-persistence.py",
+      "mode": "-OO",
+      "rejectedBeforeWork": true
+    },
+    {
+      "path": "integration/peer-sync/reproduce-traced-persistence.py",
+      "mode": "environment",
+      "rejectedBeforeWork": true
+    },
+    {
+      "path": "integration/peer-sync/traced-persistence-preflight.py",
+      "mode": "-O",
+      "rejectedBeforeWork": true
+    },
+    {
+      "path": "integration/peer-sync/traced-persistence-preflight.py",
+      "mode": "-OO",
+      "rejectedBeforeWork": true
+    },
+    {
+      "path": "integration/peer-sync/traced-persistence-preflight.py",
+      "mode": "environment",
+      "rejectedBeforeWork": true
+    }
+  ],
+  "scope": "static assertion inventory and early rejection, not live client execution"
+}

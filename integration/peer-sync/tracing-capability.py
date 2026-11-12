@@ -1,4 +1,7 @@
 """Small local-child trace probe; no privilege changes or node execution."""
+import sys
+if sys.flags.optimize:
+    raise SystemExit("OPTIMIZED_PYTHON_UNSUPPORTED: run without -O, -OO or PYTHONOPTIMIZE")
 from pathlib import Path
 import subprocess,sys,os,signal,json,hashlib,re
 def check_tracing(output):

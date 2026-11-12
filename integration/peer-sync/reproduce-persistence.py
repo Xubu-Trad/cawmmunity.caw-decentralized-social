@@ -1,4 +1,7 @@
 """Run a persistence experiment and its existing strict proof reader together."""
+import sys
+if sys.flags.optimize:
+    raise SystemExit("OPTIMIZED_PYTHON_UNSUPPORTED: run without -O, -OO or PYTHONOPTIMIZE")
 import argparse,subprocess,json,sys,hashlib
 from pathlib import Path
 p=argparse.ArgumentParser()
