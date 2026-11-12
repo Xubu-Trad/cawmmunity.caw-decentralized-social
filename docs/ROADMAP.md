@@ -634,3 +634,8 @@ Independent persistence reproduction is pending externally. Primary engineering 
 ## Wallet lifecycle verification — 2026-11-12
 
 The21-operation wallet journey is reconstructed and agrees across EthereumJS/Geth with eight history and seven replay rejection controls. Next canonical-header/state-proof binding for this exact lifecycle; no policy gate or external reproduction claim is closed.
+
+
+## Wallet local canonical evidence — 2026-11-12
+
+22 local headers and 21 execution-root comparisons pass; 16 final registry fields and five proof rejection controls verify. Public-chain authentication, custody/wallet storage binding and second-engine canonical-context verification remain open. Independent operator reproduction remains pending.
