@@ -10,16 +10,16 @@ cmd=[sys.executable,a.driver,'--geth',a.geth,'--reth-command',a.reth_command,'--
 q=subprocess.run(cmd,timeout=240)
 if q.returncode:raise SystemExit(q.returncode)
 service=json.loads((out/'service.json').read_text());recovery=json.loads((out/'result.json').read_text());restart=json.loads((out/'restart.json').read_text());window=json.loads((out/'write-window.json').read_text())
-assert service['allStopped'],'SERVICES_NOT_STOPPED'
-assert not window['completionMarkersBeforeKill'],'MISSED_WINDOW'
-assert restart['identityPreserved'] and restart['peersBeforeReplacement']==0 and restart['targetAbsent'],'RESTART_ISOLATION'
-assert recovery['matchingHeaders']==29 and recovery['originalSourceStillStopped'] and recovery['replacementPeerDifferentIdentity'] and not recovery['destinationFileImportUsed'],'RECOVERY_BOUNDARY'
+if not (service['allStopped']):raise SystemExit('SERVICES_NOT_STOPPED')
+if not (not window['completionMarkersBeforeKill']):raise SystemExit('MISSED_WINDOW')
+if not (restart['identityPreserved'] and restart['peersBeforeReplacement']==0 and restart['targetAbsent']):raise SystemExit('RESTART_ISOLATION')
+if not (recovery['matchingHeaders']==29 and recovery['originalSourceStillStopped'] and recovery['replacementPeerDifferentIdentity'] and not recovery['destinationFileImportUsed']):raise SystemExit('RECOVERY_BOUNDARY')
 q=subprocess.run(['node','--max-old-space-size=256',a.reader,str(out/'evidence.json'),a.expected],capture_output=True,timeout=90)
 (out/'strict-reader.log').write_bytes(q.stdout+q.stderr)
 if q.returncode:raise SystemExit(q.returncode)
 proof=json.loads(q.stdout)
-assert proof['fields']==16 and proof['controls']==['header root','header hash','wrong value','missing proof','altered node'] and proof['headerBindingVerified'],'PROOF_BOUNDARY'
-assert proof['chainAuthenticated'] is False and proof['finalityVerified'] is False,'SCOPE_CHANGED'
+if not (proof['fields']==16 and proof['controls']==['header root','header hash','wrong value','missing proof','altered node'] and proof['headerBindingVerified']):raise SystemExit('PROOF_BOUNDARY')
+if not (proof['chainAuthenticated'] is False and proof['finalityVerified'] is False):raise SystemExit('SCOPE_CHANGED')
 summary={'restart':restart,'recovery':recovery,'proof':proof,'service':service,'scope':'same-host synthetic execution; independent operator reproduction pending'}
 (out/'reproduction.json').write_text(json.dumps(summary,indent=2)+'\n')
 paths=[Path(a.driver),Path(a.reader),Path(a.expected),out/'evidence.json',out/'strict-reader.log',out/'reproduction.json']
