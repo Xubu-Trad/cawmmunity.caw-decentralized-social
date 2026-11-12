@@ -1,0 +1,16 @@
+{
+  "head": "aba275b8239289ed63de331961207c6a13f47f41",
+  "results": [
+    {
+      "case": "genuine",
+      "exit": 0,
+      "label": null
+    },
+    {
+      "case": "receipt_error",
+      "exit": 0,
+      "label": "deposit_2.receipt0"
+    }
+  ],
+  "scope": "offline comparator; no EVM rerun"
+}

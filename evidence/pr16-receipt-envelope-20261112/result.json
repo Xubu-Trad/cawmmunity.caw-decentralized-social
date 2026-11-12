@@ -1,0 +1,27 @@
+{
+  "base": "aba275b8239289ed63de331961207c6a13f47f41",
+  "existingSuiteExit": 0,
+  "cases": [
+    {
+      "case": "genuine",
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "case": "error_without_result",
+      "exit": 1,
+      "expected": 1
+    },
+    {
+      "case": "error_with_null",
+      "exit": 1,
+      "expected": 1
+    },
+    {
+      "case": "missing_result",
+      "exit": 1,
+      "expected": 1
+    }
+  ],
+  "scope": "proposed offline comparator correction, no EVM rerun"
+}
