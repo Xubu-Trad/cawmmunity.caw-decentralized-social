@@ -109,3 +109,8 @@ See [PREFIX_RESTART_REVIEW.md](PREFIX_RESTART_REVIEW.md) for the retained abrupt
 ## Client provenance and independent environment blocker
 
 [Verified client signatures and R-04 status](CLIENT_BINARY_PROVENANCE.md). Required local-child ptrace operations must be permitted in an authorized isolated Linux environment. The independent attempt stopped before Reth readiness; offline checks are not recovered-history evidence.
+
+
+## Early tracing gate
+
+[The new guarded driver](EARLY_TRACING_CAPABILITY.md) checks tracing before test-node initialization. Historical drivers and the fixed14-input snapshot remain unchanged; pin the new revision for this variant.
