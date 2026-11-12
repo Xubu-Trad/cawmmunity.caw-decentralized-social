@@ -25,3 +25,8 @@ On a blocked probe, inspect trace-capability.json and trace-probe.stderr. Preser
 ## Independent review boundary
 
 ahdmesh's R-04 remains environment-blocked before recovery. This change addresses the late detection observed in that report; it does not convert the independent attempt into a pass. The new supported run is local and instrumented. Public-chain finality, power-loss safety, independent execution and production readiness remain unresolved. Signature and runtime provenance checks remain separate evidence.
+
+
+## Follow-up coverage
+
+[Missing-tool and ten-second timeout tests](TRACING_FAILURE_CASES.md) now cover the previously untested branches. The supported recovery result above remains historical, not rerun by this follow-up.
