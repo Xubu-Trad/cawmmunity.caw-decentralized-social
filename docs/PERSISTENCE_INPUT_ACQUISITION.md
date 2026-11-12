@@ -1,3 +1,5 @@
+> Current package: see [refreshed recovery inputs](REFRESHED_RECOVERY_PACKAGE.md). The historical pins below are retained; use the refreshed acquisition tool and ordinary Python.
+
 # Download-only acquisition for persistence reproduction
 
 The acquisition tool embeds exact commit, size and SHA-256 pins for all 20 required files: the 17 experiment inputs from `5ced0bcc0427672c959b54cb3b7d8ba5fad4b586`, plus the runner, preflight verifier and input manifest from `7c1d9922bdfd4a43359bdcc85986b761797a71e4`. It uses no moving branch and requires no local copy of the original operator's source files.
