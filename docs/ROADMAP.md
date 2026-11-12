@@ -611,3 +611,8 @@ Fixed a reproduced empty-success launch through a Windows directory junction. Th
 ## Integration-first routing —2026-11-08
 
 Primary engineering now follows [the frozen core research baseline](CORE_INTEGRATION_BASELINE.md). Three existing artifacts rebuilt identically; constructor binding and lifecycle linkage remain next. Prioritize one complete NFT/custody/signed-action/recovery journey, with C-001 and economics decisions explicit. Preserve isolated research; do not prioritize additional BLS cases absent a selected integration requirement. This is planning direction, not community adoption or release clearance. README remains paused.
+
+
+## Current core focus — 2026-11-12
+
+Independent persistence reproduction is pending externally. Primary engineering has moved to the NFT/custody journey: a contract-wallet owner lifecycle passed21 signed synthetic transactions and six rejection cases. Next reconstruct that new history and compare exact signed execution with a second engine. Previous recovery tests are not evidence for this new fixture. No economic decision or production gate changed.
