@@ -99,3 +99,8 @@ See [PREFIX_RESTART_REVIEW.md](PREFIX_RESTART_REVIEW.md) for the retained abrupt
 ## Input and tool preflight
 
 [Preflight and focused rejection tests](PERSISTENCE_PREFLIGHT.md) check the fixed public source set and record tools before running nodes. They do not replace the strict recovery test.
+
+
+## Preserved runtime provenance
+
+[Signed Ubuntu metadata and preserved runtime checks](PERSISTENCE_RUNTIME_PROVENANCE.md) add provenance evidence for three historical packages. They do not establish current security patch status or client binary reproducibility.
