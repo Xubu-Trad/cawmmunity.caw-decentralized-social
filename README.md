@@ -1,6 +1,6 @@
 # cawmmunity.caw - decentralized - social
 
-**Peer recovery and persistence:** Reviewers can now acquire the complete 20-file pinned reproduction set with a download-only tool before running the experiment. Public acquisition verified all files, and seven transfer/error controls passed. The previous real local runner recovered 29 matching headers and passed 16 storage checks plus five rejection controls. This update adds no new recovery result; independent operator reproduction remains pending. Production and public-test deployment remain blocked.
+**Peer recovery and persistence:** The published download-to-recovery procedure now passes end to end from a fresh public source directory: 20 pinned files verified, 29 headers recovered, 16 storage fields verified, and five rejection controls passed. All test services stopped. This reused the existing host and client binaries; independent operator reproduction remains pending. Production and public-test deployment remain blocked.
 
 **Peer availability check:** A fresh Reth client stayed at genesis with the target block absent during three requests while its Geth source was stopped. Restoring the same peer allowed all29headers to synchronize without restarting Reth or importing block files. This adds a bounded source-outage/recovery check to the earlier localhost synchronization and offline-restart evidence. It does not establish alternate-provider failover, interruption halfway through a download, separate-host operation or public-chain finality.
 
