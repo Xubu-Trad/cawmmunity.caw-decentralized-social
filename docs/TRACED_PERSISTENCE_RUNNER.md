@@ -22,3 +22,8 @@ Seven mocked orchestration controls passed: changed input, missing input, existi
 A separate real run of the single-command entry point completed on the existing local host. After interruption, the destination restarted at genesis with its identity preserved and no peers. A different replacement peer supplied all 29 matching headers. The unchanged strict reader accepted 16 storage fields and rejected all five controls. All experiment services stopped. See [the scoped result](../evidence/traced-runner-20261112/result.json).
 
 This validates the new orchestration against the real local experiment. It is not an independent operator result, public-chain authentication, finality proof, power-loss durability proof or production readiness assessment. ahdmesh's independent R-04 remains environment-blocked. A successful input check or process exit is not by itself a recovery claim; the pinned wrapper enforces the original interruption, isolation, proof and cleanup assertions.
+
+
+## Acquiring the complete input set
+
+[The download-only acquisition tool](PERSISTENCE_INPUT_ACQUISITION.md) now supplies all 20 pinned files, including this runner and its verifier, before any execution.
