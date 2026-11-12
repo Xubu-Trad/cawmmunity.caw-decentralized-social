@@ -26,3 +26,8 @@ The fixture SHA-256 is `2f28c4812aacbcef6c78ad410a1c4ec83e4cd899748a95069369fe19
 Repeated block1/time1 execution is not canonical-chain history. Gas is checked by the second engine, not independently modeled by the accounting reader. No public finality, real-token proof, general ERC1271/4337 support, production wallet selection, registration or economic-policy acceptance is established. Two engines can share errors; external review remains required.
 
 Next bind this new wallet lifecycle to canonical headers and state proofs, reusing the existing registry pipeline without treating its older28-operation evidence as coverage of this21-operation fixture. Independent persistence reproduction remains separately pending. PR16's receipt-error fix has not landed.
+
+
+## Follow-up: local canonical evidence
+
+See [wallet canonical evidence](CONTRACT_WALLET_CANONICAL_EVIDENCE.md) for the new 22-header capture, 21 matching replay roots and 16 final registry proofs. This supersedes the next-step paragraph above only within the stated local scope.

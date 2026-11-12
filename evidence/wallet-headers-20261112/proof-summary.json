@@ -1,0 +1,16 @@
+{
+  "fields": 16,
+  "headerHash": "0x6187a3b25fbb94416c39189e3726ebf57d5e79845f0175e7f898103ce8a31306",
+  "stateRoot": "0x1316b9226d526dbf1e9d942516fee53079e2e7a9e292e8190419c3b0ed4a1db8",
+  "headerBindingVerified": true,
+  "clearedApprovalAbsent": true,
+  "controls": [
+    "header root",
+    "header hash",
+    "wrong value",
+    "missing proof",
+    "altered node"
+  ],
+  "chainAuthenticated": false,
+  "finalityVerified": false
+}
