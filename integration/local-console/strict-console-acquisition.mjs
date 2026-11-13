@@ -1,4 +1,5 @@
 import {verifyPostingHistory, POST_NONCE} from './verify-posting-history.mjs';
+import {requirePostBlockSize} from './post-block-scope.mjs';
 
 const OWNER = '0xabbb5caa7dda850e60932de0934eb1f9d0f59695050f761dc64e443e5030a569';
 const EPOCH = '0x91da3fd0782e51c6b3986e9e672fd566868e71f3dbc2d6c2cd6fbb3e361af2a7';
@@ -31,7 +32,8 @@ export async function acquireVerifiedPosts(rpc, config, signal) {
   let prior = anchor;
   for (let number = BigInt(anchor.number) + 1n; number <= BigInt(tip.number); number++) {
     const header = await read('eth_getBlockByNumber', ['0x' + number.toString(16), false]);
-    if (!header || !Array.isArray(header.transactions) || header.transactions.length > 1) throw Error('SINGLE_TRANSACTION_BLOCK_REQUIRED');
+    if (!header) throw Error('STRICT_HISTORY_HEADER');
+    requirePostBlockSize(header.transactions);
     // Block-hash selectors prevent proof acquisition from silently following a
     // different branch at the same height. The strict reader still checks roots.
     const at = {blockHash: prior.hash, requireCanonical: true};

@@ -1,5 +1,10 @@
 ## Current application priority — November 12, 2026
 
+## Current application step: batched posting history
+
+The console now has a bounded post-only batch reader with signed synthetic positive/negative vectors; mixed blocks remain rejected. [Scope and next gates](POST_BATCH_HISTORY.md). Next: freshly mined batches and intra-block authority reconstruction, alongside integration of a separately reviewed paid settlement interface. Earlier history-binding tasks below are historical, not a claim they remain unimplemented. Independent reproduction of the frozen package continues separately.
+
+
 The local console now publishes real unpaid posts from the current account owner, preserves historical authors across handoff, and retains existing withdrawal accounting. Next bind this posting history to the existing authenticated readers and obtain independent reproduction of the full journey. Paid posting remains a separately reviewed accounting integration; no economics conflict is silently resolved. Actual wallet-extension compatibility, public registration/economics and deployment gates remain open.
 
 # Current gates
