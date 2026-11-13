@@ -56,3 +56,8 @@ Missing tools, denied tracing, timeout, startup failure or failed verification m
 Record source/setup commits, runtime/client versions and hashes, literal commands, install lock hash, exit codes, output provenance and whether the operator/host is independent. Preserve original failures. Exclude credentials, database directories and personal paths from public uploads.
 
 The published lock and fresh-capture commands close specific setup gaps; they do not create a complete from-source build of every fixture/client/runtime. That larger build chain remains a release gate. [Setup evidence](../evidence/reproduction-setup-20261113/result.json) and [fresh capture result](../evidence/reproduction-setup-20261113/fresh-result.json) state the exact boundaries.
+
+
+## Frozen console reproduction package
+
+[The pinned53-file runner](CONSOLE_HISTORY_REPRODUCTION.md) now installs into a fresh directory/cache and runs the strict-history, HTTP-recovery and action checks with an output receipt. It uses recorded synthetic inputs; independent execution, browser and fresh-chain reproduction remain separate.

@@ -39,3 +39,8 @@ These commands use recorded signed history/proofs and disposable loopback HTTP s
 The browser exercise is separately reported, not part of those two commands. Its driver used WindowsNode24.22.1/Chrome while the console used LinuxNode20.20.2. It paused response delivery through the browser debugging interface, refreshed the page's chain state, waited for that request to finish, and retried. The browser still trusts its local server's verification result. Reviewed code/layout/controller selections and the local chain endpoint remain assumptions.
 
 [Focused results](../evidence/console-interruption-20261113/tests.json) · [Browser results](../evidence/console-interruption-20261113/browser.json) · [Baseline failure](../evidence/console-interruption-20261113/baseline.json) · [Console integration](CONSOLE_STRICT_HISTORY.md)
+
+
+## Frozen console reproduction package
+
+[The pinned53-file runner](CONSOLE_HISTORY_REPRODUCTION.md) now installs into a fresh directory/cache and runs the strict-history, HTTP-recovery and action checks with an output receipt. It uses recorded synthetic inputs; independent execution, browser and fresh-chain reproduction remain separate.

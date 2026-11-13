@@ -1,0 +1,138 @@
+{
+  "schema": "caw-console-reproduction-result/1",
+  "sourceCommit": "03a2da645eae94f32c5e6f33db21f9974117ca40",
+  "manifestSHA256": "87a8fdb35a8662c3493dcace3f11a370281b41dbc543da0e2fd55e6ea45aad5e",
+  "sourceFiles": 53,
+  "node": "20.20.2",
+  "npm": "10.8.2",
+  "python": "3.10.12",
+  "nodeExecutableSHA256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+  "freshDependencyDirectory": true,
+  "freshNpmCache": true,
+  "steps": [
+    {
+      "name": "install",
+      "exitCode": 0,
+      "logSHA256": "364ce00eb673577ff236d4a4ceafa3389d89d405e8b5c2e081938b5ace5f38ad"
+    },
+    {
+      "name": "strict-reader",
+      "exitCode": 0,
+      "logSHA256": "9cfdfb7c1c732baebffe8ea6d77d241e5fecd2e93ca773e7bf4513cb2d7daec5",
+      "checksPassed": 15
+    },
+    {
+      "name": "console",
+      "exitCode": 0,
+      "logSHA256": "a01c8c47cdd24fc53a32015d7fd3ecc089a2919f52f691f24f42af653e182346",
+      "checksPassed": 12
+    },
+    {
+      "name": "interruption",
+      "exitCode": 0,
+      "logSHA256": "6658006f3ab3b374c399474ee5497bebf8eed12f5cb62f0a409f44a3c76e4086",
+      "checksPassed": 11
+    },
+    {
+      "name": "actions",
+      "exitCode": 0,
+      "logSHA256": "d74aeed07e847e56ad4c327964652640865760f00d2c3ef1542830b058804a61",
+      "checksPassed": 340
+    }
+  ],
+  "status": "PASS",
+  "scope": "Recorded synthetic history, local HTTP/minimal-DOM checks. Not fresh EVM execution, browser reproduction, public-chain finality or independent-operator certification.",
+  "dependencies": [
+    {
+      "path": "node_modules/@adraffy/ens-normalize",
+      "version": "1.10.1",
+      "integrity": "sha512-96Z2IP3mYmF1Xg2cDm8f1gWGf/HUVedQ3FMifV4kG/PQ4yEP51xDtRAEfhVNt5f/uzpNkZHwWQuUcu6D6K+Ekw=="
+    },
+    {
+      "path": "node_modules/@noble/curves",
+      "version": "1.2.0",
+      "integrity": "sha512-oYclrNgRaM9SsBUBVbb8M6DTV7ZHRTKugureoYEncY5c65HOmRzvSiTE3y5CYaPYJA/GVkrhXEoF0M3Ya9PMnw=="
+    },
+    {
+      "path": "node_modules/@noble/hashes",
+      "version": "1.3.2",
+      "integrity": "sha512-MVC8EAQp7MvEcm30KWENFjgR+Mkmf+D189XJTkFIlwohU5hcBbn1ZkKq7KVTi2Hme3PMGF390DaL52beVrIihQ=="
+    },
+    {
+      "path": "node_modules/@types/node",
+      "version": "22.7.5",
+      "integrity": "sha512-jML7s2NAzMWc//QSJ1a3prpk78cOPchGvXJsC3C6R6PSMoooztvRVQEz89gmBTBY1SPMaqo5teB4uNHPdetShQ=="
+    },
+    {
+      "path": "node_modules/aes-js",
+      "version": "4.0.0-beta.5",
+      "integrity": "sha512-G965FqalsNyrPqgEGON7nIx1e/OVENSgiEIzyC63haUMuvNnwIgIjMs52hlTCKhkBny7A2ORNlfY9Zu+jmGk1Q=="
+    },
+    {
+      "path": "node_modules/command-exists",
+      "version": "1.2.9",
+      "integrity": "sha512-LTQ/SGc+s0Xc0Fu5WaKnR0YiygZkm9eKFvyS+fRsU7/ZWFF8ykFM6Pc9aCVf1+xasOOZpO3BAVgVrKvsqKHV7w=="
+    },
+    {
+      "path": "node_modules/commander",
+      "version": "8.3.0",
+      "integrity": "sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww=="
+    },
+    {
+      "path": "node_modules/ethers",
+      "version": "6.16.0",
+      "integrity": "sha512-U1wulmetNymijEhpSEQ7Ct/P/Jw9/e7R1j5XIbPRydgV2DjLVMsULDlNksq3RQnFgKoLlZf88ijYtWEXcPa07A=="
+    },
+    {
+      "path": "node_modules/follow-redirects",
+      "version": "1.16.3",
+      "integrity": "sha512-toOSoqN6d51Wjf1aOFJYcoVv1aND9rj/CwjLU0Vz40oDuSpWDayCeKe4JpL5NL0WdFvoOOCI3BRo69HahjbR1A=="
+    },
+    {
+      "path": "node_modules/js-sha3",
+      "version": "0.8.0",
+      "integrity": "sha512-gF1cRrHhIzNfToc802P800N8PpXS+evLLXfsVpowqmAFR9uwbi89WvXg2QspOmXL8QL86J4T1EpFu+yUkwJY3Q=="
+    },
+    {
+      "path": "node_modules/memorystream",
+      "version": "0.3.1",
+      "integrity": "sha512-S3UwM3yj5mtUSEfP41UZmt/0SCoVYUcU1rkXv+BQ5Ig8ndL4sPoJNBUJERafdPb5jjHJGuMgytgKvKIf58XNBw=="
+    },
+    {
+      "path": "node_modules/os-tmpdir",
+      "version": "1.0.2",
+      "integrity": "sha512-D2FR03Vir7FIu45XBY20mTb+/ZSWB00sjU9jdQXt83gDrI4Ztz5Fs7/yy74g2N5SVQY4xY1qDr4rNddwYRVX0g=="
+    },
+    {
+      "path": "node_modules/semver",
+      "version": "5.7.3",
+      "integrity": "sha512-kM18BPOqTi0+TB68703/GJRpAML5Me+IDQsR1J26YB3EFKKNEyHIVZuWDX7+WKQB3tHwDwgk24BfhdpWUbytvQ=="
+    },
+    {
+      "path": "node_modules/solc",
+      "version": "0.8.30",
+      "integrity": "sha512-9Srk/gndtBmoUbg4CE6ypAzPQlElv8ntbnl6SigUBAzgXKn35v87sj04uZeoZWjtDkdzT0qKFcIo/wl63UMxdw=="
+    },
+    {
+      "path": "node_modules/tmp",
+      "version": "0.0.33",
+      "integrity": "sha512-jRCJlojKnZ3addtTOjdIqoRuPEKBvNXcGYqzO6zWZX8KfKEpnGY5jfggJQ3EjKuu8D4bJRr0y+cYJFmYbImXGw=="
+    },
+    {
+      "path": "node_modules/tslib",
+      "version": "2.7.0",
+      "integrity": "sha512-gLXCKdN1/j47AiHiOkJN69hJmcbGTHI0ImLmbYLHykhgeN0jVGola9yVjFgzCUklsZQMW55o+dW7IXv3RCXDzA=="
+    },
+    {
+      "path": "node_modules/undici-types",
+      "version": "6.19.8",
+      "integrity": "sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw=="
+    },
+    {
+      "path": "node_modules/ws",
+      "version": "8.17.1",
+      "integrity": "sha512-6XQFvXTkbfUOZOKKILFG1PDK2NDQs4azKQl26T0YS5CxqWLgXajbPZ+h4gZekJyRqFU8pvnbAbbs/3TgRPy+GQ=="
+    }
+  ],
+  "pinnedFilesUnchangedAfterRun": true
+}
