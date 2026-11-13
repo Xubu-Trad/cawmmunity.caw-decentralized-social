@@ -37,6 +37,8 @@ Updated November 13, 2026. **Unfinished research; no production-ready network an
 
 **Reproduction setup update — November 13:** Node20.20.2/npm10.8.2 now has a committed console dependency lock and a verified clean install. Published commands also create a fresh Geth database, execute21 retained signed transactions and generate new headers/storage proofs:21 state roots,16 fields and five rejection controls passed. This reuses published fixture inputs; it is not independent reproduction or a complete source rebuild. [Setup, commands and remaining gaps](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/docs/REPRODUCTION_SETUP.md).
 
+**Posting history update — November 13:** Both signed local posts now pass the existing strict transaction, receipt, sender and header-bound storage readers across four consecutive blocks. Proven ownership follows the wallet-to-EOA transfer; all15 tampering/scope controls passed. This is selected local history, not public-chain finality, and the browser feed remains RPC-backed. [Verification, reproduction and boundaries](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/docs/POSTING_HISTORY_VERIFICATION.md).
+
 | Area | What is demonstrated | What remains open |
 | --- | --- | --- |
 | Local application | Real signed local posts, account handoff and new-owner withdrawals; posts retain historical authors | Paid posting integration, public registration and actual wallet-extension compatibility |
