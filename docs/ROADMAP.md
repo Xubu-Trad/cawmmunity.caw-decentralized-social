@@ -1,14 +1,6 @@
 ## Current application priority — November 12, 2026
 
-The local console now verifies reviewed withdrawal bytes and displays receipt-confirmed balances. Sixteen isolated browser cases and 75 focused checks pass with a controlled wallet adapter. Next verify an actual disposable wallet extension, then extend account setup and the signed-action lifecycle. Registration/economics remain open; independent reproduction proceeds alongside application development.
-
-# Engineering roadmap
-
-## Implementation priority — November 8, 2026
-
-Build one normally deployed local candidate before extending isolated research. The immediate review target is [the constructor lifecycle](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/19), stacked on PR #18. The signed local-chain sequence now records26 transactions with raw bytes and receipts in draft PR #19. Next connect the existing independent readers and verify reconstruction against those exact records. Synthetic token/account limitations remain explicit.
-
-Then resolve registration and reviewed economic semantics, implement open-population accounting and NFT/wallet authority, connect a replaceable frontend/relay beta, and satisfy security, operator-disappearance and public release-review gates. These are separate milestones; no completion percentage or adopted policy is implied. Existing evidence and unresolved gates follow.
+The local console now supports nonce-bound withdrawal recovery after reload or a lost wallet response. It never automatically resubmits. Next verify an actual disposable wallet extension and extend account setup and the signed-action lifecycle; replacement/cancellation resolution remains open. Registration/economics and independent reproduction gates are unchanged. Application progress is tracked separately from bounded test evidence.
 
 # Current gates
 
