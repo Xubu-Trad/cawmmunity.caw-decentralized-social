@@ -1,5 +1,6 @@
 from pathlib import Path
 import argparse,subprocess,socket,urllib.request,json,time,os,shutil,sys,hashlib
+from receipt_poll import rpc_result,wait_for_receipt
 p=argparse.ArgumentParser();p.add_argument('--geth',required=True);p.add_argument('--capture',required=True);p.add_argument('--genesis',required=True);p.add_argument('--selection',required=True);p.add_argument('--registry-proof',required=True);p.add_argument('--output',required=True);p.add_argument('--smoke',action='store_true');a=p.parse_args()
 if sys.flags.optimize:raise SystemExit('OPTIMIZED_PYTHON_UNSUPPORTED')
 o=Path(a.output).resolve();src=Path(__file__).resolve().parent
@@ -11,9 +12,9 @@ o.mkdir();capture=json.loads(Path(a.capture).read_text());genesis=json.loads(Pat
 with socket.socket()as s:s.bind(('127.0.0.1',0));port=s.getsockname()[1]
 url=f'http://127.0.0.1:{port}'
 def rpc(method,params):
- req=urllib.request.Request(url,json.dumps({'jsonrpc':'2.0','id':1,'method':method,'params':params}).encode(),{'Content-Type':'application/json'});v=json.load(urllib.request.urlopen(req,timeout=5));assert 'error'not in v,v;return v['result']
+ req=urllib.request.Request(url,json.dumps({'jsonrpc':'2.0','id':1,'method':method,'params':params}).encode(),{'Content-Type':'application/json'});v=json.load(urllib.request.urlopen(req,timeout=5));return rpc_result(method,v)
 q=subprocess.run([a.geth,'--datadir',str(o/'data'),'init',str(o/'genesis.json')],capture_output=True,timeout=30);(o/'init.log').write_bytes(q.stdout+q.stderr);assert q.returncode==0
-node=None;web=None
+node=None;web=None;receipt_polls=[]
 try:
  with (o/'node.log').open('wb')as log:
   node=subprocess.Popen([a.geth,'--dev','--datadir',str(o/'data'),'--http','--http.addr','127.0.0.1','--http.port',str(port),'--http.api','eth,net,web3','--maxpeers','0','--nodiscover','--cache','64','--ipcdisable'],stdout=log,stderr=log,env={**os.environ,'GOMEMLIMIT':'256MiB','GOMAXPROCS':'2'})
@@ -25,11 +26,8 @@ try:
   assert g['hash']==capture['blocks'][0]['block']['hash'],'GENESIS_MISMATCH'
   for b in capture['blocks'][1:11]:
    assert len(b['rawTransactions'])==1
-   tx=rpc('eth_sendRawTransaction',[b['rawTransactions'][0]]);assert tx==b['receipts'][0]['transactionHash'];receipt=None
-   for _ in range(100):
-    receipt=rpc('eth_getTransactionReceipt',[tx])
-    if receipt:break
-    time.sleep(.1)
+   tx=rpc('eth_sendRawTransaction',[b['rawTransactions'][0]]);assert tx==b['receipts'][0]['transactionHash']
+   receipt=wait_for_receipt(rpc,tx,receipt_polls)
    assert receipt and receipt['status']=='0x1'
   names={'AccountOwnerWalletResearch':'wallet','FundedAdmissionResearch':'custody','AdmissionTokenFixture':'token'}
   contracts={names[d['name']]:{'address':d['address'],'codeHash':d['expectedCodeHash']}for d in selected['contracts']};contracts['registry']={'address':reg['proof']['address'],'codeHash':reg['proof']['codeHash']}
@@ -41,5 +39,6 @@ try:
 finally:
  for process in [web,node]:
   if process and process.poll()is None:process.terminate();process.wait(timeout=15)
+ (o/'receipt-polls.json').write_text(json.dumps(receipt_polls,indent=2)+'\n')
  (o/'service.json').write_text(json.dumps({'stopped':all(x is None or x.poll()is not None for x in [web,node])}))
 

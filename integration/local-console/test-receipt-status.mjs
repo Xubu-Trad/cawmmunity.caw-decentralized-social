@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {verifyWithdrawalReceipt} from './ui/receipt-status.mjs';
+import {verifyWithdrawalReceipt,verifyRecoveryTransaction} from './ui/receipt-status.mjs';
 
 const h=n=>'0x'+n.repeat(64),a=n=>'0x'+n.repeat(40);
 const txHash=h('a');
@@ -71,4 +71,56 @@ test('rejects invalid selection before requesting provider data',async()=>{
 });
 test('rejects nonzero reviewed native value before requesting provider data',async()=>{
  const p=provider();await assert.rejects(verifyWithdrawalReceipt(p,txHash,{...plan,value:'0x1'}));assert.equal(p.requests.length,0);
+});
+
+const noncePlan={...plan,nonce:'0x7'};
+const nonceProvider=()=>changed('eth_getTransactionByHash',t=>({...t,nonce:noncePlan.nonce}));
+test('mined receipt binds the optional selected nonce',async()=>{
+ assert.equal((await verifyWithdrawalReceipt(nonceProvider(),txHash,noncePlan)).status,'confirmed');
+});
+for(const nonce of ['0x8',undefined,'0x07','0x10000000000000000',7,null]){
+ test('receipt rejects mismatched or malformed nonce '+String(nonce),async()=>{
+  await assert.rejects(verifyWithdrawalReceipt(changed('eth_getTransactionByHash',t=>({...t,nonce})),txHash,noncePlan),/Mined transaction/);
+ });
+}
+for(const nonce of ['0x00','0x10000000000000000',-1,0,null,undefined,'7','latest']){
+ test('rejects invalid recorded nonce before any provider request '+String(nonce),async()=>{
+  for(const verify of [verifyWithdrawalReceipt,verifyRecoveryTransaction]){
+   const p=provider();await assert.rejects(verify(p,txHash,{...plan,nonce}));assert.equal(p.requests.length,0);
+  }
+ });
+}
+test('manual recovery requires a nonce rather than matching only identical calldata',async()=>{
+ const p=provider();await assert.rejects(verifyRecoveryTransaction(p,txHash,plan));assert.equal(p.requests.length,0);
+});
+test('pending transaction identity can be recovered without claiming a receipt',async()=>{
+ const p=changed('eth_getTransactionByHash',t=>({...t,nonce:noncePlan.nonce,blockHash:null,blockNumber:null}));
+ assert.deepEqual(await verifyRecoveryTransaction(p,txHash,noncePlan),{status:'matched',transactionHash:txHash});
+ assert.equal(p.requests.some(r=>r.method==='eth_getTransactionReceipt'),false);
+ assert.equal(p.requests.filter(r=>r.method==='eth_accounts').length,4);
+});
+for(const nonce of ['0x0','0xffffffffffffffff']){
+ test('manual recovery accepts boundary uint64 nonce '+nonce,async()=>{
+  assert.equal((await verifyRecoveryTransaction(changed('eth_getTransactionByHash',t=>({...t,nonce})),txHash,{...plan,nonce})).status,'matched');
+ });
+}
+for(const [field,value]of [['hash',h('6')],['from',a('6')],['to',a('6')],['input','0x5678'],['value','0x1'],['chainId','0x1'],['nonce','0x8'],['nonce',undefined]]){
+ test('manual recovery rejects transaction '+field+' mismatch '+String(value),async()=>{
+  await assert.rejects(verifyRecoveryTransaction(changed('eth_getTransactionByHash',t=>({...t,nonce:noncePlan.nonce,[field]:value})),txHash,noncePlan),/Recovery transaction/);
+ });
+}
+for(const value of [null,undefined,{}, {error:{code:-32000,message:'missing'}}]){
+ test('manual recovery rejects missing or malformed transaction '+JSON.stringify(value),async()=>{
+  await assert.rejects(verifyRecoveryTransaction(changed('eth_getTransactionByHash',()=>value),txHash,noncePlan));
+ });
+}
+test('manual recovery propagates transaction lookup error',async()=>{
+ await assert.rejects(verifyRecoveryTransaction(changed('eth_getTransactionByHash',()=>{throw Error('RPC_UNAVAILABLE');}),txHash,noncePlan),/RPC_UNAVAILABLE/);
+});
+test('manual recovery rejects selected history changing during lookup',async()=>{
+ let selected=0;const p=provider((req,v)=>{
+  if(req.method==='eth_getTransactionByHash')return {...v,nonce:noncePlan.nonce};
+  return req.method==='eth_getBlockByNumber'&&req.params[0]===plan.blockNumber&&++selected===2?{...v,hash:h('6')}:v;
+ });
+ await assert.rejects(verifyRecoveryTransaction(p,txHash,noncePlan),/selected local chain state/);
 });

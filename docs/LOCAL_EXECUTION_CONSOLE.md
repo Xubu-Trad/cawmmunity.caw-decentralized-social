@@ -48,7 +48,13 @@ The browser test requires a fresh fixture with two units of credit. It creates i
 
 Open the console in a browser that provides an EIP-1193 wallet. An in-app browser without a wallet extension will report that no compatible wallet was found. Configure the **launcher-printed loopback RPC URL**, chain ID **31337**, and a local-only disposable account. The existing fixture controller uses the publicly known test private key consisting of 63 zeroes followed by 3 (hexadecimal); never send real assets to it. Its address must match the controller shown in the console. The console does not receive or store that key, change wallet networks, or request accounts before you click Connect.
 
-Click **Connect local test wallet**, enter **1**, then **Review withdrawal**. The recipient is the contract wallet, not the controller. Click **Approve in wallet** only after checking the local chain and plan. A pending result exposes **Check transaction receipt**; an RPC error retains the hash and must not be treated as failure to submit. Once confirmed, expect credit 1, wallet 1 and custody 9 from a fresh fixture. Receipt tracking is session-only: after reloading the page, consult wallet history before considering another submission. Direct extension compatibility remains unverified until someone performs this check.
+Click **Connect local test wallet**, enter **1**, then **Review withdrawal**. The recipient is the contract wallet, not the controller. Click **Approve in wallet** only after checking the local chain and plan. A pending result exposes **Check transaction receipt**; an RPC error retains the hash and must not be treated as failure to submit. Once confirmed, expect credit 1, wallet 1 and custody 9 from a fresh fixture. [Saved withdrawal recovery](LOCAL_WITHDRAWAL_RECOVERY.md) now restores pending submissions across page reloads and retains unknown outcomes for nonce-bound hash verification. No automatic resubmission occurs. Direct extension compatibility remains unverified until someone performs this check.
+
+## Current application update: saved withdrawal recovery
+
+The console now saves the reviewed intent before wallet submission and checks the exact sender nonce when recovering it. Reloading can resume receipt verification. If the wallet broadcast but the page missed its response, the user can verify a transaction hash from wallet activity; a prior identical withdrawal with a different nonce is rejected. Unreadable or mismatched records block new submissions and remain copyable. See [behavior, results and limits](LOCAL_WITHDRAWAL_RECOVERY.md).
+
+Twenty-two browser cases, 178 focused Node checks and ten Python test methods pass. The browser test uses a controlled adapter, not a real wallet extension. Browser storage is not an OS-crash durability guarantee, and a different transaction replacing the saved nonce has no implemented resolution flow yet.
 
 ## Remaining gates
 

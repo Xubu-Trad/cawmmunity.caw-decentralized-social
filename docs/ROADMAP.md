@@ -1,6 +1,6 @@
 ## Current application priority — November 12, 2026
 
-The local console now verifies reviewed withdrawal bytes and displays receipt-confirmed balances. Sixteen isolated browser cases and 75 focused checks pass with a controlled wallet adapter. Next verify an actual disposable wallet extension, then extend account setup and the signed-action lifecycle. Registration/economics remain open; independent reproduction proceeds alongside application development.
+The local console now supports nonce-bound withdrawal recovery after reload or a lost wallet response. It never automatically resubmits. Next verify an actual disposable wallet extension and extend account setup and the signed-action lifecycle; replacement/cancellation resolution remains open. Registration/economics and independent reproduction gates are unchanged. Application progress is tracked separately from bounded test evidence.
 
 # Current gates
 

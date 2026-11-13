@@ -46,8 +46,8 @@ try {
    else if(req.method==='eth_sendTransaction'){
     const tx=req.params[0];assert.equal(tx.from.toLowerCase(),initial.controller);assert.equal(tx.to.toLowerCase(),initial.contracts.wallet);assert.equal(tx.value,'0x0');
     assert.equal((await rpc.getBlock(0)).hash,initial.genesisHash);
-    const response=await signer.sendTransaction({to:tx.to,data:tx.data,value:0n});sent.push(response.hash);value=response.hash;
-   }else {assert.ok(['eth_chainId','eth_getBlockByNumber','eth_getTransactionReceipt','eth_getTransactionByHash'].includes(req.method));value=await rpc.send(req.method,req.params??[]);}
+    const response=await signer.sendTransaction({to:tx.to,data:tx.data,value:0n,nonce:tx.nonce});sent.push(response.hash);value=response.hash;
+   }else {assert.ok(['eth_chainId','eth_getTransactionCount','eth_getBlockByNumber','eth_getTransactionReceipt','eth_getTransactionByHash'].includes(req.method));value=await rpc.send(req.method,req.params??[]);}
    await evaluate(`window.__walletResolve(${id},${JSON.stringify({result:value})})`);
   }catch(e){await evaluate(`window.__walletResolve(${id},${JSON.stringify({error:{message:e.message,code:-32000}})})`).catch(()=>{});}
  });
@@ -55,7 +55,7 @@ try {
  await cmd('Page.navigate',{url});await until("document.getElementById('credit')?.textContent==='2'");
  await click('connect');await idle();assert.match(await status(),/No compatible browser wallet/);assert.equal(calls.length,0);record('missing injected wallet fails without signing');
  await cmd('Page.addScriptToEvaluateOnNewDocument',{source:`
- window.__test={chain:'0x7a69',wrongAccount:false,rejectConnect:false,changeDuringConnect:false,badGenesis:false,receiptMode:'normal',rejectSend:false,tamperPlan:false};
+ window.__test={chain:'0x7a69',wrongAccount:false,rejectConnect:false,changeDuringConnect:false,badGenesis:false,receiptMode:'normal',rejectSend:false,tamperPlan:false,loseResponse:false};
  let seq=0;const waiting=new Map(),listeners=new Map();
  window.__walletResolve=(id,v)=>{const p=waiting.get(id);if(!p)return;waiting.delete(id);v.error?p.reject(Object.assign(Error(v.error.message),v.error)):p.resolve(v.result);};
  const bridge=req=>new Promise((resolve,reject)=>{const id=++seq;waiting.set(id,{resolve,reject});window.__walletBridge(JSON.stringify({id,req}));});
@@ -67,8 +67,8 @@ try {
   if(req.method==='eth_getBlockByNumber'&&req.params[0]==='0x0'&&window.__test.badGenesis)return {hash:'0x'+'55'.repeat(32)};
   if(req.method==='eth_sendTransaction'&&window.__test.rejectSend)throw Object.assign(Error('Signature rejected by test wallet'),{code:4001});
   if(req.method==='eth_getTransactionReceipt'&&window.__test.receiptMode==='pending')return null;
-  if(req.method==='eth_getTransactionReceipt'&&window.__test.receiptMode==='error')throw Error('Receipt service unavailable');
-  return bridge(req);
+  if(req.method==='eth_getTransactionReceipt'&&window.__test.receiptMode==='error')throw Object.assign(Error('Receipt service unavailable'),{code:4001});
+  const result=await bridge(req);if(req.method==='eth_sendTransaction'&&window.__test.loseResponse)return new Promise(()=>{});return result;
  }};
  window.__walletEvent=(name,value)=>listeners.get(name)?.(value);
  const realFetch=window.fetch.bind(window);window.fetch=async(...args)=>{const r=await realFetch(...args);if(window.__test.tamperPlan&&args[0]==='/api/withdrawal-plan'){const p=await r.json();p.data+='00';return new Response(JSON.stringify(p),{status:r.status,headers:r.headers});}return r;};
@@ -85,14 +85,35 @@ try {
  await prepare();await configure({badGenesis:true});await click('confirm');await idle();assert.match(await status(),/different local chain/);assert.equal(sent.length,0);await configure({badGenesis:false});record('same chain id with different genesis cannot submit');
  await prepare();await configure({rejectSend:true});await click('confirm');await idle();assert.match(await status(),/Signature rejected/);assert.equal(sent.length,0);await configure({rejectSend:false});record('rejected signature does not submit');
  await prepare();await configure({receiptMode:'pending'});await click('confirm');await idle();assert.match(await status(),/Transaction pending/);assert.equal(sent.length,1);assert.equal(await evaluate("document.getElementById('prepare').disabled"),true);record('signed withdrawal pending blocks duplicate submission');
+ // A full reload discards page memory but must retain the submitted hash.
+ await cmd('Page.reload',{ignoreCache:true});await until("document.getElementById('saved-status')?.textContent.includes('Saved submission restored')");
+ assert.equal(await evaluate("document.getElementById('prepare').disabled"),true);assert.equal(sent.length,1);
+ await click('connect');await idle();record('reload restores pending withdrawal without resubmission');
  await configure({receiptMode:'error'});await click('check-receipt');await idle();assert.match(await status(),/Receipt not verified/);assert.equal(await evaluate("document.getElementById('check-receipt').hidden"),false);assert.equal(sent.length,1);record('receipt error retains submitted transaction');
  await configure({receiptMode:'normal'});await click('check-receipt');await idle();assert.match(await status(),/Withdrawal confirmed/);assert.equal(await evaluate("document.getElementById('credit').textContent"),'1');assert.equal(await evaluate("document.getElementById('wallet-balance').textContent"),'1');assert.equal(await evaluate("document.getElementById('custody-balance').textContent"),'9');record('receipt retry confirms exact withdrawal and refreshes balances');
+ assert.equal(await evaluate("localStorage.getItem('caw.local.withdrawal.v1')"),null);record('verified receipt clears only its saved record');
+ // A provider can broadcast successfully while the page never gets its hash.
+ await prepare();await configure({loseResponse:true});await click('confirm');
+ for(let n=0;n<100&&sent.length<2;n++)await sleep(50);assert.equal(sent.length,2);
+ assert.equal(await evaluate("JSON.parse(localStorage.getItem('caw.local.withdrawal.v1')).phase"),'awaiting-wallet');
+ await cmd('Page.reload',{ignoreCache:true});await until("document.getElementById('saved-status')?.textContent.includes('unresolved outcome')");
+ assert.equal(sent.length,2);assert.equal(await evaluate("document.getElementById('prepare').disabled"),true);record('lost wallet response restores unresolved intent without resubmission');
+ await click('connect');await idle();
+ await evaluate("document.getElementById('recovery-hash').value="+JSON.stringify(sent[0]));await click('recover');await idle();
+ assert.match(await status(),/Recovery not verified/);assert.notEqual(await evaluate("localStorage.getItem('caw.local.withdrawal.v1')"),null);record('older identical withdrawal hash cannot clear a later nonce');
+ await evaluate("document.getElementById('recovery-hash').value="+JSON.stringify(sent[1]));await click('recover');await idle();
+ assert.match(await status(),/Withdrawal confirmed/);assert.equal(await evaluate("document.getElementById('credit').textContent"),'0');assert.equal(await evaluate("document.getElementById('wallet-balance').textContent"),'2');assert.equal(await evaluate("document.getElementById('custody-balance').textContent"),'8');
+ assert.equal(await evaluate("localStorage.getItem('caw.local.withdrawal.v1')"),null);assert.equal(sent.length,2);record('correct nonce-bound hash recovers interrupted submission and balances');
+ await evaluate("localStorage.setItem('caw.local.withdrawal.v1','{broken')");await click('refresh');await until("document.getElementById('saved-status').textContent.includes('Recovery required')");
+ assert.equal(await evaluate("document.getElementById('prepare').disabled"),true);assert.equal(await evaluate("localStorage.getItem('caw.local.withdrawal.v1')"),'{broken');record('corrupt journal retained and new withdrawal blocked');
+ await evaluate("localStorage.removeItem('caw.local.withdrawal.v1')");await click('refresh');await until("document.getElementById('saved-status').textContent.includes('No unresolved')");
+
  await cmd('Emulation.setDeviceMetricsOverride',{width:1280,height:1000,deviceScaleFactor:1,mobile:false});
  const screenshot=await cmd('Page.captureScreenshot',{format:'png'});await fs.writeFile(path.join(output,'console-confirmed.png'),Buffer.from(screenshot.data,'base64'));
  await cmd('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
  assert.equal(await evaluate('document.documentElement.scrollWidth<=window.innerWidth'),true);record('mobile layout fits viewport');
  const mobile=await cmd('Page.captureScreenshot',{format:'png'});await fs.writeFile(path.join(output,'console-mobile.png'),Buffer.from(mobile.data,'base64'));
  assert.equal(pageErrors.length,0);
- await fs.writeFile(path.join(output,'result.json'),JSON.stringify({status:'pass',browser:await cmd('Browser.getVersion'),scope:'headless browser with controlled EIP-1193 adapter; real signed local Geth transaction; not an actual wallet extension',cases:results,signedTransactions:sent,creditBefore:'2',creditAfter:'1',walletBalance:'1',custodyBalance:'9',pageErrors},null,2)+'\n');
+ await fs.writeFile(path.join(output,'result.json'),JSON.stringify({status:'pass',browser:await cmd('Browser.getVersion'),scope:'headless browser with controlled EIP-1193 adapter; real signed local Geth transaction; not an actual wallet extension',cases:results,signedTransactions:sent,creditBefore:'2',creditAfter:'0',walletBalance:'2',custodyBalance:'8',pageErrors},null,2)+'\n');
 } catch(e) {await fs.writeFile(path.join(output,'failure.json'),JSON.stringify({message:e.message,stack:e.stack,results,pageErrors},null,2));throw e;}
 finally {if(ws?.readyState===WebSocket.OPEN){await cmd('Browser.close').catch(()=>{});ws.close();}browser.kill();await fs.writeFile(path.join(output,'browser.log'),browserLog);rpc.destroy();}
