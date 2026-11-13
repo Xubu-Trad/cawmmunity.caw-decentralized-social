@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {verifyWithdrawalReceipt,verifyRecoveryTransaction} from './ui/receipt-status.mjs';
+import {verifyWithdrawalReceipt,verifyTransferReceipt,verifyRecoveryTransaction} from './ui/receipt-status.mjs';
+import {transferData} from './ui/account-transfer-plan.mjs';
 
 const h=n=>'0x'+n.repeat(64),a=n=>'0x'+n.repeat(40);
 const txHash=h('a');
@@ -123,4 +124,42 @@ test('manual recovery rejects selected history changing during lookup',async()=>
   return req.method==='eth_getBlockByNumber'&&req.params[0]===plan.blockNumber&&++selected===2?{...v,hash:h('6')}:v;
  });
  await assert.rejects(verifyRecoveryTransaction(p,txHash,noncePlan),/selected local chain state/);
+});
+
+const transferPlan={...plan,action:'transfer',owner:plan.to,registry:a('7'),recipient:a('8'),nonce:'0x7',epoch:'1',data:transferData(a('7'),plan.to,a('8'))};
+const topicAddress=x=>'0x'+x.slice(2).padStart(64,'0');
+const transferLog={address:transferPlan.registry,topics:['0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef',topicAddress(transferPlan.owner),topicAddress(transferPlan.recipient),'0x'+('2'.padStart(64,'0'))],data:'0x',removed:false,transactionHash:txHash,blockHash:receipt.blockHash,blockNumber:receipt.blockNumber};
+function transferProvider(mutate){return provider((req,value)=>{
+ if(req.method==='eth_getTransactionReceipt')value={...value,logs:[structuredClone(transferLog)]};
+ if(req.method==='eth_getTransactionByHash')value={...value,nonce:transferPlan.nonce,input:transferPlan.data};
+ return mutate?mutate(req,value):value;
+});}
+test('transfer receipt requires exact matching account2 registry event',async()=>{
+ assert.equal((await verifyTransferReceipt(transferProvider(),txHash,transferPlan)).status,'confirmed');
+ assert.equal((await verifyWithdrawalReceipt(transferProvider(),txHash,transferPlan)).status,'confirmed');
+ assert.equal((await verifyRecoveryTransaction(transferProvider(),txHash,transferPlan)).status,'matched');
+});
+for(const [name,mutate]of [
+ ['missing logs',r=>delete r.logs],['no event',r=>r.logs=[]],['duplicate handoff',r=>r.logs.push(structuredClone(transferLog))],
+ ['foreign registry',r=>r.logs[0].address=a('9')],['old owner',r=>r.logs[0].topics[1]=topicAddress(a('9'))],
+ ['different recipient',r=>r.logs[0].topics[2]=topicAddress(a('9'))],['different account',r=>r.logs[0].topics[3]='0x'+('3'.padStart(64,'0'))],
+ ['extra topic',r=>r.logs[0].topics.push(h('9'))],['removed event',r=>r.logs[0].removed=true],['data payload',r=>r.logs[0].data='0x00'],
+ ['event transaction hash',r=>r.logs[0].transactionHash=h('9')],['event block hash',r=>r.logs[0].blockHash=h('9')],['event block number',r=>r.logs[0].blockNumber='0xc'],
+])test('transfer success rejects '+name,async()=>{
+ await assert.rejects(verifyTransferReceipt(transferProvider((req,v)=>{if(req.method==='eth_getTransactionReceipt')mutate(v);return v;}),txHash,transferPlan));
+});
+test('reverted transfer is a known failure without requiring a successful Transfer event',async()=>{
+ assert.equal((await verifyTransferReceipt(transferProvider((req,v)=>req.method==='eth_getTransactionReceipt'?{...v,status:'0x0',logs:[]}:v),txHash,transferPlan)).status,'reverted');
+});
+for(const [name,patch]of [['missing nonce',{nonce:undefined}],['wrong encoded recipient',{recipient:a('9')}],['amount',{amount:'1'}],['unknown action',{action:'other'}],['changed route',{to:a('9')}],['direct owner mismatch',{to:a('7'),data:transferData(a('7'),plan.to,a('8'),'eoa')}]])test('rejects invalid transfer receipt selection '+name+' before RPC',async()=>{
+ const p=transferProvider();await assert.rejects(verifyTransferReceipt(p,txHash,{...transferPlan,...patch}));assert.equal(p.requests.length,0);
+});
+test('rejects reserved-address transfer recovery before requesting provider data',async()=>{
+ for(const n of [0n,...Array.from({length:17},(_,i)=>BigInt(i+1)),0xffffn]){
+  const recipient='0x'+n.toString(16).padStart(40,'0');
+  const selected={...transferPlan,recipient,data:transferData(transferPlan.registry,transferPlan.owner,recipient)};
+  for(const verify of [verifyTransferReceipt,verifyRecoveryTransaction]){
+   const p=transferProvider();await assert.rejects(verify(p,txHash,selected));assert.equal(p.requests.length,0);
+  }
+ }
 });

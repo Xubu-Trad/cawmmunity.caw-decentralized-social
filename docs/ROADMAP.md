@@ -1,6 +1,6 @@
 ## Current application priority — November 12, 2026
 
-The local console now supports nonce-bound withdrawal recovery after reload or a lost wallet response. It never automatically resubmits. Next verify an actual disposable wallet extension and extend account setup and the signed-action lifecycle; replacement/cancellation resolution remains open. Registration/economics and independent reproduction gates are unchanged. Application progress is tracked separately from bounded test evidence.
+The local console now supports user-directed account handoff and new-owner withdrawal with saved transfer recovery. Next reconcile the separate signed-post candidate with this registry/custody lifecycle before adding compose-and-submit. Do not merge different research economics or claim that the current custody contract can publish posts. Actual wallet-extension compatibility and independent reproduction remain pending; public registration/economics and deployment gates are unchanged.
 
 # Current gates
 

@@ -1,7 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {JOURNAL_KEY,validateJournal,readJournal,beginWithdrawal,rememberHash,finishWithdrawal} from './ui/withdrawal-journal.mjs';
+import {JOURNAL_KEY,validateJournal,readJournal,beginWithdrawal,beginTransfer,rememberHash,finishWithdrawal} from './ui/withdrawal-journal.mjs';
 import {withdrawalData} from './ui/withdrawal-plan.mjs';
+import {transferData} from './ui/account-transfer-plan.mjs';
 
 const a=n=>'0x'+n.repeat(40),h=n=>'0x'+n.repeat(64),id=n=>'0x'+n.repeat(32);
 const state={chainId:'0x7a69',controller:a('a'),owner:a('b'),epoch:'1',credit:'2',genesisHash:h('1'),contracts:{wallet:a('b'),registry:a('c'),custody:a('d'),token:a('e')}};
@@ -123,3 +124,43 @@ test('submitted hash cannot be replaced by another hash',async()=>{
  const raw=JSON.stringify({...record(),phase:'submitted',hash:h('4')}),s=storage(raw);await assert.rejects(rememberHash(s,locks(),state,id('3'),h('5')),/different transaction/);assert.equal(s.raw(),raw);
 });
 test('missing record cannot be updated or cleared',async()=>{const s=storage(),l=locks();await assert.rejects(rememberHash(s,l,state,id('3'),h('4')),/changed/);await assert.rejects(finishWithdrawal(s,l,state,id('3')),/changed/);assert.equal(s.raw(),null);});
+
+const recipient=a('f');
+const transferPlan={chainId:plan.chainId,from:state.controller,to:state.contracts.wallet,data:transferData(state.contracts.registry,state.owner,recipient),value:'0x0',action:'transfer',owner:state.owner,registry:state.contracts.registry,recipient,epoch:plan.epoch,blockNumber:plan.blockNumber,blockHash:plan.blockHash,genesisHash:plan.genesisHash,nonce:plan.nonce};
+function transferRecord(){return {...record(),version:2,plan:clone(transferPlan)};}
+test('transfer journal preserves exact intent and restores after ownership changes',async()=>{
+ const s=storage(),l=locks();await beginTransfer(s,l,state,transferPlan,id('3'));
+ assert.deepEqual(readJournal(s,state),transferRecord());
+ const changed={...state,owner:recipient,signer:recipient,ownerType:'eoa',epoch:'2',credit:'0'};
+ assert.deepEqual(readJournal(s,changed),transferRecord());
+ await rememberHash(s,l,changed,id('3'),h('4'));
+ await finishWithdrawal(s,l,changed,id('3'));assert.equal(s.raw(),null);
+});
+test('withdrawals and transfers share one exclusive journal and cannot overwrite one another',async()=>{
+ for(const [first,second,firstPlan,secondPlan]of [[beginWithdrawal,beginTransfer,plan,transferPlan],[beginTransfer,beginWithdrawal,transferPlan,plan]]){
+  const s=storage(),l=locks();await first(s,l,state,firstPlan,id('3'));const raw=s.raw();
+  await assert.rejects(second(s,l,state,secondPlan,id('4')));assert.equal(s.raw(),raw);
+ }
+ const s=storage(),l=locks();const r=await Promise.allSettled([beginWithdrawal(s,l,state,plan,id('3')),beginTransfer(s,l,state,transferPlan,id('4'))]);
+ assert.equal(r.filter(x=>x.status==='fulfilled').length,1);
+});
+test('direct new-owner withdrawal stays v1 and restores without treating original controller as owner',async()=>{
+ const current={...state,owner:recipient,signer:recipient,ownerType:'eoa',epoch:'2'};
+ const p={...plan,from:recipient,to:state.contracts.custody,epoch:'2',data:withdrawalData(state.contracts.custody,'2','1','eoa')};
+ const s=storage();await beginWithdrawal(s,locks(),current,p,id('3'));
+ const saved=readJournal(s,{...current,owner:a('9'),signer:a('9'),epoch:'3',credit:'0'});
+ assert.equal(saved.version,1);assert.equal(saved.plan.from,recipient);
+ assert.throws(()=>validateJournal({...saved,plan:{...saved.plan,to:state.contracts.wallet}},current));
+});
+test('direct-owner transfer restores against historical owner, not the current owner',async()=>{
+ const current={...state,owner:a('9'),signer:a('9'),ownerType:'eoa',epoch:'2'};
+ const p={...transferPlan,owner:current.owner,from:current.signer,to:state.contracts.registry,epoch:'2',data:transferData(state.contracts.registry,current.owner,recipient,'eoa')};
+ const s=storage();await beginTransfer(s,locks(),current,p,id('3'));
+ assert.equal(readJournal(s,{...current,owner:recipient,signer:recipient,epoch:'3'}).plan.owner,current.owner);
+});
+for(const [name,mutate]of [['action',r=>r.plan.action='withdrawal'],['amount present',r=>r.plan.amount='1'],['registry',r=>r.plan.registry=a('9')],['owner',r=>r.plan.owner=a('9')],['recipient label',r=>r.plan.recipient=a('9')],['nonce missing',r=>delete r.plan.nonce],['version downgrade',r=>r.version=1]])test('rejects malformed transfer journal '+name,()=>{const r=transferRecord();mutate(r);assert.throws(()=>validateJournal(r,state));});
+test('starting action requires current authority even though recovery accepts historical authority',async()=>{
+ const s=storage(),changed={...state,owner:recipient,signer:recipient,ownerType:'eoa',epoch:'2'};
+ await assert.rejects(beginTransfer(s,locks(),changed,transferPlan,id('3')));
+ await assert.rejects(beginWithdrawal(s,locks(),changed,plan,id('3')));assert.equal(s.raw(),null);
+});

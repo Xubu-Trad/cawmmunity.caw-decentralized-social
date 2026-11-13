@@ -1,0 +1,110 @@
+{
+  "status": "pass",
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Edg/157.0.4341.46",
+    "revision": "@a0c6bd61d7884b3c402a34c67d05100107a9e5e4",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36 Edg/157.0.0.0",
+    "jsVersion": "15.7.11.4"
+  },
+  "scope": "headless browser with controlled EIP-1193 adapter; real signed local Geth transaction; not an actual wallet extension",
+  "cases": [
+    {
+      "name": "missing injected wallet fails without signing",
+      "pass": true
+    },
+    {
+      "name": "page load makes no wallet request",
+      "pass": true
+    },
+    {
+      "name": "wrong chain rejected",
+      "pass": true
+    },
+    {
+      "name": "wrong controller rejected",
+      "pass": true
+    },
+    {
+      "name": "connection rejection handled",
+      "pass": true
+    },
+    {
+      "name": "account event during connect rejects late response",
+      "pass": true
+    },
+    {
+      "name": "controller connects without transaction submission",
+      "pass": true
+    },
+    {
+      "name": "review cancellation does not submit",
+      "pass": true
+    },
+    {
+      "name": "tampered calldata rejected in browser",
+      "pass": true
+    },
+    {
+      "name": "amount edit invalidates review",
+      "pass": true
+    },
+    {
+      "name": "same chain id with different genesis cannot submit",
+      "pass": true
+    },
+    {
+      "name": "rejected signature does not submit",
+      "pass": true
+    },
+    {
+      "name": "signed withdrawal pending blocks duplicate submission",
+      "pass": true
+    },
+    {
+      "name": "reload restores pending withdrawal without resubmission",
+      "pass": true
+    },
+    {
+      "name": "receipt error retains submitted transaction",
+      "pass": true
+    },
+    {
+      "name": "receipt retry confirms exact withdrawal and refreshes balances",
+      "pass": true
+    },
+    {
+      "name": "verified receipt clears only its saved record",
+      "pass": true
+    },
+    {
+      "name": "lost wallet response restores unresolved intent without resubmission",
+      "pass": true
+    },
+    {
+      "name": "older identical withdrawal hash cannot clear a later nonce",
+      "pass": true
+    },
+    {
+      "name": "correct nonce-bound hash recovers interrupted submission and balances",
+      "pass": true
+    },
+    {
+      "name": "corrupt journal retained and new withdrawal blocked",
+      "pass": true
+    },
+    {
+      "name": "mobile layout fits viewport",
+      "pass": true
+    }
+  ],
+  "signedTransactions": [
+    "0xb01264a85ee116a0a882a7fa9c34a19fd65cf573f3b3ba571154849eedcb611b",
+    "0x0607ecb3157d7e5dc76c3371b446b047cb73b6d71cb979475e00d36982e8b0eb"
+  ],
+  "creditBefore": "2",
+  "creditAfter": "0",
+  "walletBalance": "2",
+  "custodyBalance": "8",
+  "pageErrors": []
+}

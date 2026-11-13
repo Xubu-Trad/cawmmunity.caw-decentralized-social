@@ -1,4 +1,5 @@
 import {verifyWalletProviderContext} from './wallet-provider.mjs';
+import {transferData} from './account-transfer-plan.mjs';
 
 const hash=/^0x[0-9a-fA-F]{64}$/,address=/^0x[0-9a-fA-F]{40}$/;
 const quantity=/^0x(?:0|[1-9a-fA-F][0-9a-fA-F]*)$/,bytes=/^0x(?:[0-9a-fA-F]{2})+$/;
@@ -8,6 +9,22 @@ const equalQuantity=(a,b)=>isQuantity(a)&&isQuantity(b)&&BigInt(a)===BigInt(b);
 const isNonce=x=>isQuantity(x)&&BigInt(x)<2n**64n;
 function validSelection(txHash,plan,requireNonce=false){
  if(!hash.test(txHash)||!plan||!address.test(plan.from)||!address.test(plan.to)||!bytes.test(plan.data)||plan.value!=='0x0'||((requireNonce||Object.hasOwn(plan,'nonce'))&&!isNonce(plan.nonce)))throw Error('Invalid withdrawal receipt selection.');
+ if(Object.hasOwn(plan,'action')){
+  if(plan.action!=='transfer'||!isNonce(plan.nonce)||![plan.owner,plan.registry,plan.recipient].every(x=>address.test(x))||BigInt(plan.recipient)<=0xffffn||same(plan.recipient,plan.owner)||Object.hasOwn(plan,'amount'))throw Error('Invalid transfer receipt selection.');
+  const direct=same(plan.to,plan.registry);
+  if((direct?!same(plan.from,plan.owner):!same(plan.to,plan.owner))||!same(plan.data,transferData(plan.registry,plan.owner,plan.recipient,direct?'eoa':'fixture-wallet')))throw Error('Transfer receipt selection does not encode the reviewed handoff.');
+ }
+}
+const TRANSFER_TOPIC='0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef';
+const addressTopic=a=>'0x'+a.slice(2).toLowerCase().padStart(64,'0');
+const ACCOUNT_TOPIC='0x'+('2'.padStart(64,'0'));
+function verifyTransferEvent(receipt,plan){
+ if(!Array.isArray(receipt.logs))throw Error('Transfer receipt is missing its registry event.');
+ const transfers=receipt.logs.filter(log=>log&&same(log.address,plan.registry)&&Array.isArray(log.topics)&&same(log.topics[0],TRANSFER_TOPIC)&&same(log.topics[3],ACCOUNT_TOPIC));
+ if(transfers.length!==1)throw Error('Transfer receipt must contain exactly one account 2 handoff.');
+ const log=transfers[0];
+ if(log.topics.length!==4||!same(log.topics[1],addressTopic(plan.owner))||!same(log.topics[2],addressTopic(plan.recipient))||log.data!=='0x'||log.removed===true||
+    (log.transactionHash!==undefined&&!same(log.transactionHash,receipt.transactionHash))||(log.blockHash!==undefined&&!same(log.blockHash,receipt.blockHash))||(log.blockNumber!==undefined&&!equalQuantity(log.blockNumber,receipt.blockNumber)))throw Error('Registry transfer event does not match the reviewed handoff.');
 }
 function matchesTransaction(transaction,txHash,plan){
  return transaction&&typeof transaction==='object'&&same(transaction.hash,txHash)&&same(transaction.from,plan.from)&&same(transaction.to,plan.to)&&same(transaction.input,plan.data)&&equalQuantity(transaction.value,plan.value)&&(transaction.chainId===undefined||equalQuantity(transaction.chainId,plan.chainId))&&(!Object.hasOwn(plan,'nonce')||(isNonce(transaction.nonce)&&equalQuantity(transaction.nonce,plan.nonce)));
@@ -37,5 +54,10 @@ export async function verifyWithdrawalReceipt(provider,txHash,plan){
  await verifyWalletProviderContext(provider,plan);
  const block=await provider.request({method:'eth_getBlockByNumber',params:[receipt.blockNumber,false]});
  if(!block||!same(block.hash,receipt.blockHash)||!equalQuantity(block.number,receipt.blockNumber))throw Error('Withdrawal receipt is not in the selected canonical local block.');
+ if(plan.action==='transfer'&&receipt.status==='0x1')verifyTransferEvent(receipt,plan);
  return {status:receipt.status==='0x1'?'confirmed':'reverted',blockNumber:receipt.blockNumber,blockHash:receipt.blockHash};
+}
+export async function verifyTransferReceipt(provider,txHash,plan){
+ if(plan?.action!=='transfer')throw Error('An account transfer plan is required.');
+ return verifyWithdrawalReceipt(provider,txHash,plan);
 }

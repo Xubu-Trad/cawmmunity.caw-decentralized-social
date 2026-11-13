@@ -1,6 +1,6 @@
 # Local chain-connected wallet console
 
-This is an executable application slice, not a simulated balance screen. It reads deployed contracts on a private local Geth chain, prepares a withdrawal for the selected contract wallet and requests an explicit signature from an injected browser wallet. The server never receives signing keys and does not submit transactions. The smoke test alone uses the existing public disposable research signer.
+This is an executable application slice, not a simulated balance screen. It reads deployed contracts on a private local Geth chain, prepares account transfers and withdrawals for the selected current owner and requests an explicit signature from an injected browser wallet. The server never receives signing keys and does not submit transactions. The smoke and browser harnesses use only public disposable research signers.
 
 ## Implemented
 
@@ -42,7 +42,7 @@ node integration/local-console/test-browser.mjs PATH_TO_CHROMIUM_OR_EDGE http://
 node --test integration/local-console/test-wallet-provider.mjs integration/local-console/test-receipt-status.mjs integration/local-console/test-withdrawal-plan.mjs
 ```
 
-The browser test requires a fresh fixture with two units of credit. It creates its own browser profile, injects only a test wallet adapter, performs one signed local withdrawal, and closes its owned browser. The adapter is test code only; it is not served by the application. No wallet extension is installed or modified.
+The browser test requires a fresh fixture with two units of credit. It creates its own browser profile, injects only a test wallet adapter, performs two signed local withdrawals, and closes its owned browser. The adapter is test code only; it is not served by the application. No wallet extension is installed or modified.
 
 ### Use an actual disposable browser wallet
 
@@ -56,8 +56,14 @@ The console now saves the reviewed intent before wallet submission and checks th
 
 Twenty-two browser cases, 178 focused Node checks and ten Python test methods pass. The browser test uses a controlled adapter, not a real wallet extension. Browser storage is not an OS-crash durability guarantee, and a different transaction replacing the saved nonce has no implemented resolution flow yet.
 
+## Current application update: account handoff
+
+The console now lets the current signer transfer existing account 2 to a user-selected disposable wallet. Credit stays attached to the account. The new owner can connect and withdraw directly; the former owner is rejected. The same saved-action recovery prevents duplicate submission during transfer receipt uncertainty. See [the full behavior, reproduction commands and limitations](LOCAL_ACCOUNT_HANDOFF.md).
+
+Sixteen local browser handoff checks pass, including ownership change, reload recovery, precise OWNER/EPOCH rejection controls and final recipient/custody balance checks. The existing 22-case withdrawal journey also passes. These use a controlled wallet adapter, not a real extension. Fresh owner/epoch/recipient checks run before signing, but the immutable transfer function itself has no expected-epoch parameter; post-signing races remain a stated boundary.
+
 ## Remaining gates
 
-The old alpha frontend remains a simulation; this is a separate real local execution console on draft PR19. It is not a deployed public CAW application. The token, account population and economics remain research fixtures. Public registration, general wallet support, scalable settlement, authenticated public-chain operation and C-007 decisions remain open. Connecting a wallet does not resolve those requirements.
+The old alpha frontend remains a simulation; this is a separate real local execution console on draft PR #19. It is not a deployed public CAW application. The token, account population and economics remain research fixtures. Public registration, general wallet support, scalable settlement, authenticated public-chain operation and C-007 decisions remain open. Connecting a wallet does not resolve those requirements.
 
-Next implement user-configured disposable account setup and integrate the signed action lifecycle while resolving registration/economic choices through review. Avoid another series of same-host recovery tests as the primary development activity.
+Next reconcile the existing signed-post candidate with this registry/custody lifecycle before connecting a real local compose-and-submit flow; retain the frozen parameters and explicitly review any contract changes. Actual wallet-extension compatibility and independent reproduction remain open. Avoid another series of same-host recovery tests as the primary development activity.

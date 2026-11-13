@@ -57,3 +57,18 @@ for(const [field,value]of [['chainId','0x1'],['from',a('f')],['to',a('f')],['val
 test('rejects amount greater than displayed credit',()=>assert.throws(()=>verify(plan(),{...state,credit:'0'})));
 test('rejects registry owner different from the selected wallet',()=>assert.throws(()=>verify(plan(),{...state,owner:a('f')})));
 test('rejects another connected controller',()=>assert.throws(()=>verify(plan(),state,a('f'))));
+test('EOA owner withdraws directly with independently encoded bytes',()=>{
+ const s={...state,ownerType:'eoa',owner:a('f'),signer:a('f')};
+ const data=custodyABI.encodeFunctionData('withdraw',[2,1,1]);
+ assert.equal(withdrawalData(s.contracts.custody,'1','1','eoa'),data);
+ assert.equal(verify(plan({from:s.signer,to:s.contracts.custody,data}),s,s.signer),true);
+});
+test('direct EOA path rejects old controller, wrapper and unsupported owner type',()=>{
+ const s={...state,ownerType:'eoa',owner:a('f'),signer:a('f')};
+ const p=plan({from:s.signer,to:s.contracts.custody,data:withdrawalData(s.contracts.custody,'1','1','eoa')});
+ assert.throws(()=>verify(p,s,state.controller));
+ assert.throws(()=>verify({...p,data:reference()},s,s.signer));
+ assert.throws(()=>verify(p,{...s,ownerType:'unsupported'},s.signer));
+ assert.throws(()=>verify({...p,action:'transfer'},s,s.signer));
+ assert.throws(()=>withdrawalData(s.contracts.custody,'1','1','unsupported'));
+});

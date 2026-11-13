@@ -74,7 +74,7 @@ try {
  const realFetch=window.fetch.bind(window);window.fetch=async(...args)=>{const r=await realFetch(...args);if(window.__test.tamperPlan&&args[0]==='/api/withdrawal-plan'){const p=await r.json();p.data+='00';return new Response(JSON.stringify(p),{status:r.status,headers:r.headers});}return r;};
  `});
  await cmd('Page.reload',{ignoreCache:true});await until("document.getElementById('credit')?.textContent==='2'");assert.equal(calls.length,0);record('page load makes no wallet request');
- for(const [settings,pattern,name]of [[{chain:'0x1'},/Select local chain/,'wrong chain rejected'],[{chain:'0x7a69',wrongAccount:true},/not this contract wallet/,'wrong controller rejected'],[{wrongAccount:false,rejectConnect:true},/Connection rejected/,'connection rejection handled'],[{rejectConnect:false,changeDuringConnect:true},/changed during connection/,'account event during connect rejects late response']]){
+ for(const [settings,pattern,name]of [[{chain:'0x1'},/Select local chain/,'wrong chain rejected'],[{chain:'0x7a69',wrongAccount:true},/does not control this account/,'wrong controller rejected'],[{wrongAccount:false,rejectConnect:true},/Connection rejected/,'connection rejection handled'],[{rejectConnect:false,changeDuringConnect:true},/changed during connection/,'account event during connect rejects late response']]){
   await configure(settings);await click('connect');await idle();assert.match(await status(),pattern);assert.equal(sent.length,0);assert.equal(await evaluate("document.getElementById('prepare').disabled"),true);record(name);
  }
  await configure({changeDuringConnect:false});await click('connect');await idle();assert.match(await status(),/Local wallet connected/);record('controller connects without transaction submission');
