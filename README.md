@@ -45,6 +45,8 @@ Updated November 13, 2026. **Unfinished research; no production-ready network an
 
 **Reproduction package update — November13:** A pinned53-file runner now performs a clean dependency install and the15 strict-reader,12 console,11 recovery and340 action checks without the original machine's dependencies or database. The clean run and five input/output rejection controls passed here. Independent-operator reproduction remains pending. [Exact target, command and reviewer receipt](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/docs/CONSOLE_HISTORY_REPRODUCTION.md).
 
+**Posting integration update — November13:** Strict console history can now read bounded post-only batches rather than rejecting every multi-transaction block. Fourteen new signed synthetic reader checks and the existing15/12/11/340 scoped regressions passed. Mixed blocks, fresh mined-batch execution and external reproduction remain pending. [Implementation, evidence and limits](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/docs/POST_BATCH_HISTORY.md).
+
 | Area | What is demonstrated | What remains open |
 | --- | --- | --- |
 | Local application | Real signed local posts, account handoff and new-owner withdrawals; posts retain historical authors | Paid posting integration, public registration and actual wallet-extension compatibility |
