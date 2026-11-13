@@ -43,6 +43,8 @@ Updated November 13, 2026. **Unfinished research; no production-ready network an
 
 **Verification recovery update — November13:** Refresh/disconnection now cancels pending strict-history acquisition. Eleven interruption/recovery checks, eight live browser checks,12 existing console checks and340 wallet/action regressions passed. Partial, truncated or timed-out attempts never become accepted history; retry reacquires all evidence. [Failure, fix, reproduction and limits](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/docs/CONSOLE_VERIFICATION_RECOVERY.md).
 
+**Reproduction package update — November13:** A pinned53-file runner now performs a clean dependency install and the15 strict-reader,12 console,11 recovery and340 action checks without the original machine's dependencies or database. The clean run and five input/output rejection controls passed here. Independent-operator reproduction remains pending. [Exact target, command and reviewer receipt](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/docs/CONSOLE_HISTORY_REPRODUCTION.md).
+
 | Area | What is demonstrated | What remains open |
 | --- | --- | --- |
 | Local application | Real signed local posts, account handoff and new-owner withdrawals; posts retain historical authors | Paid posting integration, public registration and actual wallet-extension compatibility |
