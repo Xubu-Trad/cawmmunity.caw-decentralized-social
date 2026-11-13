@@ -1,0 +1,8 @@
+{
+  "commit": "254fc0361132a353bf89fd92fb23e6bed6870979",
+  "test": "test-console-interruption.mjs",
+  "result": "FAIL",
+  "error": "CANCELLATION_NOT_PROPAGATED",
+  "point": "first registry proof request",
+  "scope": "client disconnect did not close upstream request within1200ms; existing3000ms RPC timeout retained"
+}

@@ -3,20 +3,23 @@ export function mountStrictHistory(document, fetcher = fetch) {
   const button = document.getElementById('verify-history');
   const status = document.getElementById('verified-history-status');
   const list = document.getElementById('verified-posts');
-  let generation = 0;
+  let generation = 0, active = null;
   function clear() {
     generation++;
+    active?.abort();active = null;
     list.replaceChildren();
     status.textContent = 'Not checked. Verify the selected local history explicitly.';
     button.disabled = false;
   }
   async function verify() {
     const token = ++generation;
+    active?.abort();
+    const controller = new AbortController();active = controller;
     list.replaceChildren();
     button.disabled = true;
     status.textContent = 'Checking signed blocks, receipts and ownership proofs…';
     try {
-      const response = await fetcher('/api/verified-posts', {cache: 'no-store', signal: AbortSignal.timeout(35000)});
+      const response = await fetcher('/api/verified-posts', {cache: 'no-store', signal: AbortSignal.any([controller.signal, AbortSignal.timeout(35000)])});
       const text = await response.text();
       if (text.length > 262144) throw Error('Response exceeds the local history limit.');
       const value = JSON.parse(text);
@@ -41,7 +44,7 @@ export function mountStrictHistory(document, fetcher = fetch) {
     } catch (error) {
       if (generation !== token) return;
       list.replaceChildren();status.textContent = 'Not accepted: ' + error.message + ' No verified or empty history is established.';
-    } finally { if (generation === token) button.disabled = false; }
+    } finally { if (generation === token) { active = null;button.disabled = false; } }
   }
   button.addEventListener('click', verify);
   document.getElementById('refresh').addEventListener('click', clear);

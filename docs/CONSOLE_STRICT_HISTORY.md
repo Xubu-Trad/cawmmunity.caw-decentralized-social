@@ -40,3 +40,8 @@ The initial live launch failed because the server entry-point check received a s
 [Integration results](../evidence/console-history-20261113/tests.json) · [Browser result](../evidence/console-history-20261113/browser.json) · [Live reader result](../evidence/console-history-20261113/live-result.json) · [Provenance](../evidence/console-history-20261113/PROVENANCE.txt)
 
 Next: independent execution of this pinned package, then broader supported history and chain anchoring. Server-local acceptance is a concrete step beyond a log-only feed, not removal of every trust dependency.
+
+
+## Interruption recovery update
+
+[The cancellation regression and fix](CONSOLE_VERIFICATION_RECOVERY.md) connect UI invalidation and HTTP disconnection to pending RPC cancellation. Interrupted attempts never become partial accepted history; a clean retry reacquires everything. Other API work can return BUSY, so wait for a concurrent refresh to finish. Existing verification limits and local trust boundaries remain.

@@ -6,12 +6,14 @@ const quantity = /^0x(?:0|[1-9a-f][0-9a-f]*)$/;
 
 // The caller supplies the console's bounded, read-only RPC function. Selections
 // are local observations, not consensus-authenticated public-chain anchors.
-export async function acquireVerifiedPosts(rpc, config) {
+export async function acquireVerifiedPosts(rpc, config, signal) {
   const deadline = Date.now() + 30000;
   let requests = 0, bytes = 0;
   async function read(method, params) {
+    signal?.throwIfAborted();
     if (Date.now() >= deadline || ++requests > 1024) throw Error('STRICT_HISTORY_BUDGET');
-    const value = await rpc(method, params);
+    const value = await rpc(method, params, signal);
+    signal?.throwIfAborted();
     if (Date.now() >= deadline) throw Error('STRICT_HISTORY_TIMEOUT');
     bytes += Buffer.byteLength(JSON.stringify(value));
     if (bytes > 8 * 1024 * 1024) throw Error('STRICT_HISTORY_BYTES');
