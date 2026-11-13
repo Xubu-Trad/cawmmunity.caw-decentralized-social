@@ -49,6 +49,8 @@ Updated November 13, 2026. **Unfinished research; no production-ready network an
 
 **Reviewer and evidence update — November13:** Chrono's preserved Geth replay files, hashes and logs are now packaged with exact source identities and explicit missing historical exit records. A new combined checker verifies19 transactions and reports the two known oversized claims as INCOMPLETE; no limits were relaxed. PR16's receipt-error correction passes22 cases. An external mined two-post batch has been corroborated from its supplied artifacts; second-engine execution remains pending. [Evidence and review boundaries](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/docs/REVIEWER_FOLLOWUP_20261113.md).
 
+**Fresh posting execution — November 13:** A new two-post block was mined locally, then its full genesis-to-batch history was replayed in EthereumJS. All 13 signed transactions and 13 post-genesis state roots match Geth, including gas, receipt status and logs. Three altered-history controls reject. This is a local two-engine result by one operator; external reproduction and public-network readiness remain separate. [Locked replay package and fresh-node procedure](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/evidence/post-batch-replay-20261113/README.md).
+
 | Area | What is demonstrated | What remains open |
 | --- | --- | --- |
 | Local application | Real signed local posts, account handoff and new-owner withdrawals; posts retain historical authors | Paid posting integration, public registration and actual wallet-extension compatibility |
