@@ -649,3 +649,8 @@ All21 local state roots match EthereumJS/Geth;18 new token/custody fields and th
 ## Wallet recovery admission — 2026-11-12
 
 Four-account/34-field offline admission passes eight corrupt-bundle controls with unchanged prior state. Next interrupted delivery and persistence integration; review ahdmesh WALLET-CUSTODY R-01 additional controls separately.
+
+
+## Wallet staged delivery — 2026-11-12
+
+Five injected stop points and four bad-delivery cases preserve verified state; orphan staging is ignored and valid replacement accepted. Reviewer B7/B8 rerun passes. Next abrupt process interruption and bounded transport; exception injection does not establish power-loss durability.
