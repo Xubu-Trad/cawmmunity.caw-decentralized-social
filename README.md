@@ -47,6 +47,8 @@ Updated November 13, 2026. **Unfinished research; no production-ready network an
 
 **Posting integration update — November13:** Strict console history can now read bounded post-only batches rather than rejecting every multi-transaction block. Fourteen new signed synthetic reader checks and the existing15/12/11/340 scoped regressions passed. Mixed blocks, fresh mined-batch execution and external reproduction remain pending. [Implementation, evidence and limits](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/docs/POST_BATCH_HISTORY.md).
 
+**Reviewer and evidence update — November13:** Chrono's preserved Geth replay files, hashes and logs are now packaged with exact source identities and explicit missing historical exit records. A new combined checker verifies19 transactions and reports the two known oversized claims as INCOMPLETE; no limits were relaxed. PR16's receipt-error correction passes22 cases. An external mined two-post batch has been corroborated from its supplied artifacts; second-engine execution remains pending. [Evidence and review boundaries](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/docs/REVIEWER_FOLLOWUP_20261113.md).
+
 | Area | What is demonstrated | What remains open |
 | --- | --- | --- |
 | Local application | Real signed local posts, account handoff and new-owner withdrawals; posts retain historical authors | Paid posting integration, public registration and actual wallet-extension compatibility |
