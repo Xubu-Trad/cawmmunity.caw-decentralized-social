@@ -219,6 +219,22 @@ def add_preterminal_null_poll(trace):
     raise AssertionError("no terminal receipt found")
 
 
+
+def mutate_receipt_envelope(trace, kind):
+    # Preserve the exact counterexample and update raw_response consistently.
+    call = next(c for c in trace["local_calls"]
+                if c["label"] == "deposit_2.receipt0")
+    assert call["request"]["method"] == "eth_getTransactionReceipt"
+    assert call["response"]["result"] is None
+    response = call["response"]
+    if kind != "error_with_null":
+        response.pop("result")
+    if kind.startswith("error"):
+        response["error"] = {"code": -32000,
+                             "message": "synthetic unavailable receipt service"}
+    call["raw_response"] = json.dumps(response)
+
+
 def mutate_nonreceipt_label(trace, label=None, method=None):
     for call in trace["local_calls"]:
         if ((label is not None and call["label"] == label)
@@ -289,6 +305,13 @@ def main():
              ind_mutator=lambda t: mutate_nonreceipt_label(t, label="initial_post.contract_digest"))
     scenario("eth_getCode receipt-like label suffix is rejected", 1,
              ind_mutator=lambda t: mutate_nonreceipt_label(t, method="eth_getCode"))
+
+    scenario("receipt error without result is rejected", 1,
+             ind_mutator=lambda t: mutate_receipt_envelope(t, "error_without_result"))
+    scenario("receipt error plus null result is rejected", 1,
+             ind_mutator=lambda t: mutate_receipt_envelope(t, "error_with_null"))
+    scenario("receipt response missing result is rejected", 1,
+             ind_mutator=lambda t: mutate_receipt_envelope(t, "missing_result"))
 
     if all(results):
         print(f"All {len(results)} comparison regression tests passed.")

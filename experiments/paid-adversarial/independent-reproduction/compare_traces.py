@@ -400,6 +400,15 @@ def main():
     null_delta = len(null_receipt_polls(ind)) - len(null_receipt_polls(ret))
     eventual_ok = eventual_receipts_ok(ret) and eventual_receipts_ok(ind)
     rpc_problems = []
+    # Xubu-Trad's receipt-envelope review: service errors are not pending polls.
+    for trace_name, trace in [("retained", ret), ("independent", ind)]:
+        for call in trace["local_calls"]:
+            if (call.get("request") or {}).get("method") != RECEIPT_METHOD:
+                continue
+            response = call.get("response")
+            if (not isinstance(response, dict) or "error" in response
+                    or "result" not in response):
+                rpc_problems.append(f"{trace_name}: invalid receipt response envelope")
     if not method_sets_equal:
         rpc_problems.append(
             f"method sets differ (retained only: {sorted(set(mr) - set(mi))}, "
