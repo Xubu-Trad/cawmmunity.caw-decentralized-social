@@ -23,11 +23,32 @@ The launcher initializes a new chain and submits the first10 existing signed fix
 
 Stop the launcher with Ctrl+C to stop its owned services. Failed startup logs and data stay in the selected directory; use a new directory for a new run. For a headless actual transaction check add --smoke. The smoke test signs only a mock withdrawal on this new local chain.
 
-## Validation
+## Browser withdrawal verification — November 12, 2026
 
-The actual local transaction mined successfully: credit2 became1, wallet token balance became1, custody became9. Wrong genesis, wrong runtime, cross-origin requests and four invalid amounts rejected. Nine wallet-provider tests pass, including wrong/missing selected block, wrong genesis and account/network changes. HTTP serving of the UI and live state was checked. The in-app browser preview could not initialize, so no browser-wallet click-through or visual approval is claimed.
+The console now independently encodes the fixed research withdrawal and compares it with the server's transaction bytes before displaying a review or asking for approval. This closes a display-versus-calldata gap: matching amount labels alone did not establish that the transaction requested that amount. Changed account, epoch, destination, selector and extra bytes reject.
 
-An independent code review identified missing injected-provider chain binding; that was implemented and tested before packaging. A preview restart initially hit an occupied port; only the prior task-owned service was stopped, and launcher nonzero-exit reporting was corrected. Failed lane preserved.
+Connection replies arriving after an account/network event are rejected. Refreshes are serialized and block connection/submission controls while state is loading. Receipt checking retains the submitted hash across missing/error responses and blocks another withdrawal while confirmation is pending. A mined result must match the reviewed sender, recipient, calldata and zero native value, and the selected local chain's canonical block. Reverts are reported separately. Balances refresh after confirmation. These are consistent trusted-RPC observations, not cryptographic inclusion proofs or public-chain finality.
+
+**Executed evidence:** 75/75 focused tests pass, including an independent ethers ABI-encoding comparison. An isolated Edge 157 browser passes 16 page-level cases using a controlled EIP-1193 adapter and the public disposable fixture signer. The actual signed Geth withdrawal mined: credit 2 to 1, contract-wallet mock balance 0 to 1, custody 10 to 9. Tests cover absent wallet, no automatic wallet requests, wrong chain/controller, rejected connection/signature, an account-change race, cancelled/changed review, corrupted calldata, wrong genesis, pending receipt, receipt RPC failure and recovery. The mobile layout fits the viewport; desktop/mobile captures were inspected locally.
+
+**Boundary:** This is browser integration with a test adapter, not a MetaMask or other wallet-extension compatibility run, not a fresh independent builder's reproduction, and not public-chain authentication. The standard in-app/native browser-control tools failed to initialize. An initial restricted headless run failed before loading the app; a normal-access isolated run passed without disabling browser security. Failed evidence remains preserved locally. No real assets or personal wallet were used.
+
+### Reproduce the browser test
+
+With the disposable chain/console running and the isolated console ethers dependency installed, run:
+
+```text
+node integration/local-console/test-browser.mjs PATH_TO_CHROMIUM_OR_EDGE http://127.0.0.1:4200 LOCAL_RPC_URL NEW_EVIDENCE_DIRECTORY
+node --test integration/local-console/test-wallet-provider.mjs integration/local-console/test-receipt-status.mjs integration/local-console/test-withdrawal-plan.mjs
+```
+
+The browser test requires a fresh fixture with two units of credit. It creates its own browser profile, injects only a test wallet adapter, performs one signed local withdrawal, and closes its owned browser. The adapter is test code only; it is not served by the application. No wallet extension is installed or modified.
+
+### Use an actual disposable browser wallet
+
+Open the console in a browser that provides an EIP-1193 wallet. An in-app browser without a wallet extension will report that no compatible wallet was found. Configure the **launcher-printed loopback RPC URL**, chain ID **31337**, and a local-only disposable account. The existing fixture controller uses the publicly known test private key consisting of 63 zeroes followed by 3 (hexadecimal); never send real assets to it. Its address must match the controller shown in the console. The console does not receive or store that key, change wallet networks, or request accounts before you click Connect.
+
+Click **Connect local test wallet**, enter **1**, then **Review withdrawal**. The recipient is the contract wallet, not the controller. Click **Approve in wallet** only after checking the local chain and plan. A pending result exposes **Check transaction receipt**; an RPC error retains the hash and must not be treated as failure to submit. Once confirmed, expect credit 1, wallet 1 and custody 9 from a fresh fixture. Receipt tracking is session-only: after reloading the page, consult wallet history before considering another submission. Direct extension compatibility remains unverified until someone performs this check.
 
 ## Remaining gates
 

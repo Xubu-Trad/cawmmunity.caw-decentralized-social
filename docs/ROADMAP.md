@@ -1,6 +1,6 @@
 ## Current application priority — November 12, 2026
 
-Extend the new chain-connected local execution console into a usable signed-action candidate. Real local withdrawal is implemented; registration/economics and general account setup remain open. Seek independent reproduction alongside development; do not make repeated same-host recovery packaging the primary work.
+The local console now verifies reviewed withdrawal bytes and displays receipt-confirmed balances. Sixteen isolated browser cases and 75 focused checks pass with a controlled wallet adapter. Next verify an actual disposable wallet extension, then extend account setup and the signed-action lifecycle. Registration/economics remain open; independent reproduction proceeds alongside application development.
 
 # Current gates
 
