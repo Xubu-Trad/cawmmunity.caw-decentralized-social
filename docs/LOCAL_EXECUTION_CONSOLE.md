@@ -5,7 +5,7 @@ This is an executable application slice, not a simulated balance screen. It read
 ## Implemented
 
 - Terminal-style account/credit/custody view backed by block-bound RPC calls.
-- Chain31337, selected genesis, four runtime hashes and immutable controller checks.
+- Chain31337, selected genesis, five runtime hashes and immutable controller checks.
 - Fixed account2 withdrawal encoding; positive bounded amount, actual credit and ownership checks.
 - Browser connection on explicit click, separate review and signature buttons, plan invalidation on wallet/account/input changes.
 - Before submission the wallet provider must match the selected genesis and block, not just chain ID. Account/network are rechecked after the provider calls.
@@ -62,8 +62,14 @@ The console now lets the current signer transfer existing account 2 to a user-se
 
 Sixteen local browser handoff checks pass, including ownership change, reload recovery, precise OWNER/EPOCH rejection controls and final recipient/custody balance checks. The existing 22-case withdrawal journey also passes. These use a controlled wallet adapter, not a real extension. Fresh owner/epoch/recipient checks run before signing, but the immutable transfer function itself has no expected-epoch parameter; post-signing races remain a stated boundary.
 
+## Current application update: real local posting
+
+The console now composes, signs and displays unpaid local posts from the same account used by handoff and withdrawal. The new immutable posting contract checks the current registry owner, ownership epoch and post nonce; the existing custody and registry runtimes remain unchanged. Posts preserve their historical author after handoff, and posting leaves the withdrawal balance untouched. See [the posting specification, exact build and reproduction evidence](LOCAL_POSTING_CONSOLE.md).
+
+The launcher replays the first ten baseline transactions, then compiles and deploys the separate posting fixture and verifies its fully instantiated runtime and registry binding. It checks five selected runtime hashes, including posting, before serving the application. The original paid-action candidate has different accounting; no fee or reward economics are adopted by this feature. The native local transaction still uses local ETH for gas.
+
 ## Remaining gates
 
 The old alpha frontend remains a simulation; this is a separate real local execution console on draft PR #19. It is not a deployed public CAW application. The token, account population and economics remain research fixtures. Public registration, general wallet support, scalable settlement, authenticated public-chain operation and C-007 decisions remain open. Connecting a wallet does not resolve those requirements.
 
-Next reconcile the existing signed-post candidate with this registry/custody lifecycle before connecting a real local compose-and-submit flow; retain the frozen parameters and explicitly review any contract changes. Actual wallet-extension compatibility and independent reproduction remain open. Avoid another series of same-host recovery tests as the primary development activity.
+Next connect the new posting history to the existing authenticated transaction/receipt readers and obtain independent reproduction of the complete account/post/withdrawal journey. Paid settlement remains a separately reviewed integration, with actual wallet-extension compatibility still open. Avoid another series of same-host recovery tests as the primary development activity.

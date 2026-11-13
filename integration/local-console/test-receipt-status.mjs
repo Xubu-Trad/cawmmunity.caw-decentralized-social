@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {verifyWithdrawalReceipt,verifyTransferReceipt,verifyRecoveryTransaction} from './ui/receipt-status.mjs';
+import {createRequire} from 'node:module';
+import {verifyWithdrawalReceipt,verifyTransferReceipt,verifyPostReceipt,verifyRecoveryTransaction} from './ui/receipt-status.mjs';
+import {postData,postText,POST_PROFILE,POST_EVENT_TOPIC} from './ui/post-plan.mjs';
 import {transferData} from './ui/account-transfer-plan.mjs';
 
 const h=n=>'0x'+n.repeat(64),a=n=>'0x'+n.repeat(40);
@@ -162,4 +164,52 @@ test('rejects reserved-address transfer recovery before requesting provider data
    const p=transferProvider();await assert.rejects(verify(p,txHash,selected));assert.equal(p.requests.length,0);
   }
  }
+});
+
+const {Interface}=createRequire(import.meta.url)('ethers');
+const postABI=new Interface(['event LocalPostPublished(uint256 indexed accountId,uint256 indexed epoch,uint256 indexed nonce,address author,bytes32 textHash,bytes text)']);
+const postPlan={...plan,nonce:'0x3',action:'post',owner:plan.to,posting:a('6'),epoch:'1',postNonce:'7',text:'caw 🌒\n日本語',profile:POST_PROFILE};
+postPlan.textHash=postText(postPlan.text).textHash;postPlan.data=postData(postPlan.posting,postPlan.epoch,postPlan.postNonce,postPlan.text);
+function publication(selected=postPlan){return {address:selected.posting,...postABI.encodeEventLog(postABI.getEvent('LocalPostPublished'),[2,selected.epoch,selected.postNonce,selected.owner,selected.textHash,postText(selected.text).bytesHex]),transactionHash:txHash,blockHash:receipt.blockHash,blockNumber:receipt.blockNumber,removed:false};}
+function postProvider(change,selected=postPlan){return provider((req,v,calls)=>{
+ if(req.method==='eth_accounts')v=[selected.from];
+ if(req.method==='eth_getTransactionReceipt')v={...v,from:selected.from,to:selected.to,logs:[publication(selected)]};
+ if(req.method==='eth_getTransactionByHash')v={...v,from:selected.from,to:selected.to,input:selected.data,nonce:selected.nonce};
+ return change?change(req,v,calls):v;
+});}
+test('post confirms only exact independent-ABI publication bytes and hash',async()=>{
+ assert.equal(publication().topics[0],POST_EVENT_TOPIC);
+ assert.equal((await verifyPostReceipt(postProvider(),txHash,postPlan)).status,'confirmed');
+});
+test('direct EOA post confirms its owner as event author',async()=>{
+ const selected={...postPlan,owner:plan.from,to:postPlan.posting,data:postData(postPlan.posting,'1','7',postPlan.text,'eoa')};
+ assert.equal((await verifyPostReceipt(postProvider(undefined,selected),txHash,selected)).status,'confirmed');
+});
+test('pending post has no success and reverted post needs no publication',async()=>{
+ assert.equal((await verifyPostReceipt(postProvider((req,v)=>req.method==='eth_getTransactionReceipt'?null:v),txHash,postPlan)).status,'pending');
+ assert.equal((await verifyPostReceipt(postProvider((req,v)=>req.method==='eth_getTransactionReceipt'?{...v,status:'0x0',logs:[]}:v),txHash,postPlan)).status,'reverted');
+});
+for(const [name,mutate]of [
+ ['missing logs',r=>delete r.logs],['no event',r=>r.logs=[]],['duplicate publication',r=>r.logs.push({...r.logs[0]})],
+ ['wrong contract',r=>r.logs[0].address=a('8')],['wrong topic',r=>r.logs[0].topics[0]=h('0')],['wrong account',r=>r.logs[0].topics[1]=h('0')],
+ ['wrong epoch',r=>r.logs[0].topics[2]=h('0')],['wrong post nonce',r=>r.logs[0].topics[3]=h('0')],['extra topic',r=>r.logs[0].topics.push(h('0'))],
+ ['wrong author',r=>r.logs[0].data='0x'+a('9').slice(2).padStart(64,'0')+r.logs[0].data.slice(66)],
+ ['wrong text hash',r=>r.logs[0].data=r.logs[0].data.slice(0,66)+h('0').slice(2)+r.logs[0].data.slice(130)],
+ ['wrong dynamic offset',r=>r.logs[0].data=r.logs[0].data.slice(0,130)+'0'.repeat(64)+r.logs[0].data.slice(194)],
+ ['wrong byte length',r=>r.logs[0].data=r.logs[0].data.slice(0,194)+'0'.repeat(64)+r.logs[0].data.slice(258)],
+ ['altered raw text',r=>r.logs[0].data=r.logs[0].data.slice(0,258)+'ff'+r.logs[0].data.slice(260)],
+ ['nonzero padding',r=>r.logs[0].data=r.logs[0].data.slice(0,-2)+'ff'],['trailing data',r=>r.logs[0].data+='00'],
+ ['removed event',r=>r.logs[0].removed=true],['event transaction mismatch',r=>r.logs[0].transactionHash=h('0')],
+ ['event block mismatch',r=>r.logs[0].blockHash=h('0')],['event block number mismatch',r=>r.logs[0].blockNumber='0xc'],
+ ['same nonce duplicate at different account',r=>r.logs.push({...r.logs[0],topics:[...r.logs[0].topics.slice(0,1),h('0'),...r.logs[0].topics.slice(2)]})]
+])test('rejects publication '+name,async()=>{
+ await assert.rejects(verifyPostReceipt(postProvider((req,v)=>{if(req.method==='eth_getTransactionReceipt')mutate(v);return v;}),txHash,postPlan));
+});
+for(const [name,mutate]of [['transaction nonce missing',p=>delete p.nonce],['transaction nonce overflow',p=>p.nonce='0x10000000000000000'],['text hash',p=>p.textHash=h('0')],['profile',p=>p.profile=h('0')],['text changed',p=>p.text+=' '],['lone surrogate',p=>p.text='\ud800'],['post nonce',p=>p.postNonce='8'],['epoch overflow',p=>p.epoch=(2n**256n).toString()]])test('rejects post selection '+name+' before provider reads',async()=>{
+ const selected={...postPlan};mutate(selected);const p=postProvider();await assert.rejects(verifyPostReceipt(p,txHash,selected));assert.equal(p.requests.length,0);
+});
+test('manual post recovery matches exact reviewed transaction and nonce without confirming publication',async()=>{
+ const p=postProvider((req,v)=>req.method==='eth_getTransactionByHash'?{...v,blockHash:null,blockNumber:null}:v);
+ assert.deepEqual(await verifyRecoveryTransaction(p,txHash,postPlan),{status:'matched',transactionHash:txHash});assert.equal(p.requests.some(r=>r.method==='eth_getTransactionReceipt'),false);
+ await assert.rejects(verifyRecoveryTransaction(postProvider((req,v)=>req.method==='eth_getTransactionByHash'?{...v,input:postData(postPlan.posting,'1','7',postPlan.text+' ')}:v),txHash,postPlan));
 });

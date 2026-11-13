@@ -1,6 +1,6 @@
 ## Current application priority — November 12, 2026
 
-The local console now supports user-directed account handoff and new-owner withdrawal with saved transfer recovery. Next reconcile the separate signed-post candidate with this registry/custody lifecycle before adding compose-and-submit. Do not merge different research economics or claim that the current custody contract can publish posts. Actual wallet-extension compatibility and independent reproduction remain pending; public registration/economics and deployment gates are unchanged.
+The local console now publishes real unpaid posts from the current account owner, preserves historical authors across handoff, and retains existing withdrawal accounting. Next bind this posting history to the existing authenticated readers and obtain independent reproduction of the full journey. Paid posting remains a separately reviewed accounting integration; no economics conflict is silently resolved. Actual wallet-extension compatibility, public registration/economics and deployment gates remain open.
 
 # Current gates
 

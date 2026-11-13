@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {JOURNAL_KEY,validateJournal,readJournal,beginWithdrawal,beginTransfer,rememberHash,finishWithdrawal} from './ui/withdrawal-journal.mjs';
+import {JOURNAL_KEY,validateJournal,readJournal,beginWithdrawal,beginTransfer,beginPost,rememberHash,finishWithdrawal} from './ui/withdrawal-journal.mjs';
+import {postData,postText,POST_PROFILE} from './ui/post-plan.mjs';
 import {withdrawalData} from './ui/withdrawal-plan.mjs';
 import {transferData} from './ui/account-transfer-plan.mjs';
 
@@ -163,4 +164,41 @@ test('starting action requires current authority even though recovery accepts hi
  const s=storage(),changed={...state,owner:recipient,signer:recipient,ownerType:'eoa',epoch:'2'};
  await assert.rejects(beginTransfer(s,locks(),changed,transferPlan,id('3')));
  await assert.rejects(beginWithdrawal(s,locks(),changed,plan,id('3')));assert.equal(s.raw(),null);
+});
+
+const postState={...state,ownerType:'fixture-wallet',signer:state.controller,contracts:{...state.contracts,posting:a('6')},posting:{nonce:'7',profile:POST_PROFILE}};
+const text='caw 🌒\n日本語';
+const postingPlan={chainId:postState.chainId,from:postState.signer,to:postState.owner,value:'0x0',epoch:postState.epoch,blockNumber:'0xa',blockHash:h('2'),genesisHash:state.genesisHash,nonce:'0x3',action:'post',owner:postState.owner,posting:postState.contracts.posting,postNonce:'7',text,textHash:postText(text).textHash,profile:POST_PROFILE,data:postData(postState.contracts.posting,postState.epoch,'7',text)};
+function postRecord(){return {version:3,id:id('3'),phase:'awaiting-wallet',plan:clone(postingPlan),contracts:clone(postState.contracts),hash:null};}
+test('post journal persists exact scalar text and calldata under the shared lock',async()=>{
+ const s=storage(),l=locks();assert.deepEqual(await beginPost(s,l,postState,postingPlan,id('3')),postRecord());assert.deepEqual(readJournal(s,postState),postRecord());assert.equal(l.calls.length,1);
+});
+test('post recovery restores historical owner, epoch and posting nonce after transfer',()=>{
+ const changed={...postState,owner:a('7'),ownerType:'eoa',signer:a('7'),epoch:'5',posting:{...postState.posting,nonce:'99'}};
+ assert.deepEqual(readJournal(storage(JSON.stringify(postRecord())),changed),postRecord());
+});
+test('post journal supports direct EOA and remembers a hash after ownership changes',async()=>{
+ const current={...postState,owner:a('7'),signer:a('7'),ownerType:'eoa'};
+ const p={...postingPlan,owner:current.owner,from:current.signer,to:current.contracts.posting,data:postData(current.contracts.posting,'1','7',text,'eoa')};
+ const s=storage();await beginPost(s,locks(),current,p,id('3'));
+ const changed={...current,owner:a('8'),signer:a('8'),epoch:'9',posting:{...current.posting,nonce:'8'}};
+ assert.equal((await rememberHash(s,locks(),changed,id('3'),h('4'))).plan.text,text);
+ await finishWithdrawal(s,locks(),changed,id('3'));assert.equal(s.raw(),null);
+});
+test('legacy four-contract withdrawal and transfer records restore with five-contract current state',()=>{
+ assert.deepEqual(validateJournal(record(),postState),record());assert.deepEqual(validateJournal(transferRecord(),postState),transferRecord());
+});
+test('new withdrawal and transfer journals preserve the five-contract selection',async()=>{
+ for(const [begin,p]of [[beginWithdrawal,plan],[beginTransfer,transferPlan]]){const s=storage();const r=await begin(s,locks(),postState,p,id('3'));assert.equal(r.contracts.posting,postState.contracts.posting);assert.deepEqual(readJournal(s,postState),r);}
+});
+test('new post cannot overwrite any unresolved action',async()=>{
+ for(const r of [record(),transferRecord(),postRecord()]){const s=storage(JSON.stringify(r));await assert.rejects(beginPost(s,locks(),postState,postingPlan,id('4')));assert.deepEqual(JSON.parse(s.raw()),r);}
+});
+test('post begin checks current nonce and ownership rather than historical recovery state',async()=>{
+ for(const changed of [{...postState,posting:{...postState.posting,nonce:'8'}},{...postState,owner:a('7'),signer:a('7'),ownerType:'eoa',epoch:'2'}]){const s=storage();await assert.rejects(beginPost(s,locks(),changed,postingPlan,id('3')));assert.equal(s.raw(),null);}
+});
+for(const [name,mutate]of [['missing posting contract',r=>delete r.contracts.posting],['posting contract mismatch',r=>r.contracts.posting=a('8')],['posting plan mismatch',r=>r.plan.posting=a('8')],['profile mismatch',r=>r.plan.profile=h('0')],['post nonce overflow',r=>r.plan.postNonce=(2n**256n).toString()],['post nonce mismatch bytes',r=>r.plan.postNonce='8'],['text bytes changed',r=>r.plan.text+=' '],['lone surrogate',r=>r.plan.text='\ud800'],['text hash changed',r=>r.plan.textHash=h('0')],['version downgrade',r=>r.version=2],['transaction nonce missing',r=>delete r.plan.nonce]])test('rejects malformed post journal '+name,()=>{const r=postRecord();mutate(r);assert.throws(()=>validateJournal(r,postState));});
+test('maximum-size Unicode post survives bounded journal readback',async()=>{
+ const text='🌒'.repeat(420),p={...postingPlan,text,textHash:postText(text).textHash,data:postData(postState.contracts.posting,'1','7',text)};
+ const s=storage();await beginPost(s,locks(),postState,p,id('3'));assert.ok(s.raw().length<8192);assert.equal(readJournal(s,postState).plan.text,text);
 });

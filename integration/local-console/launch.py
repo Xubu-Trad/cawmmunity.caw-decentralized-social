@@ -32,6 +32,10 @@ try:
   names={'AccountOwnerWalletResearch':'wallet','FundedAdmissionResearch':'custody','AdmissionTokenFixture':'token'}
   contracts={names[d['name']]:{'address':d['address'],'codeHash':d['expectedCodeHash']}for d in selected['contracts']};contracts['registry']={'address':reg['proof']['address'],'codeHash':reg['proof']['codeHash']}
   config={'rpcUrl':url,'genesisHash':g['hash'],'contracts':contracts,'controller':next(d['controller']for d in selected['contracts']if d['name']=='AccountOwnerWalletResearch')};(o/'console.json').write_text(json.dumps(config,indent=2))
+  # Separate unpaid posting capability; never replaces the preserved custody runtime.
+  q=subprocess.run(['node','--max-old-space-size=256',str(src/'build-posting.mjs'),str(o/'posting-build')],capture_output=True,text=True,timeout=90);(o/'posting-build.log').write_text(q.stdout+q.stderr);assert q.returncode==0,'POSTING_BUILD'
+  q=subprocess.run(['node','--max-old-space-size=128',str(src/'deploy-posting.mjs'),str(o/'console.json'),str(o/'posting-build/posting-artifact.json'),str(o/'posting-deployment')],capture_output=True,text=True,timeout=90);(o/'posting-deployment.log').write_text(q.stdout+q.stderr);assert q.returncode==0,'POSTING_DEPLOYMENT'
+  config=json.loads((o/'posting-deployment/console.json').read_text());(o/'console.json').write_text(json.dumps(config,indent=2))
   if a.smoke:
    q=subprocess.run(['node','--max-old-space-size=256',str(src/'smoke.mjs'),str(o/'console.json')],capture_output=True,text=True,timeout=90);(o/'result.json').write_text(q.stdout);(o/'stderr.txt').write_text(q.stderr);print(q.stdout,q.stderr);assert q.returncode==0
   else:

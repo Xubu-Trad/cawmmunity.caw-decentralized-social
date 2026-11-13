@@ -52,7 +52,7 @@ try {
   }catch(e){await evaluate(`window.__walletResolve(${id},${JSON.stringify({error:{message:e.message,code:-32000}})})`).catch(()=>{});}
  });
  await cmd('Runtime.enable');await cmd('Page.enable');await cmd('Runtime.addBinding',{name:'__walletBridge'});
- await cmd('Page.navigate',{url});await until("document.getElementById('credit')?.textContent==='2'");
+ await cmd('Page.navigate',{url});await until("document.getElementById('credit')?.textContent==='2'");await idle();
  await click('connect');await idle();assert.match(await status(),/No compatible browser wallet/);assert.equal(calls.length,0);record('missing injected wallet fails without signing');
  await cmd('Page.addScriptToEvaluateOnNewDocument',{source:`
  window.__test={chain:'0x7a69',wrongAccount:false,rejectConnect:false,changeDuringConnect:false,badGenesis:false,receiptMode:'normal',rejectSend:false,tamperPlan:false,loseResponse:false};
@@ -73,7 +73,7 @@ try {
  window.__walletEvent=(name,value)=>listeners.get(name)?.(value);
  const realFetch=window.fetch.bind(window);window.fetch=async(...args)=>{const r=await realFetch(...args);if(window.__test.tamperPlan&&args[0]==='/api/withdrawal-plan'){const p=await r.json();p.data+='00';return new Response(JSON.stringify(p),{status:r.status,headers:r.headers});}return r;};
  `});
- await cmd('Page.reload',{ignoreCache:true});await until("document.getElementById('credit')?.textContent==='2'");assert.equal(calls.length,0);record('page load makes no wallet request');
+ await cmd('Page.reload',{ignoreCache:true});await until("document.getElementById('credit')?.textContent==='2'");await idle();assert.equal(calls.length,0);record('page load makes no wallet request');
  for(const [settings,pattern,name]of [[{chain:'0x1'},/Select local chain/,'wrong chain rejected'],[{chain:'0x7a69',wrongAccount:true},/does not control this account/,'wrong controller rejected'],[{wrongAccount:false,rejectConnect:true},/Connection rejected/,'connection rejection handled'],[{rejectConnect:false,changeDuringConnect:true},/changed during connection/,'account event during connect rejects late response']]){
   await configure(settings);await click('connect');await idle();assert.match(await status(),pattern);assert.equal(sent.length,0);assert.equal(await evaluate("document.getElementById('prepare').disabled"),true);record(name);
  }
@@ -86,7 +86,7 @@ try {
  await prepare();await configure({rejectSend:true});await click('confirm');await idle();assert.match(await status(),/Signature rejected/);assert.equal(sent.length,0);await configure({rejectSend:false});record('rejected signature does not submit');
  await prepare();await configure({receiptMode:'pending'});await click('confirm');await idle();assert.match(await status(),/Transaction pending/);assert.equal(sent.length,1);assert.equal(await evaluate("document.getElementById('prepare').disabled"),true);record('signed withdrawal pending blocks duplicate submission');
  // A full reload discards page memory but must retain the submitted hash.
- await cmd('Page.reload',{ignoreCache:true});await until("document.getElementById('saved-status')?.textContent.includes('Saved submission restored')");
+ await cmd('Page.reload',{ignoreCache:true});await until("document.getElementById('saved-status')?.textContent.includes('Saved submission restored')");await idle();
  assert.equal(await evaluate("document.getElementById('prepare').disabled"),true);assert.equal(sent.length,1);
  await click('connect');await idle();record('reload restores pending withdrawal without resubmission');
  await configure({receiptMode:'error'});await click('check-receipt');await idle();assert.match(await status(),/Receipt not verified/);assert.equal(await evaluate("document.getElementById('check-receipt').hidden"),false);assert.equal(sent.length,1);record('receipt error retains submitted transaction');
@@ -96,7 +96,7 @@ try {
  await prepare();await configure({loseResponse:true});await click('confirm');
  for(let n=0;n<100&&sent.length<2;n++)await sleep(50);assert.equal(sent.length,2);
  assert.equal(await evaluate("JSON.parse(localStorage.getItem('caw.local.withdrawal.v1')).phase"),'awaiting-wallet');
- await cmd('Page.reload',{ignoreCache:true});await until("document.getElementById('saved-status')?.textContent.includes('unresolved outcome')");
+ await cmd('Page.reload',{ignoreCache:true});await until("document.getElementById('saved-status')?.textContent.includes('unresolved outcome')");await idle();
  assert.equal(sent.length,2);assert.equal(await evaluate("document.getElementById('prepare').disabled"),true);record('lost wallet response restores unresolved intent without resubmission');
  await click('connect');await idle();
  await evaluate("document.getElementById('recovery-hash').value="+JSON.stringify(sent[0]));await click('recover');await idle();
@@ -104,9 +104,9 @@ try {
  await evaluate("document.getElementById('recovery-hash').value="+JSON.stringify(sent[1]));await click('recover');await idle();
  assert.match(await status(),/Withdrawal confirmed/);assert.equal(await evaluate("document.getElementById('credit').textContent"),'0');assert.equal(await evaluate("document.getElementById('wallet-balance').textContent"),'2');assert.equal(await evaluate("document.getElementById('custody-balance').textContent"),'8');
  assert.equal(await evaluate("localStorage.getItem('caw.local.withdrawal.v1')"),null);assert.equal(sent.length,2);record('correct nonce-bound hash recovers interrupted submission and balances');
- await evaluate("localStorage.setItem('caw.local.withdrawal.v1','{broken')");await click('refresh');await until("document.getElementById('saved-status').textContent.includes('Recovery required')");
+ await evaluate("localStorage.setItem('caw.local.withdrawal.v1','{broken')");await click('refresh');await until("document.getElementById('saved-status').textContent.includes('Recovery required')");await idle();
  assert.equal(await evaluate("document.getElementById('prepare').disabled"),true);assert.equal(await evaluate("localStorage.getItem('caw.local.withdrawal.v1')"),'{broken');record('corrupt journal retained and new withdrawal blocked');
- await evaluate("localStorage.removeItem('caw.local.withdrawal.v1')");await click('refresh');await until("document.getElementById('saved-status').textContent.includes('No unresolved')");
+ await evaluate("localStorage.removeItem('caw.local.withdrawal.v1')");await click('refresh');await until("document.getElementById('saved-status').textContent.includes('No unresolved')");await idle();
 
  await cmd('Emulation.setDeviceMetricsOverride',{width:1280,height:1000,deviceScaleFactor:1,mobile:false});
  const screenshot=await cmd('Page.captureScreenshot',{format:'png'});await fs.writeFile(path.join(output,'console-confirmed.png'),Buffer.from(screenshot.data,'base64'));

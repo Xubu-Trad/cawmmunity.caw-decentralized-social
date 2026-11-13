@@ -116,7 +116,7 @@ try{
  window.__walletEvent=(name,value)=>listeners.get(name)?.(value);
  const realFetch=window.fetch.bind(window);window.fetch=async(...args)=>{const r=await realFetch(...args);if(window.__test.tamperTransfer&&args[0]==='/api/transfer-plan'){const p=await r.json();p.data+='00';return new Response(JSON.stringify(p),{status:r.status,headers:r.headers});}if(window.__test.staleAuthority&&args[0]==='/api/state'){const s=await r.json();s.epoch=String(BigInt(s.epoch)+2n);return new Response(JSON.stringify(s),{status:r.status,headers:r.headers});}return r;};
  `});
- await cmd('Page.navigate',{url});await until("document.getElementById('credit')?.textContent==='2'");
+ await cmd('Page.navigate',{url});await until("document.getElementById('credit')?.textContent==='2'");await idle();
  assert.equal(calls.length,0);assert.equal(sent.length,0);record('initial page performs no wallet requests or transaction submission');
  await click('connect');await idle();assert.match(await status(),/Local wallet connected/);record('original controller connects to owned account');
  await fill('recipient',recipient.address);await click('prepare-transfer');await idle();
@@ -134,7 +134,7 @@ try{
  assert.equal(expectedApproval,null);assert.equal(sent.length,1);assert.match(await status(),/Transaction pending/i);
  assert.equal(await evaluate("document.getElementById('prepare').disabled"),true);assert.equal(await evaluate("document.getElementById('prepare-transfer').disabled"),true);
  record('one explicit approval submits exact ownership transfer and pending receipt blocks duplicate actions');
- await cmd('Page.reload',{ignoreCache:true});await until("document.getElementById('saved-status')?.textContent.includes('Saved submission restored')");
+ await cmd('Page.reload',{ignoreCache:true});await until("document.getElementById('saved-status')?.textContent.includes('Saved submission restored')");await idle();
  assert.equal(sent.length,1);assert.equal(await evaluate("document.getElementById('prepare-transfer').disabled"),true);
  await click('connect');await idle();assert.match(await status(),/Local wallet connected|receipt|recovery/i);
  await configure({receiptMode:'error'});await click('check-receipt');await idle();assert.match(await status(),/Receipt not verified/);assert.equal(sent.length,1);assert.equal(await evaluate("document.getElementById('check-receipt').hidden"),false);
