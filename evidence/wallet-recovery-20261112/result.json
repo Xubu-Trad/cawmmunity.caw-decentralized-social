@@ -1,0 +1,18 @@
+{
+  "fields": 34,
+  "accounts": 4,
+  "rejected": [
+    "truncated",
+    "missing account",
+    "reordered",
+    "last wallet corrupt",
+    "wrong balance",
+    "wrong header",
+    "donor selection injection",
+    "missing proof"
+  ],
+  "priorViewPreserved": 8,
+  "freshReaderRejected": 8,
+  "replacementReaderMatches": true,
+  "scope": "offline bundle admission; no live peer transfer, disk durability or external reproduction"
+}
