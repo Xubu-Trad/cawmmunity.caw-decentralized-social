@@ -1,3 +1,4 @@
+import {verifyOwnerPostBlock} from './post-authority-sequence.mjs';
 import assert from 'node:assert/strict';import {Interface,keccak256,AbiCoder} from 'ethers';
 import {inspectBlockTransactionReceipts} from '../../reference/ethereum-block-transactions.mjs';
 import {inspectBlockSenders} from '../../reference/ethereum-block-senders.mjs';
@@ -17,13 +18,21 @@ export function verifyPostingHistory(bundle,selection){
  const header=h=>inspectExecutionHeader(h,{schema:'caw-execution-header-selection/1',profile:'shanghai-17',hash:h.hash});header(bundle.anchor);
  const proof=(h,p,address,keys,codeHash)=>{const r=inspectHeaderBoundStateProof(JSON.stringify({header:h,proof:p}),JSON.stringify({schema:'caw-header-state-selection/1',profile:'shanghai-17',hash:h.hash,address,storageKeys:keys}));if(codeHash)assert.equal(r.proof.codeHash,codeHash);return r.proof;};
  const val=(p,k)=>{const v=p.storage.find(x=>x.key===k);assert(v);return BigInt(v.value);};
- let prior=bundle.anchor,nonce=0n;const posts=[];
+ let prior=bundle.anchor,nonce=0n;const posts=[],transfers=[];let usedOwnership=false;
  for(const row of bundle.blocks){
   const h=row.header;header(h);assert.equal(h.parentHash,prior.hash);assert.equal(BigInt(h.number),BigInt(prior.number)+1n);requirePostBlockSize(row.rawTransactions);
   const reg=proof(prior,row.parent.registry,selection.contracts.registry.address,[OWNER,EPOCH],selection.contracts.registry.codeHash);
   const post=proof(prior,row.parent.posting,selection.contracts.posting.address,[POST_NONCE],selection.contracts.posting.codeHash);assert.equal(val(post,POST_NONCE),nonce,'POST_NONCE_HISTORY');
   const checked=inspectBlockTransactionReceipts(h,row.rawTransactions,row.receipts,{schema:'caw-block-transactions-selection/1',profile:'shanghai-17',hash:h.hash});
   const signed=inspectBlockSenders(h,row.rawTransactions,{schema:'caw-block-senders-selection/1',profile:'shanghai-17',hash:h.hash,chainId:'0x7a69',allowUnprotectedLegacy:false});
+  if(row.ownerTransition){
+   assert(row.rawTransactions.length>1,'OWNER_TRANSITION_BLOCK_SCOPE');
+   const result=verifyOwnerPostBlock({schema:'local-owner-post-block/1',parent:prior,header:h,rawTransactions:row.rawTransactions,receipts:row.receipts,initialRegistry:row.parent.registry,initialPosting:row.parent.posting,ownerProofs:row.ownerTransition.ownerProofs,finalRegistry:row.ownerTransition.finalRegistry,finalPosting:row.ownerTransition.finalPosting},{...selection,startHash:prior.hash,endHash:h.hash,expectedNonce:String(nonce)});
+   assert(result.transfers.length>0,'OWNER_TRANSITION_REQUIRED');
+   for(const p of result.posts)posts.push({...p,accountId:'2',signer:p.author===selection.contracts.wallet.address?selection.controller:p.author,textHash:postText(p.text).textHash,blockHash:h.hash,blockNumber:h.number});
+   transfers.push(...result.transfers.map(x=>({...x,blockHash:h.hash,blockNumber:h.number})));
+   nonce=BigInt(result.nonce);usedOwnership=true;prior=h;continue;
+  }
   requirePostOnlyBatch(checked.receipts,selection.contracts.posting.address,POST_EVENT_TOPIC);
   const owner='0x'+val(reg,OWNER).toString(16).padStart(40,'0');const epoch=val(reg,EPOCH);
   for(let i=0;i<checked.receipts.length;i++)for(const log of checked.receipts[i].logs){
@@ -42,5 +51,5 @@ export function verifyPostingHistory(bundle,selection){
   prior=h;
  }
  const final=proof(prior,bundle.finalPosting,selection.contracts.posting.address,[POST_NONCE],selection.contracts.posting.codeHash);assert.equal(val(final,POST_NONCE),nonce);
- return {posts,blocks:bundle.blocks.length,transactionAndReceiptCommitmentsVerified:true,signaturesVerified:true,parentOwnershipProofsVerified:true,postNonceComplete:true,selectedEndpointsTrusted:true,publicChainAuthenticated:false,consensusVerified:false,executionReplayed:false};
+ return {posts,...(usedOwnership?{transfers,intraBlockOwnershipVerified:true}:{}),blocks:bundle.blocks.length,transactionAndReceiptCommitmentsVerified:true,signaturesVerified:true,parentOwnershipProofsVerified:true,postNonceComplete:true,selectedEndpointsTrusted:true,publicChainAuthenticated:false,consensusVerified:false,executionReplayed:false};
 }

@@ -55,3 +55,8 @@ A fresh local Geth batch is now replayed from its complete genesis allocation an
 ## Experimental owner/post block verifier
 
 The new verifyOwnerPostBlock entry point supports direct fixture-owner transfers and posts with beginning/end state proofs. It has fresh local execution and second-engine evidence. It does not alter verifyPostingHistory or console acquisition; arbitrary mixed blocks are still rejected there. [Exact scope and tests](../evidence/owner-post-block-20261113/README.md).
+
+
+## Console integration update — November 13
+
+Superseding the earlier separate-verifier status: console acquisition now supplies recipient account proofs and final registry/posting proofs for mixed ownership-transfer blocks. verifyPostingHistory validates those blocks using verifyOwnerPostBlock and checks nonce continuity across the history. Unsupported mixed actions still reject. Existing post-only and single-action history paths are unchanged. [Scope, commands and recorded results](../evidence/owner-acquisition-20261113/README.md).

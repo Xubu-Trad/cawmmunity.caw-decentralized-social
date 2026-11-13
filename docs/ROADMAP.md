@@ -670,3 +670,8 @@ Local two-engine execution is demonstrated for a freshly mined two-post batch an
 ## Intra-block ownership step — November 13
 
 Separate proof-backed owner/post verifier now reconstructs a wallet-to-EOA handoff followed by the new owner's post in one freshly mined block. Two engines agree on complete setup and execution. Existing console remains post-only. Next: acquire recipient and final registry proofs through the console, preserve interruption/unknown-action rejection, then enable only this bounded path. Independent reproduction, full economics and public deployment gates remain open. [Evidence](../evidence/owner-post-block-20261113/README.md).
+
+
+## Console ownership proof acquisition — November 13
+
+The previous owner/post integration gate is now implemented: the console fetches recipient and final ownership/nonce proofs and routes supported mixed blocks through the ownership-aware verifier. Six targeted suites pass, including15 new HTTP acquisition/recovery checks. Existing separate transfer/withdrawal histories remain supported within their previous verification boundary. Next: fresh isolated execution through this integrated acquisition path, then independent pinned reproduction. Public-chain, arbitrary wallet and full economics gates remain open. [Reproduction](../evidence/owner-acquisition-20261113/README.md).

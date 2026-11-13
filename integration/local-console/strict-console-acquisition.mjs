@@ -1,3 +1,4 @@
+import {containsOwnerTransfer,acquireOwnerPostHistory} from './acquire-owner-post-history.mjs';
 import {verifyPostingHistory, POST_NONCE} from './verify-posting-history.mjs';
 import {requirePostBlockSize} from './post-block-scope.mjs';
 
@@ -56,6 +57,8 @@ export async function acquireVerifiedPosts(rpc, config, signal) {
   }
   bundle.finalPosting = await read('eth_getProof', [config.contracts.posting.address, [POST_NONCE], {blockHash: tip.hash, requireCanonical: true}]);
   const selection = {startHash: anchor.hash, endHash: tip.hash, contracts: config.contracts, controller: config.controller};
+  if (containsOwnerTransfer(bundle, config.contracts.registry.address))
+    await acquireOwnerPostHistory(read, bundle, selection);
   const result = verifyPostingHistory(bundle, selection);
   if ((await read('eth_getBlockByNumber', [tip.number, false]))?.hash !== tip.hash || (await read('eth_getBlockByNumber', [anchor.number, false]))?.hash !== anchor.hash) throw Error('STRICT_HISTORY_REORG');
   return {status: 'VERIFIED_LOCAL_HISTORY', genesisHash: config.genesisHash, posting: config.contracts.posting.address,

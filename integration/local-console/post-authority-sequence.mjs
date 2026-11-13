@@ -49,7 +49,7 @@ export function reconstructOwnerPostSequence(transactions,receipts,start,selecti
  return {owner,epoch:String(epoch),nonce:String(nonce),posts,transfers};
 }
 
-// Separate experimental entry point. Existing console reader remains post-only.
+// Proof-verifying entry point used by the console for supported mixed owner/post blocks.
 export function verifyOwnerPostBlock(bundle,selection){
  assert.equal(bundle.schema,'local-owner-post-block/1');
  const {parent,header,rawTransactions,receipts}=bundle;
@@ -69,7 +69,9 @@ export function verifyOwnerPostBlock(bundle,selection){
  const checked=inspectBlockTransactionReceipts(header,rawTransactions,receipts,{schema:'caw-block-transactions-selection/1',profile:'shanghai-17',hash:header.hash});
  const signed=inspectBlockSenders(header,rawTransactions,{schema:'caw-block-senders-selection/1',profile:'shanghai-17',hash:header.hash,chainId:'0x7a69',allowUnprotectedLegacy:false});
  const checkOwner=a=>{assert.match(a,/^0x[0-9a-f]{40}$/);assert(BigInt(a)>0xffffn,'UNSUPPORTED_OWNER');assert(!['registry','posting'].some(k=>selection.contracts[k].address===a),'UNSUPPORTED_OWNER');proof(parent,bundle.ownerProofs[a],a,[],a===selection.contracts.wallet.address?selection.contracts.wallet.codeHash:EMPTY);};
- const result=reconstructOwnerPostSequence(signed.transactions,checked.receipts,{owner,epoch:value(initial,EPOCH),nonce:value(initialPost,NONCE)},selection,checkOwner);
+ const initialNonce=value(initialPost,NONCE);
+ if(selection.expectedNonce!==undefined)assert.equal(initialNonce,BigInt(selection.expectedNonce),'INITIAL_HISTORY_NONCE');
+ const result=reconstructOwnerPostSequence(signed.transactions,checked.receipts,{owner,epoch:value(initial,EPOCH),nonce:initialNonce},selection,checkOwner);
  const final=registry(header,bundle.finalRegistry),finalPost=posting(header,bundle.finalPosting);
  assert.equal(value(final,OWNER),BigInt(result.owner),'FINAL_OWNER');assert.equal(value(final,EPOCH),BigInt(result.epoch),'FINAL_EPOCH');assert.equal(value(finalPost,NONCE),BigInt(result.nonce),'FINAL_NONCE');
  return {...result,transactionAndReceiptCommitmentsVerified:true,signaturesVerified:true,boundaryStateProofsVerified:true,selectedCodeAndControllerTrusted:true,publicChainAuthenticated:false,executionReplayed:false};

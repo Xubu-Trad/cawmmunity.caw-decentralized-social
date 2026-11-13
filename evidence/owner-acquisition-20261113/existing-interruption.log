@@ -1,0 +1,17 @@
+{
+  "passed": 11,
+  "checks": [
+    "initial full strict verification",
+    "disconnect at registry cancels upstream and permits clean retry",
+    "disconnect at receipt cancels upstream and permits clean retry",
+    "disconnect at final-proof cancels upstream and permits clean retry",
+    "truncated registry rejected then reacquired",
+    "truncated receipt rejected then reacquired",
+    "truncated final-proof rejected then reacquired",
+    "existing RPC timeout rejects incomplete acquisition and releases busy",
+    "server restart reacquires full history without cached acceptance",
+    "late old body cannot overwrite a newer verified result",
+    "action confirmation cancels in-flight verification"
+  ],
+  "scope": "Recorded valid local proofs served over real HTTP sockets; controlled interruptions and server recreation. Minimal DOM tests; no fresh EVM execution or independent operator claim."
+}
