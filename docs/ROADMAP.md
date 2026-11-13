@@ -665,3 +665,8 @@ The externally reported mined batch has now been corroborated through archive ha
 ## Fresh batch replay gate — November 13
 
 Local two-engine execution is demonstrated for a freshly mined two-post batch and all of its setup history. Next: independent developer reproduction using the pinned package, then bounded support for intra-block authority changes. The documented Linux setup is an experimental development procedure, not a public network installer. Full real-asset registration, paid posting/staking economics and deployment acceptance remain blocked separately. [Reproduction entry point](../evidence/post-batch-replay-20261113/README.md).
+
+
+## Intra-block ownership step — November 13
+
+Separate proof-backed owner/post verifier now reconstructs a wallet-to-EOA handoff followed by the new owner's post in one freshly mined block. Two engines agree on complete setup and execution. Existing console remains post-only. Next: acquire recipient and final registry proofs through the console, preserve interruption/unknown-action rejection, then enable only this bounded path. Independent reproduction, full economics and public deployment gates remain open. [Evidence](../evidence/owner-post-block-20261113/README.md).

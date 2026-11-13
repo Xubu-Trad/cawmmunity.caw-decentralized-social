@@ -1,0 +1,58 @@
+[
+  {
+    "side": "retained",
+    "input": "string",
+    "variant": "original",
+    "exit": 1,
+    "structured": false
+  },
+  {
+    "side": "retained",
+    "input": "string",
+    "variant": "patched",
+    "exit": 1,
+    "structured": true
+  },
+  {
+    "side": "retained",
+    "input": "array",
+    "variant": "original",
+    "exit": 1,
+    "structured": false
+  },
+  {
+    "side": "retained",
+    "input": "array",
+    "variant": "patched",
+    "exit": 1,
+    "structured": true
+  },
+  {
+    "side": "independent",
+    "input": "string",
+    "variant": "original",
+    "exit": 1,
+    "structured": false
+  },
+  {
+    "side": "independent",
+    "input": "string",
+    "variant": "patched",
+    "exit": 1,
+    "structured": true
+  },
+  {
+    "side": "independent",
+    "input": "array",
+    "variant": "original",
+    "exit": 1,
+    "structured": false
+  },
+  {
+    "side": "independent",
+    "input": "array",
+    "variant": "patched",
+    "exit": 1,
+    "structured": true
+  }
+]

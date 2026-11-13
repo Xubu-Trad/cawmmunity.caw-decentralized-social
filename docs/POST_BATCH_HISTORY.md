@@ -50,3 +50,8 @@ A reviewer has now supplied a genuine mined batch plus mixed/revert controls. It
 ## Fresh two-engine batch execution
 
 A fresh local Geth batch is now replayed from its complete genesis allocation and preceding signed transactions in EthereumJS. All13transactions and13post-genesis state roots match; exact receipt logs/status/gas agree. This is a new block, not the external reviewer's block. Three corruption controls reject and the unchanged strict reader reconstructs both posts with eight negative controls. [Package, commands and boundaries](../evidence/post-batch-replay-20261113/README.md). Independent-operator reproduction is still pending. Mixed blocks and the existing oversized setup-transaction strict-reader boundary are unchanged.
+
+
+## Experimental owner/post block verifier
+
+The new verifyOwnerPostBlock entry point supports direct fixture-owner transfers and posts with beginning/end state proofs. It has fresh local execution and second-engine evidence. It does not alter verifyPostingHistory or console acquisition; arbitrary mixed blocks are still rejected there. [Exact scope and tests](../evidence/owner-post-block-20261113/README.md).

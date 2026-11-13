@@ -51,6 +51,8 @@ Updated November 13, 2026. **Unfinished research; no production-ready network an
 
 **Fresh posting execution — November 13:** A new two-post block was mined locally, then its full genesis-to-batch history was replayed in EthereumJS. All 13 signed transactions and 13 post-genesis state roots match Geth, including gas, receipt status and logs. Three altered-history controls reject. This is a local two-engine result by one operator; external reproduction and public-network readiness remain separate. [Locked replay package and fresh-node procedure](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/evidence/post-batch-replay-20261113/README.md).
 
+**Ownership and posting progress — November 13:** A new experimental verifier follows an account transfer and the new owner’s post within the same freshly mined block. Before/after ownership and nonce proofs agree; full execution matches Geth and EthereumJS across 13 transactions/state roots. Sixteen offline checks pass. This separate verifier is not yet wired into the console, whose mixed-block rejection remains intact. [Evidence and next integration gate](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/evidence/owner-post-block-20261113/README.md). PR16’s new malformed-response crash was reproduced and a bounded correction supplied; review remains open.
+
 | Area | What is demonstrated | What remains open |
 | --- | --- | --- |
 | Local application | Real signed local posts, account handoff and new-owner withdrawals; posts retain historical authors | Paid posting integration, public registration and actual wallet-extension compatibility |
