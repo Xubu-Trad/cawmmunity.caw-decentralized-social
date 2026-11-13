@@ -47,7 +47,7 @@ prepared as a local-only package; see Corrections — 2026-11-07 below.)**
 | `retained/execution-summary.json` | Author's retained summary | `1946ebb82978eb424086dcb81dc969dd62ad0e76108e06f2880396fb86ad30a9` |
 | `retained/experiment-inputs.json` | Input manifest (16 files, hash-pinned) | `2637376a27b2a175d1995e98ff71c026f9925dff8a01729943b9f62bd9056bde` |
 | `compare_traces.py` | Cross-trace comparison script (this package) | see package listing |
-| `test_compare_traces.py` | Comparison regression tests (22 scenarios; run `python3 test_compare_traces.py`) | see package listing |
+| `test_compare_traces.py` | Comparison regression tests (26 scenarios; run `python3 test_compare_traces.py`) | see package listing |
 | `comparison-result.json` | Output of `compare_traces.py` on the packaged files | see package listing |
 | `checker-result.json` | Output of the repository's offline checker on the independent trace; first produced 2026-11-04, re-produced as pure JSON by `run-checker.mjs` on 2026-11-07 with identical values | `230e8cf8d12355118b654c9d054b7feb9fbb239727454fa70b815c388a659cec` |
 | `run-checker.mjs` | Driver that re-runs the repository's offline checker against a trace | see package listing |
@@ -103,7 +103,7 @@ follow its transaction's send and every null poll must precede that
 transaction's final receipt; and each differing independent
 transaction hash must equal the value recorded for this pinned
 evidence pair in the script. `test_compare_traces.py` exercises the
-genuine pair, 20 tampered variants that must all be rejected, and legitimate
+genuine pair, 24 tampered variants that must all be rejected, and legitimate
 additional preterminal null polling that must remain accepted.
 Adding
 `--experiment-dir <clone>/experiments/paid-adversarial` additionally
@@ -267,3 +267,19 @@ pass, including the original 19 and legitimate preterminal null polling.
 Original evidence, contract sources, fixed-pair pins and the Node offline
 checker are unchanged. No RPC, fork or EVM execution was rerun. This corrects
 the offline comparator only; independent review of the new revision is pending.
+
+
+### Receipt-response type-order follow-up (2026-11-13)
+
+Reproduced the R-05 finding at `310d6a4e`: nonempty string and array
+receipt responses in either trace raised AttributeError before comparison
+JSON was written. These were uncontrolled rejections, not false acceptance.
+Adopted Xubu-Trad's early receipt-envelope guard from review commit
+`13518d6fc44b8b51ba70a6fda8a761df55745aa2`, before any helper reads receipt
+fields. Added four permanent regressions requiring exit 1, structured FAIL
+JSON, the invalid receipt response envelope diagnostic and no traceback.
+All 26 scenarios pass, including the genuine pair and legitimate pending
+polling. The original traces, fixed-pair pins and contract sources are unchanged.
+The guard validates parsed response envelopes; consistency with raw_response
+bytes remains outside scope. No EVM or Node offline-checker run was performed
+for this correction. Prepared for publication in PR #16; maintainer review remains pending.

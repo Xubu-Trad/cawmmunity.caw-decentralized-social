@@ -313,6 +313,49 @@ def main():
     scenario("receipt response missing result is rejected", 1,
              ind_mutator=lambda t: mutate_receipt_envelope(t, "missing_result"))
 
+    # R-05: reject malformed response types before helpers inspect fields.
+    # Exit 1 alone is insufficient: require structured FAIL and no traceback.
+    retained = json.loads(RETAINED_TRACE.read_text())
+    for side in ("retained", "independent"):
+        for response_name, response in (("string", "malformed"),
+                                        ("array", ["malformed"])):
+            ret = copy.deepcopy(retained)
+            ind = copy.deepcopy(independent)
+            trace = ret if side == "retained" else ind
+            call = next(c for c in trace["local_calls"]
+                        if c["label"] == "deposit_2.receipt0")
+            call["response"] = response
+            call["raw_response"] = json.dumps(response)
+            with tempfile.TemporaryDirectory() as tmp:
+                ret_path = Path(tmp) / "retained.json"
+                ind_path = Path(tmp) / "independent.json"
+                out_path = Path(tmp) / "out.json"
+                ret_path.write_text(json.dumps(ret))
+                ind_path.write_text(json.dumps(ind))
+                proc = subprocess.run(
+                    [sys.executable, str(SCRIPT),
+                     "--retained-trace", str(ret_path),
+                     "--retained-summary", str(RETAINED_SUMMARY),
+                     "--independent-trace", str(ind_path),
+                     "--out", str(out_path)],
+                    capture_output=True, text=True)
+                try:
+                    output = json.loads(out_path.read_text())
+                except (OSError, ValueError):
+                    output = {}
+                checks = output.get("checks", [])
+                ok = (proc.returncode == 1
+                      and output.get("verdict") == "FAIL"
+                      and any(c.get("check") == "receipt_response_envelopes"
+                              and c.get("status") == "DIFFER"
+                              and f"{side}: invalid receipt response envelope"
+                              in c.get("detail", "") for c in checks)
+                      and "invalid receipt response envelope" in proc.stdout
+                      and "Traceback" not in proc.stderr)
+            results.append(ok)
+            print(f"{'PASS' if ok else 'FAIL'}: {side} {response_name} receipt "
+                  "produces structured rejection without traceback")
+
     if all(results):
         print(f"All {len(results)} comparison regression tests passed.")
         return 0
