@@ -1,0 +1,14 @@
+{
+  "liveRead": true,
+  "signedWithdrawalMined": true,
+  "receiptStatus": 1,
+  "creditBefore": "2",
+  "creditAfter": "1",
+  "walletBalance": "1",
+  "custodyBalance": "9",
+  "wrongGenesisRejected": true,
+  "wrongCodeRejected": true,
+  "crossOriginRejected": true,
+  "invalidAmountsRejected": 4,
+  "scope": "real local EVM execution with disposable fixture token; no public deployment or production wallet proof"
+}

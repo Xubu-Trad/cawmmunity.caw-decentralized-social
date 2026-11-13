@@ -1,0 +1,11 @@
+{
+  "name": "caw-local-execution-console",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "20.20.2"
+  },
+  "dependencies": {
+    "ethers": "6.16.0"
+  }
+}

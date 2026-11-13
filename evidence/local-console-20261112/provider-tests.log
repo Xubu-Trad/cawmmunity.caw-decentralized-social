@@ -1,0 +1,55 @@
+TAP version 13
+# Subtest: accepts selected genesis and block while checking identity twice
+ok 1 - accepts selected genesis and block while checking identity twice
+  ---
+  duration_ms: 2.294064
+  ...
+# Subtest: rejects another genesis
+ok 2 - rejects another genesis
+  ---
+  duration_ms: 1.210449
+  ...
+# Subtest: rejects another selected block
+ok 3 - rejects another selected block
+  ---
+  duration_ms: 2.164659
+  ...
+# Subtest: rejects missing selected block
+ok 4 - rejects missing selected block
+  ---
+  duration_ms: 0.625313
+  ...
+# Subtest: rejects changed final chain
+ok 5 - rejects changed final chain
+  ---
+  duration_ms: 0.811869
+  ...
+# Subtest: rejects changed final account
+ok 6 - rejects changed final account
+  ---
+  duration_ms: 0.62652
+  ...
+# Subtest: rejects wrong initial chain
+ok 7 - rejects wrong initial chain
+  ---
+  duration_ms: 0.771372
+  ...
+# Subtest: rejects wrong initial account
+ok 8 - rejects wrong initial account
+  ---
+  duration_ms: 0.648287
+  ...
+# Subtest: rejects malformed block selection before asking provider
+ok 9 - rejects malformed block selection before asking provider
+  ---
+  duration_ms: 1.283065
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 155.623703

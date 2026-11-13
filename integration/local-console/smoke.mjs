@@ -1,0 +1,12 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';import {Wallet,JsonRpcProvider} from 'ethers';import {createConsole} from './server.mjs';
+const config=JSON.parse(fs.readFileSync(process.argv[2])),app=createConsole(config);await new Promise(r=>app.server.listen(0,'127.0.0.1',r));const url='http://127.0.0.1:'+app.server.address().port;
+try{
+ const state=await (await fetch(url+'/api/state')).json();assert.equal(state.status,'LOCAL_CHAIN_RESEARCH');assert.equal(state.credit,'2');assert.equal(state.owner,state.contracts.wallet);
+ assert.equal((await fetch(url+'/api/withdrawal-plan',{method:'POST',headers:{'Content-Type':'application/json',Origin:'http://untrusted.example'},body:'{"amount":"1"}'})).status,403);
+ for(const amount of ['0','-1','3','1.2'])assert.equal((await fetch(url+'/api/withdrawal-plan',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({amount})})).status,422);
+ await assert.rejects(createConsole({...config,genesisHash:'0x'+'11'.repeat(32)}).snapshot(),/WRONG_GENESIS/);
+ const wrong=structuredClone(config);wrong.contracts.wallet.codeHash='0x'+'11'.repeat(32);await assert.rejects(createConsole(wrong).snapshot(),/WRONG_CODE_wallet/);
+ const plan=await (await fetch(url+'/api/withdrawal-plan',{method:'POST',headers:{'Content-Type':'application/json'},body:'{"amount":"1"}'})).json();assert.equal(plan.from,state.controller);assert.equal(plan.to,state.contracts.wallet);assert.equal(plan.epoch,'1');
+ const provider=new JsonRpcProvider(config.rpcUrl,31337,{staticNetwork:true}),wallet=new Wallet('0x'+'0'.repeat(63)+'3',provider);
+ try{const sent=await wallet.sendTransaction({to:plan.to,data:plan.data,value:0,gasLimit:500000,maxFeePerGas:2,maxPriorityFeePerGas:1});const receipt=await sent.wait();assert.equal(receipt.status,1);const after=await app.snapshot();assert.equal(after.credit,'1');assert.equal(after.balances.wallet,'1');assert.equal(after.balances.custody,'9');console.log(JSON.stringify({liveRead:true,signedWithdrawalMined:true,receiptStatus:1,creditBefore:state.credit,creditAfter:after.credit,walletBalance:after.balances.wallet,custodyBalance:after.balances.custody,wrongGenesisRejected:true,wrongCodeRejected:true,crossOriginRejected:true,invalidAmountsRejected:4,scope:'real local EVM execution with disposable fixture token; no public deployment or production wallet proof'},null,2));}finally{provider.destroy();}
+}finally{await new Promise(r=>app.server.close(r));}
