@@ -1,0 +1,28 @@
+{
+  "changed_variable": "local_rpc_request_ceiling",
+  "evm_execution": "NOT_RUN",
+  "files": {
+    "pair_hook.py": {
+      "derived_sha256": "dae3c42e73d42ed352300bf92d9fa36a742e7fe135e26a8ceeccaf952c9b2d6e",
+      "parent_sha256": "dd109b6f039890a2c08c490a0ca16c296e8780e5c80f7f9148370936133dd083",
+      "replacements": 1,
+      "size_bytes": 14570
+    },
+    "run.py": {
+      "derived_sha256": "a3b5fe13630e17d18861ca9a5ea09713a32c83ee73cd159f826f2d004a9368df",
+      "parent_sha256": "864eb29457cd7c3940dcb8cd8d75d5bd2f5fda8e1b5b66199ec430706672d0b8",
+      "replacements": 1,
+      "size_bytes": 18729
+    },
+    "withdraw_hook.py": {
+      "derived_sha256": "60f35815429f42166d7a55e25cdf1c7f1e5343d62a1b964eff1a7a50b6adda5a",
+      "parent_sha256": "485663bcf6331486b07ea5f883558e97c9a7ea09c27f3d30f42e416627fcd2ff",
+      "replacements": 1,
+      "size_bytes": 4687
+    }
+  },
+  "new_rpc_ceiling": 512,
+  "old_rpc_ceiling": 300,
+  "reversible": true,
+  "schema": "caw-c007-rpc-cap-correction/2"
+}

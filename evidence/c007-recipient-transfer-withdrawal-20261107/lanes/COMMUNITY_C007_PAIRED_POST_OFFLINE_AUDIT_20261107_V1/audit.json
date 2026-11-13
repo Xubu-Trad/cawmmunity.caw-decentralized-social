@@ -1,0 +1,21 @@
+{
+  "account_credit_state_equal": true,
+  "allocation_id2": "1666666666666666666666",
+  "allocation_id3": "3333333333333333333333",
+  "c007": "OPEN",
+  "control_post_receipt": "0x1",
+  "digest": "0x4f23d4ff909c3729437c39baadac4ecde7c5a3ba5a7dff3ce35b1b73464a66f7",
+  "dust_base_units": "1",
+  "evm_rerun": false,
+  "parent_baseline_sha256": "e7b90fb99f91e8f958ec5667d4b69753d91909458b32466ce65288d6bc964972",
+  "parent_comparison_sha256": "f4d941e3d355fdafe921772935666689464db0701a07948f38664dff804c6607",
+  "parent_intent_sha256": "0e4eff27c90454790ce8f0447219dedca42c02f1c64da00fa201720d32a8922a",
+  "parent_results_sha256": "41e0337bc4c9cdcdff7d062bd2b570e513a27fbed202f0b40e063c22d5006d7b",
+  "posted_event_equal": true,
+  "recipient_owner_control": "0x765d03fe39e2a0a48ac162a15b541c3cd1d63e76",
+  "recipient_owner_treatment": "0x2222222222222222222222222222222222222222",
+  "schema": "caw-c007-independent-offline-replay/1",
+  "signed_calldata_sha256": "54e5f5c3243143b5f446c165db66d102cba0984541eae17140b94c71fa385648",
+  "treatment_post_receipt": "0x1",
+  "wallet_withdrawal_rights_verified": false
+}
