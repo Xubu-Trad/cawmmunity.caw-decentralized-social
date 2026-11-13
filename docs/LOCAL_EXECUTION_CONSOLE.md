@@ -13,7 +13,7 @@ This is an executable application slice, not a simulated balance screen. It read
 
 ## Local use
 
-Checkout the PR19 research branch. Install the isolated console dependency from integration/local-console/package.json using npm install --ignore-scripts in that directory. Use the already reviewed local Geth executable and Node20.20.2; no external chain RPC is used. From repository root:
+Checkout the PR19 research branch. Install the isolated console dependency from integration/local-console/package.json using npm ci --ignore-scripts --no-audit --no-fund in that directory. Use the already reviewed local Geth executable and Node20.20.2; no external chain RPC is used. From repository root:
 
 ```text
 python3 integration/local-console/launch.py --geth PATH_TO_REVIEWED_GETH --capture evidence/wallet-headers-20261112/capture.json --genesis evidence/wallet-headers-20261112/genesis.json --selection evidence/wallet-state-20261112/selection.json --registry-proof evidence/wallet-headers-20261112/evidence.json --output NEW_LOCAL_DIRECTORY
@@ -73,3 +73,6 @@ The launcher replays the first ten baseline transactions, then compiles and depl
 The old alpha frontend remains a simulation; this is a separate real local execution console on draft PR #19. It is not a deployed public CAW application. The token, account population and economics remain research fixtures. Public registration, general wallet support, scalable settlement, authenticated public-chain operation and C-007 decisions remain open. Connecting a wallet does not resolve those requirements.
 
 Next connect the new posting history to the existing authenticated transaction/receipt readers and obtain independent reproduction of the complete account/post/withdrawal journey. Paid settlement remains a separately reviewed integration, with actual wallet-extension compatibility still open. Avoid another series of same-host recovery tests as the primary development activity.
+
+
+See [the consolidated setup guide](REPRODUCTION_SETUP.md) for Node/npm versions, the committed lockfile and fresh header/proof generation.

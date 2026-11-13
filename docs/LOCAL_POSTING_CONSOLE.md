@@ -20,7 +20,7 @@ The feed and receipt checks still trust the selected local RPC. Comparing its bl
 
 ## Reproduce locally
 
-Use the PR #19 research branch, Node 20.20.2, Python 3 and the previously reviewed Geth binary. Install the isolated dependencies with `npm install --ignore-scripts --prefix integration/local-console`. The package selects ethers 6.16.0 and solc 0.8.30. The build verifies the compiler file, source, ABI, creation bytecode and runtime-template hashes. Deployment verifies the creation transaction and complete runtime after inserting the immutable registry values.
+Use the PR #19 research branch, Node 20.20.2, Python 3 and the previously reviewed Geth binary. Install the isolated dependencies with `npm ci --ignore-scripts --no-audit --no-fund --prefix integration/local-console`. The package selects ethers 6.16.0 and solc 0.8.30. The build verifies the compiler file, source, ABI, creation bytecode and runtime-template hashes. Deployment verifies the creation transaction and complete runtime after inserting the immutable registry values.
 
 From the repository root, start a fresh fixture:
 
@@ -56,3 +56,6 @@ Fifteen browser cases pass on a fresh fixture: one contract-wallet post, account
 Compact results: [browser journey](../evidence/local-posting-console-20261112/browser.json), [contract checks](../evidence/local-posting-console-20261112/contract.json), [feed checks](../evidence/local-posting-console-20261112/feed.json), [pinned build](../evidence/local-posting-console-20261112/build/posting-artifact.json). The feed corruption controls are read-only; the successful contract and browser publications use signed local transactions. These checks are from the same operator and are not independent reproduction.
 
 Public registration, real-token economics, general contract-wallet support, EIP-712/relay/session posting, public-chain authentication, independent reproduction and production acceptance remain open. Transfer still inherits the existing registry's lack of an expected-epoch argument; pre-signing checks do not eliminate post-signing races. Browser storage is not an OS-crash durability guarantee. No claim of permanent availability or complete manifesto/R2 compliance follows from these local results.
+
+
+See [the consolidated setup guide](REPRODUCTION_SETUP.md) for Node/npm versions, the committed lockfile and fresh header/proof generation.
