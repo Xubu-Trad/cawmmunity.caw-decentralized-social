@@ -1,6 +1,10 @@
 # cawmmunity.caw - decentralized - social
 
-**Current core engineering:** The local console now resumes withdrawal verification after a page reload, preserves interrupted wallet requests and blocks duplicate submissions while their outcome is unresolved. Recovery binds the exact transaction nonce as well as the reviewed bytes. Two real signed local withdrawals were recovered, leaving credit 0, wallet 2 and custody 8. Twenty-two browser cases, 178 focused Node checks and ten launcher test methods pass. Browser tests use a controlled wallet adapter; actual extension compatibility, independent reproduction and public deployment remain open. The original alpha is still simulation-only; this separate local console uses fixed accounts and mock tokens.
+## What we are building
+
+community.CAW is an open community effort to build decentralized social software guided by the CAW manifesto and reproducibly recovered R2 message. The goal is a system people can inspect, operate and continue without depending on its original builders. The repository includes a simulated alpha frontend and a separate local execution console using real local transactions with fixed accounts and mock tokens. It is unfinished research, not an official CAW release or a production-ready network.
+
+**Current core engineering:** The local console now transfers an existing test account to another wallet and lets its new owner withdraw the attached credit. The former owner is rejected, and interrupted transfer verification resumes after reload without another submission. A real signed local handoff and withdrawal left credit 0, recipient 2 and custody 8 mock units. Sixteen handoff browser checks, the existing 22-case withdrawal journey, 239 focused Node checks and 10 launcher methods pass. These use a controlled wallet adapter; actual extension compatibility and independent reproduction remain pending. See [the application and evidence](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/docs/LOCAL_ACCOUNT_HANDOFF.md). This remains draft PR #19 research, not a public CAW network.
 
 **Peer recovery and persistence:** The refreshed package passes actual local recovery (29 headers, 16 storage fields, five negative proof controls; all services stopped). Offline proof review now checks its helper fingerprint before loading code; eight targeted controls pass, including helper substitution rejection. This verifies saved proof data, not the reported peer-transfer process or operator independence. Independent full reproduction, public-chain authentication and production readiness remain pending. PR #16 still awaits its receipt-error fix.
 
@@ -8,11 +12,7 @@
 
 **Local cross-client peer synchronization:** A fresh Reth database acquired the 28-block fixture from Geth over a localhost peer connection, starting at genesis without block-file import. All 29 headers match. After both processes stopped, restarting only Reth with zero peers preserved all headers and independently generated registry proofs for16fields that pass the unchanged strict reader. Geth initiated the successful connection; three outbound/automatic Reth attempts timed out and remain recorded. This verifies bounded local peer acquisition and source-offline readback, not separate-host resilience, public-chain authentication or consensus finality. The target hash was operator-selected.
 
-## What we are building
-
-community.CAW is an open community effort to build decentralized social software guided by the CAW manifesto and reproducibly recovered R2 message. The goal is a system people can inspect, operate and continue without depending on its original builders. It is research software with a simulated frontend, not an official CAW release or a production-ready network.
-
-## Current implementation — November 10, 2026
+## Earlier implementation evidence — November 10, 2026
 
 community.CAW is progressing from separate demonstrations toward a reproducible local protocol candidate. The work below is **unmerged research in [draft PR #19](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/19)**, not functionality released on main or a public network.
 
@@ -29,13 +29,13 @@ community.CAW is progressing from separate demonstrations toward a reproducible 
 
 **Full local state comparison:** a new28-step capture/replay confirms that all24 later root divergences are explained by zero-valued storage leaves and empty accounts; all nonzero state and transaction/receipt results agree. All16 selected registry proofs now pass the unchanged reader under Geth's independently reconstructed final root, with four negative controls. This does not repair the Anvil proof or bind the Geth root to Anvil's different headers. Canonical header acquisition and public-chain authentication remain open. [Results and limits](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/docs/REGISTRY_ALL_STATE_RECONCILIATION.md).
 
-The frontend remains a simulation. Public registration, real-token compatibility, scalable economics, connected wallets, durable media and messaging, authenticated public-chain recovery, and release review remain unfinished or blocked. We have not demonstrated full manifesto compliance, production readiness or survival of every external dependency.
+The original alpha frontend remains a simulation; the separate local console is described above. Public registration, real-token compatibility, scalable economics, general wallet support, durable media and messaging, authenticated public-chain recovery, and release review remain unfinished or blocked. We have not demonstrated full manifesto compliance, production readiness or survival of every external dependency.
 
-For developers: draft PR19 contains `docs/REGISTRY_VERIFICATION_PIPELINE.md`, `docs/REGISTRY_CONTIGUOUS_ACQUISITION.md` and `docs/REGISTRY_CONTIGUOUS_DIAGNOSIS.md`, with exact inputs, commands and scoped results. Main does not yet contain those experimental implementations. Hosted CI remains pending; focused results are not a new full-suite result.
+For developers: draft PR #19 contains `docs/REGISTRY_VERIFICATION_PIPELINE.md`, `docs/REGISTRY_CONTIGUOUS_ACQUISITION.md` and `docs/REGISTRY_CONTIGUOUS_DIAGNOSIS.md`, with exact inputs, commands and scoped results. Main does not yet contain those experimental implementations. Hosted CI remains pending; focused results are not a new full-suite result.
 
 ## Next milestones and release gates
 
-1. Finish strict local history verification, including the retained storage-proof rejection and both transaction resource boundaries, without silently relaxing acceptance.
+1. Obtain independent reproduction of the pinned local history/recovery package and reconcile the signed-action candidate with the working registry/custody console. Preserve the original rejected captures and unchanged verification boundaries.
 2. Resolve registration, economic, text and authority-policy conflicts through explicit review; test results cannot decide those policies.
 3. Demonstrate independently operated public action and recovery using real wallets, replaceable dependencies and an explicit chain-authentication/finality policy.
 4. Complete remaining social functionality, reproducible deployment, security review and a builder-disappears exercise before public release agreement.
