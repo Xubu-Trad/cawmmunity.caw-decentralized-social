@@ -1,3 +1,7 @@
+## Current application priority — November 12, 2026
+
+Extend the new chain-connected local execution console into a usable signed-action candidate. Real local withdrawal is implemented; registration/economics and general account setup remain open. Seek independent reproduction alongside development; do not make repeated same-host recovery packaging the primary work.
+
 # Engineering roadmap
 
 ## Implementation priority — November 8, 2026
