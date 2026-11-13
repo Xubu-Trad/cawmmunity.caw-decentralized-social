@@ -1,0 +1,29 @@
+{
+  "archive_sha256": "fd5d0d61836a6fa782e5648a5da5b4eefcc420f2a7ff1023da6c2c5d6838ddc7",
+  "internal_hashes": 30,
+  "reader_files_matched": [
+    "integration/local-console/verify-posting-history.mjs",
+    "integration/local-console/post-block-scope.mjs",
+    "integration/local-console/strict-console-acquisition.mjs"
+  ],
+  "exit_code": 0,
+  "reviewer_artifact_result": {
+    "results": [
+      {
+        "mode": "positive",
+        "posts": 2,
+        "hash": "0xbe841e1a1fcee583b17b0b7c9e625b4167625395036ddc2a8900bcf34b61ad19",
+        "executionReplayed": false
+      },
+      {
+        "mode": "mixed",
+        "rejection": "POST_ONLY_BATCH_REQUIRED"
+      },
+      {
+        "mode": "revert",
+        "rejection": "POST_ONLY_BATCH_REQUIRED"
+      }
+    ],
+    "scope": "Rechecked supplied reviewer artifacts, not new execution by this operator"
+  }
+}

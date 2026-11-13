@@ -40,3 +40,8 @@ The [frozen53-file reproduction package](CONSOLE_HISTORY_REPRODUCTION.md) still 
 1. Capture two genuine posts in the same local block and compare their execution state with the existing independent engine.
 2. Support mixed blocks only after reconstructing authority at each transaction; do not remove the post-only restriction to make acquisition pass.
 3. Integrate a complete paid action only after choosing a separately identified experimental settlement interface. The current console custody fixture and legacy three-account paid probe are different contracts and economic models. They cannot be silently treated as one system. C-001/C-007 and production decisions remain unresolved.
+
+
+## External evidence received
+
+A reviewer has now supplied a genuine mined batch plus mixed/revert controls. Its archive hashes and unchanged-reader results were rechecked here; this was artifact corroboration, not another EVM run. [Pinned report, limits and next step](REVIEWER_FOLLOWUP_20261113.md). The earlier synthetic tests remain labelled as such.

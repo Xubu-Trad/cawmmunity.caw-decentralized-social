@@ -1,0 +1,14 @@
+[
+  {
+    "file": "init.log",
+    "original_sha256": "710ebcb9e3491d9142e038bd401fc26f690e6ae5ac8263144f6b2764575a76bf",
+    "public_sha256": "6c1d3cb2c202fbad86b3406572b83b101a9bcd2c6eddb9f655f33b588e3fecf5",
+    "transform": "replace personal absolute /home paths with <LOCAL_PATH>; original retained privately"
+  },
+  {
+    "file": "node.log",
+    "original_sha256": "bf502275e74f5d5afd1ec77d1416e8e028293d80e689d3c2fe26b53fa62696ba",
+    "public_sha256": "c87f9602c4a3f6b578bdcf86f0152b598f8989f1768dd262ed4feb620dc4e9ee",
+    "transform": "replace personal absolute /home paths with <LOCAL_PATH>; original retained privately"
+  }
+]

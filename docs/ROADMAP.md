@@ -655,3 +655,8 @@ Five injected stop points and four bad-delivery cases preserve verified state; o
 ## Wallet staged delivery — 2026-11-12
 
 Five real process kills and four bad HTTP-source cases pass. Next independent-host reproduction and writer ownership; power-loss durability remains unproven.
+
+
+## Reviewer evidence update
+
+The externally reported mined batch has now been corroborated through archive hashes and unchanged-reader checks. Next: second-engine replay, not another synthetic-only batch. PR16 receipt-error regression is resolved at its pinned updated head; broader acceptance remains separate. [Review record](REVIEWER_FOLLOWUP_20261113.md).

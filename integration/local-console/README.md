@@ -13,7 +13,7 @@ This is an executable application slice, not a simulated balance screen. It read
 
 ## Local use
 
-Checkout the PR19 research branch. Install the isolated console dependency from integration/local-console/package.json using npm install --ignore-scripts in that directory. Use the already reviewed local Geth executable and Node20.20.2; no external chain RPC is used. From repository root:
+Checkout the PR19 research branch. Install the isolated console dependency from integration/local-console/package.json using npm ci --ignore-scripts --no-audit --no-fund in that directory. Use the already reviewed local Geth executable and Node20.20.2; no external chain RPC is used. From repository root:
 
 ```text
 python3 integration/local-console/launch.py --geth PATH_TO_REVIEWED_GETH --capture evidence/wallet-headers-20261112/capture.json --genesis evidence/wallet-headers-20261112/genesis.json --selection evidence/wallet-state-20261112/selection.json --registry-proof evidence/wallet-headers-20261112/evidence.json --output NEW_LOCAL_DIRECTORY
