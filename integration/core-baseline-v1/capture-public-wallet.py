@@ -5,6 +5,7 @@ if sys.flags.optimize:raise SystemExit('OPTIMIZED_PYTHON_UNSUPPORTED')
 p=argparse.ArgumentParser()
 for k in ['geth','capture','genesis','expected','output']:p.add_argument('--'+k,required=True)
 a=p.parse_args();o=Path(a.output).resolve();assert not o.exists(),'OUTPUT_EXISTS';assert shutil.disk_usage(o.parent).free>=2*1024**3,'DISK_GUARD'
+if Path('/mnt/c').exists():assert shutil.disk_usage('/mnt/c').free>=2*1024**3,'HOST_DISK_GUARD'
 assert int(dict(x.split(':',1)for x in Path('/proc/meminfo').read_text().splitlines())['MemAvailable'].split()[0])>=1024**2,'MEMORY_GUARD'
 assert hashlib.sha256(Path(a.geth).read_bytes()).hexdigest()=='45335929e149413c9f680209c87fa14adc5750387da6f5f30b7b2bd24d2d54ea','GETH_BYTES'
 old=json.loads(Path(a.capture).read_text());expected=json.loads(Path(a.expected).read_text());assert len(old['blocks'])==22
