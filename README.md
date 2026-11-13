@@ -39,6 +39,8 @@ Updated November 13, 2026. **Unfinished research; no production-ready network an
 
 **Posting history update — November 13:** Both signed local posts now pass the existing strict transaction, receipt, sender and header-bound storage readers across four consecutive blocks. Proven ownership follows the wallet-to-EOA transfer; all15 tampering/scope controls passed. This is selected local history, not public-chain finality, and the browser feed remains RPC-backed. [Verification, reproduction and boundaries](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/docs/POSTING_HISTORY_VERIFICATION.md).
 
+**Console history update — November13:** A separate verified-history panel now acquires signed blocks and ownership proofs through the strict readers, with no RPC-log fallback.12 integration checks,6 live browser checks and340 existing regressions passed. Failure/refresh clears acceptance; retries verify again. Local server and endpoint assumptions remain; no public-chain finality or independent reproduction is claimed. [Use, evidence and limits](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/docs/CONSOLE_STRICT_HISTORY.md).
+
 | Area | What is demonstrated | What remains open |
 | --- | --- | --- |
 | Local application | Real signed local posts, account handoff and new-owner withdrawals; posts retain historical authors | Paid posting integration, public registration and actual wallet-extension compatibility |
