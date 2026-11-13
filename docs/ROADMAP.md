@@ -660,3 +660,8 @@ Five real process kills and four bad HTTP-source cases pass. Next independent-ho
 ## Reviewer evidence update
 
 The externally reported mined batch has now been corroborated through archive hashes and unchanged-reader checks. Next: second-engine replay, not another synthetic-only batch. PR16 receipt-error regression is resolved at its pinned updated head; broader acceptance remains separate. [Review record](REVIEWER_FOLLOWUP_20261113.md).
+
+
+## Fresh batch replay gate — November 13
+
+Local two-engine execution is demonstrated for a freshly mined two-post batch and all of its setup history. Next: independent developer reproduction using the pinned package, then bounded support for intra-block authority changes. The documented Linux setup is an experimental development procedure, not a public network installer. Full real-asset registration, paid posting/staking economics and deployment acceptance remain blocked separately. [Reproduction entry point](../evidence/post-batch-replay-20261113/README.md).

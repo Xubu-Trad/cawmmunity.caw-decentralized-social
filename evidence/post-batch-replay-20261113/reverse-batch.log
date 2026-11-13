@@ -1,0 +1,18 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: TRANSACTION_HASH
++ actual - expected
+
++ '0x65985ef4ab34e06af0baeb68f2c45a1b228f15277ed149db727687ab04158d9b'
+- '0x3c419727ea2ab2b976934b28a6ea75e41928252e709649c0bcfec0f21d910666'
+    at file://<HOME>/gilg_OUT_local/OUT_20260227T172823Z/COMMUNITY_BATCH_REPLAY_20261113_V1/replay.mjs:32:10 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: '0x65985ef4ab34e06af0baeb68f2c45a1b228f15277ed149db727687ab04158d9b',
+  expected: '0x3c419727ea2ab2b976934b28a6ea75e41928252e709649c0bcfec0f21d910666',
+  operator: 'strictEqual'
+}
+
+Node.js v20.20.2

@@ -1,0 +1,17 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: CUMULATIVE_GAS
+
+129977n !== 1n
+
+    at file://<HOME>/gilg_OUT_local/OUT_20260227T172823Z/COMMUNITY_BATCH_REPLAY_20261113_V1/replay.mjs:38:10 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 129977n,
+  expected: 1n,
+  operator: 'strictEqual'
+}
+
+Node.js v20.20.2

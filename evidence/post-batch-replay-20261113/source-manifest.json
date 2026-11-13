@@ -1,0 +1,241 @@
+{
+  "commit": "927bb32a1e13204400879883429e83625dd380af",
+  "files": [
+    {
+      "path": "integration/local-console/build-posting.mjs",
+      "sha256": "2d90ba39046335d8c58d51d16c424c75c7436ffe135f2384355403f1b2609a66"
+    },
+    {
+      "path": "integration/local-console/test-withdrawal-plan.mjs",
+      "sha256": "7929923566c90548a48c3e02db180b0dffc948bad5e019a052c5ee7c35b7a5f4"
+    },
+    {
+      "path": "integration/local-console/deploy-posting.mjs",
+      "sha256": "979c2d2e67c7d8679bfb28c9e9cb45a755cf19d5fa4207274232ad70f56881d9"
+    },
+    {
+      "path": "integration/local-console/PostingResearch.sol",
+      "sha256": "861f78c36d4dbe9d5ed380e716307039e264757bd51e833d28771b44444e7125"
+    },
+    {
+      "path": "integration/local-console/test-post-plan.mjs",
+      "sha256": "78af7b133f58c44ad859a19ce16429124a9cae5d5a85f9ab9ce73577673b0f49"
+    },
+    {
+      "path": "integration/local-console/README.md",
+      "sha256": "8579b723c2862b141157a475d961c04c7e1d205b1edd22a50322024c9adfda36"
+    },
+    {
+      "path": "integration/local-console/package.json",
+      "sha256": "cfd7f918f1df092ad9514949476dd9b68797507c472dbab2d942a892849f2ae1"
+    },
+    {
+      "path": "integration/local-console/test-receipt-status.mjs",
+      "sha256": "07cf9da054e5acb92467decbea53d61ce25dcd39e20b9b9d28eb61609da38f37"
+    },
+    {
+      "path": "integration/local-console/test-withdrawal-journal.mjs",
+      "sha256": "eacd06cf20ccfa3ad1779ea094da4191d8b079a15f6400cce2637f2c4b66e57b"
+    },
+    {
+      "path": "integration/local-console/test-wallet-provider.mjs",
+      "sha256": "393d45ab41497144a5b743a5c8a0508fb154502c7e25ed1baf1d0fb454b19ab7"
+    },
+    {
+      "path": "integration/local-console/test-console-history.mjs",
+      "sha256": "a0f8a2a0c2f7af1870e1810f74dc40adca16c496476617eafd41b5b8ced0b2f7"
+    },
+    {
+      "path": "integration/local-console/test-posting-history.mjs",
+      "sha256": "0c2c644ddd3acd4c00a7b289f787b79e8cce096c1ccfbb595a0b7a3c1b19210d"
+    },
+    {
+      "path": "integration/local-console/launch.py",
+      "sha256": "2825768dd755f31069f0788d3bb4c350f1874c4ded466cb4afa2cff310bb7033"
+    },
+    {
+      "path": "integration/local-console/test-browser.mjs",
+      "sha256": "363a5fd7f280136a45917b04c5bf3bd6f9cc94fc840e1c7e12769c0c05e92129"
+    },
+    {
+      "path": "integration/local-console/verify-posting-history.mjs",
+      "sha256": "c74cfcf6f183784bdc9387a860891d580559f9ad639421731ba034066a243f51"
+    },
+    {
+      "path": "integration/local-console/test-posting-contract.mjs",
+      "sha256": "3627d5a52887563e0086eb68af37f06d9a8ada607ebe230b1e13b97e7de00553"
+    },
+    {
+      "path": "integration/local-console/test-posting-browser.mjs",
+      "sha256": "76cb84822cd9f7d14a176879752d0a522eb46079f2c55142ac542286ed5e7cbd"
+    },
+    {
+      "path": "integration/local-console/smoke.mjs",
+      "sha256": "399fee91304bdb922b932118b3c1d970ccd631ba17048a4e56b40245608cb5d0"
+    },
+    {
+      "path": "integration/local-console/package-lock.json",
+      "sha256": "a97afb7e45df1daaaa4a49cfa28d3c1c97dd1ee143791a6e3d0321d639be8ed8"
+    },
+    {
+      "path": "integration/local-console/test-posting-feed.mjs",
+      "sha256": "c050f5d6e0d2a0d611040684a7165c7922e4a4d12275b98be82c2734dac4a220"
+    },
+    {
+      "path": "integration/local-console/test-account-transfer-plan.mjs",
+      "sha256": "b0dff4e8102e42a1d83f91abcd0d6f10c808b9cb1f3f52ab944d54dc20b8fa6b"
+    },
+    {
+      "path": "integration/local-console/post-block-scope.mjs",
+      "sha256": "e3944ca8da8dd0e0cf0bbabad0d2f49a8495cafb9284dd4c3253350c373ccfb6"
+    },
+    {
+      "path": "integration/local-console/strict-console-acquisition.mjs",
+      "sha256": "267c8421ee35cd50db5d013657226b33af7507b700dc968ab812b3c1c4ce358f"
+    },
+    {
+      "path": "integration/local-console/test-post-batches.mjs",
+      "sha256": "6cea5bf7c10c0c03ec9da09f7ff5053471a7233459f056e7a404323f47b344b6"
+    },
+    {
+      "path": "integration/local-console/receipt_poll.py",
+      "sha256": "e30dbda106e0005cd87c78c9416f09d4beedf54be5627bcd88ae8192b3adb999"
+    },
+    {
+      "path": "integration/local-console/server.mjs",
+      "sha256": "b8fda2481179c48eea955e0378e37fc59a15ef97fe69b242d2a04ceec3d86858"
+    },
+    {
+      "path": "integration/local-console/test-handoff-browser.mjs",
+      "sha256": "65378b81cf69212026245f48d8326c7089869fe60cb988996ed50f7aadd23ea4"
+    },
+    {
+      "path": "integration/local-console/test-console-interruption.mjs",
+      "sha256": "f0bf08fb9756de83de1b6f7990a067c9a72a0f57f781b650e3c80e32a2c468b1"
+    },
+    {
+      "path": "integration/local-console/test_receipt_poll.py",
+      "sha256": "8af4ffc0e2c0cfe55a95674a304a4d13ecb5fb5daab63ecdaf2bd1475335e08f"
+    },
+    {
+      "path": "integration/local-console/.nvmrc",
+      "sha256": "75053fb82fe4512318dd99556daf58b862fb81c96cf1153249b75f8116edf440"
+    },
+    {
+      "path": "integration/local-console/ui/strict-history-panel.mjs",
+      "sha256": "f81c318bb6eca8aefb2a031197d227e1bb18c706a653a7c5ba33069c369d26c6"
+    },
+    {
+      "path": "integration/local-console/ui/receipt-status.mjs",
+      "sha256": "124525018b8b0317bdee89d2075b718349b4a9cde2ece2d5b9c928ea6fcd23b7"
+    },
+    {
+      "path": "integration/local-console/ui/keccak256.mjs",
+      "sha256": "9fe8914f8781cb1a0a0111aa11bbe4855947998ec8beec3feb2e49c89e006cc3"
+    },
+    {
+      "path": "integration/local-console/ui/index.html",
+      "sha256": "ef61ac3206bfb77cc16eec30aff43e462d1196f51a10e725abd7339013696d2a"
+    },
+    {
+      "path": "integration/local-console/ui/app.mjs",
+      "sha256": "551adc18bfbb322474caaf73d9d8b15e636b7a66cba9ad2e477d553dd6f5dfa4"
+    },
+    {
+      "path": "integration/local-console/ui/withdrawal-plan.mjs",
+      "sha256": "8c3abe901d080baef82403e5c97a922a60d87d58bef49a4ed4bee7c384baa865"
+    },
+    {
+      "path": "integration/local-console/ui/style.css",
+      "sha256": "08ad6f08ace91295b11e9928883c8d13bea60cb5500c0c8b01c8e47c1bf28448"
+    },
+    {
+      "path": "integration/local-console/ui/account-transfer-plan.mjs",
+      "sha256": "844ef22ff8660c4a2ad883481684bf685e2bad58ffd886f7eb5df74176be94f9"
+    },
+    {
+      "path": "integration/local-console/ui/wallet-provider.mjs",
+      "sha256": "4922683a8600c664b7b61845a29dfd254b57bc5a5b79b59ca576e84f90bf8acf"
+    },
+    {
+      "path": "integration/local-console/ui/post-plan.mjs",
+      "sha256": "ee45044113267f7bbf5eef8aa30807d21318038d3df735b526cf3c966495f19a"
+    },
+    {
+      "path": "integration/local-console/ui/withdrawal-journal.mjs",
+      "sha256": "9e7fcd5a613ef91c52a83416d044482dfa24c29ada97780ea10ff0aade4730d2"
+    },
+    {
+      "path": "evidence/posting-history-20261113/PROVENANCE.txt",
+      "sha256": "7bc4607c456e9d596f444c14290c490f214477126c86e11cb778ad3bb98c4d67"
+    },
+    {
+      "path": "evidence/posting-history-20261113/selection.json",
+      "sha256": "6368ea9169a97e9b95e4d92023b4d781ec20ba6fc97dfb4226fc2a821187c25b"
+    },
+    {
+      "path": "evidence/posting-history-20261113/inputs.json",
+      "sha256": "36be737b4ffe710e2c5795243d349038357f1413bd54ed13b3a2eb29a34d1571"
+    },
+    {
+      "path": "evidence/posting-history-20261113/capture.json",
+      "sha256": "81ed214fff4f3e2fcbc6befbcea6ed4db06abef49b3f2ac61ecd8061c3aae8a6"
+    },
+    {
+      "path": "evidence/posting-history-20261113/service.json",
+      "sha256": "6b76b66f8d3efff3dee6d301300ffc0157db7e68db1c22bbac452ae88ff3f126"
+    },
+    {
+      "path": "evidence/posting-history-20261113/tests.json",
+      "sha256": "9cfdfb7c1c732baebffe8ea6d77d241e5fecd2e93ca773e7bf4513cb2d7daec5"
+    },
+    {
+      "path": "public/bounded-json.mjs",
+      "sha256": "73312692245add67ea140ef1393efe9577d337d917867f9edca02ce82af8b051"
+    },
+    {
+      "path": "reference/header-bound-state-proof.mjs",
+      "sha256": "244e2f468d02b362246ae8e8bc659801b233c7257d774a695d40e9c1d2428955"
+    },
+    {
+      "path": "reference/ethereum-block-receipts.mjs",
+      "sha256": "92b108bdc18d138ec8f8ee6569402045ee91460d0d80a2cc8f012fbdacf55ddd"
+    },
+    {
+      "path": "reference/ethereum-block-transactions.mjs",
+      "sha256": "bed33246e3708ac6838cddd5a7a2c88692b54cd998a3fc2e647497bf96c94cd5"
+    },
+    {
+      "path": "reference/keccak256.mjs",
+      "sha256": "6ed8268eb811eddb3345ebb47e824346c00585d6bed2ec3767e1783d31615edf"
+    },
+    {
+      "path": "reference/ethereum-execution-header.mjs",
+      "sha256": "dd69f58be27f861939432a2a140298fde3be1393e8d9bbd8b6dfb88c69cb34eb"
+    },
+    {
+      "path": "reference/ethereum-state-proof.mjs",
+      "sha256": "56c2278447b1eccef6a29dbeb4da7777ad5330fe5bb67655c1ed9f8564af628f"
+    },
+    {
+      "path": "reference/ethereum-block-senders.mjs",
+      "sha256": "65c787449418ace3091a79bb062e7cd5898f39fb53bfff48ef395adcc2d7befc"
+    },
+    {
+      "path": "evidence/wallet-state-20261112/selection.json",
+      "sha256": "510b7b6813890a3380b88af1690c929ce240221da48765abe65573bc851ebdbf"
+    },
+    {
+      "path": "evidence/wallet-headers-20261112/genesis.json",
+      "sha256": "131785d5b4376eb45086c21ee3861f93ed891740ba831ccab465ac63990e30cc"
+    },
+    {
+      "path": "evidence/wallet-headers-20261112/capture.json",
+      "sha256": "53dce4e6d3d22d016068ef7e7fae24d474853dbeefe83657c4d584b4b8b338ca"
+    },
+    {
+      "path": "evidence/wallet-headers-20261112/evidence.json",
+      "sha256": "0a9f52169d51225bb4ebb156f063d8eabba5f1fafde87ccea9af47bc8905e146"
+    }
+  ]
+}

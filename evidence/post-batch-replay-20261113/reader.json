@@ -1,0 +1,85 @@
+{
+  "offline": {
+    "posts": [
+      {
+        "accountId": "2",
+        "epoch": "1",
+        "nonce": "0",
+        "author": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+        "signer": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+        "text": "POST-BATCH R-01 first",
+        "textHash": "0x34937dfa8bcb66d6ba656cb4503126864a82f72bede317f0de46baa3487bedd4",
+        "transactionHash": "0x3c419727ea2ab2b976934b28a6ea75e41928252e709649c0bcfec0f21d910666",
+        "blockHash": "0xcf4643c7584caaa6b5d8d169cee61aac9cd75213d777a250687d3df406cccea7",
+        "blockNumber": "0xd"
+      },
+      {
+        "accountId": "2",
+        "epoch": "1",
+        "nonce": "1",
+        "author": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+        "signer": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+        "text": "POST-BATCH R-01 second — 鴉",
+        "textHash": "0x92cffb98c05d19539e488882c5b17205f0201859e780d58796d571041e1e7fa4",
+        "transactionHash": "0x65985ef4ab34e06af0baeb68f2c45a1b228f15277ed149db727687ab04158d9b",
+        "blockHash": "0xcf4643c7584caaa6b5d8d169cee61aac9cd75213d777a250687d3df406cccea7",
+        "blockNumber": "0xd"
+      }
+    ],
+    "blocks": 1,
+    "transactionAndReceiptCommitmentsVerified": true,
+    "signaturesVerified": true,
+    "parentOwnershipProofsVerified": true,
+    "postNonceComplete": true,
+    "selectedEndpointsTrusted": true,
+    "publicChainAuthenticated": false,
+    "consensusVerified": false,
+    "executionReplayed": false
+  },
+  "live": {
+    "status": "VERIFIED_LOCAL_HISTORY",
+    "genesisHash": "0xc190afab951bdb9e657448e32761736857d0d76869bc5073b43d6160a8d19ddc",
+    "posting": "0x9587471aff4a1b7941d19bfdc46851704da82cf1",
+    "startHash": "0x101a62ee1e6b139c156808e914c43392dd5296242e131a6262c36480f09d887e",
+    "blockHash": "0xcf4643c7584caaa6b5d8d169cee61aac9cd75213d777a250687d3df406cccea7",
+    "blockNumber": "0xd",
+    "posts": [
+      {
+        "accountId": "2",
+        "epoch": "1",
+        "nonce": "0",
+        "author": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+        "signer": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+        "text": "POST-BATCH R-01 first",
+        "textHash": "0x34937dfa8bcb66d6ba656cb4503126864a82f72bede317f0de46baa3487bedd4",
+        "transactionHash": "0x3c419727ea2ab2b976934b28a6ea75e41928252e709649c0bcfec0f21d910666",
+        "blockHash": "0xcf4643c7584caaa6b5d8d169cee61aac9cd75213d777a250687d3df406cccea7",
+        "blockNumber": "0xd"
+      },
+      {
+        "accountId": "2",
+        "epoch": "1",
+        "nonce": "1",
+        "author": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+        "signer": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+        "text": "POST-BATCH R-01 second — 鴉",
+        "textHash": "0x92cffb98c05d19539e488882c5b17205f0201859e780d58796d571041e1e7fa4",
+        "transactionHash": "0x65985ef4ab34e06af0baeb68f2c45a1b228f15277ed149db727687ab04158d9b",
+        "blockHash": "0xcf4643c7584caaa6b5d8d169cee61aac9cd75213d777a250687d3df406cccea7",
+        "blockNumber": "0xd"
+      }
+    ],
+    "blocks": 1,
+    "transactionAndReceiptCommitmentsVerified": true,
+    "signaturesVerified": true,
+    "parentOwnershipProofsVerified": true,
+    "postNonceComplete": true,
+    "selectedEndpointsTrusted": true,
+    "publicChainAuthenticated": false,
+    "consensusVerified": false,
+    "executionReplayed": false,
+    "verificationLocation": "local-console-server",
+    "acquisitionRequests": 15,
+    "scope": "Selected local history; not public-chain consensus or finality. Fixture controller and code/layout selections remain trusted."
+  }
+}

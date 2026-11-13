@@ -45,3 +45,8 @@ The [frozen53-file reproduction package](CONSOLE_HISTORY_REPRODUCTION.md) still 
 ## External evidence received
 
 A reviewer has now supplied a genuine mined batch plus mixed/revert controls. Its archive hashes and unchanged-reader results were rechecked here; this was artifact corroboration, not another EVM run. [Pinned report, limits and next step](REVIEWER_FOLLOWUP_20261113.md). The earlier synthetic tests remain labelled as such.
+
+
+## Fresh two-engine batch execution
+
+A fresh local Geth batch is now replayed from its complete genesis allocation and preceding signed transactions in EthereumJS. All13transactions and13post-genesis state roots match; exact receipt logs/status/gas agree. This is a new block, not the external reviewer's block. Three corruption controls reject and the unchanged strict reader reconstructs both posts with eight negative controls. [Package, commands and boundaries](../evidence/post-batch-replay-20261113/README.md). Independent-operator reproduction is still pending. Mixed blocks and the existing oversized setup-transaction strict-reader boundary are unchanged.
