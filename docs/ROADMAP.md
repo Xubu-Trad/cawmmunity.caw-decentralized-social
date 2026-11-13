@@ -644,3 +644,8 @@ The21-operation wallet journey is reconstructed and agrees across EthereumJS/Get
 ## Wallet custody and canonical-context second engine — 2026-11-12
 
 All21 local state roots match EthereumJS/Geth;18 new token/custody fields and three runtime/account proofs bind to the retained header, with16 rejecting controls. Next independent reader/recovery exercise for this lifecycle. Public-chain authentication and outside reproduction remain open.
+
+
+## Wallet recovery admission — 2026-11-12
+
+Four-account/34-field offline admission passes eight corrupt-bundle controls with unchanged prior state. Next interrupted delivery and persistence integration; review ahdmesh WALLET-CUSTODY R-01 additional controls separately.
