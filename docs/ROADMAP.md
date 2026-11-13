@@ -654,3 +654,8 @@ Four-account/34-field offline admission passes eight corrupt-bundle controls wit
 ## Wallet staged delivery — 2026-11-12
 
 Five injected stop points and four bad-delivery cases preserve verified state; orphan staging is ignored and valid replacement accepted. Reviewer B7/B8 rerun passes. Next abrupt process interruption and bounded transport; exception injection does not establish power-loss durability.
+
+
+## Wallet staged delivery — 2026-11-12
+
+Five real process kills and four bad HTTP-source cases pass. Next independent-host reproduction and writer ownership; power-loss durability remains unproven.
