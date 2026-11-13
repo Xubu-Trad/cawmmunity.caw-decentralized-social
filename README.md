@@ -35,6 +35,8 @@ The destination is a system others can reproduce and operate without Xubu's acco
 
 Updated November 13, 2026. **Unfinished research; no production-ready network and no real funds in the local fixtures.**
 
+**Reproduction setup update — November 13:** Node20.20.2/npm10.8.2 now has a committed console dependency lock and a verified clean install. Published commands also create a fresh Geth database, execute21 retained signed transactions and generate new headers/storage proofs:21 state roots,16 fields and five rejection controls passed. This reuses published fixture inputs; it is not independent reproduction or a complete source rebuild. [Setup, commands and remaining gaps](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/docs/REPRODUCTION_SETUP.md).
+
 | Area | What is demonstrated | What remains open |
 | --- | --- | --- |
 | Local application | Real signed local posts, account handoff and new-owner withdrawals; posts retain historical authors | Paid posting integration, public registration and actual wallet-extension compatibility |
