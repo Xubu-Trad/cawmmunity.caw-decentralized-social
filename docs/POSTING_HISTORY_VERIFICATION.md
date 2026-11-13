@@ -4,7 +4,7 @@
 
 The existing local console produced two real signed posts on the disposable Geth chain: account 2 through its contract wallet at epoch 1 / nonce 0, then through its new EOA owner at epoch 2 / nonce 1. The new offline reader reconstructs both posts from four consecutive complete blocks (12–15) after the reviewed posting deployment at block 11. It requires final posting nonce 2. All 15 negative controls passed. No verification rule in the existing readers was relaxed.
 
-This authenticates evidence against explicitly selected **local** header endpoints. It does not authenticate a public network, establish consensus/finality, replay EVM execution or demonstrate independent operation. The browser feed remains RPC-backed; this increment supplies the strict offline verification path, not a claim that the UI now enforces it.
+This authenticates evidence against explicitly selected **local** header endpoints. It does not authenticate a public network, establish consensus/finality, replay EVM execution or demonstrate independent operation. The ordinary browser feed remains RPC-backed. A subsequent integration now provides a separate strict server-verified panel; see [console verification](CONSOLE_STRICT_HISTORY.md). This original offline result alone did not establish that integration.
 
 ## What is checked
 
@@ -35,4 +35,4 @@ The capture was freshly read from the preserved browser-run database with the pi
 
 [Results](../evidence/posting-history-20261113/tests.json) · [Selections](../evidence/posting-history-20261113/selection.json) · [Provenance](../evidence/posting-history-20261113/PROVENANCE.txt) · [Setup](REPRODUCTION_SETUP.md)
 
-Next: bind the strict reader to console acquisition with explicit accepted/rejected state; preserve the distinction from the RPC timeline, then extend independent reproduction and authenticated chain selection.
+Console acquisition is now connected through a separate accepted/rejected view; see [its evidence and remaining boundaries](CONSOLE_STRICT_HISTORY.md). Independent reproduction and authenticated public-chain selection remain open.

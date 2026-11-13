@@ -1,0 +1,46 @@
+{
+  "status": "VERIFIED_LOCAL_HISTORY",
+  "genesisHash": "0xc190afab951bdb9e657448e32761736857d0d76869bc5073b43d6160a8d19ddc",
+  "posting": "0x9587471aff4a1b7941d19bfdc46851704da82cf1",
+  "startHash": "0x365c42d18e082a8b7bc72df3eef26653562861722a41dbb2e9039612ce554233",
+  "blockHash": "0x26a6288a6f935bd923d15366de2e7ef93de5f5c0516dea4dba3f6626a4c1213a",
+  "blockNumber": "0xf",
+  "posts": [
+    {
+      "accountId": "2",
+      "epoch": "1",
+      "nonce": "0",
+      "author": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+      "signer": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "text": "<img src=x onerror=\"window.__postExecuted=true\"> \ud83c\udf12",
+      "textHash": "0xa42242233aad3ee481058d9008958b129b05f524e18722fe838ad972aa33d579",
+      "transactionHash": "0x5a2c7b20f4ff504c4ab4c3b83bd2fccd31fcc38ed7afd523426d537873dddb8d",
+      "blockHash": "0xdc7545059e703f33846a58eec85678486a6ea1049c2380e10e14f2850e89d292",
+      "blockNumber": "0xc"
+    },
+    {
+      "accountId": "2",
+      "epoch": "2",
+      "nonce": "1",
+      "author": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+      "signer": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+      "text": "\ufeffwords. proof. community. \u65b0\u3057\u3044\u6301\u3061\u4e3b\u306e\u58f0 \ud83c\udf12",
+      "textHash": "0x3667b9b68d1cb2ae05578a1b27867484539eb968abf73c30bff806eb0387c311",
+      "transactionHash": "0x479f2dea7287328c4fcb90c544a4b77ef16e85f5278433a5ddd927c73f88aefb",
+      "blockHash": "0x0a2cbbb7ad68ade0752ffe1d50ef60f7a3b7b01438cb8f7ebb9b3099d05e09b4",
+      "blockNumber": "0xe"
+    }
+  ],
+  "blocks": 4,
+  "transactionAndReceiptCommitmentsVerified": true,
+  "signaturesVerified": true,
+  "parentOwnershipProofsVerified": true,
+  "postNonceComplete": true,
+  "selectedEndpointsTrusted": true,
+  "publicChainAuthenticated": false,
+  "consensusVerified": false,
+  "executionReplayed": false,
+  "verificationLocation": "local-console-server",
+  "acquisitionRequests": 31,
+  "scope": "Selected local history; not public-chain consensus or finality. Fixture controller and code/layout selections remain trusted."
+}
