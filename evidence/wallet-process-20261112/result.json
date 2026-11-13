@@ -1,0 +1,42 @@
+{
+  "kills": [
+    {
+      "point": "chunk",
+      "signal": "SIGKILL",
+      "restartedFields": 34,
+      "replacementAccepted": true
+    },
+    {
+      "point": "staged",
+      "signal": "SIGKILL",
+      "restartedFields": 34,
+      "replacementAccepted": true
+    },
+    {
+      "point": "verified",
+      "signal": "SIGKILL",
+      "restartedFields": 34,
+      "replacementAccepted": true
+    },
+    {
+      "point": "renamed",
+      "signal": "SIGKILL",
+      "restartedFields": 34,
+      "replacementAccepted": true
+    },
+    {
+      "point": "directory-synced",
+      "signal": "SIGKILL",
+      "restartedFields": 34,
+      "replacementAccepted": true
+    }
+  ],
+  "failedSourcesRejected": [
+    "/drop",
+    "/bad",
+    "/stall",
+    "/redirect"
+  ],
+  "validReplacementAccepted": true,
+  "limits": "same-host loopback HTTP and real process SIGKILL; no power-loss, remote-peer identity, production storage or multiwriter proof"
+}
