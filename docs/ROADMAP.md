@@ -1,3 +1,9 @@
+## Current application priority — November14, 2026
+
+Current authority is now proof-bound before console action planning. Next bind custody credit/liability and token balance observations to the same selected state. Independent reproduction of the frozen ownership package proceeds separately; do not change its inputs underneath reviewers. [Authority scope and evidence](../evidence/console-authority-proof-20261114/README.md).
+
+The dated sections below retain historical milestones; later entries supersede earlier next-step descriptions.
+
 ## Current application priority — November 12, 2026
 
 ## Current application step: batched posting history

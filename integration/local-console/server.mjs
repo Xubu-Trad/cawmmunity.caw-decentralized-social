@@ -1,3 +1,4 @@
+import {verifyConsoleAuthority,AUTHORITY_SLOTS} from './verify-console-authority.mjs';
 import {acquireVerifiedPosts} from './strict-console-acquisition.mjs';
 import http from 'node:http';import fs from 'node:fs/promises';import path from 'node:path';import {fileURLToPath} from 'node:url';import {Interface,keccak256,getAddress} from 'ethers';
 import {postText,POST_PROFILE} from './ui/post-plan.mjs';
@@ -28,7 +29,14 @@ export function createConsole(config){
   const ownerAddress=addr(owner),ownerCode=await rpc('eth_getCode',[ownerAddress,at]);
   const ownerType=ownerAddress===contracts.wallet?'fixture-wallet':ownerCode==='0x'&&BigInt(ownerAddress)>0xffffn?'eoa':'unsupported';
   const [ownerBalance]=await call('token',tokenABI,'balanceOf',[ownerAddress]);
-  return {status:'LOCAL_CHAIN_RESEARCH',genesisHash,chainId:'0x7a69',blockNumber:block.number,blockHash:block.hash,contracts,controller,owner:ownerAddress,ownerType,signer:ownerType==='fixture-wallet'?controller:ownerType==='eoa'?ownerAddress:null,epoch:String(epoch),credit:String(credit),balances:{wallet:String(walletBalance),owner:String(ownerBalance),custody:String(custodyBalance)},posting:{nonce:String(postNonce),profile:POST_PROFILE},publicChainAuthenticated:false};
+  const authorityProofs={
+   registry:await rpc('eth_getProof',[contracts.registry,[AUTHORITY_SLOTS.owner,AUTHORITY_SLOTS.epoch],at]),
+   posting:await rpc('eth_getProof',[contracts.posting,[AUTHORITY_SLOTS.nonce],at]),
+   owner:await rpc('eth_getProof',[ownerAddress,[],at])
+  };
+  const authority=verifyConsoleAuthority(block,authorityProofs,config,{owner:ownerAddress,epoch:String(epoch),nonce:String(postNonce)});
+  if((await rpc('eth_getBlockByNumber',[block.number,false]))?.hash!==block.hash)throw Error('AUTHORITY_REORG');
+  return {...authority,status:'LOCAL_CHAIN_RESEARCH',genesisHash,chainId:'0x7a69',blockNumber:block.number,blockHash:block.hash,contracts,controller,owner:ownerAddress,ownerType,signer:ownerType==='fixture-wallet'?controller:ownerType==='eoa'?ownerAddress:null,epoch:String(epoch),credit:String(credit),balances:{wallet:String(walletBalance),owner:String(ownerBalance),custody:String(custodyBalance)},posting:{nonce:String(postNonce),profile:POST_PROFILE},publicChainAuthenticated:false};
  }
  function actionPlan(state,target,data){if(!state.signer)throw Error('UNSUPPORTED_ACCOUNT_OWNER');return {chainId:state.chainId,from:state.signer,to:state.ownerType==='fixture-wallet'?contracts.wallet:target,data:state.ownerType==='fixture-wallet'?walletABI.encodeFunctionData('execute',[target,data]):data,value:'0x0',epoch:state.epoch,blockHash:state.blockHash,blockNumber:state.blockNumber,genesisHash};}
  async function plan(amount){if(typeof amount!=='string'||! /^[1-9][0-9]{0,77}$/.test(amount)||BigInt(amount)>2n**256n-1n)throw Error('INVALID_AMOUNT');const state=await snapshot();if(BigInt(amount)>BigInt(state.credit))throw Error('INSUFFICIENT_CREDIT');return {...actionPlan(state,contracts.custody,custodyABI.encodeFunctionData('withdraw',[2,BigInt(state.epoch),BigInt(amount)])),amount};}

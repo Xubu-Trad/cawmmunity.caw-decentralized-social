@@ -61,6 +61,8 @@ Updated November 13, 2026. **Unfinished research; no production-ready network an
 
 **Ownership reproduction package — November 14:** A pinned launcher now installs fresh locked dependencies and runs the complete experimental console ownership flow in a new directory. Our fresh run passed10 console checks and6 safe-transfer controls; all64 selected inputs remained unchanged. Seven pre-execution controls also pass. This is same-operator evidence; independent reproduction remains pending. [Run and report instructions](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/docs/CONSOLE_OWNERSHIP_REPRODUCTION.md).
 
+**Proof-backed action planning — November 14:** The console now checks current ownership, epoch and posting nonce against state proofs before preparing actions. Fresh before/after-transfer execution and12 verifier controls pass; existing acquisition, interruption and plan regressions pass. Second-engine replay matches13transactions/state roots. Custody credit and token balance observations are not yet proof-bound by this change. [Scope and evidence](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/evidence/console-authority-proof-20261114/README.md). The earlier reproduction package remains frozen for independent review.
+
 | Area | What is demonstrated | What remains open |
 | --- | --- | --- |
 | Local application | Real signed local posts, account handoff and new-owner withdrawals; posts retain historical authors | Paid posting integration, public registration and actual wallet-extension compatibility |
