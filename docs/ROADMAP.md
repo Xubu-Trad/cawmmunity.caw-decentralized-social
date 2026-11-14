@@ -675,3 +675,8 @@ Separate proof-backed owner/post verifier now reconstructs a wallet-to-EOA hando
 ## Console ownership proof acquisition — November 13
 
 The previous owner/post integration gate is now implemented: the console fetches recipient and final ownership/nonce proofs and routes supported mixed blocks through the ownership-aware verifier. Six targeted suites pass, including15 new HTTP acquisition/recovery checks. Existing separate transfer/withdrawal histories remain supported within their previous verification boundary. Next: fresh isolated execution through this integrated acquisition path, then independent pinned reproduction. Public-chain, arbitrary wallet and full economics gates remain open. [Reproduction](../evidence/owner-acquisition-20261113/README.md).
+
+
+## Fresh integrated console run — November 13
+
+Completed the prior fresh-execution gate: isolated Geth mined a same-block owner transfer/post; the console fetched and verified its proofs twice with identical results. Second-engine execution matched13transactions/15state roots. Independent reproduction remains pending. Next supported lifecycle extensions must preserve custody and verification boundaries. [Evidence](../evidence/owner-console-live-20261113/README.md).

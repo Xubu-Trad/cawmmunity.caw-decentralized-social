@@ -1,0 +1,35 @@
+{
+  "head": "60d5255314f982f77f9352075d046515ca36d0bc",
+  "submittedRegressions": 26,
+  "additionalTypeControls": [
+    {
+      "side": "retained",
+      "type": "string",
+      "exit": 1,
+      "verdict": "FAIL",
+      "diagnostic": "retained: invalid receipt response envelope"
+    },
+    {
+      "side": "retained",
+      "type": "array",
+      "exit": 1,
+      "verdict": "FAIL",
+      "diagnostic": "retained: invalid receipt response envelope"
+    },
+    {
+      "side": "independent",
+      "type": "string",
+      "exit": 1,
+      "verdict": "FAIL",
+      "diagnostic": "independent: invalid receipt response envelope"
+    },
+    {
+      "side": "independent",
+      "type": "array",
+      "exit": 1,
+      "verdict": "FAIL",
+      "diagnostic": "independent: invalid receipt response envelope"
+    }
+  ],
+  "freshEVM": false
+}
