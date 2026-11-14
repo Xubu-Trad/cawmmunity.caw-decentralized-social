@@ -1,0 +1,15 @@
+{
+  "head": "11ed7a9bb2031affb6017dd9b554a3d6aa7d443d",
+  "files": {
+    "README.md": "1f352c9b8153775021334cb217ea9c1c141de2bd0e1dd5e669c467f684720ffd",
+    "package.json": "da440facf2e6cc22a73ce214d4f84e92081d07bac44e25b97ebdf5cb0a118d85",
+    "tests/model.test.mjs": "7e86da2b19b053a88b1de8c9261927a30a1195fe6c720de58180d3dbe0b31c39",
+    "public/model.mjs": "2fcbb07708ba6db03a44bdb0e432a5aec9988f308147511714a7e276e1d65452",
+    "public/economics.mjs": "318b63b2a24bbdaa3108e82df07a976463d4a17b3bb6d176b4b0551cbd9feef3",
+    "reference/keccak256.mjs": "6ed8268eb811eddb3345ebb47e824346c00585d6bed2ec3767e1783d31615edf",
+    "tests/fixtures/c004-cross-profile.json": "b4c77e062b55803058c33c7eea1f0a3a0c0c2f773f8adca5cac26e7ce448109f",
+    "docs/C004_CROSS_PROFILE_ACCEPTANCE.md": "40ed4398e3a09460643200fdcc533d6c074ed0751a3dd5d16c2a61df52c8b3c5",
+    "experiments/paid-action/CawPaidActionProbe.sol": "e48f8f8f816aae21e0e9865a8be0aa2e47204ea04b4c12b4124e5b0452412da1",
+    "public/fixtures.json": "6e17097a648845fa1d867163ffcd71668eeebf6846d7c859773648ffb474dfa7"
+  }
+}

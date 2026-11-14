@@ -1,0 +1,215 @@
+{
+  "status": "pass",
+  "scope": "Unpaid local registry-owner posting. Real signed transactions for three successful posts; constructor/authorization/replay/invalid-text cases are read-only eth_call controls with exact revert reasons and unchanged selected state. No public deployment, wallet-extension, paid settlement, independent-client reproduction or production proof.",
+  "artifactSha256": "70495420088374afa554234684862a926c245106cbc1f1f72b0c2335c5361e94",
+  "genesisHash": "0xc190afab951bdb9e657448e32761736857d0d76869bc5073b43d6160a8d19ddc",
+  "cases": [
+    {
+      "name": "selected local chain, complete instantiated runtime and registry binding agree",
+      "pass": true
+    },
+    {
+      "name": "constructor rejects zero registry",
+      "pass": true,
+      "reason": "REGISTRY",
+      "kind": "eth_call_negative_control",
+      "blockHash": "0xf119a0553395847db18e311f767c95c002be6fbfa2d255e8cdbe19b5480d34fc"
+    },
+    {
+      "name": "constructor rejects plain account registry",
+      "pass": true,
+      "reason": "REGISTRY",
+      "kind": "eth_call_negative_control",
+      "blockHash": "0xf119a0553395847db18e311f767c95c002be6fbfa2d255e8cdbe19b5480d34fc"
+    },
+    {
+      "name": "constructor rejects incorrect registry hash",
+      "pass": true,
+      "reason": "REGISTRY_CODE",
+      "kind": "eth_call_negative_control",
+      "blockHash": "0xf119a0553395847db18e311f767c95c002be6fbfa2d255e8cdbe19b5480d34fc"
+    },
+    {
+      "name": "controller cannot bypass current contract-wallet ownership",
+      "pass": true,
+      "reason": "OWNER",
+      "kind": "eth_call_negative_control",
+      "blockHash": "0xf119a0553395847db18e311f767c95c002be6fbfa2d255e8cdbe19b5480d34fc"
+    },
+    {
+      "name": "outsider cannot invoke fixture wallet",
+      "pass": true,
+      "reason": "CONTROLLER",
+      "kind": "eth_call_negative_control",
+      "blockHash": "0xf119a0553395847db18e311f767c95c002be6fbfa2d255e8cdbe19b5480d34fc"
+    },
+    {
+      "name": "unsupported account rejects",
+      "pass": true,
+      "reason": "ACCOUNT",
+      "kind": "eth_call_negative_control",
+      "blockHash": "0xf119a0553395847db18e311f767c95c002be6fbfa2d255e8cdbe19b5480d34fc"
+    },
+    {
+      "name": "stale ownership epoch rejects",
+      "pass": true,
+      "reason": "EPOCH",
+      "kind": "eth_call_negative_control",
+      "blockHash": "0xf119a0553395847db18e311f767c95c002be6fbfa2d255e8cdbe19b5480d34fc"
+    },
+    {
+      "name": "future post nonce rejects",
+      "pass": true,
+      "reason": "NONCE",
+      "kind": "eth_call_negative_control",
+      "blockHash": "0xf119a0553395847db18e311f767c95c002be6fbfa2d255e8cdbe19b5480d34fc"
+    },
+    {
+      "name": "text rejects empty",
+      "pass": true,
+      "reason": "TEXT_LENGTH",
+      "kind": "eth_call_negative_control",
+      "blockHash": "0xf119a0553395847db18e311f767c95c002be6fbfa2d255e8cdbe19b5480d34fc"
+    },
+    {
+      "name": "text rejects 421 scalars",
+      "pass": true,
+      "reason": "TEXT_LENGTH",
+      "kind": "eth_call_negative_control",
+      "blockHash": "0xf119a0553395847db18e311f767c95c002be6fbfa2d255e8cdbe19b5480d34fc"
+    },
+    {
+      "name": "text rejects 1681 bytes",
+      "pass": true,
+      "reason": "TEXT_LENGTH",
+      "kind": "eth_call_negative_control",
+      "blockHash": "0xf119a0553395847db18e311f767c95c002be6fbfa2d255e8cdbe19b5480d34fc"
+    },
+    {
+      "name": "text rejects overlong",
+      "pass": true,
+      "reason": "UTF8",
+      "kind": "eth_call_negative_control",
+      "blockHash": "0xf119a0553395847db18e311f767c95c002be6fbfa2d255e8cdbe19b5480d34fc"
+    },
+    {
+      "name": "text rejects isolated continuation",
+      "pass": true,
+      "reason": "UTF8",
+      "kind": "eth_call_negative_control",
+      "blockHash": "0xf119a0553395847db18e311f767c95c002be6fbfa2d255e8cdbe19b5480d34fc"
+    },
+    {
+      "name": "text rejects truncated",
+      "pass": true,
+      "reason": "UTF8",
+      "kind": "eth_call_negative_control",
+      "blockHash": "0xf119a0553395847db18e311f767c95c002be6fbfa2d255e8cdbe19b5480d34fc"
+    },
+    {
+      "name": "text rejects surrogate",
+      "pass": true,
+      "reason": "UTF8",
+      "kind": "eth_call_negative_control",
+      "blockHash": "0xf119a0553395847db18e311f767c95c002be6fbfa2d255e8cdbe19b5480d34fc"
+    },
+    {
+      "name": "text rejects above Unicode maximum",
+      "pass": true,
+      "reason": "UTF8",
+      "kind": "eth_call_negative_control",
+      "blockHash": "0xf119a0553395847db18e311f767c95c002be6fbfa2d255e8cdbe19b5480d34fc"
+    },
+    {
+      "name": "text rejects bad continuation",
+      "pass": true,
+      "reason": "UTF8",
+      "kind": "eth_call_negative_control",
+      "blockHash": "0xf119a0553395847db18e311f767c95c002be6fbfa2d255e8cdbe19b5480d34fc"
+    },
+    {
+      "name": "signed Unicode post publishes exact bytes without changing custody",
+      "pass": true,
+      "kind": "signed_local_transaction",
+      "transactionHash": "0x35a68767d8a0c5554552b25286223d52c5b0b67916d5683d3c64d09395e9523b",
+      "textBytes": 29
+    },
+    {
+      "name": "replaying the consumed post nonce rejects",
+      "pass": true,
+      "reason": "NONCE",
+      "kind": "eth_call_negative_control",
+      "blockHash": "0x2d7c3b55920dc6d53bbd3a91e873e18958123f9b60325de515a107c7c1241142"
+    },
+    {
+      "name": "420 scalar boundary publishes",
+      "pass": true,
+      "kind": "signed_local_transaction",
+      "transactionHash": "0xbd813c17ab16f09b087e9bdb6485b33f7b531f050ce3ca2501e8d50a135d7a72",
+      "textBytes": 420
+    },
+    {
+      "name": "1680 byte boundary publishes",
+      "pass": true,
+      "kind": "signed_local_transaction",
+      "transactionHash": "0xb82a4f1222c1e072260ca13d0503d8add61316bd70e7d9135c30bb9cdf33e322",
+      "textBytes": 1680
+    }
+  ],
+  "transactions": [
+    {
+      "hash": "0x35a68767d8a0c5554552b25286223d52c5b0b67916d5683d3c64d09395e9523b",
+      "blockHash": "0x2d7c3b55920dc6d53bbd3a91e873e18958123f9b60325de515a107c7c1241142",
+      "blockNumber": 14,
+      "nonce": "9",
+      "postNonce": "0",
+      "textBytes": 29,
+      "textHash": "0x894dcad35e30b0991ffcc6217a3129534592ea235e695df8c315b7d4915f8dd6",
+      "status": 1
+    },
+    {
+      "hash": "0xbd813c17ab16f09b087e9bdb6485b33f7b531f050ce3ca2501e8d50a135d7a72",
+      "blockHash": "0x5b27511298e9b2a8eec575a35d4b36f74396237172cfb02e063e113dc05aff7d",
+      "blockNumber": 15,
+      "nonce": "10",
+      "postNonce": "1",
+      "textBytes": 420,
+      "textHash": "0xb739d71e8eb8ad0107559123a16adc78c0f93552ac79ae153d1f58409b2bcbc3",
+      "status": 1
+    },
+    {
+      "hash": "0xb82a4f1222c1e072260ca13d0503d8add61316bd70e7d9135c30bb9cdf33e322",
+      "blockHash": "0x64143c17aa044410b43aebc97cd9b8aa1b1ec00e67d06e9474a466bffa97e0c8",
+      "blockNumber": 16,
+      "nonce": "11",
+      "postNonce": "2",
+      "textBytes": 1680,
+      "textHash": "0x9823a61645d0e04f77d88d750a056aa4f4906f2b0cfaa23b0b1635e728885083",
+      "status": 1
+    }
+  ],
+  "initial": {
+    "blockHash": "0xf119a0553395847db18e311f767c95c002be6fbfa2d255e8cdbe19b5480d34fc",
+    "blockNumber": "0xd",
+    "owner": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+    "epoch": "1",
+    "nonce": "0",
+    "credit": "2",
+    "balances": {
+      "wallet": "0",
+      "custody": "10"
+    }
+  },
+  "final": {
+    "blockHash": "0x64143c17aa044410b43aebc97cd9b8aa1b1ec00e67d06e9474a466bffa97e0c8",
+    "blockNumber": "0x10",
+    "owner": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+    "epoch": "1",
+    "nonce": "3",
+    "credit": "2",
+    "balances": {
+      "wallet": "0",
+      "custody": "10"
+    }
+  }
+}

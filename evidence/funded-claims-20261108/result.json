@@ -1,0 +1,79 @@
+{
+  "status": "LOCAL_FUNDED_ACCOUNT_CREDITS_ONLY",
+  "claimRejections": [
+    "unfunded nonce",
+    "payer cannot claim",
+    "wrong leaf weight",
+    "changed recipient proof",
+    "changed payer proof",
+    "short proof",
+    "duplicate positive claim",
+    "duplicate zero claim"
+  ],
+  "claims": [
+    [
+      0,
+      2,
+      1
+    ],
+    [
+      0,
+      4,
+      0
+    ],
+    [
+      0,
+      3,
+      4
+    ],
+    [
+      1,
+      3,
+      4
+    ],
+    [
+      1,
+      4,
+      0
+    ],
+    [
+      1,
+      2,
+      1
+    ]
+  ],
+  "finalCredits": [
+    "2",
+    "8",
+    "0"
+  ],
+  "remainingBudgets": [
+    "0",
+    "0"
+  ],
+  "creditedLiability": "10",
+  "localTransactions": 29,
+  "successfulAdmissions": 2,
+  "rejected": [
+    "no allowance",
+    "insufficient allowance",
+    "duplicate nonce",
+    "false after token mutation",
+    "unauthorized caller",
+    "insufficient payer balance"
+  ],
+  "final": {
+    "payer": "1",
+    "vault": "10",
+    "allowance": "90",
+    "nonce": "2",
+    "liability": "10",
+    "nextBudget": "0"
+  },
+  "outsiderMockBalance": "89",
+  "recordIds": [
+    "0xcedf0c4ec390b35f260a551dbc28f38ccd48cf1376104437f719f8a8040987b9",
+    "0xd7d95b74946f449dcfa16f9593b7ad1fc25be38e33573713d1ad72d3f3cd2f6a"
+  ],
+  "limits": "Fixed constructor snapshot, account credits only, no withdrawals/NFT/root authority or actual CAW. Proposed order-sensitive prefix allocation remains unadopted; local EVM only."
+}

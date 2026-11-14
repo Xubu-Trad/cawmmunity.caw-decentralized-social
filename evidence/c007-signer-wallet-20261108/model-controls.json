@@ -1,0 +1,11 @@
+{
+  "matchedCapturedLifecycleFinal": true,
+  "negatives": [
+    "forward_from_wrong_controller",
+    "unexpected_forward_target",
+    "noncanonical_forward_offset",
+    "truncated_forward",
+    "wrong_application_signer"
+  ],
+  "boundary": "Semantic model mutations only; edited rows are not cryptographically valid histories."
+}

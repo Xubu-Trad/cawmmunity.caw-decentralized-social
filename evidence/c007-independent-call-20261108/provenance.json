@@ -1,0 +1,28 @@
+{
+  "parent": "00eaf34f1385c77f610b6aa4e8df64de5992b4c5",
+  "transform": "verified call inputs executed in independent EVM/state manager",
+  "inputs": {
+    "acquired-history.json": "d4524317e9de7ef8e0a362b6d2a444a6d7ba5618703405658e8bfb83ce980cfe",
+    "compiler-output.json": "f081e763071faa83f19e92015a8fc872a542ddca152e9d8fbca88f9f78c82458"
+  },
+  "executionRecordSha256": "a20fc92f36f9a02b4a5bfdfb3f904011aaf298871106fbc177595095b7498bbd",
+  "files": {
+    "experiments/c007-constructor/reexecute-lifecycle.mjs": {
+      "sha256": "f8599aa8bfbe11030088529d07442af0f246836ee167dec7966e6d9162d1b4dc",
+      "size": 7354
+    },
+    "evidence/c007-independent-call-20261108/result.json": {
+      "sha256": "753020fcd69b947282367fee65a0efbc98fb171a357964500af721f92dcf6a9b",
+      "size": 3294
+    },
+    "docs/INDEPENDENT_CALL_LIFECYCLE.md": {
+      "sha256": "2baf93931f5596ddc65de329442525dadc04a3e399387918bdecd6afa0ccc018",
+      "size": 4107
+    },
+    "docs/ZERO_STORAGE_REFERENCE_COMPARISON.md": {
+      "sha256": "57be3d4dbcc7373def16066871aaa2d23b3eca5c55df41ed597770d4ee2caf99",
+      "size": 4433
+    }
+  },
+  "fullEthereumTransactionReplay": false
+}

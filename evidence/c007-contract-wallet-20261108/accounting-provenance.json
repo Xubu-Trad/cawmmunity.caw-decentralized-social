@@ -1,0 +1,29 @@
+{
+  "parent": "64017b2013d17a3f01fdc8be0c220256d8f1a253",
+  "files": {
+    "experiments/c007-contract-wallet/reconstruct-accounting.mjs": {
+      "sha256": "a8e315b1c28c6b7030f8bbfe580afb4a94bd84c2070692c71fd9ff57d5fc9ca2",
+      "bytes": 11809
+    },
+    "experiments/c007-contract-wallet/reexecute-transactions.mjs": {
+      "sha256": "81a81c4c226a7ef00fc389b5f3c1e5fd06d2b46d273b883b85e22650f8aeae3a",
+      "bytes": 10235
+    },
+    "experiments/c007-contract-wallet/check-model.mjs": {
+      "sha256": "fce5b359ffa1fa4cf851194ba647a8b3b3164c335ba2d98c6142b5f7add89384",
+      "bytes": 2710
+    },
+    "evidence/c007-contract-wallet-20261108/transaction-replay-summary.json": {
+      "sha256": "3e5303829549690c2b0d58dbcea72f789007c82cb336ec12e8a93c4cfa3edc04",
+      "bytes": 4305
+    },
+    "evidence/c007-contract-wallet-20261108/model-controls.json": {
+      "sha256": "4bbc0a3573e9c5323a15d7cf079e55cf9785d7f7b2beef2b0f601e16677399a2",
+      "bytes": 445
+    },
+    "docs/CONTRACT_WALLET_ADAPTER_REVIEW.md": {
+      "sha256": "49822b75a007d82b14c6c67f28b09507454bf8018e39984266f727df0b365c63",
+      "bytes": 10357
+    }
+  }
+}

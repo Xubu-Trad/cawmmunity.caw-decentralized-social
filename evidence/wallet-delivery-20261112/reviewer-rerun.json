@@ -1,0 +1,9 @@
+{
+  "B7": "AUTHORITY_CHANGED; checked state and callback counter restored",
+  "B8": "epoch1 rejected after return at epoch3; epoch3 succeeded",
+  "walletBalance": 2,
+  "custodyBalance": 8,
+  "unpaidLiability": 8,
+  "SolidityChanged": false,
+  "scope": "fresh local synthetic EthereumJS executions; not new canonical or second-engine validation"
+}

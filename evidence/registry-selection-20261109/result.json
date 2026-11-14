@@ -1,0 +1,14 @@
+{
+  "status": "PINNED_LOCAL_REGISTRY_SELECTION",
+  "accepted": {
+    "address": "0x19A827174F66B3c66ad7063951D7b4F94f996e77",
+    "runtimeHash": "0x67e6e2c2f397be061dbe01c2e15021c88baff77314bf164e17e6350ed8419d76",
+    "transactionHash": "0x07afc316a9616a5a2dbc695400cacf44ad6f177d29e97dd084ab0938e97cef7f"
+  },
+  "controls": [
+    "hash label",
+    "failure label",
+    "different signed deployment"
+  ],
+  "limits": "Manifest is explicitly selected local research configuration, not externally approved authority. Receipt status is supplied observation, not authenticated inclusion. Runtime hash is compiled expectation, not a live code proof. Does not certify registry policy, current state, dependencies or production deployment."
+}

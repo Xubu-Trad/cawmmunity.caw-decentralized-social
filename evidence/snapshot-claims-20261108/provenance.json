@@ -1,0 +1,22 @@
+{
+  "parent": "353b6615bf2ba3986c303cae7ad6a128c2f8057b",
+  "transform": "offline snapshot-bound claim-state checks",
+  "files": {
+    "integration/core-baseline-v1/c007-snapshot-claims.py": {
+      "sha256": "e783dc35d99ee6c7fab35fd596dc3e05376fe95a40768423d1f82f358de623bb",
+      "size": 5917
+    },
+    "docs/C007_SNAPSHOT_CLAIMS_RESEARCH.md": {
+      "sha256": "d72e5a7338e0afc12198ef06b87987eb4edf3ce597b186413e9f16e3a8de7a86",
+      "size": 4059
+    },
+    "evidence/snapshot-claims-20261108/result.json": {
+      "sha256": "f7eeeeb9c1c5a5a4820d63afa074806f702c5ea6586657a3fc64ea01f3c6de36",
+      "size": 1142
+    },
+    "docs/C007_PREFIX_ALLOCATION_RESEARCH.md": {
+      "sha256": "eb24382e72ff6a65b05a7bd6ac83c1291a7e0b94a8a5c5fd6bf20519517d29e6",
+      "size": 5229
+    }
+  }
+}

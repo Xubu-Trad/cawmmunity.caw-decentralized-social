@@ -1,0 +1,22 @@
+{
+  "parent": "fd93db5bbdb126aeb223e04f4163ef19459b12f0",
+  "transform": "contract-owned call lifecycle with state rollback assertions",
+  "files": {
+    "experiments/c007-contract-wallet/LifecycleWalletFixture.sol": {
+      "sha256": "6b9e80f8ab89b657fc6798cc586178a975bb794b203139c526b649b8754b23be",
+      "bytes": 926
+    },
+    "experiments/c007-contract-wallet/run-wallet-lifecycle.mjs": {
+      "sha256": "121dccd81efb976260570dc0a980667956342607c48349f26316353a6d574e43",
+      "bytes": 11333
+    },
+    "evidence/c007-contract-wallet-20261108/wallet-lifecycle.json": {
+      "sha256": "3e29a4d5e201a5e96a8eb756bc68ba8a741d19fcd2ec33b66b94442bd94959bf",
+      "bytes": 5487
+    },
+    "docs/CONTRACT_WALLET_ADAPTER_REVIEW.md": {
+      "sha256": "32899817e51ca725215305076cda00d157caeb2ee50f258b144f22cba9721ec7",
+      "bytes": 5281
+    }
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "schema": "caw-peer-receiver-restart/1",
+  "parentCommit": "1668b964689b7af42bb0b799511cd6d8298b18d7",
+  "oneVariable": "SIGKILL and restart receiver after two failed sources, before third peer",
+  "recovery": {
+    "sourceClient": "Geth",
+    "replacementPeerDifferentIdentity": true,
+    "destinationRestarted": true,
+    "receiverKilledAfterTwoCuts": true,
+    "receiverIdentityPreserved": true,
+    "thirdPeerUsed": true,
+    "firstReplacementStillStopped": true,
+    "distinctSourceIdentities": 3,
+    "transportCuts": 2,
+    "cutRecord": [
+      {
+        "peer": "original",
+        "cut": [
+          {
+            "direction": "source-to-destination",
+            "receivedBytes": 432,
+            "forwardedBytes": 1,
+            "discardedBytes": 431,
+            "streamOffsetBeforeChunk": 834
+          }
+        ],
+        "targetAbsentAfterCut": true,
+        "statusesWithoutPeer": [
+          "SYNCING",
+          "SYNCING",
+          "SYNCING"
+        ],
+        "destinationHead": "0x0"
+      },
+      {
+        "peer": "replacement",
+        "cut": [
+          {
+            "direction": "source-to-destination",
+            "receivedBytes": 432,
+            "forwardedBytes": 74,
+            "discardedBytes": 358,
+            "streamOffsetBeforeChunk": 760
+          }
+        ],
+        "targetAbsentAfterCut": true,
+        "statusesWithoutPeer": [
+          "SYNCING",
+          "SYNCING",
+          "SYNCING"
+        ],
+        "destinationHead": "0x0"
+      }
+    ],
+    "interruptedAtBlock": null,
+    "originalSourceStillStopped": true,
+    "destinationClient": "Reth2.10.1",
+    "initialBlock": "0x0",
+    "matchingHeaders": 29,
+    "peerCount": "0x1",
+    "forkchoiceStatuses": [
+      "SYNCING",
+      "VALID"
+    ],
+    "destinationFileImportUsed": false,
+    "sourceInitializedFromPublicRlp": true,
+    "targetHashExternallySelected": true,
+    "consensusFinalityVerified": false
+  },
+  "proof": {
+    "fields": 16,
+    "headerHash": "0xb9fe1c52df006a50dae9230ef0ea8c55be471f05f910899032abfed6d1dee763",
+    "stateRoot": "0x0e5c8a09a836801852924770722afd33969ed8d0f323a4011ac2a9b30d578552",
+    "headerBindingVerified": true,
+    "clearedApprovalAbsent": true,
+    "controls": [
+      "header root",
+      "header hash",
+      "wrong value",
+      "missing proof",
+      "altered node"
+    ],
+    "chainAuthenticated": false,
+    "finalityVerified": false
+  },
+  "service": {
+    "allStopped": true,
+    "seconds": 10.018752057
+  },
+  "limitations": [
+    "same host and operator",
+    "receiver had genesis only at kill; not interruption during database write",
+    "manually allowlisted third peer",
+    "synthetic chain and external head selection; no public finality"
+  ]
+}

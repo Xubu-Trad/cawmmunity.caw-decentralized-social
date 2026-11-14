@@ -1,0 +1,22 @@
+{
+  "status": "NOT_RUN_DISK_GUARD",
+  "parent": "929113f5b3237ebadd4eef23a26963ca8f196936",
+  "specCommit": "b5c3b619887c7850a8c1d3540b471092be73ad84",
+  "specSha256": "95519084a4689b0bbbbaa9db9fb1d6e48d6c7be83a8dd21bc82a83cf96a6254a",
+  "testsPassed": null,
+  "productionAccepted": false,
+  "files": {
+    "experiments/signing-domain/signing-domain.mjs": {
+      "sha256": "a490b63381fb806d184ffd1c85bdeff007571d4994880784d3bf1135e1c4bd85",
+      "size": 1222
+    },
+    "experiments/signing-domain/test-signing-domain.mjs": {
+      "sha256": "d517f190bba396ad8f5302fbddcf0f83a7d94227d715255dc9704e8f73d4fabe",
+      "size": 1228
+    },
+    "docs/SIGNING_DOMAIN_RESEARCH.md": {
+      "sha256": "68acda69702c946bb6e02c1abe2f54884b3fd1b3689e8941dbe2d0228d74cfad",
+      "size": 2008
+    }
+  }
+}

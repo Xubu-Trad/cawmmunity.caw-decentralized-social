@@ -1,0 +1,21 @@
+INFO [11-12|22:25:52.171] Maximum peer count                       ETH=50 total=50
+INFO [11-12|22:25:52.173] Smartcard socket not found, disabling    err="stat /run/pcscd/pcscd.comm: no such file or directory"
+WARN [11-12|22:25:52.176] Sanitizing cache to Go's GC limits       source=system provided=4096 updated=1266
+INFO [11-12|22:25:52.178] Set global gas cap                       cap=50,000,000
+INFO [11-12|22:25:52.178] Engine API maximum reorg depth           depth=32
+INFO [11-12|22:25:52.178] Initializing the KZG library             backend=gokzg
+INFO [11-12|22:25:52.181] Defaulting to pebble as the backing database
+INFO [11-12|22:25:52.181] Allocated cache and file handles         database=<LOCAL_PATH> cache=633.00MiB handles=524,288 version=v2
+INFO [11-12|22:25:52.272] Opened ancient database                  database=<LOCAL_PATH> readonly=false
+INFO [11-12|22:25:52.272] Opened Era store                         datadir=<LOCAL_PATH>
+INFO [11-12|22:25:52.272] State schema set to default              scheme=path
+INFO [11-12|22:25:52.272] Load database journal from disk
+WARN [11-12|22:25:52.272] Head block is not reachable
+INFO [11-12|22:25:52.306] Opened ancient database                  database=<LOCAL_PATH> readonly=false
+INFO [11-12|22:25:52.306] State snapshot generator is not found
+INFO [11-12|22:25:52.306] Starting snapshot generation             root=56e81f..63b421 accounts=0 slots=0 storage=0.00B dangling=0 elapsed="5.695µs"
+INFO [11-12|22:25:52.307] Initialized path database                triecache=16.00MiB statecache=16.00MiB buffer=64.00MiB state-history="last 90000 blocks" journal-dir=<LOCAL_PATH>
+INFO [11-12|22:25:52.307] Writing custom genesis block
+INFO [11-12|22:25:52.307] Resuming snapshot generation             root=56e81f..63b421 accounts=0 slots=0 storage=0.00B dangling=0 elapsed="327.866µs"
+INFO [11-12|22:25:52.307] Generated snapshot                       accounts=0 slots=0 storage=0.00B dangling=0 elapsed="507.609µs"
+INFO [11-12|22:25:52.307] Successfully wrote genesis state         database=chaindata hash=c190af..d19ddc

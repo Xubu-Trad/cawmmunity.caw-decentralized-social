@@ -1,0 +1,26 @@
+[
+  {
+    "name": "stale signer after transfer",
+    "expected": "CURRENT_OWNER_SIGNER"
+  },
+  {
+    "name": "stale epoch after transfer",
+    "expected": "CURRENT_EPOCH"
+  },
+  {
+    "name": "nonzero value",
+    "expected": "ZERO_VALUE"
+  },
+  {
+    "name": "approved delegate unsupported",
+    "expected": "CURRENT_OWNER_SIGNER"
+  },
+  {
+    "name": "extra action",
+    "expected": "SUPPORTED_ACTION_ONLY"
+  },
+  {
+    "name": "reverted transfer",
+    "expected": "SUCCESS_ONLY"
+  }
+]

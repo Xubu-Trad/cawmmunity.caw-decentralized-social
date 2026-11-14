@@ -1,0 +1,81 @@
+{
+  "schema": "caw-contract-wallet-adapter/1",
+  "passed": 16,
+  "results": [
+    {
+      "name": "valid_wallet",
+      "result": "accepted"
+    },
+    {
+      "name": "direct_eoa_entry_rejects_contract",
+      "result": "OWNER_CODE"
+    },
+    {
+      "name": "bad_magic",
+      "result": "WALLET_SIGNATURE"
+    },
+    {
+      "name": "wallet_revert",
+      "result": "WALLET_SIGNATURE"
+    },
+    {
+      "name": "short_return",
+      "result": "WALLET_SIGNATURE"
+    },
+    {
+      "name": "empty_return",
+      "result": "WALLET_SIGNATURE"
+    },
+    {
+      "name": "static_write",
+      "result": "WALLET_SIGNATURE"
+    },
+    {
+      "name": "gas_exhaustion",
+      "result": "WALLET_SIGNATURE"
+    },
+    {
+      "name": "large_return_bounded_copy",
+      "result": "accepted"
+    },
+    {
+      "name": "changed_signature",
+      "result": "WALLET_SIGNATURE"
+    },
+    {
+      "name": "changed_digest",
+      "result": "WALLET_SIGNATURE"
+    },
+    {
+      "name": "stale_epoch",
+      "result": "EPOCH"
+    },
+    {
+      "name": "wrong_root",
+      "result": "ROOT"
+    },
+    {
+      "name": "signature_limit_accepts",
+      "result": "accepted"
+    },
+    {
+      "name": "signature_over_limit",
+      "result": "SIGNATURE_LIMIT"
+    },
+    {
+      "name": "restored_wallet_mode",
+      "result": "accepted"
+    }
+  ],
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "sourceSha256": "d97dd9157a81611630ac876556684f7354f412e35a7a360662aab6ce2984e02c",
+  "profile": {
+    "gas": 100000,
+    "maxSignatureBytes": 4096,
+    "minReturnBytes": 32,
+    "copiedReturnBytes": 32
+  },
+  "stateWritesRejected": true,
+  "scope": "local deployed validation calls; not complete contract-wallet settlement or EIP-7702",
+  "productionWallet": false
+}

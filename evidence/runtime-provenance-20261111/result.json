@@ -1,0 +1,38 @@
+{
+  "signatureVerifiedAgainstInstalledKeyring": true,
+  "signers": [
+    "F6ECB3762474EDA9D21B7022871920D1991BC93C"
+  ],
+  "keyringSha256": "1a4dd63e5c76728960a2edddae22e2e0fc53df8e8b87806deb971030ac704eb0",
+  "releaseSha256": "cdb2f31d809f589719a53c6ad15f255b27569c4059542ada282aaa21b8e164b0",
+  "packagesIndexSha256": "2a6a199e1031a5c279cb346646d594993f35b1c03dd4a82aaa0323980dd92451",
+  "matchesPreservedIndex": true,
+  "packages": [
+    {
+      "name": "libc6",
+      "version": "2.39-0ubuntu8",
+      "sha256": "af36c7ac770770fe3d3c10e85d6bc538e76e57570ba7db7d397fb9f654783ef3",
+      "matchedExtractedRegularFiles": 284
+    },
+    {
+      "name": "libgcc-s1",
+      "version": "14-20240412-0ubuntu1",
+      "sha256": "a39efdcaa2245f026dc3254ce14fcff255fc430a17064632b6ba7c5da974a912",
+      "matchedExtractedRegularFiles": 2
+    },
+    {
+      "name": "libstdc++6",
+      "version": "14-20240412-0ubuntu1",
+      "sha256": "4863e880d6ee538e4734c430c5579c1ac933b88a42c25bc9980d0f148c54b21e",
+      "matchedExtractedRegularFiles": 6
+    }
+  ],
+  "alteredSignedMetadataRejected": true,
+  "scope": "signed repository provenance for three preserved runtime packages and extracted regular-file consistency; not current patch status or source reproducibility",
+  "limitations": [
+    "Installed Ubuntu archive keyring is a trust assumption.",
+    "Base noble release is historical; this is not a security-update assessment.",
+    "Symlinks, all actually loaded libraries, compiler provenance and kernel are not attested.",
+    "Geth/Reth executable provenance remains separate."
+  ]
+}

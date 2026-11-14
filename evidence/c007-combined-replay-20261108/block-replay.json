@@ -1,0 +1,32 @@
+{
+  "schema": "caw-local-block-build-replay/1",
+  "blocks": 26,
+  "syntheticGenesisBaseFee": "1142857142",
+  "timestampPolicy": "max(captured timestamp, parent timestamp + 1)",
+  "timestampChanges": 25,
+  "positiveControlPassed": true,
+  "genesisHash": "0x6c383946adbe554271ffb1f227933d44864ce5f9a1633f3a646843a895903a9f",
+  "genesisStateRoot": "0xd42b8a4e40ac236ec2b29912f0529ba934f23f2c8e8175236fca7a5ccc936db0",
+  "finalHash": "0x3df50b52bfe20bc2d44cf49a457344c775c3e6d4889e6babb7273d4cb030e4b4",
+  "finalStateRoot": "0x439233c611f4f579bed50c3cc3f791bb4007655f093bd4226e43528f04ec192c",
+  "allReceiptsAndTransactionRootsMatchedCapture": true,
+  "allExecutionStateRootsMatchedFreshReplay": true,
+  "priorTransactionReplayFinalRootMatched": true,
+  "nativeAccountsRechecked": 4,
+  "negativeControls": [
+    "wrong_parent",
+    "nonincreasing_timestamp",
+    "wrong_base_fee",
+    "wrong_state_root",
+    "wrong_receipt_root",
+    "missing_transaction",
+    "wrong_gas_used"
+  ],
+  "library": "EthereumJS 10.1.3",
+  "sameLibraryProducerAndConsumer": true,
+  "headerPolicy": "fixed-gas-limit Shanghai local parent/number/timestamp/base-fee checks",
+  "withdrawals": "explicitly empty",
+  "genesisScope": "three synthetic funded accounts; no original Anvil predeploy reconstruction",
+  "consensusAuthenticated": false,
+  "originalAnvilChainRepaired": false
+}

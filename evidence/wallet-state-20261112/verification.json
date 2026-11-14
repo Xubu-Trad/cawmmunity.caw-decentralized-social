@@ -1,0 +1,46 @@
+{
+  "headerHash": "0x6187a3b25fbb94416c39189e3726ebf57d5e79845f0175e7f898103ce8a31306",
+  "results": [
+    {
+      "name": "AdmissionTokenFixture",
+      "fields": 6,
+      "codeHash": "0x88a7aa0f537c8c969378b7ce2bfc7ffd0d054715b7a4c07a6732d96b104cab69",
+      "controls": [
+        "changed runtime",
+        "wrong header",
+        "altered account node",
+        "wrong storage value",
+        "missing storage proof",
+        "wrong selected code hash"
+      ]
+    },
+    {
+      "name": "FundedAdmissionResearch",
+      "fields": 12,
+      "codeHash": "0xa050a3c7f9745e8a4d77e1dfe72bb66f75e94fb628a600b58e1495973cc49d78",
+      "controls": [
+        "changed runtime",
+        "wrong header",
+        "altered account node",
+        "wrong storage value",
+        "missing storage proof",
+        "wrong selected code hash"
+      ]
+    },
+    {
+      "name": "AccountOwnerWalletResearch",
+      "fields": 0,
+      "codeHash": "0xb220f8ed76b2c9f7dad6daae038bbdaa3eff821e96b9e6cd6714654c70702712",
+      "controls": [
+        "changed runtime",
+        "wrong header",
+        "altered account node",
+        "wrong selected code hash"
+      ]
+    }
+  ],
+  "fields": 18,
+  "negativeControls": 16,
+  "chainAuthenticated": false,
+  "finalityVerified": false
+}

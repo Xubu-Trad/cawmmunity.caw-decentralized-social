@@ -1,0 +1,187 @@
+{
+  "status": "RECONSTRUCTED_LOCAL_MOCK_ADMISSIONS",
+  "transactions": 15,
+  "rejected": [
+    "duplicate operation",
+    "missing admission operation",
+    "false success on failed payment",
+    "log on reverted payment",
+    "missing admitted event",
+    "wrong emitter",
+    "changed transaction hash label"
+  ],
+  "trace": [
+    {
+      "index": 0,
+      "transactionHash": "0x5af437cac117305abf7ad760cc0132ee6154f920f2a5cb782b38d6dd07843075",
+      "status": 1,
+      "payerBalance": "100",
+      "vaultBalance": "0",
+      "nonce": "0",
+      "liability": "0",
+      "budgets": 0
+    },
+    {
+      "index": 1,
+      "transactionHash": "0x6f5eb4d3f3687b975d4d27505e8feaf0c3dc52c5c9bfcf9907f8df65ad98fc82",
+      "status": 1,
+      "payerBalance": "100",
+      "vaultBalance": "0",
+      "nonce": "0",
+      "liability": "0",
+      "budgets": 0
+    },
+    {
+      "index": 2,
+      "transactionHash": "0xc19102e2bc638164b2d9cf11722a4cfa30333a6ab01307a218b3a8a3ffe20589",
+      "status": 0,
+      "payerBalance": "100",
+      "vaultBalance": "0",
+      "nonce": "0",
+      "liability": "0",
+      "budgets": 0
+    },
+    {
+      "index": 3,
+      "transactionHash": "0x66a12c9042edd6d1e604dffdb8af6b6b09643ad363b424bdd083a7e09f4aa08e",
+      "status": 1,
+      "payerBalance": "100",
+      "vaultBalance": "0",
+      "nonce": "0",
+      "liability": "0",
+      "budgets": 0
+    },
+    {
+      "index": 4,
+      "transactionHash": "0x5398a0cedac174e3c855d230c8a6315ba2e131aa0a4825b769d8c14cf0415e6a",
+      "status": 0,
+      "payerBalance": "100",
+      "vaultBalance": "0",
+      "nonce": "0",
+      "liability": "0",
+      "budgets": 0
+    },
+    {
+      "index": 5,
+      "transactionHash": "0xef702aa258c9116f3f26f948499ff1f626232f45481bed2a818b9cae7b1a4b58",
+      "status": 1,
+      "payerBalance": "100",
+      "vaultBalance": "0",
+      "nonce": "0",
+      "liability": "0",
+      "budgets": 0
+    },
+    {
+      "index": 6,
+      "transactionHash": "0x8e60d9521283e74a710675ad64642bb4f623c512388256045c20e823d9f2703e",
+      "status": 1,
+      "payerBalance": "95",
+      "vaultBalance": "5",
+      "nonce": "1",
+      "liability": "5",
+      "budgets": 1
+    },
+    {
+      "index": 7,
+      "transactionHash": "0x416a1e27d29a7e3b41ac7015bd2a036a0694bbe032b6b12bc263d8aa13eb028b",
+      "status": 0,
+      "payerBalance": "95",
+      "vaultBalance": "5",
+      "nonce": "1",
+      "liability": "5",
+      "budgets": 1
+    },
+    {
+      "index": 8,
+      "transactionHash": "0xd58c23b9f50c5c57a87a00ee4d0e34a2250ef70a520def83bfbfdfd245770525",
+      "status": 1,
+      "payerBalance": "95",
+      "vaultBalance": "5",
+      "nonce": "1",
+      "liability": "5",
+      "budgets": 1
+    },
+    {
+      "index": 9,
+      "transactionHash": "0xbb9a9d5a9fedc2950eb323f6a892f892630c5545db39d5df503630ed874b2da3",
+      "status": 0,
+      "payerBalance": "95",
+      "vaultBalance": "5",
+      "nonce": "1",
+      "liability": "5",
+      "budgets": 1
+    },
+    {
+      "index": 10,
+      "transactionHash": "0xb9a71fb88192c930915f1d848b6f272e16190be456d3137eafd6934b9287eb3e",
+      "status": 1,
+      "payerBalance": "95",
+      "vaultBalance": "5",
+      "nonce": "1",
+      "liability": "5",
+      "budgets": 1
+    },
+    {
+      "index": 11,
+      "transactionHash": "0x159b2846bb5858cb4b71cfe3414fe942790156feb210c858d839541838d72f2e",
+      "status": 0,
+      "payerBalance": "95",
+      "vaultBalance": "5",
+      "nonce": "1",
+      "liability": "5",
+      "budgets": 1
+    },
+    {
+      "index": 12,
+      "transactionHash": "0xfce77b16e6840479c2004ff5f113ba3c31d89b086b6c16ac9fbd14ab6e68ff0b",
+      "status": 1,
+      "payerBalance": "90",
+      "vaultBalance": "10",
+      "nonce": "2",
+      "liability": "10",
+      "budgets": 2
+    },
+    {
+      "index": 13,
+      "transactionHash": "0x4e5131ba006ee1a1b9139dffa791a0bf80af15537821afcb61634ce0b72aca34",
+      "status": 1,
+      "payerBalance": "1",
+      "vaultBalance": "10",
+      "nonce": "2",
+      "liability": "10",
+      "budgets": 2
+    },
+    {
+      "index": 14,
+      "transactionHash": "0x52a4732e5bbddb195eccdc6c51b323264e46b7f05590b6ffa7ecb91be9e0f277",
+      "status": 0,
+      "payerBalance": "1",
+      "vaultBalance": "10",
+      "nonce": "2",
+      "liability": "10",
+      "budgets": 2
+    }
+  ],
+  "reasons": [
+    "ALLOWANCE",
+    "ALLOWANCE",
+    "NONCE",
+    "TOKEN_FALSE",
+    "PAYER",
+    "FUNDS"
+  ],
+  "budgets": {
+    "0x609b2bbc6bbbb2b093318694a07c307f7aec243fe3bc5fcd63ad8822ce9cbd0b": "5",
+    "0xe17226ddac55a4e0deef7aed50cc7c217bba0b767c039c82a0cb8d1ad423acfd": "5"
+  },
+  "final": {
+    "payer": "1",
+    "vault": "10",
+    "allowance": "90",
+    "nonce": "2",
+    "liability": "10",
+    "nextBudget": "0"
+  },
+  "outsiderMockBalance": "89",
+  "limits": "Separate accounting model and existing signature reader over hash-pinned local observations; no receipt/header authentication, native gas reconstruction, independent EVM replay or actual CAW proof."
+}

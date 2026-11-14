@@ -1,0 +1,22 @@
+{
+  "parent": "0b09d64871a8ed9b9e8787ddddb9dd45c43fbe7e",
+  "transform": "retained historical asset verification; no live RPC",
+  "files": {
+    "experiments/c007-asset-inventory/check-retained-caw.mjs": {
+      "sha256": "14698f571479b858dcaa835e1783c7cb0db12ea62647f5eb3d234df38590d17a",
+      "size": 3575
+    },
+    "evidence/c007-retained-caw-20261108/result.json": {
+      "sha256": "ab96a7ef9fef6e0e96bf792a4a25e1e89756df6ee296d50df16ac5a29449ab4a",
+      "size": 2032
+    },
+    "evidence/c007-retained-caw-20261108/checks.json": {
+      "sha256": "8a064071538e3f9e2a191a332b3e2363f4e9fbf884f78d1e59a34e6e3a36567d",
+      "size": 146
+    },
+    "docs/RETAINED_CAW_ASSET_REVIEW.md": {
+      "sha256": "562ee7ad12a099510da424fb03c833da712587f306321f892a6811c1bd1a5bdb",
+      "size": 3817
+    }
+  }
+}

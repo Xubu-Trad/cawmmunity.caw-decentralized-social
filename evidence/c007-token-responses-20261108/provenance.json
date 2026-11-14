@@ -1,0 +1,33 @@
+{
+  "parent": "2ebc75eecf1339fc6dbdce921ed2c8cd05e7337e",
+  "files": {
+    "experiments/c007-token-responses/DeployedCustodyStakeResearch.sol": {
+      "sha256": "d97dd9157a81611630ac876556684f7354f412e35a7a360662aab6ce2984e02c",
+      "bytes": 17976
+    },
+    "experiments/c007-token-responses/FailureTokenFixture.sol": {
+      "sha256": "06ea3ab0ec96ab0931004d959e87ce87965c2ac71764b60650bba27e192180d0",
+      "bytes": 1652
+    },
+    "experiments/c007-token-responses/run-lifecycle.mjs": {
+      "sha256": "b4d8277d2763ba99d30c95e305f63e2fea7142a5c11c54564f229ad4227445f8",
+      "bytes": 7732
+    },
+    "experiments/c007-token-responses/package.json": {
+      "sha256": "3cd90dea6c442e62e1eb32e83c412a81d5725be928ecf34bf019702c6fc2f192",
+      "bytes": 215
+    },
+    "experiments/c007-token-responses/package-lock.json": {
+      "sha256": "bdb139f0b431b0c820f38fa367443182a19f46107b8fd36f21385f05547972df",
+      "bytes": 14224
+    },
+    "evidence/c007-token-responses-20261108/result.json": {
+      "sha256": "2a0750936764687b20f7a6c5ea85a9dc2c611e54cf8b748ac80a991011117907",
+      "bytes": 3974
+    },
+    "docs/TOKEN_FAILURE_ROLLBACK.md": {
+      "sha256": "77c1ac935d0ed16205c2f3c970fefb11b813e1d404333b51936d305476f6fcad",
+      "bytes": 5026
+    }
+  }
+}

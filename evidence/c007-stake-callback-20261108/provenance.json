@@ -1,0 +1,46 @@
+{
+  "parent": "79438ec2ab8a2481a6203ec357cbc02e43cd5949",
+  "transform": "valid-proof stake callback comparison and normal call lifecycle",
+  "files": {
+    "experiments/c007-stake-callback/Baseline.sol": {
+      "sha256": "70ff7da48218ad97ec5debdd2ef9e9a966aad24a261fbb5fcac81c1bc00d7136",
+      "bytes": 16722
+    },
+    "experiments/c007-stake-callback/DeployedCustodyStakeResearch.sol": {
+      "sha256": "eb58ac82f5812413fde719e09fb5abe2218fa2269597309c7ae4a7eb086e9eaa",
+      "bytes": 16730
+    },
+    "experiments/c007-stake-callback/CallbackToken.sol": {
+      "sha256": "f1c5885e28d14644b6d8fc259534756c0541db724c8401521025ec0bc2b1514c",
+      "bytes": 1749
+    },
+    "experiments/c007-stake-callback/run-callback.mjs": {
+      "sha256": "6f2f9dfae5ee63f903a49895a17ded5e26b66473dea92b64ff5c234e5033a58a",
+      "bytes": 5925
+    },
+    "experiments/c007-stake-callback/run-lifecycle.mjs": {
+      "sha256": "b9392bde6b3a33685bf9cfa90f8b83f4c36d46d28e49a38001829a51da5c77c5",
+      "bytes": 10451
+    },
+    "experiments/c007-stake-callback/package.json": {
+      "sha256": "3cd90dea6c442e62e1eb32e83c412a81d5725be928ecf34bf019702c6fc2f192",
+      "bytes": 215
+    },
+    "experiments/c007-stake-callback/package-lock.json": {
+      "sha256": "bdb139f0b431b0c820f38fa367443182a19f46107b8fd36f21385f05547972df",
+      "bytes": 14224
+    },
+    "evidence/c007-stake-callback-20261108/result.json": {
+      "sha256": "63fd0c9c5af4c43cf1c026c70cc424d0c97d53d53b057795126ed069a16f34b5",
+      "bytes": 1551
+    },
+    "evidence/c007-stake-callback-20261108/lifecycle-summary.json": {
+      "sha256": "3a5c8e2d97bd79a9b70345a96d9bb1e8cab6e417a259bd8c44cd79546cbd6e5b",
+      "bytes": 952
+    },
+    "docs/STAKE_CALLBACK_REVIEW.md": {
+      "sha256": "e8ad5931a33ba61e389117dbd565ef7e5eb1a24ad86154e55c1b6f0981d4fa30",
+      "bytes": 3453
+    }
+  }
+}

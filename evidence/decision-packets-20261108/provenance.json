@@ -1,0 +1,26 @@
+{
+  "parent": "2067e032dc14b771667c4654baf3beedc75f9676",
+  "transform": "source-backed decision packets and exact rational arithmetic examples",
+  "files": {
+    "docs/C001_REGISTRATION_DECISION_PACKET.md": {
+      "sha256": "866eb3748e5cfa32408728d8fdac82c16ebf0da22fb1f6d45d0ab0f43b32d08b",
+      "size": 4563
+    },
+    "docs/C007_DISTRIBUTION_DECISION_PACKET.md": {
+      "sha256": "ce03d6845784f2916c74c594f63aaa9b611466c2ded85f60dc10fe2dca534ca2",
+      "size": 5653
+    },
+    "integration/core-baseline-v1/c007-decision-examples.py": {
+      "sha256": "7b33599fdeaaa116a332109613550bcd4df426c2f0a55a9f449596a95fa58119",
+      "size": 2264
+    },
+    "evidence/decision-packets-20261108/arithmetic-result.json": {
+      "sha256": "7464ca8d68732d75cc76ca69170f7d53e7ba138c9d61034e45bbaca4b32e5fd0",
+      "size": 1376
+    },
+    "docs/PROTOCOL_SPEC_V1.md": {
+      "sha256": "bfc39d66e52d7974a05d31c746201a7a1781f2bdadd69b744708fa12da0b57b2",
+      "size": 4842
+    }
+  }
+}

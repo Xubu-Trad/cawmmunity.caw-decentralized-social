@@ -1,0 +1,107 @@
+{
+  "repository": "ethereum/consensus-spec-tests",
+  "commit": "bc5c1a7fb2a8871aaffd4b16ee4dd9c72bb81908",
+  "files": [
+    {
+      "path": "tests/mainnet/phase0/ssz_static/ForkData/ssz_random/case_0/value.yaml",
+      "sha256": "4d6155f051b2fe70d46425bd350460e0749bd2d8581d4f9c6659eaa9a14e3448",
+      "size": 124
+    },
+    {
+      "path": "tests/mainnet/phase0/ssz_static/ForkData/ssz_random/case_0/roots.yaml",
+      "sha256": "bbb6f107e728a6c96e6cb2c8a034c14ec039c5c181afc05397d487f6455bd80c",
+      "size": 75
+    },
+    {
+      "path": "tests/mainnet/phase0/ssz_static/ForkData/ssz_random/case_1/value.yaml",
+      "sha256": "615d1132672e13f7bb364e12baf19422441526d5c8539434c3af854566c28859",
+      "size": 124
+    },
+    {
+      "path": "tests/mainnet/phase0/ssz_static/ForkData/ssz_random/case_1/roots.yaml",
+      "sha256": "e0f9a29aae312e38f14c99e886a5ffb6374cb06f972f27af38acee97a4d248c5",
+      "size": 75
+    },
+    {
+      "path": "tests/mainnet/phase0/ssz_static/ForkData/ssz_random/case_2/value.yaml",
+      "sha256": "4cd754c375205bea4830c9b953a121c941960a9a12f28be159fa12ddbd971a0d",
+      "size": 124
+    },
+    {
+      "path": "tests/mainnet/phase0/ssz_static/ForkData/ssz_random/case_2/roots.yaml",
+      "sha256": "c4e7266baab686a5f8fd21666fddbe20eb3a7ad131241eb94ba561bad9b09cdd",
+      "size": 75
+    },
+    {
+      "path": "tests/mainnet/phase0/ssz_static/ForkData/ssz_random/case_3/value.yaml",
+      "sha256": "7ca253ed76a3ae07806dd41c27de25f5f1243bdcaeb0da7c69e67100591faec2",
+      "size": 124
+    },
+    {
+      "path": "tests/mainnet/phase0/ssz_static/ForkData/ssz_random/case_3/roots.yaml",
+      "sha256": "ed263c4c38a09050ec7e752136444a015359a05ad56cb100e0d68786daff0bad",
+      "size": 75
+    },
+    {
+      "path": "tests/mainnet/phase0/ssz_static/ForkData/ssz_random/case_4/value.yaml",
+      "sha256": "607cd21865a12c8b3e7f6a2ebff0d75da3fd5c4185040674088a4a82d8a336e4",
+      "size": 124
+    },
+    {
+      "path": "tests/mainnet/phase0/ssz_static/ForkData/ssz_random/case_4/roots.yaml",
+      "sha256": "5a356913c4315a617102ea949913b56c64450b63f6be987fcbaa4c79c8945d74",
+      "size": 75
+    },
+    {
+      "path": "tests/mainnet/phase0/ssz_static/SigningData/ssz_random/case_0/value.yaml",
+      "sha256": "8531ed6d59e13540d8d4ee41dd02e1c347c034aebcabac32d56c58d521de128c",
+      "size": 159
+    },
+    {
+      "path": "tests/mainnet/phase0/ssz_static/SigningData/ssz_random/case_0/roots.yaml",
+      "sha256": "13cc520ada951b105fa2fc87740ed5af2aa089ae875ef6e94ca197a47b9b9df3",
+      "size": 75
+    },
+    {
+      "path": "tests/mainnet/phase0/ssz_static/SigningData/ssz_random/case_1/value.yaml",
+      "sha256": "30f76180013597e756ff0b53e29c531fafeef75a92bdb4a56467cef7a1a15179",
+      "size": 159
+    },
+    {
+      "path": "tests/mainnet/phase0/ssz_static/SigningData/ssz_random/case_1/roots.yaml",
+      "sha256": "eff092258ec5c53b7c7fb9a3e97eccd45c81b340f440e8c922849aa80532515b",
+      "size": 75
+    },
+    {
+      "path": "tests/mainnet/phase0/ssz_static/SigningData/ssz_random/case_2/value.yaml",
+      "sha256": "95f4d1745f5ded34d4ff6051d416aa5b945c00d3ad7bcbd0d9d879bb1146b60b",
+      "size": 159
+    },
+    {
+      "path": "tests/mainnet/phase0/ssz_static/SigningData/ssz_random/case_2/roots.yaml",
+      "sha256": "1a59e2ae9becb66604fb0321038b7ee224666bfe25e5ab315c7bf408b06358b7",
+      "size": 75
+    },
+    {
+      "path": "tests/mainnet/phase0/ssz_static/SigningData/ssz_random/case_3/value.yaml",
+      "sha256": "0f4fd74611d2cb62175e809282fc8cd507efe76e9d16fba6a16ca16c0fd4cb87",
+      "size": 159
+    },
+    {
+      "path": "tests/mainnet/phase0/ssz_static/SigningData/ssz_random/case_3/roots.yaml",
+      "sha256": "59cee7c5a6ee87377bc7c3c549689921f19e300f6d5c59ec753e79427b25aa0c",
+      "size": 75
+    },
+    {
+      "path": "tests/mainnet/phase0/ssz_static/SigningData/ssz_random/case_4/value.yaml",
+      "sha256": "00883a0398e70ffede0a3df65a1b7abeb686c97bfb9c7e7abeb3e91210e99fab",
+      "size": 159
+    },
+    {
+      "path": "tests/mainnet/phase0/ssz_static/SigningData/ssz_random/case_4/roots.yaml",
+      "sha256": "e17a0bc7c8ac02bfb5a3ebb910426214d23b3c3e9e32bb7ceb4820983c528104",
+      "size": 75
+    }
+  ],
+  "licenseSha256": "feb87a2e0c305de3464cc44077da5393c52d8ca6362d37427157d04ec6f4510d"
+}

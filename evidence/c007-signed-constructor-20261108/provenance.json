@@ -1,0 +1,62 @@
+{
+  "parent": "1d15f47799429b88aa3a100ada0bc3ea2ff96a9b",
+  "sourceSha256": "508fcadf4cab9b66771e74ad90a57d0bbd89d2a0e3977c89f8e0169780d540cb",
+  "files": {
+    "experiments/c007-constructor/run-signed-lifecycle.mjs": {
+      "sha256": "c2c3354412edb45ce2430c3d55689c08486216bb626550c11a65980c7f996d7a",
+      "size": 13589
+    },
+    "experiments/c007-constructor/package.json": {
+      "sha256": "3cd90dea6c442e62e1eb32e83c412a81d5725be928ecf34bf019702c6fc2f192",
+      "size": 215
+    },
+    "experiments/c007-constructor/package-lock.json": {
+      "sha256": "bdb139f0b431b0c820f38fa367443182a19f46107b8fd36f21385f05547972df",
+      "size": 14224
+    },
+    "evidence/c007-signed-constructor-20261108/genesis.json": {
+      "sha256": "7a113bfbcce39f22659ab8021ed687553b51924930206c1f7e15dd5bdd7a2a11",
+      "size": 293
+    },
+    "evidence/c007-signed-constructor-20261108/receipt.json": {
+      "sha256": "e304b2d4fc0690d833f4ad9ebc2619cb77be18dd8c71b17b389452ce1525c922",
+      "size": 358
+    },
+    "evidence/c007-signed-constructor-20261108/stdout.log": {
+      "sha256": "e1988d005e608f346672f0c1dcee537dd74ec575ad18a0bf26c80cf32076ee52",
+      "size": 34
+    },
+    "evidence/c007-signed-constructor-20261108/stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "evidence/c007-signed-constructor-20261108/execution/results.json": {
+      "sha256": "6605b3a3889d825917e931b2b232e7af88ea8120c459999b475b8e537235a472",
+      "size": 617426
+    },
+    "evidence/c007-signed-constructor-20261108/execution/network-records.json": {
+      "sha256": "f9ff7595b36868a5cd8bcb3247d0c999421d1ca26633ef8b0ba6ebfbc86ae982",
+      "size": 421927
+    },
+    "evidence/c007-signed-constructor-20261108/execution/compiler-input.json": {
+      "sha256": "422fcaccc10f7a8fe3b1e5ef4eebe6478543a89f416c41750b9719eedf8d0a9f",
+      "size": 17849
+    },
+    "evidence/c007-signed-constructor-20261108/execution/compiler-output.json": {
+      "sha256": "db26070ddc049b27b70695ef2f416b8cdc3886fa426ae7b972f6f650b5ea8bbf",
+      "size": 77099
+    },
+    "docs/SIGNED_LOCAL_LIFECYCLE.md": {
+      "sha256": "6e2054ee9a15e16c3c719395ed5a318ca50bb41c33a9e6d7b2674a75e9aea38e",
+      "size": 3727
+    },
+    "docs/CONSTRUCTOR_LIFECYCLE_RESEARCH.md": {
+      "sha256": "05d1f8433c620f10076721b7e4b3c97dea43f58a6745cb9800239c95a2467cf2",
+      "size": 4118
+    }
+  },
+  "transactions": 26,
+  "successful": 18,
+  "expectedReverts": 8,
+  "independentHistoryVerified": false
+}

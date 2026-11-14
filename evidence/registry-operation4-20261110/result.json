@@ -1,0 +1,52 @@
+{
+  "schema": "caw-operation4-zero-leaf-isolation/1",
+  "operation": 4,
+  "preStateRoot": "0xab5c916ace9650af3d32f0bd83003ecf94c042abb5666c92cd483eed93982189",
+  "preStateVerified": true,
+  "canonicalPostRoot": "0x3a553b8627e939042c11041d338766d0303dd0ca20ebf86115d2ba2a553f27d8",
+  "includedZeroPostRoot": "0xd8a41469fb4e855135a1be66ee98565bf4feee28c0b4d84c85bf1395f37d0721",
+  "capturedPostRoot": "0xd8a41469fb4e855135a1be66ee98565bf4feee28c0b4d84c85bf1395f37d0721",
+  "nonzeroAccountsCodeBalancesNoncesStorageEqual": true,
+  "zeroLeaves": [
+    {
+      "address": "0x82c839fa4a41e158f613ec8a1a84be3c816d370f",
+      "slot": "0x2"
+    },
+    {
+      "address": "0x985d0ce92f2af930e309f5ff89139490ac2d9e94",
+      "slot": "0x4"
+    },
+    {
+      "address": "0x985d0ce92f2af930e309f5ff89139490ac2d9e94",
+      "slot": "0x7"
+    },
+    {
+      "address": "0x985d0ce92f2af930e309f5ff89139490ac2d9e94",
+      "slot": "0x75f96ab15d697e93042dc45b5c896c4b27e89bb6eaf39475c5c371cb2513f7d2"
+    },
+    {
+      "address": "0x985d0ce92f2af930e309f5ff89139490ac2d9e94",
+      "slot": "0x8819ef417987f8ae7a81f42cdfb18815282fe989326fbff903d13cf0e03ace29"
+    },
+    {
+      "address": "0x985d0ce92f2af930e309f5ff89139490ac2d9e94",
+      "slot": "0xc5069e24aaadb2addc3e52e868fcf3f4f8acf5a87e24300992fd4540c2a87eed"
+    }
+  ],
+  "emptyAccounts": [
+    "0x0000000000000000000000000000000000000002"
+  ],
+  "rootVariants": {
+    "omitZeroKeepEmpty": "0xdc92d476b027ea3e35cfac4801dcab67ff313abe8427fe4a3dc94dc0a2e7a9df",
+    "includeZeroOmitEmpty": "0xa7ca7d8d365affa4215a756bcbe43f1cc9ffac9cf998db95d1a6ab981f62c48f"
+  },
+  "transactionHash": "0x5b494d507a4462b58d6cbdac91dad7e0589573e5900149dba4762db47d1ff69d",
+  "transactionRootAndReceiptRootMatch": true,
+  "controls": [
+    "changed balance root mismatch",
+    "changed nonce root mismatch"
+  ],
+  "proofPolicyChanged": false,
+  "chainAuthenticated": false,
+  "limits": "Single local operation isolated from root-verified predecessor. Included zero leaves and an empty account explain this captured root divergence; not proof about all Anvil versions or all later differences."
+}

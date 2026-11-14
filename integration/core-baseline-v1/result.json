@@ -1,0 +1,15 @@
+{
+  "positive": {
+    "artifactCount": 3,
+    "recompiledAgainstRetainedArtifacts": true,
+    "deployedRuntimeVerified": false,
+    "lifecycleRerun": false,
+    "productionAccepted": false
+  },
+  "negativeControls": [
+    "input",
+    "compiler",
+    "runtime"
+  ],
+  "node": "v20.20.2"
+}

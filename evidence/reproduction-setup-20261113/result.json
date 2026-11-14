@@ -1,0 +1,16 @@
+{
+  "sourceCommit": "ef2adad6cc5cf30feb8de7dbace5e4849f92b7f3",
+  "node": "v20.20.2",
+  "npm": "10.8.2",
+  "isolatedInstall": true,
+  "install": "npm ci --ignore-scripts --no-audit --no-fund",
+  "lockSha256": "a97afb7e45df1daaaa4a49cfa28d3c1c97dd1ee143791a6e3d0321d639be8ed8",
+  "sourceFiles": 39,
+  "compile": "pass",
+  "unit": "pass",
+  "launcher": "pass",
+  "retainedProof": "pass",
+  "nodesStarted": false,
+  "independentOperator": false,
+  "scope": "Fresh isolated npm dependency installation and pinned compilation; retained proof verification only, not T1/T2 or recovery execution."
+}

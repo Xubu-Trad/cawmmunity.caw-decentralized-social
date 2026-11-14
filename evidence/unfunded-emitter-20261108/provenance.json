@@ -1,0 +1,38 @@
+{
+  "parent": "b9df3b349b7fa2e364a0603c6aa54b793443c2f7",
+  "transform": "single local EthereumJS execution of intentionally unfunded synthetic-asset emitter",
+  "files": {
+    "integration/core-baseline-v1/UnfundedEmitterResearch.sol": {
+      "sha256": "4f8fe7d5222e674d5fb7f463734e8dfcab4e247c3c5422a5c74af86e27bdb4b6",
+      "size": 1564
+    },
+    "integration/core-baseline-v1/test-unfunded-emitter.mjs": {
+      "sha256": "645e0d5df26cd95105acbe8ff3983200365583986d50756a5c03ec67ff6cec8c",
+      "size": 5900
+    },
+    "docs/C007_UNFUNDED_EMITTER_CONTROL.md": {
+      "sha256": "24b2e86606bf6c52605c192c6869fcf1621b201258e04bb50294c44de472174e",
+      "size": 4098
+    },
+    "evidence/unfunded-emitter-20261108/compiler-input.json": {
+      "sha256": "098e7b70e12f6542d5ae586d1c50cacfea7ddf0c8054d86316c9c9de65f256c2",
+      "size": 1995
+    },
+    "evidence/unfunded-emitter-20261108/operations.json": {
+      "sha256": "800341d5cdbc0a594ebf42310b9646885a75cf5f6f4dfa4205678a6e751e3f7d",
+      "size": 5454
+    },
+    "evidence/unfunded-emitter-20261108/result.json": {
+      "sha256": "71b2e8d69aa3e6bcde617ceb156532baa584c9e6dbf1a476edc82810606d9dde",
+      "size": 770
+    },
+    "evidence/unfunded-emitter-20261108/toolchain.json": {
+      "sha256": "d27b52d7b31aaa42e6831f8b31819ec899c9ae6049e17767d222df42393f71dd",
+      "size": 455
+    },
+    "docs/C007_POSITIVE_EVENT_PROJECTION.md": {
+      "sha256": "aa735d7d35ad64f18267c9dee05c1caf025dab89549b959c7fba058020c77ada",
+      "size": 3866
+    }
+  }
+}

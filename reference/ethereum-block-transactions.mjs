@@ -200,9 +200,9 @@ function integer(value) {
 function destination(value) {
   need(Buffer.isBuffer(value) && (value.length === 0 || value.length === 20), 'TO'); return hex(value);
 }
-function calldata(value) {
+function calldata(value, maximum) {
   need(Buffer.isBuffer(value), 'TRANSACTION_FIELDS');
-  need(value.length <= LIMIT.data, 'DATA_LIMIT'); return hex(value);
+  need(value.length <= maximum, 'DATA_LIMIT'); return hex(value);
 }
 function accessList(value) {
   need(Array.isArray(value), 'ACCESS_LIST');
@@ -219,7 +219,7 @@ function accessList(value) {
     }) };
   });
 }
-function decodeTransaction(raw, index) {
+function decodeTransaction(raw, index, maximumData) {
   const type = raw[0] >= 192 ? 0 : raw[0];
   need((type === 0 && raw[0] >= 192) || type === 1 || type === 2, 'TYPE');
   const value = decodeRlp(type === 0 ? raw : raw.subarray(1));
@@ -227,19 +227,19 @@ function decodeTransaction(raw, index) {
   let decoded;
   if (type === 0) {
     decoded = { nonce: integer(value[0]), gasPrice: integer(value[1]), gasLimit: integer(value[2]),
-      to: destination(value[3]), value: integer(value[4]), data: calldata(value[5]),
+      to: destination(value[3]), value: integer(value[4]), data: calldata(value[5], maximumData),
       v: integer(value[6]), r: integer(value[7]), s: integer(value[8]) };
     const v = BigInt(decoded.v); need(v === 27n || v === 28n || v >= 35n, 'V');
   } else if (type === 1) {
     decoded = { chainId: integer(value[0]), nonce: integer(value[1]), gasPrice: integer(value[2]),
       gasLimit: integer(value[3]), to: destination(value[4]), value: integer(value[5]),
-      data: calldata(value[6]), accessList: accessList(value[7]), yParity: integer(value[8]),
+      data: calldata(value[6], maximumData), accessList: accessList(value[7]), yParity: integer(value[8]),
       r: integer(value[9]), s: integer(value[10]) };
   } else {
     decoded = { chainId: integer(value[0]), nonce: integer(value[1]),
       maxPriorityFeePerGas: integer(value[2]), maxFeePerGas: integer(value[3]),
       gasLimit: integer(value[4]), to: destination(value[5]), value: integer(value[6]),
-      data: calldata(value[7]), accessList: accessList(value[8]), yParity: integer(value[9]),
+      data: calldata(value[7], maximumData), accessList: accessList(value[8]), yParity: integer(value[9]),
       r: integer(value[10]), s: integer(value[11]) };
   }
   if (type !== 0) need(decoded.yParity === '0x0' || decoded.yParity === '0x1', 'PARITY');
@@ -251,7 +251,7 @@ function decodeTransaction(raw, index) {
 function checkSelection(selection) {
   fields(selection, ['schema', 'profile', 'hash']);
   need(selection.schema === 'caw-block-transactions-selection/1', 'SCHEMA');
-  need(selection.profile === 'london-16', 'PROFILE'); data(selection.hash, 32);
+  need((selection.profile === 'london-16' || selection.profile === 'shanghai-17'), 'PROFILE'); data(selection.hash, 32);
 }
 
 /** Inspect a complete contiguous list of canonical legacy/type-1/type-2 signed
@@ -268,14 +268,17 @@ export function inspectBlockTransactions(headerInput, rawTransactionsInput, sele
     schema: 'caw-execution-header-selection/1', profile: selection.profile, hash: selection.hash
   });
   need(Array.isArray(rawTransactions) && rawTransactions.length <= LIMIT.transactions, 'TRANSACTION_LIMIT');
+  // Explicit Shanghai research bounds accommodate full stake proofs; London is unchanged.
+  const maximumEncoded = selection.profile === 'shanghai-17' ? 32768 : LIMIT.transactionEncoded;
+  const maximumData = selection.profile === 'shanghai-17' ? 24576 : LIMIT.data;
   let encodedBytes = 0;
   const encodedTransactions = rawTransactions.map(raw => {
     need(typeof raw === 'string', 'DATA');
-    need(raw.length <= 2 + LIMIT.transactionEncoded * 2, 'TRANSACTION_ENCODED_LIMIT');
-    const encoded = data(raw, 1, LIMIT.transactionEncoded);
+    need(raw.length <= 2 + maximumEncoded * 2, 'TRANSACTION_ENCODED_LIMIT');
+    const encoded = data(raw, 1, maximumEncoded);
     encodedBytes += encoded.length; need(encodedBytes <= LIMIT.encoded, 'ENCODED_LIMIT'); return encoded;
   });
-  const transactions = encodedTransactions.map((raw, index) => decodeTransaction(raw, index));
+  const transactions = encodedTransactions.map((raw, index) => decodeTransaction(raw, index, maximumData));
   const root = transactionRoot(encodedTransactions);
   need(root === headerIntegrity.transactionsRoot, 'ROOT_MISMATCH');
   return freeze({ schema: 'caw-block-transactions-integrity/1', profile: selection.profile,

@@ -1,0 +1,74 @@
+{
+  "commit": "54f872c70be7173be434e611bff7e8aab10195f0",
+  "matchedInputs": 14,
+  "inventoryFingerprint": "e3dce5976a933d2db2ae77dea09cab029573d4132be9b9f796c889f0e0b52d26",
+  "tools": {
+    "geth": {
+      "version": "Geth\nVersion: 1.17.10-stable\nGit Commit: 1df30b18d9ed35ee9d28ffd4648442c2204554ad\nGit Commit Date: 20261023\nArchitecture: amd64\nGo Version: go1.27.3\nOperating System: linux\nGOPATH=\nGOROOT=",
+      "files": [
+        {
+          "name": "geth",
+          "sha256": "45335929e149413c9f680209c87fa14adc5750387da6f5f30b7b2bd24d2d54ea",
+          "size": 64685240
+        }
+      ]
+    },
+    "reth": {
+      "version": "Reth Version: 2.10.1\nCommit SHA: 58ebce14ae63dab040beae301e1578cd0dc55e8a\nBuild Timestamp: 2026-11-06T18:29:21.773256909Z\nBuild Features: asm_keccak,jemalloc,keccak_cache_global,min_trace_logs,otlp,otlp_logs\nBuild Profile: maxperf",
+      "files": [
+        {
+          "name": "ld-linux-x86-64.so.2",
+          "sha256": "1d7133d7b9f94465978b2ae8d21ca3751c8dfaaecaa2d462aeaf1ec50e5c3a90",
+          "size": 236616
+        },
+        {
+          "name": "reth",
+          "sha256": "227f6d0fc80dcb8851de04d0204eeb171645833eb0ab7a583378a5f2a78c18b9",
+          "size": 135642776
+        }
+      ]
+    },
+    "node": {
+      "version": "v20.20.2",
+      "files": [
+        {
+          "name": "node",
+          "sha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+          "size": 98932688
+        }
+      ]
+    },
+    "strace": {
+      "version": "strace -- version 5.16\nCopyright (c) 1991-2022 The strace developers <https://strace.io>.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\nOptional features enabled: stack-trace=libunwind stack-demangle m32-mpers mx32-mpers",
+      "files": [
+        {
+          "name": "strace",
+          "sha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "size": 1972848
+        }
+      ]
+    },
+    "python": {
+      "version": "Python 3.10.12",
+      "files": [
+        {
+          "name": "python3",
+          "sha256": "a2f33a6e006989270f4340528eb61f8f97366e00a5d1b602ac8672ea44fc56ae",
+          "size": 5941864
+        }
+      ]
+    }
+  },
+  "platform": {
+    "system": "Linux",
+    "release": "6.6.87.2-microsoft-standard-WSL2",
+    "machine": "x86_64"
+  },
+  "scope": "input consistency and tool inventory only; no execution/recovery or independent-review verdict",
+  "limitations": [
+    "Tool hashes are observations, not approved binary fingerprints.",
+    "Version commands execute explicitly trusted tools.",
+    "Shared libraries, kernel, filesystem and compiler provenance are not fully inventoried.",
+    "Post-check input replacement is not prevented; use a trusted immutable checkout."
+  ]
+}

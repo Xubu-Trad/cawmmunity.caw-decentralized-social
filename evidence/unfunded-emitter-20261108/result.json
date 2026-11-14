@@ -1,0 +1,21 @@
+{
+  "status": "EXECUTED_LOCAL_UNFUNDED_NEGATIVE_CONTROL",
+  "localTransactions": 3,
+  "token": "0x82c839fa4a41e158f613ec8a1a84be3c816d370f",
+  "emitter": "0x19a827174f66b3c66ad7063951d7b4f94f996e77",
+  "emitterRuntimeKeccak": "0x3a77b2ac08597c48074abaa9b1515924f02ee190931b3e4630b8844af48fa4fd",
+  "emittedAdmissionFee": "5",
+  "emittedClaimAmount": "4",
+  "mockTokenBefore": {
+    "payer": "100",
+    "emitter": "0"
+  },
+  "mockTokenAfter": {
+    "payer": "100",
+    "emitter": "0"
+  },
+  "localEvmExecutionCompleted": true,
+  "feeBackingVerified": false,
+  "cawActionAuthorityVerified": false,
+  "limits": "Single EthereumJS local VM, disposable native funds and mock token. Not canonical chain, independent execution engine, real CAW or accepted funded admission."
+}

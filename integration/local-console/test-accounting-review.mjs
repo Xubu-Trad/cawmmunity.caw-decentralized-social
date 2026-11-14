@@ -1,0 +1,18 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';
+import {expectedAccounting,requireReviewedAccounting} from './ui/accounting-review.mjs';
+import {fixturePlan} from './test-accounting-review-fixture.mjs';
+const s=JSON.parse(fs.readFileSync(process.argv[2])).before,checks=[];
+const run=(name,fn)=>{fn();checks.push(name);};
+run('partial EOA withdrawal',()=>{const p=expectedAccounting(s,fixturePlan(s));assert.equal(p.after.credit,'1');assert.equal(p.after.unpaidLiability,'9');assert.equal(p.after.balances.owner,'91');assert.equal(p.after.balances.custody,'9');assert.equal(p.after.balances.wallet,'0');});
+run('full withdrawal agrees with retained executed state',()=>{const p=expectedAccounting(s,fixturePlan(s,'withdrawal',s.credit)),after=JSON.parse(fs.readFileSync(process.argv[2])).after;for(const k of ['credit','unpaidLiability','creditedLiability','unallocatedBudget','balances'])assert.deepEqual(p.after[k],after[k]);});
+run('fixture wallet receives once despite duplicate display rows',()=>{const w={...structuredClone(s),owner:s.contracts.wallet,ownerType:'fixture-wallet',signer:s.controller,balances:{...s.balances,owner:s.balances.wallet}};const p=expectedAccounting(w,fixturePlan(w));assert.equal(p.after.balances.owner,'1');assert.equal(p.after.balances.wallet,'1');assert.equal(p.after.balances.custody,'9');});
+for(const kind of ['post','transfer'])run(kind+' changes no token balances or credit',()=>{const p=expectedAccounting(s,fixturePlan(s,kind));assert.equal(p.after.credit,s.credit);assert.deepEqual(p.after.balances,s.balances);});
+run('tampered withdrawal bytes rejected',()=>assert.throws(()=>expectedAccounting(s,{...fixturePlan(s),data:'0x'})));
+run('excess withdrawal rejected',()=>assert.throws(()=>expectedAccounting(s,fixturePlan(s,'withdrawal','3'))));
+run('missing verification rejected',()=>assert.throws(()=>expectedAccounting({...s,accountingProofsVerified:false},fixturePlan(s))));
+run('recipient balance overflow rejected',()=>{const w={...s,balances:{...s.balances,owner:String(2n**256n-1n)}};assert.throws(()=>expectedAccounting(w,fixturePlan(w)));});
+for(const k of ['credit','unpaidLiability','unallocatedBudget','creditedLiability'])run(k+' changed rejects review',()=>{const n=structuredClone(s);n[k]=String(BigInt(n[k])+1n);assert.throws(()=>requireReviewedAccounting(s,n));});
+for(const k of ['wallet','owner','custody'])run(k+' balance changed rejects review',()=>{const n=structuredClone(s);n.balances[k]=String(BigInt(n.balances[k])+1n);assert.throws(()=>requireReviewedAccounting(s,n));});
+run('coherent new credit rejects review',()=>{const n=structuredClone(s);for(const k of ['credit','creditedLiability','unpaidLiability'])n[k]=String(BigInt(n[k])+1n);n.balances.custody=String(BigInt(n.balances.custody)+1n);assert.throws(()=>requireReviewedAccounting(s,n),/Accounting changed/);});
+run('unchanged accounting at newer block accepted',()=>{const n=structuredClone(s);n.blockHash=n.accountingHeaderHash=n.authorityHeaderHash='0x'+'22'.repeat(32);n.blockNumber='0xff';requireReviewedAccounting(s,n);});
+console.log(JSON.stringify({passed:checks.length,checks,scope:'Fixture accounting projection and review guard; no contract changes or new chain execution.'},null,2));

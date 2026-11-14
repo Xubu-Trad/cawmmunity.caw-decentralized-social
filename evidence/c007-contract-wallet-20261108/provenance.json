@@ -1,0 +1,46 @@
+{
+  "parent": "17f6cd4493f9b26ed8e7824e8bced9feab977f79",
+  "transform": "bounded contract-wallet adapter and EOA regression",
+  "files": {
+    "experiments/c007-contract-wallet/Baseline.sol": {
+      "sha256": "e4149f2ddb09e5f83c999e20dc14180f8f7c254584f401e2249bead0c2e45cfa",
+      "bytes": 16738
+    },
+    "experiments/c007-contract-wallet/DeployedCustodyStakeResearch.sol": {
+      "sha256": "d97dd9157a81611630ac876556684f7354f412e35a7a360662aab6ce2984e02c",
+      "bytes": 17976
+    },
+    "experiments/c007-contract-wallet/WalletValidationFixture.sol": {
+      "sha256": "1522336761ec833e96a232a21469fddbf322c5dbe9c6132b9d9f21f6c0be3332",
+      "bytes": 913
+    },
+    "experiments/c007-contract-wallet/run-wallet.mjs": {
+      "sha256": "7d70881f49151a1b9555b3590424f174df178669041f3945a0b030d09998da65",
+      "bytes": 5105
+    },
+    "experiments/c007-contract-wallet/run-lifecycle.mjs": {
+      "sha256": "b9392bde6b3a33685bf9cfa90f8b83f4c36d46d28e49a38001829a51da5c77c5",
+      "bytes": 10451
+    },
+    "experiments/c007-contract-wallet/package.json": {
+      "sha256": "3cd90dea6c442e62e1eb32e83c412a81d5725be928ecf34bf019702c6fc2f192",
+      "bytes": 215
+    },
+    "experiments/c007-contract-wallet/package-lock.json": {
+      "sha256": "bdb139f0b431b0c820f38fa367443182a19f46107b8fd36f21385f05547972df",
+      "bytes": 14224
+    },
+    "evidence/c007-contract-wallet-20261108/result.json": {
+      "sha256": "15a28843cd32ecd454618a4cdaa131416fd98efa6b5ccdb569e04ce994b0adc7",
+      "bytes": 1760
+    },
+    "evidence/c007-contract-wallet-20261108/eoa-lifecycle.json": {
+      "sha256": "d8640b8566874599faf4383e2c0bce9629e5a30406327e9309447ed5e03db5af",
+      "bytes": 185
+    },
+    "docs/CONTRACT_WALLET_ADAPTER_REVIEW.md": {
+      "sha256": "d2a05827d7901e10fbd4fa9e6bbef59b79be9ffdc5bc18d28c06305764e737d1",
+      "bytes": 3544
+    }
+  }
+}

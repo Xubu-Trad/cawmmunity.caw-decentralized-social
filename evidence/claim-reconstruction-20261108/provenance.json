@@ -1,0 +1,23 @@
+{
+  "parent": "877f4e4a9878fcf403a2b4232f632d385a7f063c",
+  "reviewedReaderSha256": "9c3ce2e6a943401fbf312a8783d0a585a2092e50a2e65ed066cafb859aaedb37",
+  "transform": "synthetic journal replay and selected-branch replacement",
+  "files": {
+    "integration/core-baseline-v1/c007-claim-reconstruction.py": {
+      "sha256": "81ba944c63e5724c3f5fd09f04308a0bf09e542acc32e46e7d80a5843a590db7",
+      "size": 5661
+    },
+    "docs/C007_CLAIM_RECONSTRUCTION_RESEARCH.md": {
+      "sha256": "d675867b02f6f9dbed72b380c7a8c91bbd7129f36bb6ab315087c3831cbdb555",
+      "size": 4090
+    },
+    "evidence/claim-reconstruction-20261108/result.json": {
+      "sha256": "e96397fcd72047cfc4eb9c37e79f21132eeb9d70663669131600fb088ac207e8",
+      "size": 877
+    },
+    "docs/C007_SNAPSHOT_CLAIMS_RESEARCH.md": {
+      "sha256": "7e50aafd7d7052536d79a4d8fc125a4f456840ceeb56e277532984a6bf00e3a2",
+      "size": 4277
+    }
+  }
+}

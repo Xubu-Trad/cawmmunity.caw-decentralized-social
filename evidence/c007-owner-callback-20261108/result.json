@@ -1,0 +1,47 @@
+{
+  "schema": "caw-owner-callback-regression/1",
+  "rows": [
+    {
+      "variant": "Baseline.sol",
+      "action": "deposit",
+      "nestedTransferAccepted": true,
+      "outerOperationCompleted": true,
+      "creditAndBackingMatched": true,
+      "standaloneTransferPassed": false
+    },
+    {
+      "variant": "Baseline.sol",
+      "action": "withdraw",
+      "nestedTransferAccepted": true,
+      "outerOperationCompleted": true,
+      "creditAndBackingMatched": true,
+      "standaloneTransferPassed": false
+    },
+    {
+      "variant": "DeployedCustodyStakeResearch.sol",
+      "action": "deposit",
+      "nestedTransferAccepted": false,
+      "outerOperationCompleted": true,
+      "creditAndBackingMatched": true,
+      "standaloneTransferPassed": true
+    },
+    {
+      "variant": "DeployedCustodyStakeResearch.sol",
+      "action": "withdraw",
+      "nestedTransferAccepted": false,
+      "outerOperationCompleted": true,
+      "creditAndBackingMatched": true,
+      "standaloneTransferPassed": true
+    }
+  ],
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "sourceHashes": {
+    "Baseline.sol": "508fcadf4cab9b66771e74ad90a57d0bbd89d2a0e3977c89f8e0169780d540cb",
+    "DeployedCustodyStakeResearch.sol": "70ff7da48218ad97ec5debdd2ef9e9a966aad24a261fbb5fcac81c1bc00d7136",
+    "CallbackToken.sol": "68dc4b5d6b3e7b09d98c3b0baa095407c5b4a29de67bee3112cfeb1ebff53084"
+  },
+  "scope": "local EVM creation/calls; not signed transaction or public-chain proof",
+  "maliciousTokenRequired": true,
+  "contractOwnerFixture": true,
+  "theftDemonstrated": false
+}

@@ -1,0 +1,145 @@
+{
+  "storage": [
+    {
+      "label": "owner1",
+      "key": "0xada5013122d395ba3c54772283fb069b10426056ef8ca54750cb9bb552a59e7d",
+      "expected": "594179275863704165266696689399235767493667371625",
+      "value": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "exists": true
+    },
+    {
+      "label": "epochs1",
+      "key": "0xabd6e7cb50984ff9c2f3e18a2660c3353dadf4e3291deeb275dae2cd1e44fe05",
+      "expected": "0",
+      "value": "0x0",
+      "exists": false
+    },
+    {
+      "label": "approved1",
+      "key": "0xe90b7bceb6e7df5418fb78d8ee546e97c83a08bbccc01a0644d599ccd2a7c2e0",
+      "expected": "0",
+      "value": "0x0",
+      "exists": false
+    },
+    {
+      "label": "owner2",
+      "key": "0xabbb5caa7dda850e60932de0934eb1f9d0f59695050f761dc64e443e5030a569",
+      "expected": "594179275863704165266696689399235767493667371625",
+      "value": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "exists": true
+    },
+    {
+      "label": "epochs2",
+      "key": "0x91da3fd0782e51c6b3986e9e672fd566868e71f3dbc2d6c2cd6fbb3e361af2a7",
+      "expected": "0",
+      "value": "0x0",
+      "exists": false
+    },
+    {
+      "label": "approved2",
+      "key": "0x679795a0195a1b76cdebb7c51d74e058aee92919b8c3389af86ef24535e8a28c",
+      "expected": "0",
+      "value": "0x0",
+      "exists": false
+    },
+    {
+      "label": "owner3",
+      "key": "0x101e368776582e57ab3d116ffe2517c0a585cd5b23174b01e275c2d8329c3d83",
+      "expected": "594179275863704165266696689399235767493667371625",
+      "value": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "exists": true
+    },
+    {
+      "label": "epochs3",
+      "key": "0x2e174c10e159ea99b867ce3205125c24a42d128804e4070ed6fcc8cc98166aa0",
+      "expected": "0",
+      "value": "0x0",
+      "exists": false
+    },
+    {
+      "label": "approved3",
+      "key": "0x88601476d11616a71c5be67555bd1dff4b1cbf21533d2669b768b61518cfe1c3",
+      "expected": "0",
+      "value": "0x0",
+      "exists": false
+    },
+    {
+      "label": "owner4",
+      "key": "0x52d75039926638d3c558b2bdefb945d5be8dae29dedd1c313212a4d472d9fde5",
+      "expected": "594179275863704165266696689399235767493667371625",
+      "value": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "exists": true
+    },
+    {
+      "label": "epochs4",
+      "key": "0x1a1e6821cde7d0159c0d293177871e09677b4e42307c7db3ba94f8648a5a050f",
+      "expected": "0",
+      "value": "0x0",
+      "exists": false
+    },
+    {
+      "label": "approved4",
+      "key": "0xee60d0579bcffd98e668647d59fec1ff86a7fb340ce572e844f234ae73a6918f",
+      "expected": "0",
+      "value": "0x0",
+      "exists": false
+    },
+    {
+      "label": "balance:0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "key": "0xdad1829e1879dc5c352d0ace0ad0d38f50682aa23ae54fe6c93f1d1638d10e4c",
+      "expected": "4",
+      "value": "0x4",
+      "exists": true
+    },
+    {
+      "label": "balance:0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+      "key": "0x9b327dbca08e36ff37118ccf70bdac2efbee938cefe2cf6b168a278348c37159",
+      "expected": "0",
+      "value": "0x0",
+      "exists": false
+    },
+    {
+      "label": "operator:0x6813eb9362372eef6200f3b1dbc3f819671cba69:0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+      "key": "0x53ca55293d4a09f57705cbdf8a3602242fc8a30e2b5b2be25d0163e88cf61b53",
+      "expected": "0",
+      "value": "0x0",
+      "exists": false
+    },
+    {
+      "label": "operator:0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718:0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "key": "0xb9254cefb122bf02ff3e2927abb1c30118ad6843d642e5798eb66c61b0ba8499",
+      "expected": "0",
+      "value": "0x0",
+      "exists": false
+    }
+  ],
+  "status": "REGISTRY_INITIALIZATION_SLOTS_VERIFIED",
+  "blockHash": "0xb3dbaa5ffc6b59626a68b5853949ed92cde3c2d036b48bafafb7845abe05b717",
+  "index": 1,
+  "address": "0x19A827174F66B3c66ad7063951D7b4F94f996e77",
+  "transactionHash": "0x07afc316a9616a5a2dbc695400cacf44ad6f177d29e97dd084ab0938e97cef7f",
+  "transactionCommitmentVerified": true,
+  "receiptCommitmentVerified": true,
+  "signatureVerified": true,
+  "chainAuthenticated": false,
+  "accountCodeProofVerified": true,
+  "consensusVerified": false,
+  "finalityVerified": false,
+  "controls": [
+    "wrong selected header",
+    "changed signed transaction",
+    "missing transaction",
+    "changed receipt status",
+    "changed receipt logs",
+    "wrong receipt index",
+    "changed runtime",
+    "wrong account",
+    "wrong code hash",
+    "missing account proof",
+    "changed owner value",
+    "missing storage entry",
+    "duplicate storage entry",
+    "changed storage proof node"
+  ],
+  "limits": "Synthetic header contains the retained Geth post-deployment state root. Account code and deployment commitments verified under selected root; no public-chain anchor or finality. Sixteen selected initialization slots checked; not all mapping keys, later ownership state, chain authentication or finality."
+}

@@ -1,3 +1,18 @@
+## current application priority — November 14, 2026
+
+the console now previews accounting effects and rechecks verified accounting before requesting a wallet transaction. changed accounting blocks the request; a newer block with unchanged values is allowed. next retain reviewed accounting with pending-action recovery without treating projections as confirmed effects. frozen ownership reproduction inputs remain unchanged; independent reproduction is pending. [review preview and rejection evidence](../evidence/console-accounting-review-20261114/README.md).
+
+the dated sections below preserve historical milestones, not current pending work.
+
+## Current application priority — November 12, 2026
+
+## Current application step: batched posting history
+
+The console now has a bounded post-only batch reader with signed synthetic positive/negative vectors; mixed blocks remain rejected. [Scope and next gates](POST_BATCH_HISTORY.md). Next: freshly mined batches and intra-block authority reconstruction, alongside integration of a separately reviewed paid settlement interface. Earlier history-binding tasks below are historical, not a claim they remain unimplemented. Independent reproduction of the frozen package continues separately.
+
+
+The local console now publishes real unpaid posts from the current account owner, preserves historical authors across handoff, and retains existing withdrawal accounting. Next bind this posting history to the existing authenticated readers and obtain independent reproduction of the full journey. Paid posting remains a separately reviewed accounting integration; no economics conflict is silently resolved. Actual wallet-extension compatibility, public registration/economics and deployment gates remain open.
+
 # Current gates
 
 ## Active priority — 2026-11-01
@@ -606,3 +621,78 @@ Fixed a reproduced empty-success launch through a Windows directory junction. Th
 ## Supplied-key aggregate equations — 2026-11-08
 
 [The bounded aggregate experiment](BLS_POP_AGGREGATE_20261108.md) passed 21 focused checks plus separate 90 BLS and 73 bootstrap regressions. Canonical key validation and a passing aggregate equation do not establish each participant's possession or authorization; a compensating-key control preserves that distinction. No participant-selection or update-acceptance integration. Next extend existing ForkData work with consensus-domain/SigningData evidence, and separately define authenticated participant selection and enrollment/possession prerequisites. Full suite and declared runtime remain unrun; CI remains deferred.
+
+
+## Integration-first routing —2026-11-08
+
+Primary engineering now follows [the frozen core research baseline](CORE_INTEGRATION_BASELINE.md). Three existing artifacts rebuilt identically; constructor binding and lifecycle linkage remain next. Prioritize one complete NFT/custody/signed-action/recovery journey, with C-001 and economics decisions explicit. Preserve isolated research; do not prioritize additional BLS cases absent a selected integration requirement. This is planning direction, not community adoption or release clearance. README remains paused.
+
+
+## Current core focus — 2026-11-12
+
+Independent persistence reproduction is pending externally. Primary engineering has moved to the NFT/custody journey: a contract-wallet owner lifecycle passed21 signed synthetic transactions and six rejection cases. Next reconstruct that new history and compare exact signed execution with a second engine. Previous recovery tests are not evidence for this new fixture. No economic decision or production gate changed.
+
+
+## Wallet lifecycle verification — 2026-11-12
+
+The21-operation wallet journey is reconstructed and agrees across EthereumJS/Geth with eight history and seven replay rejection controls. Next canonical-header/state-proof binding for this exact lifecycle; no policy gate or external reproduction claim is closed.
+
+
+## Wallet local canonical evidence — 2026-11-12
+
+22 local headers and 21 execution-root comparisons pass; 16 final registry fields and five proof rejection controls verify. Public-chain authentication, custody/wallet storage binding and second-engine canonical-context verification remain open. Independent operator reproduction remains pending.
+
+
+## Wallet custody and canonical-context second engine — 2026-11-12
+
+All21 local state roots match EthereumJS/Geth;18 new token/custody fields and three runtime/account proofs bind to the retained header, with16 rejecting controls. Next independent reader/recovery exercise for this lifecycle. Public-chain authentication and outside reproduction remain open.
+
+
+## Wallet recovery admission — 2026-11-12
+
+Four-account/34-field offline admission passes eight corrupt-bundle controls with unchanged prior state. Next interrupted delivery and persistence integration; review ahdmesh WALLET-CUSTODY R-01 additional controls separately.
+
+
+## Wallet staged delivery — 2026-11-12
+
+Five injected stop points and four bad-delivery cases preserve verified state; orphan staging is ignored and valid replacement accepted. Reviewer B7/B8 rerun passes. Next abrupt process interruption and bounded transport; exception injection does not establish power-loss durability.
+
+
+## Wallet staged delivery — 2026-11-12
+
+Five real process kills and four bad HTTP-source cases pass. Next independent-host reproduction and writer ownership; power-loss durability remains unproven.
+
+
+## Reviewer evidence update
+
+The externally reported mined batch has now been corroborated through archive hashes and unchanged-reader checks. Next: second-engine replay, not another synthetic-only batch. PR16 receipt-error regression is resolved at its pinned updated head; broader acceptance remains separate. [Review record](REVIEWER_FOLLOWUP_20261113.md).
+
+
+## Fresh batch replay gate — November 13
+
+Local two-engine execution is demonstrated for a freshly mined two-post batch and all of its setup history. Next: independent developer reproduction using the pinned package, then bounded support for intra-block authority changes. The documented Linux setup is an experimental development procedure, not a public network installer. Full real-asset registration, paid posting/staking economics and deployment acceptance remain blocked separately. [Reproduction entry point](../evidence/post-batch-replay-20261113/README.md).
+
+
+## Intra-block ownership step — November 13
+
+Separate proof-backed owner/post verifier now reconstructs a wallet-to-EOA handoff followed by the new owner's post in one freshly mined block. Two engines agree on complete setup and execution. Existing console remains post-only. Next: acquire recipient and final registry proofs through the console, preserve interruption/unknown-action rejection, then enable only this bounded path. Independent reproduction, full economics and public deployment gates remain open. [Evidence](../evidence/owner-post-block-20261113/README.md).
+
+
+## Console ownership proof acquisition — November 13
+
+The previous owner/post integration gate is now implemented: the console fetches recipient and final ownership/nonce proofs and routes supported mixed blocks through the ownership-aware verifier. Six targeted suites pass, including15 new HTTP acquisition/recovery checks. Existing separate transfer/withdrawal histories remain supported within their previous verification boundary. Next: fresh isolated execution through this integrated acquisition path, then independent pinned reproduction. Public-chain, arbitrary wallet and full economics gates remain open. [Reproduction](../evidence/owner-acquisition-20261113/README.md).
+
+
+## Fresh integrated console run — November 13
+
+Completed the prior fresh-execution gate: isolated Geth mined a same-block owner transfer/post; the console fetched and verified its proofs twice with identical results. Second-engine execution matched13transactions/15state roots. Independent reproduction remains pending. Next supported lifecycle extensions must preserve custody and verification boundaries. [Evidence](../evidence/owner-console-live-20261113/README.md).
+
+
+## Console transfer compatibility — November 13
+
+The ownership-aware verifier now accepts the exact three-argument safe-transfer operation prepared by the console for an empty-code recipient. Fresh signed/mined evidence reproduces the old false rejection and verifies with the patch; second-engine replay agrees. Callback-bearing receivers remain outside scope. [Evidence](../evidence/console-safe-transfer-20261113/README.md). Independent pinned reproduction remains the next external gate.
+
+
+## Pinned ownership reproduction — November14
+
+A single launcher now validates64 selected inputs, creates an isolated locked dependency installation, runs the live console safe-transfer/post flow and preserves results. Same-operator clean-directory run passed10console+6safe-transfer checks;7preflight controls pass. Independent reproduction remains pending; the launcher does not substitute for it. [Instructions](CONSOLE_OWNERSHIP_REPRODUCTION.md). Next: reviewer execution of this exact package; further product work must retain account/custody verification boundaries.

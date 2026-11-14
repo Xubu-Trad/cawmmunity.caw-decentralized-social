@@ -1,0 +1,12 @@
+[
+  {
+    "case": "symlink-entry",
+    "exit_code": 2,
+    "status": "INCOMPLETE"
+  },
+  {
+    "case": "resolved-entry",
+    "exit_code": 2,
+    "status": "INCOMPLETE"
+  }
+]

@@ -1,0 +1,298 @@
+{
+  "status": "pass",
+  "scope": "Headless browser and controlled EIP-1193 adapter; signed local Geth transfer and new-owner withdrawal. Not a real extension, independent operator or public-chain test.",
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Edg/157.0.4341.46",
+    "revision": "@a0c6bd61d7884b3c402a34c67d05100107a9e5e4",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36 Edg/157.0.0.0",
+    "jsVersion": "15.7.11.4"
+  },
+  "clientVersion": "Geth/v1.17.10-stable-1df30b18/linux-amd64/go1.27.3",
+  "cases": [
+    {
+      "name": "real server rejects zero, low reserved addresses, current-owner and selected-contract transfer recipients without submitting",
+      "pass": true
+    },
+    {
+      "name": "initial page performs no wallet requests or transaction submission",
+      "pass": true
+    },
+    {
+      "name": "original controller connects to owned account",
+      "pass": true
+    },
+    {
+      "name": "transfer review identifies exact new owner and credit moving with account",
+      "pass": true
+    },
+    {
+      "name": "cancelled ownership transfer does not request a transaction",
+      "pass": true
+    },
+    {
+      "name": "modified transfer bytes are rejected before signing",
+      "pass": true
+    },
+    {
+      "name": "recipient edit invalidates prepared transfer",
+      "pass": true
+    },
+    {
+      "name": "altered fresh-state epoch cancels stale review and clears unsent intent before any signing request",
+      "pass": true
+    },
+    {
+      "name": "one explicit approval submits exact ownership transfer and pending receipt blocks duplicate actions",
+      "pass": true
+    },
+    {
+      "name": "reload and receipt service failure retain transfer without resubmission after live ownership changes",
+      "pass": true
+    },
+    {
+      "name": "verified transfer receipt recovers new owner and incremented epoch with credit unchanged",
+      "pass": true
+    },
+    {
+      "name": "fixed-block calls reject former wallet with OWNER and stale epoch with EPOCH; current owner and epoch succeed without state mutation",
+      "pass": true
+    },
+    {
+      "name": "former controller cannot prepare another transfer or withdrawal",
+      "pass": true
+    },
+    {
+      "name": "new owner reconnects and reviews direct withdrawal to its own address",
+      "pass": true
+    },
+    {
+      "name": "new owner receives two mock units; custody eight and account credit zero agree with direct RPC reads",
+      "pass": true
+    },
+    {
+      "name": "handoff console fits narrow viewport",
+      "pass": true
+    }
+  ],
+  "initial": {
+    "status": "LOCAL_CHAIN_RESEARCH",
+    "genesisHash": "0xc190afab951bdb9e657448e32761736857d0d76869bc5073b43d6160a8d19ddc",
+    "chainId": "0x7a69",
+    "blockNumber": "0xc",
+    "blockHash": "0xa4c12ccba5bf81a90feef637f71246411da5f5914992a9c18054da04263bad23",
+    "contracts": {
+      "wallet": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+      "registry": "0x19a827174f66b3c66ad7063951d7b4f94f996e77",
+      "custody": "0x985d0ce92f2af930e309f5ff89139490ac2d9e94",
+      "token": "0x82c839fa4a41e158f613ec8a1a84be3c816d370f"
+    },
+    "controller": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+    "owner": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+    "ownerType": "fixture-wallet",
+    "signer": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+    "epoch": "1",
+    "credit": "2",
+    "balances": {
+      "wallet": "0",
+      "owner": "0",
+      "custody": "10"
+    },
+    "publicChainAuthenticated": false
+  },
+  "afterTransfer": {
+    "status": "LOCAL_CHAIN_RESEARCH",
+    "genesisHash": "0xc190afab951bdb9e657448e32761736857d0d76869bc5073b43d6160a8d19ddc",
+    "chainId": "0x7a69",
+    "blockNumber": "0xd",
+    "blockHash": "0x42f9e3d63c9bc32e131ced7b74242715c9fb1cf15a5900c80b20879850a806d2",
+    "contracts": {
+      "wallet": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+      "registry": "0x19a827174f66b3c66ad7063951d7b4f94f996e77",
+      "custody": "0x985d0ce92f2af930e309f5ff89139490ac2d9e94",
+      "token": "0x82c839fa4a41e158f613ec8a1a84be3c816d370f"
+    },
+    "controller": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+    "owner": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+    "ownerType": "eoa",
+    "signer": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+    "epoch": "2",
+    "credit": "2",
+    "balances": {
+      "wallet": "0",
+      "owner": "0",
+      "custody": "10"
+    },
+    "publicChainAuthenticated": false
+  },
+  "final": {
+    "status": "LOCAL_CHAIN_RESEARCH",
+    "genesisHash": "0xc190afab951bdb9e657448e32761736857d0d76869bc5073b43d6160a8d19ddc",
+    "chainId": "0x7a69",
+    "blockNumber": "0xe",
+    "blockHash": "0xd4d48478f35597f89f2a6693f8e6540c1a6375c4a6ea58e9dc74668112c1dbe4",
+    "contracts": {
+      "wallet": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+      "registry": "0x19a827174f66b3c66ad7063951d7b4f94f996e77",
+      "custody": "0x985d0ce92f2af930e309f5ff89139490ac2d9e94",
+      "token": "0x82c839fa4a41e158f613ec8a1a84be3c816d370f"
+    },
+    "controller": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+    "owner": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+    "ownerType": "eoa",
+    "signer": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+    "epoch": "2",
+    "credit": "0",
+    "balances": {
+      "wallet": "0",
+      "owner": "2",
+      "custody": "8"
+    },
+    "publicChainAuthenticated": false
+  },
+  "localGasFunding": [],
+  "walletPrompts": [
+    {
+      "kind": "connect",
+      "account": "0x6813Eb9362372EEF6200f3b1dbC3f819671cBA69"
+    },
+    {
+      "kind": "transfer",
+      "from": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "to": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+      "value": "0x0",
+      "nonce": "0x8",
+      "data": "0x1cff79cd00000000000000000000000019a827174f66b3c66ad7063951d7b4f94f996e770000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000006442842e0e000000000000000000000000bff9228b938b3676578a88b5962abbd2709c9c460000000000000000000000001eff47bc3a10a45d4b230b5d10e37751fe6aa718000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "kind": "connect",
+      "account": "0x6813Eb9362372EEF6200f3b1dbC3f819671cBA69"
+    },
+    {
+      "kind": "connect",
+      "account": "0x6813Eb9362372EEF6200f3b1dbC3f819671cBA69"
+    },
+    {
+      "kind": "connect",
+      "account": "0x1efF47bc3a10a45D4B230B5d10E37751FE6AA718"
+    },
+    {
+      "kind": "withdrawal",
+      "from": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+      "to": "0x985d0ce92f2af930e309f5ff89139490ac2d9e94",
+      "value": "0x0",
+      "nonce": "0x2",
+      "data": "0xa41fe49f000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002"
+    }
+  ],
+  "transactions": [
+    {
+      "kind": "transfer",
+      "hash": "0x8476201bdb77f2a82f1e6e3329fa32ac6d404027d3eb0084114af13ed418a643",
+      "from": "0x6813Eb9362372EEF6200f3b1dbC3f819671cBA69",
+      "to": "0xbFF9228b938B3676578a88b5962aBBd2709C9C46",
+      "nonce": 8,
+      "blockNumber": 13,
+      "blockHash": "0x42f9e3d63c9bc32e131ced7b74242715c9fb1cf15a5900c80b20879850a806d2",
+      "status": 1
+    },
+    {
+      "kind": "withdrawal",
+      "hash": "0xf89258b2528d76c9becb76227f60c3220959a23fc8155018e4bc03ffd35ff7d9",
+      "from": "0x1efF47bc3a10a45D4B230B5d10E37751FE6AA718",
+      "to": "0x985D0CE92f2af930e309F5Ff89139490aC2d9E94",
+      "nonce": 2,
+      "blockNumber": 14,
+      "blockHash": "0xd4d48478f35597f89f2a6693f8e6540c1a6375c4a6ea58e9dc74668112c1dbe4",
+      "status": 1
+    }
+  ],
+  "rejectedPlans": [
+    {
+      "name": "zero",
+      "recipient": "0x0000000000000000000000000000000000000000",
+      "status": 422,
+      "error": "INVALID_RECIPIENT"
+    },
+    {
+      "name": "low reserved address",
+      "recipient": "0x0000000000000000000000000000000000000001",
+      "status": 422,
+      "error": "INVALID_RECIPIENT"
+    },
+    {
+      "name": "reserved range boundary",
+      "recipient": "0x000000000000000000000000000000000000ffff",
+      "status": 422,
+      "error": "INVALID_RECIPIENT"
+    },
+    {
+      "name": "current owner",
+      "recipient": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+      "status": 422,
+      "error": "INVALID_RECIPIENT"
+    },
+    {
+      "name": "custody contract",
+      "recipient": "0x985d0ce92f2af930e309f5ff89139490ac2d9e94",
+      "status": 422,
+      "error": "INVALID_RECIPIENT"
+    },
+    {
+      "name": "registry contract",
+      "recipient": "0x19a827174f66b3c66ad7063951d7b4f94f996e77",
+      "status": 422,
+      "error": "INVALID_RECIPIENT"
+    },
+    {
+      "name": "token contract",
+      "recipient": "0x82c839fa4a41e158f613ec8a1a84be3c816d370f",
+      "status": 422,
+      "error": "INVALID_RECIPIENT"
+    }
+  ],
+  "readOnlyChecks": [
+    {
+      "name": "former contract wallet withdrawal rejected",
+      "transaction": {
+        "from": "0x6813Eb9362372EEF6200f3b1dbC3f819671cBA69",
+        "to": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+        "data": "0x1cff79cd000000000000000000000000985d0ce92f2af930e309f5ff89139490ac2d9e9400000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000064a41fe49f00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000"
+      },
+      "at": {
+        "blockHash": "0x42f9e3d63c9bc32e131ced7b74242715c9fb1cf15a5900c80b20879850a806d2",
+        "requireCanonical": true
+      },
+      "errorData": "0x08c379a0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000054f574e4552000000000000000000000000000000000000000000000000000000",
+      "decodedRevert": "OWNER"
+    },
+    {
+      "name": "new owner stale-epoch withdrawal rejected",
+      "transaction": {
+        "from": "0x1efF47bc3a10a45D4B230B5d10E37751FE6AA718",
+        "to": "0x985d0ce92f2af930e309f5ff89139490ac2d9e94",
+        "data": "0xa41fe49f000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001"
+      },
+      "at": {
+        "blockHash": "0x42f9e3d63c9bc32e131ced7b74242715c9fb1cf15a5900c80b20879850a806d2",
+        "requireCanonical": true
+      },
+      "errorData": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000545504f4348000000000000000000000000000000000000000000000000000000",
+      "decodedRevert": "EPOCH"
+    },
+    {
+      "name": "new owner current-epoch withdrawal allowed",
+      "transaction": {
+        "from": "0x1efF47bc3a10a45D4B230B5d10E37751FE6AA718",
+        "to": "0x985d0ce92f2af930e309f5ff89139490ac2d9e94",
+        "data": "0xa41fe49f000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002"
+      },
+      "at": {
+        "blockHash": "0x42f9e3d63c9bc32e131ced7b74242715c9fb1cf15a5900c80b20879850a806d2",
+        "requireCanonical": true
+      },
+      "result": "0x"
+    }
+  ],
+  "pageErrors": []
+}

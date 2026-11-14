@@ -1,0 +1,31 @@
+{
+  "parent": "b86fc862b89e2a19af81a90fd9eae8b699e18cf5",
+  "transform": "diagnostic summary from fresh synthetic capture; raw proof archive retained locally",
+  "files": {
+    "experiments/c007-constructor/check-final-proofs.mjs": {
+      "sha256": "a717f22b6502d38c40145486e54335725d68b56b243eb012fe545472f2bc30af",
+      "size": 8138
+    },
+    "experiments/c007-constructor/prepare-final-inputs.mjs": {
+      "sha256": "38a0704c76efe0ce52eca137ad091bc657c9dc698cd0f5324ad3120011f314a3",
+      "size": 1018
+    },
+    "experiments/c007-constructor/run-signed-lifecycle.mjs": {
+      "sha256": "105cdd0495a9760aaf1ed156e7a49d4a02c37c40595d168f9a27ca5e2d2e366e",
+      "size": 15808
+    },
+    "evidence/c007-final-proof-diagnostic-20261108/result.json": {
+      "sha256": "a4ee4649012a9a46d7dd27baf48484892fcfc8ba143321c01be20a654c992de7",
+      "size": 2578
+    },
+    "docs/FINAL_STATE_PROOF_DIAGNOSTIC.md": {
+      "sha256": "87a06ac990037254b45791c84fec47e59a976fae8d4a4cd07cd9808197b326c9",
+      "size": 3650
+    },
+    "docs/ACCOUNTING_RECONSTRUCTION.md": {
+      "sha256": "a72362bb55d69b6b2587867c59cd4f9c293c6d915cd0dbf2aa1f9b2244de6a96",
+      "size": 5422
+    }
+  },
+  "completeFinalStateProof": false
+}

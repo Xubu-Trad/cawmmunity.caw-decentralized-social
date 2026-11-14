@@ -1,0 +1,3 @@
+PARENTS=[4980feed978ce785bbd33467980e5c0e64349c08] TRANSFORM="captured-context Geth replay and genesis trie diagnosis" SHA256=50e66596ab443e9dbc7e6eb3b7078a499b8cf2039ec7e675d9a48f9a46f311d3 SIZE=3475 PATH=docs/REGISTRY_GENESIS_ACQUISITION_GAP.md
+PARENTS=[4980feed978ce785bbd33467980e5c0e64349c08] TRANSFORM="captured-context Geth replay and genesis trie diagnosis" SHA256=0ae3ab635bc4f7acffe6f5c493eaf1faf20a8052b57e47f1fb72a07d6c4ec47e SIZE=12007 PATH=evidence/registry-context-replay-20261110/result.json
+PARENTS=[4980feed978ce785bbd33467980e5c0e64349c08] TRANSFORM="captured-context Geth replay and genesis trie diagnosis" SHA256=7732d57d4aa7ede2856a3a028cedfeca91e049ed8215fcaa038918fa635d5c7a SIZE=3723 PATH=evidence/registry-context-replay-20261110/genesis-diagnosis.json

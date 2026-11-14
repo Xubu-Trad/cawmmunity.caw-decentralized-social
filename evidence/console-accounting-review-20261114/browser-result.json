@@ -1,0 +1,20 @@
+{
+  "passed": 14,
+  "checks": [
+    "withdrawal preview and gas boundary displayed",
+    "withdrawal changed credit blocks wallet request and clears unsent journal",
+    "transfer preview and gas boundary displayed",
+    "transfer changed credit blocks wallet request and clears unsent journal",
+    "post preview and gas boundary displayed",
+    "post changed credit blocks wallet request and clears unsent journal",
+    "owner balance blocks wallet request",
+    "custody balance blocks wallet request",
+    "new credit blocks wallet request",
+    "missing proof blocks wallet request",
+    "withdrawal unchanged accounting at new block reaches wallet; explicit rejection cleans up",
+    "transfer unchanged accounting at new block reaches wallet; explicit rejection cleans up",
+    "post unchanged accounting at new block reaches wallet; explicit rejection cleans up",
+    "preview fits desktop layout"
+  ],
+  "scope": "Headless Chromium with controlled fresh-fixture state changes and a rejecting wallet adapter. No real signing or new contract execution."
+}

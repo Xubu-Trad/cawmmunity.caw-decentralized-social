@@ -1,0 +1,24 @@
+{
+  "cases": [
+    {
+      "case": "missing-tool",
+      "reason": "TRACE_PROBE_START_FAILED",
+      "rejectedBeforeNodeInitialization": true,
+      "seconds": 0.4624618999999992,
+      "recordedProcessStates": [],
+      "runningProbeProcessesRemain": false
+    },
+    {
+      "case": "timeout",
+      "reason": "TRACE_PROBE_TIMEOUT",
+      "rejectedBeforeNodeInitialization": true,
+      "seconds": 10.379204115,
+      "recordedProcessStates": [
+        "absent",
+        "absent"
+      ],
+      "runningProbeProcessesRemain": false
+    }
+  ],
+  "scope": "controlled missing executable and timed-out tracer with descendant; no test nodes started"
+}

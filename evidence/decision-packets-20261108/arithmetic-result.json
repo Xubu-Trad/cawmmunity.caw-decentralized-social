@@ -1,0 +1,96 @@
+{
+  "status": "ILLUSTRATIVE_NOT_ADOPTED",
+  "cases": {
+    "single_action": {
+      "credits": [
+        1,
+        3
+      ],
+      "dust": 1
+    },
+    "two_actions_individually": [
+      {
+        "credits": [
+          1,
+          3
+        ],
+        "dust": 1
+      },
+      {
+        "credits": [
+          1,
+          3
+        ],
+        "dust": 1
+      }
+    ],
+    "two_actions_batched": {
+      "credits": [
+        3,
+        6
+      ],
+      "dust": 1
+    },
+    "same_owner_second_account_eligible": {
+      "credits": [
+        5,
+        5
+      ],
+      "dust": 0
+    },
+    "same_owner_all_accounts_excluded": {
+      "credits": [
+        10
+      ],
+      "dust": 0
+    },
+    "before_stake_change": {
+      "credits": [
+        5,
+        5
+      ],
+      "dust": 0
+    },
+    "after_stake_change": {
+      "credits": [
+        7,
+        2
+      ],
+      "dust": 1
+    }
+  },
+  "small_domain_conservation_and_permutation_cases": 735,
+  "invalid_inputs_rejected": [
+    [
+      1,
+      [
+        0,
+        0
+      ]
+    ],
+    [
+      -1,
+      [
+        1
+      ]
+    ],
+    [
+      1,
+      [
+        -1,
+        2
+      ]
+    ],
+    [
+      1,
+      []
+    ],
+    [
+      true,
+      [
+        1
+      ]
+    ]
+  ],
+  "limits": "Python exact integers; no EVM execution, uint256 overflow proof, contract differential test or community acceptance."
+}

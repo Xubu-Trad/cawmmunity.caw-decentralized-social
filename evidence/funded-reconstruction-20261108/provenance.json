@@ -1,0 +1,26 @@
+{
+  "parent": "bb56da6e5ccc0e68c8a70f13fff2873d89146b66",
+  "transform": "separate calldata/event accounting reconstruction compared with queried local VM state",
+  "files": {
+    "integration/core-baseline-v1/reconstruct-funded-admission.mjs": {
+      "sha256": "07c2279ce36f44bdf3b8e5055088f0f24cd40407f1f1e42ed3e1949fd1331d11",
+      "size": 7219
+    },
+    "docs/C007_FUNDED_ADMISSION_RECONSTRUCTION.md": {
+      "sha256": "077abf7d3db18073ceee6d19557211a9f1df8586a65882d6bd301f4fc657241f",
+      "size": 3917
+    },
+    "evidence/funded-reconstruction-20261108/input-pins.json": {
+      "sha256": "35fa7b6970cab3a81733dedc08e8c1eea3129aec49465a15c46687f403073929",
+      "size": 349
+    },
+    "evidence/funded-reconstruction-20261108/result.json": {
+      "sha256": "a65be25ce5592e43aedc6bec6099973c253420deeeca16332f9f3cd63ef818a4",
+      "size": 4967
+    },
+    "docs/C007_FUNDED_ADMISSION_RESEARCH.md": {
+      "sha256": "795f962a01c3b7903e0895556897434ec4d93331e2ed96fcde9fc988a21d8a5d",
+      "size": 4938
+    }
+  }
+}

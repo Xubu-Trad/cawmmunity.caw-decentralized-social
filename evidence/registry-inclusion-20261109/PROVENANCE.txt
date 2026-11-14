@@ -1,0 +1,4 @@
+PARENTS=[d5369e8367e22254449ef5fc4b80f066aaed7f5d] TRANSFORM="synthetic deployment inclusion composition" SHA256=0d039d55bff24ce12e3a48fe2a782ba60cdb331e41b0eb9706ec90888831ec9e SIZE=3345 PATH=docs/REGISTRY_DEPLOYMENT_INCLUSION.md
+PARENTS=[d5369e8367e22254449ef5fc4b80f066aaed7f5d] TRANSFORM="synthetic deployment inclusion composition" SHA256=1d0033e793b2c641be8c022f61246660b81539151678b08281a527d76e6775e2 SIZE=3011 PATH=integration/core-baseline-v1/check-registry-inclusion.mjs
+PARENTS=[d5369e8367e22254449ef5fc4b80f066aaed7f5d] TRANSFORM="synthetic deployment inclusion composition" SHA256=50b76c02157a5a31207b9fbace0c093d392ee205c10878e66124b510e52ead57 SIZE=17867 PATH=evidence/registry-inclusion-20261109/evidence.json
+PARENTS=[d5369e8367e22254449ef5fc4b80f066aaed7f5d] TRANSFORM="synthetic deployment inclusion composition" SHA256=7b6cc04842c497c2edabb95dcd0af119ba76e4daf232496b0e61d7f51a58a5fc SIZE=1013 PATH=evidence/registry-inclusion-20261109/result.json

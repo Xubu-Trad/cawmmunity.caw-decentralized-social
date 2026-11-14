@@ -1,0 +1,9 @@
+{
+  "source": "https://gethstore.blob.core.windows.net/builds/geth-alltools-linux-amd64-1.17.10-1df30b18.tar.gz",
+  "archiveSha256": "f991c32e5b7bb68db97a1b06d50c7c06f6aa9ae84d8f6f9b2301dc02cad2a7cf",
+  "archiveBytes": 58324310,
+  "binarySha256": "d8cfddad15a8c601e7b069bc5973ad073dbc2d632b8c5ab50e513ef27c53d6da",
+  "binaryBytes": 42001080,
+  "officialMd5Matched": true,
+  "pgpSignatureVerified": false
+}

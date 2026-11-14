@@ -1,0 +1,12 @@
+{
+  "passed": 6,
+  "checks": [
+    "fresh safe-transfer block verifies",
+    "four-argument callback data rejected",
+    "trailing calldata rejected",
+    "wrong recipient rejected",
+    "delegate signer rejected",
+    "fixture contract receiver callback rejected"
+  ],
+  "scope": "Positive uses signed mined evidence; malformed-call controls exercise semantic reducer, not newly mined attacks."
+}

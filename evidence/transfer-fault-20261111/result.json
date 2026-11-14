@@ -1,0 +1,164 @@
+{
+  "schema": "caw-peer-transfer-fault/1",
+  "faults": [
+    {
+      "peer": "original",
+      "cut": [
+        {
+          "direction": "source-to-destination",
+          "receivedBytes": 432,
+          "forwardedBytes": 1,
+          "discardedBytes": 431,
+          "streamOffsetBeforeChunk": 848
+        }
+      ],
+      "targetAbsentAfterCut": true,
+      "statusesWithoutPeer": [
+        "SYNCING",
+        "SYNCING",
+        "SYNCING"
+      ],
+      "destinationHead": "0x0"
+    },
+    {
+      "peer": "replacement",
+      "cut": [
+        {
+          "direction": "source-to-destination",
+          "receivedBytes": 432,
+          "forwardedBytes": 51,
+          "discardedBytes": 381,
+          "streamOffsetBeforeChunk": 797
+        }
+      ],
+      "targetAbsentAfterCut": true,
+      "statusesWithoutPeer": [
+        "SYNCING",
+        "SYNCING",
+        "SYNCING"
+      ],
+      "destinationHead": "0x0"
+    }
+  ],
+  "recovery": {
+    "sourceClient": "Geth",
+    "replacementPeerDifferentIdentity": true,
+    "destinationRestarted": false,
+    "transportCuts": 2,
+    "cutRecord": [
+      {
+        "peer": "original",
+        "cut": [
+          {
+            "direction": "source-to-destination",
+            "receivedBytes": 432,
+            "forwardedBytes": 1,
+            "discardedBytes": 431,
+            "streamOffsetBeforeChunk": 848
+          }
+        ],
+        "targetAbsentAfterCut": true,
+        "statusesWithoutPeer": [
+          "SYNCING",
+          "SYNCING",
+          "SYNCING"
+        ],
+        "destinationHead": "0x0"
+      },
+      {
+        "peer": "replacement",
+        "cut": [
+          {
+            "direction": "source-to-destination",
+            "receivedBytes": 432,
+            "forwardedBytes": 51,
+            "discardedBytes": 381,
+            "streamOffsetBeforeChunk": 797
+          }
+        ],
+        "targetAbsentAfterCut": true,
+        "statusesWithoutPeer": [
+          "SYNCING",
+          "SYNCING",
+          "SYNCING"
+        ],
+        "destinationHead": "0x0"
+      }
+    ],
+    "interruptedAtBlock": null,
+    "originalSourceStillStopped": true,
+    "destinationClient": "Reth2.10.1",
+    "initialBlock": "0x0",
+    "matchingHeaders": 29,
+    "peerCount": "0x1",
+    "forkchoiceStatuses": [
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "SYNCING",
+      "VALID"
+    ],
+    "destinationFileImportUsed": false,
+    "sourceInitializedFromPublicRlp": true,
+    "targetHashExternallySelected": true,
+    "consensusFinalityVerified": false
+  },
+  "proof": {
+    "fields": 16,
+    "headerHash": "0xb9fe1c52df006a50dae9230ef0ea8c55be471f05f910899032abfed6d1dee763",
+    "stateRoot": "0x0e5c8a09a836801852924770722afd33969ed8d0f323a4011ac2a9b30d578552",
+    "headerBindingVerified": true,
+    "clearedApprovalAbsent": true,
+    "controls": [
+      "header root",
+      "header hash",
+      "wrong value",
+      "missing proof",
+      "altered node"
+    ],
+    "chainAuthenticated": false,
+    "finalityVerified": false
+  },
+  "service": {
+    "allStopped": true,
+    "seconds": 40.11883436699999
+  },
+  "preservedFailedAttempt": "V1 replacement finished before polling-based fault arm; assertion failure, clients stopped",
+  "limitations": [
+    "encrypted TCP stream cutoff, not decoded Ethereum message/block attribution",
+    "same-host localhost; explicitly selected peers",
+    "replacement failed via injected truncation and then retried intact, not permanent replacement loss",
+    "no public consensus/finality or autonomous peer selection"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "inputCommit": "5ced0bcc0427672c959b54cb3b7d8ba5fad4b586",
+  "inventoryFingerprint": "7b11dd82432b189a77b9928b60e42c7345a6991d48898941fdc67c3d5185620e",
+  "reproduction": {
+    "restart": {
+      "killSignal": 9,
+      "headAfterRestart": 0,
+      "matchingRetainedHeaders": 1,
+      "identityPreserved": true,
+      "peersBeforeReplacement": 0,
+      "targetAbsent": true
+    },
+    "recovery": {
+      "sourceClient": "Geth",
+      "replacementPeerDifferentIdentity": true,
+      "destinationRestarted": true,
+      "persistenceTargetBlock": 15,
+      "prefixHeadObservedBeforeKill": false,
+      "originalSourceStillStopped": true,
+      "destinationClient": "Reth2.10.1",
+      "initialBlock": "0x0",
+      "matchingHeaders": 29,
+      "peerCount": "0x1",
+      "forkchoiceStatuses": [
+        "SYNCING",
+        "VALID"
+      ],
+      "destinationFileImportUsed": false,
+      "sourceInitializedFromPublicRlp": true,
+      "targetHashExternallySelected": true,
+      "consensusFinalityVerified": false
+    },
+    "proof": {
+      "fields": 16,
+      "headerHash": "0xb9fe1c52df006a50dae9230ef0ea8c55be471f05f910899032abfed6d1dee763",
+      "stateRoot": "0x0e5c8a09a836801852924770722afd33969ed8d0f323a4011ac2a9b30d578552",
+      "headerBindingVerified": true,
+      "clearedApprovalAbsent": true,
+      "controls": [
+        "header root",
+        "header hash",
+        "wrong value",
+        "missing proof",
+        "altered node"
+      ],
+      "chainAuthenticated": false,
+      "finalityVerified": false
+    },
+    "service": {
+      "allStopped": true,
+      "seconds": 8.399929606999997
+    },
+    "scope": "same-host synthetic execution; independent operator reproduction pending"
+  },
+  "scope": "local synthetic execution; independent operator and public finality not established"
+}

@@ -1,414 +1,79 @@
-# cawmmunity.caw - decentralized - social
+# cawmmunity.caw — decentralized social
 
-## Completion status and controlling milestone
+<!-- STABLE_MISSION_START: change only by explicit reviewed request -->
+## Our mission
 
-FACT - Reviewed snapshot: `f4ded7eac2e03ca4fab41eba3e7ee7fabdc29f33`, version `0.1.0-alpha.46`. The repository has substantial settlement, cryptographic verification, recovery and frontend research. It is not yet a complete independently operated decentralized social network. The browser alpha remains synthetic; public-test and production gates remain blocked.
+community.CAW exists to help turn the CAW manifesto into social software that its community can understand, verify, operate and carry forward without depending on any indispensable developer, company or website.
 
-FACT - The last documented full root Node suite passed 1,251 tests across 73 files, before subsequent research additions. The latest aggregate-signature experiment records 21 focused checks with separate 90 BLS and 73 bootstrap regressions. These are retained results, not a fresh integrated run at this commit or proof of live-chain authority.
+The aim is user-owned identity, accountable handling of assets, independently recoverable history and a choice of interfaces. A builder should earn confidence through inspectable work, not acquire permanent control because they wrote or deployed it. That standard applies equally to Xubu and every contributor.
 
-### Primary engineering objective
+We build in public, preserve evidence, welcome independent review and make unresolved decisions visible. We will not present a working screen, a passing test or a deployment as proof that the whole protocol is complete. Release requires demonstrated behavior, peer review and an open agreement process.
 
-IDEA - Make [one independently reproducible CAW action](docs/PUBLIC_ACTION_MILESTONE.md) the controlling completion milestone. Existing verification work must support this goal rather than substitute for an integrated action.
+### What is the manifesto?
 
-The six work packages are:
+The [CAW manifesto](https://github.com/cawdevelopment/manifesto/blob/main/README.md) is a proposed specification for a decentralized social clearing house. In everyday terms, it describes a social network whose account identity and associated assets belong to the holder of a username NFT, with public messages, CAW-based social actions, private messaging and permanent, trustless records.
 
-1. Establish original CAW token behavior and explicitly resolve or bound username registration.
-2. Freeze provisional account authority, message bytes, fees, eligible stake, payer exclusion, rounding, nonce and direct-submission rules.
-3. Build one reproducible candidate with pinned source, compiler, ABI, bytecode, constructor values and authority graph.
-4. Execute owner authorization, exactly one paid CAW, recipient allocation and authorized withdrawal, with adversarial rejection tests.
-5. Independently acquire and verify complete relevant chain history under an explicit network, checkpoint and finality policy.
-6. Have another operator reproduce, serve, verify and continue the action without original-builder credentials, infrastructure or privileged authority.
+It distinguishes the shared protocol from the websites and apps people use to access it. Different interfaces may make different presentation and moderation choices; one interface should not become the only way to use the system. It also calls for public development, community review and acceptance, and removal of special deployer control without multisigs or upgradeable proxies.
 
-Each package requires pinned inputs, reproducible commands, exact evidence and a reported PASS, FAIL, BLOCKED or NOT RUN outcome.
+The text contains ambiguities and conflicting details. Our requirement mapping and conflict register preserve those questions rather than quietly replacing the specification with a developer's preference. The linked original remains the source; this introduction is a summary.
 
-### Critical blockers and decisions
+### What does the recovered R2 message add?
 
-| Gate | Status | Required evidence |
-| --- | --- | --- |
-| [C-001 original CAW registration](docs/C001_DECISION_REQUEST.md) | BLOCKED | Demonstrate a compatible mechanism for the literal zero-address requirement or openly review a specification deviation. A nonzero sink is not automatically a supply burn. |
-| [C-002/C-003/C-004/C-007/C-008](sources/SPEC_CONFLICTS.md) | OPEN | Freeze explicit settlement, cost, text, staking and submission rules without treating recommendations as accepted protocol. |
-| Scalable token economics | BLOCKED | Replace three-account experimental allocation; verify bounded gas, conservation, dust, eligibility and withdrawals. |
-| Authoritative history | BLOCKED | Integrate body, receipt, sender, signature and registry verification with trusted network selection and fail-closed recovery. |
-| [Operator independence](docs/OPERATOR_INDEPENDENCE.md) | BLOCKED | Demonstrate OI-01 through OI-09 through independent builder-absent operation. |
-| Full integration and release security | NOT RUN | Fresh integrated suite, reproducible releases, CI, independent security review and deployment acceptance. |
+[R2, recovered from zrUfKaKV](https://github.com/Xubu-Trad/caw-lab/blob/canon/layers/R2-020_hex_transposition/MESSAGE.md), describes a shared development process: publish the code, contribute according to the manifesto or clearly agreed changes, review it together and agree on release. It rejects developer backdoors, proxies and multisigs, and says deployment should not leave its builders above ordinary community members.
 
-FACT - [Bootstrap trust requirements](docs/BOOTSTRAP_TRUST_REQUIREMENTS.md) distinguish internally consistent proofs from an authenticated live chain. BLS equations do not establish committee membership or checkpoint authority. [PR #16](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/16) remains under review with recorded comparison-script negative controls.
+Its practical lesson for this implementation is that progress must remain possible when any builder disappears. The [reproduction instructions](https://github.com/Xubu-Trad/caw-lab/blob/canon/layers/R2-020_hex_transposition/REPRODUCE.md) establish the recovered bytes; they do not authenticate an author or certify a deployed application. We use the text as a development reference with that distinction intact.
 
-### Completion stages
+### What is this implementation?
 
-- Stage A: local synthetic alpha exists; verified public static hosting is a separate release task.
-- Stage B: one fully specified, settled and independently reproduced protocol action remains incomplete.
-- Stage C: connected public beta, registration, wallet support, scalable accounting, recovery and independent submission remain blocked.
-- Stage D: full manifesto functionality, confidential messaging, durable content, independent operation, external audits and community acceptance remain blocked.
+This is a separate community implementation and reference alpha, not an official CAW release or a claim to ownership of CAW. It brings together original implementation work, requirement maps, experimental contracts, independent readers, retained evidence and application interfaces. Reused material retains its provenance and licensing boundaries.
 
-INFERENCE - C-001 original-token registration and C-007 staking rules are the immediate specification priorities. Additional isolated research is justified by a named acceptance gap, not by increasing test counts alone.
+The destination is a system others can reproduce and operate without Xubu's account, infrastructure, credentials or permission. That is a requirement to demonstrate, not a property we claim has already been achieved.
 
-FACT - Public source does not itself prove decentralization. Media hashes do not guarantee availability; NFT transfers cannot erase previously decrypted messages. No hidden developer privilege or unilateral release authority is accepted as a completion shortcut.
+<!-- STABLE_MISSION_END -->
 
-See the [engineering roadmap](docs/ROADMAP.md), [conflict register](sources/SPEC_CONFLICTS.md), [contribution rules](CONTRIBUTING.md) and [license exclusions](LICENSE_STATUS.md).
+## where the build stands
 
-## Retained research progress
+updated November 14, 2026. **this is unfinished research software. there is no production-ready community.CAW network, and the local experiments use mock tokens.**
 
-[Aggregate-signature research](docs/BLS_POP_AGGREGATE_20261108.md) now checks supplied-key equations with 21 focused checks and separate 90 BLS / 73 bootstrap regressions. A controlled example shows why a passing equation does not prove participant possession or authorization. Consensus signing domains and trusted checkpoints remain open gates.
+we are building something another person can inspect, reproduce and carry forward. the local execution console can already submit signed posts, transfer an experimental account and withdraw its credited mock tokens on a disposable chain. the original alpha interface remains a simulation. the console does real local execution, but its posts do not yet implement the manifesto's CAW payment and settlement rules.
 
-[The retained minimal committee now passes G1 and aggregate checks](docs/MINIMAL_COMMITTEE_G1_20261107.md), composed with metadata and structural inclusion. Separate runs passed 12 new, 30 G1 and 73 bootstrap checks. This validates the retained keys and their sum, not signatures or trusted consensus.
+the console now shows expected accounting changes before the wallet request: what leaves custody, what reaches the current owner and how much account credit remains. account transfers move control of the credit, not tokens already held by the previous owner. the current unpaid posting experiment does not settle a token fee.
 
-[BLS public-key validation research](docs/BLS_G1_VALIDATION_20261107.md) now checks compressed G1 encoding, curve/subgroup membership and nonidentity against external vectors. A raw-decoder mismatch is preserved; the canonical adapter passes 30 focused checks plus a separate 44-check regression. This does not verify committee authority or signatures.
+before requesting a transaction, the console reacquires verified state and blocks the request if the reviewed accounting has changed. 18 targeted checks, 14 browser checks and 110 existing action-plan tests passed. the full-withdrawal projection agrees with the retained executed result. [exact evidence and limits](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/evidence/console-accounting-review-20261114/README.md). these are expected effects, not confirmed balances; state can still change while a wallet is open or before execution.
 
-[A captured-source fixture prototype](docs/CAPTURED_FIXTURE_EXECUTION_20261107.md) now runs the retained five modules without rereading acquired source files. Seventeen focused checks and a separate 44-check regression passed. This experimental, explicitly trusted-host mechanism is not a hostile-code sandbox or live-chain authentication.
+these results come from local experiments run by us. **independent reproduction is still pending.** selected local headers are not proof of public-chain finality, and this storage layout only supports the selected research contracts. general wallet support, actual CAW compatibility, registration, paid-post economics, durable public operation and release agreement remain unfinished.
 
-[The next execution experiment now has an explicit threat model](docs/EXECUTION_THREAT_MODEL_20261107.md): protect captured fixture code from acquisition-file replacement while keeping runtime and manifest trust assumptions visible. The plan defines twelve review cases; no loader is implemented or new tests claimed.
+the experimental application lives on [draft PR #19](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/19). this README does not imply that its code has merged into main. [PR #16](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/16) remains open at `60d5255`; the receipt-response guard was incorporated and its scoped checks passed. there was no new reply requiring a response at this check. that is not approval of the whole PR.
 
-[Verification-to-import testing](docs/VERIFIED_IMPORT_BOUNDARY_20261107.md) now reproduces a dependency change after inspection. Captured verified bytes resist changes to the acquisition files, but a writable execution copy remains vulnerable. Four new checks and a separate 40-check regression passed; no secure-loader or live-trust claim.
+## what comes next
 
-[Dependency substitution is now reproduced](docs/DEPENDENCY_SUBSTITUTION_20261107.md): unchanged entrypoint bytes can load altered behavior. A retained five-file inventory detects the tested change. Five new checks and a separate 35-check regression passed; this remains isolated research, not a secure loader or live-chain authentication.
+retain the reviewed accounting context with pending actions so recovery after a reload keeps expected effects separate from confirmed results. keep the frozen reproduction package available to independent reviewers. paid settlement still requires explicit accounting and specification decisions; we will not silently choose them to make the application look complete.
 
-A new [source-replacement experiment](docs/SOURCE_COMMITMENT_INSPECTION_20261107.md) shows what a previously retained code hash can detect: 9 focused checks and a separate 26-check regression passed. This is research byte inspection, not a secure loader or live-chain authentication.
+## find your starting point
 
-## Source-pinned fixture operator policy — 2026-11-07
+| what you want to do | where to begin |
+| --- | --- |
+| understand the requirements | [alignment review](docs/MANIFESTO_R2_ALIGNMENT_REVIEW.md), [mapped passages](sources/MANIFESTO_REQUIREMENTS.tsv), [unresolved conflicts](sources/SPEC_CONFLICTS.md) |
+| run the experimental console | [local console instructions](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/docs/LOCAL_EXECUTION_CONSOLE.md) and [posting instructions](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/docs/LOCAL_POSTING_CONSOLE.md) |
+| reproduce a pinned experiment | [ownership reproduction package](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/docs/CONSOLE_OWNERSHIP_REPRODUCTION.md), [environment setup](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/docs/REPRODUCTION_SETUP.md) |
+| review the current work | [review guide](docs/REVIEW_GUIDE.md), [baseline](docs/REVIEW_BASELINE.md), [roadmap](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/docs/ROADMAP.md) |
+| examine developer independence | [operator-independence register](docs/OPERATOR_INDEPENDENCE.md) |
+| contribute a finding or change | [contribution guide](CONTRIBUTING.md), [issues](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues), [pull requests](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pulls) |
 
-[The source-pinned research gate](docs/BOOTSTRAP_SOURCE_PIN_POLICY_20261107.md) passed 5 new focused checks, alongside separate 6, 2 and 13 case regressions. It rejects caller-side operator-pin replacement under a fixed fixture-source assumption, not independent live network authority. Full-suite and release gates remain open.
+## reproduce the right version
 
-## Operator-reference fixture comparison — 2026-11-07
+pin the commit and experiment first. the historical root frontend/offline instructions specify Node 24.20.0; the recent local console uses Node 20.20.2. use the selected experiment's lockfile, client hashes and commands. we have experiment-specific dependency locks, not one complete lock for every runtime and operating-system tool.
 
-[The operator-reference comparison](docs/BOOTSTRAP_OPERATOR_REFERENCE_20261107.md) passed 6 focused Node checks, plus separate 2-case retained-genesis and 13-case fork-data regressions. It separates a provider claim from a supplied operator reference without authenticating the reference itself. Full-suite and release gates remain open.
+the ownership reproduction package has a frozen 64-file input set. later console improvements are separate evidence increments, not permission to move a reviewer's target. earlier reviewers pinned to `1a162a4` should retain that baseline and its original NOT RUN results until they execute those checks.
 
-## Retained genesis-root fixture binding — 2026-11-07
+report file inspection, offline verification, execution and independent reproduction separately. include the exact commit, versions, commands, output hashes and failures. never use personal wallet keys or real assets in these fixtures.
 
-[The retained minimal Capella genesis-root check](docs/BOOTSTRAP_RETAINED_GENESIS_BINDING_20261107.md) passed 2 focused Node checks, with the unchanged fork-data regression passing 13. It rejects coherent genesis-root re-pinning against a fixed research fixture reference, not an independently authenticated live network. Full suite and release gates remain open.
+## building together
 
-## Next verification gate — 2026-11-07
+bring a bounded change, the problem it addresses, what you actually tested and what remains uncertain. reproductions, counterexamples and clearer instructions matter as much as new code. preserve failed evidence and credit the people who contributed it. a merge is not community release agreement.
 
-[Bootstrap trust requirements](docs/BOOTSTRAP_TRUST_REQUIREMENTS.md) now separate matching proof data from knowing it belongs to the intended live chain. Network/fork selection, checkpoint origin and freshness, BLS checks and update acceptance remain open. Subsequent [fixture fork-data checks](docs/BOOTSTRAP_FORK_DATA_CONSISTENCY_20261107.md) passed separate runs of 7 Python oracle, 9 initial JavaScript and 13 corrected JavaScript checks. The corrected verifier rejects unexpected config keys, but a coherent alternative fork still passes as unauthenticated data consistency. No live checkpoint authentication, complete fork schedule, full-suite rerun or release readiness is claimed.
+the [previous engineering overview](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/docs/ENGINEERING_PROGRESS_ARCHIVE_20261114.md) preserves the detailed chronology and links. the [earlier history snapshot](README_ENGINEERING_HISTORY_20261113.md) remains available too. historical next steps are not current status.
 
-## Bootstrap selection and composition — 2026-11-07
+the mission above stays unchanged during routine engineering updates. progress and limitations belong here and in the linked workflow; we do not rewrite the mission to fit the implementation.
 
-[The fixture bootstrap checks now compose](docs/BOOTSTRAP_PROFILE_COMPOSITION_20261107.md): explicit profile selection, saved metadata bytes and committee inclusion are checked together. The four focused groups passed separately here (8, 18, 47 Node checks and four Python checks), matching the supplied WSL logs. This checks a research fixture; it does not authenticate a live chain or enable production acceptance. A [dated correction](docs/BOOTSTRAP_BINDING_PROVENANCE_CORRECTION_20261107.md) records the historical fixture-hash discrepancy without rewriting the old evidence.
-
-## Current engineering update — 2026-11-07
-
-[Bootstrap committee inclusion](docs/MINIMAL_CAPELLA_BOOTSTRAP.md) now passes against the preserved official minimal Capella fixture. In plain terms, the supplied committee data matches the recorded state commitment. 47 focused Node checks and four decoder checks pass. This does **not** yet validate committee signatures or establish a trustworthy live starting point. PR #16 remains at its reviewed revision with changes requested; no new author revision was available at this check.
-
-[An official combined Capella bootstrap fixture](docs/EXTERNAL_CAPELLA_BINDING.md) now passes the payload-to-beacon path against its published root: 41 focused Node checks and four decoder checks pass. This adds external structural evidence; committee/signature validation and live checkpoint trust remain unfinished.
-
-[Payload-to-beacon structural binding](docs/CAPELLA_BINDING_REVIEW.md) now connects the three proof components. All 39 focused checks across four files pass. The combined fixture is synthetic; the selected root is still unauthenticated, so this does not establish a working light client or trusted chain recovery.
-
-[Review of WD-27’s independent regression evidence](docs/PR16_EVIDENCE_REVIEW.md): the submitted trace passes our offline checker (72 cases, 208 transactions), and all sixteen inputs match. Two negative controls expose acceptance gaps in the new comparison script, so corrections are requested before merging. This is evidence validation, not another EVM run or production approval.
-
-[Capella payload-header hashing](docs/CAPELLA_PAYLOAD_REVIEW.md) now matches five official Ethereum fixture roots with eleven focused checks. This verifies the selected format and commitment, not transaction execution or current-mainnet compatibility. Linking it to a beacon header and authenticating the chain remain unfinished.
-
-[Beacon-header verification](docs/BEACON_HEADER_REVIEW.md) now matches five official Ethereum test-vector roots and passes ten focused checks. It binds the body root to a caller-selected header root. Execution-payload binding and authentication of that selected root remain unfinished; this is not a working light client.
-
-A [bounded SHA-256 branch checker](docs/SHA256_BRANCH_REVIEW.md) now supplies one prerequisite for researching checkpoint proofs. Eleven focused tests pass against synthetic Python-generated vectors and rejection cases. It verifies inclusion under a supplied root, not that the root is trustworthy; no light client or production trust path is implemented.
-
-[Outside recovery observations now reproduce locally](docs/EXTERNAL_HISTORY_REVIEW.md): our current readers passed 20 focused checks on five supplied histories, including twelve malformed-history cases and a conflicting checkpoint. This checks saved data, not fresh acquisition or trusted public-chain selection. The initial review-harness failure is documented and preserved.
-
-[Four outside review packets](docs/EXTERNAL_REVIEW_PACKETS.md) now have independently checked archive hashes and 911 matching listed file hashes. A reusable checker passes four focused tests. This makes the submitted evidence inspectable; it does not independently rerun its contract results or resolve registration, checkpoint trust, wallet or relay gates.
-
-A [frozen-state checkpoint experiment](docs/STAKING_CHECKPOINT_REVIEW.md) now preserves accrued staking rewards and claim fractions while normalizing the research index. Six Python tests pass. It is an accounting reference, not a live migration, scalable settlement contract or solution to all lifetime limits.
-
-The [staking budget review](docs/STAKING_BUDGET_REVIEW.md) now quantifies rounding and finite counter capacity in the experimental accumulator. Five Python checks pass; no contract economics or deployment rule has been selected.
-
-Community work has resumed with [authorization-lifetime review](docs/AUTHORIZATION_LIFETIME_REVIEW.md), responses to outside callback, wallet and relay experiments, and a retained-state regression showing why restoring a stake commitment is not permanent cancellation. The focused file passes 13 checks; this is offline evidence, not a new EVM run or full-suite total. Outside reports remain attributed until their raw artifacts can be checked. The local frontend is a simulation; the public test candidate and production remain blocked.
-
-cawmmunity.caw is a public implementation of the caw manifesto and the reproduced r2 message, being built from the ground up with decentralization treated as an architectural requirement rather than something to remove at the end.
-
-the repository brings the application and protocol work into one place: a working local alpha frontend, experimental contracts and accounting, independent readers, recovery tooling, signed-action and authority tests, retained evidence, and a requirement map back to the source material.
-
-the goal is to build something the cawmmunity can inspect while it is still being shaped, contribute to without asking one developer for permission, and eventually operate without the original builder remaining necessary.
-
-that changes how this repo is being built.
-
-manifesto and r2 requirements are mapped before they become implementation claims. where the source leaves a real conflict, the conflict stays visible instead of being silently decided in code. authority, history, recovery and operator disappearance are treated as protocol problems. successful tests are retained with their limits, and failed experiments are useful when they expose an assumption another builder should not repeat.
-
-the release standard is not "xubu finished it." the standard we are working toward is a build that other people can reproduce, challenge, continue, and eventually agree is solid enough to release without developer backdoors, upgrade authority or an operator the protocol cannot survive without.
-
-there is already a substantial implementation here, but there is still room to change important decisions before they harden.
-
-if you are already building against the manifesto somewhere else, keep building. good work does not need to belong to one repository to matter. if a patch, test, reader, architecture objection or reproduction can improve this implementation, bring it here with its authorship and evidence intact.
-
-the best version of this repo should eventually contain decisions and code that did not originate with xubu.
-
-by teh ppl. for teh ppl.
-
-
-## current review — 2026-11-03
-
-Community engineering has resumed with a [builder-absent rehearsal plan](docs/BUILDER_ABSENT_REHEARSAL.md): eight explicit loss scenarios, successor inputs and scoped acceptance/refusal criteria. Retained-fixture portability can be reviewed now; the integrated public action still requires candidate asset, economics and authority decisions. No new test passes or recovery completion are claimed.
-
-The [bounded-integer reward experiment](docs/STAKING_FIXED_REVIEW.md) now preserves fractional claims and matches a per-recipient reference across four finite operation sequences. A deliberately broken fraction-retention variant fails. Precision, dust disposition and lifetime caps remain unresolved; this is not a deployed staking contract or a selected economic rule.
-
-The [staking accumulator comparison](docs/STAKING_ACCUMULATOR_REVIEW.md) now tests account-excluding reward arithmetic against a per-recipient model. It also exposes values beyond 256 bits and a payout difference from moving rounding to claim time. This is research evidence for issue #5, not deployable settlement; integer bounds and rounding remain unresolved. The 1,251-test Node-suite count is unchanged.
-
-The [candidate asset and economics packet](docs/CANDIDATE_TERMS_REVIEW.md) now makes payer exclusion, stake-commitment changes and dust consequences concrete, with executable integer comparisons. [Issue #5](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues/5) requests decisions; no alternative is adopted. The Node-suite total below is unchanged.
-
-
-The [portable recovery fixture](docs/PORTABLE_RECOVERY_FIXTURE.md) now exports the existing reader and pinned synthetic inputs without a dependency installation. Four export tests and a fresh-directory CLI run passed; altered inputs and a missing reader reject. This is same-operator portability evidence, with independent builder reproduction still open. The recorded full Node-suite count is unchanged.
-
-
-[WD-27 reports an independent rerun of the 72-case adversarial experiment](docs/PAID_ACTION_REGRESSION.md#outside-reproduction-report--2026-11-03). The reported outcomes match the retained experiment; the new raw trace and comparison outputs have not yet been inspected here. Issue #2 stays open for remaining coverage, and this report does not change the full-suite count or deployment gates.
-
-The [recovery CLI now handles linked folder paths](docs/RECOVERY_BUNDLE.md#linked-entry-paths--2026-11-03), fixing a reproduced case that exited successfully without running checks. Twenty-five focused tests and separate CLI cases passed; a corrected portable export also ran. These results do not change the historical full-suite count or independent-recovery gates.
-
-**Current priority: [one complete, independently reproducible CAW action](docs/PUBLIC_ACTION_MILESTONE.md).** Freeze the asset/registration boundary and one-action rules, then demonstrate settlement, independent acquisition and operation without the original builder. The existing probe is not ready to deploy unchanged.
-
-| Area | Current evidence | Remaining gate |
-| --- | --- | --- |
-| Local validation | **1,251/1,251 offline tests across 73 files**, [recorded recovery admission result](evidence/RECOVERY_ADMISSION_RESULTS.json) | Not an external audit, public acquisition or production proof |
-| Outside contributions | WD-27 PRs [#11](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/11), [#12](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/12), [#13](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/13), [#14](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/14) merged with authorship preserved | Broader independent review and release agreement |
-| Source decisions | 49 manifesto requirements + 10 R2 requirements; 16 conflict entries; 11 open issues at review time | Asset/burn compatibility, economics, text and other unresolved decisions |
-| Native execution | [Replay cleanup caller observed](docs/NATIVE_RUNTIME_TRACE.md); uninstrumented control matches | Captured-node discrepancy unresolved; acquisition-side build/runtime evidence pending, hosted CI deferred |
-| Quantum/AI preparation | [Inventory and failure handling](docs/QUANTUM_AI_RESILIENCE.md); [migration review #15](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues/15) | No PQ authentication implemented; review continues alongside the core action milestone |
-
-The frontend remains a local simulation and the protocol remains experimental alpha.46. Public-test deployment and production are blocked. A three-account probe, copied token runtime or synthetic testnet token cannot establish permissionless registration or compatibility with original CAW.
-
-[Issue #10](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues/10) retains outside Linux reproduction reports and their runtime/same-capture limitations. The recorded output-digest cross-check agrees; complete external logs have not been independently inspected. Historical test and contributor-review records remain available in the linked evidence and PR conversations.
-
-![Commons in the current cawmmunity.caw alpha](docs/images/commons-alpha27.jpg)
-
-Authentic screenshot of the local alpha. Synthetic accounts; no real funds. [Image provenance](docs/images/README.md).
-
-<details>
-<summary>Website entrance</summary>
-
-![The cawmmunity.caw alpha website entrance](docs/images/website-alpha27.jpg)
-
-</details>
-
-## what is here
-
-two connected components are being developed together:
-
-- **Frontend:** [cawmmunity.caw - decentralized - social - alpha](docs/FRONTEND_POLICY.md) — the website and Commons conversation view.
-- **Protocol:** [cawmmunity.caw - decentralized - social - protocol](docs/PROTOCOL_V0_SCOPE.md) — contracts, readers, recovery logic and local experiments.
-
-the frontend is still a simulation and the protocol is still an experimental local build. no real wallet, private messages or public media uploads are connected. `.caw` is the project name here; it does not establish domain registration, deployment or production readiness.
-
-production remains blocked until the protocol evidence, unresolved specification decisions, operator-independence work and public review gates are strong enough to justify moving beyond the alpha.
-
-## current build -- 2026-10-27
-
-this is a community implementation/reference alpha, not an official caw release. the frontend remains a local simulation; the package remains `0.1.0-alpha.46`. public test deployment and production are blocked. the evidence baseline before this update is [`ad24388`](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/commit/ad24388341cc3693711ee5216fc4f546a6c753cb); the local executed ledger reconciliation and current evidence are linked below.
-
-the current engineering focus is recovery another builder can inspect and reproduce: selected state proofs, bounded signed-transaction replay, and the identity of the code doing that replay. these are separate evidence gates, not a claim that the protocol is complete.
-
-| evidence | recorded result | what remains unproved |
-| --- | --- | --- |
-| [ordinary Node offline suite](evidence/REPLAY_ACCOUNT_TEST_RESULTS.json) | 1241/1241 checks across 73 files | finite local tests; not an external audit or production proof |
-| [bounded replay and source manifest](docs/MANIFEST_REPLAY_GATE.md) | 66 grouped checks; 21 selected source files checked against an explicit expected manifest digest | complete state-root recomputation, arbitrary callback provenance, authenticated public chain and independent reproduction |
-| [shared witness adapter](docs/SHARED_WITNESS_ADAPTER.md) | local signed transfer, contract write, revert and refund cases; missing evidence poisons the attempt | selected local London fixtures, not general transaction/fork coverage or a deployed CAW protocol |
-| [installed package payloads](docs/INSTALLED_PACKAGE_COMPARISON.md) | 17 lock-integrity-matched archives compared with installed payloads | generated launchers, complete installation and loaded-module attestation |
-| [dependency links and runtime](docs/LINKS_RUNTIME_COMPARISON.md) | 61 declared links and the Node executable checksum matched | runtime release signature and runtime safety |
-| [selected entrypoints](docs/ENTRYPOINT_OBSERVATION.md) | 12 default-mode resolutions; cross-mode Address constructor mismatch reproduced | complete transitive loader graph, custom conditions and immutable execution snapshot |
-| [ESM replay comparison](docs/ESM_REPLAY_COMPARISON.md) | same 66 groups pass with tx/block ESM imports; eight result records match the retained mixed-mode run | bounded fixture comparison, not general engine equivalence or full loaded-code identity |
-| [selected executor](docs/SELECTED_EXECUTOR.md) | 13 focused groups; five signed outcomes/gas values and identity/input rejection cases | trusted gate/host, module caches, concurrent replacement, full roots and transitive dependency identity |
-| [fresh-process execution](docs/EXECUTOR_PROCESS.md) | eight separate processes; two identical result files, five no-output rejections and one preserved-output refusal | trusted supervisor/host, filesystem races, complete result validation and independent reproduction |
-| [result record inspection](docs/EXECUTOR_RESULT.md) | 28 focused checks for completion inputs, exact identities, strict schema and refusal cases | metadata agreement cannot authenticate execution; plausible forged gas remains unverified |
-| [owned process inspection](docs/OWNED_EXECUTOR.md) | real worker/inspector sequence and nine synthetic transport cases | trusted host and captured process output; no cryptographic execution or full-root proof |
-| [competing-anchor boundary](docs/ANCHOR_TRUST_BOUNDARY.md) | six checks: two different same-height branches pass selected integrity checks; substituted hashes/finality claim reject | neither branch is established as canonical or final |
-| [registry/bootstrap review](docs/REGISTRY_BOOTSTRAP_REVIEW.md) | six pinned source files compared; seven production evidence gates remain open | runtime code identity does not authenticate initial ownership; no new execution tests |
-| [registry bootstrap experiment](docs/REGISTRY_BOOTSTRAP_EXPERIMENT.md) | 11 local groups: identical registry runtime with different owners; hash/owner/epoch negatives reject | impersonated local actors, unfunded withdrawals, retained compiler output; no production authority |
-| [registry address/state binding](docs/REGISTRY_BOOTSTRAP_STATE.md) | 13 groups: three fresh local owner/epoch proofs; address/root/code substitution negatives reject | unchanged fixture reader, selected local anchor; no canonicality, current permission or production proof |
-| [paid-contract registry binding](docs/PAID_REGISTRY_CODE_BINDING.md) | 17 groups: paired state/code proofs and fixed immutable bindings; cross-pair substitutions reject | fixed retained compiler template and local selection; no balances, withdrawal or production proof |
-| [paid-ledger state boundary/layout](docs/PAID_LEDGER_STATE_BOUNDARY.md) | compiler reproduced identical bytecode/ABI plus layout; four verification cases pass | ledger endpoint proofs and external token backing are not yet composed |
-| [selected ledger proof decoder](docs/PAID_LEDGER_PROOFS.md) | 18 groups:13-slot proofs, code binding, zero/nonzero states and invariant negatives | constructed states only; executed ledger/history reconciliation and token backing remain open |
-| [executed ledger reconciliation](docs/EXECUTED_LEDGER_RECONCILIATION.md) | 14 groups: three local endpoints, storage proofs and history agree; substitutions reject | synthetic token/impersonated actors; no real-token backing or complete body/sender/receipt proof |
-
-these records have different scopes and are not added into one total. the 1241 ordinary checks and 66 replay groups remain retained prior runs. The 13 selected-executor groups and eight process cases remain separate retained results; the 28 result-inspection checks remain separate evidence. The supervised worker/inspector run and nine transport cases are retained evidence. The 11 bootstrap, 13 registry-state and 17 code/state binding groups are retained prior evidence. The four compiler-output cases are retained evidence. The 18 constructed ledger-proof groups are retained evidence. This update adds 14 executed synthetic-token ledger/history groups. No public-chain acquisition or independent-operator reproduction is claimed. the earlier alpha.41 record separately contains 65 Python checks. execution experiments do not change the recovery receipt into a claim of complete execution verification; `productionAccepted` remains false.
-
-developers can start with the [review guide](docs/REVIEW_GUIDE.md), [shared adapter](docs/SHARED_WITNESS_ADAPTER.md), [structured outcomes](docs/REPLAY_OUTCOMES.md) and [source-manifest gate](docs/MANIFEST_REPLAY_GATE.md). the gate requires a separately selected expected digest; regenerating and automatically trusting a new manifest is not verification. the frontend/offline suite has no dependency-install step; engine experiments have their own pinned installation and reproduction instructions.
-
-next: obtain [independent executor reproduction](docs/INDEPENDENT_EXECUTOR_REVIEW.md) and resolve public anchor/account-authority requirements before state adoption. The [current source review](docs/CURRENT_AUTHORITY_DEPENDENCIES.md) maps 12 known authority/dependency surfaces; all nine independence gates remain open. The paid-action contract is still a fixed three-account experiment, separate from the replay engine and simulated frontend. full state-root comparison, public acquisition/anchor authentication, broader wallet authority, transport/storage replacement and independent builder recovery remain open. the [roadmap](docs/ROADMAP.md) retains the detailed sequence and failed-evidence boundaries.
-
-## what makes the build different
-
-this repo is trying to make the difficult parts visible early.
-
-**source before assumption.** the current review map traces [59 manifesto/R2 requirements](docs/MANIFESTO_R2_ALIGNMENT_REVIEW.md) and keeps [16 specification conflicts](sources/SPEC_CONFLICTS.md) open where the source does not give a defensible single answer.
-
-**authority is part of the implementation.** owners, delegates, wallet modes, approvals, withdrawal rights, recovery paths and external dependencies are being treated as things that must be proven or removed, not explained away after deployment.
-
-**history has to be recoverable.** a working frontend is not enough if another client cannot reconstruct the same record. the repository includes separate readers, retained captures, rollback/reorg experiments, header/body/receipt commitments, state proofs and recovery checks aimed at that requirement.
-
-**missing evidence fails closed.** where a proof, account, slot, code value or history dependency is unavailable, the direction of the work is to reject the claim rather than fill the gap with a convenient default.
-
-**failed experiments stay useful.** retained negative controls and explicit trust boundaries are part of the evidence. a passing test is only allowed to prove the surface it actually exercised.
-
-**release is a community problem.** a merge, a maintainer's approval or a green local suite is not the acceptance rule. the repository still needs independent reproduction, outside code review, unresolved objections recorded, a builder-disappears exercise and a release process the community can inspect.
-
-## where builders can move it
-
-the highest-value open work is currently:
-
-1. extend the bounded signed replay evidence toward complete state-root comparison, broader transaction coverage and independently reproducible engine identity;
-2. authenticate chain/fork selection and reproduce acquisition through genuinely independent paths;
-3. finish wallet and delegated-authority coverage, including contract-wallet and newer transaction modes where support is intended;
-4. resolve the open manifesto/R2 decisions around registration, economics, staking/distribution, message limits, private-message history, permanence and release rules through explicit review rather than hidden implementation choices;
-5. demonstrate recovery, operation and continued development with the original builder absent;
-6. turn the current single-author implementation history into a real multi-contributor development history.
-
-the [roadmap](docs/ROADMAP.md), [operator-independence register](docs/OPERATOR_INDEPENDENCE.md), [review guide](docs/REVIEW_GUIDE.md) and [open issues](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues) are the best places to choose a bounded piece of work.
-
-## outside reproduction and contribution
-
-`tentencaw` has already independently reproduced both alpha.20 offline readers on Ubuntu 24.04 and obtained the same canonical reconstruction digest as the retained JavaScript and Python outputs in issue #10.
-
-that result is intentionally narrow: it reproduces the reader output. it does not establish independent acquisition, chain authenticity, consensus, execution correctness or production readiness.
-
-outside review and reproduction are welcome at every stage; each result should identify the commit and exact evidence it checks.
-
-that makes the next milestone straightforward: another builder should be able to change this implementation, explain why, prove the bounded result and leave the repository stronger than they found it.
-
-## contributing
-
-use a pull request for a bounded code or documentation change.
-
-the repository template asks four things:
-
-- the problem and resulting behavior;
-- the source requirement or proposed deviation;
-- the validation actually performed;
-- the remaining concern.
-
-that is enough structure to make a contribution reviewable without requiring agreement in advance.
-
-a useful contribution can add code, remove unnecessary authority, reproduce an existing result, break an existing assumption, improve recovery, clarify a source conflict, or show that a proposed design does not survive its failure case.
-
-preserve authorship when bringing work from another implementation. keep disagreements visible until they are actually resolved. no contributor, including xubu, should gain protocol authority merely because they maintain this repository.
-
-bring a bounded change or reproduction with its evidence and remaining limitations.
-
-## Try it locally
-
-[Local access guide](docs/LOCAL_ACCESS.md): start the simulated website with `npm start`; after the separate pinned engine installation, run the experimental protocol checks with `npm run protocol:check`. The 13 selected-executor groups passed again from the local repository, and the loopback entrance returned HTTP 200. The frontend and protocol engine are not connected.
-
-
-Use Node.js **24.20.0**. The frontend and Node offline tests need no third-party packages or install step. Review the source, then run:
-
-```sh
-npm test
-npm run build
-npm start
-```
-
-Open **http://127.0.0.1:4173/website.html** for the website or **http://127.0.0.1:4173/** for Commons. The server binds only to loopback; stop with Ctrl+C. Optional Python/EVM experiments have separate requirements in the [review guide](docs/REVIEW_GUIDE.md).
-
-Draft, review a simulated fee, post, and inspect the receipt. Nothing is sent while typing. Reloading resets the demonstration; selected media stays a local preview.
-
-## Evidence, with limits
-
-| Record | What ran | Boundary |
-| --- | --- | --- |
-| [Alpha.20: paid action](docs/PAID_ACTION.md) | Nine signed posts using historical CAW token logic, fixed test NFT accounts and exact fee allocation | Local fork; no production registration |
-| [Alpha.21: adversarial regression](docs/PAID_ACTION_REGRESSION.md) | 72 cases against the unchanged paid-action contract | Separate synthetic token and chain; broader review remains open |
-| [Alpha.22: history acquisition](docs/PAID_HISTORY_ACQUISITION.md) | Two live collectors and two offline readers agree on a fresh 20-transaction history | Shared node and manifest trust; independent providers, chain authentication and reorg recovery remain open |
-| [Alpha.28: branch recovery](docs/PAID_REORG_RECOVERY.md) | Two five-block branches acquired twice; replacement and restart recover exact selected messages and accounting | Controlled local rollback; provider agreement, authenticated history and public finality remain open |
-| [Alpha.29: acquisition sessions](docs/PAID_ACQUISITION_SESSION.md) | Selected-history invalidation and full retry checked across 22 recorded-response cases | Offline replay; live concurrent changes, independent providers and public finality remain open |
-| [Alpha.30: live acquisition change](docs/LIVE_ACQUISITION_CHANGE.md) | A real local branch change interrupts acquisition; fresh selection restores the complete record | One controlled request boundary; independent providers, authenticated history and public finality remain open |
-| [Alpha.31: action replay after rollback](docs/ORPHAN_INTENT_REPLAY.md) | One exact signature is accepted once on each alternative branch; each branch rejects a second use | Local experiment; no branch-specific signing or public-finality rule adopted |
-| [Alpha.32: action observations](docs/ACTION_OBSERVATION.md) | Selected-history status distinguishes acceptance, failed attempts and bounded absence across rollback | Offline observer; no finality, present validity or retry decision inferred |
-| [Alpha.33: supplied provider histories](docs/PROVIDER_COMPARISON.md) | Every configured report must reconstruct and match the whole interval at the selected endpoint | Offline comparison; provider labels do not establish independence, authentication or finality |
-| [Alpha.34: header integrity](docs/EXECUTION_HEADER_INTEGRITY.md) | Recompute execution-header hashes and check a linked interval against selected endpoints | Header integrity only; endpoint authentication, body proofs, execution validity and finality remain open |
-| [Alpha.35: recovery with checked headers](docs/HEADER_CHECKED_RECOVERY.md) | Recheck headers and accounting together before adopting or restoring supplied history | Explicit adapter; endpoint authentication, body inclusion and finality remain open |
-| [Alpha.36: actions with checked headers](docs/HEADER_CHECKED_ACTIONS.md) | Publish current action status only after checked recovery; recheck all saved branches at restart | Explicit offline mode; body inclusion, authenticated endpoints and finality remain open |
-| [Alpha.37: provider reports with checked headers](docs/HEADER_CHECKED_PROVIDERS.md) | Require header and accounting checks for every configured report before shared action status | Explicit offline mode; matching labels do not prove independent sources or authenticated history |
-| [Alpha.38: block receipt commitments](docs/BLOCK_RECEIPT_COMMITMENTS.md) | Rebuild complete receipt tries and match their roots to checked headers | Standalone London-format check; transaction association, endpoint authentication and adoption integration remain open |
-| [Alpha.39: transactions and receipts](docs/BLOCK_TRANSACTION_COMMITMENTS.md) | Check complete transaction bytes against the selected header and associate receipts at the same index | Standalone London-format check; signatures, execution, endpoint authentication and adoption integration remain open |
-| [Alpha.40: captured block bodies](docs/BLOCK_BODY_ACQUISITION.md) | Capture both local branches; verify commitments and reject mismatched transaction labels | Synthetic node with impersonated accounts; sender verification, authenticated endpoints and adoption integration remain open |
-| [Alpha.41: signed body acquisition](docs/SIGNED_BODY_ACQUISITION.md) | Signed local submissions match acquired bytes, transaction hashes and both commitments on two branches | Fixed public test identities; generic sender verification, authenticated endpoints and adoption integration remain open |
-| [Alpha.42: transaction senders](docs/BLOCK_SENDER_VERIFICATION.md) | Derive transaction senders from committed signature bytes, with explicit chain and legacy policy | Offline signature check; CAW authority, execution, authenticated endpoints and recovery integration remain open |
-| [Alpha.43: history bound to block bodies](docs/PAID_BODY_HISTORY.md) | Bind captured CAW history fields to committed raw bytes, recovered senders and receipts before accounting reconstruction | Fixed local legacy format; full account authority, execution and recovery integration remain open |
-| [Alpha.44: signed post permissions](docs/PAID_POST_SIGNATURES.md) | Rebuild exact post signing digests and match successful posts to reconstructed historical owners | Explicit ordinary-account assumption; code absence, registry execution, endpoints and recovery integration remain open |
-| [Alpha.45: input admission](docs/INPUT_BOUNDARY.md) | Bound browser inputs and reject ambiguous fields before domain validation | Local input and request controls; no network anonymity or new settlement authority |
-| [Alpha.46: registry permissions](docs/PAID_REGISTRY_PERMISSIONS.md) | Match direct approvals and transfers to reconstructed permissions and recovered transaction senders | Fixed-registry assumptions; code/state authentication, execution, callbacks and recovery integration remain open |
-
-**Recorded validation:** [1241/1241 Node offline tests across 73 files](evidence/REPLAY_ACCOUNT_TEST_RESULTS.json), including the bounded recovery checker; 65 Python tests recorded in alpha.41; 23 build assets. See [results and browser coverage](docs/VALIDATION.md). These finite checks establish neither an external audit, community agreement nor permanent availability.
-
-## Read, reproduce, challenge
-
-**Initial review target: alpha.20, [`91479b6dc8c9a264411d75177d43029e0266c354`](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/commit/91479b6dc8c9a264411d75177d43029e0266c354).** The [pinned baseline](docs/REVIEW_BASELINE.md) stays fixed as later work develops.
-
-Follow the [current gates](docs/ROADMAP.md), reproduce a result with the [review guide](docs/REVIEW_GUIDE.md), or choose a [review issue](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues).
-
-Trace the [59 mapped requirements](docs/MANIFESTO_R2_ALIGNMENT_REVIEW.md), [15 open conflicts](sources/SPEC_CONFLICTS.md) and [source coverage](docs/SOURCE_COVERAGE.md). Username registration remains blocked by the existing token's rejection of the literal zero-address transfer; [C-001](docs/C001_DECISION_REQUEST.md) preserves the evidence and decision request. A production authority graph and durable public recovery are unfinished.
-
-R2 calls for public contribution, peer review and an agreed release, without developer backdoors, proxies or multisigs. These remain release gates. implementation-specific findings belong in the relevant implementation repository; shared specification and release questions belong in the authorized cawdevelopment coordination space.
-
-Original code and project-authored explanatory documentation use the [scoped MIT license](LICENSE_STATUS.md). Artwork, screenshots, primary texts and raw observations are excluded; preserved [third-party notices](experiments/token-source/NOTICES.md) retain their separate attribution.
-
-[Contributing](CONTRIBUTING.md) · [Security](SECURITY.md) · [Licensing](LICENSE_STATUS.md)
-
-
-### latest engineering boundary -- 2026-10-28
-
-[Signed-body and ledger composition](docs/BODY_LEDGER_BOUNDARY.md): nine focused groups pass, including separate positive controls and rejection of unrelated signed bodies grafted onto ledger proofs. The subsequent signed acquisition below demonstrates the joint local success path; this experimental reader is not an accepted production recovery path. Existing production and public-test release gates remain open.
-
-
-### signed history and ledger progress -- 2026-10-28
-
-[15 focused groups](docs/SIGNED_LEDGER_RECONCILIATION.md) now pass on two acquired local branches with signed transaction bodies, receipt commitments and endpoint ledger proofs together. Swapped branches, altered transactions/receipts and missing witnesses reject. Both selected tips pass: this does not establish canonicality, real-token backing, independent providers or production authority. The frontend remains a local alpha; production/public-test release gates remain open.
-
-
-### current review decision -- 2026-10-28
-
-The signed local ledger evidence now needs an explicit [anchor-authority decision](docs/ANCHOR_DECISION_REVIEW.md): network/fork identity, bootstrap trust, finalized execution-header binding, freshness, conflict handling and replacement acquisition. Eight decision rows remain unresolved. Review is requested in existing issue3; no new local test count or production policy is claimed.
-
-
-### mined wallet evidence -- 2026-10-28
-
-[Nine focused groups](docs/MINED_WALLET_EXPERIMENT.md) check two mined local attempts of the same signed post: wallet rejection, then restored acceptance. Transaction/receipt commitments and sender/parent checks pass; altered evidence rejects. Independent wallet execution replay and pre-call dependency witnesses remain missing. No production authority flag changes.
-
-
-### wallet replay boundary -- 2026-10-28
-
-[The rejected wallet call replays](docs/WALLET_WITNESS_REPLAY.md) with matching gas/receipt and selected child state. The restored-success path remains blocked: the witness adapter does not represent a proven-absent native signature-precompile account. The harness explicitly expects that failure; it is not a full wallet replay pass. Next distinguish proven absence from missing evidence without weakening fail-closed behavior.
-
-
-### narrow native-account replay -- 2026-10-28
-
-[Both retained wallet calls reproduce receipts and previously selected values](docs/WALLET_NATIVE_REPLAY.md); the [expanded child-state check exposes a native-account mismatch](docs/NATIVE_CLEANUP_MISMATCH.md), using a separate proven-absence adapter for the signature precompile. Ten boundary checks pass. The earlier blocker remains preserved; no general wallet, full-state-root, independent-operator or production acceptance follows.
-
-
-### blocking child-state finding -- 2026-10-29
-
-[Native cleanup mismatch](docs/NATIVE_CLEANUP_MISMATCH.md): restored success leaves a proven empty account in the captured child state, while replay reports it absent. Receipt/gas still match. Eighteen boundary groups pass, but complete selected child-state agreement is false for success. The discrepancy is preserved for investigation; no adapter or capture was forced to match.
-
-
-### native cleanup traced -- 2026-10-29
-
-[Lifecycle evidence](docs/NATIVE_ACCOUNT_LIFECYCLE.md) shows an explicit engine cleanup deletion after the empty native-account touch. The captured child proof still disagrees. Eighteen boundary groups remain passing; complete selected child agreement stays false on success. Next isolate native-call capture behavior, without changing the adapter to fit the observation.
-
-
-### direct native-call control -- 2026-10-29
-
-[Minimal acquisition evidence](docs/DIRECT_NATIVE_CONTROL.md) reproduces the native account presence transition without CAW contracts. Seven focused groups pass against selected headers and transaction/receipt commitments. Independent replay of this minimal interval is next; the earlier state discrepancy and production gates remain open.
-
-
-### minimal replay discrepancy -- 2026-10-29
-
-[Direct-call replay](docs/DIRECT_NATIVE_REPLAY.md) matches receipt/gas and sender/fee-recipient balances, but still disagrees on native-account existence. Three missing/wrong-proof cases reject. Next compare an ordinary trie-backed state manager to isolate the experimental adapter; production and public test gates remain blocked.
-
-
-### standard state-manager control -- 2026-10-29
-
-[Trie-backed replay](docs/DIRECT_TRIE_CONTROL.md) reproduces the native-account discrepancy without our experimental adapter. Parent trie root, receipt/gas and selected balances check out; native existence and the post-transaction root disagree with the captured child. Next isolate acquisition persistence and block-finalization behavior. No release gate closes.
-
-
-### one-leaf diagnostic -- 2026-10-29
-
-[A reversible diagnostic](docs/NATIVE_LEAF_CONTROL.md) shows that adding one empty native-account entry to the replay trie exactly reproduces the captured child root. The change is rolled back and the original mismatch retained. This localizes the difference; it is not a repair or accepted execution result. Next inspect the pinned acquisition commit path.
-
-
-### acquisition commit review -- 2026-10-29
-
-[Checksum-pinned source review](docs/NATIVE_COMMIT_REVIEW.md) identifies a likely journal/database handoff mismatch for touched empty accounts. It fits the retained one-leaf discrepancy, but runtime boundary flags and a source-level reproduction are still required. No production gate closes.
-
-
-### commit reproduction prepared -- 2026-10-30
-
-[A small Rust reproduction](experiments/native-commit/README.md) now targets the reviewed database version directly, with four characterization cases and a separate desired-cleanup oracle. It is unexecuted: the checked local environments lack Rust, and the transitive dependency lock remains to be generated and verified. No new pass count or confirmed root cause is claimed.
-
-
-### native-state investigation — 2026-11-01
-
-[Source tracing](docs/NATIVE_CALL_TOUCH_PATH.md) now identifies the default zero-value call path that touches the native target before precompile execution, and the executor's handoff to database commit. This narrows the hypothesis; actual runtime flags, block-completion effects and source/binary equivalence remain unverified. The retained mismatch is unresolved. No new test-pass or release-readiness claim follows.
+[security](SECURITY.md) · [licensing and third-party boundaries](LICENSE_STATUS.md) · [contributing](CONTRIBUTING.md)

@@ -1,0 +1,33 @@
+{
+  "parent": "511cd34991fcc7c385f1fadcd9d5b4fe9ecdfc73",
+  "files": {
+    "experiments/c007-contract-wallet/build-replay-blocks.mjs": {
+      "sha256": "4edd621169630a19dcf7bb068781dfc49aea78e15c3b5512711febfd9bdb5071",
+      "bytes": 8885
+    },
+    "experiments/c007-contract-wallet/compare-geth-transition.py": {
+      "sha256": "dc1dea5b7d55670585755e033cb666035651205175070f1f784e8ed4beb4833d",
+      "bytes": 8277
+    },
+    "evidence/c007-contract-wallet-20261108/block-replay.json": {
+      "sha256": "6237f8792c7a3718240828accaf43a809be1432c8d43a2bfff9f9ae63e6d67ab",
+      "bytes": 1357
+    },
+    "evidence/c007-contract-wallet-20261108/geth-result.json": {
+      "sha256": "e4c3f84dee077d2e53afc69aa62db78b59025097f4048152b034c80ae5583a88",
+      "bytes": 1259
+    },
+    "evidence/c007-contract-wallet-20261108/input-checks.json": {
+      "sha256": "ab6ada97cd8826eab3167792feb0f694b9c3198740dee52d153f0cae6959456a",
+      "bytes": 375
+    },
+    "evidence/c007-contract-wallet-20261108/replay-manifest.json": {
+      "sha256": "70ebcbe11bbec7d1239aba20e16be385c72d2c43c95d17a077df51a88eb25276",
+      "bytes": 951
+    },
+    "docs/CONTRACT_WALLET_ADAPTER_REVIEW.md": {
+      "sha256": "16e349b77b16dabcd1601405c867f5f9b358b668bd6735297312d6a9e6c3a871",
+      "bytes": 12447
+    }
+  }
+}

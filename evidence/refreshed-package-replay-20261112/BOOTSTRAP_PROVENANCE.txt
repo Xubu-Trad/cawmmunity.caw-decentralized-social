@@ -1,0 +1,1 @@
+PARENTS=[2a26b86ae4287eb075ed76fbf2575c4dcc57046c:integration/peer-sync/acquire-persistence-inputs.py] TRANSFORM="download and compare with reviewed script" SHA256=5738b4000c2c055a75ad6d1aaead9777753afa99c45568639038f456f4ad862b SIZE=5884 PATH=acquire.py

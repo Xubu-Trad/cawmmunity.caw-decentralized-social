@@ -1,0 +1,20 @@
+{
+  "checks": [
+    {
+      "check": "capture-verify-v3",
+      "exit_code": 2,
+      "expected": 2
+    },
+    {
+      "check": "capture-controls-v3",
+      "exit_code": 0,
+      "expected": 0
+    },
+    {
+      "check": "pr16",
+      "exit_code": 0,
+      "expected": 0
+    }
+  ],
+  "new_evm_execution": false
+}

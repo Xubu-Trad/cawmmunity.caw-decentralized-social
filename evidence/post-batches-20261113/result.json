@@ -1,0 +1,40 @@
+{
+  "source_parent": "a5d882f5a63a235deec4e15e9874495a39d765fe",
+  "new_checks": {
+    "scope": "synthetic signed reader vectors; not EVM execution or public-chain evidence",
+    "passed": 14,
+    "cases": [
+      "two signed posts in one synthetic committed block",
+      "acquisition reads both signed transactions and receipts",
+      "mixed block with unrelated log",
+      "mixed block with no post event",
+      "reverted transaction",
+      "extra event cannot hide state change",
+      "duplicate post nonce",
+      "valid signature on different call",
+      "valid signature from wrong signer",
+      "event epoch differs from parent proof",
+      "second call replays first calldata",
+      "16 transaction resource boundary",
+      "17 transaction resource rejection",
+      "receipt resource rejection"
+    ]
+  },
+  "regressions": {
+    "reader_negative_controls": 15,
+    "console": 12,
+    "interruption": 11,
+    "wallet_actions": 340
+  },
+  "fresh_evm_execution": false,
+  "independent_operator": false,
+  "new_clean_install": false,
+  "mission_changed": false,
+  "source_hashes": {
+    "integration/local-console/post-block-scope.mjs": "e3944ca8da8dd0e0cf0bbabad0d2f49a8495cafb9284dd4c3253350c373ccfb6",
+    "integration/local-console/strict-console-acquisition.mjs": "267c8421ee35cd50db5d013657226b33af7507b700dc968ab812b3c1c4ce358f",
+    "integration/local-console/test-post-batches.mjs": "6cea5bf7c10c0c03ec9da09f7ff5053471a7233459f056e7a404323f47b344b6",
+    "integration/local-console/verify-posting-history.mjs": "c74cfcf6f183784bdc9387a860891d580559f9ad639421731ba034066a243f51",
+    "docs/POST_BATCH_HISTORY.md": "294e41be4bddab24b6bcc00b5a0310db59e6bcc977f70e19f7241df7c4dde02b"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "parent": "dcb8aaa3e2b17d319b403f9cba5a21da0cb3abb9",
+  "transform": "experimental account-bound direct withdrawals with synthetic token and constructor owners",
+  "files": {
+    "docs/FUNDED_WITHDRAWAL_RESEARCH.md": {
+      "sha256": "dde2b60cd679e865219cc95c0f9e7027e2c2c07dec93b4def91ca00ce2041a62",
+      "size": 5041
+    },
+    "integration/core-baseline-v1/FundedWithdrawalResearch.sol": {
+      "sha256": "ce9a84be9775c715dee3612d5d3873aa9458c114badb5a5dd5db62794d74cb9b",
+      "size": 8781
+    },
+    "integration/core-baseline-v1/test-funded-withdrawal.mjs": {
+      "sha256": "a2f2926b993de8d1c70c1b8853ea96f906e0930281fbef42a1c4ba5d389d3e77",
+      "size": 14923
+    },
+    "evidence/funded-withdrawal-20261108/compiler-input.json": {
+      "sha256": "54dc91da1be7d984795834210dad35aa5bfe6d5f6c0166d1f3fc4f0aa41ca3f8",
+      "size": 9360
+    },
+    "evidence/funded-withdrawal-20261108/operations.json": {
+      "sha256": "db8b40e953111ad1b7de106aac3e1df69205520a1a300cf8208c4a156fd53f00",
+      "size": 992337
+    },
+    "evidence/funded-withdrawal-20261108/result.json": {
+      "sha256": "0d50563f8c71c609019ac536d38f0b69b863b2a2d20e8d3c2dc7e26f851aa3a2",
+      "size": 1823
+    },
+    "docs/FUNDED_CREDIT_WITHDRAWAL_PLAN.md": {
+      "sha256": "6497a6864cb45ae16c4d44650b7cd88fc91f86ae4ef6763bfd1092906ff0c646",
+      "size": 7729
+    }
+  }
+}

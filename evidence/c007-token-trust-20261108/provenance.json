@@ -1,0 +1,37 @@
+{
+  "parent": "14f1bd5ae127e5cd67e80a53c3b9ae988d756c49",
+  "files": {
+    "experiments/c007-token-trust/DeployedCustodyStakeResearch.sol": {
+      "sha256": "d97dd9157a81611630ac876556684f7354f412e35a7a360662aab6ce2984e02c",
+      "bytes": 17976
+    },
+    "experiments/c007-token-trust/FailureTokenFixture.sol": {
+      "sha256": "70d5b7fb925ef9b269cfe062b506e6bb78aee79e222892882824c5debd3736c9",
+      "bytes": 2194
+    },
+    "experiments/c007-token-trust/run-lifecycle.mjs": {
+      "sha256": "8555c46b4e1ca6424c473c5fd139e7e30ea6f147f7fe23bd4a70fec37ba6c198",
+      "bytes": 7697
+    },
+    "experiments/c007-token-trust/package.json": {
+      "sha256": "3cd90dea6c442e62e1eb32e83c412a81d5725be928ecf34bf019702c6fc2f192",
+      "bytes": 215
+    },
+    "experiments/c007-token-trust/package-lock.json": {
+      "sha256": "bdb139f0b431b0c820f38fa367443182a19f46107b8fd36f21385f05547972df",
+      "bytes": 14224
+    },
+    "evidence/c007-token-trust-20261108/result.json": {
+      "sha256": "47bb07c7764a2bd0e545b30c4825c95fcb9821b76aea2fa55c62cbcba4168c64",
+      "bytes": 2182
+    },
+    "docs/TOKEN_REPORT_TRUST_BOUNDARY.md": {
+      "sha256": "d7b8f8e35fb6bdcab8373d5285bbc04790c282ee7c470eed0176e159c1302acc",
+      "bytes": 2598
+    },
+    "docs/THIRD_PARTY_FAILURE_GATES.md": {
+      "sha256": "d5ec5989db4517f7c0d13ebe03d61dd6e359a2afad284a9636c8ef4f1ad736a8",
+      "bytes": 5974
+    }
+  }
+}

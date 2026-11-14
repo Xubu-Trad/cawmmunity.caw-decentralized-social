@@ -1,0 +1,74 @@
+{
+  "status": "REGISTRY_TRUST_BOUNDARY_DEMONSTRATED",
+  "transactions": 26,
+  "cases": [
+    {
+      "name": "zero token",
+      "outcome": "rejected",
+      "reason": "0x"
+    },
+    {
+      "name": "EOA token",
+      "outcome": "rejected",
+      "reason": "0x"
+    },
+    {
+      "name": "zero payer",
+      "outcome": "rejected",
+      "reason": "0x"
+    },
+    {
+      "name": "zero registry",
+      "outcome": "rejected",
+      "reason": "REGISTRY"
+    },
+    {
+      "name": "EOA registry",
+      "outcome": "rejected",
+      "reason": "REGISTRY"
+    },
+    {
+      "name": "wrong registry hash",
+      "outcome": "rejected",
+      "reason": "REGISTRY"
+    },
+    {
+      "name": "zero snapshot root",
+      "outcome": "constructor accepted; no claim usability asserted"
+    },
+    {
+      "name": "matching hash without authority ABI",
+      "outcome": "constructor accepted; authority read rejected"
+    },
+    {
+      "name": "zero owner",
+      "outcome": "withdrawal rejected; checked accounting unchanged",
+      "reason": "ZERO_OWNER"
+    },
+    {
+      "name": "reverting registry",
+      "outcome": "withdrawal rejected; checked accounting unchanged",
+      "reason": "REGISTRY_UNAVAILABLE"
+    },
+    {
+      "name": "short authority return",
+      "outcome": "withdrawal rejected; checked accounting unchanged",
+      "reason": "0x"
+    },
+    {
+      "name": "same runtime hash, dishonest owner replacement at unchanged epoch",
+      "outcome": "former owner rejected; attacker-reported owner withdrew1 mock unit",
+      "boundary": "code pinning does not authenticate registry policy or state"
+    }
+  ],
+  "final": {
+    "payer": "95",
+    "outsider": "1",
+    "vault": "4",
+    "credit": "0",
+    "liability": "4",
+    "unallocated": "4",
+    "credited": "0"
+  },
+  "limits": "Synthetic deliberately dishonest registry; not a defect reproduced in TestAccountRegistry, not a live exploit or safe-registry certification. Single engine; no independent reconstruction or second-engine coverage for this new history."
+}

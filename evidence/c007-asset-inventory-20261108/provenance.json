@@ -1,0 +1,26 @@
+{
+  "parent": "19961d57fa6e7255203dc51c2025893f10ef197d",
+  "transform": "offline synthetic asset inventory tests",
+  "files": {
+    "experiments/c007-asset-inventory/inventory.mjs": {
+      "sha256": "a3a0a8805551c92ae52d6a579fdc268af5d7a66e5676aef84366e955eda31baf",
+      "size": 3008
+    },
+    "experiments/c007-asset-inventory/test.mjs": {
+      "sha256": "a0542db872be3bc036edec51811b5295e4aa4eafd450d8d2715e25f94d9b8986",
+      "size": 1823
+    },
+    "experiments/c007-asset-inventory/package.json": {
+      "sha256": "1eb5ebf3418f0034795a6eafd6e87c5f8194e3cbe4f292a44253ed35e39f4ad3",
+      "size": 90
+    },
+    "docs/ASSET_CODE_INVENTORY.md": {
+      "sha256": "6d9b1216c08bfeb46a7b0025eb9ef7c46952a80bab38177e60c4d76097ff7e22",
+      "size": 2813
+    },
+    "evidence/c007-asset-inventory-20261108/result.json": {
+      "sha256": "0b828f8a007ea4ac70225f05005999251f80eeb2c9c5afcdec51ee13ef65b0b0",
+      "size": 109
+    }
+  }
+}

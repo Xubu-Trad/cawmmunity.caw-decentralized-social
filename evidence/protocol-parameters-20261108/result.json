@@ -1,0 +1,12 @@
+{
+  "observations": 8,
+  "unresolvedDecisions": 16,
+  "adoptionVerified": false,
+  "productionAccepted": false,
+  "negativeControls": [
+    "fee",
+    "missing conflict",
+    "adoption",
+    "source"
+  ]
+}
