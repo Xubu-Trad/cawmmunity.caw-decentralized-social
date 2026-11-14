@@ -55,6 +55,8 @@ Updated November 13, 2026. **Unfinished research; no production-ready network an
 
 **Console ownership integration — November 13:** The local console can now acquire and verify the proofs for an account transfer followed by the new owner’s post in the same block. Six targeted suites pass, including15 new HTTP acquisition/recovery checks. Existing separate transfer and withdrawal histories retain their previous scope. These results use preserved mined local evidence; fresh integrated execution and independent reproduction remain next gates. [Exact scope and reproduction](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/evidence/owner-acquisition-20261113/README.md). PR16’s receipt-response type correction is still awaiting incorporation.
 
+**Fresh console execution — November 13:** The ownership-aware console now passes against a newly mined local transfer and new-owner post, acquiring proofs directly from Geth. Ten endpoint/result checks pass; a second execution engine matches13 transactions and15 post-genesis state roots. Independent reproduction is still pending. PR16’s early receipt-response guard is incorporated and its26 submitted regressions plus four additional controls pass. [Evidence and reproduction](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/evidence/owner-console-live-20261113/README.md).
+
 | Area | What is demonstrated | What remains open |
 | --- | --- | --- |
 | Local application | Real signed local posts, account handoff and new-owner withdrawals; posts retain historical authors | Paid posting integration, public registration and actual wallet-extension compatibility |
