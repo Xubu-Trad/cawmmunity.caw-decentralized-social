@@ -37,9 +37,9 @@ updated November 14, 2026. **this is unfinished research software. there is no p
 
 we are building something another person can inspect, reproduce and carry forward. the local execution console can already submit signed posts, transfer an experimental account and withdraw its credited mock tokens on a disposable chain. the original alpha interface remains a simulation. the console does real local execution, but its posts do not yet implement the manifesto's CAW payment and settlement rules.
 
-the console now shows expected accounting changes before the wallet request: what leaves custody, what reaches the current owner and how much account credit remains. account transfers move control of the credit, not tokens already held by the previous owner. the current unpaid posting experiment does not settle a token fee.
+the console now preserves the accounting review with a pending action. if the page reloads or a wallet request has an unknown outcome, the earlier expected credit and balance changes remain available beside the current state. recovering a transaction hash keeps that review intact and does not resend the action or claim it succeeded.
 
-before requesting a transaction, the console reacquires verified state and blocks the request if the reviewed accounting has changed. 18 targeted checks, 14 browser checks and 110 existing action-plan tests passed. the full-withdrawal projection agrees with the retained executed result. [exact evidence and limits](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/evidence/console-accounting-review-20261114/README.md). these are expected effects, not confirmed balances; state can still change while a wallet is open or before execution.
+31 recovery checks and 18 browser checks passed, alongside 211 existing action/journal tests and 14 signing-review browser checks. older records stay recoverable and clearly say when no accounting review was saved. [exact evidence and limits](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/evidence/console-accounting-recovery-20261114/README.md). saved reviews are editable local records, not fresh proofs or confirmed balances.
 
 these results come from local experiments run by us. **independent reproduction is still pending.** selected local headers are not proof of public-chain finality, and this storage layout only supports the selected research contracts. general wallet support, actual CAW compatibility, registration, paid-post economics, durable public operation and release agreement remain unfinished.
 
@@ -47,7 +47,7 @@ the experimental application lives on [draft PR #19](https://github.com/Xubu-Tra
 
 ## what comes next
 
-retain the reviewed accounting context with pending actions so recovery after a reload keeps expected effects separate from confirmed results. keep the frozen reproduction package available to independent reviewers. paid settlement still requires explicit accounting and specification decisions; we will not silently choose them to make the application look complete.
+preserve and show the resolved receipt outcome beside the earlier expectation, without presenting current block balances as proof of what one transaction caused. keep the frozen reproduction package available to independent reviewers. paid settlement still requires explicit accounting and specification decisions; we will not silently choose them to make the application look complete.
 
 ## find your starting point
 

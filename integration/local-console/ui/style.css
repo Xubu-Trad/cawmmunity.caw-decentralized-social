@@ -9,3 +9,5 @@
 #accounting-header{overflow-wrap:anywhere;word-break:break-word;font-size:11px;line-height:1.6}
 
 #accounting-review{border-top:1px solid var(--line);margin-top:16px;padding-top:12px;overflow-wrap:anywhere}#accounting-review dd{margin:4px 0 12px}#accounting-review p{line-height:1.6}
+
+#saved-accounting-review{border:1px solid var(--line);padding:16px;margin:16px 0;overflow-wrap:anywhere}#saved-accounting-review dd{margin:4px 0 12px}

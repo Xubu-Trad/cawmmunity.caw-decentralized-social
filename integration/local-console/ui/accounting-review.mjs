@@ -29,11 +29,11 @@ export function expectedAccounting(state,plan){
  for(const n of [...fields.map(k=>after[k]),...Object.values(after.balances)])if(BigInt(n)<0n||BigInt(n)>=2n**256n)throw Error('Expected accounting is outside the supported range.');
  return {after,detail,rows:[['Account credit',state.credit,after.credit],['Total unpaid liability',state.unpaidLiability,after.unpaidLiability],['Custody token balance',state.balances.custody,after.balances.custody],['Current owner token balance (before handoff)',state.balances.owner,after.balances.owner],['Original wallet token balance',state.balances.wallet,after.balances.wallet]]};
 }
-export function showAccountingReview(document,state,plan){
- const p=expectedAccounting(state,plan),box=document.getElementById('accounting-review');box.replaceChildren();
- const title=document.createElement('h3');title.textContent='Expected accounting · mock units';box.append(title);
- const basis=document.createElement('p');basis.className='subtle';basis.textContent='Based on verified block '+state.blockNumber+' · '+state.blockHash;box.append(basis);
+export function showAccountingReview(document,state,plan,recovered=false){
+ const p=expectedAccounting(state,plan),box=document.getElementById(recovered?'saved-accounting-review':'accounting-review');box.replaceChildren();
+ const title=document.createElement('h3');title.textContent=recovered?'Saved expected accounting · not a confirmed result':'Expected accounting · mock units';box.append(title);
+ const basis=document.createElement('p');basis.className='subtle';basis.textContent=(recovered?'Saved review block (not reverified) ':'Based on verified block ')+state.blockNumber+' · '+state.blockHash;box.append(basis);
  const list=document.createElement('dl');
  for(const [label,before,after]of p.rows){const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;dd.textContent=before+' → '+after;list.append(dt,dd);}box.append(list);
- const note=document.createElement('p');note.textContent=p.detail+' Expected effects only, not a completed transaction. Local ETH gas is separate and not estimated here. State is rechecked before the wallet request, but can still change while the wallet is open or before execution.';box.append(note);
+ const note=document.createElement('p');note.textContent=(recovered?'This is an editable local record of the earlier review, not fresh proof or confirmation. ':'')+p.detail+' Expected effects only, not a completed transaction. Local ETH gas is separate and not estimated here. State is rechecked before the wallet request, but can still change while the wallet is open or before execution.';box.append(note);
 }

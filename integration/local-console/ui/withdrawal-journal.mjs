@@ -1,3 +1,4 @@
+import {captureAccountingReview,validateAccountingReview} from './reviewed-accounting-record.mjs';
 import {verifyWithdrawalPlan} from './withdrawal-plan.mjs';
 import {verifyTransferPlan} from './account-transfer-plan.mjs';
 import {verifyPostPlan} from './post-plan.mjs';
@@ -8,7 +9,7 @@ const same=(a,b)=>typeof a==='string'&&typeof b==='string'&&a.toLowerCase()===b.
 function keys(value,names){if(!value||typeof value!=='object'||Array.isArray(value)||Object.keys(value).sort().join(',')!==names.slice().sort().join(','))throw Error('Saved withdrawal has an unexpected format.');}
 export function validateJournal(record,state){
  if(state?.chainId!=='0x7a69')throw Error('Saved withdrawal requires the selected local chain.');
- keys(record,['version','id','phase','plan','contracts','hash']);
+ keys(record,['version','id','phase','plan','contracts','hash',...(Object.hasOwn(record??{},'accountingReview')?['accountingReview']:[])]);
  if(![1,2,3].includes(record.version)||!/^0x[0-9a-f]{32}$/.test(record.id)||!['awaiting-wallet','submitted'].includes(record.phase))throw Error('Invalid saved withdrawal identity.');
  const contractNames=['wallet','registry','custody','token',...(record.version===3||Object.hasOwn(record.contracts??{},'posting')?['posting']:[])];
  keys(record.contracts,contractNames);
@@ -28,6 +29,7 @@ export function validateJournal(record,state){
  else if(transfer)verifyTransferPlan(p,historical,historical.signer,p.recipient);
  else verifyWithdrawalPlan(p,historical,historical.signer,p.amount);
  if(record.phase==='awaiting-wallet'?record.hash!==null:!hash.test(record.hash))throw Error('Invalid saved transaction hash.');
+ if(Object.hasOwn(record,'accountingReview'))validateAccountingReview(record.accountingReview,record.plan,state);
  return record;
 }
 export function readJournal(storage,state){
@@ -45,29 +47,29 @@ async function locked(locks,action){
  });
 }
 function persist(storage,record,state){
- validateJournal(record,state);const raw=JSON.stringify(record);storage.setItem(JOURNAL_KEY,raw);
+ validateJournal(record,state);const raw=JSON.stringify(record);if(raw.length>8192)throw Error('Saved action exceeds the recovery limit. No transaction requested.');storage.setItem(JOURNAL_KEY,raw);
  if(storage.getItem(JOURNAL_KEY)!==raw)throw Error('Withdrawal record was not saved reliably. No new submission is allowed.');
  return record;
 }
-export async function beginWithdrawal(storage,locks,state,plan,id){
+export async function beginWithdrawal(storage,locks,state,plan,id,reviewedAccounting){
  return locked(locks,()=>{
   if(storage.getItem(JOURNAL_KEY)!==null)throw Error('A saved withdrawal already exists. Resolve it before submitting another.');
   verifyWithdrawalPlan(plan,state,state.signer??state.controller,plan.amount);
-  return persist(storage,{version:1,id,phase:'awaiting-wallet',plan:{...plan},contracts:{...state.contracts},hash:null},state);
+  return persist(storage,{version:1,id,phase:'awaiting-wallet',plan:{...plan},contracts:{...state.contracts},hash:null,...(reviewedAccounting===undefined?{}:{accountingReview:captureAccountingReview(reviewedAccounting,plan,state)})},state);
  });
 }
-export async function beginTransfer(storage,locks,state,plan,id){
+export async function beginTransfer(storage,locks,state,plan,id,reviewedAccounting){
  return locked(locks,()=>{
   if(storage.getItem(JOURNAL_KEY)!==null)throw Error('A saved withdrawal or transfer already exists. Resolve it before submitting another.');
   verifyTransferPlan(plan,state,state.signer??state.controller,plan.recipient);
-  return persist(storage,{version:2,id,phase:'awaiting-wallet',plan:{...plan},contracts:{...state.contracts},hash:null},state);
+  return persist(storage,{version:2,id,phase:'awaiting-wallet',plan:{...plan},contracts:{...state.contracts},hash:null,...(reviewedAccounting===undefined?{}:{accountingReview:captureAccountingReview(reviewedAccounting,plan,state)})},state);
  });
 }
-export async function beginPost(storage,locks,state,plan,id){
+export async function beginPost(storage,locks,state,plan,id,reviewedAccounting){
  return locked(locks,()=>{
   if(storage.getItem(JOURNAL_KEY)!==null)throw Error('A saved action already exists. Resolve it before submitting another.');
   verifyPostPlan(plan,state,state.signer??state.controller,plan.text);
-  return persist(storage,{version:3,id,phase:'awaiting-wallet',plan:{...plan},contracts:{...state.contracts},hash:null},state);
+  return persist(storage,{version:3,id,phase:'awaiting-wallet',plan:{...plan},contracts:{...state.contracts},hash:null,...(reviewedAccounting===undefined?{}:{accountingReview:captureAccountingReview(reviewedAccounting,plan,state)})},state);
  });
 }
 export async function rememberHash(storage,locks,state,id,txHash){
