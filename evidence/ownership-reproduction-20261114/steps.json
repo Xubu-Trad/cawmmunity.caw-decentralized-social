@@ -1,0 +1,14 @@
+[
+  {
+    "step": "npm-ci",
+    "exit": 0
+  },
+  {
+    "step": "fresh-console",
+    "exit": 0
+  },
+  {
+    "step": "safe-controls",
+    "exit": 0
+  }
+]

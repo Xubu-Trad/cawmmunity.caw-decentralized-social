@@ -59,6 +59,8 @@ Updated November 13, 2026. **Unfinished research; no production-ready network an
 
 **Console transfer compatibility — November 13:** Fixed a verifier mismatch with the console’s own three-argument safe-transfer plan. Freshly mined console calldata failed under the previous verifier and passes with the bounded correction; the new-owner post verifies through the console, and second-engine replay agrees. Contract-receiver callbacks remain unsupported. [Evidence and reproduction](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/evidence/console-safe-transfer-20261113/README.md). Independent reproduction remains pending.
 
+**Ownership reproduction package — November 14:** A pinned launcher now installs fresh locked dependencies and runs the complete experimental console ownership flow in a new directory. Our fresh run passed10 console checks and6 safe-transfer controls; all64 selected inputs remained unchanged. Seven pre-execution controls also pass. This is same-operator evidence; independent reproduction remains pending. [Run and report instructions](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/docs/CONSOLE_OWNERSHIP_REPRODUCTION.md).
+
 | Area | What is demonstrated | What remains open |
 | --- | --- | --- |
 | Local application | Real signed local posts, account handoff and new-owner withdrawals; posts retain historical authors | Paid posting integration, public registration and actual wallet-extension compatibility |

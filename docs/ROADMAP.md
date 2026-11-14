@@ -685,3 +685,8 @@ Completed the prior fresh-execution gate: isolated Geth mined a same-block owner
 ## Console transfer compatibility — November 13
 
 The ownership-aware verifier now accepts the exact three-argument safe-transfer operation prepared by the console for an empty-code recipient. Fresh signed/mined evidence reproduces the old false rejection and verifies with the patch; second-engine replay agrees. Callback-bearing receivers remain outside scope. [Evidence](../evidence/console-safe-transfer-20261113/README.md). Independent pinned reproduction remains the next external gate.
+
+
+## Pinned ownership reproduction — November14
+
+A single launcher now validates64 selected inputs, creates an isolated locked dependency installation, runs the live console safe-transfer/post flow and preserves results. Same-operator clean-directory run passed10console+6safe-transfer checks;7preflight controls pass. Independent reproduction remains pending; the launcher does not substitute for it. [Instructions](CONSOLE_OWNERSHIP_REPRODUCTION.md). Next: reviewer execution of this exact package; further product work must retain account/custody verification boundaries.
