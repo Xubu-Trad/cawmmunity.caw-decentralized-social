@@ -1,8 +1,8 @@
-## Current application priority — November14, 2026
+## current application priority — November 14, 2026
 
-Current authority is now proof-bound before console action planning. Next bind custody credit/liability and token balance observations to the same selected state. Independent reproduction of the frozen ownership package proceeds separately; do not change its inputs underneath reviewers. [Authority scope and evidence](../evidence/console-authority-proof-20261114/README.md).
+current ownership and fixture accounting are now proof-bound before console action planning. next expose that verification clearly in the interface and test missing/contradictory accounting evidence through the console. independent reproduction of the frozen ownership package remains pending and its inputs stay unchanged. [accounting evidence and limits](../evidence/console-accounting-proof-20261114/README.md).
 
-The dated sections below retain historical milestones; later entries supersede earlier next-step descriptions.
+the dated sections below preserve historical milestones, not current pending work.
 
 ## Current application priority — November 12, 2026
 

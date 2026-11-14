@@ -1,0 +1,111 @@
+{
+  "before": {
+    "authorityProofsVerified": true,
+    "authorityHeaderHash": "0x5b1356f7455d8bcbdd4dd8e0a1ba74e9d2ef3ecc7e8c1488c5fe2f85d8f5a4f3",
+    "accountingProofsVerified": true,
+    "accountingHeaderHash": "0x5b1356f7455d8bcbdd4dd8e0a1ba74e9d2ef3ecc7e8c1488c5fe2f85d8f5a4f3",
+    "unpaidLiability": "10",
+    "unallocatedBudget": "8",
+    "creditedLiability": "2",
+    "status": "LOCAL_CHAIN_RESEARCH",
+    "genesisHash": "0xc190afab951bdb9e657448e32761736857d0d76869bc5073b43d6160a8d19ddc",
+    "chainId": "0x7a69",
+    "blockNumber": "0xd",
+    "blockHash": "0x5b1356f7455d8bcbdd4dd8e0a1ba74e9d2ef3ecc7e8c1488c5fe2f85d8f5a4f3",
+    "contracts": {
+      "wallet": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+      "registry": "0x19a827174f66b3c66ad7063951d7b4f94f996e77",
+      "custody": "0x985d0ce92f2af930e309f5ff89139490ac2d9e94",
+      "token": "0x82c839fa4a41e158f613ec8a1a84be3c816d370f",
+      "posting": "0x9587471aff4a1b7941d19bfdc46851704da82cf1"
+    },
+    "controller": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+    "owner": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+    "ownerType": "eoa",
+    "signer": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+    "epoch": "2",
+    "credit": "2",
+    "balances": {
+      "wallet": "0",
+      "owner": "90",
+      "custody": "10"
+    },
+    "posting": {
+      "nonce": "1",
+      "profile": "0xef91b3ded58fa666b7b4bff9755aab43b083a9abcd57da00564a4fb76f200fd5"
+    },
+    "publicChainAuthenticated": false
+  },
+  "after": {
+    "authorityProofsVerified": true,
+    "authorityHeaderHash": "0x048ddcf054dfeb6322783d4b0f3e78840558b7d732490376671b8e80b7d2a5d2",
+    "accountingProofsVerified": true,
+    "accountingHeaderHash": "0x048ddcf054dfeb6322783d4b0f3e78840558b7d732490376671b8e80b7d2a5d2",
+    "unpaidLiability": "8",
+    "unallocatedBudget": "8",
+    "creditedLiability": "0",
+    "status": "LOCAL_CHAIN_RESEARCH",
+    "genesisHash": "0xc190afab951bdb9e657448e32761736857d0d76869bc5073b43d6160a8d19ddc",
+    "chainId": "0x7a69",
+    "blockNumber": "0xe",
+    "blockHash": "0x048ddcf054dfeb6322783d4b0f3e78840558b7d732490376671b8e80b7d2a5d2",
+    "contracts": {
+      "wallet": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+      "registry": "0x19a827174f66b3c66ad7063951d7b4f94f996e77",
+      "custody": "0x985d0ce92f2af930e309f5ff89139490ac2d9e94",
+      "token": "0x82c839fa4a41e158f613ec8a1a84be3c816d370f",
+      "posting": "0x9587471aff4a1b7941d19bfdc46851704da82cf1"
+    },
+    "controller": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+    "owner": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+    "ownerType": "eoa",
+    "signer": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+    "epoch": "2",
+    "credit": "0",
+    "balances": {
+      "wallet": "0",
+      "owner": "92",
+      "custody": "8"
+    },
+    "posting": {
+      "nonce": "1",
+      "profile": "0xef91b3ded58fa666b7b4bff9755aab43b083a9abcd57da00564a4fb76f200fd5"
+    },
+    "publicChainAuthenticated": false
+  },
+  "withdrawalHash": "0xee94c8f5d9eb70d7a8743d7fb9523e8365e8e569cd390cdfad470272817e66e6",
+  "withdrawalReceipt": {
+    "blockHash": "0x048ddcf054dfeb6322783d4b0f3e78840558b7d732490376671b8e80b7d2a5d2",
+    "blockNumber": "0xe",
+    "contractAddress": null,
+    "cumulativeGasUsed": "0x13f87",
+    "effectiveGasPrice": "0x3b9aca01",
+    "from": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+    "gasUsed": "0x13f87",
+    "logs": [
+      {
+        "address": "0x985d0ce92f2af930e309f5ff89139490ac2d9e94",
+        "topics": [
+          "0x630493cefc9ab40515fde836bfd2626c67a313d4bf123f802e7cbd14cbd86570",
+          "0x0000000000000000000000000000000000000000000000000000000000000002",
+          "0x0000000000000000000000006813eb9362372eef6200f3b1dbc3f819671cba69"
+        ],
+        "data": "0x00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000002",
+        "blockNumber": "0xe",
+        "transactionHash": "0xee94c8f5d9eb70d7a8743d7fb9523e8365e8e569cd390cdfad470272817e66e6",
+        "transactionIndex": "0x0",
+        "blockHash": "0x048ddcf054dfeb6322783d4b0f3e78840558b7d732490376671b8e80b7d2a5d2",
+        "blockTimestamp": "0x6af88d5f",
+        "logIndex": "0x0",
+        "removed": false
+      }
+    ],
+    "logsBloom": "0x04000000000000100000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000800000000000000800000000000000000000000000000000040000000000000000000001000000000000000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000800000008000008000000000000000000000",
+    "status": "0x1",
+    "to": "0x985d0ce92f2af930e309f5ff89139490ac2d9e94",
+    "transactionHash": "0xee94c8f5d9eb70d7a8743d7fb9523e8365e8e569cd390cdfad470272817e66e6",
+    "transactionIndex": "0x0",
+    "type": "0x2"
+  },
+  "zeroCreditPlanRejected": true
+}

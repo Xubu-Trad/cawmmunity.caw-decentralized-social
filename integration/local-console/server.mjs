@@ -1,3 +1,4 @@
+import {verifyConsoleAccounting,accountingSlots} from './verify-console-accounting.mjs';
 import {verifyConsoleAuthority,AUTHORITY_SLOTS} from './verify-console-authority.mjs';
 import {acquireVerifiedPosts} from './strict-console-acquisition.mjs';
 import http from 'node:http';import fs from 'node:fs/promises';import path from 'node:path';import {fileURLToPath} from 'node:url';import {Interface,keccak256,getAddress} from 'ethers';
@@ -5,7 +6,7 @@ import {postText,POST_PROFILE} from './ui/post-plan.mjs';
 const postingABI=new Interface(['function registry() view returns(address)','function registryCodeHash() view returns(bytes32)','function PROFILE() view returns(bytes32)','function nextNonce(uint256) view returns(uint256)','function publish(uint256,uint256,uint256,bytes)','event LocalPostPublished(uint256 indexed accountId,uint256 indexed epoch,uint256 indexed nonce,address author,bytes32 textHash,bytes text)']);
 const walletABI=new Interface(['function controller() view returns(address)','function execute(address,bytes) returns(bytes)']);
 const registryABI=new Interface(['function authority(uint256) view returns(address,uint256)','function safeTransferFrom(address,address,uint256)']);
-const custodyABI=new Interface(['function credits(uint256) view returns(uint256)','function withdraw(uint256,uint256,uint256)']);
+const custodyABI=new Interface(['function credits(uint256) view returns(uint256)','function unpaidLiability() view returns(uint256)','function withdraw(uint256,uint256,uint256)']);
 const tokenABI=new Interface(['function balanceOf(address) view returns(uint256)']);
 const addr=x=>getAddress(x).toLowerCase();const hash=x=>{if(!/^0x[0-9a-f]{64}$/.test(x))throw Error('INVALID_HASH');return x;};
 export function createConsole(config){
@@ -35,8 +36,12 @@ export function createConsole(config){
    owner:await rpc('eth_getProof',[ownerAddress,[],at])
   };
   const authority=verifyConsoleAuthority(block,authorityProofs,config,{owner:ownerAddress,epoch:String(epoch),nonce:String(postNonce)});
+  const [unpaidLiability]=await call('custody',custodyABI,'unpaidLiability');
+  const accountingKeys=accountingSlots(config,ownerAddress);
+  const accountingProofs={custody:await rpc('eth_getProof',[contracts.custody,accountingKeys.custody,at]),token:await rpc('eth_getProof',[contracts.token,accountingKeys.token,at])};
+  const accounting=verifyConsoleAccounting(block,accountingProofs,config,{owner:ownerAddress,credit:String(credit),unpaidLiability:String(unpaidLiability),balances:{wallet:String(walletBalance),owner:String(ownerBalance),custody:String(custodyBalance)}});
   if((await rpc('eth_getBlockByNumber',[block.number,false]))?.hash!==block.hash)throw Error('AUTHORITY_REORG');
-  return {...authority,status:'LOCAL_CHAIN_RESEARCH',genesisHash,chainId:'0x7a69',blockNumber:block.number,blockHash:block.hash,contracts,controller,owner:ownerAddress,ownerType,signer:ownerType==='fixture-wallet'?controller:ownerType==='eoa'?ownerAddress:null,epoch:String(epoch),credit:String(credit),balances:{wallet:String(walletBalance),owner:String(ownerBalance),custody:String(custodyBalance)},posting:{nonce:String(postNonce),profile:POST_PROFILE},publicChainAuthenticated:false};
+  return {...authority,...accounting,status:'LOCAL_CHAIN_RESEARCH',genesisHash,chainId:'0x7a69',blockNumber:block.number,blockHash:block.hash,contracts,controller,owner:ownerAddress,ownerType,signer:ownerType==='fixture-wallet'?controller:ownerType==='eoa'?ownerAddress:null,epoch:String(epoch),credit:String(credit),balances:{wallet:String(walletBalance),owner:String(ownerBalance),custody:String(custodyBalance)},posting:{nonce:String(postNonce),profile:POST_PROFILE},publicChainAuthenticated:false};
  }
  function actionPlan(state,target,data){if(!state.signer)throw Error('UNSUPPORTED_ACCOUNT_OWNER');return {chainId:state.chainId,from:state.signer,to:state.ownerType==='fixture-wallet'?contracts.wallet:target,data:state.ownerType==='fixture-wallet'?walletABI.encodeFunctionData('execute',[target,data]):data,value:'0x0',epoch:state.epoch,blockHash:state.blockHash,blockNumber:state.blockNumber,genesisHash};}
  async function plan(amount){if(typeof amount!=='string'||! /^[1-9][0-9]{0,77}$/.test(amount)||BigInt(amount)>2n**256n-1n)throw Error('INVALID_AMOUNT');const state=await snapshot();if(BigInt(amount)>BigInt(state.credit))throw Error('INSUFFICIENT_CREDIT');return {...actionPlan(state,contracts.custody,custodyABI.encodeFunctionData('withdraw',[2,BigInt(state.epoch),BigInt(amount)])),amount};}
