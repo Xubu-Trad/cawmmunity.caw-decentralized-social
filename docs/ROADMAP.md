@@ -1,6 +1,6 @@
 ## current application priority — November 14, 2026
 
-current authority and fixture accounting are proof-bound and visible in the console. missing or contradictory evidence clears the displayed state and blocks plans. fresh-node HTTP and browser recovery checks passed. next show expected accounting changes in action review and test changed state before wallet submission. frozen ownership reproduction inputs remain unchanged; external reproduction remains pending. [display and rejection evidence](../evidence/console-accounting-display-20261114/README.md).
+the console now previews accounting effects and rechecks verified accounting before requesting a wallet transaction. changed accounting blocks the request; a newer block with unchanged values is allowed. next retain reviewed accounting with pending-action recovery without treating projections as confirmed effects. frozen ownership reproduction inputs remain unchanged; independent reproduction is pending. [review preview and rejection evidence](../evidence/console-accounting-review-20261114/README.md).
 
 the dated sections below preserve historical milestones, not current pending work.
 
