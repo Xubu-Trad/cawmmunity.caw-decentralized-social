@@ -1,0 +1,23 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "StakeProofResearch.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity 0.8.30;\n\n/// Research only: supplied-root equality, never root authentication/admission.\n/// No state, custody, update authority, signatures or settlement.\ncontract StakeProofResearch {\n    struct Node { bytes32 hash; uint256 sum; }\n    function verify(\n        bytes32 namespace, bytes32 expectedRoot, uint256 expectedTotal,\n        uint256 account, uint256 stake, bool present, Node[256] calldata siblings\n    ) external pure returns (bool) {\n        require(present || stake == 0, \"ABSENT_STAKE\");\n        bytes32 current = present\n            ? sha256(abi.encodePacked(bytes1(0x01), account, stake))\n            : sha256(hex\"00\");\n        uint256 total = stake;\n        uint256 index = account;\n        for (uint256 height; height < 256; ++height) {\n            Node calldata sibling = siblings[height];\n            current = (index & 1) == 0\n                ? sha256(abi.encodePacked(bytes1(0x02), current, total, sibling.hash, sibling.sum))\n                : sha256(abi.encodePacked(bytes1(0x02), sibling.hash, sibling.sum, current, total));\n            total += sibling.sum; // checked uint256, overflow reverts\n            index >>= 1;\n        }\n        require(total == expectedTotal, \"TOTAL\");\n        require(sha256(abi.encodePacked(\n            \"CAW_STAKE_TREE_RESEARCH_V1\", bytes1(0), namespace, current, total\n        )) == expectedRoot, \"ROOT\");\n        return true;\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "evmVersion": "shanghai",
+    "outputSelection": {
+      "*": {
+        "*": [
+          "evm.deployedBytecode.object",
+          "evm.methodIdentifiers"
+        ]
+      }
+    }
+  }
+}

@@ -52,6 +52,12 @@ The unresolved fixture must remain rejected. Acquisition-side source-built repro
 
 ## Priority rule
 
+Work package 2 now has a concrete [one-action profile proposal](ONE_ACTION_PROFILE_PROPOSAL.md)
+dated 2026-11-08. It separates account entitlements, cancellation and commitment
+semantics and specifies implementation acceptance cases. This is a review target,
+not a completed state machine, scalable contract or accepted economic freeze.
+
 Advance the one-action packages above. Add tests when they discriminate a stated failure or validate changed behavior; do not use increasing test counts as a proxy for protocol progress. Keep [cryptographic migration #15](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues/15) under review, but do not select homemade cryptography or make that design lane displace basic settlement, acquisition and operator-independence work.
 
 The next concrete decision package is the candidate asset/registration boundary and the exact one-action economics. Deployment chain, public infrastructure, wallet/funding authorization and provisional rule acceptance are not established by this document. No network transaction is initiated.
+

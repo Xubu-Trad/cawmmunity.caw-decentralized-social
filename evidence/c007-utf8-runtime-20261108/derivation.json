@@ -1,0 +1,11 @@
+{
+  "parentSourceSha256": "f89ca3524ad8a5408227ff00307ca09e1e185cc6d98dfde7e3207ae79bc0d1b4",
+  "parentResultsSha256": "27d16289e5c55b8eab252b38abcb861597cfda73f12bf2456a255f5d57fb563d",
+  "sourceChanged": false,
+  "runtimeChanged": false,
+  "fixtureInputs": "Derived from retained records; independently recalculated floor allocation and compared saved post-states. Original input files absent from transfer.",
+  "textExpectedChanges": {
+    "signed_empty": "TEXT_LENGTH",
+    "signed_invalid_utf8": "UTF8"
+  }
+}

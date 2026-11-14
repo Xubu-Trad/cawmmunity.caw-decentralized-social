@@ -1,0 +1,113 @@
+{
+  "schema": "caw-artifact-provenance/1",
+  "artifacts": [
+    {
+      "PARENTS": [
+        "fb887e7e12f02f232690d2aa838855d62d3c03bd"
+      ],
+      "TRANSFORM": "original authored source/documentation",
+      "SHA256": "1c45cbdb2e1becfd7905e32ae4eddf110947ad649c5191a0cf8d9dbf9186d2b0",
+      "SIZE": 7015,
+      "PATH": "docs/COMPACT_STAKE_PROOF_RESEARCH.md"
+    },
+    {
+      "PARENTS": [
+        "fb887e7e12f02f232690d2aa838855d62d3c03bd"
+      ],
+      "TRANSFORM": "original authored source/documentation",
+      "SHA256": "23fdd59c467c70530ce91b31275f3d574bc4afada4165962411671a564f214d9",
+      "SIZE": 5719,
+      "PATH": "docs/STAKE_PROOF_EVM_RESEARCH.md"
+    },
+    {
+      "PARENTS": [
+        "fb887e7e12f02f232690d2aa838855d62d3c03bd"
+      ],
+      "TRANSFORM": "compact-run.mjs compiler/EVM outputs or recorded execution/runtime identity",
+      "SHA256": "02e3e01976903a62f229680aa03e91e619c9dfafd18324b392a181f78b798c14",
+      "SIZE": 18890,
+      "PATH": "evidence/compact-stake-proof-20261108/CompactStakeProofResearch-input.json"
+    },
+    {
+      "PARENTS": [
+        "fb887e7e12f02f232690d2aa838855d62d3c03bd"
+      ],
+      "TRANSFORM": "compact-run.mjs compiler/EVM outputs or recorded execution/runtime identity",
+      "SHA256": "322f4f6f6fcb9d8dbb3b4c9766702c0874d715b72c085a560fa580c310cd3a48",
+      "SIZE": 20469,
+      "PATH": "evidence/compact-stake-proof-20261108/CompactStakeProofResearch-output.json"
+    },
+    {
+      "PARENTS": [
+        "fb887e7e12f02f232690d2aa838855d62d3c03bd"
+      ],
+      "TRANSFORM": "compact-run.mjs compiler/EVM outputs or recorded execution/runtime identity",
+      "SHA256": "6661d64b5938674be1ab970b63b9303e747c1ea9b7629e699df01b66b67cda45",
+      "SIZE": 1857,
+      "PATH": "evidence/compact-stake-proof-20261108/StakeProofResearch-input.json"
+    },
+    {
+      "PARENTS": [
+        "fb887e7e12f02f232690d2aa838855d62d3c03bd"
+      ],
+      "TRANSFORM": "compact-run.mjs compiler/EVM outputs or recorded execution/runtime identity",
+      "SHA256": "3d7af79cb9ab5cfe55aed8751c4e26f6286f9994f4b756d880e85d1b996ed55a",
+      "SIZE": 3067,
+      "PATH": "evidence/compact-stake-proof-20261108/StakeProofResearch-output.json"
+    },
+    {
+      "PARENTS": [
+        "fb887e7e12f02f232690d2aa838855d62d3c03bd"
+      ],
+      "TRANSFORM": "compact-run.mjs compiler/EVM outputs or recorded execution/runtime identity",
+      "SHA256": "78306a111f7fea4a4ebfb6d446b9010176c0ee47be420789c12f97299413ebfc",
+      "SIZE": 13968,
+      "PATH": "evidence/compact-stake-proof-20261108/results.json"
+    },
+    {
+      "PARENTS": [
+        "fb887e7e12f02f232690d2aa838855d62d3c03bd"
+      ],
+      "TRANSFORM": "compact-run.mjs compiler/EVM outputs or recorded execution/runtime identity",
+      "SHA256": "9ff1d9f431d313d8d20e564bea9f227bc68566facd1ac71fd7cdc4aa2415e950",
+      "SIZE": 73,
+      "PATH": "evidence/compact-stake-proof-20261108/run.log"
+    },
+    {
+      "PARENTS": [
+        "fb887e7e12f02f232690d2aa838855d62d3c03bd"
+      ],
+      "TRANSFORM": "compact-run.mjs compiler/EVM outputs or recorded execution/runtime identity",
+      "SHA256": "18ec66d9115962e98fd519a3e502fd91c98865bf067324f987ba4f93f55411e8",
+      "SIZE": 1527,
+      "PATH": "evidence/compact-stake-proof-20261108/runtime.json"
+    },
+    {
+      "PARENTS": [
+        "fb887e7e12f02f232690d2aa838855d62d3c03bd"
+      ],
+      "TRANSFORM": "authored Solidity template with DEFAULTS hex table from compact-vectors.py defaults.join(\"\")",
+      "SHA256": "fa710df92b311ec9ae32ee981bbe198ae18012dd75b4d4d0ea7c2453a2164a90",
+      "SIZE": 18439,
+      "PATH": "experiments/stake-commitment-evm/CompactStakeProofResearch.sol"
+    },
+    {
+      "PARENTS": [
+        "fb887e7e12f02f232690d2aa838855d62d3c03bd"
+      ],
+      "TRANSFORM": "original authored source/documentation",
+      "SHA256": "df5c139970975328b12b4f0e9353f68e4e8d9adb74aae87c82fe21ef15386eb4",
+      "SIZE": 6205,
+      "PATH": "experiments/stake-commitment-evm/compact-run.mjs"
+    },
+    {
+      "PARENTS": [
+        "fb887e7e12f02f232690d2aa838855d62d3c03bd"
+      ],
+      "TRANSFORM": "original authored source/documentation",
+      "SHA256": "a8c4cb6459c2b3f8b404854e5fc2597ef878a767c0ff44ac041b70390f9b9928",
+      "SIZE": 1508,
+      "PATH": "experiments/stake-commitment-evm/compact-vectors.py"
+    }
+  ]
+}

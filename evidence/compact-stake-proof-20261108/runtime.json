@@ -1,0 +1,33 @@
+{
+  "command": [
+    "node",
+    "--max-old-space-size=512",
+    "experiments/stake-commitment-evm/compact-run.mjs",
+    "NEW_COMPACT_VECTORS.json",
+    "NEW_OUTPUT_DIRECTORY"
+  ],
+  "exitCode": 0,
+  "limits": {
+    "cpuSeconds": 60,
+    "wallSeconds": 90,
+    "nodeHeapMiB": 512,
+    "diskMinimumGiB": 2,
+    "memoryAvailableMinimumGiB": 1
+  },
+  "inputs": {
+    "publish/experiments/stake-commitment-evm/compact-run.mjs": "df5c139970975328b12b4f0e9353f68e4e8d9adb74aae87c82fe21ef15386eb4",
+    "publish/experiments/stake-commitment-evm/CompactStakeProofResearch.sol": "fa710df92b311ec9ae32ee981bbe198ae18012dd75b4d4d0ea7c2453a2164a90",
+    "publish/experiments/stake-commitment-evm/StakeProofResearch.sol": "d4ea3c1269f6817510c5bb5568514cf619c04aab767de9367532fd491fb86c74",
+    "vectors.json": "1b059aed1df95415a8ed4b12382322a476ad4c7d069f0b1f2c9b52c1e88ad5b3"
+  },
+  "pathNote": "Actual execution used scratch-relative paths; command is repository-relative equivalent.",
+  "parent": "fb887e7e12f02f232690d2aa838855d62d3c03bd",
+  "nodeVersion": "v24.22.1",
+  "pythonVersion": "Python 3.12.14",
+  "dependencyManifest": "evidence/stake-proof-evm-20261108/runtime.json",
+  "dependencyManifestSha256": "c0011ec8e90237ae1b7ef72129fcdb7cc995bf73070719e542274c705fa20b32",
+  "dependencyMetadataAndCompilerRuntimeHashesMatched": true,
+  "vectorSize": 385519,
+  "vectorSha256": "1b059aed1df95415a8ed4b12382322a476ad4c7d069f0b1f2c9b52c1e88ad5b3",
+  "kernelSha256": "b3c402651d8d910a93f554b5fb4025262e537dadd81f09b24fa2515dbddfdda5"
+}

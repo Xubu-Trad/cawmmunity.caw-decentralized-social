@@ -1,0 +1,103 @@
+{
+  "schema": "caw-artifact-provenance/1",
+  "scope": "Authored model and internally executed tests; not independently reproduced build origin",
+  "artifacts": [
+    {
+      "PARENTS": [
+        "4bbd69bad5cd6abc51fc5b9efff23336e88a5fc0"
+      ],
+      "TRANSFORM": "Authored via apply_patch",
+      "SHA256": "ce8b0594a785a088fc4cd8a31e9d38c09253ff3c02a6aa3398c0d5bc6dc1dab8",
+      "SIZE": 5576,
+      "PATH": "experiments/paid-action/one_action_model.py"
+    },
+    {
+      "PARENTS": [
+        "4bbd69bad5cd6abc51fc5b9efff23336e88a5fc0"
+      ],
+      "TRANSFORM": "Authored via apply_patch",
+      "SHA256": "2bb60f5d525abaf9500463145d28484021477d1fb428afb5158fd84f43370b4b",
+      "SIZE": 6805,
+      "PATH": "tests/test_one_action_model.py"
+    },
+    {
+      "PARENTS": [
+        "4bbd69bad5cd6abc51fc5b9efff23336e88a5fc0"
+      ],
+      "TRANSFORM": "Authored via apply_patch",
+      "SHA256": "a47d179b45039c25abdec75b95019c9a4c049a0e5d38d7dd58e54d8f2b93142b",
+      "SIZE": 3028,
+      "PATH": "tests/check_one_action_mutations.py"
+    },
+    {
+      "PARENTS": [
+        "4bbd69bad5cd6abc51fc5b9efff23336e88a5fc0"
+      ],
+      "TRANSFORM": "Authored via apply_patch",
+      "SHA256": "d646239816186d1b67b28ff8e160c010479c08e03551b1a4308deff4d2192da9",
+      "SIZE": 6481,
+      "PATH": "docs/ONE_ACTION_MODEL.md"
+    },
+    {
+      "PARENTS": [
+        "4bbd69bad5cd6abc51fc5b9efff23336e88a5fc0"
+      ],
+      "TRANSFORM": "Authored via apply_patch",
+      "SHA256": "a5f43f4cdda57b3c093382185b32ea6526f35d259a58acf821c66a2b76ed5517",
+      "SIZE": 13863,
+      "PATH": "docs/ONE_ACTION_PROFILE_PROPOSAL.md"
+    },
+    {
+      "PARENTS": [
+        "experiments/paid-action/one_action_model.py",
+        "tests/test_one_action_model.py"
+      ],
+      "TRANSFORM": "python3 -I -B tests/test_one_action_model.py (stdout/stderr captured under limits recorded in run.json)",
+      "SHA256": "2f190680701d59a856a50699ad2d143ade061f1ce0215a5936ca13ded93528da",
+      "SIZE": 1123,
+      "PATH": "evidence/one-action-model-20261108/tests.log"
+    },
+    {
+      "PARENTS": [
+        "4bbd69bad5cd6abc51fc5b9efff23336e88a5fc0"
+      ],
+      "TRANSFORM": "Recorded internal runtime, guards and source hashes after focused test execution",
+      "SHA256": "9ffe4adefefb2811f66e0143672f71f1e71c2312042a999a3de6d53844663f44",
+      "SIZE": 1018,
+      "PATH": "evidence/one-action-model-20261108/run.json"
+    },
+    {
+      "PARENTS": [
+        "experiments/paid-action/one_action_model.py",
+        "tests/test_one_action_model.py",
+        "tests/check_one_action_mutations.py"
+      ],
+      "TRANSFORM": "python3 -I -B tests/check_one_action_mutations.py evidence/one-action-model-20261108/negative-controls-v2; public logs replace only absolute control-directory prefix, raw-log hashes retained in controls.json",
+      "SHA256": "6ee083d2c29a644d1a6eab2baa83bd59303b91724c467ae864f4f4f7a1d429b4",
+      "SIZE": 1296,
+      "PATH": "evidence/one-action-model-20261108/negative-controls-v2/controls.json"
+    },
+    {
+      "PARENTS": [
+        "experiments/paid-action/one_action_model.py",
+        "tests/test_one_action_model.py",
+        "tests/check_one_action_mutations.py"
+      ],
+      "TRANSFORM": "python3 -I -B tests/check_one_action_mutations.py evidence/one-action-model-20261108/negative-controls-v2; public logs replace only absolute control-directory prefix, raw-log hashes retained in controls.json",
+      "SHA256": "af4a675c31e4812190d99b6c1fe6ba36a46a56a9038e5a04dda324c257a6079a",
+      "SIZE": 2659,
+      "PATH": "evidence/one-action-model-20261108/negative-controls-v2/epoch/tests.public.log"
+    },
+    {
+      "PARENTS": [
+        "experiments/paid-action/one_action_model.py",
+        "tests/test_one_action_model.py",
+        "tests/check_one_action_mutations.py"
+      ],
+      "TRANSFORM": "python3 -I -B tests/check_one_action_mutations.py evidence/one-action-model-20261108/negative-controls-v2; public logs replace only absolute control-directory prefix, raw-log hashes retained in controls.json",
+      "SHA256": "1ab1f4117fa0d0d9fa2e2a28e9f71dbad83c5cb1c25f4b38f24b361ffc00a565",
+      "SIZE": 3274,
+      "PATH": "evidence/one-action-model-20261108/negative-controls-v2/nonce/tests.public.log"
+    }
+  ]
+}

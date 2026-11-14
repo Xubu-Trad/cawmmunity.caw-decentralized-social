@@ -1,0 +1,68 @@
+{
+  "schema": "caw-c007-text-vectors/1",
+  "cases": [
+    {
+      "label": "signed_ascii",
+      "signedHex": "6f6e6520616374696f6e",
+      "submittedHex": "6f6e6520616374696f6e",
+      "signer": 1,
+      "expected": "OK"
+    },
+    {
+      "label": "signed_precomposed",
+      "signedHex": "436166c3a9",
+      "submittedHex": "436166c3a9",
+      "signer": 1,
+      "expected": "OK"
+    },
+    {
+      "label": "signed_decomposed",
+      "signedHex": "43616665cc81",
+      "submittedHex": "43616665cc81",
+      "signer": 1,
+      "expected": "OK"
+    },
+    {
+      "label": "signed_embedded_nul",
+      "signedHex": "410042",
+      "submittedHex": "410042",
+      "signer": 1,
+      "expected": "OK"
+    },
+    {
+      "label": "signed_empty",
+      "signedHex": "",
+      "submittedHex": "",
+      "signer": 1,
+      "expected": "TEXT_LENGTH"
+    },
+    {
+      "label": "signed_invalid_utf8",
+      "signedHex": "c0af",
+      "submittedHex": "c0af",
+      "signer": 1,
+      "expected": "UTF8"
+    },
+    {
+      "label": "tampered_single_byte",
+      "signedHex": "6f6e6520616374696f6e",
+      "submittedHex": "6f6e6520616374696f6d",
+      "signer": 1,
+      "expected": "TEXT_HASH"
+    },
+    {
+      "label": "tampered_unicode_form",
+      "signedHex": "436166c3a9",
+      "submittedHex": "43616665cc81",
+      "signer": 1,
+      "expected": "TEXT_HASH"
+    },
+    {
+      "label": "wrong_signer",
+      "signedHex": "6f6e6520616374696f6e",
+      "submittedHex": "6f6e6520616374696f6e",
+      "signer": 2,
+      "expected": "SIGNER"
+    }
+  ]
+}
