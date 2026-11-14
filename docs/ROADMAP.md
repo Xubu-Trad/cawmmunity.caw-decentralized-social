@@ -680,3 +680,8 @@ The previous owner/post integration gate is now implemented: the console fetches
 ## Fresh integrated console run — November 13
 
 Completed the prior fresh-execution gate: isolated Geth mined a same-block owner transfer/post; the console fetched and verified its proofs twice with identical results. Second-engine execution matched13transactions/15state roots. Independent reproduction remains pending. Next supported lifecycle extensions must preserve custody and verification boundaries. [Evidence](../evidence/owner-console-live-20261113/README.md).
+
+
+## Console transfer compatibility — November 13
+
+The ownership-aware verifier now accepts the exact three-argument safe-transfer operation prepared by the console for an empty-code recipient. Fresh signed/mined evidence reproduces the old false rejection and verifies with the patch; second-engine replay agrees. Callback-bearing receivers remain outside scope. [Evidence](../evidence/console-safe-transfer-20261113/README.md). Independent pinned reproduction remains the next external gate.

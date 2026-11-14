@@ -9,7 +9,7 @@ import {requirePostBlockSize} from './post-block-scope.mjs';
 const OWNER='0xabbb5caa7dda850e60932de0934eb1f9d0f59695050f761dc64e443e5030a569',EPOCH='0x91da3fd0782e51c6b3986e9e672fd566868e71f3dbc2d6c2cd6fbb3e361af2a7';
 const NONCE=keccak256(AbiCoder.defaultAbiCoder().encode(['uint256','uint256'],[2,0]));
 const ZERO='0x'+'00'.repeat(20),EMPTY=keccak256('0x'),MAX=(1n<<256n)-1n;
-const abi=new Interface(['function transferFrom(address,address,uint256)','function execute(address,bytes)','event Approval(address indexed owner,address indexed approved,uint256 indexed tokenId)','event Transfer(address indexed from,address indexed to,uint256 indexed tokenId)','event LocalPostPublished(uint256 indexed accountId,uint256 indexed epoch,uint256 indexed nonce,address author,bytes32 textHash,bytes text)']);
+const abi=new Interface(['function transferFrom(address,address,uint256)','function safeTransferFrom(address,address,uint256)','function execute(address,bytes)','event Approval(address indexed owner,address indexed approved,uint256 indexed tokenId)','event Transfer(address indexed from,address indexed to,uint256 indexed tokenId)','event LocalPostPublished(uint256 indexed accountId,uint256 indexed epoch,uint256 indexed nonce,address author,bytes32 textHash,bytes text)']);
 const low=x=>x.toLowerCase();
 const event=(address,name,args)=>({address,...abi.encodeEventLog(abi.getEvent(name),args)});
 
@@ -34,7 +34,13 @@ export function reconstructOwnerPostSequence(transactions,receipts,start,selecti
    assert.deepEqual(logs,[event(selection.contracts.registry.address,'Approval',[owner,ZERO,2]),event(selection.contracts.registry.address,'Transfer',[owner,next,2])],'TRANSFER_LOGS');
    const inner=abi.encodeFunctionData('transferFrom',[owner,next,2]);
    assert.equal(tx.to,wallet?owner:selection.contracts.registry.address,'TRANSFER_TARGET');
-   assert.equal(tx.data,wallet?abi.encodeFunctionData('execute',[selection.contracts.registry.address,inner]):inner,'TRANSFER_CALLDATA');
+   const direct=wallet?abi.encodeFunctionData('execute',[selection.contracts.registry.address,inner]):inner;
+   const safeInner=abi.encodeFunctionData('safeTransferFrom',[owner,next,2]);
+   const safe=wallet?abi.encodeFunctionData('execute',[selection.contracts.registry.address,safeInner]):safeInner;
+   assert(tx.data===direct||tx.data===safe,'TRANSFER_CALLDATA');
+   // Safe transfers to a contract may execute receiver callbacks; not supported here.
+   // checkOwner already binds every non-fixture recipient to empty runtime code.
+   if(tx.data===safe)assert(next!==selection.contracts.wallet.address,'SAFE_RECEIVER_CALLBACK_UNSUPPORTED');
    transfers.push({transactionIndex:i,from:owner,to:next,priorEpoch:String(epoch),epoch:String(epoch+1n)});owner=next;epoch++;
   }else{
    assert.equal(logs.length,1,'SUPPORTED_ACTION_ONLY');assert.equal(logs[0].address,selection.contracts.posting.address,'POST_ADDRESS');
