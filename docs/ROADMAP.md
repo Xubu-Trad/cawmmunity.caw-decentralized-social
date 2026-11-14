@@ -1,6 +1,6 @@
 ## current application priority — November 14, 2026
 
-current ownership and fixture accounting are now proof-bound before console action planning. next expose that verification clearly in the interface and test missing/contradictory accounting evidence through the console. independent reproduction of the frozen ownership package remains pending and its inputs stay unchanged. [accounting evidence and limits](../evidence/console-accounting-proof-20261114/README.md).
+current authority and fixture accounting are proof-bound and visible in the console. missing or contradictory evidence clears the displayed state and blocks plans. fresh-node HTTP and browser recovery checks passed. next show expected accounting changes in action review and test changed state before wallet submission. frozen ownership reproduction inputs remain unchanged; external reproduction remains pending. [display and rejection evidence](../evidence/console-accounting-display-20261114/README.md).
 
 the dated sections below preserve historical milestones, not current pending work.
 

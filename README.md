@@ -37,9 +37,9 @@ updated November 14, 2026. **this is unfinished research software. there is no p
 
 we are building something another person can inspect, reproduce and carry forward. the local execution console can already submit signed posts, transfer an experimental account and withdraw its credited mock tokens on a disposable chain. the original alpha interface remains a simulation. the console does real local execution, but its posts do not yet implement the manifesto's CAW payment and settlement rules.
 
-the latest change connects the console's accounting to state proofs. before preparing an action, it checks current ownership, the posting nonce, account credit and token balances against the selected block's state. it also checks that the selected fixture's custody balance covers its recorded liability. an inconsistent response stops the plan.
+the console now shows verified accounting, the selected block and total unpaid liability alongside account credit and token balances. refreshing clears old values immediately. missing proofs or conflicting responses leave balances blank and actions blocked until verification succeeds again.
 
-we exercised a fresh ownership transfer, post and full-credit withdrawal. the remaining credit was proven to be zero, and a second execution engine matched all 14 transactions and 14 state roots. 17 accounting checks and the existing authority, acquisition, interruption and action-plan regressions passed. [exact evidence and limits](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/evidence/console-accounting-proof-20261114/README.md).
+32 fresh-node HTTP checks passed across the state, withdrawal, transfer and post-plan routes, including missing and conflicting evidence. 12 browser checks confirmed display, clearing, recovery and zero-credit behavior. the fresh execution still matched a second engine across 14 transactions and 15 state roots; existing accounting and action regressions passed. [exact evidence and limits](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/evidence/console-accounting-display-20261114/README.md). the browser displays the local verifier's result; it does not independently run the full proof reader.
 
 these results come from local experiments run by us. **independent reproduction is still pending.** selected local headers are not proof of public-chain finality, and this storage layout only supports the selected research contracts. general wallet support, actual CAW compatibility, registration, paid-post economics, durable public operation and release agreement remain unfinished.
 
@@ -47,7 +47,7 @@ the experimental application lives on [draft PR #19](https://github.com/Xubu-Tra
 
 ## what comes next
 
-make the proof-backed accounting clear in the console itself, including a clear rejection when evidence is missing or contradicts the displayed balance. keep the frozen reproduction package available for independent reviewers while this work continues. paid settlement needs explicit accounting and specification decisions; we will not choose those silently to make the interface look finished.
+show expected accounting changes in the action review and check changes before requesting a wallet signature. keep the frozen reproduction package available to independent reviewers. paid settlement still requires explicit accounting and specification decisions; we will not silently choose them to make the application look complete.
 
 ## find your starting point
 

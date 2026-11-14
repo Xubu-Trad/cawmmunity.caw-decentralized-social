@@ -5,3 +5,5 @@
 #transfer-form{border-top:1px solid var(--line,#234d3a);margin-top:1.5rem;padding-top:1rem}#recipient{width:100%;box-sizing:border-box}#transfer-form h3{margin-top:0}#transfer-form button{margin-top:.5rem}
 
 #post-text{display:block;width:100%;min-height:110px;resize:vertical;box-sizing:border-box;background:var(--bg);color:var(--bright);border:1px solid var(--line);font:inherit;padding:12px}.post-text{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.8}.post-meta,.post-proof{font-size:11px;overflow-wrap:anywhere;color:var(--muted);line-height:1.7}#posts article{border-top:1px solid var(--line);padding:15px 0}.timeline{margin-top:20px}#post-form .subtle{margin-top:12px}
+
+#accounting-header{overflow-wrap:anywhere;word-break:break-word;font-size:11px;line-height:1.6}

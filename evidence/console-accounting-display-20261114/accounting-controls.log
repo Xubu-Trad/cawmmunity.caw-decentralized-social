@@ -1,0 +1,23 @@
+{
+  "passed": 17,
+  "checks": [
+    "fresh zero-credit withdrawal state",
+    "contradictory credit rejected",
+    "contradictory liability rejected",
+    "contradictory wallet balance rejected",
+    "contradictory owner balance rejected",
+    "contradictory custody balance rejected",
+    "header root rejected",
+    "missing custody proof rejected",
+    "missing token proof rejected",
+    "corrupted custody account node rejected",
+    "corrupted token account node rejected",
+    "missing liability slot rejected",
+    "missing other account credit rejected",
+    "contradictory proof value rejected",
+    "wrong token code selection rejected",
+    "wrong custody code selection rejected",
+    "wallet owner balance key deduplicated"
+  ],
+  "scope": "Selected research fixture and local header only; not arbitrary tokens or public consensus."
+}
