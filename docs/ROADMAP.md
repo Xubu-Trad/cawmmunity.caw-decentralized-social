@@ -1,6 +1,6 @@
 ## current application priority — November 15, 2026
 
-exported posting receipts now bind to the existing strict signed-history verifier through a separate review command. inclusion, local-field discrepancies and absence from the selected range are distinct outcomes; malformed or tampered history rejects. next expose these results in the console with stale-response handling. withdrawal/transfer receipt binding, accounting effects, paid economics and public operation remain separate gates. independent execution remains pending and frozen inputs stay unchanged. [binding evidence and limits](../evidence/console-receipt-history-20261115/README.md).
+the console now exposes strict saved-post history verification with server acquisition and distinct inclusion/discrepancy/absence/rejection results. exact export/transaction binding and generation checks prevent late responses restoring cleared acceptance. next exercise this path after freshly mined local posting, reload and interruption. withdrawal/transfer receipt binding, accounting effects, paid economics and public operation remain separate gates. independent reproduction and frozen inputs remain unchanged. [console verification evidence](../evidence/console-receipt-history-ui-20261115/README.md).
 
 the dated sections below preserve historical milestones, not current pending work.
 

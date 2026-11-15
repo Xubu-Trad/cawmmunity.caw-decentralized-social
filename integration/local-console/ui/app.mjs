@@ -1,3 +1,4 @@
+import {mountReceiptHistory} from './receipt-history-panel.mjs';
 import {exportReceiptHistory} from './receipt-export.mjs';
 import {recheckReceiptOutcome,readReceiptRechecks,RECHECK_PREFIX} from './receipt-rechecks.mjs';
 import {archiveReceiptOutcome,readLastReceiptOutcome,LAST_OUTCOME_KEY,OUTCOME_PREFIX} from './receipt-outcomes.mjs';
@@ -198,4 +199,10 @@ $('export-outcome').addEventListener('click',async()=>{
   const a=document.createElement('a');a.href=url;a.download=exported.filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
   message('Receipt export download requested. It includes editable local observations, addresses and any post text; review before sharing. No transaction sent.');
  }catch(e){message('Receipt export unavailable: '+e.message,true);}finally{busy=false;controls();}
+});
+
+mountReceiptHistory(document,async()=>{
+ if(busy||refreshing||!state||!lastOutcome)throw Error('Load a saved receipt before checking history.');
+ if(lastOutcome.action.version!==3)throw Error('This history checker supports posting receipts only.');
+ return (await exportReceiptHistory(localStorage,navigator.locks,state,lastOutcome)).text;
 });

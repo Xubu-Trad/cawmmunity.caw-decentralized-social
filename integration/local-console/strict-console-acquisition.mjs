@@ -1,3 +1,6 @@
+import {verifyReceiptHistory} from './verify-receipt-history.mjs';
+import {verifyReceiptExport} from './ui/receipt-export.mjs';
+import {POST_PROFILE} from './ui/post-plan.mjs';
 import {containsOwnerTransfer,acquireOwnerPostHistory} from './acquire-owner-post-history.mjs';
 import {verifyPostingHistory, POST_NONCE} from './verify-posting-history.mjs';
 import {requirePostBlockSize} from './post-block-scope.mjs';
@@ -8,7 +11,12 @@ const quantity = /^0x(?:0|[1-9a-f][0-9a-f]*)$/;
 
 // The caller supplies the console's bounded, read-only RPC function. Selections
 // are local observations, not consensus-authenticated public-chain anchors.
-export async function acquireVerifiedPosts(rpc, config, signal) {
+export const acquireVerifiedPosts=(rpc,config,signal)=>acquire(rpc,config,signal,null);
+export const acquireVerifiedReceipt=(rpc,config,text,signal)=>acquire(rpc,config,signal,text);
+async function acquire(rpc, config, signal, exportText) {
+  const state={chainId:'0x7a69',genesisHash:config.genesisHash,controller:config.controller,contracts:Object.fromEntries(Object.entries(config.contracts).map(([k,v])=>[k,v.address])),posting:{profile:POST_PROFILE}};
+  if(exportText!==null){const local=await verifyReceiptExport(exportText,state);if(local.value.original.action.version!==3)throw Error('POST_EXPORT_REQUIRED');}
+
   const deadline = Date.now() + 30000;
   let requests = 0, bytes = 0;
   async function read(method, params) {
@@ -59,8 +67,9 @@ export async function acquireVerifiedPosts(rpc, config, signal) {
   const selection = {startHash: anchor.hash, endHash: tip.hash, contracts: config.contracts, controller: config.controller};
   if (containsOwnerTransfer(bundle, config.contracts.registry.address))
     await acquireOwnerPostHistory(read, bundle, selection);
-  const result = verifyPostingHistory(bundle, selection);
+  const result = exportText===null ? verifyPostingHistory(bundle, selection) : await verifyReceiptHistory(exportText,state,bundle,selection);
   if ((await read('eth_getBlockByNumber', [tip.number, false]))?.hash !== tip.hash || (await read('eth_getBlockByNumber', [anchor.number, false]))?.hash !== anchor.hash) throw Error('STRICT_HISTORY_REORG');
+  if(exportText!==null)return {...result,exportSha256:JSON.parse(exportText).sha256,selectedHistoryEndHash:tip.hash,verificationLocation:'local-console-server'};
   return {status: 'VERIFIED_LOCAL_HISTORY', genesisHash: config.genesisHash, posting: config.contracts.posting.address,
     startHash: anchor.hash, blockHash: tip.hash, blockNumber: tip.number, ...result,
     verificationLocation: 'local-console-server', acquisitionRequests: requests,
