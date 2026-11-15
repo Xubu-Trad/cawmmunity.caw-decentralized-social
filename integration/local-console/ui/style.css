@@ -11,3 +11,5 @@
 #accounting-review{border-top:1px solid var(--line);margin-top:16px;padding-top:12px;overflow-wrap:anywhere}#accounting-review dd{margin:4px 0 12px}#accounting-review p{line-height:1.6}
 
 #saved-accounting-review{border:1px solid var(--line);padding:16px;margin:16px 0;overflow-wrap:anywhere}#saved-accounting-review dd{margin:4px 0 12px}
+
+#last-receipt-outcome{overflow-wrap:anywhere;line-height:1.7}#last-receipt-outcome dd{margin:4px 0 12px}

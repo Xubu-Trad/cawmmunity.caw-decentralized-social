@@ -1,0 +1,28 @@
+{
+  "passed": 22,
+  "checks": [
+    "withdrawal confirmed retained with review across reload",
+    "withdrawal reverted retained with review across reload",
+    "transfer confirmed retained with review across reload",
+    "transfer reverted retained with review across reload",
+    "post confirmed retained with review across reload",
+    "post reverted retained with review across reload",
+    "older completed actions remain stored by identity",
+    "legacy action archives without inventing review",
+    "pending result keeps pending action",
+    "invalid block keeps pending action",
+    "earlier block keeps pending action",
+    "missing status keeps pending action",
+    "wrong transaction rejected",
+    "archive write failure keeps pending and retry completes",
+    "pointer write failure keeps pending and retry completes",
+    "pending removal failure keeps pending and retry completes",
+    "lost archive write fails readback and keeps pending",
+    "conflicting recheck never overwrites retained outcome",
+    "corrupt pointer is not treated as empty history",
+    "missing archive is not treated as empty history",
+    "another tab lock blocks archive and cleanup",
+    "different deployment does not load archived result"
+  ],
+  "scope": "Local receipt-result retention and storage boundaries. No fresh receipt proof, chain execution or finality claim."
+}

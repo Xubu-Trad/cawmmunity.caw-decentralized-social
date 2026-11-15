@@ -89,3 +89,5 @@ export async function finishWithdrawal(storage,locks,state,id){
   if(storage.getItem(JOURNAL_KEY)!==null)throw Error('Saved withdrawal could not be cleared. Check again before another action.');
  });
 }
+
+export {locked as withJournalLock};

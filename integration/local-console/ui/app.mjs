@@ -1,3 +1,4 @@
+import {archiveReceiptOutcome,readLastReceiptOutcome,LAST_OUTCOME_KEY,OUTCOME_PREFIX} from './receipt-outcomes.mjs';
 import {showAccountingReview,requireReviewedAccounting} from './accounting-review.mjs';
 import {requireAccountingSnapshot,showAccounting,clearAccountSnapshot} from './accounting-panel.mjs';
 import {verifyWalletProviderContext} from './wallet-provider.mjs';
@@ -23,6 +24,7 @@ $('connect').addEventListener('click',async()=>{clearPlan();const version=genera
 $('withdraw-form').addEventListener('submit',async event=>{event.preventDefault();if(busy||refreshing||saved||journalError||pending)return;clearPlan();const amount=$('amount').value.trim();if(!/^[1-9][0-9]{0,77}$/.test(amount)){message('Enter a positive whole number of mock units.',true);return;}busy=true;controls();const version=generation;try{if(!state||!account||!same(account,state.signer))throw Error('The connected wallet does not currently control this account.');const current=await walletIdentity();if(!same(current,account))throw Error('The connected account changed. Reconnect first.');if(BigInt(amount)>BigInt(state.credit))throw Error('Amount exceeds the last reported available credit. Refresh chain state.');const p=await api('/api/withdrawal-plan',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({amount})});if(version!==generation)throw Error('Wallet state changed while preparing. Review again.');verifyWithdrawalPlan(p,state,account,amount);plan=Object.freeze(p);reviewedAccounting=structuredClone(state);showAccountingReview(document,reviewedAccounting,p);$('review-amount').textContent=amount+' mock units';$('review-recipient').textContent=state.owner;$('withdrawal-review').hidden=false;$('transfer-review').hidden=true;$('post-review').hidden=true;$('review-explanation').textContent=state.ownerType==='fixture-wallet'?'The controller calls the contract wallet. The withdrawal pays that contract wallet, not the controller address.':'The current owner calls custody directly. The withdrawal pays this connected wallet.';$('review-epoch').textContent=String(p.epoch);$('review').hidden=false;message('Review the plan below. Transaction bytes match this withdrawal. Nothing has been submitted.');}catch(e){clearPlan();message(e.message,true);}finally{busy=false;controls();}});
 function readProvider(){const selected=provider;return {async request(req){let timer;try{return await Promise.race([selected.request(req),new Promise((_,reject)=>{timer=setTimeout(()=>reject(Error('Wallet read timed out. No confirmation established; check again.')),8000);})]);}finally{clearTimeout(timer);}}};}
 function syncSaved(){
+ showLastOutcome();
  $('saved-accounting-review').replaceChildren();$('saved-accounting-review').hidden=true;
  try{
   saved=readJournal(localStorage,state);journalError=null;pending=saved?.phase==='submitted'?{id:saved.id,hash:saved.hash,plan:saved.plan}:null;
@@ -32,13 +34,13 @@ function syncSaved(){
  try{$('saved-record').value=(localStorage.getItem(JOURNAL_KEY)||'').slice(0,8192);}catch{$('saved-record').value='Browser storage unavailable.';}
  $('saved-details').hidden=!saved&&!journalError;controls();
 }
-window.addEventListener('storage',event=>{if(event.key===JOURNAL_KEY||event.key===null){clearPlan();if(state)syncSaved();}});
+window.addEventListener('storage',event=>{if(event.key===JOURNAL_KEY||event.key===LAST_OUTCOME_KEY||event.key?.startsWith(OUTCOME_PREFIX)||event.key===null){clearPlan();if(state)syncSaved();}});
 async function checkReceipt(){
  const selected=pending;if(!selected)return;
  const result=await verifyWithdrawalReceipt(readProvider(),selected.hash,selected.plan);const label=selected.plan.action==='transfer'?'Account transfer':selected.plan.action==='post'?'Local post':'Withdrawal';
  if(pending!==selected)return;
  if(result.status==='pending'){message('Transaction pending on the local chain. Check again; do not submit a duplicate.');return;}
- await finishWithdrawal(localStorage,navigator.locks,state,selected.id);saved=null;pending=null;journalError=null;
+ await archiveReceiptOutcome(localStorage,navigator.locks,state,selected.id,selected.hash,result);saved=null;pending=null;journalError=null;
  $('transaction').textContent=(result.status==='confirmed'?'Confirmed local transaction: ':'Reverted local transaction: ')+selected.hash+' · block '+result.blockNumber;
  const refreshed=await refresh(true);
  message(result.status==='confirmed'?label+' confirmed on the selected local chain.'+(refreshed?' Balances refreshed.':' Balance refresh failed; retry refresh.')+' This is not public-chain finality.':'The local transaction reverted. No successful action is established.',result.status!=='confirmed'||!refreshed);
@@ -155,3 +157,16 @@ $('post-form').addEventListener('submit',async event=>{
   $('review').hidden=false;message('Review the exact local post. Nothing has been submitted.');
  }catch(e){clearPlan();message(e.message,true);}finally{busy=false;controls();}
 });
+
+function showLastOutcome(){
+ const box=$('last-receipt-outcome');box.replaceChildren();
+ try{
+  const savedOutcome=readLastReceiptOutcome(localStorage,state);
+  if(!savedOutcome){box.textContent='No resolved receipt outcome saved for this browser.';return;}
+  const heading=document.createElement('h3');heading.textContent='Saved local receipt check · '+savedOutcome.receipt.status;box.append(heading);
+  const identity=document.createElement('p');identity.textContent='Transaction '+savedOutcome.transactionHash+' · block '+savedOutcome.receipt.blockNumber+' · '+savedOutcome.receipt.blockHash;box.append(identity);
+  const limit=document.createElement('p');limit.textContent='This records a prior matching local-provider receipt check. It is editable browser storage and has not been rechecked after reload. It does not prove public-chain finality or transaction-specific balance changes.'+(savedOutcome.receipt.status==='reverted'?' The transaction reverted; its planned action effects must not be treated as applied. Gas may still have been spent.':' A successful receipt does not by itself verify the projected accounting.');box.append(limit);
+  if(savedOutcome.action.accountingReview){const review=document.createElement('section');review.id='outcome-accounting-review';box.append(review);showAccountingReview(document,savedOutcome.action.accountingReview.snapshot,savedOutcome.action.plan,true,'outcome-accounting-review');}
+  else {const note=document.createElement('p');note.textContent='This older action has no saved accounting review.';box.append(note);}
+ }catch(e){box.textContent='Saved receipt outcome unavailable: '+e.message+' The stored record has not been removed.';}
+}

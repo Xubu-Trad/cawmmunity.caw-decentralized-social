@@ -1,6 +1,6 @@
 ## current application priority — November 14, 2026
 
-reviewed accounting now survives pending-action reload and transaction-hash recovery. saved expectations remain separate from current verified state and receipt outcomes; legacy records have explicit unavailable-review wording. next retain and present the resolved receipt outcome without confusing current balances with transaction-attributed accounting effects. independent reproduction remains pending; its frozen inputs stay unchanged. [recovery evidence and limits](../evidence/console-accounting-recovery-20261114/README.md).
+checked local receipt outcomes now persist with the original accounting review before pending cleanup. reload distinguishes saved outcomes, expected effects and current balances. next provide an explicit archived-receipt recheck and retain stale/conflicting evidence rather than overwriting it. independent reproduction remains pending and its frozen inputs stay unchanged. [outcome retention evidence and limits](../evidence/console-receipt-outcome-20261114/README.md).
 
 the dated sections below preserve historical milestones, not current pending work.
 
