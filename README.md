@@ -37,9 +37,9 @@ updated November 15, 2026. **this is unfinished research software. there is no p
 
 we are building something another person can inspect, reproduce and carry forward. the local execution console can already submit signed posts, transfer an experimental account and withdraw its credited mock tokens on a disposable chain. the original alpha interface remains a simulation. the console does real local execution, but its posts do not yet implement the manifesto's CAW payment and settlement rules.
 
-the console now preserves a checked receipt outcome alongside the original accounting review. confirmed and reverted local receipts remain available after the pending record is cleared and after reload. the interface keeps expected effects, saved receipt status and current balances separate.
+the console now lets you recheck a saved receipt without resending the transaction. matching, unavailable, conflicting and inconclusive results stay alongside the original receipt and accounting review. reload keeps that history; a later matching result does not erase an earlier conflict.
 
-the outcome is saved and read back before pending cleanup. failed storage keeps the action available for recovery; retry does not resend it, and conflicting saved results are not overwritten. 22 archive checks, 10 new browser checks, 331 existing action/journal/receipt tests and the prior review/recovery browser suites passed. [exact evidence and limits](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/evidence/console-receipt-outcome-20261114/README.md). the archive is editable local storage and records a prior local-provider check, not fresh confirmation or public-chain finality.
+18 new recheck controls and 10 new browser checks passed, alongside 22 archive checks, 10 archive browser checks and 331 action/journal/receipt tests. [exact evidence and limits](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/evidence/console-receipt-recheck-20261115/README.md). these are controlled local-provider tests. saved observations are editable browser records, not proof of public-chain finality or independent reproduction.
 
 these results come from local experiments run by us. **independent reproduction is still pending.** selected local headers are not proof of public-chain finality, and this storage layout only supports the selected research contracts. general wallet support, actual CAW compatibility, registration, paid-post economics, durable public operation and release agreement remain unfinished.
 
@@ -47,7 +47,7 @@ the experimental application lives on [draft PR #19](https://github.com/Xubu-Tra
 
 ## what comes next
 
-add an explicit recheck of saved receipts and show stale or conflicting results without replacing the original record. keep the frozen reproduction package available to independent reviewers. paid settlement still requires explicit accounting and specification decisions; we will not silently choose them to make the application look complete.
+make saved receipt and recheck records exportable for another reviewer without confusing local observations with authenticated evidence. keep the frozen reproduction package available for independent execution. paid settlement still requires explicit accounting and specification decisions; we will not silently choose them to make the application look complete.
 
 ## find your starting point
 
