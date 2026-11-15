@@ -1,0 +1,7 @@
+{
+  "status": "LOCAL_RECORD_STRUCTURE_AND_CHECKSUM_VALID",
+  "transactionHash": "0x3434343434343434343434343434343434343434343434343434343434343434",
+  "observations": 4,
+  "scope": "EDITABLE_LOCAL_RECEIPT_OBSERVATIONS_NOT_CHAIN_PROOF",
+  "limits": "Editable local observations only. No chain query, receipt inclusion, finality or independent execution verified."
+}

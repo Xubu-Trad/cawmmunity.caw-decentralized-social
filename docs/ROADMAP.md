@@ -1,6 +1,6 @@
 ## current application priority — November 14, 2026
 
-saved receipts can now be explicitly rechecked without resubmission. missing, conflicting and inconclusive observations remain alongside the original result across reload; storage failures do not deliberately discard evidence. next make these records exportable for independent review, keeping editable local observations distinct from authenticated history. independent execution remains pending and frozen inputs stay unchanged. [receipt recheck evidence and limits](../evidence/console-receipt-recheck-20261115/README.md).
+the console now exports the latest saved action, original receipt/accounting review and all retained rechecks without wallet connection or resubmission. an offline checker validates checksum and structure against separately selected local state; it does not establish authentic chain history. next connect exported transaction identities to the existing authenticated-history review with separate inclusion and local-observation results. independent execution remains pending and frozen inputs stay unchanged. [export evidence and limits](../evidence/console-receipt-export-20261115/README.md).
 
 the dated sections below preserve historical milestones, not current pending work.
 
