@@ -1,6 +1,6 @@
-## current application priority — November 14, 2026
+## current application priority — November 15, 2026
 
-the console now exports the latest saved action, original receipt/accounting review and all retained rechecks without wallet connection or resubmission. an offline checker validates checksum and structure against separately selected local state; it does not establish authentic chain history. next connect exported transaction identities to the existing authenticated-history review with separate inclusion and local-observation results. independent execution remains pending and frozen inputs stay unchanged. [export evidence and limits](../evidence/console-receipt-export-20261115/README.md).
+exported posting receipts now bind to the existing strict signed-history verifier through a separate review command. inclusion, local-field discrepancies and absence from the selected range are distinct outcomes; malformed or tampered history rejects. next expose these results in the console with stale-response handling. withdrawal/transfer receipt binding, accounting effects, paid economics and public operation remain separate gates. independent execution remains pending and frozen inputs stay unchanged. [binding evidence and limits](../evidence/console-receipt-history-20261115/README.md).
 
 the dated sections below preserve historical milestones, not current pending work.
 

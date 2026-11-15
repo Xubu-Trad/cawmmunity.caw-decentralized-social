@@ -37,9 +37,9 @@ updated November 15, 2026. **this is unfinished research software. there is no p
 
 we are building something another person can inspect, reproduce and carry forward. the local execution console can already submit signed posts, transfer an experimental account and withdraw its credited mock tokens on a disposable chain. the original alpha interface remains a simulation. the console does real local execution, but its posts do not yet implement the manifesto's CAW payment and settlement rules.
 
-the console now exports its most recent saved receipt, original accounting review and complete retained recheck history for that action. you can download it after reload without connecting a wallet. missing or conflicting observations stay in the file; export does not resend a transaction or erase the records.
+saved posting receipts can now be compared with the signed transaction history through a separate review command. it runs the strict history verifier, then reports whether the transaction is included and whether the saved details agree. a missing transaction, a conflicting local record and rejected evidence remain different results.
 
-an offline checker verifies the file checksum and record structure against a separately selected local state. 21 export controls, 18 recheck controls and 13 browser checks passed. [reproduction commands and exact limits](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/evidence/console-receipt-export-20261115/README.md). these are editable local observations, not authenticated chain evidence. the checksum does not make a fabricated record trustworthy.
+13 new binding controls passed for contract-wallet and later individual-owner posts, alongside the existing two-post history reconstruction and 15 negative controls. [commands, evidence and exact limits](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/evidence/console-receipt-history-20261115/README.md). this uses retained local-chain evidence. it does not authenticate public-chain finality, withdrawal receipts or accounting effects, and it does not replace the pending independent reproduction.
 
 these results come from local experiments run by us. **independent reproduction is still pending.** selected local headers are not proof of public-chain finality, and this storage layout only supports the selected research contracts. general wallet support, actual CAW compatibility, registration, paid-post economics, durable public operation and release agreement remain unfinished.
 
@@ -47,7 +47,7 @@ the experimental application lives on [draft PR #19](https://github.com/Xubu-Tra
 
 ## what comes next
 
-connect exported transaction identities to the existing authenticated-history review, keeping local observations separate from verified inclusion. keep the frozen reproduction package available for independent execution. paid settlement still requires explicit accounting and specification decisions; we will not silently choose them to make the application look complete.
+show the separate local-record and verified-inclusion results in the console, preserving earlier observations and rejecting stale responses. keep the frozen reproduction package available for independent execution. paid settlement still requires explicit accounting and specification decisions; we will not silently choose them to make the application look complete.
 
 ## find your starting point
 
