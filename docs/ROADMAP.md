@@ -1,6 +1,6 @@
 ## current application priority — November 14, 2026
 
-checked local receipt outcomes now persist with the original accounting review before pending cleanup. reload distinguishes saved outcomes, expected effects and current balances. next provide an explicit archived-receipt recheck and retain stale/conflicting evidence rather than overwriting it. independent reproduction remains pending and its frozen inputs stay unchanged. [outcome retention evidence and limits](../evidence/console-receipt-outcome-20261114/README.md).
+saved receipts can now be explicitly rechecked without resubmission. missing, conflicting and inconclusive observations remain alongside the original result across reload; storage failures do not deliberately discard evidence. next make these records exportable for independent review, keeping editable local observations distinct from authenticated history. independent execution remains pending and frozen inputs stay unchanged. [receipt recheck evidence and limits](../evidence/console-receipt-recheck-20261115/README.md).
 
 the dated sections below preserve historical milestones, not current pending work.
 
