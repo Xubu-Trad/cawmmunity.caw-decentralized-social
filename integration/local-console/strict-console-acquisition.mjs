@@ -1,3 +1,4 @@
+import {acquireWithdrawalReceipt} from './acquire-withdrawal-receipt.mjs';
 import {verifyReceiptHistory} from './verify-receipt-history.mjs';
 import {verifyReceiptExport} from './ui/receipt-export.mjs';
 import {POST_PROFILE} from './ui/post-plan.mjs';
@@ -15,7 +16,8 @@ export const acquireVerifiedPosts=(rpc,config,signal)=>acquire(rpc,config,signal
 export const acquireVerifiedReceipt=(rpc,config,text,signal)=>acquire(rpc,config,signal,text);
 async function acquire(rpc, config, signal, exportText) {
   const state={chainId:'0x7a69',genesisHash:config.genesisHash,controller:config.controller,contracts:Object.fromEntries(Object.entries(config.contracts).map(([k,v])=>[k,v.address])),posting:{profile:POST_PROFILE}};
-  if(exportText!==null){const local=await verifyReceiptExport(exportText,state);if(![2,3].includes(local.value.original.action.version))throw Error('POST_OR_TRANSFER_EXPORT_REQUIRED');}
+  let local;
+  if(exportText!==null){local=await verifyReceiptExport(exportText,state);if(![1,2,3].includes(local.value.original.action.version))throw Error('POST_OR_TRANSFER_EXPORT_REQUIRED');}
 
   const deadline = Date.now() + 30000;
   let requests = 0, bytes = 0;
@@ -31,6 +33,7 @@ async function acquire(rpc, config, signal, exportText) {
   }
   if (await read('eth_chainId', []) !== '0x7a69') throw Error('WRONG_CHAIN');
   if ((await read('eth_getBlockByNumber', ['0x0', false]))?.hash !== config.genesisHash) throw Error('WRONG_GENESIS');
+  if(local?.value.original.action.version===1){const result=await acquireWithdrawalReceipt(read,config,local);return {...result,exportSha256:JSON.parse(exportText).sha256,verificationLocation:'local-console-server'};}
   const anchor = await read('eth_getBlockByNumber', [config.postingDeployment.blockNumber, false]);
   const tip = await read('eth_getBlockByNumber', ['latest', false]);
   if (!anchor || anchor.hash !== config.postingDeployment.blockHash || anchor.number !== config.postingDeployment.blockNumber || !quantity.test(tip?.number)) throw Error('STRICT_HISTORY_SELECTION');

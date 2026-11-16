@@ -17,6 +17,7 @@ const server=http.createServer(async(req,res)=>{
    else throw Error('Unexpected wallet method '+q.method);
    res.setHeader('Content-Type','application/json');res.end(JSON.stringify(value));return;
   }
+  if(req.url==='/api/verified-receipt'){res.statusCode=422;res.setHeader('Content-Type','application/json');res.end(JSON.stringify({error:'Withdrawal proofs unavailable in controlled browser fixture.'}));return;}
   if(req.url==='/api/state'){
    let v=structuredClone(receiptMode==='confirmed'?fixture.after:s);
    if(mode==='owner balance')v.balances.owner=String(BigInt(v.balances.owner)+1n);
@@ -66,7 +67,7 @@ try{
  assert.deepEqual(payload.original,JSON.parse(original));assert.equal(payload.rechecks.entries.length,7);assert.equal(sent,sends);checks.push('download after reload without wallet connection retains original and all rechecks');
  const checked=await ev(`import('/receipt-export.mjs').then(m=>m.verifyReceiptExport(window.exportDownload,${JSON.stringify(fixture.before)})).then(v=>v.observations)`);assert.equal(checked,7);checks.push('download checksum and structure verify in browser');
  await fs.writeFile(path.join(out,'download.json'),downloaded);
- await ev(el('verify-receipt-history')+'.click()');await until(el('receipt-history-status')+".textContent.includes('posting and ownership-transfer receipts only')");assert.equal(sent,sends);checks.push('real console rejects withdrawal selection from posting-history button without resend');
+ await ev(el('verify-receipt-history')+'.click()');await until(el('receipt-history-status')+".textContent.includes('Withdrawal proofs unavailable')");assert.equal(sent,sends);checks.push('real console retains unverified withdrawal when proof acquisition fails without resend');
  await cmd('Emulation.setDeviceMetricsOverride',{width:1280,height:1000,deviceScaleFactor:1,mobile:false});await ev(el('verify-receipt-history')+".scrollIntoView({block:'center'})");const panelShot=await cmd('Page.captureScreenshot',{format:'png'});await fs.writeFile(path.join(out,'receipt-panel.png'),Buffer.from(panelShot.data,'base64'));
  await ev(`localStorage.setItem('${logKey}','corrupt');window.exportDownload=null`);await ev(el('export-outcome')+'.click()');await until('!'+el('refresh')+'.disabled && '+el('message')+".textContent.includes('Receipt export unavailable')");assert.equal(await ev('window.exportDownload'),null);assert.equal(await ev(`localStorage.getItem('${logKey}')`),'corrupt');checks.push('corrupt history blocks download without deleting evidence');
  await cmd('Emulation.setDeviceMetricsOverride',{width:1280,height:1000,deviceScaleFactor:1,mobile:false});await ev(el('last-receipt-outcome')+".scrollIntoView({block:'start'})");assert.equal(await ev('document.documentElement.scrollWidth<=innerWidth'),true);const shot=await cmd('Page.captureScreenshot',{format:'png'});await fs.writeFile(path.join(out,'rechecks.png'),Buffer.from(shot.data,'base64'));checks.push('receipt recheck history fits desktop layout');

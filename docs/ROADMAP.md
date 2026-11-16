@@ -1,6 +1,6 @@
 ## current application priority — November 15, 2026
 
-strict receipt verification covers console posts/transfers and now an offline EOA withdrawal effects reader. the latter binds signed bytes/receipt commitments and before/after custody/token/authority proofs for one-transaction local blocks. 37 controls and 17 regressions passed; a separate EthereumJS replay matched all 14 post-genesis roots. next connect withdrawal proof acquisition and saved receipt exports in the console; contract-wallet and mixed-block cases remain unsupported. independent operator reproduction and production remain pending. [evidence](../evidence/withdrawal-effects-20261116/README.md).
+the console now acquires and verifies EOA withdrawal boundary proofs and compares saved receipt details without overwriting discrepancies. 31 new controls,28 post/transfer controls and14 Chromium regressions passed, plus live acquisition from a fresh local Geth withdrawal. next export the acquired proof package for offline verification; current receipt exports are observations only. contract-wallet/mixed-block scope, independent reproduction and public operation remain open. [evidence](../evidence/console-withdrawal-20261116/README.md).
 
 the dated sections below preserve historical milestones, not current pending work.
 
