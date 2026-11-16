@@ -37,9 +37,9 @@ updated November 15, 2026. **this is unfinished research software. there is no p
 
 we are building something another person can inspect, reproduce and carry forward. the local execution console can already submit signed posts, transfer an experimental account and withdraw its credited mock tokens on a disposable chain. the original alpha interface remains a simulation. the console does real local execution, but its posts do not yet implement the manifesto's CAW payment and settlement rules.
 
-the console verifies saved posts and ownership transfers against signed local history. we have now added an offline withdrawal reader that checks the signed transaction, successful receipt and proven changes in account credit, custody and the recipient's token balance.
+the local console can now check a saved withdrawal against signed history and proven changes in account credit, custody and the recipient's token balance. it fetches the required proofs itself. if saved details disagree, that disagreement stays visible and the original record is preserved.
 
-a fresh local withdrawal passed 37 targeted checks and 17 accounting regressions. a second execution engine replayed all 14 transactions with matching state roots. this is still local research with mock tokens, not independent operator reproduction. the new withdrawal reader is not yet connected to the console. [evidence, commands and limits](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/evidence/withdrawal-effects-20261116/README.md).
+73 scoped endpoint and browser checks passed, followed by successful live proof acquisition from a fresh local Geth withdrawal. this remains research with mock tokens. the new path supports regular-wallet withdrawals in single-transaction blocks; contract-wallet and mixed-block cases remain unsupported. [evidence, commands and limits](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/evidence/console-withdrawal-20261116/README.md). independent reproduction is still pending.
 
 these results come from local experiments run by us. **independent reproduction is still pending.** selected local headers are not proof of public-chain finality, and this storage layout only supports the selected research contracts. general wallet support, actual CAW compatibility, registration, paid-post economics, durable public operation and release agreement remain unfinished.
 
@@ -47,7 +47,7 @@ the experimental application lives on [draft PR #19](https://github.com/Xubu-Tra
 
 ## what comes next
 
-connect the withdrawal effects reader to console proof acquisition and saved receipt exports. keep unsupported contract-wallet and mixed-block cases explicit. independent reproduction, paid-post economics and public operation remain open; unresolved rules will not be silently chosen to make the application look complete.
+make the acquired withdrawal proofs exportable with their selected headers and configuration so another reader can verify the console result offline. saved receipt observations are already exportable; they are not the proof package. independent reproduction, paid-post economics and public operation remain open.
 
 ## find your starting point
 
