@@ -9,7 +9,7 @@ export function accountingSlots(config,owner){
  return {custody:[slot(1),slot(2),slot(7),credit(2),credit(3),credit(4)],token:[...new Set([config.contracts.wallet.address,owner,config.contracts.custody.address].map(balance))]};
 }
 // Storage layout belongs only to the selected WalletOwnerWithdrawalResearch fixture.
-export function verifyConsoleAccounting(header,proofs,config,observed){
+export function verifyConsoleAccountingDetails(header,proofs,config,observed){
  const keys=accountingSlots(config,observed.owner);
  const check=name=>{const r=inspectHeaderBoundStateProof(JSON.stringify({header,proof:proofs[name]}),JSON.stringify({schema:'caw-header-state-selection/1',profile:'shanghai-17',hash:header.hash,address:config.contracts[name].address,storageKeys:keys[name]})).proof;assert.equal(r.codeHash,config.contracts[name].codeHash,'ACCOUNTING_CODE_HASH');return r;};
  const custody=check('custody'),token=check('token');
@@ -19,5 +19,7 @@ export function verifyConsoleAccounting(header,proofs,config,observed){
  assert.equal(BigInt(observed.credit),credits[0],'ACCOUNTING_CREDIT');assert.equal(BigInt(observed.unpaidLiability),unpaid,'ACCOUNTING_LIABILITY');
  for(const [label,address]of Object.entries({wallet:config.contracts.wallet.address,owner:observed.owner,custody:config.contracts.custody.address}))assert.equal(BigInt(observed.balances[label]),value(token,balance(address)),'ACCOUNTING_BALANCE_'+label);
  assert.equal(unpaid,unallocated+credited,'ACCOUNTING_TOTAL');assert.equal(credited,credits.reduce((a,b)=>a+b,0n),'ACCOUNTING_CREDIT_SUM');assert(value(token,balance(config.contracts.custody.address))>=unpaid,'ACCOUNTING_BACKING');
- return {accountingProofsVerified:true,accountingHeaderHash:header.hash,unpaidLiability:String(unpaid),unallocatedBudget:String(unallocated),creditedLiability:String(credited)};
+ return {accountingProofsVerified:true,accountingHeaderHash:header.hash,unpaidLiability:String(unpaid),unallocatedBudget:String(unallocated),creditedLiability:String(credited),accountCredits:Object.fromEntries([2,3,4].map((id,i)=>[id,String(credits[i])]))};
 }
+
+export function verifyConsoleAccounting(...args){const {accountCredits,...summary}=verifyConsoleAccountingDetails(...args);return summary;}

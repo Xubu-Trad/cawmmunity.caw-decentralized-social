@@ -1,6 +1,6 @@
 ## current application priority — November 15, 2026
 
-strict receipt verification now covers posting and ownership transfers, including standalone-transfer boundary-proof acquisition. fresh browser/Geth post/transfer/reload verification passed, with wrong-recipient/epoch and proof-tampering controls. next bind withdrawal receipts to explicit custody/token state effects; successful receipts alone do not establish accounting. independent reproduction, paid economics and public operation remain open; mission and frozen inputs unchanged. [transfer evidence](../evidence/console-transfer-receipt-20261115/README.md).
+strict receipt verification covers console posts/transfers and now an offline EOA withdrawal effects reader. the latter binds signed bytes/receipt commitments and before/after custody/token/authority proofs for one-transaction local blocks. 37 controls and 17 regressions passed; a separate EthereumJS replay matched all 14 post-genesis roots. next connect withdrawal proof acquisition and saved receipt exports in the console; contract-wallet and mixed-block cases remain unsupported. independent operator reproduction and production remain pending. [evidence](../evidence/withdrawal-effects-20261116/README.md).
 
 the dated sections below preserve historical milestones, not current pending work.
 
