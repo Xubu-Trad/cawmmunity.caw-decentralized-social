@@ -7,5 +7,6 @@ try{
  await fs.writeFile(path.join(out,'browser-execution.log'),q.stdout+q.stderr);
  await run(process.execPath,[path.join(src,'capture-posting-history.mjs'),cfg,path.join(out,'evidence')],{timeout:30000});
  const checked=await run(process.execPath,[path.join(src,'check-receipt-history.mjs'),path.join(out,'post-export.json'),path.join(out,'review-state.json'),path.join(out,'evidence/capture.json'),path.join(out,'evidence/selection.json')],{timeout:30000});
- await fs.writeFile(path.join(out,'offline-verification.log'),checked.stdout+checked.stderr);console.log(q.stdout,checked.stdout);
+ await fs.writeFile(path.join(out,'offline-verification.log'),checked.stdout+checked.stderr);
+ const transfer=await run(process.execPath,[path.join(src,'check-receipt-history.mjs'),path.join(out,'transfer-export.json'),path.join(out,'review-state.json'),path.join(out,'evidence/capture.json'),path.join(out,'evidence/selection.json')],{timeout:30000});await fs.writeFile(path.join(out,'offline-transfer-verification.log'),transfer.stdout+transfer.stderr);console.log(q.stdout,checked.stdout);
 }finally{app.server.closeAllConnections();await new Promise(r=>app.server.close(r));}

@@ -1,3 +1,4 @@
+import {acquireOwnerPostHistory} from './acquire-owner-post-history.mjs';
 import fs from 'node:fs/promises';import {POST_NONCE}from './verify-posting-history.mjs';
 const[cfg,out]=process.argv.slice(2),c=JSON.parse(await fs.readFile(cfg));const u=new URL(c.rpcUrl);if(u.hostname!=='127.0.0.1'||u.protocol!=='http:')throw Error('LOCAL_ONLY');await fs.mkdir(out);
 let id=0;async function rpc(method,params){let n=++id;const r=await fetch(u,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:n,method,params}),signal:AbortSignal.timeout(5000)});const v=await r.json();if(v.id!==n||v.jsonrpc!=='2.0'||'error'in v||!('result'in v))throw Error('RPC_RESPONSE');return v.result;}
@@ -11,4 +12,6 @@ for(let n=BigInt(anchor.number)+1n;n<=BigInt(tip.number);n++){
  bundle.blocks.push({header:h,rawTransactions:raws,receipts,parent});prior=h;
 }
 bundle.finalPosting=await rpc('eth_getProof',[c.contracts.posting.address,[POST_NONCE],tip.number]);if((await rpc('eth_getBlockByNumber',[tip.number,false])).hash!==tip.hash)throw Error('REORG');
+await acquireOwnerPostHistory(rpc,bundle,{contracts:c.contracts,controller:c.controller});
+if((await rpc('eth_getBlockByNumber',[tip.number,false])).hash!==tip.hash)throw Error('REORG');
 await fs.writeFile(out+'/capture.json',JSON.stringify(bundle,null,2));await fs.writeFile(out+'/selection.json',JSON.stringify({startHash:anchor.hash,endHash:tip.hash,contracts:c.contracts,controller:c.controller,scope:'Operator-selected local endpoints and reviewed code/layout; not public-chain authentication.'},null,2));

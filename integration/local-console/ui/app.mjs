@@ -203,6 +203,6 @@ $('export-outcome').addEventListener('click',async()=>{
 
 mountReceiptHistory(document,async()=>{
  if(busy||refreshing||!state||!lastOutcome)throw Error('Load a saved receipt before checking history.');
- if(lastOutcome.action.version!==3)throw Error('This history checker supports posting receipts only.');
+ if(![2,3].includes(lastOutcome.action.version))throw Error('This history checker supports posting and ownership-transfer receipts only.');
  return (await exportReceiptHistory(localStorage,navigator.locks,state,lastOutcome)).text;
 });

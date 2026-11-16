@@ -26,11 +26,11 @@ export function verifyPostingHistory(bundle,selection){
   const checked=inspectBlockTransactionReceipts(h,row.rawTransactions,row.receipts,{schema:'caw-block-transactions-selection/1',profile:'shanghai-17',hash:h.hash});
   const signed=inspectBlockSenders(h,row.rawTransactions,{schema:'caw-block-senders-selection/1',profile:'shanghai-17',hash:h.hash,chainId:'0x7a69',allowUnprotectedLegacy:false});
   if(row.ownerTransition){
-   assert(row.rawTransactions.length>1,'OWNER_TRANSITION_BLOCK_SCOPE');
+   assert(row.rawTransactions.length>0,'OWNER_TRANSITION_BLOCK_SCOPE');
    const result=verifyOwnerPostBlock({schema:'local-owner-post-block/1',parent:prior,header:h,rawTransactions:row.rawTransactions,receipts:row.receipts,initialRegistry:row.parent.registry,initialPosting:row.parent.posting,ownerProofs:row.ownerTransition.ownerProofs,finalRegistry:row.ownerTransition.finalRegistry,finalPosting:row.ownerTransition.finalPosting},{...selection,startHash:prior.hash,endHash:h.hash,expectedNonce:String(nonce)});
    assert(result.transfers.length>0,'OWNER_TRANSITION_REQUIRED');
    for(const p of result.posts)posts.push({...p,accountId:'2',signer:p.author===selection.contracts.wallet.address?selection.controller:p.author,textHash:postText(p.text).textHash,blockHash:h.hash,blockNumber:h.number});
-   transfers.push(...result.transfers.map(x=>({...x,blockHash:h.hash,blockNumber:h.number})));
+   transfers.push(...result.transfers.map(x=>({...x,transactionHash:signed.transactions[x.transactionIndex].hash,blockHash:h.hash,blockNumber:h.number})));
    nonce=BigInt(result.nonce);usedOwnership=true;prior=h;continue;
   }
   requirePostOnlyBatch(checked.receipts,selection.contracts.posting.address,POST_EVENT_TOPIC);

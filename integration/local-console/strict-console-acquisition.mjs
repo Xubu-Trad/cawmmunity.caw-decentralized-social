@@ -15,7 +15,7 @@ export const acquireVerifiedPosts=(rpc,config,signal)=>acquire(rpc,config,signal
 export const acquireVerifiedReceipt=(rpc,config,text,signal)=>acquire(rpc,config,signal,text);
 async function acquire(rpc, config, signal, exportText) {
   const state={chainId:'0x7a69',genesisHash:config.genesisHash,controller:config.controller,contracts:Object.fromEntries(Object.entries(config.contracts).map(([k,v])=>[k,v.address])),posting:{profile:POST_PROFILE}};
-  if(exportText!==null){const local=await verifyReceiptExport(exportText,state);if(local.value.original.action.version!==3)throw Error('POST_EXPORT_REQUIRED');}
+  if(exportText!==null){const local=await verifyReceiptExport(exportText,state);if(![2,3].includes(local.value.original.action.version))throw Error('POST_OR_TRANSFER_EXPORT_REQUIRED');}
 
   const deadline = Date.now() + 30000;
   let requests = 0, bytes = 0;

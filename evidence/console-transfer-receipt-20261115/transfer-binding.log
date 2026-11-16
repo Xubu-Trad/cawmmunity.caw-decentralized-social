@@ -1,0 +1,19 @@
+{
+  "passed": 13,
+  "checks": [
+    "signed transfer binds to exact verified transaction",
+    "wrong epoch preserved as discrepancy",
+    "wrong nonce preserved as discrepancy",
+    "wrong recipient with coherent calldata preserved as discrepancy",
+    "reverted claim preserved as discrepancy",
+    "different block preserved as discrepancy",
+    "post hash cannot be mistaken for transfer inclusion",
+    "missing final ownership proof rejects",
+    "missing recipient proof rejects",
+    "changed final epoch rejects",
+    "changed signed bytes rejects",
+    "changed transfer receipt rejects",
+    "single-transfer acquisition hint requests ownership proof path"
+  ],
+  "scope": "Retained signed mixed transfer/post block. Single-transfer hint control is not a signed single-block reproduction."
+}

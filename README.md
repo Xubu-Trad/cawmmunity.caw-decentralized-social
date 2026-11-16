@@ -37,9 +37,9 @@ updated November 15, 2026. **this is unfinished research software. there is no p
 
 we are building something another person can inspect, reproduce and carry forward. the local execution console can already submit signed posts, transfer an experimental account and withdraw its credited mock tokens on a disposable chain. the original alpha interface remains a simulation. the console does real local execution, but its posts do not yet implement the manifesto's CAW payment and settlement rules.
 
-the new console verification path has now passed a fresh local-chain run. Chromium submitted one signed research post, recovered its receipt after reload and verified it against the freshly mined signed history and ownership proofs. reload and an interrupted response did not cause another submission; explicit verification retry succeeded.
+the console now verifies saved ownership transfers as well as posts against signed local history. it checks the transaction, prior owner, recipient, ownership epoch and before/after ownership proofs, and keeps mismatched saved details visible.
 
-13 browser journey checks passed, followed by offline verification of the new capture. mock-token credit and custody balances stayed unchanged. [exact commands, evidence and preserved failure](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/evidence/console-fresh-receipt-20261115/README.md). this used a disposable wallet adapter and existing local dependencies, so it is not real extension compatibility, clean-machine installation or independent operator reproduction. the post remains unpaid research behavior.
+a fresh browser/Geth run posted once, transferred the account, verified the standalone transfer and verified it again after reload without resubmission. 15 journey checks and 89 scoped controls/regressions passed. [exact evidence, commands and preserved fixture failure](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/evidence/console-transfer-receipt-20261115/README.md). withdrawal accounting is still a separate verification task; these results do not establish public-chain finality or independent operator reproduction.
 
 these results come from local experiments run by us. **independent reproduction is still pending.** selected local headers are not proof of public-chain finality, and this storage layout only supports the selected research contracts. general wallet support, actual CAW compatibility, registration, paid-post economics, durable public operation and release agreement remain unfinished.
 
@@ -47,7 +47,7 @@ the experimental application lives on [draft PR #19](https://github.com/Xubu-Tra
 
 ## what comes next
 
-extend strict receipt binding to account ownership transfers, keeping withdrawal accounting and public-chain acceptance separate. keep the frozen reproduction package available for independent execution. paid settlement still requires explicit accounting and specification decisions; we will not silently choose them to make the application look complete.
+extend authenticated receipt verification to withdrawals with explicit custody and token state effects. keep successful receipt status separate from proof of the expected accounting. independent reproduction, paid-post economics and public operation remain open; we will not silently choose unresolved protocol rules to make the application look complete.
 
 ## find your starting point
 

@@ -18,8 +18,14 @@ function result(method,p){
  }
  if(method==='eth_getProof'){
   assert.equal(p[2].requireCanonical,true);assert.equal(typeof p[2].blockHash,'string');
-  let proof;if(p[2].blockHash===tip.hash)proof=bundle.finalPosting;
-  else {const row=bundle.blocks.find((r,i)=>(i?bundle.blocks[i-1].header:bundle.anchor).hash===p[2].blockHash);proof=Object.values(row.parent).find(x=>x.address===p[0]);}
+  let candidates=[];
+  for(let i=0;i<bundle.blocks.length;i++){
+   const row=bundle.blocks[i],prior=i?bundle.blocks[i-1].header:bundle.anchor;
+   if(prior.hash===p[2].blockHash)candidates.push(...Object.values(row.parent),...Object.values(row.ownerTransition?.ownerProofs??{}));
+   if(row.header.hash===p[2].blockHash)candidates.push(row.ownerTransition?.finalRegistry,row.ownerTransition?.finalPosting);
+  }
+  if(p[2].blockHash===tip.hash)candidates.push(bundle.finalPosting);
+  let proof=candidates.find(x=>x?.address===p[0]);assert(proof,'FIXTURE_PROOF_MISSING');
   if(mode==='proof'&&p[0]===selection.contracts.registry.address){proof=structuredClone(proof);proof.storageProof[0].value='0x1';}return proof;
  }
  const row=bundle.blocks.find(x=>x.header.transactions.includes(p[0]));

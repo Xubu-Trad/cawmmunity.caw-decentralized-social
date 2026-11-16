@@ -1,6 +1,6 @@
 ## current application priority — November 15, 2026
 
-the new saved-post verification path passed a fresh isolated Geth/browser journey: one signed post, receipt recovery, strict history verification, reload and delayed-response rejection/retry without resubmission.13 journey checks and offline verification passed; initial observer failure retained. next extend strict receipt binding to ownership transfers. withdrawal accounting, paid economics and public operation remain separate gates. independent reproduction and frozen inputs remain unchanged. [fresh execution evidence](../evidence/console-fresh-receipt-20261115/README.md).
+strict receipt verification now covers posting and ownership transfers, including standalone-transfer boundary-proof acquisition. fresh browser/Geth post/transfer/reload verification passed, with wrong-recipient/epoch and proof-tampering controls. next bind withdrawal receipts to explicit custody/token state effects; successful receipts alone do not establish accounting. independent reproduction, paid economics and public operation remain open; mission and frozen inputs unchanged. [transfer evidence](../evidence/console-transfer-receipt-20261115/README.md).
 
 the dated sections below preserve historical milestones, not current pending work.
 
