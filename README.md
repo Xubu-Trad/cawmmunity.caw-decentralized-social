@@ -37,9 +37,9 @@ updated November 15, 2026. **this is unfinished research software. there is no p
 
 we are building something another person can inspect, reproduce and carry forward. the local execution console can already submit signed posts, transfer an experimental account and withdraw its credited mock tokens on a disposable chain. the original alpha interface remains a simulation. the console does real local execution, but its posts do not yet implement the manifesto's CAW payment and settlement rules.
 
-the console now has a button to verify a saved post against signed history. the local server acquires the evidence and checks inclusion, signatures and ownership; the screen distinguishes matching saved details, discrepancies, absence from the selected range and rejected verification. it does not resend the transaction or replace the original observations.
+the new console verification path has now passed a fresh local-chain run. Chromium submitted one signed research post, recovered its receipt after reload and verified it against the freshly mined signed history and ownership proofs. reload and an interrupted response did not cause another submission; explicit verification retry succeeded.
 
-refreshes and changed records clear the result, and late responses cannot restore an outdated acceptance. 67 scoped endpoint, panel, binding and browser checks passed. [reproduction commands and limits](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/evidence/console-receipt-history-ui-20261115/README.md). these tests use retained local evidence and controlled providers; a fresh posting run through this new screen is next. withdrawal receipts, accounting effects and public-chain finality are not covered by the posting check.
+13 browser journey checks passed, followed by offline verification of the new capture. mock-token credit and custody balances stayed unchanged. [exact commands, evidence and preserved failure](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/evidence/console-fresh-receipt-20261115/README.md). this used a disposable wallet adapter and existing local dependencies, so it is not real extension compatibility, clean-machine installation or independent operator reproduction. the post remains unpaid research behavior.
 
 these results come from local experiments run by us. **independent reproduction is still pending.** selected local headers are not proof of public-chain finality, and this storage layout only supports the selected research contracts. general wallet support, actual CAW compatibility, registration, paid-post economics, durable public operation and release agreement remain unfinished.
 
@@ -47,7 +47,7 @@ the experimental application lives on [draft PR #19](https://github.com/Xubu-Tra
 
 ## what comes next
 
-exercise the new console verification after a freshly mined local post, including reload and interruption. keep the frozen reproduction package available for independent execution. paid settlement still requires explicit accounting and specification decisions; we will not silently choose them to make the application look complete.
+extend strict receipt binding to account ownership transfers, keeping withdrawal accounting and public-chain acceptance separate. keep the frozen reproduction package available for independent execution. paid settlement still requires explicit accounting and specification decisions; we will not silently choose them to make the application look complete.
 
 ## find your starting point
 

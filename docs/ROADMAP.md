@@ -1,6 +1,6 @@
 ## current application priority — November 15, 2026
 
-the console now exposes strict saved-post history verification with server acquisition and distinct inclusion/discrepancy/absence/rejection results. exact export/transaction binding and generation checks prevent late responses restoring cleared acceptance. next exercise this path after freshly mined local posting, reload and interruption. withdrawal/transfer receipt binding, accounting effects, paid economics and public operation remain separate gates. independent reproduction and frozen inputs remain unchanged. [console verification evidence](../evidence/console-receipt-history-ui-20261115/README.md).
+the new saved-post verification path passed a fresh isolated Geth/browser journey: one signed post, receipt recovery, strict history verification, reload and delayed-response rejection/retry without resubmission.13 journey checks and offline verification passed; initial observer failure retained. next extend strict receipt binding to ownership transfers. withdrawal accounting, paid economics and public operation remain separate gates. independent reproduction and frozen inputs remain unchanged. [fresh execution evidence](../evidence/console-fresh-receipt-20261115/README.md).
 
 the dated sections below preserve historical milestones, not current pending work.
 
