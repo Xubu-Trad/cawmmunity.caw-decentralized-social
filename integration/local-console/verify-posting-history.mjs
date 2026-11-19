@@ -8,7 +8,8 @@ import {postText,postData,POST_EVENT_TOPIC} from './ui/post-plan.mjs';
 import {requirePostBlockSize,requirePostOnlyBatch} from './post-block-scope.mjs';
 const OWNER='0xabbb5caa7dda850e60932de0934eb1f9d0f59695050f761dc64e443e5030a569',EPOCH='0x91da3fd0782e51c6b3986e9e672fd566868e71f3dbc2d6c2cd6fbb3e361af2a7';
 export const POST_NONCE=keccak256(AbiCoder.defaultAbiCoder().encode(['uint256','uint256'],[2,0]));
-const abi=new Interface(['event LocalPostPublished(uint256 indexed accountId,uint256 indexed epoch,uint256 indexed nonce,address author,bytes32 textHash,bytes text)']);
+const abi=new Interface(['event LocalPostPublished(uint256 indexed accountId,uint256 indexed epoch,uint256 indexed nonce,address author,bytes32 textHash,bytes text)','event Transfer(address indexed from,address indexed to,uint256 indexed tokenId)']);
+const TRANSFER_EVENT_TOPIC=abi.getEvent('Transfer').topicHash;
 const empty=keccak256('0x');const low=x=>x.toLowerCase();
 export function verifyPostingHistory(bundle,selection){
  for(const k of ['startHash','endHash'])assert.match(selection[k],/^0x[0-9a-f]{64}$/);
@@ -25,6 +26,10 @@ export function verifyPostingHistory(bundle,selection){
   const post=proof(prior,row.parent.posting,selection.contracts.posting.address,[POST_NONCE],selection.contracts.posting.codeHash);assert.equal(val(post,POST_NONCE),nonce,'POST_NONCE_HISTORY');
   const checked=inspectBlockTransactionReceipts(h,row.rawTransactions,row.receipts,{schema:'caw-block-transactions-selection/1',profile:'shanghai-17',hash:h.hash});
   const signed=inspectBlockSenders(h,row.rawTransactions,{schema:'caw-block-senders-selection/1',profile:'shanghai-17',hash:h.hash,chainId:'0x7a69',allowUnprotectedLegacy:false});
+  // Receipt commitments determine whether ownership evidence is required. An
+  // omitted proof object must not turn a committed transfer into an absence.
+  const hasRegistryTransfer=checked.receipts.some(r=>r.logs.some(l=>l.address===selection.contracts.registry.address&&l.topics[0]===TRANSFER_EVENT_TOPIC));
+  if(hasRegistryTransfer)assert(row.ownerTransition&&typeof row.ownerTransition==='object'&&!Array.isArray(row.ownerTransition),'OWNER_TRANSITION_EVIDENCE_REQUIRED');
   if(row.ownerTransition){
    assert(row.rawTransactions.length>0,'OWNER_TRANSITION_BLOCK_SCOPE');
    const result=verifyOwnerPostBlock({schema:'local-owner-post-block/1',parent:prior,header:h,rawTransactions:row.rawTransactions,receipts:row.receipts,initialRegistry:row.parent.registry,initialPosting:row.parent.posting,ownerProofs:row.ownerTransition.ownerProofs,finalRegistry:row.ownerTransition.finalRegistry,finalPosting:row.ownerTransition.finalPosting},{...selection,startHash:prior.hash,endHash:h.hash,expectedNonce:String(nonce)});

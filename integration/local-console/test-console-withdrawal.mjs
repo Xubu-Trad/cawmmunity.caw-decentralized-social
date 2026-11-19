@@ -6,6 +6,7 @@ import {OUTCOME_PREFIX} from './ui/receipt-outcomes.mjs';
 import {mountReceiptHistory} from './ui/receipt-history-panel.mjs';
 import {inspectBlockSenders} from '../../reference/ethereum-block-senders.mjs';
 import {withdrawalData} from './ui/withdrawal-plan.mjs';
+import {verifyWithdrawalProofPackage} from './withdrawal-proof-package.mjs';
 const dir=process.argv[2],read=n=>JSON.parse(fs.readFileSync(dir+'/'+n)),e=read('withdrawal-boundaries.json'),s=read('withdrawal-selection.json'),capture=read('capture.json');
 const before=e.before,after=e.after,genesis=capture.blocks[0].block.hash;
 const tx=inspectBlockSenders(after.header,e.rawTransactions,{schema:'caw-block-senders-selection/1',profile:'shanghai-17',hash:after.header.hash,chainId:'0x7a69',allowUnprotectedLegacy:false}).transactions[0];
@@ -48,6 +49,13 @@ try{
  for(mode of ['valid','chain','genesis','mixed','header','missing','receipt','raw','missing-proof','proof-value','proof-node','reorg','valid']){
   const r=await request();if(mode==='valid'){assert.equal(r.status,200,JSON.stringify(r));assert.equal(r.result.status,'INCLUDED_WITHDRAWAL_MATCHES_LOCAL_RECORD');assert.equal(r.result.accountingEffectsVerified,true);good=r.result;}else assert.equal(r.status,422,mode);checks.push('endpoint '+mode);
  }
+ const downloads=proofCalls;
+ const replay=verifyWithdrawalProofPackage(JSON.parse(JSON.stringify(good.proofPackage)),s);
+ assert.equal(replay.transactionHash,tx.hash);
+ assert.equal(replay.accountingEffectsVerified,true);
+ assert.equal(proofCalls,downloads);
+ assert(!JSON.stringify(good.proofPackage).includes(config.rpcUrl));
+ checks.push('downloaded endpoint evidence verifies offline against fixture selection');
  for(const[name,change,field]of [['amount',o=>{o.action.plan.amount='1';o.action.plan.data=withdrawalData(state.contracts.custody,plan.epoch,'1','eoa');},'plan.amount'],['nonce',o=>o.action.plan.nonce='0xff','plan.nonce'],['epoch',o=>{o.action.plan.epoch='99';o.action.plan.data=withdrawalData(state.contracts.custody,'99',plan.amount,'eoa');},'plan.epoch'],['receipt status',o=>o.receipt.status='reverted','receipt.status'],['receipt block',o=>o.receipt.blockHash='0x'+'99'.repeat(32),'receipt.blockHash'],['review anchor',o=>o.action.plan.blockHash='0x'+'88'.repeat(32),'plan.reviewAnchorOutsideSelectedHistory']]){
   const o=structuredClone(original);change(o);const r=await request(await pack(o));assert.equal(r.status,200);assert.equal(r.result.status,'INCLUDED_WITHDRAWAL_WITH_LOCAL_RECORD_DISCREPANCIES');assert(r.result.discrepancies.includes(field));checks.push('preserved discrepancy '+name);
  }
@@ -56,8 +64,8 @@ try{
  const ctrl=new AbortController();ctrl.abort();await assert.rejects(()=>acquireVerifiedReceipt(rpc,config,exportText,ctrl.signal));checks.push('interrupted acquisition rejects');
  const recovered=await acquireVerifiedReceipt(rpc,config,exportText);assert.equal(recovered.status,good.status);checks.push('retry recovers without resubmission');
  class Element{constructor(){this.textContent='';this.disabled=false;this.listeners={};}addEventListener(n,f){this.listeners[n]=f;}}
- const nodes=Object.fromEntries(['verify-receipt-history','receipt-history-status','refresh','confirm','check-receipt','recheck-outcome'].map(k=>[k,new Element()]));let payload=good,hold=null;
- const panel=mountReceiptHistory({getElementById:k=>nodes[k]},async()=>exportText,async()=>{if(hold)await hold;return {ok:true,text:async()=>JSON.stringify(payload)};},new Element());
+ const nodes=Object.fromEntries(['verify-receipt-history','export-withdrawal-proofs','receipt-history-status','refresh','confirm','recover','check-receipt','recheck-outcome'].map(k=>[k,new Element()]));let payload=good,hold=null;
+ const panel=mountReceiptHistory({getElementById:k=>nodes[k]},async()=>exportText,async()=>{if(hold)await hold;return new Response(JSON.stringify(payload));},new Element());
  const label=()=>nodes['receipt-history-status'].textContent;
  await panel.verify();assert.match(label(),/Custody, credit and recipient token changes verified/);checks.push('panel displays verified accounting');
  for(const [name,mutate]of [['missing accounting',v=>v.accountingEffectsVerified=false],['public finality',v=>v.publicChainAuthenticated=true],['wrong export',v=>v.exportSha256='0'.repeat(64)],['missing ownership',v=>delete v.ownershipVerified]]){payload=structuredClone(good);mutate(payload);await panel.verify();assert.match(label(),/Not accepted/);checks.push('panel rejects '+name);}

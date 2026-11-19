@@ -1,12 +1,18 @@
-import fs from 'node:fs/promises';import path from 'node:path';import http from 'node:http';import {spawn} from 'node:child_process';import {pathToFileURL} from 'node:url';import assert from 'node:assert/strict';
-const dir=path.resolve(process.argv[2]),out=path.join(dir,'receipt-panel-browser');await fs.mkdir(out);const fixture=JSON.parse(await fs.readFile(path.join(dir,'accounting-withdrawal.json'))),s=fixture.before;
-const {fixturePlan}=await import(pathToFileURL(path.join(dir,'src/integration/local-console/test-accounting-review-fixture.mjs')));
+import fs from 'node:fs/promises';import path from 'node:path';import http from 'node:http';import {spawn} from 'node:child_process';import assert from 'node:assert/strict';
+import {fixturePlan} from './test-accounting-review-fixture.mjs';
+import {makeWithdrawalProofPackage} from './withdrawal-proof-package.mjs';
+const dir=path.resolve(process.argv[2]),out=process.argv[3]?path.resolve(process.argv[3]):path.join(dir,'receipt-panel-browser');await fs.mkdir(out);const fixture=JSON.parse(await fs.readFile(path.join(dir,'accounting-withdrawal.json'))),s=fixture.before;
+const retained=new URL('../../evidence/console-withdrawal-20261116/',import.meta.url);
+const readRetained=async name=>JSON.parse(await fs.readFile(new URL(name,retained)));
+const [record,report,selection,evidence,accounting]=await Promise.all(['withdrawal-export.json','console-result.json','withdrawal-selection.json','withdrawal-boundaries.json','accounting-withdrawal.json'].map(readRetained));
+const proofPackage=makeWithdrawalProofPackage(evidence,selection);
+let proofResponse=null,verificationRequests=0,walletRequests=0;
 let mode='valid',receiptMode='pending',sent=0,txRequest=null;const txHash='0x'+'34'.repeat(32),receiptHash='0x'+'56'.repeat(32);const checks=[];
 const server=http.createServer(async(req,res)=>{
  try{
   res.setHeader('Cache-Control','no-store');
   if(req.url==='/test-wallet'){
-   const parts=[];for await(const p of req)parts.push(p);const q=JSON.parse(Buffer.concat(parts));let value;const liveReceiptHash=receiptMode==='moved'?'0x'+'78'.repeat(32):receiptHash;if(receiptMode==='offline')throw Error('Provider unavailable');
+   walletRequests++;const parts=[];for await(const p of req)parts.push(p);const q=JSON.parse(Buffer.concat(parts));let value;const liveReceiptHash=receiptMode==='moved'?'0x'+'78'.repeat(32):receiptHash;if(receiptMode==='offline')throw Error('Provider unavailable');
    if(q.method==='eth_chainId')value='0x7a69';
    else if(['eth_accounts','eth_requestAccounts'].includes(q.method))value=[s.signer];
    else if(q.method==='eth_getBlockByNumber')value=q.params[0]==='0x0'?{hash:s.genesisHash}:q.params[0]==='0x20'?{hash:liveReceiptHash,number:'0x20'}:{hash:s.blockHash,number:s.blockNumber};
@@ -17,9 +23,15 @@ const server=http.createServer(async(req,res)=>{
    else throw Error('Unexpected wallet method '+q.method);
    res.setHeader('Content-Type','application/json');res.end(JSON.stringify(value));return;
   }
-  if(req.url==='/api/verified-receipt'){res.statusCode=422;res.setHeader('Content-Type','application/json');res.end(JSON.stringify({error:'Withdrawal proofs unavailable in controlled browser fixture.'}));return;}
+  if(req.url==='/api/verified-receipt'){
+   verificationRequests++;res.setHeader('Content-Type','application/json');
+   if(!proofResponse){res.statusCode=422;res.end(JSON.stringify({error:'Withdrawal proofs unavailable in controlled browser fixture.'}));return;}
+   const body=[];for await(const part of req)body.push(part);
+   assert.deepEqual(JSON.parse(JSON.parse(Buffer.concat(body)).exportText),record);
+   res.end(JSON.stringify(proofResponse));return;
+  }
   if(req.url==='/api/state'){
-   let v=structuredClone(receiptMode==='confirmed'?fixture.after:s);
+   let v=structuredClone(proofResponse?accounting.after:receiptMode==='confirmed'?fixture.after:s);
    if(mode==='owner balance')v.balances.owner=String(BigInt(v.balances.owner)+1n);
    if(mode==='custody balance')v.balances.custody=String(BigInt(v.balances.custody)+1n);
    if(mode==='new credit'){for(const k of ['credit','creditedLiability','unpaidLiability'])v[k]=String(BigInt(v[k])+1n);v.balances.custody=String(BigInt(v.balances.custody)+1n);}
@@ -30,7 +42,7 @@ const server=http.createServer(async(req,res)=>{
   if(req.url==='/api/posts'){res.setHeader('Content-Type','application/json');res.end(JSON.stringify({status:s.status,genesisHash:s.genesisHash,posting:s.contracts.posting,posts:[]}));return;}
   if(req.url.endsWith('-plan')){const kind=req.url.includes('withdrawal')?'withdrawal':req.url.includes('transfer')?'transfer':'post';res.setHeader('Content-Type','application/json');res.end(JSON.stringify(fixturePlan(s,kind,s.credit)));return;}
   const file=req.url==='/'?'index.html':req.url.slice(1);if(!/^[a-z0-9-]+\.(mjs|html|css)$/.test(file)){res.statusCode=404;res.end();return;}
-  res.setHeader('Content-Type',file.endsWith('.mjs')?'text/javascript':file.endsWith('.css')?'text/css':'text/html');res.end(await fs.readFile(path.join(dir,'src/integration/local-console/ui',file)));
+  res.setHeader('Content-Type',file.endsWith('.mjs')?'text/javascript':file.endsWith('.css')?'text/css':'text/html');res.end(await fs.readFile(new URL('./ui/'+file,import.meta.url)));
  }catch(e){res.statusCode=500;res.end(String(e));}
 });await new Promise(r=>server.listen(0,'127.0.0.1',r));
 assert(process.env.CHROME_BIN);const browser=spawn(process.env.CHROME_BIN,['--headless=new','--disable-gpu','--disable-extensions','--disable-background-networking','--no-first-run','--remote-debugging-port=0','--user-data-dir='+path.join(out,'profile'),'about:blank'],{windowsHide:true,stdio:'ignore'});
@@ -71,5 +83,49 @@ try{
  await cmd('Emulation.setDeviceMetricsOverride',{width:1280,height:1000,deviceScaleFactor:1,mobile:false});await ev(el('verify-receipt-history')+".scrollIntoView({block:'center'})");const panelShot=await cmd('Page.captureScreenshot',{format:'png'});await fs.writeFile(path.join(out,'receipt-panel.png'),Buffer.from(panelShot.data,'base64'));
  await ev(`localStorage.setItem('${logKey}','corrupt');window.exportDownload=null`);await ev(el('export-outcome')+'.click()');await until('!'+el('refresh')+'.disabled && '+el('message')+".textContent.includes('Receipt export unavailable')");assert.equal(await ev('window.exportDownload'),null);assert.equal(await ev(`localStorage.getItem('${logKey}')`),'corrupt');checks.push('corrupt history blocks download without deleting evidence');
  await cmd('Emulation.setDeviceMetricsOverride',{width:1280,height:1000,deviceScaleFactor:1,mobile:false});await ev(el('last-receipt-outcome')+".scrollIntoView({block:'start'})");assert.equal(await ev('document.documentElement.scrollWidth<=innerWidth'),true);const shot=await cmd('Page.captureScreenshot',{format:'png'});await fs.writeFile(path.join(out,'rechecks.png'),Buffer.from(shot.data,'base64'));checks.push('receipt recheck history fits desktop layout');
- await fs.writeFile(path.join(out,'result.json'),JSON.stringify({passed:checks.length,checks,scope:'Headless Chromium read-only rechecks with controlled local provider responses. No real signing, fresh execution, public finality or cryptographic receipt inclusion.'},null,2)+'\n');console.log(checks.length+' browser checks passed');
+ const proofButton=el('export-withdrawal-proofs'),verifyButton=el('verify-receipt-history'),proofStatus=el('receipt-history-status');
+ assert.equal(await ev(proofButton+'.disabled'),true);
+ const retainedOriginal=JSON.parse(record.payload).original,id=retainedOriginal.action.id;
+ const good={...report.result,proofPackage};
+ proofResponse=good;
+ await ev(`localStorage.clear();localStorage.setItem('${prefix}${id}',${JSON.stringify(JSON.stringify(retainedOriginal))});localStorage.setItem('${last}','${id}')`);
+ await reload();
+ const storageBefore=await ev('JSON.stringify(localStorage)'),readsBefore=walletRequests;
+ const verifyProof=async()=>{await ev(verifyButton+'.click()');await until('!'+proofButton+'.disabled');};
+ await verifyProof();
+ const verifiedRequests=verificationRequests,filename='caw-withdrawal-proofs-'+selection.transactionHash+'.json';
+ await cmd('Browser.setDownloadBehavior',{behavior:'allow',downloadPath:out});
+ await ev(proofButton+'.click()');
+ let savedProof;
+ for(let i=0;i<100;i++){try{savedProof=await fs.readFile(path.join(out,filename),'utf8');break;}catch(e){if(e.code!=='ENOENT')throw e;await sleep(100);}}
+ assert.equal(savedProof,JSON.stringify(proofPackage));assert.equal(verificationRequests,verifiedRequests);
+ assert.equal(walletRequests,readsBefore);assert.equal(sent,sends);assert.equal(await ev('JSON.stringify(localStorage)'),storageBefore);
+ checks.push('real Chromium download preserves the verified package bytes without another verification, wallet read or storage write');
+
+ await ev(`localStorage.removeItem('${last}');`+proofButton+'.click()');
+ await until(proofStatus+".textContent.includes('selection')||"+proofStatus+".textContent.includes('selected receipt changed')");
+ assert.equal(await ev(proofButton+'.disabled'),true);assert.equal(verificationRequests,verifiedRequests);
+ await ev(`localStorage.setItem('${last}','${id}')`);await verifyProof();
+ await ev("window.dispatchEvent(new StorageEvent('storage'))");
+ assert.equal(await ev(proofButton+'.disabled'),true);checks.push('changed saved receipt and storage events invalidate the verified download');
+
+ for(const [name,mutate] of [
+  ['withdrawal absent despite accounting claim',v=>{v.status='NOT_FOUND_IN_SELECTED_VERIFIED_WITHDRAWAL_HISTORY';v.transactionIncluded=false;}],
+  ['missing package',v=>delete v.proofPackage],
+  ['mismatched selected block',v=>v.proofPackage.selection.endHash=selection.startHash],
+  ['missing receipt',v=>v.proofPackage.evidence.receipts=[]],
+  ['wrong signed transaction bytes',v=>v.proofPackage.evidence.rawTransactions=['0x12']],
+  ['oversized package',v=>v.proofPackage.padding='x'.repeat(1024*1024)],
+  ['oversized response',v=>v.padding='x'.repeat(2*1024*1024)]
+ ]){
+  proofResponse=structuredClone(good);mutate(proofResponse);await ev(verifyButton+'.click()');
+  await until(proofStatus+".textContent.includes('Not accepted')");assert.equal(await ev(proofButton+'.disabled'),true);
+  checks.push('withdrawal download unavailable for '+name);
+ }
+ proofResponse={...good,status:'INCLUDED_WITHDRAWAL_WITH_LOCAL_RECORD_DISCREPANCIES',discrepancies:['plan.amount']};
+ await verifyProof();assert.match(await ev(proofStatus+'.textContent'),/saved fields disagree/);
+ await ev(el('refresh')+'.click()');assert.equal(await ev(proofButton+'.disabled'),true);
+ checks.push('verified package with a saved-field discrepancy stays distinct and refresh disables download');
+ assert.equal(walletRequests,readsBefore);assert.equal(sent,sends);
+ await fs.writeFile(path.join(out,'result.json'),JSON.stringify({passed:checks.length,checks,scope:'Headless Chromium with controlled provider responses and retained local withdrawal evidence. Browser checks cover download fidelity and invalidation. No fresh signing or execution.'},null,2)+'\n');console.log(checks.length+' browser checks passed');
 }finally{ws?.close();browser.kill();server.closeAllConnections();await new Promise(r=>server.close(r));}

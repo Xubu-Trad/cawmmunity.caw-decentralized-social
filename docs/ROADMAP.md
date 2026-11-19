@@ -1,6 +1,8 @@
-## current application priority — November 15, 2026
+## current application priority — November 18, 2026
 
-the console now acquires and verifies EOA withdrawal boundary proofs and compares saved receipt details without overwriting discrepancies. 31 new controls,28 post/transfer controls and14 Chromium regressions passed, plus live acquisition from a fresh local Geth withdrawal. next export the acquired proof package for offline verification; current receipt exports are observations only. contract-wallet/mixed-block scope, independent reproduction and public operation remain open. [evidence](../evidence/console-withdrawal-20261116/README.md).
+the console now exports the evidence for a verified regular-wallet withdrawal. the offline reader checks it against an independently supplied selection of local headers, contract identities, transaction and amount. the saved receipt export still records what the browser observed. both can be examined when a saved amount disagrees with signed history. [operator and reviewer instructions](WITHDRAWAL_PROOF_EXPORT.md).
+
+the R-07 review on PR #19 also prompted four changes covering stale pre-sign state, transfer re-plan accounting, missing ownership-transition proofs and contradictory withdrawal status. keep the PR in draft for independent recheck. next extend the reader to the retained contract-wallet fixture with explicit controller and recipient checks. mixed blocks and public-chain authentication remain outside the supported scope.
 
 the dated sections below preserve historical milestones, not current pending work.
 

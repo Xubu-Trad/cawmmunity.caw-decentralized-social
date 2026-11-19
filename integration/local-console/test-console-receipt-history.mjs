@@ -51,19 +51,19 @@ try{
   const {res}=await request(body,headers);assert.equal(res.status,status,name);checks.push(name+' rejected');
  }
  class Element{constructor(){this.textContent='';this.disabled=false;this.listeners={};}addEventListener(n,f){this.listeners[n]=f;}}
- const names=['verify-receipt-history','receipt-history-status','refresh','confirm','check-receipt','recheck-outcome'];
+ const names=['verify-receipt-history','export-withdrawal-proofs','receipt-history-status','refresh','confirm','recover','check-receipt','recheck-outcome'];
  const nodes=Object.fromEntries(names.map(n=>[n,new Element()])),doc={getElementById:n=>nodes[n]},events=new Element();
  let payload=good,ok=true,wait=null,exportWait=null;
- const panel=mountReceiptHistory(doc,async()=>{if(exportWait)await exportWait;return exportText;},async()=>{if(wait)await wait;return {ok,text:async()=>JSON.stringify(payload)};},events);
+ const panel=mountReceiptHistory(doc,async()=>{if(exportWait)await exportWait;return exportText;},async()=>{if(wait)await wait;return new Response(JSON.stringify(payload),{status:ok?200:422});},events);
  const label=()=>nodes['receipt-history-status'].textContent;
- await panel.verify();assert.match(label(),/compared saved fields match/);checks.push('UI matching inclusion');
+ await panel.verify();assert.match(label(),/compared saved fields match/);assert(nodes['export-withdrawal-proofs'].disabled);checks.push('UI matching post inclusion without withdrawal proof download');
  payload={...good,status:'INCLUDED_POST_WITH_LOCAL_RECORD_DISCREPANCIES',discrepancies:['receipt.blockHash']};await panel.verify();assert.match(label(),/saved fields disagree/);checks.push('UI conflict remains distinct');
  payload={...good,status:'NOT_FOUND_IN_SELECTED_VERIFIED_POST_HISTORY',transactionIncluded:false};await panel.verify();assert.match(label(),/does not prove it never occurred/);checks.push('UI selected-range absence');
  for(const [name,change]of [['wrong export',v=>v.exportSha256='0'.repeat(64)],['wrong transaction',v=>v.transactionHash='0x'+'99'.repeat(32)],['false public finality',v=>v.publicChainAuthenticated=true],['missing signature proof',v=>delete v.signaturesVerified],['inconsistent match',v=>v.discrepancies=['receipt.status']]]){
   payload=structuredClone(good);change(payload);await panel.verify();assert.match(label(),/Not accepted/);checks.push('UI rejects '+name);
  }
  payload={error:'proof rejected'};ok=false;await panel.verify();assert.match(label(),/Not accepted/);assert(!label().includes('compared saved fields match'));checks.push('failure clears earlier acceptance');ok=true;payload=good;
- for(const trigger of ['refresh','confirm','check-receipt','recheck-outcome','storage']){
+ for(const trigger of ['refresh','confirm','recover','check-receipt','recheck-outcome','storage']){
   let release;wait=new Promise(r=>release=r);const job=panel.verify();await new Promise(r=>setTimeout(r,0));
   if(trigger==='storage')events.listeners.storage();else nodes[trigger].listeners.click();
   release();await job;wait=null;assert.match(label(),/^Not checked/);assert.equal(nodes['verify-receipt-history'].disabled,false);checks.push('late response discarded after '+trigger);

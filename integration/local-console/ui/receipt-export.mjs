@@ -3,6 +3,11 @@ import {RECHECK_PREFIX,readReceiptRechecks} from './receipt-rechecks.mjs';
 import {withJournalLock} from './withdrawal-journal.mjs';
 const scope='EDITABLE_LOCAL_RECEIPT_OBSERVATIONS_NOT_CHAIN_PROOF';
 const limit=100000;
+export function downloadJson(document,filename,text){
+ const url=URL.createObjectURL(new Blob([text],{type:'application/json'}));
+ const a=document.createElement('a');a.href=url;a.download=filename;
+ try{document.body.append(a);a.click();}finally{a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+}
 function keys(v,n){if(!v||typeof v!=='object'||Array.isArray(v)||Object.keys(v).sort().join(',')!==n.slice().sort().join(','))throw Error('Unexpected receipt export format.');}
 async function digest(text){return Array.from(new Uint8Array(await globalThis.crypto.subtle.digest('SHA-256',new TextEncoder().encode(text))),x=>x.toString(16).padStart(2,'0')).join('');}
 export async function exportReceiptHistory(storage,locks,state,selected){

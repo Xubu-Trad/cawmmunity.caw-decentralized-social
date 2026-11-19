@@ -15,7 +15,13 @@ const server=http.createServer(async(req,res)=>{
    res.setHeader('Content-Type','application/json');res.end(JSON.stringify(v));return;
   }
   if(req.url==='/api/posts'){res.setHeader('Content-Type','application/json');res.end(JSON.stringify({status:s.status,genesisHash:s.genesisHash,posting:s.contracts.posting,posts:[]}));return;}
-  if(req.url.endsWith('-plan')){const kind=req.url.includes('withdrawal')?'withdrawal':req.url.includes('transfer')?'transfer':'post';res.setHeader('Content-Type','application/json');res.end(JSON.stringify(fixturePlan(s,kind)));return;}
+  if(req.url.endsWith('-plan')){
+   const kind=req.url.includes('withdrawal')?'withdrawal':req.url.includes('transfer')?'transfer':'post';
+   const plan=fixturePlan(s,kind);
+   if(mode==='new block'){plan.blockHash='0x'+'22'.repeat(32);plan.blockNumber='0xff';}
+   if(mode==='transfer re-plan moved')plan.blockHash='0x'+'44'.repeat(32);
+   res.setHeader('Content-Type','application/json');res.end(JSON.stringify(plan));return;
+  }
   const file=req.url==='/'?'index.html':req.url.slice(1);if(!/^[a-z0-9-]+\.(mjs|html|css)$/.test(file)){res.statusCode=404;res.end();return;}
   res.setHeader('Content-Type',file.endsWith('.mjs')?'text/javascript':file.endsWith('.css')?'text/css':'text/html');res.end(await fs.readFile(path.join(dir,'src/integration/local-console/ui',file)));
  }catch(e){res.statusCode=500;res.end(String(e));}
@@ -35,6 +41,17 @@ try{
  for(const kind of ['withdrawal','transfer','post']){
   await prepare(kind);const text=await ev(el('accounting-review')+'.textContent');assert(text.includes(kind==='withdrawal'?'2 → 1':'2 → 2'));assert(text.includes('Local ETH gas is separate'));checks.push(kind+' preview and gas boundary displayed');
   mode='credit spent';const before=await ev('window.walletSends');await ev(el('confirm')+'.click()');await until(el('review')+'.hidden && !'+el('refresh')+'.disabled');assert.equal(await ev('window.walletSends'),before);assert.equal(await ev("localStorage.getItem('caw.local.withdrawal.v1')"),null);assert((await ev(el('message')+'.textContent')).includes('Accounting changed'));checks.push(kind+' changed credit blocks wallet request and clears unsent journal');
+ }
+ for(const kind of ['withdrawal','transfer','post']){
+  await prepare(kind);mode=kind==='transfer'?'transfer re-plan moved':'missing proof';
+  const sends=await ev('window.walletSends');
+  await ev(el('confirm')+'.click()');await until(el('review')+'.hidden && !'+el('refresh')+'.disabled');
+  assert.equal(await ev('window.walletSends'),sends);
+  for(const id of ['prepare','prepare-transfer','prepare-post'])assert(await ev(el(id)+'.disabled'));
+  for(const id of ['owner','credit','custody-balance','unpaid-liability'])assert.equal(await ev(el(id)+'.textContent'),'—');
+  assert.equal(await ev(el('accounting-header')+'.textContent'),'No accepted accounting snapshot');
+  if(kind==='transfer')assert.match(await ev(el('message')+'.textContent'),/accounting block changed/);
+  checks.push(kind+' failed pre-sign state blocks all preparation and clears verified values until refresh');
  }
  for(const change of ['owner balance','custody balance','new credit','missing proof']){
   await prepare('withdrawal');mode=change;const before=await ev('window.walletSends');await ev(el('confirm')+'.click()');await until(el('review')+'.hidden && !'+el('refresh')+'.disabled');assert.equal(await ev('window.walletSends'),before);assert.equal(await ev("localStorage.getItem('caw.local.withdrawal.v1')"),null);checks.push(change+' blocks wallet request');

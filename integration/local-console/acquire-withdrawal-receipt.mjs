@@ -3,6 +3,7 @@ import {Interface} from 'ethers';
 import {AUTHORITY_SLOTS} from './verify-console-authority.mjs';
 import {accountingSlots} from './verify-console-accounting.mjs';
 import {verifyWithdrawalEffects} from './verify-withdrawal-effects.mjs';
+import {makeWithdrawalProofPackage} from './withdrawal-proof-package.mjs';
 import {inspectBlockSenders} from '../../reference/ethereum-block-senders.mjs';
 const abi=new Interface(['function withdraw(uint256,uint256,uint256)']);
 // RPC metadata locates candidates only. The reader below authenticates all
@@ -43,5 +44,6 @@ export async function acquireWithdrawalReceipt(read,config,local){
  if(plan.blockHash.toLowerCase()!==parent.hash||BigInt(plan.blockNumber)!==BigInt(parent.number))discrepancies.push('plan.reviewAnchorOutsideSelectedHistory');
  same('receipt.status',original.receipt.status,'confirmed');same('receipt.blockHash',original.receipt.blockHash,header.hash);
  if(BigInt(original.receipt.blockNumber)!==BigInt(header.number))discrepancies.push('receipt.blockNumber');
- return {...result,status:'INCLUDED_WITHDRAWAL'+(discrepancies.length?'_WITH_LOCAL_RECORD_DISCREPANCIES':'_MATCHES_LOCAL_RECORD'),localRecordStatus:local.status,retainedObservations:local.observations,transactionIncluded:true,signaturesVerified:true,transactionAndReceiptCommitmentsVerified:true,ownershipVerified:true,blockHash:header.hash,blockNumber:header.number,selectedHistoryEndHash:header.hash,discrepancies};
+ const proofPackage=makeWithdrawalProofPackage(evidence,selection);
+ return {...result,status:'INCLUDED_WITHDRAWAL'+(discrepancies.length?'_WITH_LOCAL_RECORD_DISCREPANCIES':'_MATCHES_LOCAL_RECORD'),localRecordStatus:local.status,retainedObservations:local.observations,transactionIncluded:true,signaturesVerified:true,transactionAndReceiptCommitmentsVerified:true,ownershipVerified:true,blockHash:header.hash,blockNumber:header.number,selectedHistoryEndHash:header.hash,discrepancies,proofPackage};
 }

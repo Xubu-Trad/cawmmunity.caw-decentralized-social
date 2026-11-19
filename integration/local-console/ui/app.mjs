@@ -1,5 +1,5 @@
 import {mountReceiptHistory} from './receipt-history-panel.mjs';
-import {exportReceiptHistory} from './receipt-export.mjs';
+import {downloadJson,exportReceiptHistory} from './receipt-export.mjs';
 import {recheckReceiptOutcome,readReceiptRechecks,RECHECK_PREFIX} from './receipt-rechecks.mjs';
 import {archiveReceiptOutcome,readLastReceiptOutcome,LAST_OUTCOME_KEY,OUTCOME_PREFIX} from './receipt-outcomes.mjs';
 import {showAccountingReview,requireReviewedAccounting} from './accounting-review.mjs';
@@ -71,8 +71,13 @@ $('confirm').addEventListener('click',async()=>{
   if(intent&&(!requested||walletRejected)){
    try{await finishWithdrawal(localStorage,navigator.locks,state,intent.id);saved=null;pending=null;}catch(clearError){journalError=clearError.message;}
   }
-  clearPlan();
   if(state&&!pending)syncSaved();
+  if(!requested){
+   state=null;
+   clearAccountSnapshot(document,'Pre-sign verification failed. Refresh to verify current balances and ownership.');
+   $('connection-status').textContent='Fresh verification required';
+  }
+  clearPlan();
   message(saved||pending||journalError?'Action outcome unresolved: '+e.message+' Keep the saved record and check your wallet; do not resubmit.':e.message||'Wallet submission failed.',true);
  }finally{busy=false;controls();}
 });
@@ -104,6 +109,10 @@ async function verifyFreshAuthority(p){
   if(latest.credit!==state.credit)throw Error('Attached credit changed since review. Refresh and review again.');
   const checked=await api('/api/transfer-plan',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({recipient:p.recipient})});
   verifyTransferPlan(checked,latest,p.from,p.recipient);
+  // transferPlan builds its response from a single proof-checked snapshot. Bind
+  // it to the state whose credit, liabilities and balances we just compared.
+  if(!same(checked.blockHash,latest.blockHash)||checked.blockNumber!==latest.blockNumber)
+   throw Error('Transfer accounting block changed during review. Refresh and review again.');
   if(!same(checked.data,p.data))throw Error('Account transfer changed since review.');
  }else if(p.action==='post')verifyPostPlan(p,latest,p.from,p.text);else verifyWithdrawalPlan(p,latest,p.from,p.amount);
 }
@@ -195,8 +204,7 @@ $('export-outcome').addEventListener('click',async()=>{
  const selected=lastOutcome;busy=true;controls();
  try{
   const exported=await exportReceiptHistory(localStorage,navigator.locks,state,selected);
-  const url=URL.createObjectURL(new Blob([exported.text],{type:'application/json'}));
-  const a=document.createElement('a');a.href=url;a.download=exported.filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  downloadJson(document,exported.filename,exported.text);
   message('Receipt export download requested. It includes editable local observations, addresses and any post text; review before sharing. No transaction sent.');
  }catch(e){message('Receipt export unavailable: '+e.message,true);}finally{busy=false;controls();}
 });
@@ -204,5 +212,7 @@ $('export-outcome').addEventListener('click',async()=>{
 mountReceiptHistory(document,async()=>{
  if(busy||refreshing||!state||!lastOutcome)throw Error('Load a saved receipt before checking history.');
  if(![1,2,3].includes(lastOutcome.action.version))throw Error('Unsupported saved action.');
- return (await exportReceiptHistory(localStorage,navigator.locks,state,lastOutcome)).text;
+ const selected=lastOutcome,exported=await exportReceiptHistory(localStorage,navigator.locks,state,selected);
+ if(lastOutcome!==selected||localStorage.getItem(LAST_OUTCOME_KEY)!==selected.action.id)throw Error('The selected receipt changed. Reload and verify again.');
+ return exported.text;
 });
