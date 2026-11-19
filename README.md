@@ -33,13 +33,13 @@ The destination is a system others can reproduce and operate without Xubu's acco
 
 ## where the build stands
 
-updated November 15, 2026. **this is unfinished research software. there is no production-ready community.CAW network, and the local experiments use mock tokens.**
+updated November 18, 2026. **this is unfinished research software. there is no production-ready community.CAW network, and the local experiments use mock tokens.**
 
 we are building something another person can inspect, reproduce and carry forward. the local execution console can already submit signed posts, transfer an experimental account and withdraw its credited mock tokens on a disposable chain. the original alpha interface remains a simulation. the console does real local execution, but its posts do not yet implement the manifesto's CAW payment and settlement rules.
 
-the local console can now check a saved withdrawal against signed history and proven changes in account credit, custody and the recipient's token balance. it fetches the required proofs itself. if saved details disagree, that disagreement stays visible and the original record is preserved.
+after the console verifies a withdrawal, you can download the evidence and close the console. another builder can use the offline reader to check who signed, how much credit left custody and how much reached the recipient. the reader asks for the expected block hashes and deployment details separately. that gives the reviewer control over which local history they accept. [download and replay instructions](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/docs/WITHDRAWAL_PROOF_EXPORT.md).
 
-73 scoped endpoint and browser checks passed, followed by successful live proof acquisition from a fresh local Geth withdrawal. this remains research with mock tokens. the new path supports regular-wallet withdrawals in single-transaction blocks; contract-wallet and mixed-block cases remain unsupported. [evidence, commands and limits](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/evidence/console-withdrawal-20261116/README.md). independent reproduction is still pending.
+ahdmesh found four ways the console or its reader could give an incomplete picture around signing and receipts. the changes on draft PR #19 clear stale balances after a failed pre-sign check, bind a transfer recheck to the verified block and reject incomplete or contradictory history. the reviewer's hold is still in place. [independent review](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/19#issuecomment-6918751018).
 
 these results come from local experiments run by us. **independent reproduction is still pending.** selected local headers are not proof of public-chain finality, and this storage layout only supports the selected research contracts. general wallet support, actual CAW compatibility, registration, paid-post economics, durable public operation and release agreement remain unfinished.
 
@@ -47,7 +47,7 @@ the experimental application lives on [draft PR #19](https://github.com/Xubu-Tra
 
 ## what comes next
 
-make the acquired withdrawal proofs exportable with their selected headers and configuration so another reader can verify the console result offline. saved receipt observations are already exportable; they are not the proof package. independent reproduction, paid-post economics and public operation remain open.
+repeat the offline check from a separate installation and extend the console reader to the experimental contract wallet. today the download covers regular-wallet withdrawals in single-transaction blocks. mixed-block attribution, paid-post economics and public operation remain open.
 
 ## find your starting point
 
