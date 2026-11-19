@@ -1,0 +1,366 @@
+{
+  "schema": "caw-compact-proof-evm/1",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "node": "v24.22.1",
+  "hardfork": "Shanghai",
+  "contracts": {
+    "StakeProofResearch": {
+      "runtimeBytes": 1325,
+      "runtimeSha256": "248dc4daca7b9e74c3227855de9a15b472507cd70ba26dba6ff5a42891e301f1"
+    },
+    "CompactStakeProofResearch": {
+      "runtimeBytes": 10012,
+      "runtimeSha256": "7afa9d6e1f0752fc7c96e1bc852f2b77c7890f8761be13e10d7c6704bbaac905"
+    }
+  },
+  "passed": 31,
+  "cases": [
+    {
+      "name": "StakeProofResearch",
+      "label": "sparse_0",
+      "expected": "true",
+      "exception": null,
+      "returnHex": "0000000000000000000000000000000000000000000000000000000000000001",
+      "calldataBytes": 16580,
+      "executionGas": "356051",
+      "calculatedIntrinsicGas": "185948",
+      "callPlusIntrinsic": "541999"
+    },
+    {
+      "name": "CompactStakeProofResearch",
+      "label": "sparse_0",
+      "expected": "true",
+      "exception": null,
+      "returnHex": "0000000000000000000000000000000000000000000000000000000000000001",
+      "calldataBytes": 420,
+      "executionGas": "423803",
+      "calculatedIntrinsicGas": "24336",
+      "callPlusIntrinsic": "448139"
+    },
+    {
+      "name": "StakeProofResearch",
+      "label": "sparse_1",
+      "expected": "true",
+      "exception": null,
+      "returnHex": "0000000000000000000000000000000000000000000000000000000000000001",
+      "calldataBytes": 16580,
+      "executionGas": "356062",
+      "calculatedIntrinsicGas": "185960",
+      "callPlusIntrinsic": "542022"
+    },
+    {
+      "name": "CompactStakeProofResearch",
+      "label": "sparse_1",
+      "expected": "true",
+      "exception": null,
+      "returnHex": "0000000000000000000000000000000000000000000000000000000000000001",
+      "calldataBytes": 420,
+      "executionGas": "423814",
+      "calculatedIntrinsicGas": "24348",
+      "callPlusIntrinsic": "448162"
+    },
+    {
+      "name": "StakeProofResearch",
+      "label": "sparse_57896044618658097711785492504343953926634992332820282019728792003956564819968",
+      "expected": "true",
+      "exception": null,
+      "returnHex": "0000000000000000000000000000000000000000000000000000000000000001",
+      "calldataBytes": 16580,
+      "executionGas": "356062",
+      "calculatedIntrinsicGas": "185984",
+      "callPlusIntrinsic": "542046"
+    },
+    {
+      "name": "CompactStakeProofResearch",
+      "label": "sparse_57896044618658097711785492504343953926634992332820282019728792003956564819968",
+      "expected": "true",
+      "exception": null,
+      "returnHex": "0000000000000000000000000000000000000000000000000000000000000001",
+      "calldataBytes": 420,
+      "executionGas": "423814",
+      "calculatedIntrinsicGas": "24360",
+      "callPlusIntrinsic": "448174"
+    },
+    {
+      "name": "StakeProofResearch",
+      "label": "sparse_115792089237316195423570985008687907853269984665640564039457584007913129639935",
+      "expected": "true",
+      "exception": null,
+      "returnHex": "0000000000000000000000000000000000000000000000000000000000000001",
+      "calldataBytes": 16580,
+      "executionGas": "358867",
+      "calculatedIntrinsicGas": "186332",
+      "callPlusIntrinsic": "545199"
+    },
+    {
+      "name": "CompactStakeProofResearch",
+      "label": "sparse_115792089237316195423570985008687907853269984665640564039457584007913129639935",
+      "expected": "true",
+      "exception": null,
+      "returnHex": "0000000000000000000000000000000000000000000000000000000000000001",
+      "calldataBytes": 420,
+      "executionGas": "426619",
+      "calculatedIntrinsicGas": "24708",
+      "callPlusIntrinsic": "451327"
+    },
+    {
+      "name": "StakeProofResearch",
+      "label": "sparse_2",
+      "expected": "true",
+      "exception": null,
+      "returnHex": "0000000000000000000000000000000000000000000000000000000000000001",
+      "calldataBytes": 16580,
+      "executionGas": "355624",
+      "calculatedIntrinsicGas": "185936",
+      "callPlusIntrinsic": "541560"
+    },
+    {
+      "name": "CompactStakeProofResearch",
+      "label": "sparse_2",
+      "expected": "true",
+      "exception": null,
+      "returnHex": "0000000000000000000000000000000000000000000000000000000000000001",
+      "calldataBytes": 420,
+      "executionGas": "423351",
+      "calculatedIntrinsicGas": "24324",
+      "callPlusIntrinsic": "447675"
+    },
+    {
+      "name": "StakeProofResearch",
+      "label": "all_nondefault_0",
+      "expected": "true",
+      "exception": null,
+      "returnHex": "0000000000000000000000000000000000000000000000000000000000000001",
+      "calldataBytes": 16580,
+      "executionGas": "356051",
+      "calculatedIntrinsicGas": "189056",
+      "callPlusIntrinsic": "545107"
+    },
+    {
+      "name": "CompactStakeProofResearch",
+      "label": "all_nondefault_0",
+      "expected": "true",
+      "exception": null,
+      "returnHex": "0000000000000000000000000000000000000000000000000000000000000001",
+      "calldataBytes": 16676,
+      "executionGas": "533592",
+      "calculatedIntrinsicGas": "189848",
+      "callPlusIntrinsic": "723440"
+    },
+    {
+      "name": "StakeProofResearch",
+      "label": "all_default_0",
+      "expected": "true",
+      "exception": null,
+      "returnHex": "0000000000000000000000000000000000000000000000000000000000000001",
+      "calldataBytes": 16580,
+      "executionGas": "355613",
+      "calculatedIntrinsicGas": "185912",
+      "callPlusIntrinsic": "541525"
+    },
+    {
+      "name": "CompactStakeProofResearch",
+      "label": "all_default_0",
+      "expected": "true",
+      "exception": null,
+      "returnHex": "0000000000000000000000000000000000000000000000000000000000000001",
+      "calldataBytes": 292,
+      "executionGas": "422480",
+      "calculatedIntrinsicGas": "22984",
+      "callPlusIntrinsic": "445464"
+    },
+    {
+      "name": "CompactStakeProofResearch",
+      "label": "namespace",
+      "expected": "ROOT",
+      "exception": "revert",
+      "returnHex": "08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000004524f4f5400000000000000000000000000000000000000000000000000000000",
+      "calldataBytes": 420,
+      "executionGas": "423851",
+      "calculatedIntrinsicGas": "24348",
+      "callPlusIntrinsic": "448199"
+    },
+    {
+      "name": "CompactStakeProofResearch",
+      "label": "root",
+      "expected": "ROOT",
+      "exception": "revert",
+      "returnHex": "08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000004524f4f5400000000000000000000000000000000000000000000000000000000",
+      "calldataBytes": 420,
+      "executionGas": "423851",
+      "calculatedIntrinsicGas": "24348",
+      "callPlusIntrinsic": "448199"
+    },
+    {
+      "name": "CompactStakeProofResearch",
+      "label": "account",
+      "expected": "ROOT",
+      "exception": "revert",
+      "returnHex": "08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000004524f4f5400000000000000000000000000000000000000000000000000000000",
+      "calldataBytes": 420,
+      "executionGas": "423840",
+      "calculatedIntrinsicGas": "24336",
+      "callPlusIntrinsic": "448176"
+    },
+    {
+      "name": "CompactStakeProofResearch",
+      "label": "total",
+      "expected": "TOTAL",
+      "exception": "revert",
+      "returnHex": "08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000005544f54414c000000000000000000000000000000000000000000000000000000",
+      "calldataBytes": 420,
+      "executionGas": "422791",
+      "calculatedIntrinsicGas": "24348",
+      "callPlusIntrinsic": "447139"
+    },
+    {
+      "name": "CompactStakeProofResearch",
+      "label": "stake",
+      "expected": "TOTAL",
+      "exception": "revert",
+      "returnHex": "08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000005544f54414c000000000000000000000000000000000000000000000000000000",
+      "calldataBytes": 420,
+      "executionGas": "422791",
+      "calculatedIntrinsicGas": "24348",
+      "callPlusIntrinsic": "447139"
+    },
+    {
+      "name": "CompactStakeProofResearch",
+      "label": "presence",
+      "expected": "ABSENT_STAKE",
+      "exception": "revert",
+      "returnHex": "08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000c414253454e545f5354414b450000000000000000000000000000000000000000",
+      "calldataBytes": 420,
+      "executionGas": "736",
+      "calculatedIntrinsicGas": "24336",
+      "callPlusIntrinsic": "25072"
+    },
+    {
+      "name": "CompactStakeProofResearch",
+      "label": "abi_bool",
+      "expected": "abi",
+      "exception": "revert",
+      "returnHex": "",
+      "calldataBytes": 420,
+      "executionGas": "548",
+      "calculatedIntrinsicGas": "24348",
+      "callPlusIntrinsic": "24896"
+    },
+    {
+      "name": "CompactStakeProofResearch",
+      "label": "bitmap_add",
+      "expected": "COUNT",
+      "exception": "revert",
+      "returnHex": "08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000005434f554e54000000000000000000000000000000000000000000000000000000",
+      "calldataBytes": 420,
+      "executionGas": "421210",
+      "calculatedIntrinsicGas": "24348",
+      "callPlusIntrinsic": "445558"
+    },
+    {
+      "name": "CompactStakeProofResearch",
+      "label": "bitmap_remove",
+      "expected": "COUNT",
+      "exception": "revert",
+      "returnHex": "08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000005434f554e54000000000000000000000000000000000000000000000000000000",
+      "calldataBytes": 420,
+      "executionGas": "422341",
+      "calculatedIntrinsicGas": "24336",
+      "callPlusIntrinsic": "446677"
+    },
+    {
+      "name": "CompactStakeProofResearch",
+      "label": "hash",
+      "expected": "ROOT",
+      "exception": "revert",
+      "returnHex": "08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000004524f4f5400000000000000000000000000000000000000000000000000000000",
+      "calldataBytes": 420,
+      "executionGas": "423851",
+      "calculatedIntrinsicGas": "24348",
+      "callPlusIntrinsic": "448199"
+    },
+    {
+      "name": "CompactStakeProofResearch",
+      "label": "sum",
+      "expected": "TOTAL",
+      "exception": "revert",
+      "returnHex": "08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000005544f54414c000000000000000000000000000000000000000000000000000000",
+      "calldataBytes": 420,
+      "executionGas": "422791",
+      "calculatedIntrinsicGas": "24360",
+      "callPlusIntrinsic": "447151"
+    },
+    {
+      "name": "CompactStakeProofResearch",
+      "label": "overflow",
+      "expected": "overflow",
+      "exception": "revert",
+      "returnHex": "4e487b710000000000000000000000000000000000000000000000000000000000000011",
+      "calldataBytes": 420,
+      "executionGas": "7826",
+      "calculatedIntrinsicGas": "24732",
+      "callPlusIntrinsic": "32558"
+    },
+    {
+      "name": "CompactStakeProofResearch",
+      "label": "truncated",
+      "expected": "abi",
+      "exception": "revert",
+      "returnHex": "",
+      "calldataBytes": 388,
+      "executionGas": "368",
+      "calculatedIntrinsicGas": "24208",
+      "callPlusIntrinsic": "24576"
+    },
+    {
+      "name": "CompactStakeProofResearch",
+      "label": "reordered",
+      "expected": "ROOT",
+      "exception": "revert",
+      "returnHex": "08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000004524f4f5400000000000000000000000000000000000000000000000000000000",
+      "calldataBytes": 420,
+      "executionGas": "423851",
+      "calculatedIntrinsicGas": "24348",
+      "callPlusIntrinsic": "448199"
+    },
+    {
+      "name": "CompactStakeProofResearch",
+      "label": "redundant_default",
+      "expected": "DEFAULT",
+      "exception": "revert",
+      "returnHex": "08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000744454641554c5400000000000000000000000000000000000000000000000000",
+      "calldataBytes": 484,
+      "executionGas": "8567",
+      "calculatedIntrinsicGas": "24988",
+      "callPlusIntrinsic": "33555"
+    },
+    {
+      "name": "CompactStakeProofResearch",
+      "label": "unused_node",
+      "expected": "COUNT",
+      "exception": "revert",
+      "returnHex": "08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000005434f554e54000000000000000000000000000000000000000000000000000000",
+      "calldataBytes": 484,
+      "executionGas": "422771",
+      "calculatedIntrinsicGas": "24616",
+      "callPlusIntrinsic": "447387"
+    },
+    {
+      "name": "CompactStakeProofResearch",
+      "label": "too_many_nodes",
+      "expected": "COUNT",
+      "exception": "revert",
+      "returnHex": "08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000005434f554e54000000000000000000000000000000000000000000000000000000",
+      "calldataBytes": 16740,
+      "executionGas": "586",
+      "calculatedIntrinsicGas": "190128",
+      "callPlusIntrinsic": "190714"
+    }
+  ],
+  "rootAuthenticated": false,
+  "transactionExecution": false,
+  "contractDeployment": false,
+  "settlementImplemented": false,
+  "fullSuiteRerun": false,
+  "productionAccepted": false
+}

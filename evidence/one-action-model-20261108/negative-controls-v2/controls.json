@@ -1,0 +1,26 @@
+[
+  {
+    "name": "epoch",
+    "replace": "require(a.epoch == epoch, 'EPOCH')",
+    "with": "require(True, 'EPOCH')",
+    "mutatedSourceSha256": "a144b62cbdf69eac4e445b00cb5e8c3ea20203659a6d4ef9ad8941dbb52ab4f6",
+    "testSha256": "2bb60f5d525abaf9500463145d28484021477d1fb428afb5158fd84f43370b4b",
+    "rawLogSha256": "d653a1b953874724e37ab9d7a0c5499e59bdd75bea6baa66796045a1b477571a",
+    "publicLogSha256": "af4a675c31e4812190d99b6c1fe6ba36a46a56a9038e5a04dda324c257a6079a",
+    "publicLogTransform": "Replace absolute lane prefix with <CONTROL_DIRECTORY>/",
+    "exitCode": 1,
+    "expectedFailure": "test_payer_transfer_return_rejects_old_epoch"
+  },
+  {
+    "name": "nonce",
+    "replace": "require(a.nonce == intent.nonce, 'NONCE')",
+    "with": "require(True, 'NONCE')",
+    "mutatedSourceSha256": "46594acf9b4d4abab1c42e1b60e04cf2fab3b13eb9d24046e6993e59634cac67",
+    "testSha256": "2bb60f5d525abaf9500463145d28484021477d1fb428afb5158fd84f43370b4b",
+    "rawLogSha256": "a8ce16d14944f9fd7a61bc88f8f234d9bda24b9c7e48ae6c3b00e250454bf264",
+    "publicLogSha256": "1ab1f4117fa0d0d9fa2e2a28e9f71dbad83c5cb1c25f4b38f24b361ffc00a565",
+    "publicLogTransform": "Replace absolute lane prefix with <CONTROL_DIRECTORY>/",
+    "exitCode": 1,
+    "expectedFailure": "test_post_cancel_order"
+  }
+]

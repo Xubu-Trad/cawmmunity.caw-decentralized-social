@@ -46,6 +46,11 @@ With stakes `[10, 1, 0]`, account exclusion has one eligible recipient; same-own
 
 ## Review requested
 
+The [one-action profile proposal](ONE_ACTION_PROFILE_PROPOSAL.md), prepared
+2026-11-08, makes account entitlements, explicit cancellation, atomic transitions
+and acceptance cases reviewable. It is not frozen or implemented; proposed terms
+and scalable accounting requirements still need disposition.
+
 Use [issue #5](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues/5) for exclusion, scalable accounting, commitment churn and dust decisions. State the source reading, exact account/owner model, snapshot and conservation rules, negative cases and bounded posting/claim/withdrawal costs. An accumulator or deferred-claim design must account for transfer, payer exclusion and rounding rather than merely move work to an operator.
 
 Use [issue #7](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues/7) for submission costs and liveness, and [issue #8](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/issues/8) for text interpretation. Existing contributor examples remain attributed evidence. Silence is not a choice among these alternatives.
@@ -56,3 +61,4 @@ No new full-suite, public transaction, scalable settlement, registration or rele
 ## Execution receipt
 
 The comparison ran successfully on pinned Python 3.12.14 under existing resource guards. A separate copy with the expected one-unit dust deliberately changed to two failed at that assertion. [Results and source hashes](../evidence/CANDIDATE_TERMS_COMPARISON.json). These are arithmetic decision examples, not Solidity execution or additional Node-suite passes.
+

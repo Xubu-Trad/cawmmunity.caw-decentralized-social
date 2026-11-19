@@ -1,0 +1,15 @@
+{
+  "schema": "caw-c007-utf8-scalar-compile/1",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "sourceSha256": "ac956a70048e02177c74f78ad4a1244476c095d48fbd38e9d114592cbad55e69",
+  "runtimeSha256": "b767374e5020c467df893f61243f07b2dde350b85a7ec1f5a230af4e59f2221d",
+  "runtimeBytes": 10247,
+  "storageLayoutUnchanged": true,
+  "abiUnchanged": true,
+  "selectorsUnchanged": true,
+  "experimentalScalarLimit": 420,
+  "experimentalByteLimit": 1680,
+  "utf8ExecutionTested": false,
+  "originalTokenTested": false,
+  "normativeRuleAdopted": false
+}

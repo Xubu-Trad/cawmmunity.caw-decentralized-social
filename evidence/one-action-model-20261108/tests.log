@@ -1,0 +1,15 @@
+test_arbitrary_registered_ids_and_population (__main__.Transitions.test_arbitrary_registered_ids_and_population) ... ok
+test_cancel_boundaries (__main__.Transitions.test_cancel_boundaries) ... ok
+test_complete_synthetic_journey (__main__.Transitions.test_complete_synthetic_journey) ... ok
+test_payer_transfer_return_rejects_old_epoch (__main__.Transitions.test_payer_transfer_return_rejects_old_epoch) ... ok
+test_post_cancel_order (__main__.Transitions.test_post_cancel_order) ... ok
+test_recipient_transfer_and_withdrawal_branches (__main__.Transitions.test_recipient_transfer_and_withdrawal_branches) ... ok
+test_replay_and_time_boundaries (__main__.Transitions.test_replay_and_time_boundaries) ... ok
+test_stake_restoration_and_explicit_cancel_are_distinct (__main__.Transitions.test_stake_restoration_and_explicit_cancel_are_distinct) ... ok
+test_utf8_boundaries (__main__.Transitions.test_utf8_boundaries) ... ok
+test_zero_pool_and_locked_withdrawal (__main__.Transitions.test_zero_pool_and_locked_withdrawal) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.006s
+
+OK
