@@ -1,0 +1,132 @@
+{
+  "c007": "OPEN",
+  "files": [
+    {
+      "original_lane_manifest_sha256": "23377228c312a8c55e0f5a11c253551cdd9fe7590da8b60c74950b3ae62ed425",
+      "path": "lanes/COMMUNITY_C007_ISSUE5_EVIDENCE_PACKET_20261107_V1/evidence_summary.json",
+      "sha256": "aca3d1ad0d9e298117c3b6848f9ea7ab4a184ed8586190a9f9a28ad3e50865b7",
+      "size": 1704
+    },
+    {
+      "original_lane_manifest_sha256": "23377228c312a8c55e0f5a11c253551cdd9fe7590da8b60c74950b3ae62ed425",
+      "path": "lanes/COMMUNITY_C007_ISSUE5_EVIDENCE_PACKET_20261107_V1/issue5_comment.md",
+      "sha256": "4ec95549b4bb3d768b8104bfaebf564a401c73c4b200113c6b2c9425b6113a6a",
+      "size": 2917
+    },
+    {
+      "original_lane_manifest_sha256": "a75e98f922e31f6628baf5db64c8e74cb9f4914ae51f9b9226b21bbd1780d1e8",
+      "path": "lanes/COMMUNITY_C007_PAIRED_POST_20261107_V1/comparison.json",
+      "sha256": "f4d941e3d355fdafe921772935666689464db0701a07948f38664dff804c6607",
+      "size": 5559
+    },
+    {
+      "original_lane_manifest_sha256": "a75e98f922e31f6628baf5db64c8e74cb9f4914ae51f9b9226b21bbd1780d1e8",
+      "path": "lanes/COMMUNITY_C007_PAIRED_POST_20261107_V1/pair_hook.py",
+      "sha256": "b8088276932e8bacf51d33619c5cd127eb2c079f54d048b8041f73b2d0c3adde",
+      "size": 9138
+    },
+    {
+      "original_lane_manifest_sha256": "a75e98f922e31f6628baf5db64c8e74cb9f4914ae51f9b9226b21bbd1780d1e8",
+      "path": "lanes/COMMUNITY_C007_PAIRED_POST_20261107_V1/results.json",
+      "sha256": "41e0337bc4c9cdcdff7d062bd2b570e513a27fbed202f0b40e063c22d5006d7b",
+      "size": 78173
+    },
+    {
+      "original_lane_manifest_sha256": "a75e98f922e31f6628baf5db64c8e74cb9f4914ae51f9b9226b21bbd1780d1e8",
+      "path": "lanes/COMMUNITY_C007_PAIRED_POST_20261107_V1/run.py",
+      "sha256": "864eb29457cd7c3940dcb8cd8d75d5bd2f5fda8e1b5b66199ec430706672d0b8",
+      "size": 18729
+    },
+    {
+      "original_lane_manifest_sha256": "4044423a0a9471b918a4433b28bd94c95e629c7bffb72f1cce7bf703ab87d419",
+      "path": "lanes/COMMUNITY_C007_PAIRED_POST_OFFLINE_AUDIT_20261107_V1/audit.json",
+      "sha256": "135539b0025614934a2491fb1d0c297da237c49483c7b5fe092ed44d1f377b61",
+      "size": 1109
+    },
+    {
+      "original_lane_manifest_sha256": "4044423a0a9471b918a4433b28bd94c95e629c7bffb72f1cce7bf703ab87d419",
+      "path": "lanes/COMMUNITY_C007_PAIRED_POST_OFFLINE_AUDIT_20261107_V1/audit.py",
+      "sha256": "31406f40bd738653ab1d2c7e993fb402b43ed8873f4bd29d958405532ab8fd09",
+      "size": 10081
+    },
+    {
+      "original_lane_manifest_sha256": "1793365df3dc51efc9397732e66c5617028e5726e16b1651d6347cdb14bdd633",
+      "path": "lanes/COMMUNITY_C007_PAIRED_WITHDRAWAL_20261107_V2/pair_hook.py",
+      "sha256": "dae3c42e73d42ed352300bf92d9fa36a742e7fe135e26a8ceeccaf952c9b2d6e",
+      "size": 14570
+    },
+    {
+      "original_lane_manifest_sha256": "1793365df3dc51efc9397732e66c5617028e5726e16b1651d6347cdb14bdd633",
+      "path": "lanes/COMMUNITY_C007_PAIRED_WITHDRAWAL_20261107_V2/patch_receipt.json",
+      "sha256": "d089c11df1d8c2d5d16588b82f3ef611a7d68678623fdb7a74fb6b1d1bfab15d",
+      "size": 1006
+    },
+    {
+      "original_lane_manifest_sha256": "1793365df3dc51efc9397732e66c5617028e5726e16b1651d6347cdb14bdd633",
+      "path": "lanes/COMMUNITY_C007_PAIRED_WITHDRAWAL_20261107_V2/results.json",
+      "sha256": "7fadb2d9dbe81b7e62023f7647548eb8082d60607f150f03ccbbdf5db84f97a7",
+      "size": 90101
+    },
+    {
+      "original_lane_manifest_sha256": "1793365df3dc51efc9397732e66c5617028e5726e16b1651d6347cdb14bdd633",
+      "path": "lanes/COMMUNITY_C007_PAIRED_WITHDRAWAL_20261107_V2/run.py",
+      "sha256": "a3b5fe13630e17d18861ca9a5ea09713a32c83ee73cd159f826f2d004a9368df",
+      "size": 18729
+    },
+    {
+      "original_lane_manifest_sha256": "1793365df3dc51efc9397732e66c5617028e5726e16b1651d6347cdb14bdd633",
+      "path": "lanes/COMMUNITY_C007_PAIRED_WITHDRAWAL_20261107_V2/withdraw_hook.py",
+      "sha256": "60f35815429f42166d7a55e25cdf1c7f1e5343d62a1b964eff1a7a50b6adda5a",
+      "size": 4687
+    },
+    {
+      "original_lane_manifest_sha256": "1793365df3dc51efc9397732e66c5617028e5726e16b1651d6347cdb14bdd633",
+      "path": "lanes/COMMUNITY_C007_PAIRED_WITHDRAWAL_20261107_V2/withdrawal.json",
+      "sha256": "c30b9fd9c86ce81adb546be3e91e07e4bf42f17ef613bec003d6754f9d46535e",
+      "size": 6285
+    },
+    {
+      "original_lane_manifest_sha256": "3d14b93846037cc95d33382d35a64ba13c445a4ace26875fc8e33e1a0e78c912",
+      "path": "lanes/COMMUNITY_C007_SIGNED_INTENT_20261107_V1/intent.json",
+      "sha256": "0e4eff27c90454790ce8f0447219dedca42c02f1c64da00fa201720d32a8922a",
+      "size": 2971
+    },
+    {
+      "original_lane_manifest_sha256": "3d14b93846037cc95d33382d35a64ba13c445a4ace26875fc8e33e1a0e78c912",
+      "path": "lanes/COMMUNITY_C007_SIGNED_INTENT_20261107_V1/sign.py",
+      "sha256": "14e191146a57f19ca6e548ebaf5a6032506a7d06ae39c2687d5a78105c3727e5",
+      "size": 6813
+    },
+    {
+      "original_lane_manifest_sha256": "96df02e65295a646d115b0e8034d5ebd187ae77ecb9e20886ef597411b74ae02",
+      "path": "lanes/COMMUNITY_C007_SIGNED_PAYER_BASELINE_20261107_V1/results.json",
+      "sha256": "e7b90fb99f91e8f958ec5667d4b69753d91909458b32466ce65288d6bc964972",
+      "size": 60532
+    },
+    {
+      "original_lane_manifest_sha256": "31c6784af320ab080153b0e0213bcb40189a46381deeaf42e5357ba1411b3dcf",
+      "path": "lanes/COMMUNITY_C007_WITHDRAWAL_OFFLINE_AUDIT_20261107_V1/audit.json",
+      "sha256": "3c669fc9500e3b99dab155c994511e46ad07e73988d6ad089b9bea751fac786d",
+      "size": 740
+    },
+    {
+      "original_lane_manifest_sha256": "31c6784af320ab080153b0e0213bcb40189a46381deeaf42e5357ba1411b3dcf",
+      "path": "lanes/COMMUNITY_C007_WITHDRAWAL_OFFLINE_AUDIT_20261107_V1/audit.py",
+      "sha256": "0c77987d5228ef9869bc2e32649677ea9c1d1342891ddd96d6a3a22061908601",
+      "size": 5627
+    },
+    {
+      "original_lane_manifest_sha256": "27223726c30ce4778f8f9a0c16692a533cd6e57279a914eb26f72b3f8138bc22",
+      "path": "lanes/COMMUNITY_C007_WSL_PROBE_DEPLOY_20261107_V1/results.json",
+      "sha256": "d6c31679c7cd9fb3032abe72a2af7afd3343f130dd258ddbcc8ea0ce14cd95b0",
+      "size": 6389
+    }
+  ],
+  "original_file_bytes": "unchanged",
+  "original_manifests": "retained privately, not modified",
+  "publication_authorized": false,
+  "schema": "caw-c007-reduced-public-packet/1",
+  "selection": "20 original artifacts from 8 sealed lanes",
+  "source_commit": "832e3eb88ca75694a55da0478c9106046b41ba56",
+  "synthetic_only": true
+}
