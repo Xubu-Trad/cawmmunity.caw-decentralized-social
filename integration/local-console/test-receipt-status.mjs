@@ -53,6 +53,7 @@ test('requires the mined transaction to agree with the receipt on its position',
 for (const [label,hashes] of [
  ['missing',undefined],['out of range',[h('b')]],['different hash in slot',[h('b'),h('c')]],
  ['different slot',[txHash,h('b')]],['duplicate',[h('b'),txHash,txHash]],
+ ['duplicate siblings',[h('b'),txHash,h('B')]],
  ['full transaction as sibling',[{hash:h('b')},txHash]],['short sibling hash',['0x12',txHash]],
  ['sparse transaction list',[,txHash]],['sparse selected slot',[h('b'),,h('c')]]
 ]) {

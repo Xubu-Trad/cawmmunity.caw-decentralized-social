@@ -66,12 +66,14 @@ function verifyBlockTransaction(block, receipt, transaction, txHash) {
     if (!Array.isArray(hashes) || position >= hashes.length || !Object.hasOwn(hashes,position) || !same(hashes[position], txHash)) {
         throw Error('The canonical block does not identify the transaction at one matching position.');
     }
+    const seen = new Set();
     for (let i = 0; i < hashes.length; i++) {
         const candidate = hashes[i];
         if (!Object.hasOwn(hashes,i) || typeof candidate !== 'string' || !hash.test(candidate) ||
-            (i !== position && same(candidate,txHash))) {
+            seen.has(candidate.toLowerCase())) {
             throw Error('The canonical block has an inconsistent list of transaction hashes.');
         }
+        seen.add(candidate.toLowerCase());
     }
 }
 
