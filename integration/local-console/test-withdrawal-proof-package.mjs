@@ -4,6 +4,8 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { decodeRlp, encodeRlp, keccak256, toBeHex } from 'ethers';
+import { inspectExecutionHeader } from '../../reference/ethereum-execution-header.mjs';
 import {
   makeWithdrawalProofPackage, MAX_WITHDRAWAL_PACKAGE_BYTES, MAX_WITHDRAWAL_SELECTION_BYTES,
   verifyWithdrawalProofPackage,
@@ -103,6 +105,30 @@ try {
   const positive = run(proofPath, pinsPath);
   assert.equal(positive.status, 0, positive.stderr);
   assert.deepEqual(JSON.parse(positive.stdout), replay);
+  const headersPath = path.join(temp, 'headers.json');
+  const headers = [bundle.evidence.before.header, bundle.evidence.after.header];
+  fs.writeFileSync(headersPath, JSON.stringify(headers));
+  const anchored = run(proofPath, pinsPath, headersPath, selected.endHash);
+  assert.equal(anchored.status, 0, anchored.stderr);
+  assert.deepEqual(JSON.parse(anchored.stdout).checkpoint, { hash: selected.endHash, headerCount: 2,
+    withdrawalAncestryVerified: true, finalityVerified: false });
+  cliReject(/MATCH/, proofPath, pinsPath, headersPath, selected.startHash);
+  // Construct a later test-only checkpoint with a separately encoded header.
+  const last = headers[1];
+  const fields = decodeRlp(inspectExecutionHeader(last, { schema: 'caw-execution-header-selection/1',
+    profile: 'shanghai-17', hash: last.hash }).rlp);
+  fields[0] = last.hash;
+  fields[8] = toBeHex(BigInt(last.number) + 1n);
+  const descendant = { ...last, parentHash: last.hash, number: '0x' + (BigInt(last.number) + 1n).toString(16),
+    hash: keccak256(encodeRlp(fields)) };
+  fs.writeFileSync(headersPath, JSON.stringify([...headers, descendant]));
+  const later = run(proofPath, pinsPath, headersPath, descendant.hash);
+  assert.equal(later.status, 0, later.stderr);
+  assert.equal(JSON.parse(later.stdout).checkpoint.headerCount, 3);
+  fs.writeFileSync(headersPath, JSON.stringify([headers[0], descendant]));
+  cliReject(/PARENT_LINK/, proofPath, pinsPath, headersPath, descendant.hash);
+  fs.writeFileSync(headersPath, JSON.stringify(headers.toReversed()));
+  cliReject(/MATCH/, proofPath, pinsPath, headersPath, selected.endHash);
   cliReject(/Usage/, proofPath);
   cliReject(/regular JSON file/, temp, pinsPath);
   fs.writeFileSync(pinsPath, JSON.stringify(freshSelection));
