@@ -39,10 +39,13 @@ for(const [name,change]of [
  await assert.rejects(()=>verifyReceiptHistory(text,state,copy,selection),/OWNER_TRANSITION_EVIDENCE_REQUIRED/);
 });
 
-for(const field of ['ownerProofs','finalRegistry','finalPosting'])await run('missing '+field+' still rejects',async()=>{
- const copy=structuredClone(bundle);delete copy.blocks[index].ownerTransition[field];
- await assert.rejects(()=>verifyReceiptHistory(text,state,copy,selection));
-});
+for(const field of ['ownerProofs','finalRegistry','finalPosting']){
+ for(const bad of [undefined,null,false,[],{}])await run('invalid nested '+field+' rejects with reason',async()=>{
+  const copy=structuredClone(bundle),transition=copy.blocks[index].ownerTransition;
+  if(bad===undefined)delete transition[field];else transition[field]=bad;
+  await assert.rejects(()=>verifyReceiptHistory(text,state,copy,selection),/OWNER_TRANSITION_EVIDENCE_REQUIRED/);
+ });
+}
 
 await run('altered committed receipt still rejects before classification',async()=>{
  const copy=structuredClone(bundle);

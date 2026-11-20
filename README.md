@@ -33,6 +33,8 @@ The destination is a system others can reproduce and operate without Xubu's acco
 
 ## where the build stands
 
+we tightened the transfer history check after independent review. if the ownership evidence is incomplete, the reader tells you which kind of evidence is missing. the browser’s withdrawal export still needs its own verification check. [review and evidence](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/19)
+
 updated November 18, 2026. **this is unfinished research software. there is no production-ready community.CAW network, and the local experiments use mock tokens.**
 
 we are building something another person can inspect, reproduce and carry forward. the local execution console can already submit signed posts, transfer an experimental account and withdraw its credited mock tokens on a disposable chain. the original alpha interface remains a simulation. the console does real local execution, but its posts do not yet implement the manifesto's CAW payment and settlement rules.

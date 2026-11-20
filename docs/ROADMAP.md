@@ -1,3 +1,7 @@
+## transfer proof review — November 20, 2026
+
+Repeat the retained transfer check with `node integration/local-console/test-transfer-proof-completeness.mjs evidence/console-transfer-receipt-20261115`. Check signed inclusion, genuine absence, altered receipt rejection and the explicit error for incomplete ownership evidence. The next open review item is to check withdrawal proof contents before the browser labels an export verified.
+
 ## current application priority — November 18, 2026
 
 the console now exports the evidence for a verified regular-wallet withdrawal. the offline reader checks it against an independently supplied selection of local headers, contract identities, transaction and amount. the saved receipt export still records what the browser observed. both can be examined when a saved amount disagrees with signed history. [operator and reviewer instructions](WITHDRAWAL_PROOF_EXPORT.md).
