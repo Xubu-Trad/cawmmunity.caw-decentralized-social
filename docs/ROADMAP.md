@@ -1,3 +1,7 @@
+## contract-wallet withdrawals — November 19, 2026
+
+verified the fixed research wallet’s controller and recipient through the console acquisition and offline reader. two fresh runs using the retained prefix produced byte-identical proofs. independent review of this extension is pending. a reviewer can now replay the published package, rebuild the wallet runtime, and produce a fresh capture. [commands, checks and scope](WITHDRAWAL_PROOF_EXPORT.md#verify-a-withdrawal-made-through-the-fixture-contract-wallet)
+
 ## checkpoint collection — November 19, 2026
 
 the two-node run now passes. a fresh receiver synced from genesis to block 15, then supplied the headers and proofs for the block 14 withdrawal. an ethers calculation fixed the local continuation hash before node startup. the outstanding checkpoint question is historical provenance: a separately operated source with a dated descendant of the original block 14 could establish that additional link. another operator can also repeat the published local procedure and report the client version, checkpoint source, header digest and result. [reviewer workflow](WITHDRAWAL_PROOF_EXPORT.md#repeat-the-two-node-run)

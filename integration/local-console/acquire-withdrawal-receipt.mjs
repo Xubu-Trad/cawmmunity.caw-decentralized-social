@@ -1,11 +1,11 @@
 import assert from 'node:assert/strict';
 import {Interface} from 'ethers';
 import {AUTHORITY_SLOTS} from './verify-console-authority.mjs';
-import {accountingSlots} from './verify-console-accounting.mjs';
+import {accountingSlots,tokenBalanceSlot} from './verify-console-accounting.mjs';
 import {verifyWithdrawalEffects} from './verify-withdrawal-effects.mjs';
 import {makeWithdrawalProofPackage} from './withdrawal-proof-package.mjs';
 import {inspectBlockSenders} from '../../reference/ethereum-block-senders.mjs';
-const abi=new Interface(['function withdraw(uint256,uint256,uint256)']);
+const abi=new Interface(['function withdraw(uint256,uint256,uint256)','function execute(address,bytes)']);
 // RPC metadata locates candidates only. The reader below authenticates all
 // values under separately selected local headers; no provider summary is proof.
 export async function acquireWithdrawalReceipt(read,config,local){
@@ -20,8 +20,13 @@ export async function acquireWithdrawalReceipt(read,config,local){
  const parent=await read('eth_getBlockByHash',[header.parentHash,false]);assert(parent,'WITHDRAWAL_PARENT_UNAVAILABLE');
  const rawTransactions=[await read('eth_getRawTransactionByHash',[header.transactions[0]])];
  const tx=inspectBlockSenders(header,rawTransactions,{schema:'caw-block-senders-selection/1',profile:'shanghai-17',hash:header.hash,chainId:'0x7a69',allowUnprotectedLegacy:false}).transactions[0];
- assert.equal(tx.to,config.contracts.custody.address,'WITHDRAWAL_EOA_SCOPE_ONLY');
- const decoded=abi.decodeFunctionData('withdraw',tx.data);assert.equal(decoded[0],2n,'WITHDRAWAL_ACCOUNT');
+ let inner=tx.data;
+ if(tx.to===config.contracts.wallet.address){
+  const [target,call]=abi.decodeFunctionData('execute',tx.data);
+  assert.equal(target.toLowerCase(),config.contracts.custody.address,'WITHDRAWAL_INNER_TARGET');
+  inner=call;
+ }else assert.equal(tx.to,config.contracts.custody.address,'WITHDRAWAL_TARGET');
+ const decoded=abi.decodeFunctionData('withdraw',inner);assert.equal(decoded[0],2n,'WITHDRAWAL_ACCOUNT');
  async function boundary(h){
   const at={blockHash:h.hash,requireCanonical:true},proofs={};
   const value=(p,k)=>{const v=p.storageProof?.find(x=>x.key===k)?.value;assert(/^0x(?:0|[1-9a-f][0-9a-f]*)$/.test(v),'WITHDRAWAL_PROOF_VALUE');return BigInt(v);};
@@ -30,9 +35,9 @@ export async function acquireWithdrawalReceipt(read,config,local){
   const owner='0x'+ownerValue.toString(16).padStart(40,'0'),keys=accountingSlots(config,owner);
   for(const [k,slots]of Object.entries({posting:[AUTHORITY_SLOTS.nonce],custody:keys.custody,token:keys.token}))proofs[k]=await read('eth_getProof',[config.contracts[k].address,slots,at]);
   proofs.owner=await read('eth_getProof',[owner,[],at]);
-  // accountingSlots preserves wallet, owner, custody order for supported EOA.
-  assert.equal(keys.token.length,3,'WITHDRAWAL_EOA_SCOPE_ONLY');
-  return {header:h,proofs,observed:{owner,epoch:String(value(proofs.registry,AUTHORITY_SLOTS.epoch)),nonce:String(value(proofs.posting,AUTHORITY_SLOTS.nonce)),credit:String(value(proofs.custody,keys.custody[3])),unpaidLiability:String(value(proofs.custody,keys.custody[0])),balances:Object.fromEntries(['wallet','owner','custody'].map((k,i)=>[k,String(value(proofs.token,keys.token[i]))]))}};
+  const accounts={wallet:config.contracts.wallet.address,owner,custody:config.contracts.custody.address};
+  const balances=Object.fromEntries(Object.entries(accounts).map(([label,address])=>[label,String(value(proofs.token,tokenBalanceSlot(address)))]));
+  return {header:h,proofs,observed:{owner,epoch:String(value(proofs.registry,AUTHORITY_SLOTS.epoch)),nonce:String(value(proofs.posting,AUTHORITY_SLOTS.nonce)),credit:String(value(proofs.custody,keys.custody[3])),unpaidLiability:String(value(proofs.custody,keys.custody[0])),balances}};
  }
  const evidence={before:await boundary(parent),after:await boundary(header),rawTransactions,receipts:[located]};
  const selection={config,startHash:parent.hash,endHash:header.hash,transactionHash:original.transactionHash.toLowerCase(),amount:String(decoded[2])};
