@@ -8,8 +8,8 @@ import {transferData} from './ui/account-transfer-plan.mjs';
 const h=n=>'0x'+n.repeat(64),a=n=>'0x'+n.repeat(40);
 const txHash=h('a');
 const plan={chainId:'0x7a69',from:a('1'),to:a('2'),data:'0x1234abcd',value:'0x0',genesisHash:h('3'),blockHash:h('4'),blockNumber:'0xa'};
-const receipt={transactionHash:txHash,from:plan.from,to:plan.to,status:'0x1',blockNumber:'0xb',blockHash:h('5')};
-const transaction={hash:txHash,from:plan.from,to:plan.to,input:plan.data,value:'0x0',chainId:plan.chainId,blockNumber:receipt.blockNumber,blockHash:receipt.blockHash};
+const receipt={transactionHash:txHash,from:plan.from,to:plan.to,status:'0x1',blockNumber:'0xb',blockHash:h('5'),transactionIndex:'0x1'};
+const transaction={hash:txHash,from:plan.from,to:plan.to,input:plan.data,value:'0x0',chainId:plan.chainId,blockNumber:receipt.blockNumber,blockHash:receipt.blockHash,transactionIndex:'0x1'};
 function provider(change){
  const requests=[];
  return {requests,async request(req){
@@ -20,7 +20,7 @@ function provider(change){
   else if(req.method==='eth_getTransactionByHash')value=structuredClone(transaction);
   else if(req.method==='eth_getBlockByNumber'){
    const number=req.params[0];
-   value={number,hash:number==='0x0'?plan.genesisHash:number===plan.blockNumber?plan.blockHash:receipt.blockHash};
+   value={number,hash:number==='0x0'?plan.genesisHash:number===plan.blockNumber?plan.blockHash:receipt.blockHash,transactions:number===receipt.blockNumber?[h('b'),txHash]:[]};
   }else throw Error('Unexpected method '+req.method);
   return change?change(req,value,requests):value;
  }};
@@ -40,6 +40,34 @@ test('null receipt is pending and is never treated as success',async()=>{
 test('matching failed execution returns reverted rather than confirmed',async()=>{
  assert.equal((await verifyWithdrawalReceipt(changed('eth_getTransactionReceipt',r=>({...r,status:'0x0'})),txHash,plan)).status,'reverted');
 });
+for (const [label,index] of [['missing',undefined],['numeric',1],['noncanonical','0x01'],['too large','0x100000000']]) {
+ test('requires a canonical mined transaction position: '+label,async()=>{
+  const p=provider((req,value)=>['eth_getTransactionReceipt','eth_getTransactionByHash'].includes(req.method)?{...value,transactionIndex:index}:value);
+  await assert.rejects(verifyWithdrawalReceipt(p,txHash,plan),/position/);
+ });
+}
+test('requires the mined transaction to agree with the receipt on its position',async()=>{
+ const p=changed('eth_getTransactionByHash',value=>({...value,transactionIndex:'0x0'}));
+ await assert.rejects(verifyWithdrawalReceipt(p,txHash,plan),/position/);
+});
+for (const [label,hashes] of [
+ ['missing',undefined],['out of range',[h('b')]],['different hash in slot',[h('b'),h('c')]],
+ ['different slot',[txHash,h('b')]],['duplicate',[h('b'),txHash,txHash]],
+ ['duplicate siblings',[h('b'),txHash,h('B')]],
+ ['full transaction as sibling',[{hash:h('b')},txHash]],['short sibling hash',['0x12',txHash]],
+ ['sparse transaction list',[,txHash]],['sparse selected slot',[h('b'),,h('c')]]
+]) {
+ test('requires membership for both receipt outcomes: '+label,async()=>{
+  for (const status of ['0x0','0x1']) {
+   const p=provider((req,value)=>{
+    if(req.method==='eth_getTransactionReceipt')return {...value,status};
+    if(req.method==='eth_getBlockByNumber'&&req.params[0]===receipt.blockNumber)return {...value,transactions:hashes};
+    return value;
+   });
+   await assert.rejects(verifyWithdrawalReceipt(p,txHash,plan),/canonical block/);
+  }
+ });
+}
 for(const [field,value]of [['transactionHash',h('6')],['from',a('6')],['to',a('6')],['status','0x2'],['status','0x01'],['status',1],['blockHash','0x55'],['blockNumber','0x0b'],['blockNumber','0x9']]){
  test('rejects receipt '+field+' '+value,async()=>assert.rejects(verifyWithdrawalReceipt(changed('eth_getTransactionReceipt',r=>({...r,[field]:value})),txHash,plan)));
 }
@@ -146,7 +174,7 @@ for(const [name,mutate]of [
  ['foreign registry',r=>r.logs[0].address=a('9')],['old owner',r=>r.logs[0].topics[1]=topicAddress(a('9'))],
  ['different recipient',r=>r.logs[0].topics[2]=topicAddress(a('9'))],['different account',r=>r.logs[0].topics[3]='0x'+('3'.padStart(64,'0'))],
  ['extra topic',r=>r.logs[0].topics.push(h('9'))],['removed event',r=>r.logs[0].removed=true],['data payload',r=>r.logs[0].data='0x00'],
- ['event transaction hash',r=>r.logs[0].transactionHash=h('9')],['event block hash',r=>r.logs[0].blockHash=h('9')],['event block number',r=>r.logs[0].blockNumber='0xc'],
+ ['event transaction hash',r=>r.logs[0].transactionHash=h('9')],['event transaction index',r=>r.logs[0].transactionIndex='0x0'],['event block hash',r=>r.logs[0].blockHash=h('9')],['event block number',r=>r.logs[0].blockNumber='0xc'],
 ])test('transfer success rejects '+name,async()=>{
  await assert.rejects(verifyTransferReceipt(transferProvider((req,v)=>{if(req.method==='eth_getTransactionReceipt')mutate(v);return v;}),txHash,transferPlan));
 });
@@ -199,7 +227,7 @@ for(const [name,mutate]of [
  ['wrong byte length',r=>r.logs[0].data=r.logs[0].data.slice(0,194)+'0'.repeat(64)+r.logs[0].data.slice(258)],
  ['altered raw text',r=>r.logs[0].data=r.logs[0].data.slice(0,258)+'ff'+r.logs[0].data.slice(260)],
  ['nonzero padding',r=>r.logs[0].data=r.logs[0].data.slice(0,-2)+'ff'],['trailing data',r=>r.logs[0].data+='00'],
- ['removed event',r=>r.logs[0].removed=true],['event transaction mismatch',r=>r.logs[0].transactionHash=h('0')],
+ ['removed event',r=>r.logs[0].removed=true],['event transaction mismatch',r=>r.logs[0].transactionHash=h('0')],['event transaction index',r=>r.logs[0].transactionIndex='0x0'],
  ['event block mismatch',r=>r.logs[0].blockHash=h('0')],['event block number mismatch',r=>r.logs[0].blockNumber='0xc'],
  ['same nonce duplicate at different account',r=>r.logs.push({...r.logs[0],topics:[...r.logs[0].topics.slice(0,1),h('0'),...r.logs[0].topics.slice(2)]})]
 ])test('rejects publication '+name,async()=>{

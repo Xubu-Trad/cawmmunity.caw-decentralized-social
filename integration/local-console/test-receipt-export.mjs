@@ -16,9 +16,9 @@ const provider={async request(q){
  if(q.method==='eth_chainId')return mode==='wrong chain'?'0x1':'0x7a69';
  if(q.method==='eth_accounts')return [mode==='wrong account'?'0x'+'99'.repeat(20):state.signer];
  const current=mode==='moved'?'0x'+'78'.repeat(32):block;
- if(q.method==='eth_getBlockByNumber')return q.params[0]==='0x0'?{hash:state.genesisHash}:q.params[0]===plan.blockNumber?{hash:mode==='orphaned anchor'?'0x'+'99'.repeat(32):plan.blockHash}:{hash:current,number:'0x20'};
- if(q.method==='eth_getTransactionReceipt')return mode==='missing'?null:{transactionHash:mode==='bad receipt'?'0x'+'99'.repeat(32):tx,from:plan.from,to:plan.to,status:mode==='reverted'?'0x0':'0x1',blockHash:current,blockNumber:'0x20'};
- if(q.method==='eth_getTransactionByHash')return {hash:tx,from:plan.from,to:plan.to,input:plan.data,value:plan.value,nonce:plan.nonce,chainId:plan.chainId,blockHash:current,blockNumber:'0x20'};
+ if(q.method==='eth_getBlockByNumber')return q.params[0]==='0x0'?{hash:state.genesisHash}:q.params[0]===plan.blockNumber?{hash:mode==='orphaned anchor'?'0x'+'99'.repeat(32):plan.blockHash}:{hash:current,number:'0x20',transactions:[tx]};
+ if(q.method==='eth_getTransactionReceipt')return mode==='missing'?null:{transactionHash:mode==='bad receipt'?'0x'+'99'.repeat(32):tx,from:plan.from,to:plan.to,status:mode==='reverted'?'0x0':'0x1',blockHash:current,blockNumber:'0x20',transactionIndex:'0x0'};
+ if(q.method==='eth_getTransactionByHash')return {hash:tx,from:plan.from,to:plan.to,input:plan.data,value:plan.value,nonce:plan.nonce,chainId:plan.chainId,blockHash:current,blockNumber:'0x20',transactionIndex:'0x0'};
  if(q.method==='eth_sendTransaction')sent++;
  throw Error('Unexpected method '+q.method);
 }};

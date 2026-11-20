@@ -9,11 +9,11 @@ const server=http.createServer(async(req,res)=>{
    const parts=[];for await(const p of req)parts.push(p);const q=JSON.parse(Buffer.concat(parts));let value;const liveReceiptHash=receiptMode==='moved'?'0x'+'78'.repeat(32):receiptHash;if(receiptMode==='offline')throw Error('Provider unavailable');
    if(q.method==='eth_chainId')value='0x7a69';
    else if(['eth_accounts','eth_requestAccounts'].includes(q.method))value=[s.signer];
-   else if(q.method==='eth_getBlockByNumber')value=q.params[0]==='0x0'?{hash:s.genesisHash}:q.params[0]==='0x20'?{hash:liveReceiptHash,number:'0x20'}:{hash:s.blockHash,number:s.blockNumber};
+   else if(q.method==='eth_getBlockByNumber')value=q.params[0]==='0x0'?{hash:s.genesisHash}:q.params[0]==='0x20'?{hash:liveReceiptHash,number:'0x20',transactions:[txHash]}:{hash:s.blockHash,number:s.blockNumber};
    else if(q.method==='eth_getTransactionCount')value='0x0';
    else if(q.method==='eth_sendTransaction'){sent++;txRequest=q.params[0];value=txHash;}
-   else if(q.method==='eth_getTransactionByHash')value={hash:txHash,from:txRequest.from,to:txRequest.to,input:txRequest.data,value:txRequest.value,nonce:txRequest.nonce,chainId:'0x7a69',blockHash:liveReceiptHash,blockNumber:'0x20'};
-   else if(q.method==='eth_getTransactionReceipt')value=receiptMode==='pending'?null:{transactionHash:receiptMode==='mismatch'?'0x'+'99'.repeat(32):txHash,from:txRequest.from,to:txRequest.to,status:receiptMode==='reverted'?'0x0':'0x1',blockHash:liveReceiptHash,blockNumber:'0x20',logs:[]};
+   else if(q.method==='eth_getTransactionByHash')value={hash:txHash,from:txRequest.from,to:txRequest.to,input:txRequest.data,value:txRequest.value,nonce:txRequest.nonce,chainId:'0x7a69',blockHash:liveReceiptHash,blockNumber:'0x20',transactionIndex:'0x0'};
+   else if(q.method==='eth_getTransactionReceipt')value=receiptMode==='pending'?null:{transactionHash:receiptMode==='mismatch'?'0x'+'99'.repeat(32):txHash,from:txRequest.from,to:txRequest.to,status:receiptMode==='reverted'?'0x0':'0x1',blockHash:liveReceiptHash,blockNumber:'0x20',transactionIndex:'0x0',logs:[]};
    else throw Error('Unexpected wallet method '+q.method);
    res.setHeader('Content-Type','application/json');res.end(JSON.stringify(value));return;
   }

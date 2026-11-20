@@ -33,9 +33,11 @@ The destination is a system others can reproduce and operate without Xubu's acco
 
 ## where the build stands
 
-updated November 18, 2026. **this is unfinished research software. there is no production-ready community.CAW network, and the local experiments use mock tokens.**
+updated November 19, 2026. **this is unfinished research software. there is no production-ready community.CAW network, and the local experiments use mock tokens.**
 
 we are building something another person can inspect, reproduce and carry forward. the local execution console can already submit signed posts, transfer an experimental account and withdraw its credited mock tokens on a disposable chain. the original alpha interface remains a simulation. the console does real local execution, but its posts do not yet implement the manifesto's CAW payment and settlement rules.
+
+before the console reports a mined action as confirmed or reverted, it now checks the transaction’s place in the block. the receipt and the transaction must give the same position, and the selected node must list that hash there exactly once. a saved receipt goes through the same check when you ask the console to recheck it. this checks the local node’s answers for consistency. public-chain verification still needs an independently trusted block history.
 
 after the console verifies a withdrawal, you can download the evidence and close the console. another builder can use the offline reader to check who signed, how much credit left custody and how much reached the recipient. the reader asks for the expected block hashes and deployment details separately. that gives the reviewer control over which local history they accept. [download and replay instructions](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/blob/research/constructor-lifecycle-20261108/docs/WITHDRAWAL_PROOF_EXPORT.md).
 

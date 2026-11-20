@@ -31,6 +31,7 @@ function verifyTransferEvent(receipt,plan){
  if(transfers.length!==1)throw Error('Transfer receipt must contain exactly one account 2 handoff.');
  const log=transfers[0];
  if(log.topics.length!==4||!same(log.topics[1],addressTopic(plan.owner))||!same(log.topics[2],addressTopic(plan.recipient))||log.data!=='0x'||log.removed===true||
+    (log.transactionIndex!==undefined&&!equalQuantity(log.transactionIndex,receipt.transactionIndex))||
     (log.transactionHash!==undefined&&!same(log.transactionHash,receipt.transactionHash))||(log.blockHash!==undefined&&!same(log.blockHash,receipt.blockHash))||(log.blockNumber!==undefined&&!equalQuantity(log.blockNumber,receipt.blockNumber)))throw Error('Registry transfer event does not match the reviewed handoff.');
 }
 const uintWord=n=>BigInt(n).toString(16).padStart(64,'0');
@@ -46,10 +47,34 @@ function verifyPostEvent(receipt,plan){
  // author, hash, bytes offset=96, byte length, exact bytes and zero padding.
  const expected='0x'+plan.owner.slice(2).toLowerCase().padStart(64,'0')+encoded.textHash.slice(2)+uintWord(96)+uintWord(encoded.byteLength)+encoded.bytesHex.slice(2).padEnd(Math.ceil(encoded.byteLength/32)*64,'0');
  if(log.topics.length!==4||!same(log.topics[1],ACCOUNT_TOPIC)||!same(log.topics[2],'0x'+uintWord(plan.epoch))||!same(log.data,expected)||log.removed===true||
+    (log.transactionIndex!==undefined&&!equalQuantity(log.transactionIndex,receipt.transactionIndex))||
     (log.transactionHash!==undefined&&!same(log.transactionHash,receipt.transactionHash))||(log.blockHash!==undefined&&!same(log.blockHash,receipt.blockHash))||(log.blockNumber!==undefined&&!equalQuantity(log.blockNumber,receipt.blockNumber)))throw Error('Publication event does not match the reviewed author, text and nonce.');
 }
 function matchesTransaction(transaction,txHash,plan){
  return transaction&&typeof transaction==='object'&&same(transaction.hash,txHash)&&same(transaction.from,plan.from)&&same(transaction.to,plan.to)&&same(transaction.input,plan.data)&&equalQuantity(transaction.value,plan.value)&&(transaction.chainId===undefined||equalQuantity(transaction.chainId,plan.chainId))&&(!Object.hasOwn(plan,'nonce')||(isNonce(transaction.nonce)&&equalQuantity(transaction.nonce,plan.nonce)));
+}
+
+function verifyBlockTransaction(block, receipt, transaction, txHash) {
+    const index = receipt.transactionIndex;
+    // A JSON array index fits in eight hex digits. Check that before conversion.
+    if (!isQuantity(index) || index.length > 10 ||
+        !isQuantity(transaction.transactionIndex) || !same(index, transaction.transactionIndex)) {
+        throw Error('Receipt and mined transaction must agree on their position in the block.');
+    }
+    const position = Number(index);
+    const hashes = block.transactions;
+    if (!Array.isArray(hashes) || position >= hashes.length || !Object.hasOwn(hashes,position) || !same(hashes[position], txHash)) {
+        throw Error('The canonical block does not identify the transaction at one matching position.');
+    }
+    const seen = new Set();
+    for (let i = 0; i < hashes.length; i++) {
+        const candidate = hashes[i];
+        if (!Object.hasOwn(hashes,i) || typeof candidate !== 'string' || !hash.test(candidate) ||
+            seen.has(candidate.toLowerCase())) {
+            throw Error('The canonical block has an inconsistent list of transaction hashes.');
+        }
+        seen.add(candidate.toLowerCase());
+    }
 }
 
 // An explicitly supplied hash may recover the submitted transaction identity.
@@ -76,6 +101,7 @@ export async function verifyWithdrawalReceipt(provider,txHash,plan){
  await verifyWalletProviderContext(provider,plan);
  const block=await provider.request({method:'eth_getBlockByNumber',params:[receipt.blockNumber,false]});
  if(!block||!same(block.hash,receipt.blockHash)||!equalQuantity(block.number,receipt.blockNumber))throw Error('Withdrawal receipt is not in the selected canonical local block.');
+ verifyBlockTransaction(block,receipt,transaction,txHash);
  if(plan.action==='transfer'&&receipt.status==='0x1')verifyTransferEvent(receipt,plan);
  if(plan.action==='post'&&receipt.status==='0x1')verifyPostEvent(receipt,plan);
  return {status:receipt.status==='0x1'?'confirmed':'reverted',blockNumber:receipt.blockNumber,blockHash:receipt.blockHash};
