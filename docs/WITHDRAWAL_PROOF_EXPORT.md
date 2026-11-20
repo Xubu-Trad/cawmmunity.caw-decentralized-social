@@ -1,6 +1,6 @@
 # Check a console withdrawal offline
 
-The local console can save the signed transaction, receipt, two adjacent local block headers, and the proofs for the owner, custody credit and token balances on either side of a withdrawal. A reviewer can check the file with the console and node stopped. This release covers a regular wallet withdrawing mock tokens in a block containing one transaction.
+The local console can save the signed transaction, receipt, two adjacent local block headers, and the proofs for the owner, custody credit and token balances on either side of a withdrawal. A reviewer can check the file with the console and node stopped. This release covers a regular wallet or the fixed immutable-controller research wallet withdrawing mock tokens in a block containing one transaction.
 
 ## In the console
 
@@ -17,7 +17,7 @@ node integration/local-console/verify-withdrawal-package.mjs withdrawal-proofs.j
 
 Choose the selection separately. For your own run, record the expected transaction hash and amount, its block hash and the parent block hash from your selected local history, and the deployment's controller plus the addresses and runtime code hashes of the registry, posting, custody, token and wallet contracts. A reviewer who simply copies the selection out of the download accepts the exporter's choice of chain and contracts. [Example selection for the preserved fixture](../evidence/console-withdrawal-20261116/withdrawal-selection.json).
 
-Exit 0 with `LOCAL_WITHDRAWAL_STATE_EFFECTS_VERIFIED` means the signature, inclusion, receipt and balance changes satisfy the existing reader for that selection. A different selected block or missing proof causes a nonzero exit. The checks establish consistency with the selected local headers. Public-chain finality, execution replay, mixed blocks and contract-wallet withdrawals require separate evidence.
+Exit 0 with `LOCAL_WITHDRAWAL_STATE_EFFECTS_VERIFIED` means the signature, inclusion, receipt and balance changes satisfy the existing reader for that selection. A different selected block or missing proof causes a nonzero exit. The checks establish consistency with the selected local headers. Public-chain finality, execution replay, mixed blocks and other contract wallets require separate evidence.
 
 ## Repeat the controls
 
@@ -60,3 +60,22 @@ python integration/local-console/reproduce-withdrawal-peer.py --geth /path/to/ge
 The helper computes an empty Shanghai block 15 from the archived block 14 with ethers. Its timestamp is the parent's timestamp plus one second. It writes the hash before starting either node. Only the source receives execution payloads. The receiver starts from genesis with its own database, initially has no checkpoint block, and receives a head hash and one peer. After syncing it supplies headers 13–15, the signed transaction, receipt and five account proofs on each side of the withdrawal. The offline reader checks them against the original selection, including the amount of two mock units. The output directory retains the checkpoint, headers, receiver proofs and result.
 
 The first attempt timed out with both nodes limited to one peer slot. Allowing four slots connected one peer. Both successful runs returned the same header-file digest. The later run also reacquired the transaction, receipt and state proofs. Both nodes used the same Geth version on one host. This experiment creates a fresh descendant of the archived withdrawal. An independently operated historical checkpoint and public-chain finality remain open. [Compact result](../evidence/withdrawal-peer-checkpoint-20261119/result.json)
+
+## Verify a withdrawal made through the fixture contract wallet
+
+In the recorded transaction, the controller signed the wallet’s `execute` call. The wallet called custody to withdraw two mock units for account 2 at epoch 1. The token balance of the wallet rose from 0 to 2, custody fell from 10 to 8, and the account credit fell from 2 to 0. The verifier checks the signer, the exact outer and inner calls, the committed withdrawal event and the balances at both selected block hashes.
+
+With the console dependencies installed, repeat the offline verification and substitution checks from the repository root:
+
+```sh
+node integration/local-console/verify-withdrawal-package.mjs evidence/contract-wallet-withdrawal-20261119/wallet-proofs.json evidence/contract-wallet-withdrawal-20261119/wallet-selection.json
+node integration/local-console/test-fixture-wallet-withdrawal.mjs
+```
+
+The second command recompiles the fixture and inserts its controller at the compiler-reported immutable positions. Its runtime hash must match the hash proven for the wallet. The seven negative controls cover substituted authority, receipt and accounting evidence. To make a fresh capture with the same Geth release used for the two-node run, supply a new output directory:
+
+```sh
+python integration/local-console/reproduce-wallet-withdrawal.py --geth /path/to/geth --output ./wallet-withdrawal-run
+```
+
+This replays the preserved prefix through block 12 in a new local database and signs a withdrawal using the published disposable fixture account. It produces an alternative local block 13 before the original ownership handoff. Two runs produced proof-package SHA-256 `a55975a515af352331977e2eda57b9528de0b8d3243a04c180bbef4d5122600d`. The bundled selection reproduces this fixture. For a different history, record your own selection independently. Other wallet runtimes, mixed-transaction blocks and public-chain finality remain outside scope.
