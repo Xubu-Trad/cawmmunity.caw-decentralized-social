@@ -1,0 +1,27 @@
+{
+  "checkpoint": {
+    "number": "0xf",
+    "hash": "0x1cf6a260bf227413811acceaeb412a9b78a697fe017a551cae1cadd7152f0798",
+    "parentHash": "0xb00f8e279e6e4cd9c3fd221d5a4904e5147080371f143833ddca26e31df8d76b",
+    "source": "precomputed deterministic local continuation using ethers RLP and Keccak"
+  },
+  "receiverInitialHeight": 0,
+  "receiverInitiallyHadCheckpoint": false,
+  "receiverSyncedHeight": 15,
+  "receiverPeerCount": 1,
+  "withdrawalBlockHash": "0xb00f8e279e6e4cd9c3fd221d5a4904e5147080371f143833ddca26e31df8d76b",
+  "withdrawalTransaction": "0xee94c8f5d9eb70d7a8743d7fb9523e8365e8e569cd390cdfad470272817e66e6",
+  "headersSha256": "3ddd641b670fa550baf2182bce59492ca118a0c48c29926837d4853268fff2b9",
+  "verifier": {
+    "hash": "0x1cf6a260bf227413811acceaeb412a9b78a697fe017a551cae1cadd7152f0798",
+    "headerCount": 3,
+    "withdrawalAncestryVerified": true,
+    "finalityVerified": false
+  },
+  "receiverAccountProofs": 10,
+  "receiverSignedTransactions": 1,
+  "receiverReceipts": 1,
+  "gethCommit": "1df30b18d9ed35ee9d28ffd4648442c2204554ad",
+  "independentlyOperatedCheckpoint": false,
+  "historicalDescendantVerified": false
+}

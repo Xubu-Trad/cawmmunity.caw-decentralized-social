@@ -33,6 +33,8 @@ The destination is a system others can reproduce and operate without Xubu's acco
 
 ## where the build stands
 
+we verified the block 14 withdrawal again from a fresh node. it started at genesis, synced from a peer and supplied the signed transaction, receipt and ten account proofs. its headers linked the withdrawal to a new block 15 checkpoint calculated before either node started. both nodes ran on one machine. a checkpoint kept by another operator from the original run is still missing. [reviewer workflow](docs/WITHDRAWAL_PROOF_EXPORT.md#repeat-the-two-node-run)
+
 updated November 18, 2026. **this is unfinished research software. there is no production-ready community.CAW network, and the local experiments use mock tokens.**
 
 we are building something another person can inspect, reproduce and carry forward. the local execution console can already submit signed posts, transfer an experimental account and withdraw its credited mock tokens on a disposable chain. the original alpha interface remains a simulation. the console does real local execution, but its posts do not yet implement the manifesto's CAW payment and settlement rules.

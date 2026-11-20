@@ -1,3 +1,7 @@
+## checkpoint collection — November 19, 2026
+
+the two-node run now passes. a fresh receiver synced from genesis to block 15, then supplied the headers and proofs for the block 14 withdrawal. an ethers calculation fixed the local continuation hash before node startup. the outstanding checkpoint question is historical provenance: a separately operated source with a dated descendant of the original block 14 could establish that additional link. another operator can also repeat the published local procedure and report the client version, checkpoint source, header digest and result. [reviewer workflow](WITHDRAWAL_PROOF_EXPORT.md#repeat-the-two-node-run)
+
 ## current application priority — November 18, 2026
 
 the console now exports the evidence for a verified regular-wallet withdrawal. the offline reader checks it against an independently supplied selection of local headers, contract identities, transaction and amount. the saved receipt export still records what the browser observed. both can be examined when a saved amount disagrees with signed history. [operator and reviewer instructions](WITHDRAWAL_PROOF_EXPORT.md).
