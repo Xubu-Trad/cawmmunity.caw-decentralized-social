@@ -65,9 +65,23 @@ try{
  const recovered=await acquireVerifiedReceipt(rpc,config,exportText);assert.equal(recovered.status,good.status);checks.push('retry recovers without resubmission');
  class Element{constructor(){this.textContent='';this.disabled=false;this.listeners={};}addEventListener(n,f){this.listeners[n]=f;}}
  const nodes=Object.fromEntries(['verify-receipt-history','export-withdrawal-proofs','receipt-history-status','refresh','confirm','recover','check-receipt','recheck-outcome'].map(k=>[k,new Element()]));let payload=good,hold=null;
- const panel=mountReceiptHistory({getElementById:k=>nodes[k]},async()=>exportText,async()=>{if(hold)await hold;return new Response(JSON.stringify(payload));},new Element());
+ await request();
+ const panel=mountReceiptHistory({getElementById:k=>nodes[k]},async()=>exportText,async(url,options)=>{if(hold)await hold;
+  if(url==='/api/replay-withdrawal-export')return fetch('http://127.0.0.1:'+app.server.address().port+url,options);
+  return new Response(JSON.stringify(payload));},new Element());
  const label=()=>nodes['receipt-history-status'].textContent;
  await panel.verify();assert.match(label(),/Custody, credit and recipient token changes verified/);checks.push('panel displays verified accounting');
+ for(const [name,mutate] of [
+  ['changed credit',p=>p.evidence.after.observed.credit='999'],
+  ['missing owner proof',p=>delete p.evidence.before.proofs.owner],
+  ['changed receipt status',p=>p.evidence.receipts[0].status='0x0']
+ ]){
+  payload=structuredClone(good);mutate(payload.proofPackage);
+  await panel.verify();
+  assert.match(label(),/^Not accepted:/);
+  assert.equal(nodes['export-withdrawal-proofs'].disabled,true);
+  checks.push('local server rejects exported package with '+name);
+ }
  for(const [name,mutate]of [['missing accounting',v=>v.accountingEffectsVerified=false],['public finality',v=>v.publicChainAuthenticated=true],['wrong export',v=>v.exportSha256='0'.repeat(64)],['missing ownership',v=>delete v.ownershipVerified]]){payload=structuredClone(good);mutate(payload);await panel.verify();assert.match(label(),/Not accepted/);checks.push('panel rejects '+name);}
  payload={...good,status:'INCLUDED_WITHDRAWAL_WITH_LOCAL_RECORD_DISCREPANCIES',discrepancies:['plan.amount']};await panel.verify();assert.match(label(),/saved fields disagree/);checks.push('panel retains mismatch');
  payload=good;let release;hold=new Promise(r=>release=r);const pending=panel.verify();await new Promise(r=>setImmediate(r));panel.clear();release();await pending;assert.match(label(),/^Not checked/);checks.push('late verification cannot restore cleared result');

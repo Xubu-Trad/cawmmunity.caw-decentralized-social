@@ -1,6 +1,8 @@
 ## transfer proof review — November 20, 2026
 
-Repeat the retained transfer check with `node integration/local-console/test-transfer-proof-completeness.mjs evidence/console-transfer-receipt-20261115`. Check signed inclusion, genuine absence, altered receipt rejection and the explicit error for incomplete ownership evidence. The next open review item is to check withdrawal proof contents before the browser labels an export verified.
+Repeat the retained transfer check with `node integration/local-console/test-transfer-proof-completeness.mjs evidence/console-transfer-receipt-20261115`. Check signed inclusion, genuine absence, altered receipt rejection and the explicit error for incomplete ownership evidence.
+
+For withdrawal exports, use a disposable copy of `evidence/console-withdrawal-20261116` as the argument to `integration/local-console/test-console-withdrawal.mjs`. Run `integration/local-console/test-receipt-history-browser.mjs` with the same directory and a new output directory, using the documented Chromium environment. The server retains the selection from the last receipt review, replays the candidate export and returns its SHA-256. The browser checks that hash against the exact bytes it offers for download. Repeat with a changed credit, missing owner proof and changed receipt status. Each must clear the verified label and disable download. External reproduction of this revision remains open.
 
 ## current application priority — November 18, 2026
 

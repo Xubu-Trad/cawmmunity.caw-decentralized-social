@@ -61,6 +61,13 @@ export function mountReceiptHistory(document,getExport,fetcher=fetch,eventSource
    if(token!==generation)return;
    if(kind==='WITHDRAWAL'){
     const packageText=withdrawalProofText(v);
+    const replay=await fetcher('/api/replay-withdrawal-export',{method:'POST',headers:{'Content-Type':'application/json'},
+     body:JSON.stringify({exportSha256:envelope.sha256,packageText}),cache:'no-store',signal:AbortSignal.any([controller.signal,AbortSignal.timeout(35000)])});
+    if(!replay.ok)throw Error('Withdrawal export failed proof replay. Verify again.');
+    const verified=await readVerification(replay,1024);
+    const bytes=new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(packageText)));
+    const digest=Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join('');
+    if(verified.packageSha256!==digest)throw Error('Withdrawal export bytes differ from the replayed package.');
     const current=await getExport();
     if(token!==generation)return;
     if(current!==text)throw Error('The saved receipt or its rechecks changed. Verify again.');

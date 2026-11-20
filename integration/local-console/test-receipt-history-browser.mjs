@@ -1,6 +1,6 @@
 import fs from 'node:fs/promises';import path from 'node:path';import http from 'node:http';import {spawn} from 'node:child_process';import assert from 'node:assert/strict';
 import {fixturePlan} from './test-accounting-review-fixture.mjs';
-import {makeWithdrawalProofPackage} from './withdrawal-proof-package.mjs';
+import {makeWithdrawalProofPackage,verifyWithdrawalDownload} from './withdrawal-proof-package.mjs';
 const dir=path.resolve(process.argv[2]),out=process.argv[3]?path.resolve(process.argv[3]):path.join(dir,'receipt-panel-browser');await fs.mkdir(out);const fixture=JSON.parse(await fs.readFile(path.join(dir,'accounting-withdrawal.json'))),s=fixture.before;
 const retained=new URL('../../evidence/console-withdrawal-20261116/',import.meta.url);
 const readRetained=async name=>JSON.parse(await fs.readFile(new URL(name,retained)));
@@ -22,6 +22,12 @@ const server=http.createServer(async(req,res)=>{
    else if(q.method==='eth_getTransactionReceipt')value=receiptMode==='pending'?null:{transactionHash:receiptMode==='mismatch'?'0x'+'99'.repeat(32):txHash,from:txRequest.from,to:txRequest.to,status:receiptMode==='reverted'?'0x0':'0x1',blockHash:liveReceiptHash,blockNumber:'0x20',logs:[]};
    else throw Error('Unexpected wallet method '+q.method);
    res.setHeader('Content-Type','application/json');res.end(JSON.stringify(value));return;
+  }
+  if(req.url==='/api/replay-withdrawal-export'){
+   const parts=[];for await(const part of req)parts.push(part);
+   const body=JSON.parse(Buffer.concat(parts));
+   assert.equal(body.exportSha256,record.sha256);
+   res.end(JSON.stringify(verifyWithdrawalDownload(body.packageText,selection)));return;
   }
   if(req.url==='/api/verified-receipt'){
    verificationRequests++;res.setHeader('Content-Type','application/json');
@@ -111,6 +117,9 @@ try{
 
  for(const [name,mutate] of [
   ['withdrawal absent despite accounting claim',v=>{v.status='NOT_FOUND_IN_SELECTED_VERIFIED_WITHDRAWAL_HISTORY';v.transactionIncluded=false;}],
+  ['altered custody credit',v=>v.proofPackage.evidence.after.observed.credit='999'],
+  ['missing owner proof',v=>delete v.proofPackage.evidence.before.proofs.owner],
+  ['altered receipt status',v=>v.proofPackage.evidence.receipts[0].status='0x0'],
   ['missing package',v=>delete v.proofPackage],
   ['mismatched selected block',v=>v.proofPackage.selection.endHash=selection.startHash],
   ['missing receipt',v=>v.proofPackage.evidence.receipts=[]],

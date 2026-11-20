@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import assert from 'node:assert/strict';
 import { Buffer } from 'node:buffer';
 import { isDeepStrictEqual } from 'node:util';
@@ -84,4 +85,11 @@ export function verifyWithdrawalProofPackage(bundle, independentSelection) {
   const expected = makeWithdrawalProofPackage(bundle.evidence, selected);
   assert(isDeepStrictEqual(bundle, expected), 'WITHDRAWAL_PACKAGE_FIELDS');
   return verifyWithdrawalEffects(expected.evidence, selected);
+}
+
+// Replay the exact serialized candidate against the server's retained selection.
+export function verifyWithdrawalDownload(packageText, selection) {
+  assert(typeof packageText === 'string' && Buffer.byteLength(packageText) <= MAX_WITHDRAWAL_PACKAGE_BYTES, 'WITHDRAWAL_PACKAGE_SIZE');
+  verifyWithdrawalProofPackage(JSON.parse(packageText), selection);
+  return { packageSha256: createHash('sha256').update(packageText).digest('hex') };
 }
