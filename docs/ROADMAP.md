@@ -1,5 +1,13 @@
 ## Independent withdrawal review · November 21, 2026
 
+From a clean Linux checkout of the PR commit, with Git, npm, Node 20.20.2 and Chromium installed, run the following as an ordinary user. Set `CHROME_BIN` to your browser executable if it is outside PATH. The last argument must be a new directory.
+
+```bash
+bash integration/local-console/reproduce-browser-download.sh "$HOME/caw-withdrawal-review"
+```
+
+The command extracts the selected commit, installs the locked dependencies, runs Chromium and checks the file actually saved to disk against the independent R-09 reference (28,866 bytes, SHA-256 `debeefdb655c13669044a69f732e67d33e45bfdefcdb53320e5a1a48f731ceed`). It then replays that file against the retained transaction selection. The output includes the commit, run log, browser result and offline result. Preserve the exit code and any failure record. This exercises a retained local fixture. Independent native-browser confirmation still requires a separate operator’s run.
+
 At `9c64ecfc` the reviewer confirmed 43 malformed ownership-proof rejections, replayed the exported 28,866 bytes offline, and confirmed that three damaged packages were rejected. Chromium could not start in the review environment because its socket call returned EPERM. The native download remains independently unverified. The browser test now writes the startup stage, diagnostic and zero completed checks to `result.json` when startup is blocked. Keep that file with the nonzero process exit when reporting a blocked run. [Independent review](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/19#issuecomment-7041539007)
 
 ## transfer proof review — November 20, 2026
