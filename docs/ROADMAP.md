@@ -1,3 +1,7 @@
+## paid-post signing preview — November 21, 2026
+
+the offline client builds the C-007 signing request from the exact post text, account epoch, nonce, validity window and stake root. two retained settlements reproduce the expected controller signatures. next, acquire those inputs from one selected block and recheck them immediately before a wallet request. independent withdrawal replay on PR #26 remains pending. [review workflow](PAID_POST_PREVIEW.md)
+
 ## mixed-block withdrawal inclusion — November 21, 2026
 
 a fresh local block includes a signed transfer followed by a contract-wallet withdrawal. the offline reader locates the withdrawal by its hash and checks its controller, call and custody event against the selected header. a separate engine now replays the signed history from genesis and measures the selected withdrawal. custody moves from 10 to 8 mock tokens, the recipient wallet from 0 to 2 and account 2’s credit from 2 to 0. all 13 block state roots match geth. [repeat the mixed-block check](WITHDRAWAL_PROOF_EXPORT.md#mixed-block-withdrawal)
