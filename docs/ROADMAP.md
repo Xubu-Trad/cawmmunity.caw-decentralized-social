@@ -1,8 +1,8 @@
 ## mixed-block withdrawal inclusion — November 21, 2026
 
-a fresh local block includes a signed transfer followed by a contract-wallet withdrawal. the offline reader locates the withdrawal by its hash and checks its controller, call and custody event against the selected header. transaction-specific balance changes still need separate evidence. [repeat the mixed-block check](WITHDRAWAL_PROOF_EXPORT.md#mixed-block-withdrawal)
+a fresh local block includes a signed transfer followed by a contract-wallet withdrawal. the offline reader locates the withdrawal by its hash and checks its controller, call and custody event against the selected header. a separate engine now replays the signed history from genesis and measures the selected withdrawal. custody moves from 10 to 8 mock tokens, the recipient wallet from 0 to 2 and account 2’s credit from 2 to 0. all 13 block state roots match geth. [repeat the mixed-block check](WITHDRAWAL_PROOF_EXPORT.md#mixed-block-withdrawal)
 
-next, establish the state immediately before and after the selected transaction before attributing accounting effects in a mixed block. independent browser download reproduction remains pending.
+next, reproduce the transaction-level replay on a separately operated machine. independent browser download reproduction remains pending.
 
 ## contract-wallet withdrawals — November 19, 2026
 

@@ -1,0 +1,49 @@
+{
+  "blockHash": "0x60b79172aadb1eb1f380b0818035a4af39aec427f359bdd7a62840e7a40f6f26",
+  "transactionHash": "0xd15aa2b2f3e0dc7935eb939dd3c15938d404f7393baea64ed945d19ea6e6f698",
+  "transactionIndex": 1,
+  "recipient": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+  "opening": {
+    "root": "0xd65cf5f7b25d15c17d9e7be3781f6c5ab7a501e74e5f2ff0e1b24149f2ce56a1",
+    "values": {
+      "unpaid": "10",
+      "unallocated": "8",
+      "credited": "2",
+      "credit2": "2",
+      "credit3": "0",
+      "credit4": "0",
+      "custodyBalance": "10",
+      "walletBalance": "0"
+    }
+  },
+  "before": {
+    "root": "0x91b26b9c2edd3cbcb9ec224fb4a06f8560d9e07e991d53ee40c4072388c33dfc",
+    "values": {
+      "unpaid": "10",
+      "unallocated": "8",
+      "credited": "2",
+      "credit2": "2",
+      "credit3": "0",
+      "credit4": "0",
+      "custodyBalance": "10",
+      "walletBalance": "0"
+    }
+  },
+  "after": {
+    "root": "0x79ec205a15c42f819bec2a51b7c7434a15c2d1d974e67d9452d59609d84f178b",
+    "values": {
+      "unpaid": "8",
+      "unallocated": "8",
+      "credited": "0",
+      "credit2": "0",
+      "credit3": "0",
+      "credit4": "0",
+      "custodyBalance": "8",
+      "walletBalance": "2"
+    }
+  },
+  "matchingPostGenesisRoots": 13,
+  "accountingEffectsVerified": true,
+  "independentOperator": false,
+  "publicChainAuthenticated": false
+}
