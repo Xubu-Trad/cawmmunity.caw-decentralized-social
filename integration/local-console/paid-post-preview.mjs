@@ -1,11 +1,12 @@
 import assert from 'node:assert/strict';
 import {id, keccak256, toUtf8Bytes, TypedDataEncoder} from 'ethers';
 import {readJsonFile} from './read-proof-file.mjs';
+import {fixture} from './paid-post-fixture.mjs';
 import {pathToFileURL} from 'node:url';
 
 // This domain belongs exclusively to the retained C-007 synthetic lifecycle.
 const domain = Object.freeze({name:'CAW C007 Synthetic Action', version:'1', chainId:31337,
-  verifyingContract:'0xbff9228b938b3676578a88b5962abbd2709c9c46'});
+  verifyingContract:fixture.vault});
 const integers = ['accountId','epoch','nonce','validAfter','deadline'];
 const types = {Post:[...integers.map(name => ({name,type:'uint256'})),
   {name:'stakeRoot',type:'bytes32'}, {name:'textHash',type:'bytes32'},

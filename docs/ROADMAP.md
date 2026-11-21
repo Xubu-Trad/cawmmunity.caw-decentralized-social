@@ -1,3 +1,9 @@
+## paid-post state proofs and the developer console — November 21, 2026
+
+the CLI now acquires the account owner, signing controller, epoch, nonce, stake root, credits, stakes and token backing at one selected local block. it reconstructs the saved review and checks it again at the latest observed head. a fresh Geth database replayed 32 signed blocks. the two historical signing digests matched, and the former owner's review failed after the handoff. another operator can now [repeat this check](PAID_POST_PREVIEW.md#repeat-the-live-proof-check).
+
+the browser console has a responsive terminal layout. its server and the paid-post reader now reject ambiguous JSON fields, invalid text encoding and incompatible RPC replies before using a response. the next milestone is to connect this review to a disposable wallet prompt and verify the returned signature before submission. independent browser and mixed-block withdrawal reproduction remain open.
+
 ## paid-post signing preview — November 21, 2026
 
 the offline client builds the C-007 signing request from the exact post text, account epoch, nonce, validity window and stake root. two retained settlements reproduce the expected controller signatures. next, acquire those inputs from one selected block and recheck them immediately before a wallet request. independent withdrawal replay on PR #26 remains pending. [review workflow](PAID_POST_PREVIEW.md)

@@ -33,7 +33,9 @@ The destination is a system others can reproduce and operate without Xubu's acco
 
 ## where the build stands
 
-the local paid-post preview shows the exact text, fee and wallet signing request for the fixed three-account C-007 experiment. it reproduces both recorded signatures across the ownership handoff. [try the preview](docs/PAID_POST_PREVIEW.md).
+a builder can now check a 5,000 mock-token post against a fresh local node before asking a wallet to sign. the reader proves who controls the account, what the payer can spend and how the fee would be split. in a 32-block replay it matched both historical signing requests and rejected the old review after ownership changed. the paid-post reader runs on the command line. [repeat the proof check](docs/PAID_POST_PREVIEW.md#repeat-the-live-proof-check).
+
+the local execution console now puts the account, actions, history and receipts in a keyboard-accessible terminal layout. its server rejects ambiguous requests and malformed node responses before using them in a review. [run the console](docs/LOCAL_EXECUTION_CONSOLE.md).
 
 a fresh local block includes a signed transfer followed by a contract-wallet withdrawal. the offline reader locates the withdrawal by its hash and checks its controller, call and custody event against the selected header. a separate engine now replays the signed history from genesis and measures the selected withdrawal. custody moves from 10 to 8 mock tokens, the recipient wallet from 0 to 2 and account 2’s credit from 2 to 0. all 13 block state roots match geth. [repeat the mixed-block check](docs/WITHDRAWAL_PROOF_EXPORT.md#mixed-block-withdrawal)
 
@@ -41,7 +43,7 @@ we followed a withdrawal through the contract wallet. the controller signed it, 
 
 we verified the block 14 withdrawal again from a fresh node. it started at genesis, synced from a peer and supplied the signed transaction, receipt and ten account proofs. its headers linked the withdrawal to a new block 15 checkpoint calculated before either node started. both nodes ran on one machine. a checkpoint kept by another operator from the original run is still missing. [reviewer workflow](docs/WITHDRAWAL_PROOF_EXPORT.md#repeat-the-two-node-run)
 
-updated November 18, 2026. **this is unfinished research software. there is no production-ready community.CAW network, and the local experiments use mock tokens.**
+updated November 21, 2026. **this is unfinished research software. there is no production-ready community.CAW network, and the local experiments use mock tokens.**
 
 we are building something another person can inspect, reproduce and carry forward. the local execution console can already submit signed posts, transfer an experimental account and withdraw its credited mock tokens on a disposable chain. the original alpha interface remains a simulation. the console does real local execution, but its posts do not yet implement the manifesto's CAW payment and settlement rules.
 
@@ -55,7 +57,7 @@ the experimental application lives on [draft PR #19](https://github.com/Xubu-Tra
 
 ## what comes next
 
-repeat the offline check from a separate installation and extend the console reader to the experimental contract wallet. today the download covers regular-wallet withdrawals in single-transaction blocks. mixed-block attribution, paid-post economics and public operation remain open.
+connect the paid-post recheck to a disposable wallet prompt, verify the returned signature against the reviewed controller and digest, then test submission against the research contract. independent browser and withdrawal reproduction are still open.
 
 ## find your starting point
 

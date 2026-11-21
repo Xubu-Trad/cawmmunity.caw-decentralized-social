@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "genesis": "0x6c383946adbe554271ffb1f227933d44864ce5f9a1633f3a646843a895903a9f",
+  "headNumber": 32,
+  "headHash": "0x8082b6357a2f9883edcbbb8cf18ce483d36c4699aa19699d7ce30ff593295da3",
+  "gethSha256": "45335929e149413c9f680209c87fa14adc5750387da6f5f30b7b2bd24d2d54ea",
+  "independentOperator": false,
+  "publicNetwork": false
+}

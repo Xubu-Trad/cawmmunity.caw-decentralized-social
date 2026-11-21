@@ -1,3 +1,4 @@
+import {createLocalRpc,readJsonBody} from './local-rpc.mjs';
 import {verifyConsoleAccounting,accountingSlots} from './verify-console-accounting.mjs';
 import {verifyConsoleAuthority,AUTHORITY_SLOTS} from './verify-console-authority.mjs';
 import {acquireVerifiedPosts,acquireVerifiedReceipt} from './strict-console-acquisition.mjs';
@@ -10,12 +11,11 @@ const custodyABI=new Interface(['function credits(uint256) view returns(uint256)
 const tokenABI=new Interface(['function balanceOf(address) view returns(uint256)']);
 const addr=x=>getAddress(x).toLowerCase();const hash=x=>{if(!/^0x[0-9a-f]{64}$/.test(x))throw Error('INVALID_HASH');return x;};
 export function createConsole(config){
- const endpoint=new URL(config.rpcUrl);if(endpoint.protocol!=='http:'||endpoint.hostname!=='127.0.0.1'||endpoint.username||endpoint.password||endpoint.search||endpoint.hash)throw Error('LOCAL_RPC_REQUIRED');
+ const rpc=createLocalRpc(config.rpcUrl);
  const genesisHash=hash(config.genesisHash);const names=['wallet','registry','custody','token','posting'];const contracts=Object.fromEntries(names.map(n=>[n,addr(config.contracts[n].address)]));for(const n of names)hash(config.contracts[n].codeHash);
  if(new Set(Object.values(contracts)).size!==5)throw Error('DISTINCT_CONTRACTS_REQUIRED');
  const creation=config.postingDeployment;if(!creation||!/^0x(?:0|[1-9a-f][0-9a-f]*)$/.test(creation.blockNumber))throw Error('POSTING_CREATION_REQUIRED');hash(creation.blockHash);hash(creation.transactionHash);
- const controller=addr(config.controller);let id=0;
- async function rpc(method,params,signal){const rid=++id;const response=await fetch(endpoint,{method:'POST',redirect:'error',headers:{'Content-Type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:rid,method,params}),signal:signal?AbortSignal.any([signal,AbortSignal.timeout(3000)]):AbortSignal.timeout(3000)});if(!response.ok)throw Error('RPC_HTTP');let size=0;const chunks=[];for await(const b of response.body){size+=b.length;if(size>131072)throw Error('RPC_LIMIT');chunks.push(b);}const value=JSON.parse(Buffer.concat(chunks));if(value.jsonrpc!=='2.0'||value.id!==rid||Object.hasOwn(value,'error')||!Object.hasOwn(value,'result'))throw Error('RPC_RESPONSE');return value.result;}
+ const controller=addr(config.controller);
  async function snapshot(){
   if(await rpc('eth_chainId',[])!=='0x7a69')throw Error('WRONG_CHAIN');const genesis=await rpc('eth_getBlockByNumber',['0x0',false]);if(genesis?.hash!==genesisHash)throw Error('WRONG_GENESIS');
   const block=await rpc('eth_getBlockByNumber',['latest',false]);hash(block.hash);const at={blockHash:block.hash,requireCanonical:true};
@@ -78,7 +78,7 @@ export function createConsole(config){
   const acquisition=new AbortController();
   const disconnected=()=>{if(!res.writableEnded)acquisition.abort(Error('HISTORY_CLIENT_DISCONNECTED'));};
   res.on('close',disconnected);
-  try{if(req.method==='GET')return send(200,req.url==='/api/verified-posts'?await acquireVerifiedPosts(rpc,config,acquisition.signal):req.url==='/api/posts'?await posts():await snapshot());if(req.headers['content-type']!=='application/json')return send(415,{error:'JSON_REQUIRED'});let size=0;const parts=[];for await(const chunk of req){size+=chunk.length;if(size>(req.url==='/api/verified-receipt'?220000:12288))throw Error('BODY_LIMIT');parts.push(chunk);}const body=JSON.parse(Buffer.concat(parts));if(req.url==='/api/verified-receipt'){if(!body||Object.keys(body).join(',')!=='exportText'||typeof body.exportText!=='string')throw Error('EXPORT_FIELD_REQUIRED');return send(200,await acquireVerifiedReceipt(rpc,config,body.exportText,acquisition.signal));}const field=req.url==='/api/transfer-plan'?'recipient':req.url==='/api/post-plan'?'text':'amount';if(!body||Object.keys(body).join(',')!==field)throw Error('ONE_FIELD_REQUIRED');return send(200,field==='recipient'?await transferPlan(body.recipient):field==='text'?await postPlan(body.text):await plan(body.amount));}
+  try{if(req.method==='GET')return send(200,req.url==='/api/verified-posts'?await acquireVerifiedPosts(rpc,config,acquisition.signal):req.url==='/api/posts'?await posts():await snapshot());if(req.headers['content-type']!=='application/json')return send(415,{error:'JSON_REQUIRED'});const body=await readJsonBody(req,req.url==='/api/verified-receipt'?220000:12288,'BODY_LIMIT');if(req.url==='/api/verified-receipt'){if(!body||Object.keys(body).join(',')!=='exportText'||typeof body.exportText!=='string')throw Error('EXPORT_FIELD_REQUIRED');return send(200,await acquireVerifiedReceipt(rpc,config,body.exportText,acquisition.signal));}const field=req.url==='/api/transfer-plan'?'recipient':req.url==='/api/post-plan'?'text':'amount';if(!body||Object.keys(body).join(',')!==field)throw Error('ONE_FIELD_REQUIRED');return send(200,field==='recipient'?await transferPlan(body.recipient):field==='text'?await postPlan(body.text):await plan(body.amount));}
   catch(e){if(!res.destroyed)return send(422,{error:e.message});}finally{res.removeListener('close',disconnected);busy=false;}
  });return {server,snapshot,plan,transferPlan,postPlan,posts};
 }
