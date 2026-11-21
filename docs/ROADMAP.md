@@ -1,3 +1,9 @@
+## mixed-block withdrawal inclusion — November 21, 2026
+
+a fresh local block includes a signed transfer followed by a contract-wallet withdrawal. the offline reader locates the withdrawal by its hash and checks its controller, call and custody event against the selected header. transaction-specific balance changes still need separate evidence. [repeat the mixed-block check](WITHDRAWAL_PROOF_EXPORT.md#mixed-block-withdrawal)
+
+next, establish the state immediately before and after the selected transaction before attributing accounting effects in a mixed block. independent browser download reproduction remains pending.
+
 ## contract-wallet withdrawals — November 19, 2026
 
 verified the fixed research wallet’s controller and recipient through the console acquisition and offline reader. two fresh runs using the retained prefix produced byte-identical proofs. independent review of this extension is pending. a reviewer can now replay the published package, rebuild the wallet runtime, and produce a fresh capture. [commands, checks and scope](WITHDRAWAL_PROOF_EXPORT.md#verify-a-withdrawal-made-through-the-fixture-contract-wallet)

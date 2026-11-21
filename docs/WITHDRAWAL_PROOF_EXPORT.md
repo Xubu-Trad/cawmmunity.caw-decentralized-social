@@ -79,3 +79,17 @@ python integration/local-console/reproduce-wallet-withdrawal.py --geth /path/to/
 ```
 
 This replays the preserved prefix through block 12 in a new local database and signs a withdrawal using the published disposable fixture account. It produces an alternative local block 13 before the original ownership handoff. Two runs produced proof-package SHA-256 `a55975a515af352331977e2eda57b9528de0b8d3243a04c180bbef4d5122600d`. The bundled selection reproduces this fixture. For a different history, record your own selection independently. Other wallet runtimes, mixed-transaction blocks and public-chain finality remain outside scope.
+
+## Mixed-block withdrawal
+
+From the repository root, use Node 20.20.2 and install the locked console dependencies. The published fixture is a disposable local chain. Its pins came from the same run.
+
+```sh
+cd integration/local-console
+npm ci
+node test-withdrawal-inclusion.mjs
+fixture=../../evidence/mixed-wallet-withdrawal-20261121
+node check-withdrawal-inclusion.mjs "$fixture/block.json" "$fixture/pins.json"
+```
+
+To mine another batch, run `python3 reproduce-wallet-withdrawal.py --mixed --geth /absolute/path/to/geth --output /fresh/output` using the Geth version and verified binary specified above. Replay its block and pins with the same offline command. For a separately anchored review, supply your own trusted header hash and expected transaction and participants. The fixture's signed sibling occupies index 0 and the selected withdrawal occupies index 1. The reader verifies the transaction and receipt roots, the signature, calldata and the withdrawal event at the matching index. Balance changes attributable to that individual transaction and public-chain provenance remain open.

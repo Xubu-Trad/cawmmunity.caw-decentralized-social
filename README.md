@@ -33,6 +33,8 @@ The destination is a system others can reproduce and operate without Xubu's acco
 
 ## where the build stands
 
+a fresh local block includes a signed transfer followed by a contract-wallet withdrawal. the offline reader locates the withdrawal by its hash and checks its controller, call and custody event against the selected header. transaction-specific balance changes still need separate evidence. [repeat the mixed-block check](docs/WITHDRAWAL_PROOF_EXPORT.md#mixed-block-withdrawal)
+
 we followed a withdrawal through the contract wallet. the controller signed it, and the wallet received two mock tokens. the console and offline reader now check both roles against the signed call, the deployed wallet code, the receipt and the balance changes. two fresh local runs produced the same proof file. [repeat the wallet withdrawal](docs/WITHDRAWAL_PROOF_EXPORT.md#verify-a-withdrawal-made-through-the-fixture-contract-wallet)
 
 we verified the block 14 withdrawal again from a fresh node. it started at genesis, synced from a peer and supplied the signed transaction, receipt and ten account proofs. its headers linked the withdrawal to a new block 15 checkpoint calculated before either node started. both nodes ran on one machine. a checkpoint kept by another operator from the original run is still missing. [reviewer workflow](docs/WITHDRAWAL_PROOF_EXPORT.md#repeat-the-two-node-run)

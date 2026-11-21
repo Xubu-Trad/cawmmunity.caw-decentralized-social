@@ -15,7 +15,10 @@ rpc = peer["rpc"]
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument("--geth", type=Path, required=True)
 parser.add_argument("--output", type=Path, required=True)
+parser.add_argument('--mixed', action='store_true', help='Include a signed sibling before the withdrawal and verify its receipt position')
 args = parser.parse_args()
+count = 2 if args.mixed else 1
+suffix = '-mixed' if args.mixed else ''
 out = args.output.resolve()
 if shutil.disk_usage(out.parent).free < 2 * 1024**3:
     raise RuntimeError("Need 2 GiB free")
@@ -50,7 +53,7 @@ with (out/"geth.log").open("wb") as log:
             answer=rpc(engine,"engine_newPayloadV2",[peer["payload"](header,block["rawTransactions"])],secret)
             if answer["status"]!="VALID" or peer["forkchoice"](engine,header["hash"],secret)!="VALID":
                 raise RuntimeError(f"Fixture block {header['number']} failed verification: {answer}")
-        subprocess.run([node,here/"capture-fixture-wallet-check.mjs","submit",str(http),out],check=True,timeout=30)
+        subprocess.run([node,here/"capture-fixture-wallet-check.mjs","submit"+suffix,str(http),out],check=True,timeout=30)
         header=blocks[12]["block"]
         choice=dict(headBlockHash=header["hash"],safeBlockHash=peer["ZERO"],finalizedBlockHash=peer["ZERO"])
         attrs=dict(timestamp=hex(int(header["timestamp"],16)+1),prevRandao=peer["ZERO"],
@@ -58,15 +61,15 @@ with (out/"geth.log").open("wb") as log:
         job=rpc(engine,"engine_forkchoiceUpdatedV2",[choice,attrs],secret)
         for _ in range(12):
             payload=rpc(engine,"engine_getPayloadV2",[job["payloadId"]],secret)["executionPayload"]
-            if len(payload["transactions"])==1:
+            if len(payload["transactions"])==count:
                 break
             time.sleep(.5)
-        if len(payload["transactions"])!=1:
-            raise RuntimeError("Expected one local wallet transaction")
+        if len(payload["transactions"])!=count:
+            raise RuntimeError(f"Expected {count} local transactions")
         result=rpc(engine,"engine_newPayloadV2",[payload],secret)
         if result["status"]!="VALID" or peer["forkchoice"](engine,payload["blockHash"],secret)!="VALID":
             raise RuntimeError("Wallet block rejected")
-        subprocess.run([node,here/"capture-fixture-wallet-check.mjs","check",str(http),out],check=True,timeout=60)
+        subprocess.run([node,here/"capture-fixture-wallet-check.mjs","check"+suffix,str(http),out],check=True,timeout=60)
     finally:
         if proc is not None:
             peer["stop"](proc)

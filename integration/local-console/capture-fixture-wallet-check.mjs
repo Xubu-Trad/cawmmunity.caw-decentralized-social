@@ -1,3 +1,4 @@
+import { verifyWalletWithdrawalInclusion } from './withdrawal-inclusion.mjs';
 // Local reproduction helper for the published disposable account-2 fixture.
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -34,12 +35,32 @@ const controller = new Wallet('0x'+'3'.padStart(64,'0'));
 assert.equal(controller.address.toLowerCase(),config.controller);
 const nonce = await call('eth_getTransactionCount',[config.controller,'0xc']);
 const data = withdrawalData(config.contracts.custody.address,String(epoch),'2','fixture-wallet');
-const raw = await controller.signTransaction({type:2,chainId:31337,nonce:Number(BigInt(nonce)),
+const mixed = mode.endsWith('-mixed');
+const raw = await controller.signTransaction({type:2,chainId:31337,nonce:Number(BigInt(nonce)) + Number(mixed),
   gasLimit:500000,maxFeePerGas:2000000000,maxPriorityFeePerGas:1000000000,to:owner,value:0,data});
 const hash = keccak256(raw);
-if(mode==='submit'){
+if(mode==='submit' || mode==='submit-mixed'){
   assert.equal((await call('eth_getBlockByNumber',['latest',false])).hash,parent.hash);
+  if(mixed){
+    const sibling=await controller.signTransaction({type:2,chainId:31337,nonce:Number(BigInt(nonce)),gasLimit:21000,
+      maxFeePerGas:2000000000,maxPriorityFeePerGas:1000000000,to:controller.address,value:0});
+    assert.equal(await call('eth_sendRawTransaction',[sibling]),keccak256(sibling));
+  }
   assert.equal(await call('eth_sendRawTransaction',[raw]),hash);
+}else if(mode==='check-mixed'){
+  const receipt=await call('eth_getTransactionReceipt',[hash]);
+  const header=await call('eth_getBlockByHash',[receipt.blockHash,false]);
+  assert.equal(header.transactions.length,2);
+  assert.equal(header.transactions[1],hash);
+  const rawTransactions=await Promise.all(header.transactions.map(h=>call('eth_getRawTransactionByHash',[h])));
+  const receipts=await Promise.all(header.transactions.map(h=>call('eth_getTransactionReceipt',[h])));
+  const block={header,rawTransactions,receipts};
+  const pins={blockHash:header.hash,transactionHash:hash,controller:config.controller,wallet:owner.toLowerCase(),
+    custody:config.contracts.custody.address,epoch:String(epoch),amount:'2'};
+  const result=verifyWalletWithdrawalInclusion(block,pins);
+  assert.equal(result.transactionIndex,1);
+  for(const [name,value] of Object.entries({block,pins,result}))
+    fs.writeFileSync(path.join(out,name+'.json'),JSON.stringify(value)+'\n',{flag:'wx'});
 }else{
   assert.equal(mode,'check');
   const receipt=await call('eth_getTransactionReceipt',[hash]);
