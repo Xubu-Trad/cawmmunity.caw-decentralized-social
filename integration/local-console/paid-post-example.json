@@ -1,0 +1,9 @@
+{
+  "accountId": "1",
+  "epoch": "0",
+  "nonce": "0",
+  "validAfter": "0",
+  "deadline": "18446744073709551615",
+  "stakeRoot": "0x6d153cd1a558b2a65f29cb8a2af5d27a70971f247a7de75826972ea51c82f14c",
+  "text": "signature recovered wallet lifecycle"
+}
