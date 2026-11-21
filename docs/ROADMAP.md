@@ -1,3 +1,7 @@
+## Independent withdrawal review · November 21, 2026
+
+At `9c64ecfc` the reviewer confirmed 43 malformed ownership-proof rejections, replayed the exported 28,866 bytes offline, and confirmed that three damaged packages were rejected. Chromium could not start in the review environment because its socket call returned EPERM. The native download remains independently unverified. The browser test now writes the startup stage, diagnostic and zero completed checks to `result.json` when startup is blocked. Keep that file with the nonzero process exit when reporting a blocked run. [Independent review](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/19#issuecomment-7041539007)
+
 ## transfer proof review — November 20, 2026
 
 Repeat the retained transfer check with `node integration/local-console/test-transfer-proof-completeness.mjs evidence/console-transfer-receipt-20261115`. Check signed inclusion, genuine absence, altered receipt rejection and the explicit error for incomplete ownership evidence.

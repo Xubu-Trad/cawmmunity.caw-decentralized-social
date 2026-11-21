@@ -50,16 +50,32 @@ const server=http.createServer(async(req,res)=>{
   const file=req.url==='/'?'index.html':req.url.slice(1);if(!/^[a-z0-9-]+\.(mjs|html|css)$/.test(file)){res.statusCode=404;res.end();return;}
   res.setHeader('Content-Type',file.endsWith('.mjs')?'text/javascript':file.endsWith('.css')?'text/css':'text/html');res.end(await fs.readFile(new URL('./ui/'+file,import.meta.url)));
  }catch(e){res.statusCode=500;res.end(String(e));}
-});await new Promise(r=>server.listen(0,'127.0.0.1',r));
-assert(process.env.CHROME_BIN);const browser=spawn(process.env.CHROME_BIN,['--headless=new','--disable-gpu','--disable-extensions','--disable-background-networking','--no-first-run','--remote-debugging-port=0','--user-data-dir='+path.join(out,'profile'),'about:blank'],{windowsHide:true,stdio:'ignore'});
+});
+let browser, startupError, browserLog='', stage='local server';
+async function recordFailure(error){
+ const status=stage==='browser checks'?'FAILED':'NOT_RUN';
+ await fs.writeFile(path.join(out,'result.json'),JSON.stringify({status,stage,completed:checks.length,checks,error:error.message,browserLog},null,2)+'\n');
+}
+try{
+ await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0,'127.0.0.1',resolve);});
+ stage='Chromium startup';
+ assert(process.env.CHROME_BIN,'Set CHROME_BIN to the Chromium executable.');
+ browser=spawn(process.env.CHROME_BIN,['--headless=new','--disable-gpu','--disable-extensions','--disable-background-networking','--no-first-run','--remote-debugging-port=0','--user-data-dir='+path.join(out,'profile'),'about:blank'],{windowsHide:true,stdio:['ignore','ignore','pipe']});
+ browser.stderr.on('data',chunk=>{browserLog=(browserLog+chunk.toString()).slice(-2048);});
+ browser.on('error',error=>{startupError=error;});
+}catch(error){await recordFailure(error);server.close();throw error;}
 let ws,id=0;const pending=new Map(),sleep=ms=>new Promise(r=>setTimeout(r,ms));
 function cmd(method,params={}){return new Promise((resolve,reject)=>{const key=++id,timer=setTimeout(()=>reject(Error('CDP_TIMEOUT '+method)),15000);pending.set(key,{resolve,reject,timer});ws.send(JSON.stringify({id:key,method,params}));});}
 async function ev(expression){const r=await cmd('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true});if(r.exceptionDetails)throw Error(JSON.stringify(r.exceptionDetails));return r.result.value;}
-async function until(expression){for(let n=0;n<100;n++){if(await ev(expression))return;await sleep(100);}throw Error('UI_TIMEOUT '+expression+' '+await ev('document.body.innerText'));}
+async function until(expression){stage='browser checks';for(let n=0;n<100;n++){if(await ev(expression))return;await sleep(100);}throw Error('UI_TIMEOUT '+expression+' '+await ev('document.body.innerText'));}
 const el=id=>`document.getElementById(${JSON.stringify(id)})`;
 async function prepare(kind){mode='valid';await ev(el('refresh')+'.click()');await until('!'+el('prepare')+'.disabled');await ev(el('amount')+`.value='2';`+el('recipient')+`.value='0x${'11'.repeat(20)}';`+el('post-text')+`.value='review test';`+el(kind==='withdrawal'?'withdraw-form':kind+'-form')+'.requestSubmit()');await until('!'+el('confirm')+'.disabled');assert((await ev(el('accounting-review')+'.textContent')).includes('Expected accounting'));}
 try{
- let port;for(let n=0;n<100;n++){try{port=Number((await fs.readFile(path.join(out,'profile/DevToolsActivePort'),'utf8')).split('\n')[0]);break;}catch{await sleep(100);}}assert(port);
+ let port;for(let n=0;n<100;n++){
+  if(startupError)throw startupError;
+  if(browser.exitCode!==null||browser.signalCode)throw Error('Chromium exited before opening its debugging port: '+(browser.signalCode??browser.exitCode));
+  try{port=Number((await fs.readFile(path.join(out,'profile/DevToolsActivePort'),'utf8')).split('\n')[0]);break;}catch{await sleep(100);}
+ }assert(port,'Chromium debugging port did not open in time.');
  const tabs=await(await fetch('http://127.0.0.1:'+port+'/json/list')).json();ws=new WebSocket(tabs.find(t=>t.type==='page').webSocketDebuggerUrl);await new Promise(r=>ws.addEventListener('open',r,{once:true}));ws.addEventListener('message',e=>{const v=JSON.parse(e.data),p=pending.get(v.id);if(p){pending.delete(v.id);clearTimeout(p.timer);v.error?p.reject(Error(JSON.stringify(v.error))):p.resolve(v.result);}});
  await cmd('Page.enable');await cmd('Page.addScriptToEvaluateOnNewDocument',{source:`window.ethereum={async request(q){const r=await fetch('/test-wallet',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(q)});return r.json();},on(){},removeListener(){}};const set=Storage.prototype.setItem;Storage.prototype.setItem=function(k,v){if(window.failArchive&&(k.startsWith('caw.local.receipt-outcome.v1.')||k.startsWith('caw.local.receipt-rechecks.v1.')))throw Error('Test archive write failure');return set.call(this,k,v);};`});
  await cmd('Page.navigate',{url:'http://127.0.0.1:'+server.address().port});await until(el('accounting-status')+"?.textContent==='Verified against selected local state'");await until('!'+el('connect')+'.disabled');await ev(el('connect')+'.click()');await until('!'+el('prepare')+'.disabled');
@@ -137,4 +153,5 @@ try{
  checks.push('verified package with a saved-field discrepancy stays distinct and refresh disables download');
  assert.equal(walletRequests,readsBefore);assert.equal(sent,sends);
  await fs.writeFile(path.join(out,'result.json'),JSON.stringify({passed:checks.length,checks,scope:'Headless Chromium with controlled provider responses and retained local withdrawal evidence. Browser checks cover download fidelity and invalidation. No fresh signing or execution.'},null,2)+'\n');console.log(checks.length+' browser checks passed');
-}finally{ws?.close();browser.kill();server.closeAllConnections();await new Promise(r=>server.close(r));}
+}catch(error){await recordFailure(error);throw error;}
+finally{ws?.close();browser.kill();server.closeAllConnections();await new Promise(r=>server.close(r));}

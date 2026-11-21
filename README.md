@@ -33,6 +33,8 @@ The destination is a system others can reproduce and operate without Xubu's acco
 
 ## where the build stands
 
+an independent reviewer replayed the withdrawal download and verified the exact 28,866 bytes. their environment blocked chromium before it could start, so the native browser download still needs an independent run. [review and reproduction status](docs/ROADMAP.md)
+
 we tightened two checks after independent review. if ownership evidence is incomplete, the transfer reader reports it. before you can download a verified withdrawal, the console now replays the exact file against the block and transaction it selected. changing the receipt, a balance, or an ownership proof blocks the download. this is a local check anyone can repeat. [review and evidence](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/19)
 
 updated November 18, 2026. **this is unfinished research software. there is no production-ready community.CAW network, and the local experiments use mock tokens.**
