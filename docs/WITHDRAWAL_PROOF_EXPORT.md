@@ -79,3 +79,30 @@ python integration/local-console/reproduce-wallet-withdrawal.py --geth /path/to/
 ```
 
 This replays the preserved prefix through block 12 in a new local database and signs a withdrawal using the published disposable fixture account. It produces an alternative local block 13 before the original ownership handoff. Two runs produced proof-package SHA-256 `a55975a515af352331977e2eda57b9528de0b8d3243a04c180bbef4d5122600d`. The bundled selection reproduces this fixture. For a different history, record your own selection independently. Other wallet runtimes, mixed-transaction blocks and public-chain finality remain outside scope.
+
+## Mixed-block withdrawal
+
+From the repository root, use Node 20.20.2 and install the locked console dependencies. The published fixture is a disposable local chain. Its pins came from the same run.
+
+```sh
+cd integration/local-console
+npm ci
+node test-withdrawal-inclusion.mjs
+fixture=../../evidence/mixed-wallet-withdrawal-20261121
+node check-withdrawal-inclusion.mjs "$fixture/block.json" "$fixture/pins.json"
+```
+
+To mine another batch, run `python3 reproduce-wallet-withdrawal.py --mixed --geth /absolute/path/to/geth --output /fresh/output` using the Geth version and verified binary specified above. Replay its block and pins with the same offline command. For a separately anchored review, supply your own trusted header hash and expected transaction and participants. The fixture's signed sibling occupies index 0 and the selected withdrawal occupies index 1. The reader verifies the transaction and receipt roots, the signature, calldata and the withdrawal event at the matching index. This inclusion command reports only the signed call and its receipt. Use the separate replay below to check the individual transaction’s accounting.
+
+### Replay the individual withdrawal’s accounting
+
+From the repository root on Node 20.20.2, install both pinned dependency sets and compare the output byte-for-byte with the published result.
+
+```sh
+npm ci --prefix integration/local-console --ignore-scripts
+npm ci --prefix evidence/post-batch-replay-20261113 --ignore-scripts
+node evidence/post-batch-replay-20261113/replay-mixed-accounting.mjs > mixed-accounting.local.json &&
+  cmp mixed-accounting.local.json evidence/mixed-wallet-withdrawal-20261121/accounting-replay.json
+```
+
+EthereumJS rebuilds state from the fixture genesis, checks the linked headers, transaction roots and all 13 resulting block state roots, and executes both signed transactions in order. Compare the opening, before and after snapshots. The first transaction changes the state root while leaving the eight tracked values unchanged. Across the withdrawal, custody decreases by two, the contract wallet gains two, and unpaid liability, credited liability and account 2’s credit each decrease by two. Other tracked credits and the unallocated budget stay unchanged. The intermediate root is computed by execution. Only the block boundaries have header commitments. The result applies to this synthetic chain, fixture bytecode and token layout. Independent operator reproduction remains open.
