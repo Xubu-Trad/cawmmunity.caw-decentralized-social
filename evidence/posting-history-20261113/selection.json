@@ -1,0 +1,28 @@
+{
+  "startHash": "0x365c42d18e082a8b7bc72df3eef26653562861722a41dbb2e9039612ce554233",
+  "endHash": "0x26a6288a6f935bd923d15366de2e7ef93de5f5c0516dea4dba3f6626a4c1213a",
+  "contracts": {
+    "token": {
+      "address": "0x82c839fa4a41e158f613ec8a1a84be3c816d370f",
+      "codeHash": "0x88a7aa0f537c8c969378b7ce2bfc7ffd0d054715b7a4c07a6732d96b104cab69"
+    },
+    "custody": {
+      "address": "0x985d0ce92f2af930e309f5ff89139490ac2d9e94",
+      "codeHash": "0xa050a3c7f9745e8a4d77e1dfe72bb66f75e94fb628a600b58e1495973cc49d78"
+    },
+    "wallet": {
+      "address": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+      "codeHash": "0xb220f8ed76b2c9f7dad6daae038bbdaa3eff821e96b9e6cd6714654c70702712"
+    },
+    "registry": {
+      "address": "0x19a827174f66b3c66ad7063951d7b4f94f996e77",
+      "codeHash": "0xdb0b874a272ffc86d413fafda70af9864a3f791c59f81ba21dfb8e059faaa8f8"
+    },
+    "posting": {
+      "address": "0x9587471aff4a1b7941d19bfdc46851704da82cf1",
+      "codeHash": "0x05a931f1702935b7497576a4ec166692096eab4cd3f4f640e1818466caf6ab9c"
+    }
+  },
+  "controller": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+  "scope": "Operator-selected local endpoints and reviewed code/layout; not public-chain authentication."
+}

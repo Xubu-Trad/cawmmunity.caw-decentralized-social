@@ -1,0 +1,46 @@
+{
+  "parent": "1cd7a7d7049559dc20da843638ee4a1022659a6f",
+  "transform": "signed withdrawal reconstruction and exact synthetic second-engine comparison",
+  "files": {
+    "docs/FUNDED_WITHDRAWAL_VERIFICATION.md": {
+      "sha256": "2e4984edeb0ee2a318e5cd39c4cdacbe8c8d0bc2da6b57cfa83ef1fbb4d5b07a",
+      "size": 5044
+    },
+    "integration/core-baseline-v1/reconstruct-funded-withdrawal.mjs": {
+      "sha256": "f1d0df5d899c4ef73ac92f4703ae8c40cf07bd212296ae686ff1dcef15bf46cb",
+      "size": 15383
+    },
+    "integration/core-baseline-v1/replay-withdrawal-geth.py": {
+      "sha256": "75a5dbf794aa11dad74cf9adce1bc29aa9eb25dc92041bf0de8707a6a0bde932",
+      "size": 5074
+    },
+    "integration/core-baseline-v1/test-funded-withdrawal-roots.mjs": {
+      "sha256": "76a9f57053264741378556717f3e401275bf49ed45eeab86860e5ae2c27ac9e0",
+      "size": 14972
+    },
+    "evidence/withdrawal-reconstruction-20261108/result.json": {
+      "sha256": "a0de425c9368e9b444827cc2a598493e50aaf3d6e42aa9e69f2d63fa1f24057e",
+      "size": 20979
+    },
+    "evidence/withdrawal-reconstruction-20261108/input-pins.json": {
+      "sha256": "3b5c0877e26acf5123a9c353e1843858abea56e33e5f8ec448ee13682ee65e30",
+      "size": 349
+    },
+    "evidence/withdrawal-geth-20261108/fixture.json": {
+      "sha256": "4e199d2561d354a2f01718901ff18d774ede034d8d000c6957e66f2a4a654f9c",
+      "size": 999703
+    },
+    "evidence/withdrawal-geth-20261108/result.json": {
+      "sha256": "80219cbfef06b9a9557feae1d2cbb7478ed8921e253dd0624a489c7f9a92e75a",
+      "size": 545
+    },
+    "evidence/withdrawal-geth-20261108/selection-controls.json": {
+      "sha256": "6c99f62ecccea33e8babfe2a8956cc8323ce39b57ad8b7998bf213261e781e58",
+      "size": 68
+    },
+    "docs/FUNDED_WITHDRAWAL_RESEARCH.md": {
+      "sha256": "644a1f08330bbc752c941965f7daff67e78f60f834cb493535c3484f0367eec6",
+      "size": 5308
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "sourceCommit": "e0fa16d3a6f10cc9a88dfde0d130598273005f06",
+  "sourceFiles": 64,
+  "freshConsoleChecks": 10,
+  "safeTransferChecks": 6,
+  "sourceUnchanged": true,
+  "scope": "Fresh dependency install, mined local console flow and controls. Same-operator unless separately reproduced; no second-engine run, browser interaction or public-chain claim."
+}

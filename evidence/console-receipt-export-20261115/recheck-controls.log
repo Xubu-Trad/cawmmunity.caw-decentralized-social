@@ -1,0 +1,24 @@
+{
+  "passed": 18,
+  "checks": [
+    "match observation retained without rewriting original",
+    "missing observation retained without rewriting original",
+    "reverted observation retained without rewriting original",
+    "moved observation retained without rewriting original",
+    "offline observation retained without rewriting original",
+    "bad receipt observation retained without rewriting original",
+    "wrong chain observation retained without rewriting original",
+    "wrong account observation retained without rewriting original",
+    "orphaned anchor observation retained without rewriting original",
+    "all observations remain ordered after reload",
+    "changed archive during provider reads blocks append",
+    "duplicate attempt identity preserves prior entries",
+    "write failure retains original and prior history",
+    "lost write does not claim saved result",
+    "malformed log is not overwritten",
+    "classification inconsistent with stored observation rejects",
+    "64-entry limit retains full history without pruning",
+    "read-only checks never request submission"
+  ],
+  "scope": "Controlled provider observations and local append-only recheck history; no public finality or authenticated receipt inclusion."
+}

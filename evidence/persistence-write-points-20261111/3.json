@@ -1,0 +1,62 @@
+{
+  "ordinal": 3,
+  "driverExit": 0,
+  "writeWindow": {
+    "startMarker": "2026-11-11T12:47:58.260531Z DEBUG on_save_blocks{block_count=15}: engine::persistence: Saving range of blocks block_count=15 first=Some(NumHash { number: 1, hash: 0x7b606e6013cd5aae5b0bc72067d23d977c217244a9da7a169148384d3fe3a847 }) last=NumHash { number: 15, hash: 0x5df3c2cf6b41f7cc88fa0cac23b6dcddbd862e3b5a47108160e466c21dd294c7 }",
+    "writeRecord": "1228  1794401278.347165 write(35<DESTINATION_DATA/static_files/static_file_account-change-sets_0_499999.csoff>, \"\\2\\0\\0\\0\\0\\0\\0\\0\\3\\0\\0\\0\\0\\0\\0\\0\", 16 <unfinished ...>",
+    "observedWriteOrdinal": 3,
+    "completionMarkersBeforeKill": [],
+    "traceDelay": "pwrite64 exit delayed 100ms",
+    "claim": "write observed during persistence operation; no assertion of physical disk commit or kill inside kernel syscall"
+  },
+  "restart": {
+    "killSignal": 9,
+    "headAfterRestart": 0,
+    "matchingRetainedHeaders": 1,
+    "identityPreserved": true,
+    "peersBeforeReplacement": 0,
+    "targetAbsent": true
+  },
+  "recovery": {
+    "sourceClient": "Geth",
+    "replacementPeerDifferentIdentity": true,
+    "destinationRestarted": true,
+    "persistenceTargetBlock": 15,
+    "prefixHeadObservedBeforeKill": false,
+    "originalSourceStillStopped": true,
+    "destinationClient": "Reth2.10.1",
+    "initialBlock": "0x0",
+    "matchingHeaders": 29,
+    "peerCount": "0x1",
+    "forkchoiceStatuses": [
+      "SYNCING",
+      "VALID"
+    ],
+    "destinationFileImportUsed": false,
+    "sourceInitializedFromPublicRlp": true,
+    "targetHashExternallySelected": true,
+    "consensusFinalityVerified": false
+  },
+  "service": {
+    "allStopped": true,
+    "seconds": 6.210777363000002
+  },
+  "proofExit": 0,
+  "proof": {
+    "fields": 16,
+    "headerHash": "0xb9fe1c52df006a50dae9230ef0ea8c55be471f05f910899032abfed6d1dee763",
+    "stateRoot": "0x0e5c8a09a836801852924770722afd33969ed8d0f323a4011ac2a9b30d578552",
+    "headerBindingVerified": true,
+    "clearedApprovalAbsent": true,
+    "controls": [
+      "header root",
+      "header hash",
+      "wrong value",
+      "missing proof",
+      "altered node"
+    ],
+    "chainAuthenticated": false,
+    "finalityVerified": false
+  },
+  "traceRedaction": "Only personal test-directory prefix redacted; original trace retained privately."
+}

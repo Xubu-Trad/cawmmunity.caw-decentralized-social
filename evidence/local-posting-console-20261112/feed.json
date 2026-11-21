@@ -1,0 +1,160 @@
+{
+  "status": "pass",
+  "scope": "Read-only feed validation against three signed local fixture posts through a response-altering loopback proxy. Direct receipt/block reads share the same local Geth trust boundary; this is not public-chain authentication or independent-operator reproduction.",
+  "configSha256": "bcdb11ab0d6697d3448d4e21063121eb12313e44beab493b9c56a0a6e5b532fd",
+  "genesisHash": "0xc190afab951bdb9e657448e32761736857d0d76869bc5073b43d6160a8d19ddc",
+  "cases": [
+    {
+      "name": "three-post feed matches direct receipt logs, exact UTF-8 text, nonces and local canonical blocks",
+      "pass": true
+    },
+    {
+      "name": "missing log is rejected rather than an incomplete timeline",
+      "pass": true,
+      "control": "dropped-log",
+      "error": "INCOMPLETE_POST_HISTORY"
+    },
+    {
+      "name": "swapped logs are rejected rather than silently reordered",
+      "pass": true,
+      "control": "swapped-logs",
+      "error": "POST_NONCE_GAP"
+    },
+    {
+      "name": "changed text hash is rejected",
+      "pass": true,
+      "control": "text-hash",
+      "error": "POST_TEXT_MISMATCH"
+    },
+    {
+      "name": "changed log block hash is rejected",
+      "pass": true,
+      "control": "log-block-hash",
+      "error": "POST_HISTORY_REORG"
+    },
+    {
+      "name": "trailing ABI bytes are rejected rather than accepted by a permissive decoder",
+      "pass": true,
+      "control": "trailing-abi-bytes",
+      "error": "POST_LOG_ENCODING"
+    },
+    {
+      "name": "mismatched posting creation receipt is rejected",
+      "pass": true,
+      "control": "creation-receipt",
+      "error": "POSTING_CREATION_MISMATCH"
+    },
+    {
+      "name": "RPC error cannot become an empty timeline",
+      "pass": true,
+      "control": "rpc-error",
+      "error": "RPC_RESPONSE"
+    },
+    {
+      "name": "malformed UTF-8 is rejected by the fatal decoder",
+      "pass": true,
+      "control": "invalid-utf8",
+      "error": "The encoded data was not valid for encoding utf-8",
+      "code": "ERR_ENCODING_INVALID_ENCODED_DATA"
+    },
+    {
+      "name": "unaltered feed recovers after controls and selected chain state is unchanged",
+      "pass": true
+    }
+  ],
+  "reference": [
+    {
+      "accountId": "2",
+      "epoch": "1",
+      "nonce": "0",
+      "author": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+      "text": "CAW \u2014 \u307f\u3093\u306a\u3067\u4f5c\u308b\u3002",
+      "textHash": "0x894dcad35e30b0991ffcc6217a3129534592ea235e695df8c315b7d4915f8dd6",
+      "transactionHash": "0x35a68767d8a0c5554552b25286223d52c5b0b67916d5683d3c64d09395e9523b",
+      "blockHash": "0x2d7c3b55920dc6d53bbd3a91e873e18958123f9b60325de515a107c7c1241142",
+      "blockNumber": "0xe"
+    },
+    {
+      "accountId": "2",
+      "epoch": "1",
+      "nonce": "1",
+      "author": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+      "text": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "textHash": "0xb739d71e8eb8ad0107559123a16adc78c0f93552ac79ae153d1f58409b2bcbc3",
+      "transactionHash": "0xbd813c17ab16f09b087e9bdb6485b33f7b531f050ce3ca2501e8d50a135d7a72",
+      "blockHash": "0x5b27511298e9b2a8eec575a35d4b36f74396237172cfb02e063e113dc05aff7d",
+      "blockNumber": "0xf"
+    },
+    {
+      "accountId": "2",
+      "epoch": "1",
+      "nonce": "2",
+      "author": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+      "text": "\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12\ud83c\udf12",
+      "textHash": "0x9823a61645d0e04f77d88d750a056aa4f4906f2b0cfaa23b0b1635e728885083",
+      "transactionHash": "0xb82a4f1222c1e072260ca13d0503d8add61316bd70e7d9135c30bb9cdf33e322",
+      "blockHash": "0x64143c17aa044410b43aebc97cd9b8aa1b1ec00e67d06e9474a466bffa97e0c8",
+      "blockNumber": "0x10"
+    }
+  ],
+  "mutations": [
+    {
+      "mode": "dropped-log",
+      "method": "eth_getLogs",
+      "beforeSha256": "c9b16b87b1a6b9b4e62290895c4eab6a572dc710aa4a54862662640661fbacf8",
+      "afterSha256": "ab951f81ebff96b3cc20f4fda311184fb19cb33970a95accc9a80b9a4dc66745"
+    },
+    {
+      "mode": "swapped-logs",
+      "method": "eth_getLogs",
+      "beforeSha256": "0d85a833111a750d40079542d924b5fcfb11de74d22320d8b88d55928f0986b6",
+      "afterSha256": "f74a691d8d883ad8f58cb10a8b871383488f1a61bef53b20ef495c86fa1f307e"
+    },
+    {
+      "mode": "text-hash",
+      "method": "eth_getLogs",
+      "beforeSha256": "dcd46dbb7543e651a14ab79fc9227232c7021398e47e00567ee4c3b8fef00006",
+      "afterSha256": "64a81323b75b93a4ff983d0377b5eda42ec179786e72425ce78bd6238f9ef32d"
+    },
+    {
+      "mode": "log-block-hash",
+      "method": "eth_getLogs",
+      "beforeSha256": "1225bd7c11873112b76903bbbbfc5c3c3eeb40a3db2f790d777c959df607ad24",
+      "afterSha256": "1a8dcb201e8cee7a47054ac3645bb291bda37fc8d604a6ead85c8ebcd319a63e"
+    },
+    {
+      "mode": "trailing-abi-bytes",
+      "method": "eth_getLogs",
+      "beforeSha256": "400aece4ce419e266ba1193fc857f78e1b5eba0013c956e93ca72b38173e4e49",
+      "afterSha256": "d4c11bf90926e90befc61d84e2f24b1391886b821556f4d904283f562b4f96e3"
+    },
+    {
+      "mode": "creation-receipt",
+      "method": "eth_getTransactionReceipt",
+      "beforeSha256": "a19d1daed7e55997d4d75d715eda2c395a9fc3a9b78b9ce93b3834fbdc12236d",
+      "afterSha256": "351239eb4f791e7fc756afbb4fbbdd13952b44f354e2c2cb2775c2b1e7596fb2"
+    },
+    {
+      "mode": "rpc-error",
+      "method": "eth_getLogs",
+      "beforeSha256": "5ace27f61c21060ccbbd76c97bfdcc1dff8c5df614a4b22afb83928c90e15004",
+      "afterSha256": "cb17ec14aee363f3be4b34e4152eb3057dac581b1afe90e435229dff7fb60507"
+    },
+    {
+      "mode": "invalid-utf8",
+      "method": "eth_getLogs",
+      "beforeSha256": "4ffb43b98ff8363d157c067116148b027b0fe256ef33b16e6d7134f4af29e6c7",
+      "afterSha256": "23071d81b5cd5b328bcf6b419ce512a833d2a1326817b8345f4b0b123e1714d7"
+    }
+  ],
+  "requestCounts": {
+    "eth_chainId": 12,
+    "eth_getBlockByNumber": 49,
+    "eth_getCode": 71,
+    "eth_call": 114,
+    "eth_getTransactionReceipt": 12,
+    "eth_getLogs": 9
+  },
+  "proxyErrors": [],
+  "noChainMutation": true
+}

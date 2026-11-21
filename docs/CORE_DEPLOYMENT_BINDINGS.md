@@ -1,0 +1,13 @@
+# Frozen core: retained deployment bindings
+
+The signed38-transaction fixture contains four deployments: MockTokenResearch, two SignerWalletFixture instances and DeployedCustodyStakeResearch. The vault starts with account1 owned by walletA, account2 by controllerA and account3 by controllerB. WalletB is the later account1 transferee. This is a fixed research topology, not permissionless username admission.
+
+The checker parses signed creation transactions, recovers senders, requires chain31337, derives CREATE addresses from sender/nonce, matches receipt hash/status/block/index, identifies exact creation bytecode against the frozen baseline and canonically decodes constructor arguments. The token binding and initial ownership graph must match. Constructor-filled runtime bytes for the token/vault match their retained final code captures; wallet runtime hashes are derived, not compared with captured wallet code in this lane. The dependency graph and exact arguments are in deployment-bindings.json.
+
+Four negative controls reject altered receipt address/hash/status and chain label. First attempt incorrectly expected five deployments/three wallets; it failed and remains preserved. Source inspection showed the actual four-deployment graph above, and the corrected V2 passed. No contract was changed to satisfy the checker.
+
+This increment does not rerun receipt inclusion, account proofs, execution or the full lifecycle. A signed transaction proves an intent, not successful creation by itself; the receipt/code comparisons are retained-capture consistency checks. Runtime construction assumes the single address immutable in each current artifact; this is not a general Solidity immutable resolver. Source hash/compiler identity remains governed by the separate baseline rebuild. No mainnet, production or external-audit claim.
+
+Reproduce with ethers6.16.0 available: `node --max-old-space-size=256 integration/core-baseline-v1/check-deployment-bindings.mjs /absolute/path/to/retained-execution integration/core-baseline-v1/manifest.json`. The retained directory must contain compiler-output.json, acquired-history.json and final-proof-batches.json. Input SHA-256 values are in binding-provenance.json; retain a separate immutable output. Node20.20.2,2GiBdisk/1GiBmemory startup guards,256MiBheap and30second process deadline were used.
+
+Next: consolidate the exact public replay package and constructor manifest into a reproducible baseline acceptance command, then rerun the selected lifecycle. C-001 and economics remain unresolved; arbitrary NFT accounts/scalable rewards are not implemented here. README updates remain paused.

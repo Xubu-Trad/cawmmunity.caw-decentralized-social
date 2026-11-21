@@ -1,0 +1,14 @@
+{
+  "schema": "caw-geth-publisher-signature/1",
+  "source": "https://gethstore.blob.core.windows.net/builds/geth-alltools-linux-amd64-1.17.10-1df30b18.tar.gz",
+  "keySource": "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xFDE5A1A044FA13D2F7ADA019A61A13569BA28146",
+  "fingerprintSource": "https://geth.ethereum.org/downloads",
+  "expectedPrimaryFingerprint": "FDE5A1A044FA13D2F7ADA019A61A13569BA28146",
+  "archiveSha256": "f991c32e5b7bb68db97a1b06d50c7c06f6aa9ae84d8f6f9b2301dc02cad2a7cf",
+  "binarySha256": "d8cfddad15a8c601e7b069bc5973ad073dbc2d632b8c5ab50e513ef27c53d6da",
+  "validSignature": true,
+  "localBinaryMatchesSignedArchive": true,
+  "changedArchiveRejected": true,
+  "sourceRebuildPerformed": false,
+  "trustBoundary": "publisher fingerprint selected from official HTTPS download page; not independent identity certification"
+}

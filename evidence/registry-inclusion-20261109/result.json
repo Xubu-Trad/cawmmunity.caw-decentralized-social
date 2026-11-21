@@ -1,0 +1,23 @@
+{
+  "status": "DEPLOYMENT_COMMITMENT_BOUND_TO_SELECTED_HEADER",
+  "blockHash": "0xc273e2d510d9f1c5406dd22d5f0597d01bc8b81c4fb563725f091d5117d3f8a7",
+  "index": 1,
+  "address": "0x19A827174F66B3c66ad7063951D7b4F94f996e77",
+  "transactionHash": "0x07afc316a9616a5a2dbc695400cacf44ad6f177d29e97dd084ab0938e97cef7f",
+  "transactionCommitmentVerified": true,
+  "receiptCommitmentVerified": true,
+  "signatureVerified": true,
+  "chainAuthenticated": false,
+  "accountCodeProofVerified": false,
+  "consensusVerified": false,
+  "finalityVerified": false,
+  "controls": [
+    "wrong selected header",
+    "changed signed transaction",
+    "missing transaction",
+    "changed receipt status",
+    "changed receipt logs",
+    "wrong receipt index"
+  ],
+  "limits": "Synthetic header assembly from retained local transactions. Caller-selected hash is a trust input, not independently authenticated chain/finality evidence. This composes with the separate manifest/bytecode selection check; no code-account proof supplied."
+}

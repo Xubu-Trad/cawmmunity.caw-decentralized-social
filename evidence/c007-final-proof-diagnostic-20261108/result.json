@@ -1,0 +1,76 @@
+{
+  "schema": "caw-final-proof-comparison/1",
+  "status": "INCOMPLETE_ZERO_STORAGE_REJECTED",
+  "transactions": 26,
+  "finalHeader": "0x2198aca3155d6835351c06af228cd0044a5be79b26279f5adbfa4e1b530c4028",
+  "stateRoot": "0x9dab5734557bb6044e8a1dac35b73a0b2bd40f44117c2a9f27ec8eacb4689dde",
+  "matchedSnapshotFields": 18,
+  "provedStorageFields": 18,
+  "requestedStorageFields": 20,
+  "rejected": [
+    {
+      "address": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+      "label": "epoch3",
+      "slot": "0x0000000000000000000000000000000000000000000000000000000000000007",
+      "code": "ETH_PROOF_STORAGE",
+      "leaf": {
+        "exists": true,
+        "value": "0x80"
+      }
+    },
+    {
+      "address": "0x82c839fa4a41e158f613ec8a1a84be3c816d370f",
+      "label": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+      "slot": "0x4f3023ab66ce27b62950d9c11c45cdaffd2f3d837fccc21313b89f9d93d20dd1",
+      "code": "ETH_PROOF_STORAGE",
+      "leaf": {
+        "exists": true,
+        "value": "0x80"
+      }
+    }
+  ],
+  "completeFinalStateProof": false,
+  "tokenWalletBalancesCompared": false,
+  "wallets": {
+    "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf": "0",
+    "0x2b5ad5c4795c026514f8317c7a215e218dccd6cf": "4999999999999999999999",
+    "0xbff9228b938b3676578a88b5962abbd2709c9c46": "1020000000000000000001"
+  },
+  "final": {
+    "root": "49339624040759059576801710786735020818051890267515921943269532534487398936908",
+    "totalStake": "1011000000000000000000",
+    "liabilities": "1020000000000000000000",
+    "poolDust": "1",
+    "nonce": "1",
+    "balance": "1020000000000000000001",
+    "credit1": "1000000000000000000000",
+    "stake1": "1000000000000000000000",
+    "owner1": "721457446580647751014191829380889690493307935711",
+    "epoch1": "2",
+    "credit2": "10000000000000000000",
+    "stake2": "3000000000000000000",
+    "owner2": "247512291986854564435551364600938690683113101007",
+    "epoch2": "1",
+    "credit3": "10000000000000000000",
+    "stake3": "8000000000000000000",
+    "owner3": "247512291986854564435551364600938690683113101007",
+    "epoch3": "0"
+  },
+  "negativeControls": [
+    "changed_storage_claim",
+    "changed_account_proof",
+    "missing_storage_proof",
+    "wrong_account",
+    "wrong_selected_header",
+    "modified_runtime",
+    "wrong_storage_layout",
+    "missing_wallet_proof_batch",
+    "duplicate_field"
+  ],
+  "compiledRuntimeMatched": true,
+  "selectedHeaderBindingVerified": true,
+  "endpointAuthenticated": false,
+  "consensusVerified": false,
+  "evmExecutionReplayed": false,
+  "sourceRecompiledIndependently": false
+}

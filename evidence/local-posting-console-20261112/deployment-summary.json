@@ -1,0 +1,25 @@
+{
+  "status": "LOCAL_UNPAID_POSTING_DEPLOYMENT",
+  "genesisHash": "0xc190afab951bdb9e657448e32761736857d0d76869bc5073b43d6160a8d19ddc",
+  "registry": {
+    "address": "0x19a827174f66b3c66ad7063951d7b4f94f996e77",
+    "codeHash": "0xdb0b874a272ffc86d413fafda70af9864a3f791c59f81ba21dfb8e059faaa8f8"
+  },
+  "expectedRuntimeHash": "0x05a931f1702935b7497576a4ec166692096eab4cd3f4f640e1818466caf6ab9c",
+  "creation": {
+    "transactionHash": "0x5ecf52b68b968f044a3f90ea60c33701aa2aa26f1dfc900000cf6c52b667d36d",
+    "blockHash": "0x365c42d18e082a8b7bc72df3eef26653562861722a41dbb2e9039612ce554233",
+    "blockNumber": "0xb",
+    "contractAddress": "0x9587471aff4a1b7941d19bfdc46851704da82cf1",
+    "status": "0x1"
+  },
+  "transaction": {
+    "from": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+    "to": null,
+    "nonce": "0x8",
+    "value": "0x0",
+    "chainId": "0x7a69"
+  },
+  "sourceSha256": "861f78c36d4dbe9d5ed380e716307039e264757bd51e833d28771b44444e7125",
+  "boundary": "Compact local deployment record. Signed transaction and receipt are checked by deploy-posting.mjs; this summary is not cryptographic inclusion proof or public-chain authentication."
+}

@@ -1,0 +1,22 @@
+{
+  "parent": "ba2df9a34ffa608b25770dbb3da6e630ee4690af",
+  "inputs": {
+    "compiler-output.json": "f73efa9630f33fab54c5d4650df424a7e0c799b5b7064188338d5a80c08b3df9",
+    "acquired-history.json": "689f880143cdc55f3016dcad42b70bb188af35ad296305e4ee42a9f058a76742",
+    "final-proof-batches.json": "c71915e30f7e2bce8b8e562e39990387c670520303a7f66c96339a0297193797"
+  },
+  "files": {
+    "integration/core-baseline-v1/check-deployment-bindings.mjs": {
+      "sha256": "c24743c4cc295f42e565c4cc725a4da358226333b27a38f3706393c40d039894",
+      "size": 4013
+    },
+    "integration/core-baseline-v1/deployment-bindings.json": {
+      "sha256": "3b42789cfb43a8b43ac8c68f8b57eb1244aee34605a6a4ebecb5d5bc27b11133",
+      "size": 2782
+    },
+    "docs/CORE_DEPLOYMENT_BINDINGS.md": {
+      "sha256": "f0189bb5b3bb66ee65ebbe0d22b48aa20e390b97ce18bc01581f927b1c7b10d1",
+      "size": 2646
+    }
+  }
+}

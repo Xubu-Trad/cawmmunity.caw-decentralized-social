@@ -1,0 +1,37 @@
+{
+  "parent": "be644831007361a64b4e7ed5ddbbfbc7f499ddc2",
+  "transform": "independent signed-byte VM runTx execution",
+  "inputs": {
+    "acquired-history.json": "d4524317e9de7ef8e0a362b6d2a444a6d7ba5618703405658e8bfb83ce980cfe",
+    "compiler-output.json": "f081e763071faa83f19e92015a8fc872a542ddca152e9d8fbca88f9f78c82458",
+    "genesis.json": "7a113bfbcce39f22659ab8021ed687553b51924930206c1f7e15dd5bdd7a2a11"
+  },
+  "executionSha256": "5c40c281c8dd2025b9d3cf2d560b9b497d9bbc187119e7fe2b396f8513424d48",
+  "files": {
+    "experiments/c007-transactions/reexecute-transactions.mjs": {
+      "sha256": "455c251c06b0ada3fcdb4e360933380ed68fad1f81aa620459b912f2ad78c7e9",
+      "size": 10177
+    },
+    "evidence/c007-full-transactions-20261108/result.json": {
+      "sha256": "a9d0824323a97919a9c6368bddf455225c5bcf274fcac0daa3f1892e3a768f55",
+      "size": 4141
+    },
+    "experiments/c007-transactions/package.json": {
+      "sha256": "55183daba3a4ab057d83e2ce0cee6a351ba86453df398a2f5b2b493cc2f81ddc",
+      "size": 716
+    },
+    "experiments/c007-transactions/package-lock.json": {
+      "sha256": "59cc847c3600f8229fe5f3da58c7a34179730c6618c513c2f0fb0dce0a462ec9",
+      "size": 8992
+    },
+    "docs/INDEPENDENT_TRANSACTION_LIFECYCLE.md": {
+      "sha256": "86b8ccdb73ad2267540b7520be0c64d00e64709ce19906b3f17b982a9f8ddcde",
+      "size": 4488
+    },
+    "docs/INDEPENDENT_CALL_LIFECYCLE.md": {
+      "sha256": "047d7445833525bf8fb6522c30ce1c2480d986975bddfb0cabae872527ff2596",
+      "size": 4421
+    }
+  },
+  "fullBlockReplay": false
+}

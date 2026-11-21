@@ -1,0 +1,291 @@
+{
+  "schema": "caw-wallet-transfer-lifecycle/1",
+  "sourceSha256": "d97dd9157a81611630ac876556684f7354f412e35a7a360662aab6ce2984e02c",
+  "walletSha256": "0f27beab9fa9ca8bc87a7cae857bca75285a92dab32d954f4e7b43d767f1d852",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "initial": {
+    "root": "111707771500532398228200638088803803714752446729802754429447215675024401231123",
+    "totalStake": "0",
+    "liabilities": "0",
+    "poolDust": "0",
+    "credit1": "0",
+    "credit2": "0",
+    "credit3": "0",
+    "stake1": "0",
+    "stake2": "0",
+    "stake3": "0",
+    "owner1": "146474699775137182842949972939147019739826056823",
+    "owner2": "721457446580647751014191829380889690493307935711",
+    "owner3": "247512291986854564435551364600938690683113101007",
+    "epoch1": "0",
+    "epoch2": "0",
+    "epoch3": "0",
+    "nonce": "0",
+    "balance": "0"
+  },
+  "before": {
+    "root": "49339624040759059576801710786735020818051890267515921943269532534487398936908",
+    "totalStake": "1011000000000000000000",
+    "liabilities": "6020000000000000000000",
+    "poolDust": "0",
+    "credit1": "6000000000000000000000",
+    "credit2": "10000000000000000000",
+    "credit3": "10000000000000000000",
+    "stake1": "1000000000000000000000",
+    "stake2": "3000000000000000000",
+    "stake3": "8000000000000000000",
+    "owner1": "146474699775137182842949972939147019739826056823",
+    "owner2": "721457446580647751014191829380889690493307935711",
+    "owner3": "247512291986854564435551364600938690683113101007",
+    "epoch1": "0",
+    "epoch2": "0",
+    "epoch3": "0",
+    "nonce": "0",
+    "balance": "6020000000000000000000"
+  },
+  "after": {
+    "root": "49339624040759059576801710786735020818051890267515921943269532534487398936908",
+    "totalStake": "1011000000000000000000",
+    "liabilities": "6019999999999999999999",
+    "poolDust": "1",
+    "credit1": "1000000000000000000000",
+    "credit2": "1373636363636363636363",
+    "credit3": "3646363636363636363636",
+    "stake1": "1000000000000000000000",
+    "stake2": "3000000000000000000",
+    "stake3": "8000000000000000000",
+    "owner1": "146474699775137182842949972939147019739826056823",
+    "owner2": "721457446580647751014191829380889690493307935711",
+    "owner3": "247512291986854564435551364600938690683113101007",
+    "epoch1": "0",
+    "epoch2": "0",
+    "epoch3": "0",
+    "nonce": "1",
+    "balance": "6020000000000000000000"
+  },
+  "final": {
+    "root": "113268928633720179929596306133600615519282043686714515232697345230350675914680",
+    "totalStake": "1009000000000000000000",
+    "liabilities": "6017999999999999999999",
+    "poolDust": "1",
+    "credit1": "998000000000000000000",
+    "credit2": "1373636363636363636363",
+    "credit3": "3646363636363636363636",
+    "stake1": "998000000000000000000",
+    "stake2": "3000000000000000000",
+    "stake3": "8000000000000000000",
+    "owner1": "146474699775137182842949972939147019739826056823",
+    "owner2": "721457446580647751014191829380889690493307935711",
+    "owner3": "247512291986854564435551364600938690683113101007",
+    "epoch1": "2",
+    "epoch2": "0",
+    "epoch3": "0",
+    "nonce": "1",
+    "balance": "6018000000000000000000"
+  },
+  "constructorExecuted": true,
+  "directCodeOrStorageWrites": false,
+  "signedEthereumTransactions": false,
+  "ecdsaWalletSigner": true,
+  "productionWallet": false,
+  "policyAdopted": false,
+  "callRows": 49,
+  "outcomes": [
+    {
+      "name": "create_MockTokenResearch",
+      "expected": "OK"
+    },
+    {
+      "name": "create_SignerWalletFixture",
+      "expected": "OK"
+    },
+    {
+      "name": "create_SignerWalletFixture",
+      "expected": "OK"
+    },
+    {
+      "name": "create_DeployedCustodyStakeResearch",
+      "expected": "OK"
+    },
+    {
+      "name": "mint",
+      "expected": "OK"
+    },
+    {
+      "name": "mint",
+      "expected": "OK"
+    },
+    {
+      "name": "mint",
+      "expected": "OK"
+    },
+    {
+      "name": "execute",
+      "expected": "OK"
+    },
+    {
+      "name": "execute",
+      "expected": "OK"
+    },
+    {
+      "name": "approve",
+      "expected": "OK"
+    },
+    {
+      "name": "deposit",
+      "expected": "OK"
+    },
+    {
+      "name": "approve",
+      "expected": "OK"
+    },
+    {
+      "name": "deposit",
+      "expected": "OK"
+    },
+    {
+      "name": "execute",
+      "expected": "OK"
+    },
+    {
+      "name": "changeStake",
+      "expected": "OK"
+    },
+    {
+      "name": "changeStake",
+      "expected": "OK"
+    },
+    {
+      "name": "postDigest",
+      "expected": "OK"
+    },
+    {
+      "name": "settleFixedPool1",
+      "expected": "WALLET_SIGNATURE"
+    },
+    {
+      "name": "settleFixedPool1",
+      "expected": "OK"
+    },
+    {
+      "name": "settleFixedPool1",
+      "expected": "NONCE"
+    },
+    {
+      "name": "withdraw",
+      "expected": "OWNER"
+    },
+    {
+      "name": "execute",
+      "expected": "CONTROLLER"
+    },
+    {
+      "name": "execute",
+      "expected": "OK"
+    },
+    {
+      "name": "execute",
+      "expected": "OK"
+    },
+    {
+      "name": "postDigest",
+      "expected": "OK"
+    },
+    {
+      "name": "verifyPost",
+      "expected": "OK"
+    },
+    {
+      "name": "execute",
+      "expected": "OK"
+    },
+    {
+      "name": "execute",
+      "expected": "OWNER"
+    },
+    {
+      "name": "execute",
+      "expected": "OWNER"
+    },
+    {
+      "name": "settleFixedPool1",
+      "expected": "EPOCH"
+    },
+    {
+      "name": "postDigest",
+      "expected": "OK"
+    },
+    {
+      "name": "verifyPost",
+      "expected": "WALLET_SIGNATURE"
+    },
+    {
+      "name": "postDigest",
+      "expected": "OK"
+    },
+    {
+      "name": "verifyPost",
+      "expected": "OK"
+    },
+    {
+      "name": "execute",
+      "expected": "CONTROLLER"
+    },
+    {
+      "name": "execute",
+      "expected": "OK"
+    },
+    {
+      "name": "execute",
+      "expected": "OK"
+    },
+    {
+      "name": "postDigest",
+      "expected": "OK"
+    },
+    {
+      "name": "verifyPost",
+      "expected": "OK"
+    },
+    {
+      "name": "postDigest",
+      "expected": "OK"
+    },
+    {
+      "name": "execute",
+      "expected": "OK"
+    },
+    {
+      "name": "verifyPost",
+      "expected": "EPOCH"
+    },
+    {
+      "name": "verifyPost",
+      "expected": "EPOCH"
+    },
+    {
+      "name": "verifyPost",
+      "expected": "EPOCH"
+    },
+    {
+      "name": "postDigest",
+      "expected": "OK"
+    },
+    {
+      "name": "verifyPost",
+      "expected": "WALLET_SIGNATURE"
+    },
+    {
+      "name": "postDigest",
+      "expected": "OK"
+    },
+    {
+      "name": "verifyPost",
+      "expected": "OK"
+    },
+    {
+      "name": "execute",
+      "expected": "OWNER"
+    }
+  ]
+}

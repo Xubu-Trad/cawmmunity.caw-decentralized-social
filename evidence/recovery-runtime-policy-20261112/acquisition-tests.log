@@ -1,0 +1,1 @@
+{"checks": 7, "results": ["genuine 20-file set accepted", "altered rejected; failure preserved", "truncated rejected; failure preserved", "oversized rejected; failure preserved", "unavailable rejected; failure preserved", "interrupted rejected; failure preserved", "existing output preserved without fetch"], "scope": "offline acquisition controls; no node execution"}

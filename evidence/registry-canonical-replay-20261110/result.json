@@ -1,0 +1,16 @@
+{
+  "schema": "caw-canonical-replay-storage-check/1",
+  "fields": 16,
+  "stateRoot": "0x87510643272dc550d8fab031a3291505960b30f1fecdddd5a611d161efdb873f",
+  "clearedApprovalAbsent": true,
+  "controls": [
+    "wrong root",
+    "wrong value",
+    "missing proof",
+    "altered node"
+  ],
+  "capturedAnvilProofRepaired": false,
+  "chainAuthenticated": false,
+  "headerBindingVerified": false,
+  "limits": "Proofs accepted under the independently reconstructed Geth replay root, not under the different Anvil root. No canonical public-chain membership or finality established."
+}

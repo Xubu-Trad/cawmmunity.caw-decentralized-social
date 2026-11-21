@@ -1,0 +1,11 @@
+{
+  "exitCode": 0,
+  "peakRss": 345698304,
+  "seconds": 3.1952754659999982,
+  "path": "/home/xubutrad/gilg/OUT/COMMUNITY_SIGNED_CONSTRUCTOR_20261108_V1",
+  "anvilSha256": "1eaa28361b8ef92f80a0eaf4f1d90e42744e07e79a3bee5e5de95e178c8aeedf",
+  "nodeVersion": "v20.20.2",
+  "ethers": "6.16.0",
+  "syntheticGenesisNativeFunding": true,
+  "servicesStopped": true
+}

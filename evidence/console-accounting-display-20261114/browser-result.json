@@ -1,0 +1,18 @@
+{
+  "passed": 12,
+  "checks": [
+    "verified values and exact block displayed",
+    "verified snapshot permits planning for current signer",
+    "refresh immediately clears stale balances and blocks actions",
+    "successful refresh restores verified display",
+    "missing flag clears display and blocks actions",
+    "wrong block clears display and blocks actions",
+    "conflicting liability clears display and blocks actions",
+    "missing balances clears display and blocks actions",
+    "proof rejected clears display and blocks actions",
+    "retry accepts genuine zero credit and updated owner balance",
+    "display controls never request a transaction plan or signature",
+    "desktop layout does not overflow"
+  ],
+  "scope": "Real headless browser; controlled local HTTP snapshots from fresh Geth. No real wallet extension or independent operator."
+}

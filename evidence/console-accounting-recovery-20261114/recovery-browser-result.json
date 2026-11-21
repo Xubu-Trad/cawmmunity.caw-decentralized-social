@@ -1,0 +1,24 @@
+{
+  "passed": 18,
+  "checks": [
+    "withdrawal unresolved wallet outcome retains review",
+    "withdrawal reload separates earlier expectation from current zero credit",
+    "withdrawal unresolved recovery blocks duplicate actions",
+    "withdrawal matched transaction hash preserves review without confirming execution",
+    "withdrawal submitted reload retains review and never resends",
+    "transfer unresolved wallet outcome retains review",
+    "transfer reload separates earlier expectation from current zero credit",
+    "transfer unresolved recovery blocks duplicate actions",
+    "transfer matched transaction hash preserves review without confirming execution",
+    "transfer submitted reload retains review and never resends",
+    "post unresolved wallet outcome retains review",
+    "post reload separates earlier expectation from current zero credit",
+    "post unresolved recovery blocks duplicate actions",
+    "post matched transaction hash preserves review without confirming execution",
+    "post submitted reload retains review and never resends",
+    "legacy pending record explicitly has no review",
+    "mismatched review is retained but not displayed or used for actions",
+    "saved review fits desktop layout"
+  ],
+  "scope": "Headless Chromium reload and pending recovery with controlled snapshots, unknown wallet outcome and matching synthetic transaction. No real signing, execution or confirmation."
+}

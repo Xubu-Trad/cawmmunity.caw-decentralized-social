@@ -1,0 +1,24 @@
+{
+  "historical_fixture_commit": "ef2adad6cc5cf30feb8de7dbace5e4849f92b7f3",
+  "capture_script_first_publication_commit": "bc1f3f2358b069c58add92a95b2564568acfd761",
+  "later_host_guard_commit": "d0e5e370875d71973cef14efcf86690cf2b7abc3",
+  "reviewer_original_target": "1a162a4a50c0d51312c3943a5f222780c421d140",
+  "clean_checkout_execution_claim": false,
+  "historical_capture_exit_code": null,
+  "historical_proof_exit_code": null,
+  "historical_exit_code_note": "Numeric shell exit codes were not retained in the available run records; they must not be reconstructed from successful output. New offline-check exits are in current-verification.json.",
+  "fresh_evm_execution_this_package": false,
+  "capture_complete_record": {
+    "transactions": 21,
+    "stateRootsMatch": 21,
+    "genesisMatches": true,
+    "freshDatabase": true,
+    "freshProof": true,
+    "publicChainAuthenticated": false
+  },
+  "service_record": {
+    "stopped": true
+  },
+  "capture_script_sha256": "839187977b73e19a94d18a13a77131226be2fd5481f09c5a75d681d97335bc18",
+  "geth_sha256": "45335929e149413c9f680209c87fa14adc5750387da6f5f30b7b2bd24d2d54ea"
+}

@@ -1,0 +1,34 @@
+{
+  "parent": "205d5356244af54e232c0f63d688d9055faf9363",
+  "transform": "signed calldata and event reconstruction plus fixed-snapshot ticket oracle",
+  "files": {
+    "docs/C007_FUNDED_CLAIM_RECONSTRUCTION.md": {
+      "sha256": "7e9e5d585743453e589fb1e557368613b23fe9a9a58088808696ab39594577f8",
+      "size": 3916
+    },
+    "integration/core-baseline-v1/reconstruct-funded-claims.mjs": {
+      "sha256": "1f361696ce632c31fa73c08716895092f9db3de0da9138b87e437be5920a6337",
+      "size": 11181
+    },
+    "integration/core-baseline-v1/check-funded-claim-oracle.py": {
+      "sha256": "59d135fdf774162e532891ca2659cb603b2a34fab1f72b9b41217b537d5d0d0f",
+      "size": 2284
+    },
+    "evidence/funded-claim-reconstruction-20261108/result.json": {
+      "sha256": "3a933a9a48acaecf4b66207abe74c4f16e364684a0b6148b40f0aa21c03e607a",
+      "size": 10181
+    },
+    "evidence/funded-claim-reconstruction-20261108/input-pins.json": {
+      "sha256": "b13ebc2edcb0768ef18af7af2946c1f19edf9ec6b47553a6324e49307217a8d1",
+      "size": 349
+    },
+    "evidence/funded-claim-reconstruction-20261108/oracle.json": {
+      "sha256": "c78d5b78014f4f934fabc3e3bcd7672818ddb248080ba685d826a0d59eaf5ac9",
+      "size": 325
+    },
+    "docs/C007_FUNDED_CLAIMS_RESEARCH.md": {
+      "sha256": "43d90dd7232074dc31ec60c867e75ea61ecee1fbec6542f67dea8b36a3d48b30",
+      "size": 5346
+    }
+  }
+}

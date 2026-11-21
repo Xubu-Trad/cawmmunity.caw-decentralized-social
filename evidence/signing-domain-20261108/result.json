@@ -1,0 +1,12 @@
+{
+  "exitCode": 0,
+  "result": {
+    "checks": 16,
+    "authoredPythonReferenceVectors": 4,
+    "externalConsensusVectors": false,
+    "updatesAccepted": false,
+    "productionAccepted": false
+  },
+  "node": "v20.20.2",
+  "specCommit": "b5c3b619887c7850a8c1d3540b471092be73ad84"
+}

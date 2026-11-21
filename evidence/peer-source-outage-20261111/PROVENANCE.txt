@@ -1,0 +1,3 @@
+PARENTS=[4e9a25edfc8086bb52c58a2188087ef285a2bf84,Geth-capture-V3,peer-sync-V4] TRANSFORM="source outage experiment summary" SHA256=f10b257d0bda8325807b7f473af91de99c178b3cba1f51e3c7b47ae4150e22fa SIZE=52964 PATH=README.md
+PARENTS=[4e9a25edfc8086bb52c58a2188087ef285a2bf84,Geth-capture-V3,peer-sync-V4] TRANSFORM="source outage experiment summary" SHA256=925bb51dfbc392bcc6e5702891001ea0a42e468b9820fefac9719276977253fb SIZE=1924 PATH=docs/PEER_SOURCE_OUTAGE.md
+PARENTS=[4e9a25edfc8086bb52c58a2188087ef285a2bf84,Geth-capture-V3,peer-sync-V4] TRANSFORM="source outage experiment summary" SHA256=ddb7aadd7589bf77e6f669c857fb30d1eb34d69480f8fbe4cc17f4735f072844 SIZE=889 PATH=evidence/peer-source-outage-20261111/result.json

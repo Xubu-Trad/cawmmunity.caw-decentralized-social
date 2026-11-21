@@ -1,0 +1,30 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {verifyWithdrawalEffects} from './verify-withdrawal-effects.mjs';
+const dir=process.argv[2],read=n=>JSON.parse(fs.readFileSync(dir+'/'+n));
+const e=read('withdrawal-boundaries.json'),s=read('withdrawal-selection.json');
+const result=verifyWithdrawalEffects(e,s);assert.equal(result.accountingEffectsVerified,true);assert.equal(result.publicChainAuthenticated,false);assert.equal(result.executionReplayed,false);
+const cases=['signed EOA withdrawal and authenticated balance deltas'];
+const reject=(name,edit)=>{const a=structuredClone(e),b=structuredClone(s);edit(a,b);assert.throws(()=>verifyWithdrawalEffects(a,b),name);cases.push(name);};
+reject('wrong selected transaction',(a,b)=>b.transactionHash='0x'+'00'.repeat(32));
+reject('wrong selected start',(a,b)=>b.startHash=b.endHash);
+reject('wrong selected end',(a,b)=>b.endHash=b.startHash);
+reject('wrong amount',(a,b)=>b.amount='1');
+reject('zero amount',(a,b)=>b.amount='0');
+reject('multiple transactions',a=>a.rawTransactions.push(a.rawTransactions[0]));
+reject('missing transaction',a=>a.rawTransactions=[]);
+reject('missing receipt',a=>a.receipts=[]);
+reject('reverted receipt',a=>a.receipts[0].status='0x0');
+reject('changed signed bytes',a=>a.rawTransactions[0]=a.rawTransactions[0].slice(0,-2)+'00');
+reject('unrelated parent',a=>a.after.header.parentHash='0x'+'00'.repeat(32));
+reject('nonadjacent block',a=>a.after.header.number='0xff');
+for(const side of ['before','after']){
+ for(const kind of ['custody','token','registry','posting','owner'])reject(side+' missing '+kind,a=>delete a[side].proofs[kind]);
+ reject(side+' false credit',a=>a[side].observed.credit='999');
+ reject(side+' false recipient balance',a=>a[side].observed.balances.owner='999');
+ reject(side+' false custody balance',a=>a[side].observed.balances.custody='999');
+ reject(side+' corrupted state root',a=>a[side].header.stateRoot='0x'+'00'.repeat(32));
+ reject(side+' missing storage slots',a=>a[side].proofs.custody.storageProof=[]);
+}
+for(const kind of ['custody','token','registry','posting'])reject('wrong selected '+kind+' code',(a,b)=>b.config.contracts[kind].codeHash='0x'+'00'.repeat(32));
+console.log(JSON.stringify({result,cases,count:cases.length},null,2));

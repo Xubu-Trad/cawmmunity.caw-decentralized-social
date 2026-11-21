@@ -1,0 +1,31 @@
+{
+  "status": "REGISTRY_BOUND_RESEARCH_ONLY",
+  "transactions": 28,
+  "rejected": [
+    "approved transfer operator cannot withdraw",
+    "former owner",
+    "stale new-owner epoch",
+    "external registry transfer rolls back withdrawal",
+    "same-owner epoch change rolls back withdrawal",
+    "full B-to-helper-to-B callback rolls back withdrawal",
+    "unsafe receiver rolls back ownership",
+    "forwarded safe transfer invalidates old withdrawal epoch"
+  ],
+  "final": {
+    "payer": "90",
+    "vault": "8",
+    "allowance": "90",
+    "nonce": "2",
+    "liability": "8",
+    "nextBudget": "0",
+    "credit": "0",
+    "owner": "0x1efF47bc3a10a45D4B230B5d10E37751FE6AA718",
+    "epoch": "3",
+    "other": "2",
+    "credited": "0",
+    "unallocated": "8",
+    "approved": "0x0000000000000000000000000000000000000000",
+    "ownerBalance": "1"
+  },
+  "limits": "Derived constructor-only registry with account4, compiler0.8.30; no registration or live authority proof. Single engine; safe receiver rejection/forwarding and full ABA token callback exercised; no independent reconstruction or second-engine comparison."
+}

@@ -1,0 +1,13 @@
+{
+  "passed": 6,
+  "checks": [
+    "live strict endpoint renders two posts",
+    "markup remains literal",
+    "leading BOM preserved",
+    "failed verification clears rows",
+    "retry reacquires verified history",
+    "refresh clears verified view"
+  ],
+  "accepted": "Verified locally: 2 posts through block 0xf (0x26a6288a6f935bd923d15366de2e7ef93de5f5c0516dea4dba3f6626a4c1213a). Checked by this console server; not public-chain finality.",
+  "scope": "Read-only browser against preserved local execution; offline network failure injected in browser; no wallet signing or new execution."
+}

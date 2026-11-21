@@ -1,0 +1,9 @@
+{
+  "sourceCommit": "e0fa16d3a6f10cc9a88dfde0d130598273005f06",
+  "manifestSha256": "192922b2ecae732f7d25a29a08d6f795b62658237f3aa0d5f44f5164854a18c4",
+  "node": "v20.20.2",
+  "npm": "10.8.2",
+  "gethSha256": "45335929e149413c9f680209c87fa14adc5750387da6f5f30b7b2bd24d2d54ea",
+  "freshDependencies": true,
+  "independentOperator": false
+}

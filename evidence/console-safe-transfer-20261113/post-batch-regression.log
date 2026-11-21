@@ -1,0 +1,20 @@
+{
+  "scope": "synthetic signed reader vectors; not EVM execution or public-chain evidence",
+  "passed": 14,
+  "cases": [
+    "two signed posts in one synthetic committed block",
+    "acquisition reads both signed transactions and receipts",
+    "mixed block with unrelated log",
+    "mixed block with no post event",
+    "reverted transaction",
+    "extra event cannot hide state change",
+    "duplicate post nonce",
+    "valid signature on different call",
+    "valid signature from wrong signer",
+    "event epoch differs from parent proof",
+    "second call replays first calldata",
+    "16 transaction resource boundary",
+    "17 transaction resource rejection",
+    "receipt resource rejection"
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "schema": "caw-token-failure-rollback/1",
+  "sourceSha256": "d97dd9157a81611630ac876556684f7354f412e35a7a360662aab6ce2984e02c",
+  "tokenSha256": "06d5a2c58ea4774ff6f835a3a29e0aafddfda9b7aa75b4c10aec043f8a8c45fb",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "cases": [
+    {
+      "operation": "deposit",
+      "mode": "false",
+      "result": "TOKEN",
+      "rollback": true
+    },
+    {
+      "operation": "withdraw",
+      "mode": "false",
+      "result": "TOKEN",
+      "rollback": true
+    },
+    {
+      "operation": "deposit",
+      "mode": "revert",
+      "result": "TOKEN_REVERT",
+      "rollback": true
+    },
+    {
+      "operation": "withdraw",
+      "mode": "revert",
+      "result": "TOKEN_REVERT",
+      "rollback": true
+    },
+    {
+      "operation": "deposit",
+      "mode": "mutate_then_false",
+      "result": "TOKEN",
+      "rollback": true
+    },
+    {
+      "operation": "withdraw",
+      "mode": "mutate_then_false",
+      "result": "TOKEN",
+      "rollback": true
+    },
+    {
+      "operation": "deposit",
+      "mode": "true_without_transfer",
+      "result": "INBOUND",
+      "rollback": true
+    },
+    {
+      "operation": "withdraw",
+      "mode": "true_without_transfer",
+      "result": "OUTBOUND",
+      "rollback": true
+    },
+    {
+      "operation": "deposit",
+      "mode": "short_recipient",
+      "result": "INBOUND",
+      "rollback": true
+    },
+    {
+      "operation": "withdraw",
+      "mode": "short_recipient",
+      "result": "RECIPIENT",
+      "rollback": true
+    }
+  ],
+  "successfulRecoveryCycles": 5,
+  "final": {
+    "account": {
+      "root": "111707771500532398228200638088803803714752446729802754429447215675024401231123",
+      "totalStake": "0",
+      "liabilities": "0",
+      "poolDust": "0",
+      "credit1": "0",
+      "credit2": "0",
+      "credit3": "0",
+      "stake1": "0",
+      "stake2": "0",
+      "stake3": "0",
+      "owner1": "721457446580647751014191829380889690493307935711",
+      "owner2": "721457446580647751014191829380889690493307935711",
+      "owner3": "247512291986854564435551364600938690683113101007",
+      "epoch1": "0",
+      "epoch2": "0",
+      "epoch3": "0",
+      "nonce": "0",
+      "balance": "0"
+    },
+    "wallet": "1000",
+    "allowance": "500"
+  },
+  "signedEthereumTransactions": false,
+  "productionTokenCompatibility": false,
+  "callRows": 44
+}

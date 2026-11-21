@@ -1,0 +1,21 @@
+{
+  "status": "RESEARCH_NOT_ADOPTED",
+  "pythonDigestMatches": 4,
+  "rejected": [
+    "payerAccount",
+    "epoch",
+    "nonce",
+    "fee",
+    "stakeRoot",
+    "totalStake",
+    "recordId",
+    "chainId",
+    "emitter",
+    "profile",
+    "noncanonical chain encoding",
+    "chain out of range"
+  ],
+  "payerStakeNotCommittedNeedsSeparateProof": true,
+  "zeroVectorIsByteConsistencyNotAdmission": true,
+  "limits": "Cross-language byte commitment and ABI layout only. Caller context is not authenticated; signatures, debit, receipt inclusion and stake membership remain unverified."
+}

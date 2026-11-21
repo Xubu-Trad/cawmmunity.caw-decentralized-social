@@ -1,0 +1,27 @@
+{
+  "passed": 21,
+  "checks": [
+    "export retains original accounting and all observation classes",
+    "export leaves saved records unchanged",
+    "same snapshot exports identically",
+    "empty recheck history is explicit",
+    "changed archive rejects export",
+    "corrupt history rejects without overwriting",
+    "busy lock rejects export",
+    "missing lock support rejects export",
+    "payload modification fails checksum",
+    "wrong external contract selection rejects",
+    "oversized export rejects",
+    "unexpected envelope fields reject",
+    "recomputed checksum does not bypass semantic checks",
+    "export never invokes provider or submits",
+    "withdrawal confirmed export preserves action and accounting review",
+    "withdrawal reverted export preserves action and accounting review",
+    "transfer confirmed export preserves action and accounting review",
+    "transfer reverted export preserves action and accounting review",
+    "post confirmed export preserves action and accounting review",
+    "post reverted export preserves action and accounting review",
+    "legacy record exports without inventing accounting review"
+  ],
+  "scope": "Local export integrity and structure only, not chain evidence."
+}

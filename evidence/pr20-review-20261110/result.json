@@ -1,0 +1,27 @@
+[
+  {
+    "name": "demo-outcome",
+    "exit": 1,
+    "fixtureSha256": "604a94a2caee3f1e77f5705c2594d7b7180e0a922c17a0bb4a74c93adecf3f6d"
+  },
+  {
+    "name": "receipt-status",
+    "exit": 1,
+    "fixtureSha256": "312507aa025b008ef0a86a365451984e4e7cc5a7276bd4fd24966d5d9ff4f77a"
+  },
+  {
+    "name": "calldata",
+    "exit": 1,
+    "fixtureSha256": "c19ac07608c2f03a46d2f4a20f94eb22c2d8e1344f7b75d9405ccf5de313ea69"
+  },
+  {
+    "name": "posted-bytes",
+    "exit": 1,
+    "fixtureSha256": "c65602b75d7f32156d5a701e3fb3e0b96a6512b522610711100e86705ed331aa"
+  },
+  {
+    "name": "wrong-error-data-selector-in-message",
+    "exit": 0,
+    "fixtureSha256": "f778586baf48bbe8abbd3e66a7490a61a07fd7f951e17d5d947a72d997f2af77"
+  }
+]

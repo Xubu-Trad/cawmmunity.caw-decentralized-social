@@ -1,0 +1,34 @@
+{
+  "parent": "71505812d5041cbe9d9ab3ad2af5280aea51c1bf",
+  "transform": "Python research commitment vectors compared with JavaScript byte reconstruction and candidate ABI encoding",
+  "files": {
+    "integration/core-baseline-v1/c007-admission-binding.mjs": {
+      "sha256": "eabe3822f8bc707b884a8a99641f0d40b0a2a29605c0a389707edda11adeb40c",
+      "size": 1620
+    },
+    "integration/core-baseline-v1/test-c007-admission-binding.mjs": {
+      "sha256": "dcffcbd2e8dc719ff8d056ec3eb3ebf63510469864165502c2dcd7d8cd239097",
+      "size": 2411
+    },
+    "integration/core-baseline-v1/make-admission-binding-vectors.py": {
+      "sha256": "12f24e8fe529a12608ca318943ae67066cfd0c46b676ea038e7be43d6a9c4e16",
+      "size": 1062
+    },
+    "docs/C007_ADMISSION_BINDING_RESEARCH.md": {
+      "sha256": "87c81f6947937f8fd41c0e84ed5bcdc2b380cd5612c0677957d02fe673d57f55",
+      "size": 3874
+    },
+    "evidence/admission-binding-20261108/result.json": {
+      "sha256": "20c983d0d2b6f4af42cf08646cd5dc74cf481612e5e85cd587e21c803a4286a5",
+      "size": 585
+    },
+    "evidence/admission-binding-20261108/vectors.json": {
+      "sha256": "2bf38852042ad9744250e41cdbe465cb0c78a74c7f6aca34f97783fb52b137cd",
+      "size": 2750
+    },
+    "docs/C007_CLAIM_EVENT_SCHEMA.md": {
+      "sha256": "09a878bedcf59992311e7865f3f87abe30e70b7a875148a7a6d1c6562166bc41",
+      "size": 4696
+    }
+  }
+}

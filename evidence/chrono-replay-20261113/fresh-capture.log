@@ -1,0 +1,8 @@
+{
+  "transactions": 21,
+  "stateRootsMatch": 21,
+  "genesisMatches": true,
+  "freshDatabase": true,
+  "freshProof": true,
+  "publicChainAuthenticated": false
+}

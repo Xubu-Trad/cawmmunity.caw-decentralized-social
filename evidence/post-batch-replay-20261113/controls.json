@@ -1,0 +1,14 @@
+[
+  {
+    "name": "reverse-batch",
+    "exit": 1
+  },
+  {
+    "name": "alter-gas",
+    "exit": 1
+  },
+  {
+    "name": "alter-root",
+    "exit": 1
+  }
+]

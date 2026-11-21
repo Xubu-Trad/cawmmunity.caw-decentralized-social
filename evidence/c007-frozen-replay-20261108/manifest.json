@@ -1,0 +1,32 @@
+{
+  "schema": "caw-frozen-replay-package/1",
+  "codeCommit": "ecad6c83a0cb9a071bcf81b9c99495003f2a070d",
+  "chainId": 31337,
+  "synthetic": true,
+  "files": {
+    "acquired-history.json": {
+      "sha256": "d4524317e9de7ef8e0a362b6d2a444a6d7ba5618703405658e8bfb83ce980cfe",
+      "bytes": 272118
+    },
+    "genesis.json": {
+      "sha256": "7a113bfbcce39f22659ab8021ed687553b51924930206c1f7e15dd5bdd7a2a11",
+      "bytes": 293
+    },
+    "transaction-result.json": {
+      "sha256": "a9d0824323a97919a9c6368bddf455225c5bcf274fcac0daa3f1892e3a768f55",
+      "bytes": 4141
+    },
+    "blocks.json": {
+      "sha256": "a3936951d64ed84cdcc021a72ffa800453fe4f67d189cf602798fd03ff2920d8",
+      "bytes": 234544
+    }
+  },
+  "binarySha256": "d8cfddad15a8c601e7b069bc5973ad073dbc2d632b8c5ab50e513ef27c53d6da",
+  "review": {
+    "receiptSendersMatchKnownSyntheticActors": true,
+    "genesisContainsOnlyKnownSyntheticActors": true,
+    "privatePathAndCredentialPatternScan": "no matches, including decoded hex",
+    "limitations": "pattern scan is not an exhaustive secret detector; source lineage and existing signature checks also reviewed"
+  },
+  "scope": "frozen local fixture, synthetic genesis and 25 changed timestamps; not an authentic public chain"
+}

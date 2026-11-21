@@ -1,0 +1,25 @@
+{
+  "packagesIndex": "https://archive.ubuntu.com/ubuntu/dists/noble/main/binary-amd64/Packages.xz",
+  "indexSha256": "2a6a199e1031a5c279cb346646d594993f35b1c03dd4a82aaa0323980dd92451",
+  "signatureVerified": false,
+  "packages": [
+    {
+      "name": "libc6",
+      "version": "2.39-0ubuntu8",
+      "sha256": "af36c7ac770770fe3d3c10e85d6bc538e76e57570ba7db7d397fb9f654783ef3",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/glibc/libc6_2.39-0ubuntu8_amd64.deb"
+    },
+    {
+      "name": "libgcc-s1",
+      "version": "14-20240412-0ubuntu1",
+      "sha256": "a39efdcaa2245f026dc3254ce14fcff255fc430a17064632b6ba7c5da974a912",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gcc-14/libgcc-s1_14-20240412-0ubuntu1_amd64.deb"
+    },
+    {
+      "name": "libstdc++6",
+      "version": "14-20240412-0ubuntu1",
+      "sha256": "4863e880d6ee538e4734c430c5579c1ac933b88a42c25bc9980d0f148c54b21e",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gcc-14/libstdc++6_14-20240412-0ubuntu1_amd64.deb"
+    }
+  ]
+}

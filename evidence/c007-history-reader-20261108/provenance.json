@@ -1,0 +1,65 @@
+{
+  "parent": "c27f98264e8d35a8418431b5daf3f093c9fa32dd",
+  "transform": "fresh signed capture through existing readers",
+  "files": {
+    "reference/ethereum-block-transactions.mjs": {
+      "sha256": "bed33246e3708ac6838cddd5a7a2c88692b54cd998a3fc2e647497bf96c94cd5",
+      "size": 17590
+    },
+    "reference/ethereum-block-receipts.mjs": {
+      "sha256": "92b108bdc18d138ec8f8ee6569402045ee91460d0d80a2cc8f012fbdacf55ddd",
+      "size": 12920
+    },
+    "reference/ethereum-block-senders.mjs": {
+      "sha256": "65c787449418ace3091a79bb062e7cd5898f39fb53bfff48ef395adcc2d7befc",
+      "size": 16373
+    },
+    "experiments/c007-constructor/check-history.mjs": {
+      "sha256": "c573f0ac11257c2f8f3700be42707a851c19a54639e2201e8b1fada557d42225",
+      "size": 3292
+    },
+    "experiments/c007-constructor/run-signed-lifecycle.mjs": {
+      "sha256": "76207b00d7e2625ea37066a0c071a2fbb151cebcca3fe2d7cc903add12233246",
+      "size": 14170
+    },
+    "evidence/c007-history-reader-20261108/acquired-history.json": {
+      "sha256": "d4524317e9de7ef8e0a362b6d2a444a6d7ba5618703405658e8bfb83ce980cfe",
+      "size": 272118
+    },
+    "evidence/c007-history-reader-20261108/verified-history.json": {
+      "sha256": "134f8cf62e926f3e079c847ba77b69263bffa9dff081dc768f2daaabfe4ecbc0",
+      "size": 1022359
+    },
+    "evidence/c007-history-reader-20261108/receipt.json": {
+      "sha256": "97923f4f9e27251f7566f68d9259d6821fbf0cc6640b66df7138c57916b3d14b",
+      "size": 156
+    },
+    "evidence/c007-history-reader-20261108/stdout.log": {
+      "sha256": "a1de88056d76b3e9aa5bb5f7ebdf14a01181e3363e0666e877c51f01cca7cf9e",
+      "size": 230
+    },
+    "evidence/c007-history-reader-20261108/stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "evidence/c007-history-reader-20261108/regression.log": {
+      "sha256": "695eee1000f03a91b35fee718b30e815c6536d44a4520fa51c0af130bb014dad",
+      "size": 36636
+    },
+    "evidence/c007-history-reader-20261108/regression-provenance.json": {
+      "sha256": "2f5eaa2f2e3bd025848732599588feef606ab38ce69e33e74fc9ac35246a1c66",
+      "size": 1117
+    },
+    "docs/SIGNED_HISTORY_RECONSTRUCTION.md": {
+      "sha256": "241cba9595445d705e6a6443d46698747318ac3775966d6538c9a40afc34a979",
+      "size": 3525
+    },
+    "docs/SIGNED_LOCAL_LIFECYCLE.md": {
+      "sha256": "748a5263a7d08064247b7eee4bbd177fe848230f0344850aed1ccbda0f3683a6",
+      "size": 4051
+    }
+  },
+  "genesisExcludedFromVerifiedInterval": true,
+  "endpointAuthenticated": false,
+  "executionReplayed": false
+}

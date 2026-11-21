@@ -1,0 +1,50 @@
+{
+  "parent": "0b0176d48a9634aaa571d41fd4cee4aeeac0182d",
+  "transform": "new combined-guard signed capture, history/accounting verification and two-engine synthetic replay",
+  "files": {
+    "evidence/c007-combined-replay-20261108/manifest.json": {
+      "sha256": "065367ce3e83a6c42b27ffbe435e0579c2634225b7cd191a077256e0d8aabba5",
+      "bytes": 900
+    },
+    "evidence/c007-combined-replay-20261108/genesis.json": {
+      "sha256": "7a113bfbcce39f22659ab8021ed687553b51924930206c1f7e15dd5bdd7a2a11",
+      "bytes": 293
+    },
+    "evidence/c007-combined-replay-20261108/acquired-history.json": {
+      "sha256": "3b984b11c0ff48ae4ff13ebcfd857a22f6d1c06b491846887a33639b840fec9e",
+      "bytes": 272775
+    },
+    "evidence/c007-combined-replay-20261108/blocks.json": {
+      "sha256": "22ed32401dd2dd40675cdf17813813913f30e6d802ef3f998863f45762962ab3",
+      "bytes": 235201
+    },
+    "evidence/c007-combined-replay-20261108/transaction-result.json": {
+      "sha256": "dfbd1478b750ca773b5d6f30882b74a58c007dc362ec0a1bc4bb010fa3cf6e80",
+      "bytes": 4141
+    },
+    "evidence/c007-combined-replay-20261108/block-replay.json": {
+      "sha256": "2d5cee547c392d5497db36c398cbcdbfc0b5cbecad8d2bfcef6bf3ba601d93f1",
+      "bytes": 1357
+    },
+    "evidence/c007-combined-replay-20261108/geth-result.json": {
+      "sha256": "e184c1fdc0d2154fc8b557bca623c0610811bc8e05b4531af337cd32a4b4e9fb",
+      "bytes": 1259
+    },
+    "evidence/c007-combined-replay-20261108/input-checks.json": {
+      "sha256": "ab6ada97cd8826eab3167792feb0f694b9c3198740dee52d153f0cae6959456a",
+      "bytes": 375
+    },
+    "experiments/c007-settlement-callback/run-signed-lifecycle.mjs": {
+      "sha256": "105cdd0495a9760aaf1ed156e7a49d4a02c37c40595d168f9a27ca5e2d2e366e",
+      "bytes": 15808
+    },
+    "experiments/c007-settlement-callback/compare-geth-transition.py": {
+      "sha256": "e7f1da505776f01b2576e293656ae9b609ea3e9b1f4cd29b716fae5029c66fc5",
+      "bytes": 8277
+    },
+    "docs/COMBINED_GUARD_SIGNED_REPLAY.md": {
+      "sha256": "eb4b5f2023d5f5a8cf5046f976c40b01ce444fce503ccc5c420debcdb4d6cfd3",
+      "bytes": 4607
+    }
+  }
+}

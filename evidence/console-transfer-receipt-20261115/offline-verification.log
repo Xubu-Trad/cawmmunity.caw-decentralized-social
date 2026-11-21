@@ -1,0 +1,18 @@
+{
+  "localRecordStatus": "LOCAL_RECORD_STRUCTURE_AND_CHECKSUM_VALID",
+  "retainedObservations": 0,
+  "transactionHash": "0x5a2c7b20f4ff504c4ab4c3b83bd2fccd31fcc38ed7afd523426d537873dddb8d",
+  "selectedEndpointsTrusted": true,
+  "publicChainAuthenticated": false,
+  "consensusVerified": false,
+  "executionReplayed": false,
+  "accountingEffectsVerified": false,
+  "status": "INCLUDED_POST_MATCHES_LOCAL_RECORD",
+  "transactionIncluded": true,
+  "signaturesVerified": true,
+  "transactionAndReceiptCommitmentsVerified": true,
+  "ownershipVerified": true,
+  "blockNumber": "0xc",
+  "blockHash": "0x52581c814b2de783b2167557aafe8dd5257c7526de6ccc12086a08c31cd78874",
+  "discrepancies": []
+}

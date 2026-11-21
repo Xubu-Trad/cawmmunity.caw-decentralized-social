@@ -1,0 +1,17 @@
+{
+  "checkpoints": [
+    "chunk",
+    "staged",
+    "verified",
+    "renamed",
+    "directory-synced"
+  ],
+  "peerLossRejected": true,
+  "truncationRejected": true,
+  "oversizeRejected": true,
+  "corruptReplacementRejected": true,
+  "orphanStageIgnored": true,
+  "replacementAccepted": true,
+  "fields": 34,
+  "limits": "deterministic exception injection on local filesystem; not process kill, power loss, multiwriter or network transport certification"
+}

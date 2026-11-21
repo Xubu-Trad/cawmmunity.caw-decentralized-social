@@ -1,0 +1,25 @@
+{
+  "parent": "db05dd0c1c16e6ff95c0ee1b4ca9ba0b4c95da6c",
+  "transform": "construct synthetic Shanghai blocks and fresh same-library replay",
+  "inputs": {
+    "acquired-history.json": "d4524317e9de7ef8e0a362b6d2a444a6d7ba5618703405658e8bfb83ce980cfe",
+    "genesis.json": "7a113bfbcce39f22659ab8021ed687553b51924930206c1f7e15dd5bdd7a2a11",
+    "transaction-result.json": "a9d0824323a97919a9c6368bddf455225c5bcf274fcac0daa3f1892e3a768f55"
+  },
+  "blockArtifactSha256": "a3936951d64ed84cdcc021a72ffa800453fe4f67d189cf602798fd03ff2920d8",
+  "files": {
+    "experiments/c007-transactions/build-replay-blocks.mjs": {
+      "sha256": "49b14c49666bc051cd84aec0c0232d507623eb8c67bd5e5f8d74c3500041f9b6",
+      "size": 8885
+    },
+    "docs/LOCAL_BLOCK_REPLAY.md": {
+      "sha256": "d3151f8f2f6277a50e6368310dbf1e92739fe008e66fbe92564e551f4383e358",
+      "size": 3863
+    },
+    "evidence/c007-block-replay-20261108/result.json": {
+      "sha256": "90833128a954213d4284a37a7818ddbf1c2867695925bc463923c4fc50f6e0a7",
+      "size": 1357
+    }
+  },
+  "originalCapturePreserved": true
+}

@@ -1,0 +1,24 @@
+{
+  "passed": 18,
+  "checks": [
+    "partial EOA withdrawal",
+    "full withdrawal agrees with retained executed state",
+    "fixture wallet receives once despite duplicate display rows",
+    "post changes no token balances or credit",
+    "transfer changes no token balances or credit",
+    "tampered withdrawal bytes rejected",
+    "excess withdrawal rejected",
+    "missing verification rejected",
+    "recipient balance overflow rejected",
+    "credit changed rejects review",
+    "unpaidLiability changed rejects review",
+    "unallocatedBudget changed rejects review",
+    "creditedLiability changed rejects review",
+    "wallet balance changed rejects review",
+    "owner balance changed rejects review",
+    "custody balance changed rejects review",
+    "coherent new credit rejects review",
+    "unchanged accounting at newer block accepted"
+  ],
+  "scope": "Fixture accounting projection and review guard; no contract changes or new chain execution."
+}

@@ -1,0 +1,26 @@
+{
+  "parent": "a3073de97f5533613db0a6515dbb72371c867ed6",
+  "files": {
+    "experiments/c007-contract-wallet/run-signed-lifecycle.mjs": {
+      "sha256": "3ff06281f006fb14b98bbe0df36de924cd8f10412e7d6138571c42ffe9fda11b",
+      "bytes": 16794
+    },
+    "experiments/c007-contract-wallet/check-history.mjs": {
+      "sha256": "78295e40043fc08144d4ebb38a1185f3a09a5aae8e0b25dd0257eb44e7d8fead",
+      "bytes": 3292
+    },
+    "evidence/c007-contract-wallet-20261108/signed-history-summary.json": {
+      "sha256": "f52d4c68106395964ed9e1bdf43d00e17f83a0902adfa78f28de60a529002021",
+      "bytes": 1844
+    },
+    "evidence/c007-contract-wallet-20261108/accounting-boundary.json": {
+      "sha256": "a8c2f12453e4b33b2c0dba8d6d7a6ddeb84a54900250456441990ac664bd06a1",
+      "bytes": 108
+    },
+    "docs/CONTRACT_WALLET_ADAPTER_REVIEW.md": {
+      "sha256": "66c0200f2f180ed4d15d3a9940734fb7e5eefe32b5a8ec7d229f756d3b602b73",
+      "bytes": 7695
+    }
+  },
+  "localCaptureSha256": "5394383c6a762cd3000f92d4e11ee5f2a8c286e31aec92a02ffd3b4cf600f530"
+}

@@ -1,0 +1,14 @@
+{
+  "operations.json": {
+    "sha256": "aa0de13aaa3c4569f430a3e3480edce32bf589f20f917a61f85c6f137963691d",
+    "size": 185011
+  },
+  "result.json": {
+    "sha256": "9c218e312a5b148e3ccceda873e8382d705b0d8edffc9fdff58f09cf833dce8f",
+    "size": 954
+  },
+  "compiler-input.json": {
+    "sha256": "fc52d53a12d5f33c91fc56259f22f192888e3825da5ede31ec14f37dc94b2f3a",
+    "size": 15862
+  }
+}

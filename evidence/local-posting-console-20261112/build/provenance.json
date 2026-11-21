@@ -1,0 +1,21 @@
+{
+  "parents": [
+    "861f78c36d4dbe9d5ed380e716307039e264757bd51e833d28771b44444e7125",
+    "3bb491a777f76dff9b2fe73ce29ca20e21a971b59a2f2cf8f73415424f00be06"
+  ],
+  "transform": "Pinned solc0.8.30 optimizer200 Shanghai compilation; exact expected creation, template and ABI hash checks.",
+  "files": {
+    "compiler-input.json": {
+      "sha256": "d5b3b0a17471e19695b46cf749153f404beafc5f1296850f59245fc68e0df8fc",
+      "size": 4302
+    },
+    "compiler-output.json": {
+      "sha256": "a332acc9bdcd0db6a51965ba9235f7335ce2cd692b2f82c44410ab0d55481e27",
+      "size": 340939
+    },
+    "posting-artifact.json": {
+      "sha256": "70495420088374afa554234684862a926c245106cbc1f1f72b0c2335c5361e94",
+      "size": 16111
+    }
+  }
+}

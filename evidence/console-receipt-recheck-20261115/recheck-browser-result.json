@@ -1,0 +1,16 @@
+{
+  "passed": 10,
+  "checks": [
+    "confirmed recheck appended without rewriting original or resending",
+    "pending recheck appended without rewriting original or resending",
+    "reverted recheck appended without rewriting original or resending",
+    "moved recheck appended without rewriting original or resending",
+    "mismatch recheck appended without rewriting original or resending",
+    "offline recheck appended without rewriting original or resending",
+    "reload retains matching stale conflicting and inconclusive history",
+    "failed recheck write preserves prior history and original",
+    "write retry adds observation without transaction submission",
+    "receipt recheck history fits desktop layout"
+  ],
+  "scope": "Headless Chromium read-only rechecks with controlled local provider responses. No real signing, fresh execution, public finality or cryptographic receipt inclusion."
+}

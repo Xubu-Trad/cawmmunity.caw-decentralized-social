@@ -1,0 +1,16 @@
+{
+  "passed": 10,
+  "checks": [
+    "confirmed pending receipt does not create resolved outcome",
+    "confirmed receipt and original review saved before pending cleanup",
+    "confirmed survives reload without resend or fresh-confirmation claim",
+    "reverted pending receipt does not create resolved outcome",
+    "reverted receipt and original review saved before pending cleanup",
+    "reverted survives reload without resend or fresh-confirmation claim",
+    "mismatched receipt keeps pending and creates no archive",
+    "archive write failure retains pending and blocks duplicate action",
+    "retry stores outcome and cleans pending without resubmission",
+    "archived receipt and expectation fit desktop layout"
+  ],
+  "scope": "Headless Chromium with controlled local receipt/transaction responses and retained state snapshots. No real signing, fresh execution, or cryptographic receipt inclusion."
+}

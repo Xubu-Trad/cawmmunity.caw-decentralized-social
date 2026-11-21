@@ -1,0 +1,147 @@
+file://<local-evidence-directory>/src/integration/local-console/test-receipt-history-browser.mjs:39
+async function until(expression){for(let n=0;n<100;n++){if(await ev(expression))return;await sleep(100);}throw Error('UI_TIMEOUT '+expression+' '+await ev('document.body.innerText'));}
+                                                                                                               ^
+
+Error: UI_TIMEOUT document.getElementById("receipt-history-status").textContent.includes('posting and ownership-transfer receipts only') cawmmunity.caw
+decentralized · social · research
+LOCAL CHAIN / 31337
+Mock-token research. No real funds. This console reads and submits to a local chain. It is an experimental application, not a public CAW network or production release. Use only a disposable local test wallet.
+
+CAW / EXECUTION CONSOLE
+
+Your wallet.
+Your next action.
+
+Publish a local post, hand off your test account, and withdraw its credit. Every action stays under the current owner’s control.
+
+Local chain responding
+Block 0xe
+Refresh chain state ↻
+01 Current account
+
+Verified against selected local state
+
+Block 0xe · 0xb00f8e279e6e4cd9c3fd221d5a4904e5147080371f143833ddca26e31df8d76b
+
+Ownership epoch
+2
+Available credit
+0 mock units
+Original contract wallet
+0 mock units
+Current owner balance
+92 mock units
+Custody balance
+8 mock units
+Total unpaid liability
+8 mock units
+Account owner
+0x6813eb9362372eef6200f3b1dbc3f819671cba69
+Contract wallet
+0xbff9228b938b3676578a88b5962abbd2709c9c46
+Original wallet controller
+0x6813eb9362372eef6200f3b1dbc3f819671cba69
+Current action signer
+0x6813eb9362372eef6200f3b1dbc3f819671cba69
+
+The local verifier checks these balances and credits against state proofs for the block above. The browser displays that verifier result; it does not independently verify the proofs. Selected research contracts only. No public-chain finality or real-asset safety is established.
+
+02 Use your account
+Connect local test wallet
+
+No wallet connected. No keys are stored by this console. Pending action details are saved in this browser for recovery.
+
+Write a local post
+Your words · exact text is published
+
+Experimental text limit: 420 Unicode scalar values.
+
+Unpaid local posting. No CAW fee or reward distribution is implemented here. Local test ETH covers transaction gas.
+
+Review local post →
+Amount in whole mock units
+Review withdrawal →
+Hand off account 2
+Recipient wallet address
+
+Transfers this existing test account and its credit. Does not register a username. Use a disposable plain wallet that you control; it needs local test ETH for gas.
+
+Review account handoff →
+03 RPC account history
+
+No posts yet. Publish the first local test post.
+
+History reported by the selected local node. Public-chain inclusion and permanence are not established.
+
+Verified local history
+
+Separate from the RPC feed above. This console checks signed transactions, receipt commitments and ownership proofs. Local selections remain trusted; no public-network finality is claimed.
+
+Verify local posting history
+
+Not checked. Verify the selected local history explicitly.
+
+Session activity
+
+Receipt export download requested. It includes editable local observations, addresses and any post text; review before sharing. No transaction sent.
+
+No unresolved action is saved.
+
+Most recent saved receipt outcome
+Saved local receipt check · confirmed
+
+Transaction 0x3434343434343434343434343434343434343434343434343434343434343434 · block 0x20 · 0x5656565656565656565656565656565656565656565656565656565656565656
+
+This records a prior matching local-provider receipt check. It is editable browser storage and is not automatically rechecked after reload. It does not prove public-chain finality or transaction-specific balance changes. A successful receipt does not by itself verify the projected accounting.
+
+Saved recheck history (local provider observations; not finality):
+
+Recheck 1: Matches the prior local receipt check · confirmed · block 0x20 · 0x5656565656565656565656565656565656565656565656565656565656565656
+
+Recheck 2: Previous confirmation not reproduced: receipt currently unavailable
+
+Recheck 3: Conflicts with the prior receipt check · reverted · block 0x20 · 0x5656565656565656565656565656565656565656565656565656565656565656
+
+Recheck 4: Conflicts with the prior receipt check · confirmed · block 0x20 · 0x7878787878787878787878787878787878787878787878787878787878787878
+
+Recheck 5: Inconclusive: receipt could not be verified · Malformed or mismatched withdrawal receipt.
+
+Recheck 6: Inconclusive: receipt could not be verified · Unexpected token 'E', "Error: Pro"... is not valid JSON
+
+Recheck 7: Matches the prior local receipt check · confirmed · block 0x20 · 0x5656565656565656565656565656565656565656565656565656565656565656
+
+Saved expected accounting · not a confirmed result
+
+Saved review block (not reverified) 0xd · 0x43cea3ff36e2306104dcc8ab15dc1984eaa5f7bda6a189b4163130a2a13d5eb9
+
+Account credit
+2 → 0
+Total unpaid liability
+10 → 8
+Custody token balance
+10 → 8
+Current owner token balance (before handoff)
+90 → 92
+Original wallet token balance
+0 → 0
+
+This is an editable local record of the earlier review, not fresh proof or confirmation. Withdrawal pays 0x6813eb9362372eef6200f3b1dbc3f819671cba69. The same address may appear as both current owner and original wallet; those rows are not separate payments. Expected effects only, not a completed transaction. Local ETH gas is separate and not estimated here. State is rechecked before the wallet request, but can still change while the wallet is open or before execution.
+
+Verify saved action against history
+
+Not accepted: Unexpected end of JSON input Saved observations have not been changed.
+
+Export saved receipt and rechecks
+
+Downloads editable local records, including addresses and any post text. Review before sharing. The checksum detects changed bytes; it does not prove chain history.
+
+Recheck saved receipt
+
+Read-only check through the connected wallet’s local provider. Connect the original action signer. Missing or conflicting results are retained; nothing is resent.
+
+WORDS. PROOF. COMMUNITY.
+Local execution is progress. Production readiness remains a separate review.
+    at until (file://<local-evidence-directory>/src/integration/local-console/test-receipt-history-browser.mjs:39:112)
+    at async file://<local-evidence-directory>/src/integration/local-console/test-receipt-history-browser.mjs:69:52
+
+Node.js v20.20.2

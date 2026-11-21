@@ -1,0 +1,50 @@
+{
+  "parent": "cca41375188017c15b0bde9c2459872e6bf1dc28",
+  "transform": "signed-intent callback comparison plus combined guard regressions",
+  "files": {
+    "experiments/c007-settlement-callback/Baseline.sol": {
+      "sha256": "eb58ac82f5812413fde719e09fb5abe2218fa2269597309c7ae4a7eb086e9eaa",
+      "bytes": 16730
+    },
+    "experiments/c007-settlement-callback/DeployedCustodyStakeResearch.sol": {
+      "sha256": "e4149f2ddb09e5f83c999e20dc14180f8f7c254584f401e2249bead0c2e45cfa",
+      "bytes": 16738
+    },
+    "experiments/c007-settlement-callback/run-callback.mjs": {
+      "sha256": "165922addf1cbaf67cee854d60ed48bf88390cfe9ed20f8e5774248a7261a093",
+      "bytes": 11149
+    },
+    "experiments/c007-settlement-callback/run-lifecycle.mjs": {
+      "sha256": "b9392bde6b3a33685bf9cfa90f8b83f4c36d46d28e49a38001829a51da5c77c5",
+      "bytes": 10451
+    },
+    "experiments/c007-settlement-callback/package.json": {
+      "sha256": "3cd90dea6c442e62e1eb32e83c412a81d5725be928ecf34bf019702c6fc2f192",
+      "bytes": 215
+    },
+    "experiments/c007-settlement-callback/package-lock.json": {
+      "sha256": "bdb139f0b431b0c820f38fa367443182a19f46107b8fd36f21385f05547972df",
+      "bytes": 14224
+    },
+    "evidence/c007-settlement-callback-20261108/settlement.json": {
+      "sha256": "73954a83b60c306322cd0aea06f3df2167dd706d275f8d6563dcc41c58d2d420",
+      "bytes": 2348
+    },
+    "evidence/c007-settlement-callback-20261108/ownership.json": {
+      "sha256": "85d778bf4d91421b5617a835bf99f6d5c5993aa9d743706f32c15c603e19896d",
+      "bytes": 1575
+    },
+    "evidence/c007-settlement-callback-20261108/staking.json": {
+      "sha256": "3c681974df59e0037cc5e7fdf6e7584ba001004eff148e564c2a6e17088aea04",
+      "bytes": 1551
+    },
+    "evidence/c007-settlement-callback-20261108/lifecycle.json": {
+      "sha256": "0e24a80aaa3a44701f4c62d1263bb5ce3c4722e5e568436365e6926433cbb162",
+      "bytes": 952
+    },
+    "docs/SETTLEMENT_CALLBACK_REVIEW.md": {
+      "sha256": "2a5222656ba6201c0fc0ca6d8fe45ba47a7f75c17d19030fb258efd385c3ca1b",
+      "bytes": 4020
+    }
+  }
+}

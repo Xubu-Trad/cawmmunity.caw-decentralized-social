@@ -1,0 +1,13 @@
+{
+  "schema": "caw-prefix-restart-negative/1",
+  "expectedHead": 14,
+  "observedHead": 0,
+  "signal": "SIGKILL",
+  "assertion": "head must remain 0xe after restart",
+  "exit": 1,
+  "service": {
+    "allStopped": true,
+    "seconds": 10.990224439000002
+  },
+  "scope": "immediate post-start observation with no peers; stopped before replacement recovery; cause unresolved"
+}

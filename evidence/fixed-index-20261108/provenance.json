@@ -1,0 +1,23 @@
+{
+  "parent": "8aa70174e92932eed732816bc9b55820627d5688",
+  "inputTraceSha256": "fe1fc38e93b4217a392e1436a0a246cd19dccfd17bfd3cf77069015f39831ee6",
+  "transform": "three-scale comparison against exact rational entitlement; explicit arithmetic counterexamples",
+  "files": {
+    "integration/core-baseline-v1/c007-fixed-index-reference.py": {
+      "sha256": "d75cffef6cf88edd49aad513801464179f04ba0c49959f4aebc8afa50c3764f6",
+      "size": 5036
+    },
+    "docs/C007_FIXED_INDEX_LIMITS.md": {
+      "sha256": "4936325e5cd807f108ebc9fd88f1ac4ef5554d7fdb81df720281f474c68f4797",
+      "size": 4785
+    },
+    "evidence/fixed-index-20261108/result.json": {
+      "sha256": "2c972e72075f39021295f28712362aa8df027f0bad507cbb087fb8c0c1af44fc",
+      "size": 3091
+    },
+    "docs/C007_REWARD_INDEX_RESEARCH.md": {
+      "sha256": "6cd3a4aca3544513c6975cd81bb9bdca9e06ba35615ee1a313cdbebf8df6c009",
+      "size": 4610
+    }
+  }
+}

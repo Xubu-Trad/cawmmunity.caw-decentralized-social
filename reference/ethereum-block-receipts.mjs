@@ -167,7 +167,7 @@ function association(value, name, expected) {
 }
 
 /** Inspect every receipt at contiguous indices under a separately selected
- * header hash. Only the London layout and post-Byzantium types 0/1/2 are
+ * header hash. Only the London and Shanghai layouts and post-Byzantium types 0/1/2 are
  * supported. The caller's hash and fork selection remain assumptions; receipt
  * payloads do not include transaction hashes, callers, recipients or calldata.
  */
@@ -177,7 +177,7 @@ export function inspectBlockReceipts(headerInput, receiptsInput, selectionInput)
   const { header, receipts, selection } = supplied;
   fields(selection, ['schema', 'profile', 'hash']);
   need(selection.schema === 'caw-block-receipts-selection/1', 'SCHEMA');
-  need(selection.profile === 'london-16', 'PROFILE'); data(selection.hash, 32);
+  need((selection.profile === 'london-16' || selection.profile === 'shanghai-17'), 'PROFILE'); data(selection.hash, 32);
   const headerIntegrity = inspectExecutionHeader(header, {
     schema: 'caw-execution-header-selection/1', profile: selection.profile, hash: selection.hash
   });

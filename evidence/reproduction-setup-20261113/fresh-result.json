@@ -1,0 +1,22 @@
+{
+  "capture": {
+    "transactions": 21,
+    "stateRootsMatch": 21,
+    "genesisMatches": true,
+    "freshDatabase": true,
+    "freshProof": true,
+    "publicChainAuthenticated": false
+  },
+  "proof": {
+    "fields": 16,
+    "negativeControls": 5,
+    "headerHash": "0x9614c671426e14f020a9f8e705c4d7f361c0df64b00817c86f46b424c406e4ae",
+    "localEndpointSelected": true,
+    "chainAuthenticated": false,
+    "finalityVerified": false
+  },
+  "service": {
+    "stopped": true
+  },
+  "scope": "New local database and fresh execution/proof acquisition from previously signed published fixture inputs. Not fresh source compilation/signing of the original fixture, independent operator or public chain."
+}

@@ -1,0 +1,24 @@
+{
+  "status": "REGISTRY_BOUND_RESEARCH_ONLY",
+  "transactions": 20,
+  "rejected": [
+    "approved transfer operator cannot withdraw",
+    "former owner",
+    "stale new-owner epoch",
+    "external registry transfer rolls back withdrawal",
+    "same-owner epoch change rolls back withdrawal"
+  ],
+  "final": {
+    "payer": "90",
+    "vault": "8",
+    "allowance": "90",
+    "nonce": "2",
+    "liability": "8",
+    "nextBudget": "0",
+    "credit": "0",
+    "owner": "0x1efF47bc3a10a45D4B230B5d10E37751FE6AA718",
+    "epoch": "1",
+    "other": "2"
+  },
+  "limits": "Derived constructor-only registry with account4, compiler0.8.30; no registration or live authority proof. Single engine; safe receiver and full ABA callback not exercised here."
+}

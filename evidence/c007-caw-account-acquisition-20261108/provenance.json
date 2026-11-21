@@ -1,0 +1,15 @@
+{
+  "parent": "768f4b6924db6710af80cdf22f55e3243ea96dc8",
+  "collectorSha256": "10d3a86d1d204fddcfcb116fee9b4c28de26a0c77458f8945c1dcdb6ce1786d9",
+  "transform": "bounded read-only historical account acquisition; both HTTP failures",
+  "files": {
+    "evidence/c007-caw-account-acquisition-20261108/result.json": {
+      "sha256": "6ffd6aeaf2411c9e54d2fe60e8e3abf890ad4a71cfe75d4f98cd63f42b9c11c6",
+      "size": 346
+    },
+    "docs/CAW_ACCOUNT_PROOF_ACQUISITION.md": {
+      "sha256": "489c64b178220a6568724987ac8d39569ae22b666792b33566f95cbc9e339d5c",
+      "size": 2925
+    }
+  }
+}

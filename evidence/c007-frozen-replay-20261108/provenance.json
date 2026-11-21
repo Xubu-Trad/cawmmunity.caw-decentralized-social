@@ -1,0 +1,38 @@
+{
+  "parent": "ecad6c83a0cb9a071bcf81b9c99495003f2a070d",
+  "transform": "byte-preserving publication of reviewed synthetic fixture and separate-directory result",
+  "files": {
+    "evidence/c007-frozen-replay-20261108/manifest.json": {
+      "sha256": "2a6460fde2acf841004be45debd598d83921c12fd731e5778978fdc908a1a976",
+      "bytes": 1251
+    },
+    "evidence/c007-frozen-replay-20261108/genesis.json": {
+      "sha256": "7a113bfbcce39f22659ab8021ed687553b51924930206c1f7e15dd5bdd7a2a11",
+      "bytes": 293
+    },
+    "evidence/c007-frozen-replay-20261108/acquired-history.json": {
+      "sha256": "d4524317e9de7ef8e0a362b6d2a444a6d7ba5618703405658e8bfb83ce980cfe",
+      "bytes": 272118
+    },
+    "evidence/c007-frozen-replay-20261108/blocks.json": {
+      "sha256": "a3936951d64ed84cdcc021a72ffa800453fe4f67d189cf602798fd03ff2920d8",
+      "bytes": 234544
+    },
+    "evidence/c007-frozen-replay-20261108/transaction-result.json": {
+      "sha256": "a9d0824323a97919a9c6368bddf455225c5bcf274fcac0daa3f1892e3a768f55",
+      "bytes": 4141
+    },
+    "evidence/c007-frozen-replay-20261108/reproduction.json": {
+      "sha256": "f8a3f0cc05141faca6b1369c30ab34cabaa63a2bbe78ac3b141e8e9567026bef",
+      "bytes": 594
+    },
+    "evidence/c007-frozen-replay-20261108/REPRODUCE.md": {
+      "sha256": "43698c49a746f6e13b4acc735ad625fc25ed2ef8d3b884bfabc13e239895f6b8",
+      "bytes": 3626
+    },
+    "docs/SECOND_ENGINE_TRANSITIONS.md": {
+      "sha256": "e3f24d57b93d5c786a8f5a471cf80c53574f3dce9781ba7399740e873ab1ee2f",
+      "bytes": 7709
+    }
+  }
+}

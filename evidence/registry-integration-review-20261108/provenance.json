@@ -1,0 +1,18 @@
+{
+  "parent": "93569f7d5947a9ff0fa1c5960c261df860af2d64",
+  "transform": "source review and README status refresh, no execution",
+  "inputs": {
+    "experiments__account-authority__TestAccountRegistry.sol": "ab3aecb6b0bc77fa838baf1141d2af96ad8395850b714f35b2f0cdb3b8c826df",
+    "experiments__account-authority__CawAccountCustodyProbe.sol": "4c94066daf7b9d31a8da4717adb316e19a9ac8db400dd82e420071d3c4a19055"
+  },
+  "files": {
+    "README.md": {
+      "sha256": "429c086dff3f024f028a46056bb666afcdd961b1dd2da1b4207a48f65d52fbb0",
+      "size": 51389
+    },
+    "docs/FUNDED_REGISTRY_INTEGRATION_REVIEW.md": {
+      "sha256": "3383d8326e4877016c1070b36d321a2bbbc5006572017cb8797de6d3d32d95b4",
+      "size": 3204
+    }
+  }
+}
