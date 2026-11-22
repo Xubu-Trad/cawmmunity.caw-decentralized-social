@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import {writeFile} from 'node:fs/promises';
 import {Interface, Wallet, hexlify, toBeHex, toUtf8Bytes} from 'ethers';
 import {createLocalRpc} from './local-rpc.mjs';
 import {fixture} from './paid-post-fixture.mjs';
@@ -6,8 +7,9 @@ import {preparePaidPost} from './paid-post-state.mjs';
 import {previewPaidPost} from './paid-post-preview.mjs';
 import {readPublishedPost} from './paid-post-settlement.mjs';
 
-const [mode, endpoint, hash] = process.argv.slice(2);
-assert((mode === 'send' && process.argv.length === 4) || (mode === 'verify' && process.argv.length === 5),
+const mixed = process.argv.includes('--mixed');
+const [mode, endpoint, hash] = process.argv.slice(2).filter(arg => arg !== '--mixed');
+assert((mode === 'send' && process.argv.length === 4 + Number(mixed)) || (mode === 'verify' && process.argv.length === 5 + Number(mixed)),
   'Usage: node test-paid-post-inclusion-time.mjs send|verify loopback-rpc [transaction-hash]');
 const read = createLocalRpc(endpoint,{limit:262144,timeout:5000});
 const text = 'signed for the inclusion block';
@@ -33,15 +35,44 @@ if (mode === 'send') {
     wallet.signingKey.sign(preview.digest).serialized,hexlify(toUtf8Bytes(text))
   ]);
   const senderNonce = Number(BigInt(await read('eth_getTransactionCount',[wallet.address,'pending'])));
-  const raw = await wallet.signTransaction({chainId:31337,type:2,to:fixture.vault,nonce:senderNonce,data,
+  async function selfTransfer(nonce) {
+    const transfer = await wallet.signTransaction({chainId:31337,type:2,to:wallet.address,nonce,
+      value:1n,gasLimit:21000,maxPriorityFeePerGas:1000000000n,maxFeePerGas:5000000000n});
+    await read('eth_sendRawTransaction',[transfer]);
+  }
+  if (mixed) await selfTransfer(senderNonce);
+  const raw = await wallet.signTransaction({chainId:31337,type:2,to:fixture.vault,nonce:senderNonce+Number(mixed),data,
     value:0,gasLimit:900000,maxPriorityFeePerGas:1000000000n,maxFeePerGas:5000000000n});
-  console.log(await read('eth_sendRawTransaction',[raw]));
+  const selected = await read('eth_sendRawTransaction',[raw]);
+  if (mixed) await selfTransfer(senderNonce+2);
+  console.log(selected);
 } else {
-  const result = await readPublishedPost(read,hash);
+  const calls = new Map();
+  const result = await readPublishedPost(async (method,params) => {
+    const value = await read(method,params);
+    if (mixed) calls.set(JSON.stringify([method,params]),{method,params,result:value});
+    return value;
+  },hash);
+  if (mixed) await writeFile('mixed-post-reads.json',JSON.stringify([...calls.values()])+'\n',{flag:'wx'});
   assert.equal(result.status,'settled');
   assert.equal(result.text,text);
   assert.equal(result.submitter,result.signer);
   const header = await read('eth_getBlockByHash',[result.block.hash,false]);
+  if (mixed) {
+    assert.equal(result.transactionIndex,1);
+    assert.equal(result.transactionCount,3);
+    assert.deepEqual(result.settlement,{fee:'5000000000000000000000',share2:'1363636363636363636363',
+      share3:'3636363636363636363636',dust:'1'});
+    const selected = header.transactions[1];
+    assert.equal(selected,hash);
+    for (const other of [header.transactions[0],header.transactions[2]]) {
+      await assert.rejects(readPublishedPost(read,other));
+      await assert.rejects(readPublishedPost((method,params) =>
+        method === 'eth_getRawTransactionByHash' && params[0] === other ?
+          read(method,[selected]) : read(method,params),hash));
+    }
+    console.log(JSON.stringify({block:header.hash,transactions:header.transactions,selectedIndex:1,...result.settlement}));
+  }
   assert.equal(header.parentHash,parentHash);
   assert.equal(BigInt(header.timestamp),20n);
   console.log(JSON.stringify({status:result.status,hash,block:header.hash,parentTime:19,validAfter:20,

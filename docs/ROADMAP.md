@@ -1,3 +1,7 @@
+## Mixed-block paid post — November 22, 2026
+
+Verified a post at index 1 between two signed native self-transfers. The reader checks every transaction and receipt against the selected header. Next, replay neighboring contract calls that can also change custody. [Evidence and reproduction](PRODUCT_DELIVERY.md#mixed-block-post-accounting).
+
 ## Read a published post by hash — November 22, 2026
 
 A fresh browser recovered the mined post after the publisher exited. A second run verified the same post against recorded proofs after Geth stopped. The reader checks the signed text, inclusion, events and changes to custody balances. Another operator can start it using only the example evidence or point it at their own C-007 node. [Run the reader](PRODUCT_DELIVERY.md#read-a-published-post-by-transaction-hash).

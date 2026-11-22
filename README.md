@@ -63,7 +63,7 @@ the experimental application lives on [draft PR #19](https://github.com/Xubu-Tra
 
 ## what comes next
 
-next, verify a paid post in a block containing other transactions and attribute the fee and credits to that post alone. independent operator reproduction of the hash reader and operation of a public social network remain open.
+the hash reader now verifies a post between two ordinary native self-transfers. the post alone debited 5,000 mock tokens. both recipient credits and the one-unit remainder match the state proofs. [replay the mixed block](docs/PRODUCT_DELIVERY.md#mixed-block-post-accounting). next, handle neighboring transactions that can change custody state. independent operator reproduction of the hash reader and operation of a public social network remain open.
 
 ## find your starting point
 
