@@ -35,6 +35,8 @@ The destination is a system others can reproduce and operate without Xubu's acco
 
 anyone can now [download the Ethereum CAW balance reader](public/caw-balance.html?raw=1) and open the file directly in a browser. enter a public address to check its real CAW balance. the browser asks two Ethereum services for the same finalized block and checks the token code before showing the result. it needs no installation, wallet connection or gas.
 
+you can now read a published research post on another computer with just its transaction hash and access to the same chain history. the reader verifies what was posted, who authorized it and where the fee went. the included block 18 example works offline with no wallet. [open the post reader](docs/PRODUCT_DELIVERY.md#read-a-published-post-by-transaction-hash).
+
 the developer console can sign **and publish** a paid post on the disposable research network. a separate wallet approval sends the transaction. after a reload, the console checks the mined text and fee split against the saved review. the new transaction uses mock tokens. [run the product and inspect the receipt](docs/PRODUCT_DELIVERY.md).
 
 a builder can now check a 5,000 mock-token post against a fresh local node before asking a wallet to sign. the reader proves who controls the account, what the payer can spend and how the fee would be split. in a 32-block replay it matched both historical signing requests and rejected the old review after ownership changed. the reader runs on the command line and in the developer console. the new signing desk shows the text and fee split, checks the connected wallet before and after its prompt, and verifies the returned signature with the account’s contract wallet. submission now requires a separate wallet approval. [open the signing desk](docs/PAID_POST_PREVIEW.md#run-the-signing-desk).
@@ -61,7 +63,7 @@ the experimental application lives on [draft PR #19](https://github.com/Xubu-Tra
 
 ## what comes next
 
-make confirmed posts readable from a separately operated service, starting with recovery from a transaction hash without the publishing browser’s local storage. general paid-post verification in mixed-transaction blocks and a publicly operated social network remain open.
+next, verify a paid post in a block containing other transactions and attribute the fee and credits to that post alone. independent operator reproduction of the hash reader and operation of a public social network remain open.
 
 ## find your starting point
 

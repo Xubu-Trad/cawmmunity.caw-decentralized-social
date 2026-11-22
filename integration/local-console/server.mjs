@@ -1,4 +1,4 @@
-import {createPaidPostApi,paidPostPaths} from './paid-post-api.mjs';
+import {createPaidPostApi,paidPostPaths,requestPublishedPost} from './paid-post-api.mjs';
 import {createLocalRpc,readJsonBody} from './local-rpc.mjs';
 import {verifyConsoleAccounting,accountingSlots} from './verify-console-accounting.mjs';
 import {verifyConsoleAuthority,AUTHORITY_SLOTS} from './verify-console-authority.mjs';
@@ -69,7 +69,23 @@ export function createConsole(config){
   if((await rpc('eth_getBlockByNumber',[state.blockNumber,false]))?.hash!==state.blockHash)throw Error('POST_HISTORY_REORG');
   return {status:state.status,blockNumber:state.blockNumber,blockHash:state.blockHash,genesisHash,posting:contracts.posting,posts:rows,publicChainAuthenticated:false};
  }
- const root=path.join(path.dirname(fileURLToPath(import.meta.url)),'ui');const routes={'/paid-post-delivery.mjs':['paid-post-delivery.mjs','text/javascript; charset=utf-8'],'/paid-post-panel.mjs':['paid-post-panel.mjs','text/javascript; charset=utf-8'],'/paid-post-signing.mjs':['paid-post-signing.mjs','text/javascript; charset=utf-8'],'/receipt-history-panel.mjs':['receipt-history-panel.mjs','text/javascript; charset=utf-8'],'/receipt-export.mjs':['receipt-export.mjs','text/javascript; charset=utf-8'],'/receipt-rechecks.mjs':['receipt-rechecks.mjs','text/javascript; charset=utf-8'],'/receipt-outcomes.mjs':['receipt-outcomes.mjs','text/javascript; charset=utf-8'],'/reviewed-accounting-record.mjs':['reviewed-accounting-record.mjs','text/javascript; charset=utf-8'],'/accounting-review.mjs':['accounting-review.mjs','text/javascript; charset=utf-8'],'/accounting-panel.mjs':['accounting-panel.mjs','text/javascript; charset=utf-8'],'/':['index.html','text/html; charset=utf-8'],'/style.css':['style.css','text/css; charset=utf-8'],'/app.mjs':['app.mjs','text/javascript; charset=utf-8'],'/wallet-provider.mjs':['wallet-provider.mjs','text/javascript; charset=utf-8'],'/withdrawal-plan.mjs':['withdrawal-plan.mjs','text/javascript; charset=utf-8'],'/account-transfer-plan.mjs':['account-transfer-plan.mjs','text/javascript; charset=utf-8'],'/post-plan.mjs':['post-plan.mjs','text/javascript; charset=utf-8'],'/keccak256.mjs':['keccak256.mjs','text/javascript; charset=utf-8'],'/strict-history-panel.mjs':['strict-history-panel.mjs','text/javascript; charset=utf-8'],'/receipt-status.mjs':['receipt-status.mjs','text/javascript; charset=utf-8'],'/withdrawal-journal.mjs':['withdrawal-journal.mjs','text/javascript; charset=utf-8']};
+ const server=createConsoleHttp({config,rpc,paidPost,snapshot,plan,transferPlan,postPlan,posts});
+ return {server,snapshot,plan,transferPlan,postPlan,posts};
+}
+
+// A separate reader has no publishing routes or dependency on the account console.
+export function createPublishedPostServer(lookup) {
+ return createConsoleHttp({readerOnly:true,paidPost:(_route,body,signal)=>requestPublishedPost(lookup,body,signal)});
+}
+
+const readerAssets = {
+ '/published-post.html':['published-post.html','text/html; charset=utf-8'],
+ '/published-post.mjs':['published-post.mjs','text/javascript; charset=utf-8'],
+ '/paid-post-format.mjs':['paid-post-format.mjs','text/javascript; charset=utf-8'],
+ '/style.css':['style.css','text/css; charset=utf-8']
+};
+function createConsoleHttp({config,rpc,paidPost,snapshot,plan,transferPlan,postPlan,posts,readerOnly=false}) {
+ const root=path.join(path.dirname(fileURLToPath(import.meta.url)),'ui');const routes={...readerAssets,'/paid-post-delivery.mjs':['paid-post-delivery.mjs','text/javascript; charset=utf-8'],'/paid-post-panel.mjs':['paid-post-panel.mjs','text/javascript; charset=utf-8'],'/paid-post-signing.mjs':['paid-post-signing.mjs','text/javascript; charset=utf-8'],'/receipt-history-panel.mjs':['receipt-history-panel.mjs','text/javascript; charset=utf-8'],'/receipt-export.mjs':['receipt-export.mjs','text/javascript; charset=utf-8'],'/receipt-rechecks.mjs':['receipt-rechecks.mjs','text/javascript; charset=utf-8'],'/receipt-outcomes.mjs':['receipt-outcomes.mjs','text/javascript; charset=utf-8'],'/reviewed-accounting-record.mjs':['reviewed-accounting-record.mjs','text/javascript; charset=utf-8'],'/accounting-review.mjs':['accounting-review.mjs','text/javascript; charset=utf-8'],'/accounting-panel.mjs':['accounting-panel.mjs','text/javascript; charset=utf-8'],'/':['index.html','text/html; charset=utf-8'],'/app.mjs':['app.mjs','text/javascript; charset=utf-8'],'/wallet-provider.mjs':['wallet-provider.mjs','text/javascript; charset=utf-8'],'/withdrawal-plan.mjs':['withdrawal-plan.mjs','text/javascript; charset=utf-8'],'/account-transfer-plan.mjs':['account-transfer-plan.mjs','text/javascript; charset=utf-8'],'/post-plan.mjs':['post-plan.mjs','text/javascript; charset=utf-8'],'/keccak256.mjs':['keccak256.mjs','text/javascript; charset=utf-8'],'/strict-history-panel.mjs':['strict-history-panel.mjs','text/javascript; charset=utf-8'],'/receipt-status.mjs':['receipt-status.mjs','text/javascript; charset=utf-8'],'/withdrawal-journal.mjs':['withdrawal-journal.mjs','text/javascript; charset=utf-8']};
  const activeWork = new Set();
  const server=http.createServer({maxHeaderSize:8192,requestTimeout:10000},async(req,res)=>{
   function send(status,value,type='application/json'){res.writeHead(status,{'Content-Type':type,'Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'"});res.end(type==='application/json'?JSON.stringify(value):value);}
@@ -80,6 +96,13 @@ export function createConsole(config){
   const site=req.headers['sec-fetch-site'];
   if(req.url?.startsWith('/api/') && site!==undefined && site!=='same-origin' && site!=='none'){
    return send(403,{error:'LOCAL_ORIGIN_REQUIRED'});
+  }
+  if(readerOnly){
+   if(req.method==='GET' && req.url==='/'){
+    res.writeHead(302,{'Location':'/published-post.html','Cache-Control':'no-store'});return res.end();
+   }
+   if(!(req.method==='GET'&&Object.hasOwn(readerAssets,req.url)) &&
+      !(req.method==='POST'&&req.url==='/api/paid-post/read'))return send(404,{error:'NOT_FOUND'});
   }
   if(req.method==='GET'&&req.url==='/api/paid-post/config')return send(200,{enabled:Boolean(paidPost)});
   if(req.method==='GET'&&req.url==='/paid-post-fixture.mjs'){
@@ -98,12 +121,12 @@ export function createConsole(config){
   const disconnected=()=>{if(!res.writableEnded)acquisition.abort(Error('HISTORY_CLIENT_DISCONNECTED'));};
   res.on('close',disconnected);
   try{if(req.method==='GET')return send(200,req.url==='/api/verified-posts'?await acquireVerifiedPosts(rpc,config,acquisition.signal):req.url==='/api/posts'?await posts():await snapshot());if(req.headers['content-type']!=='application/json')return send(415,{error:'JSON_REQUIRED'});if(isPaidPost){
-    const input=await readJsonBody(req,32768,'BODY_LIMIT');
+    const input=await readJsonBody(req,req.url==='/api/paid-post/read'?256:32768,'BODY_LIMIT');
     return send(200,await paidPost(req.url,input,acquisition.signal));
   }
   const body=await readJsonBody(req,req.url==='/api/verified-receipt'?220000:12288,'BODY_LIMIT');if(req.url==='/api/verified-receipt'){if(!body||Object.keys(body).join(',')!=='exportText'||typeof body.exportText!=='string')throw Error('EXPORT_FIELD_REQUIRED');return send(200,await acquireVerifiedReceipt(rpc,config,body.exportText,acquisition.signal));}const field=req.url==='/api/transfer-plan'?'recipient':req.url==='/api/post-plan'?'text':'amount';if(!body||Object.keys(body).join(',')!==field)throw Error('ONE_FIELD_REQUIRED');return send(200,field==='recipient'?await transferPlan(body.recipient):field==='text'?await postPlan(body.text):await plan(body.amount));}
   catch(e){if(!res.destroyed)return send(422,{error:e.message});}finally{res.removeListener('close',disconnected);activeWork.delete(lane);}
- });return {server,snapshot,plan,transferPlan,postPlan,posts};
+ });return server;
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){const config=JSON.parse(await fs.readFile(process.argv[2],'utf8'));const {server}=createConsole(config);server.listen(Number(process.env.PORT??4200),'127.0.0.1',()=>console.log('Local execution console: http://127.0.0.1:'+server.address().port));}
 

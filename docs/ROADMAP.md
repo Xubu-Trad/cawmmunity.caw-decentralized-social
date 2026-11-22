@@ -1,3 +1,9 @@
+## Read a published post by hash — November 22, 2026
+
+A fresh browser recovered the mined post after the publisher exited. A second run verified the same post against recorded proofs after Geth stopped. The reader checks the signed text, inclusion, events and changes to custody balances. Another operator can start it using only the example evidence or point it at their own C-007 node. [Run the reader](PRODUCT_DELIVERY.md#read-a-published-post-by-transaction-hash).
+
+Next, attribute an individual post’s fee in a mixed-transaction block. Independent reproduction of the new reader is pending.
+
 ## public token reader and mined paid-post delivery — November 22, 2026
 
 the first wallet-free public product reads real Ethereum CAW balances in an ordinary browser from a single downloadable file. the signing desk now publishes separately approved posts to a running private Geth node and recovers the result after reload. it checks the exact signed transaction, both events and the account balances. independent comment reviews on #26–28 passed within scope. #19 and #29 have new fixes awaiting reviewer recheck. [operator guide and results](PRODUCT_DELIVERY.md).

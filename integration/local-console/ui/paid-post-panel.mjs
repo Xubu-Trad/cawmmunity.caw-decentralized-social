@@ -1,3 +1,4 @@
+import {exactText, mockTokens} from './paid-post-format.mjs';
 import {submitPaidPost, readPaidDelivery, checkPaidDelivery, deliveryStorageKey} from './paid-post-delivery.mjs';
 import {signReviewedPaidPost} from './paid-post-signing.mjs';
 
@@ -80,20 +81,6 @@ function showRows(id, values) {
     return row;
   });
   el(id).replaceChildren(...rows);
-}
-
-// The reviewed fixture token has 18 decimals. Display every significant digit.
-function mockTokens(raw) {
-  if (typeof raw !== 'string' || !/^(?:0|[1-9][0-9]{0,77})$/.test(raw)) throw Error('Invalid mock-token amount.');
-  const padded = raw.padStart(19, '0');
-  const fraction = padded.slice(-18).replace(/0+$/, '');
-  return padded.slice(0, -18) + (fraction ? '.' + fraction : '') + ' mock';
-}
-
-// Escape nonprinting format characters as well as normal JSON control escapes.
-function exactText(text) {
-  return JSON.stringify(text).replace(/[\p{Cf}\p{Zl}\p{Zp}]/gu,
-    char => '\\u{' + char.codePointAt(0).toString(16) + '}');
 }
 
 function showReview(value) {
@@ -284,11 +271,12 @@ el('check-receipt').addEventListener('click',async () => {
       el('submission-status').textContent = 'Verified transaction reverted.';
     } else {
       el('submission-status').textContent = 'Paid post settled. Receipt and balances verified.';
-      showRows('settlement', [['Verified post',exactText(result.text)],['Transaction',result.hash],
+      showRows('settlement-details', [['Verified post',exactText(result.text)],['Transaction',result.hash],
         ['Settlement block',result.block.hash],['Payer fee',mockTokens(result.settlement.fee)],
         ['Account 2 received',mockTokens(result.settlement.share2)],
         ['Account 3 received',mockTokens(result.settlement.share3)],['Rounding remainder',mockTokens(result.settlement.dust)]]);
       el('settlement').hidden = false;
+      el('reader-link').href = '/published-post.html#' + result.hash;
     }
   } catch (error) {
     el('submission-status').textContent = 'Settlement unverified. ' + error.message;
