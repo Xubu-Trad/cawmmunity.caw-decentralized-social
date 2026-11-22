@@ -1,3 +1,4 @@
+import {verifyPaidPostReceipt} from './paid-post-settlement.mjs';
 import {Interface, recoverAddress} from 'ethers';
 import {createLocalRpc} from './local-rpc.mjs';
 import {preparePaidPost, recheckPaidPost} from './paid-post-state.mjs';
@@ -6,13 +7,14 @@ const validator = new Interface(['function isValidSignature(bytes32,bytes) view 
 const validSignature = '0x1626ba7e';
 
 export const paidPostPaths = new Set([
-  '/api/paid-post/prepare', '/api/paid-post/recheck', '/api/paid-post/verify'
+  '/api/paid-post/receipt', '/api/paid-post/prepare', '/api/paid-post/recheck', '/api/paid-post/verify'
 ]);
 
 export function createPaidPostApi(endpoint) {
   const rpc = createLocalRpc(endpoint, {limit: 262144, timeout: 5000});
   return async function handle(route, body, signal) {
     const read = (method, params) => rpc(method, params, signal);
+    if (route === '/api/paid-post/receipt') return verifyPaidPostReceipt(read, body);
     if (route === '/api/paid-post/prepare') return preparePaidPost(read, body);
     if (route === '/api/paid-post/recheck') return recheckPaidPost(read, body);
     if (route !== '/api/paid-post/verify') throw Error('Unknown paid-post operation');

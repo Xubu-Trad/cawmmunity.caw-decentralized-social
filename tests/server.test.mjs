@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import http from 'node:http';
+import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { createServer } from '../server.mjs';
 
@@ -67,6 +68,7 @@ test('serves only the named public assets, with exact file bytes and MIME types'
     ['/deployment.json', 'deployment.json', 'application/json; charset=utf-8'],
     ['/alpha.mjs', 'alpha.mjs', 'text/javascript; charset=utf-8'],
     ['/website.html', 'website.html', 'text/html; charset=utf-8'],
+    ['/caw-balance.html', 'caw-balance.html', 'text/html; charset=utf-8'],
     ['/website.css', 'website.css', 'text/css; charset=utf-8'],
     ['/caw-symbol.png', 'caw-symbol.png', 'image/png'],
   ];
@@ -188,4 +190,23 @@ test('sets bounded HTTP connection, header and request controls', async t => {
   const tooMany = Object.fromEntries(Array.from({ length: 40 }, (_, index) => [`X-Header-${index}`, 'x']));
   const countResponse = await request(server, { headers: tooMany });
   assert.equal(countResponse.status, 431);
+});
+
+test('the balance reader permits only its packaged code and the two Ethereum endpoints', async t => {
+  const server = await fixtureServer(t);
+  for (const path of ['/caw-balance.html', '/mirror/caw-balance.html']) {
+    const response = await request(server, { path });
+    const html = response.body.toString('utf8');
+    const policy = response.headers['content-security-policy'];
+    const meta = html.match(/http-equiv="Content-Security-Policy" content="([^"]+)"/)[1];
+    assert.equal(policy, meta + "; frame-ancestors 'none'");
+    for (const tag of ['script', 'style']) {
+      const body = html.split('<' + tag + '>')[1].split('</' + tag + '>')[0];
+      const hash = createHash('sha256').update(body).digest('base64');
+      assert.ok(policy.split('; ').includes(tag + "-src 'sha256-" + hash + "'"));
+    }
+    assert.ok(policy.split('; ').includes('connect-src https://ethereum-rpc.publicnode.com https://eth.drpc.org'));
+  }
+  const home = await request(server, {});
+  assert.ok(home.headers['content-security-policy'].split('; ').includes("connect-src 'self'"));
 });

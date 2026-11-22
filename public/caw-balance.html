@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-QW9NUcs6kK85OJOVBeItsGB+uPvNx5dYs10Wu83/nFE='; style-src 'sha256-ppy98xcat17vJ+tK8KZp4kHl7LjUckiiE1q8SdTYpnk='; connect-src https://ethereum-rpc.publicnode.com https://eth.drpc.org; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CAW balance reader · community.caw</title>
+<style>
+:root{color-scheme:dark;background:#0b1116;color:#e8eff0;font:16px/1.55 system-ui,sans-serif}
+*{box-sizing:border-box}body{margin:0}main{width:min(100% - 2.5rem,48rem);margin:clamp(1.5rem,7vw,5rem) auto}
+h1,h2,button,.network,dd{font-family:ui-monospace,monospace}h1{font-size:clamp(2rem,6vw,3.3rem);line-height:1.05;letter-spacing:-.055em;margin:1.2rem 0}
+.network{color:#88f2cb}p{color:#bfced1;max-width:65ch}form,section{border:1px solid #39505a;background:#101b21;padding:clamp(1rem,4vw,2rem);margin:1.5rem 0}
+label{display:block;font-weight:650;margin-bottom:.4rem}input,button{font:inherit;padding:.8rem;border-radius:3px}
+input{display:block;width:100%;background:#080f13;border:1px solid #779098;color:#eef6f5;font-family:ui-monospace,monospace}
+button{border:1px solid #82e9c3;background:#82e9c3;color:#08221a;font-weight:700;margin-block:1rem .3rem;cursor:pointer}
+button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #ffca81;outline-offset:3px}
+h2{margin:0 0 .8rem;font-size:1.1rem}#status{margin:.7rem 0 0}dl{margin:0}dt{color:#b3c4c8;font-size:.86rem;margin-top:.85rem}dd{margin:.15rem 0;overflow-wrap:anywhere}.amount{color:#88f2cb;font-size:clamp(1.45rem,4vw,2.6rem);line-height:1.2}
+small{font-size:.85rem}code{overflow-wrap:anywhere;color:#d8e5e7}a{color:#8ceace}[hidden]{display:none}
+</style></head>
+<body><main><span class="network">Ethereum / Mainnet</span><h1>CAW balance reader</h1>
+<p>Look up an address’s CAW balance at a finalized Ethereum block. You can open this file directly in a browser.</p>
+<form novalidate><label for="holder">Ethereum address</label>
+<input id="holder" name="holder" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" maxlength="48" placeholder="0x…" aria-describedby="privacy">
+<p id="privacy"><small>Checking sends this address to PublicNode and dRPC. Anyone can look up a public address. No wallet connection is required.</small></p>
+<button type="submit">Check balance</button><p id="status" role="status">Ready for lookup.</p></form>
+<section id="result" hidden aria-labelledby="result-title"><h2 id="result-title">Balance at selected block</h2>
+<dl><dt>CAW balance</dt><dd class="amount" data-value="amount"></dd><dt>Address</dt><dd data-value="holder"></dd>
+<dt>Raw units (18 decimals)</dt><dd data-value="units"></dd><dt>Block</dt><dd data-value="height"></dd>
+<dt>Block hash</dt><dd data-value="hash"></dd><dt>Block time</dt><dd data-value="time"></dd></dl></section>
+<h2>What the result verifies</h2>
+<p>Both services must report Ethereum mainnet and agree on the selected block, the CAW contract code and the balance. Each service reads the same block by hash. Finality and state are reported by those providers. This reader does not independently verify Ethereum consensus or a storage proof.</p>
+<p>CAW contract<br><code>0xf3b9569f82b18aef890de263b84189bd33ebe452</code></p>
+<noscript>This reader needs JavaScript to request a balance.</noscript></main>
+<script>// JSON syntax and resource checks only. Callers still validate domain values.
+const BOUNDED_JSON_LIMITS = Object.freeze({
+  maxBytes: 1048576,
+  maxDepth: 32,
+  maxItems: 100000
+});
+
+function fail(kind) {
+  const error = new Error('JSON input rejected: ' + kind + '.');
+  error.code = 'BOUNDED_JSON_' + kind;
+  throw error;
+}
+
+function byteLimit(maxBytes) {
+  if (!Number.isSafeInteger(maxBytes) || maxBytes < 1 || maxBytes > BOUNDED_JSON_LIMITS.maxBytes) {
+    fail('LIMIT');
+  }
+  return maxBytes;
+}
+
+/** Reject ambiguity before native parsing constructs the resulting objects.
+ * Values retain JSON.parse semantics, including -0, exponents and escaped
+ * strings. Duplicate names compare decoded strings without normalization.
+ * Items count each value (containers included) and each object member name.
+ */
+function parseBoundedJson(text, maxBytes = BOUNDED_JSON_LIMITS.maxBytes) {
+  if (typeof text !== 'string') fail('TYPE');
+  byteLimit(maxBytes);
+  // UTF-16 length is a cheap lower bound on this UTF-8 byte count. Bound the
+  // encoder's input before allocating its at-most-three-byte-per-unit result.
+  if (text.length > maxBytes || new TextEncoder().encode(text).byteLength > maxBytes) fail('LIMIT');
+  let position = 0;
+  let items = 0;
+
+  function item() {
+    if (++items > BOUNDED_JSON_LIMITS.maxItems) fail('LIMIT');
+  }
+
+  function whitespace() {
+    while (position < text.length) {
+      const code = text.charCodeAt(position);
+      if (code !== 0x20 && code !== 0x09 && code !== 0x0a && code !== 0x0d) break;
+      position++;
+    }
+  }
+
+  function string() {
+    if (text.charCodeAt(position) !== 0x22) fail('SYNTAX');
+    const start = position++;
+    while (position < text.length) {
+      const code = text.charCodeAt(position);
+      if (code === 0x22) {
+        position++;
+        try { return JSON.parse(text.slice(start, position)); }
+        catch { fail('SYNTAX'); }
+      }
+      // Skip an escaped code unit when finding the closing quote. The native
+      // string-token parser checks escape spelling and control characters.
+      position += code === 0x5c ? 2 : 1;
+    }
+    fail('SYNTAX');
+  }
+
+  function digit() {
+    const code = text.charCodeAt(position);
+    return code >= 0x30 && code <= 0x39;
+  }
+
+  function number() {
+    if (text[position] === '-') position++;
+    if (text[position] === '0') position++;
+    else {
+      const first = text.charCodeAt(position);
+      if (!(first >= 0x31 && first <= 0x39)) fail('SYNTAX');
+      do { position++; } while (digit());
+    }
+    if (text[position] === '.') {
+      position++;
+      if (!digit()) fail('SYNTAX');
+      do { position++; } while (digit());
+    }
+    if (text[position] === 'e' || text[position] === 'E') {
+      position++;
+      if (text[position] === '+' || text[position] === '-') position++;
+      if (!digit()) fail('SYNTAX');
+      do { position++; } while (digit());
+    }
+  }
+
+  function value(depth) {
+    whitespace();
+    item();
+    const first = text[position];
+    if (first === '{' || first === '[') {
+      if (depth >= BOUNDED_JSON_LIMITS.maxDepth) fail('LIMIT');
+      position++;
+      whitespace();
+      if (first === '{') {
+        const names = new Set();
+        if (text[position] === '}') { position++; return; }
+        for (;;) {
+          item();
+          const name = string();
+          if (names.has(name)) fail('DUPLICATE_KEY');
+          names.add(name);
+          whitespace();
+          if (text[position++] !== ':') fail('SYNTAX');
+          value(depth + 1);
+          whitespace();
+          const next = text[position++];
+          if (next === '}') return;
+          if (next !== ',') fail('SYNTAX');
+          whitespace();
+        }
+      } else {
+        if (text[position] === ']') { position++; return; }
+        for (;;) {
+          value(depth + 1);
+          whitespace();
+          const next = text[position++];
+          if (next === ']') return;
+          if (next !== ',') fail('SYNTAX');
+        }
+      }
+    }
+    if (first === '"') { string(); return; }
+    if (first === '-' || digit()) { number(); return; }
+    for (const literal of ['true', 'false', 'null']) {
+      if (text.startsWith(literal, position)) { position += literal.length; return; }
+    }
+    fail('SYNTAX');
+  }
+
+  value(0);
+  whitespace();
+  if (position !== text.length) fail('SYNTAX');
+  try { return JSON.parse(text); }
+  catch { fail('SYNTAX'); }
+}
+
+/** Read a native response stream with bounded byte retention. This assumes the
+ * native Response/reader surface, not hostile Proxy or modified built-ins.
+ * Cancellation and lock release are attempted even when reading fails; cleanup
+ * never replaces the original read, size, UTF-8 or JSON error.
+ */
+async function readBoundedJson(response, maxBytes = BOUNDED_JSON_LIMITS.maxBytes) {
+  byteLimit(maxBytes);
+  if (!response || typeof response !== 'object' || response.ok !== true || !response.body) {
+    try { await response?.body?.cancel(); } catch { /* Preserve the response error. */ }
+    const error = new Error('JSON response is unavailable.');
+    error.code = 'BOUNDED_JSON_TYPE';
+    throw error;
+  }
+  const bytes = new Uint8Array(maxBytes);
+  const reader = response.body.getReader();
+  let length = 0;
+  try {
+    for (;;) {
+      const { value, done } = await reader.read();
+      if (done) break;
+      if (!(value instanceof Uint8Array)) fail('TYPE');
+      if (value.byteLength > maxBytes - length) fail('LIMIT');
+      // Capture bytes before the next await without retaining per-chunk
+      // objects. Arbitrary chunk splits share this one bounded buffer.
+      bytes.set(value, length);
+      length += value.byteLength;
+    }
+  } finally {
+    try { await reader.cancel(); } catch { /* Preserve the primary result. */ }
+    try { reader.releaseLock(); } catch { /* Preserve the primary result. */ }
+  }
+  let text;
+  try {
+    // Retain a leading BOM as U+FEFF so JSON grammar rejects it explicitly.
+    text = new TextDecoder('utf-8', { fatal: true, ignoreBOM: true }).decode(bytes.subarray(0, length));
+  } catch { fail('SYNTAX'); }
+  return parseBoundedJson(text, maxBytes);
+}
+(() => {
+  'use strict';
+  const token = '0xf3b9569f82b18aef890de263b84189bd33ebe452';
+  const runtimeSha256 = 'ac5c77c1372337655d8f0257e34feec1ab0506dc8e8e7f034252cba66390bea1';
+  const providers = [
+    {name:'PublicNode', url:'https://ethereum-rpc.publicnode.com'},
+    {name:'dRPC', url:'https://eth.drpc.org'}
+  ];
+  const form = document.querySelector('form');
+  const address = document.querySelector('#holder');
+  const result = document.querySelector('#result');
+  const status = document.querySelector('#status');
+  let pending;
+  let sequence = 0;
+
+  async function read(provider, method, params, signal) {
+    const id = ++sequence;
+    try {
+      const response = await fetch(provider.url, {method:'POST', credentials:'omit', cache:'no-store',
+        referrerPolicy:'no-referrer', redirect:'error', headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({jsonrpc:'2.0', id, method, params}), signal});
+      const message = await readBoundedJson(response, method === 'eth_getBlockByNumber' ? 1048576 : 16384);
+      if (message?.jsonrpc !== '2.0' || message.id !== id || !Object.hasOwn(message,'result') ||
+          Object.hasOwn(message,'error')) throw Error('Invalid RPC response');
+      return message.result;
+    } catch {
+      throw Error(provider.name + ' could not complete ' + method + '. Try again.');
+    }
+  }
+  function header(block, height) {
+    const quantity = /^0x(?:0|[1-9a-f][0-9a-f]{0,12})$/;
+    if (!block || !quantity.test(block.number) || !quantity.test(block.timestamp) ||
+        !/^0x[0-9a-f]{64}$/.test(block.hash) || !/^0x[0-9a-f]{64}$/.test(block.stateRoot) ||
+        (height && block.number !== height) || BigInt(block.timestamp) > 253402300799n) {
+      throw Error('Invalid Ethereum block header.');
+    }
+    return {number:block.number, hash:block.hash, stateRoot:block.stateRoot, timestamp:block.timestamp};
+  }
+  const sameHeader = (a,b) => a.number === b.number && a.hash === b.hash &&
+    a.stateRoot === b.stateRoot && a.timestamp === b.timestamp;
+  async function checkBalance(holder,signal) {
+    const heads = await Promise.all(providers.map(async provider => {
+      if (await read(provider,'eth_chainId',[],signal) !== '0x1') throw Error(provider.name + ' is on a different chain.');
+      return header(await read(provider,'eth_getBlockByNumber',['finalized',false],signal));
+    }));
+    const chosen = BigInt(heads[0].number) <= BigInt(heads[1].number) ? heads[0] : heads[1];
+    const selected = {blockHash:chosen.hash, requireCanonical:true};
+    const calldata = '0x70a08231' + holder.slice(2).toLowerCase().padStart(64,'0');
+    const words = await Promise.all(providers.map(async provider => {
+      const loadHeader = async () => header(await read(provider,'eth_getBlockByNumber',[chosen.number,false],signal), chosen.number);
+      if (!sameHeader(await loadHeader(),chosen)) throw Error('The providers disagree about the selected block.');
+      const [code,word] = await Promise.all([
+        read(provider,'eth_getCode',[token,selected],signal),
+        read(provider,'eth_call',[{to:token,data:calldata},selected],signal)
+      ]);
+      if (typeof code !== 'string' || !/^0x[0-9a-fA-F]{4556}$/.test(code)) throw Error('Unexpected CAW contract runtime.');
+      const bytes = Uint8Array.from(code.slice(2).match(/../g), pair => parseInt(pair,16));
+      const digest = new Uint8Array(await crypto.subtle.digest('SHA-256',bytes));
+      if (Array.from(digest,b=>b.toString(16).padStart(2,'0')).join('') !== runtimeSha256) {
+        throw Error('The deployed code differs from the pinned CAW contract.');
+      }
+      if (typeof word !== 'string' || !/^0x[0-9a-fA-F]{64}$/.test(word)) throw Error('Invalid balance returned.');
+      if (!sameHeader(await loadHeader(),chosen)) throw Error('Block selection changed during the lookup.');
+      return word.toLowerCase();
+    }));
+    if (words[0] !== words[1]) throw Error('The providers returned different CAW balances.');
+    return {block:chosen, raw:BigInt(words[0])};
+  }
+  function format(raw) {
+    const digits = String(raw).padStart(19,'0');
+    const fraction = digits.slice(-18).replace(/0+$/,'');
+    return digits.slice(0,-18).replace(/\B(?=(\d{3})+(?!\d))/g,',') + (fraction ? '.'+fraction : '');
+  }
+  function clearResult() {
+    result.hidden = true;
+    for (const node of result.querySelectorAll('[data-value]')) node.textContent = '';
+  }
+  address.addEventListener('input', () => {
+    pending?.abort();
+    pending = null;
+    clearResult();
+    status.textContent = 'Ready for lookup.';
+  });
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    pending?.abort();
+    const job = new AbortController();
+    pending = job;
+    clearResult();
+    const holder = address.value.trim();
+    if (!/^0x[0-9a-fA-F]{40}$/.test(holder)) {
+      status.textContent = 'Enter a 42-character Ethereum address beginning with 0x.';
+      pending = null;
+      address.focus();
+      return;
+    }
+    const deadline = setTimeout(()=>job.abort(),30000);
+    status.textContent = 'Checking Ethereum with PublicNode and dRPC…';
+    try {
+      const {raw, block} = await checkBalance(holder,job.signal);
+      if (pending !== job) return;
+      const values = {amount:format(raw)+' CAW', holder, units:raw.toString(),
+        height:BigInt(block.number).toString(), hash:block.hash,
+        time:new Date(Number(BigInt(block.timestamp))*1000).toISOString().replace('T',' ').replace('.000Z',' UTC')};
+      for (const [name,value] of Object.entries(values)) result.querySelector('[data-value="'+name+'"]').textContent = value;
+      result.hidden = false;
+      status.textContent = 'Both providers agree at the block shown.';
+    } catch (e) {
+      if (pending === job) status.textContent = job.signal.aborted ? 'Lookup timed out. Try again.' : e.message;
+    } finally {
+      clearTimeout(deadline);
+      job.abort();
+      if (pending === job) pending = null;
+    }
+  });
+})();
+</script></body></html>

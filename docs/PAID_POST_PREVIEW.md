@@ -33,7 +33,7 @@ node integration/local-console/paid-post-live.mjs prepare http://127.0.0.1:8545 
 node integration/local-console/paid-post-live.mjs recheck http://127.0.0.1:8545 review.json
 ```
 
-Both commands fail with a nonzero exit code if verification fails. Check the exit status before using the output. The verifier checks storage proofs against the selected Shanghai header, matches the deployed vault, mock token and wallet code to the pinned fixture, and calculates the settlement from proven balances. On recheck it reconstructs the original review and reacquires current state. The result describes the selected local head. The saved JSON carries no user signature, and the head can advance after a successful recheck. The signing desk below consumes this review. Submission and reproduction by another operator remain open.
+Both commands fail with a nonzero exit code if verification fails. Check the exit status before using the output. The verifier checks storage proofs against the selected Shanghai header, matches the deployed vault, mock token and wallet code to the pinned fixture, and calculates the settlement from proven balances. On recheck it reconstructs the original review and reacquires current state. The result describes the selected local head. The saved JSON carries no user signature, and the head can advance after a successful recheck. The signing desk below consumes this review. The separate publish step is documented in the [delivery guide](PRODUCT_DELIVERY.md). Independent delivery reproduction remains open.
 
 ## Run the signing desk
 
@@ -47,7 +47,7 @@ Open the console address printed by the launcher and select **Signing desk**, or
 
 Enter the exact post and an interval in the fixture’s block time. At block 17, **0** and **1000** are a usable start and expiry. Review the fee, both recipient shares and the rounding remainder. Connect the disposable controller and request its signature. The browser checks the wallet’s chain, genesis, selected block and account, and rebuilds the EIP-712 digest. After the prompt it rechecks the state. The server recovers the controller and checks the original signature bytes with the contract wallet’s ERC-1271 method at the reviewed block. A successful result shows the signer, digest and block. Editing the intent or switching wallets clears the review.
 
-The signing action makes no transaction. A signature is an authorization that might still be usable by anyone who already has it while the contract’s conditions hold. The console only returns verification details and keeps the signature out of browser storage and application logs. All results apply to this synthetic fixture.
+Signing alone makes no transaction. The separate Publish action is documented in the [delivery guide](PRODUCT_DELIVERY.md). A signature is an authorization that might still be usable by anyone who already has it while the contract’s conditions hold. The console only returns verification details and keeps the signature out of browser storage and application logs. All results apply to this synthetic fixture.
 
 To repeat the real signature and contract checks headlessly, use a separate new output directory:
 

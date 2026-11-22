@@ -67,21 +67,54 @@ def replay(http, engine, secret, capture, records):
         yield number, parent
 
 
-def serve_console(geth, output, paid_rpc):
+def include_pending_post(http, engine, secret):
+    # Act as a private block producer. Inspect only the pinned fixture controllers.
+    # The operator builds a block only after a wallet sends an actual transaction.
+    rpc = PEER["rpc"]
+    controllers = ("0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+                   "0x2b5ad5c4795c026514f8317c7a215e218dccd6cf")
+    if not any(int(rpc(http, "eth_getTransactionCount", [a, "pending"]),16) >
+               int(rpc(http, "eth_getTransactionCount", [a, "latest"]),16) for a in controllers):
+        return
+    parent = rpc(http, "eth_getBlockByNumber", ["latest", False])
+    zero = "0x" + "00" * 32
+    choice = dict(headBlockHash=parent["hash"], safeBlockHash=zero, finalizedBlockHash=zero)
+    attrs = dict(timestamp=hex(int(parent["timestamp"], 16)+1), prevRandao=zero,
+                 suggestedFeeRecipient="0x" + "00"*20, withdrawals=[])
+    build = rpc(engine, "engine_forkchoiceUpdatedV2", [choice, attrs], secret)
+    if build["payloadStatus"]["status"] != "VALID" or not build.get("payloadId"):
+        raise RuntimeError("Geth could not start building the next block")
+    # Geth may initially expose an empty candidate while its transaction worker runs.
+    time.sleep(0.6)
+    candidate = rpc(engine, "engine_getPayloadV2", [build["payloadId"]], secret)["executionPayload"]
+    if not candidate["transactions"]:
+        return
+    result = rpc(engine, "engine_newPayloadV2", [candidate], secret)
+    if result["status"] != "VALID" or PEER["forkchoice"](engine, candidate["blockHash"], secret) != "VALID":
+        raise RuntimeError("Geth rejected the new wallet transaction block")
+    print(f"Included {len(candidate['transactions'])} transaction(s) in {candidate['blockHash']}", flush=True)
+
+
+def serve_console(geth, output, paid_rpc, produce):
     headers = ROOT / "evidence/wallet-headers-20261112"
     args = [sys.executable, str(HERE / "launch.py"), "--geth", str(geth),
             "--capture", str(headers / "capture.json"), "--genesis", str(headers / "genesis.json"),
             "--registry-proof", str(headers / "evidence.json"),
             "--selection", str(ROOT / "evidence/wallet-state-20261112/selection.json"),
             "--output", str(output), "--paid-post-rpc", paid_rpc]
-    print(f"Paid-post wallet RPC: {paid_rpc} (disposable C-007 chain, held at block 17).", flush=True)
+    print(f"Paid-post wallet RPC: {paid_rpc} (disposable C-007 chain, ready at block 17).", flush=True)
     print("Starting the console. Press Ctrl+C to stop both local chains.", flush=True)
     launcher = subprocess.Popen(args, start_new_session=True)
     try:
-        code = launcher.wait()
+        while launcher.poll() is None:
+            produce()
+            time.sleep(.5)
+        code = launcher.returncode
         if code:
             raise RuntimeError(f"Console launcher exited with status {code}")
     except KeyboardInterrupt:
+        pass
+    finally:
         # The launcher owns its web server and the other fixture node. Give its
         # finally block time to stop those children and write the shutdown log.
         if launcher.poll() is None:
@@ -157,7 +190,8 @@ def main():
                         if current["hash"] != head or current["number"] != "0x11":
                             raise RuntimeError("Expected the first reviewable C-007 head")
                         if args.serve_console:
-                            serve_console(geth, out / "console", rpc_url)
+                            serve_console(geth, out / "console", rpc_url,
+                                          lambda: include_pending_post(http, engine, secret))
                             return
                         subprocess.run([node, HERE / "test-paid-post-http.mjs", rpc_url],
                                        check=True, timeout=90)

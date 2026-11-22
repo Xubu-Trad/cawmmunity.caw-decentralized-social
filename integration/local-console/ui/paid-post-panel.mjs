@@ -1,3 +1,4 @@
+import {submitPaidPost, readPaidDelivery, checkPaidDelivery, deliveryStorageKey} from './paid-post-delivery.mjs';
 import {signReviewedPaidPost} from './paid-post-signing.mjs';
 
 const el = id => document.getElementById('paid-' + id);
@@ -5,6 +6,8 @@ let enabled = false;
 let busy = false;
 let generation = 0;
 let review = null;
+let authorized = null;
+let pendingDelivery = false;
 let provider = null;
 let account = null;
 
@@ -17,6 +20,9 @@ function controls() {
   el('inputs').disabled = !enabled || busy;
   el('retry').hidden = enabled || busy;
   el('connect').disabled = !enabled || busy;
+  el('delivery').hidden = !authorized;
+  el('submit').disabled = !authorized || !enabled || busy || pendingDelivery || provider !== window.ethereum;
+  el('check-receipt').disabled = !enabled || busy;
   el('connect').textContent = account ? 'Reconnect wallet' : 'Connect disposable wallet';
   el('sign').disabled = !enabled || busy || !review || provider !== window.ethereum ||
     !account || review.controller.toLowerCase() !== account.toLowerCase();
@@ -25,6 +31,7 @@ function controls() {
 function clearReview(message) {
   generation++;
   review = null;
+  authorized = null;
   el('review').hidden = true;
   el('result').hidden = true;
   el('result').replaceChildren();
@@ -182,8 +189,13 @@ el('sign').addEventListener('click', async () => {
   const wallet = provider;
   const isCurrent = () => start === generation && selected === review && wallet === window.ethereum && sameIntent(selected.intent, intent());
   try {
+    let signedRequest;
     const result = await signReviewedPaidPost({provider: wallet, review: selected, isCurrent,
-      recheck: saved => api('recheck', saved), verifySignature: signed => api('verify', signed),
+      recheck: saved => api('recheck', saved), verifySignature: async signed => {
+        const response = await api('verify', signed);
+        signedRequest = signed;
+        return response;
+      },
       onPhase(phase) {
         if (!isCurrent()) return;
         const messages = {rechecking: 'Rechecking local proofs…', 'awaiting-wallet': 'Approve or decline in your wallet.', verifying: 'Checking the returned signature…'};
@@ -191,10 +203,11 @@ el('sign').addEventListener('click', async () => {
       }
     });
     if (!isCurrent()) throw Error('Review changed. Prepare a fresh intent.');
+    authorized = signedRequest;
     review = null;
     showRows('result', [['Verified signer', result.signer], ['Verified digest', result.digest], ['Verified block', result.block.hash]]);
     el('result').hidden = false;
-    status('Controller signature verified. No transaction was submitted.', 'ready');
+    status('Controller signature verified. Choose Publish paid post to request a transaction.', 'ready');
   } catch (error) {
     clearReview();
     status(error.message || 'Signing stopped. Review the intent again.', 'error');
@@ -208,3 +221,88 @@ function checkOnEntry() {
 }
 window.addEventListener('hashchange', checkOnEntry);
 checkOnEntry();
+
+const deliveryContext = () => ({storage: window.localStorage, locks: navigator.locks});
+
+function showSavedDelivery() {
+  try {
+    const record = readPaidDelivery(window.localStorage);
+    pendingDelivery = record?.status === 'pending';
+    el('recovery').hidden = !record;
+    if (!record) return;
+    el('recovery-hash').value = record.hash || '';
+    el('recovery-hash').readOnly = Boolean(record.hash);
+    el('saved-digest').textContent = record.review.preview.digest;
+    el('saved-post').textContent = exactText(record.review.intent.text);
+    el('submission-status').textContent = pendingDelivery
+      ? (record.hash ? 'Wallet returned a transaction hash. Check its settlement.' : 'Wallet outcome unknown. Find the hash in wallet activity and check it here.')
+      : 'Last checked outcome: ' + record.status + '. You can recheck the stored transaction.';
+  } catch {
+    pendingDelivery = true;
+    el('submission-status').textContent = 'Saved submission cannot be read. Restore the recovery record before submitting.';
+    el('recovery').hidden = true;
+  }
+}
+
+el('submit').addEventListener('click',async () => {
+  if (busy || !authorized || el('submit').disabled) return;
+  el('settlement').hidden = true;
+  const signed = authorized;
+  const wallet = provider;
+  const start = generation;
+  const isCurrent = () => generation === start && signed === authorized && wallet === window.ethereum &&
+    sameIntent(signed.review.intent,intent());
+  busy = true;
+  controls();
+  try {
+    status('Rechecking authorization and opening a separate transaction approval…', 'busy');
+    await submitPaidPost({provider:wallet, authorization:signed, isCurrent, context:deliveryContext(),
+      recheck:saved => api('recheck',saved), verifySignature:request => api('verify',request)});
+    status('Transaction submitted. Check its receipt to verify settlement.', 'ready');
+  } catch (error) {
+    status(error.message || 'Submission interrupted. Check the saved delivery.', 'error');
+  } finally {
+    authorized = null;
+    busy = false;
+    showSavedDelivery();
+    controls();
+  }
+});
+
+el('check-receipt').addEventListener('click',async () => {
+  if (busy || !enabled) return;
+  busy = true;
+  controls();
+  el('settlement').hidden = true;
+  try {
+    const hash = el('recovery-hash').value.trim();
+    const result = await checkPaidDelivery(deliveryContext(),hash,body => api('receipt',body));
+    showSavedDelivery();
+    if (result.status === 'pending') {
+      el('submission-status').textContent = 'No verified receipt yet. You can check again.';
+    } else if (result.status === 'reverted') {
+      el('submission-status').textContent = 'Verified transaction reverted.';
+    } else {
+      el('submission-status').textContent = 'Paid post settled. Receipt and balances verified.';
+      showRows('settlement', [['Verified post',exactText(result.text)],['Transaction',result.hash],
+        ['Settlement block',result.block.hash],['Payer fee',mockTokens(result.settlement.fee)],
+        ['Account 2 received',mockTokens(result.settlement.share2)],
+        ['Account 3 received',mockTokens(result.settlement.share3)],['Rounding remainder',mockTokens(result.settlement.dust)]]);
+      el('settlement').hidden = false;
+    }
+  } catch (error) {
+    el('submission-status').textContent = 'Settlement unverified. ' + error.message;
+  } finally {
+    busy = false;
+    controls();
+  }
+});
+
+window.addEventListener('storage', event => {
+  if (event.key !== null && event.key !== deliveryStorageKey) return;
+  el('settlement').hidden = true;
+  showSavedDelivery();
+  controls();
+});
+showSavedDelivery();
+controls();

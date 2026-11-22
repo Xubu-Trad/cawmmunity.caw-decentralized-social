@@ -38,14 +38,15 @@ function allocations(v, balance, fee) {
     stake3:String(v.stake3), share2:String(share2), share3:String(share3), dust:String(fee-share2-share3)};
 }
 
-async function checkNetwork(rpc) {
+export async function checkPaidPostNetwork(rpc) {
   check(await rpc('eth_chainId', []) === '0x7a69', 'Wrong fixture chain ID');
   const genesis = await rpc('eth_getBlockByNumber', ['0x0',false]);
   check(genesis?.hash === fixture.genesisHash, 'Wrong fixture genesis');
 }
 
-async function atBlock(rpc, header, intent) {
-  check(isDeepStrictEqual(Object.keys(intent).sort(), ['deadline','text','validAfter']), 'Invalid paid-post intent fields');
+// Reuse precisely these account and storage proofs for post-settlement accounting,
+// including at heads where the payer can no longer afford another post.
+export async function readPaidPostLedger(rpc, header) {
   check(header && /^0x[0-9a-f]{64}$/.test(header.hash), 'Missing selected header');
   const values = await readStorage(rpc, header, fixture.vault, fixture.vaultHash, Object.values(slots));
   const v = Object.fromEntries(Object.entries(slots).map(([name,key]) => [name, values.get(key)]));
@@ -55,12 +56,22 @@ async function atBlock(rpc, header, intent) {
     readStorage(rpc,header,fixture.token,fixture.tokenHash,[balanceKey]),
     readStorage(rpc,header,owner,wallet.codeHash,[])
   ]);
+  return {values:v, backing:token.get(balanceKey), owner, controller:wallet.controller};
+}
+
+export function reviewFromLedger(header, intent, ledger) {
+  check(isDeepStrictEqual(Object.keys(intent).sort(), ['deadline','text','validAfter']), 'Invalid paid-post intent fields');
+  const {values:v, backing, owner, controller} = ledger;
   const preview = previewPaidPost({...intent, accountId:'1', epoch:String(v.epoch), nonce:String(v.nonce), stakeRoot:word(v.root)});
   const time = BigInt(header.timestamp);
   check(time >= BigInt(intent.validAfter) && time < BigInt(intent.deadline), 'Outside reviewed validity window');
   return {version:1, scope:'LOCAL_C007_STATE_REVIEW', block:{number:header.number,hash:header.hash},
-    intent, owner, controller:wallet.controller, settlement:allocations(v,token.get(balanceKey),BigInt(preview.typedData.message.fee)),
+    intent, owner, controller, settlement:allocations(v,backing,BigInt(preview.typedData.message.fee)),
     preview};
+}
+
+async function atBlock(rpc, header, intent) {
+  return reviewFromLedger(header, intent, await readPaidPostLedger(rpc, header));
 }
 
 async function stableLatest(rpc, intent) {
@@ -71,12 +82,12 @@ async function stableLatest(rpc, intent) {
 }
 
 export async function preparePaidPost(rpc, intent) {
-  await checkNetwork(rpc);
+  await checkPaidPostNetwork(rpc);
   return stableLatest(rpc, intent);
 }
 
 export async function recheckPaidPost(rpc, reviewed) {
-  await checkNetwork(rpc);
+  await checkPaidPostNetwork(rpc);
   check(typeof reviewed?.block?.number === 'string' && /^0x(?:0|[1-9a-f][0-9a-f]{0,15})$/.test(reviewed.block.number), 'Invalid review height');
   const original = await rpc('eth_getBlockByNumber',[reviewed.block.number,false]);
   check(original?.hash === reviewed.block.hash, 'Original block is no longer canonical');

@@ -1,0 +1,18 @@
+{
+  "hash": "0xd0051e7a446441a8aa7156367b7381b96dfe5ffb11b7ed4307a9b7b38ce1fd6b",
+  "calldataHash": "0xc413c0e96370345c30d1edbd841f2f5fc61c54ed5a2b4ddc68c30b4b0dd94249",
+  "block": {
+    "hash": "0x4593ebc25b268c60d078d9d392f745a6ce9d308c41cea77604180722685c3bc0",
+    "number": "0x12"
+  },
+  "signer": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+  "text": "reviewed through the local signing desk",
+  "digest": "0xc16d2c710e5e1c26bdacb4164fbbe1d4da9723681eb08e9d5f99769310669cde",
+  "settlement": {
+    "fee": "5000000000000000000000",
+    "share2": "1363636363636363636363",
+    "share3": "3636363636363636363636",
+    "dust": "1"
+  },
+  "status": "settled"
+}

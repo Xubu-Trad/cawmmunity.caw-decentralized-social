@@ -181,3 +181,7 @@ footer { padding: 16px 0 24px; text-align: right; }
   .times, .proof-rows div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .times { gap: 8px; }
 }
+
+#paid-delivery, #paid-recovery { margin-top: 1rem; border-top: 1px solid var(--line); padding-top: 0.8rem; }
+#paid-submission-status:empty { display: none; }
+#paid-recovery-hash { display: block; width: 100%; margin: .4rem 0 .75rem; font-family: var(--mono); }
