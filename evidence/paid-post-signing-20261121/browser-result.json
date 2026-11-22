@@ -1,0 +1,9 @@
+{
+  "result": "PASS",
+  "blockHash": "0xe9aeb5afbfbf5e54e0c8f40acc59281c1eb6f6235ded92bffa4f284ef47fbb3f",
+  "digest": "0xc16d2c710e5e1c26bdacb4164fbbe1d4da9723681eb08e9d5f99769310669cde",
+  "signer": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+  "wallet": "injected disposable test provider",
+  "signatureRequests": 1,
+  "transactionsSent": 0
+}

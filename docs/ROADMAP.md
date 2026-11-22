@@ -1,3 +1,9 @@
+## paid-post wallet signing — November 21, 2026
+
+the developer console now takes a proof-backed review through a disposable wallet prompt and checks the signature with the account’s contract wallet. the signing desk shows exact text, fee and settlement, then the verified signer, digest and block. it rejects an altered review, a wallet switch and a signature from the wrong controller. browser requests from another site can no longer start console proof work when the browser supplies its request origin metadata. [run the signing desk](PAID_POST_PREVIEW.md#run-the-signing-desk).
+
+next, add an explicit submission step for the fixed C-007 fixture and match the mined payment and settlement to the signed review. the normal browser post still uses the separate unpaid contract. independent operator reproduction remains open.
+
 ## paid-post state proofs and the developer console — November 21, 2026
 
 the CLI now acquires the account owner, signing controller, epoch, nonce, stake root, credits, stakes and token backing at one selected local block. it reconstructs the saved review and checks it again at the latest observed head. a fresh Geth database replayed 32 signed blocks. the two historical signing digests matched, and the former owner's review failed after the handoff. another operator can now [repeat this check](PAID_POST_PREVIEW.md#repeat-the-live-proof-check).
