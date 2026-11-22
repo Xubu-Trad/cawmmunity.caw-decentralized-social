@@ -56,3 +56,15 @@ The [April 2022 funding transaction](https://etherscan.io/tx/0xb875a9cd6b74facc3
 
 **Reproduction.** With the existing local-console dependencies installed, run `npm ci --prefix integration/local-console/registration`. Start a fresh disposable Geth dev chain as in the local-console workflow. From the repository root run `node integration/local-console/registration/test-registration.mjs http://127.0.0.1:PORT` with its actual port. The test deploys a fixture token and registration candidate, checks the payment and unchanged supply, transfers the NFT and checks duplicate names remain unavailable.
 
+
+### Local wallet registration
+
+With the disposable fixture node still running, start the loopback wallet portal from the repository root:
+
+```
+node integration/local-console/registration/wallet-server.mjs http://127.0.0.1:34898 REGISTRY_ADDRESS
+```
+
+Use the candidate address printed by the registration test on that node. Open http://127.0.0.1:34736/ or choose Register with local wallet in the local green portal. Connect a disposable browser wallet, get fixture gas and tokens, review the available name, approve its quoted price and register. Both transactions are signed by the selected browser wallet. The local faucet uses the disposable Geth account to distribute fixture assets. Keep the services bound to loopback.
+
+After mining, the portal checks the transaction input and sender, the registry's ERC-721 mint event, and the name and owner at the canonical receipt block. Reload and use Recheck mined registration to read the last locally saved registration again. These are checks against the selected local node. Public registration and the community burn decision remain pending.
