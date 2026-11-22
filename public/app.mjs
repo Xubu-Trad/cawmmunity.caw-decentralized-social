@@ -3,7 +3,7 @@ import {inspectMedia,validateVideoMetadata,MEDIA_LIMITS} from './media.mjs';
 import {loadEnvironment,loadFixtures} from './deployment.mjs';
 import {parseBoundedJson} from './bounded-json.mjs';
 import {createCheckpoint,verifyHistory} from './history.mjs';
-import {allocateFee,DEMO_FEES} from './economics.mjs';
+import {allocateFee,DEMO_FEES,recommendedUsernameBurn} from './economics.mjs';
 import {createDemoSigner} from './signatures.mjs';
 import {createSignedLedger} from './signed-ledger.mjs';
 import {createLabRecordCheckpoint,verifyLabRecord,LAB_RECORD_LIMITS} from './signed-record.mjs';
@@ -552,8 +552,7 @@ function renderAccount(){
     const name=nameInput.value;
     if(!name){nameResult.textContent='Enter a name to inspect the historical recommended burn. No minting occurs.';return;}
     if(!/^[a-z0-9]{1,32}$/.test(name)){nameResult.textContent='Use lowercase a–z and digits 0–9. This demo has a provisional 32-character cap.';return;}
-    const values=['1000000000000','240000000000','60000000000','6000000000','200000000','20000000','10000000','1000000'];
-    const burn=BigInt(values[Math.min(name.length,8)-1])*UNIT;
+    const burn=recommendedUsernameBurn(name);
     nameResult.textContent=`${name.length} characters · ${money(burn)} recommended burn. ${Object.hasOwn(state.accounts,name)?'Already used in this fixture.':'Not present in this fixture; live availability is unknown.'} No NFT is minted.`;
   });
   const newController=el('input',{id:'transfer-controller',class:'text-input',value:'device-next',maxlength:48,autocomplete:'off','aria-describedby':'transfer-note'});

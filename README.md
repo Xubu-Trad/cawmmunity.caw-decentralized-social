@@ -33,6 +33,8 @@ The destination is a system others can reproduce and operate without Xubu's acco
 
 ## where the build stands
 
+the green portal now prices a username using the manifesto’s recommended burn schedule. the same rules ran as compiled Solidity on a disposable Geth chain. this is a quote only. the actual CAW token rejects the specified zero-address transfer; registration and the burn decision still need public review.
+
 anyone can now [download the Ethereum CAW balance reader](public/caw-balance.html?raw=1) and open the file directly in a browser. enter a public address to check its real CAW balance. the browser asks two Ethereum services for the same finalized block and checks the token code before showing the result. it needs no installation, wallet connection or gas.
 
 you can now read a published research post on another computer with just its transaction hash and access to the same chain history. the reader verifies what was posted, who authorized it and where the fee went. the included block 18 example works offline with no wallet. [open the post reader](docs/PRODUCT_DELIVERY.md#read-a-published-post-by-transaction-hash).

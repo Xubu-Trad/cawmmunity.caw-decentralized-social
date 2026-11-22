@@ -29,25 +29,21 @@
         <section class="terminal-window welcome-window" id="welcome" aria-labelledby="welcome-heading">
           <div class="window-title"><span>01 / WELCOME TO CAW</span><span class="window-decoration" aria-hidden="true">[□]</span></div>
           <div class="window-body">
-            <pre class="caw-lettering" aria-hidden="true">  ____     _     __        __
- / ___|   / \    \ \      / /
-| |      / _ \    \ \ /\ / /
-| |___  / ___ \    \ V  V /
- \____|/_/   \_\    \_/\_/</pre>
-            <p class="terminal-kicker">WORDS. PROOF. COMMUNITY.</p>
-            <h1 id="welcome-heading">Welcome to the commons.</h1>
-            <p class="welcome-lede">A lane for each voice. A record you can inspect.<br>Built from the CAW manifesto; open for review.</p>
+            <h1 id="welcome-heading">Community CAW portal</h1>
+            <p class="welcome-lede">Explore a user-owned social network built from the CAW manifesto. Check the proposed cost of a name or look up a real CAW balance.</p>
             <div class="website-actions"><a class="terminal-link terminal-link-primary" data-alpha-entry href="./index.html#feed">[ Enter the alpha ]</a><a class="terminal-link" href="#source">[ Read the source ]</a></div>
             <p id="alpha-environment" class="environment-line" role="status">Checking the simulation configuration…</p>
             <noscript><p class="terminal-note">This website can be read without JavaScript. The alpha app needs JavaScript and checks its simulation configuration before starting.</p></noscript>
           </div>
           <div class="window-foot"><span>MODE: LOCAL DEMONSTRATION</span><span>REVIEW: OPEN</span></div>
         </section>
-        <aside class="terminal-window identity-window" aria-labelledby="identity-heading">
-          <div class="window-title"><h2 id="identity-heading">CAW / IDENTITY</h2><span class="window-decoration" aria-hidden="true">[□]</span></div>
-          <figure class="caw-emblem"><img src="./caw-symbol.png" width="800" height="799" alt="Three crow silhouettes inside a green circular CAW symbol"><figcaption>A HUNTERS DREAM</figcaption></figure>
-          <dl class="terminal-facts"><div><dt>Frontend</dt><dd>Simulation</dd></div><div><dt>Protocol</dt><dd>Local experiments</dd></div><div><dt>Deployment</dt><dd>Not deployed</dd></div></dl>
-          <p class="identity-scope">No connected wallet or blockchain. Sample accounts only.</p>
+        <aside class="terminal-window identity-window name-console" aria-labelledby="identity-heading">
+          <div class="window-title"><h2 id="identity-heading">Username terminal</h2></div>
+          <div class="window-body"><label for="portal-name">Choose a name to price</label>
+          <input id="portal-name" placeholder="cawdev" autocomplete="off" spellcheck="false" autocapitalize="none" aria-describedby="portal-rule">
+          <p id="portal-rule">Lowercase letters and digits only. Shorter names cost more.</p>
+          <output id="portal-quote" for="portal-name" aria-live="polite">Enter a username.</output>
+          <p>Manifesto estimate. Availability and registration are not connected.</p></div>
         </aside>
       </div>
       <ol class="demo-sequence" aria-label="Try the local demonstration"><li><span>01 / WRITE</span><p>Draft a CAW.</p></li><li><span>02 / REVIEW</span><p>Inspect the demo cost.</p></li><li><span>03 / RECEIPT</span><p>Follow simulated settlement.</p></li></ol>
