@@ -239,3 +239,10 @@
   .website-page a:focus-visible { outline-color:Highlight; }
   .caw-emblem img { forced-color-adjust:none; }
 }
+
+.website-page .welcome-window { background:radial-gradient(ellipse at top right,#174e32,transparent 65%),#06110d; }
+.website-page .welcome-window h1 { font-size:clamp(2.3rem,6vw,5rem); line-height:1.05; max-width:12ch; letter-spacing:-.045em; }
+.name-console { border-top:2px solid #92ffb9; background:#071710; }
+.name-console label,.name-console output { display:block; }
+.name-console input { margin:.6rem 0; width:100%; padding:.8rem; color:#d7ffe5; background:#020c07; border:1px solid #5c9971; font:inherit; }
+.name-console output { color:#a1ffc2; font-size:1.25rem; margin:1rem 0; overflow-wrap:anywhere; }

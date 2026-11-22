@@ -148,3 +148,9 @@ export function allocateFee(kind, feeDecimalString, actorName, targetNameOrNull,
     allocations,
   };
 }
+
+export function recommendedUsernameBurn(name) {
+  if (typeof name !== 'string' || !name.length || /[^a-z0-9]/.test(name)) return null;
+  const tiers = [1000000000000n,240000000000n,60000000000n,6000000000n,200000000n,20000000n,10000000n,1000000n];
+  return tiers[Math.min(name.length, 8) - 1] * 10n**18n;
+}
