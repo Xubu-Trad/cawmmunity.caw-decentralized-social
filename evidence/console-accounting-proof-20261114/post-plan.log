@@ -1,0 +1,560 @@
+TAP version 13
+# Subtest: manual wallet and EOA transfer encodings agree with ethers
+ok 1 - manual wallet and EOA transfer encodings agree with ethers
+  ---
+  duration_ms: 17.12046
+  ...
+# Subtest: rejects changed transfer action
+ok 2 - rejects changed transfer action
+  ---
+  duration_ms: 0.965964
+  ...
+# Subtest: rejects changed transfer owner
+ok 3 - rejects changed transfer owner
+  ---
+  duration_ms: 0.353296
+  ...
+# Subtest: rejects changed transfer registry
+ok 4 - rejects changed transfer registry
+  ---
+  duration_ms: 0.17657
+  ...
+# Subtest: rejects changed transfer recipient
+ok 5 - rejects changed transfer recipient
+  ---
+  duration_ms: 0.151917
+  ...
+# Subtest: rejects changed transfer from
+ok 6 - rejects changed transfer from
+  ---
+  duration_ms: 0.15428
+  ...
+# Subtest: rejects changed transfer to
+ok 7 - rejects changed transfer to
+  ---
+  duration_ms: 0.236839
+  ...
+# Subtest: rejects changed transfer epoch
+ok 8 - rejects changed transfer epoch
+  ---
+  duration_ms: 0.180334
+  ...
+# Subtest: rejects changed transfer chainId
+ok 9 - rejects changed transfer chainId
+  ---
+  duration_ms: 0.269827
+  ...
+# Subtest: rejects changed transfer value
+ok 10 - rejects changed transfer value
+  ---
+  duration_ms: 0.240004
+  ...
+# Subtest: rejects changed transfer genesisHash
+ok 11 - rejects changed transfer genesisHash
+  ---
+  duration_ms: 0.217411
+  ...
+# Subtest: rejects changed transfer blockHash
+ok 12 - rejects changed transfer blockHash
+  ---
+  duration_ms: 0.247489
+  ...
+# Subtest: rejects changed transfer blockNumber
+ok 13 - rejects changed transfer blockNumber
+  ---
+  duration_ms: 0.243299
+  ...
+# Subtest: rejects changed transfer amount
+ok 14 - rejects changed transfer amount
+  ---
+  duration_ms: 0.436529
+  ...
+# Subtest: rejects zero, self or selected contract recipient 0x0000000000000000000000000000000000000000
+ok 15 - rejects zero, self or selected contract recipient 0x0000000000000000000000000000000000000000
+  ---
+  duration_ms: 0.367445
+  ...
+# Subtest: rejects zero, self or selected contract recipient 0x2222222222222222222222222222222222222222
+ok 16 - rejects zero, self or selected contract recipient 0x2222222222222222222222222222222222222222
+  ---
+  duration_ms: 3.209125
+  ...
+# Subtest: rejects zero, self or selected contract recipient 0x2222222222222222222222222222222222222222
+ok 17 - rejects zero, self or selected contract recipient 0x2222222222222222222222222222222222222222
+  ---
+  duration_ms: 0.392063
+  ...
+# Subtest: rejects zero, self or selected contract recipient 0x3333333333333333333333333333333333333333
+ok 18 - rejects zero, self or selected contract recipient 0x3333333333333333333333333333333333333333
+  ---
+  duration_ms: 0.429537
+  ...
+# Subtest: rejects zero, self or selected contract recipient 0x4444444444444444444444444444444444444444
+ok 19 - rejects zero, self or selected contract recipient 0x4444444444444444444444444444444444444444
+  ---
+  duration_ms: 0.271866
+  ...
+# Subtest: rejects zero, self or selected contract recipient 0x5555555555555555555555555555555555555555
+ok 20 - rejects zero, self or selected contract recipient 0x5555555555555555555555555555555555555555
+  ---
+  duration_ms: 0.35165
+  ...
+# Subtest: rejects alternate account token, trailing bytes and wrong selector
+ok 21 - rejects alternate account token, trailing bytes and wrong selector
+  ---
+  duration_ms: 3.465208
+  ...
+# Subtest: rejects unsupported current owner and controller mismatch
+ok 22 - rejects unsupported current owner and controller mismatch
+  ---
+  duration_ms: 0.49643
+  ...
+# Subtest: epoch is review metadata rather than calldata authorization
+ok 23 - epoch is review metadata rather than calldata authorization
+  ---
+  duration_ms: 0.658287
+  ...
+# Subtest: rejects the entire local reserved low-address recipient range including precompiles
+ok 24 - rejects the entire local reserved low-address recipient range including precompiles
+  ---
+  duration_ms: 2.246846
+  ...
+# Subtest: allows the first address above the local reserved range when other constraints hold
+ok 25 - allows the first address above the local reserved range when other constraints hold
+  ---
+  duration_ms: 0.391648
+  ...
+# Subtest: browser hash matches Ethereum known vectors and independent ethers for rate boundaries
+ok 26 - browser hash matches Ethereum known vectors and independent ethers for rate boundaries
+  ---
+  duration_ms: 240.455201
+  ...
+# Subtest: rejects unsupported Keccak input 0x0
+ok 27 - rejects unsupported Keccak input 0x0
+  ---
+  duration_ms: 0.645519
+  ...
+# Subtest: rejects unsupported Keccak input 0xAA
+ok 28 - rejects unsupported Keccak input 0xAA
+  ---
+  duration_ms: 0.328975
+  ...
+# Subtest: rejects unsupported Keccak input abc
+ok 29 - rejects unsupported Keccak input abc
+  ---
+  duration_ms: 0.256094
+  ...
+# Subtest: rejects unsupported Keccak input 0xababababababababab
+ok 30 - rejects unsupported Keccak input 0xababababababababab
+  ---
+  duration_ms: 0.227448
+  ...
+# Subtest: rejects unsupported Keccak input null
+ok 31 - rejects unsupported Keccak input null
+  ---
+  duration_ms: 0.168426
+  ...
+# Subtest: exact post bytes and calldata match independent ethers " caw 🌒\\n日本語 é "
+ok 32 - exact post bytes and calldata match independent ethers " caw 🌒\\n日本語 é "
+  ---
+  duration_ms: 9.277066
+  ...
+# Subtest: exact post bytes and calldata match independent ethers "x"
+ok 33 - exact post bytes and calldata match independent ethers "x"
+  ---
+  duration_ms: 4.380395
+  ...
+# Subtest: exact post bytes and calldata match independent ethers "🌒🌒🌒🌒🌒🌒🌒🌒🌒🌒🌒🌒🌒🌒🌒🌒🌒🌒🌒�
+ok 34 - exact post bytes and calldata match independent ethers "🌒🌒🌒🌒🌒🌒🌒🌒🌒🌒🌒🌒🌒🌒🌒🌒🌒🌒🌒�
+  ---
+  duration_ms: 34.891993
+  ...
+# Subtest: exact post bytes and calldata match independent ethers "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+ok 35 - exact post bytes and calldata match independent ethers "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  ---
+  duration_ms: 8.08349
+  ...
+# Subtest: exact post bytes and calldata match independent ethers "\\u0000\\n\\t"
+ok 36 - exact post bytes and calldata match independent ethers "\\u0000\\n\\t"
+  ---
+  duration_ms: 2.190839
+  ...
+# Subtest: exact post bytes and calldata match independent ethers "é"
+ok 37 - exact post bytes and calldata match independent ethers "é"
+  ---
+  duration_ms: 2.148364
+  ...
+# Subtest: exact post bytes and calldata match independent ethers "é"
+ok 38 - exact post bytes and calldata match independent ethers "é"
+  ---
+  duration_ms: 2.298429
+  ...
+# Subtest: combining text remains distinct from normalized text
+ok 39 - combining text remains distinct from normalized text
+  ---
+  duration_ms: 0.660285
+  ...
+# Subtest: rejects invalid scalar text ""
+ok 40 - rejects invalid scalar text ""
+  ---
+  duration_ms: 0.201834
+  ...
+# Subtest: rejects invalid scalar text null
+ok 41 - rejects invalid scalar text null
+  ---
+  duration_ms: 0.237253
+  ...
+# Subtest: rejects invalid scalar text 3
+ok 42 - rejects invalid scalar text 3
+  ---
+  duration_ms: 0.125629
+  ...
+# Subtest: rejects invalid scalar text "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+ok 43 - rejects invalid scalar text "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  ---
+  duration_ms: 0.246999
+  ...
+# Subtest: rejects invalid scalar text "🌒🌒🌒🌒🌒🌒🌒🌒🌒🌒🌒🌒🌒🌒�
+ok 44 - rejects invalid scalar text "🌒🌒🌒🌒🌒🌒🌒🌒🌒🌒🌒🌒🌒🌒�
+  ---
+  duration_ms: 0.127134
+  ...
+# Subtest: rejects invalid scalar text "\\ud800"
+ok 45 - rejects invalid scalar text "\\ud800"
+  ---
+  duration_ms: 0.165051
+  ...
+# Subtest: rejects invalid scalar text "\\udfff"
+ok 46 - rejects invalid scalar text "\\udfff"
+  ---
+  duration_ms: 0.11626
+  ...
+# Subtest: rejects invalid scalar text "a\\ud800b"
+ok 47 - rejects invalid scalar text "a\\ud800b"
+  ---
+  duration_ms: 0.090908
+  ...
+# Subtest: rejects invalid scalar text "\\udc00\\ud800"
+ok 48 - rejects invalid scalar text "\\udc00\\ud800"
+  ---
+  duration_ms: 0.094569
+  ...
+# Subtest: 420 supplementary scalars reach exactly 1680 UTF-8 bytes
+ok 49 - 420 supplementary scalars reach exactly 1680 UTF-8 bytes
+  ---
+  duration_ms: 3.98577
+  ...
+# Subtest: plain EOA owner signs a direct post
+ok 50 - plain EOA owner signs a direct post
+  ---
+  duration_ms: 2.022117
+  ...
+# Subtest: rejects post plan action transfer
+ok 51 - rejects post plan action transfer
+  ---
+  duration_ms: 0.792735
+  ...
+# Subtest: rejects post plan owner 0x888888888888888888
+ok 52 - rejects post plan owner 0x888888888888888888
+  ---
+  duration_ms: 0.68284
+  ...
+# Subtest: rejects post plan posting 0x888888888888888888
+ok 53 - rejects post plan posting 0x888888888888888888
+  ---
+  duration_ms: 0.58585
+  ...
+# Subtest: rejects post plan from 0x888888888888888888
+ok 54 - rejects post plan from 0x888888888888888888
+  ---
+  duration_ms: 1.550893
+  ...
+# Subtest: rejects post plan to 0x888888888888888888
+ok 55 - rejects post plan to 0x888888888888888888
+  ---
+  duration_ms: 0.693889
+  ...
+# Subtest: rejects post plan epoch 4
+ok 56 - rejects post plan epoch 4
+  ---
+  duration_ms: 0.574876
+  ...
+# Subtest: rejects post plan epoch 03
+ok 57 - rejects post plan epoch 03
+  ---
+  duration_ms: 0.734176
+  ...
+# Subtest: rejects post plan epoch 11579208923731619542
+ok 58 - rejects post plan epoch 11579208923731619542
+  ---
+  duration_ms: 0.776794
+  ...
+# Subtest: rejects post plan postNonce 8
+ok 59 - rejects post plan postNonce 8
+  ---
+  duration_ms: 0.927205
+  ...
+# Subtest: rejects post plan postNonce 07
+ok 60 - rejects post plan postNonce 07
+  ---
+  duration_ms: 0.891672
+  ...
+# Subtest: rejects post plan postNonce 11579208923731619542
+ok 61 - rejects post plan postNonce 11579208923731619542
+  ---
+  duration_ms: 0.901613
+  ...
+# Subtest: rejects post plan text  caw 🌒\\n日本語 é  
+ok 62 - rejects post plan text  caw 🌒\\n日本語 é  
+  ---
+  duration_ms: 0.874609
+  ...
+# Subtest: rejects post plan textHash 0x000000000000000000
+ok 63 - rejects post plan textHash 0x000000000000000000
+  ---
+  duration_ms: 0.873542
+  ...
+# Subtest: rejects post plan profile 0x000000000000000000
+ok 64 - rejects post plan profile 0x000000000000000000
+  ---
+  duration_ms: 0.945465
+  ...
+# Subtest: rejects post plan chainId 0x1
+ok 65 - rejects post plan chainId 0x1
+  ---
+  duration_ms: 0.661578
+  ...
+# Subtest: rejects post plan value 0x1
+ok 66 - rejects post plan value 0x1
+  ---
+  duration_ms: 1.434643
+  ...
+# Subtest: rejects post plan blockHash 0x
+ok 67 - rejects post plan blockHash 0x
+  ---
+  duration_ms: 1.064967
+  ...
+# Subtest: rejects post plan blockNumber 0x00
+ok 68 - rejects post plan blockNumber 0x00
+  ---
+  duration_ms: 1.127854
+  ...
+# Subtest: rejects post plan genesisHash 0x000000000000000000
+ok 69 - rejects post plan genesisHash 0x000000000000000000
+  ---
+  duration_ms: 1.080654
+  ...
+# Subtest: rejects post plan data 0x1234
+ok 70 - rejects post plan data 0x1234
+  ---
+  duration_ms: 1.409037
+  ...
+# Subtest: rejects post plan amount 1
+ok 71 - rejects post plan amount 1
+  ---
+  duration_ms: 1.112699
+  ...
+# Subtest: rejects post plan recipient 0x999999999999999999
+ok 72 - rejects post plan recipient 0x999999999999999999
+  ---
+  duration_ms: 1.001534
+  ...
+# Subtest: rejects changed current nonce and profile
+ok 73 - rejects changed current nonce and profile
+  ---
+  duration_ms: 2.116334
+  ...
+# Subtest: uint256 maximum remains encodable; overflow is rejected
+ok 74 - uint256 maximum remains encodable; overflow is rejected
+  ---
+  duration_ms: 1.14786
+  ...
+# Subtest: manual fixed ABI matches independent ethers encoder
+ok 75 - manual fixed ABI matches independent ethers encoder
+  ---
+  duration_ms: 6.471745
+  ...
+# Subtest: rejects inner amount with unchanged displayed metadata
+ok 76 - rejects inner amount with unchanged displayed metadata
+  ---
+  duration_ms: 1.299493
+  ...
+# Subtest: rejects inner epoch with unchanged displayed metadata
+ok 77 - rejects inner epoch with unchanged displayed metadata
+  ---
+  duration_ms: 1.006002
+  ...
+# Subtest: rejects inner account number with unchanged displayed metadata
+ok 78 - rejects inner account number with unchanged displayed metadata
+  ---
+  duration_ms: 1.090396
+  ...
+# Subtest: rejects inner custody target with unchanged displayed metadata
+ok 79 - rejects inner custody target with unchanged displayed metadata
+  ---
+  duration_ms: 1.14575
+  ...
+# Subtest: rejects outer selector with unchanged displayed metadata
+ok 80 - rejects outer selector with unchanged displayed metadata
+  ---
+  duration_ms: 1.060669
+  ...
+# Subtest: rejects inner selector with unchanged displayed metadata
+ok 81 - rejects inner selector with unchanged displayed metadata
+  ---
+  duration_ms: 1.196617
+  ...
+# Subtest: rejects trailing bytes with unchanged displayed metadata
+ok 82 - rejects trailing bytes with unchanged displayed metadata
+  ---
+  duration_ms: 1.332824
+  ...
+# Subtest: rejects truncated data with unchanged displayed metadata
+ok 83 - rejects truncated data with unchanged displayed metadata
+  ---
+  duration_ms: 1.472388
+  ...
+# Subtest: permits hexadecimal letter case without changing bytes
+ok 84 - permits hexadecimal letter case without changing bytes
+  ---
+  duration_ms: 3.879026
+  ...
+# Subtest: zero epoch and maximum uint256 amount match the reference
+ok 85 - zero epoch and maximum uint256 amount match the reference
+  ---
+  duration_ms: 2.885787
+  ...
+# Subtest: maximum uint256 epoch matches the reference
+ok 86 - maximum uint256 epoch matches the reference
+  ---
+  duration_ms: 1.804709
+  ...
+# Subtest: rejects invalid or out-of-range amount 0
+ok 87 - rejects invalid or out-of-range amount 0
+  ---
+  duration_ms: 0.58158
+  ...
+# Subtest: rejects invalid or out-of-range amount -1
+ok 88 - rejects invalid or out-of-range amount -1
+  ---
+  duration_ms: 0.41357
+  ...
+# Subtest: rejects invalid or out-of-range amount 01
+ok 89 - rejects invalid or out-of-range amount 01
+  ---
+  duration_ms: 0.197241
+  ...
+# Subtest: rejects invalid or out-of-range amount 1.5
+ok 90 - rejects invalid or out-of-range amount 1.5
+  ---
+  duration_ms: 0.276966
+  ...
+# Subtest: rejects invalid or out-of-range amount 1e2
+ok 91 - rejects invalid or out-of-range amount 1e2
+  ---
+  duration_ms: 0.149805
+  ...
+# Subtest: rejects invalid or out-of-range amount 115792089237316195423570985008687907853269984665640564039457584007913129639936
+ok 92 - rejects invalid or out-of-range amount 115792089237316195423570985008687907853269984665640564039457584007913129639936
+  ---
+  duration_ms: 0.239913
+  ...
+# Subtest: rejects invalid or out-of-range epoch -1
+ok 93 - rejects invalid or out-of-range epoch -1
+  ---
+  duration_ms: 0.363936
+  ...
+# Subtest: rejects invalid or out-of-range epoch 01
+ok 94 - rejects invalid or out-of-range epoch 01
+  ---
+  duration_ms: 0.179557
+  ...
+# Subtest: rejects invalid or out-of-range epoch 1.5
+ok 95 - rejects invalid or out-of-range epoch 1.5
+  ---
+  duration_ms: 0.117832
+  ...
+# Subtest: rejects invalid or out-of-range epoch 115792089237316195423570985008687907853269984665640564039457584007913129639936
+ok 96 - rejects invalid or out-of-range epoch 115792089237316195423570985008687907853269984665640564039457584007913129639936
+  ---
+  duration_ms: 0.255855
+  ...
+# Subtest: rejects incorrect plan chainId
+ok 97 - rejects incorrect plan chainId
+  ---
+  duration_ms: 1.000953
+  ...
+# Subtest: rejects incorrect plan from
+ok 98 - rejects incorrect plan from
+  ---
+  duration_ms: 0.853277
+  ...
+# Subtest: rejects incorrect plan to
+ok 99 - rejects incorrect plan to
+  ---
+  duration_ms: 0.76284
+  ...
+# Subtest: rejects incorrect plan value
+ok 100 - rejects incorrect plan value
+  ---
+  duration_ms: 0.865114
+  ...
+# Subtest: rejects incorrect plan amount
+ok 101 - rejects incorrect plan amount
+  ---
+  duration_ms: 0.846688
+  ...
+# Subtest: rejects incorrect plan epoch
+ok 102 - rejects incorrect plan epoch
+  ---
+  duration_ms: 0.802045
+  ...
+# Subtest: rejects incorrect plan genesisHash
+ok 103 - rejects incorrect plan genesisHash
+  ---
+  duration_ms: 0.557387
+  ...
+# Subtest: rejects incorrect plan blockHash
+ok 104 - rejects incorrect plan blockHash
+  ---
+  duration_ms: 0.449181
+  ...
+# Subtest: rejects incorrect plan blockNumber
+ok 105 - rejects incorrect plan blockNumber
+  ---
+  duration_ms: 0.442026
+  ...
+# Subtest: rejects amount greater than displayed credit
+ok 106 - rejects amount greater than displayed credit
+  ---
+  duration_ms: 0.655411
+  ...
+# Subtest: rejects registry owner different from the selected wallet
+ok 107 - rejects registry owner different from the selected wallet
+  ---
+  duration_ms: 0.937639
+  ...
+# Subtest: rejects another connected controller
+ok 108 - rejects another connected controller
+  ---
+  duration_ms: 0.761082
+  ...
+# Subtest: EOA owner withdraws directly with independently encoded bytes
+ok 109 - EOA owner withdraws directly with independently encoded bytes
+  ---
+  duration_ms: 0.845338
+  ...
+# Subtest: direct EOA path rejects old controller, wrapper and unsupported owner type
+ok 110 - direct EOA path rejects old controller, wrapper and unsupported owner type
+  ---
+  duration_ms: 0.970642
+  ...
+1..110
+# tests 110
+# suites 0
+# pass 110
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 789.877668

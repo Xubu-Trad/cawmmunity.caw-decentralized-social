@@ -1,0 +1,65 @@
+{
+  "status": "RESEARCH_BYTE_VECTORS_NOT_VALID_ACTIONS",
+  "vectors": [
+    {
+      "selection": {
+        "chainId": "31337",
+        "emitter": "0x2222222222222222222222222222222222222222",
+        "profile": "0x3333333333333333333333333333333333333333333333333333333333333333"
+      },
+      "recordId": "0xd1611c522b58143d50a1b7a4aa5112e6d5810d2dd238f9c2928691b0daedfdd9",
+      "payerAccount": "1",
+      "epoch": "0",
+      "nonce": "0",
+      "fee": "5",
+      "stakeRoot": "0xd8cf626bf439580954c29272ca6c238820bce8aa4ab00c294fa7e8d76d98ffb1",
+      "totalStake": "10",
+      "payerStake": "2"
+    },
+    {
+      "selection": {
+        "chainId": "31337",
+        "emitter": "0x2222222222222222222222222222222222222222",
+        "profile": "0x3333333333333333333333333333333333333333333333333333333333333333"
+      },
+      "recordId": "0x56b5a6502424c687399dc45c424931bc88166e5b42567a3a4d8350375b15d850",
+      "payerAccount": "1",
+      "epoch": "0",
+      "nonce": "1",
+      "fee": "7",
+      "stakeRoot": "0x727de7c20bbd2fcbac7db3ce4521de251aba8d40598152befd6ba04a50470214",
+      "totalStake": "10",
+      "payerStake": "2"
+    },
+    {
+      "selection": {
+        "chainId": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+        "emitter": "0xffffffffffffffffffffffffffffffffffffffff",
+        "profile": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+      },
+      "recordId": "0xd727eb39896c8c976650887472aae402c182823569bb9fc1e361a76a32c68525",
+      "payerAccount": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+      "epoch": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+      "nonce": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+      "fee": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+      "stakeRoot": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "totalStake": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+      "payerStake": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+    },
+    {
+      "selection": {
+        "chainId": "0",
+        "emitter": "0x0000000000000000000000000000000000000000",
+        "profile": "0x0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "recordId": "0xe089c19b805c61739cfc7e830b7a72afa45d85b56d27c61914f3fc5b92fb4f1c",
+      "payerAccount": "0",
+      "epoch": "0",
+      "nonce": "0",
+      "fee": "0",
+      "stakeRoot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "totalStake": "0",
+      "payerStake": "0"
+    }
+  ]
+}

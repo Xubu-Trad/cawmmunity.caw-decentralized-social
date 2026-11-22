@@ -1,0 +1,23 @@
+{
+  "status": "DRAFT_EVENT_LAYOUT_NOT_ADOPTED",
+  "ethersVersion": "6.16.0",
+  "positiveCases": 4,
+  "rejected": [
+    "wrong emitter",
+    "unknown topic",
+    "missing topic",
+    "extra topic",
+    "short indexed word",
+    "nonhex topic",
+    "short data",
+    "trailing data",
+    "nonhex data",
+    "extra field"
+  ],
+  "unverifiedFeeMutationRemainsUnverified": true,
+  "topics": [
+    "0x7521398fe55d65e6d62ed3a306dda79ca62841c4897dce22d590496cf14c37f5",
+    "0x5d3532fc4a010da556573d7f6d4e6a926b9c9ec155757c0b694a55c292372a27"
+  ],
+  "limits": "ABI encoder comparison only. No emitted contract events, receipt proof, signature, debit, record commitment or chain authentication."
+}

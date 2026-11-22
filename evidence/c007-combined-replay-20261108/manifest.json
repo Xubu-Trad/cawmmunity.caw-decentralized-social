@@ -1,0 +1,25 @@
+{
+  "schema": "caw-frozen-replay-package/1",
+  "sourceSha256": "e4149f2ddb09e5f83c999e20dc14180f8f7c254584f401e2249bead0c2e45cfa",
+  "synthetic": true,
+  "chainId": 31337,
+  "files": {
+    "acquired-history.json": {
+      "sha256": "3b984b11c0ff48ae4ff13ebcfd857a22f6d1c06b491846887a33639b840fec9e",
+      "bytes": 272775
+    },
+    "genesis.json": {
+      "sha256": "7a113bfbcce39f22659ab8021ed687553b51924930206c1f7e15dd5bdd7a2a11",
+      "bytes": 293
+    },
+    "transaction-result.json": {
+      "sha256": "dfbd1478b750ca773b5d6f30882b74a58c007dc362ec0a1bc4bb010fa3cf6e80",
+      "bytes": 4141
+    },
+    "blocks.json": {
+      "sha256": "22ed32401dd2dd40675cdf17813813913f30e6d802ef3f998863f45762962ab3",
+      "bytes": 235201
+    }
+  },
+  "review": "known synthetic genesis/receipt actors; visible and decoded hex scanned for paths/credential patterns; no matches; scan alone not exhaustive"
+}

@@ -1,0 +1,38 @@
+{
+  "parent": "97164f0377d2bce080fca655419dc1723729edc3",
+  "transform": "portable output/host resource preflight, mocked boundaries and WSL replay",
+  "files": {
+    "experiments/c007-transactions/compare-geth-transition.py": {
+      "sha256": "f3fa3c5b14b233ed65191ea18f7449e9cd0f4a17fb2b735b706f20edb779ed65",
+      "bytes": 8267
+    },
+    "experiments/c007-transactions/check-geth-selection.py": {
+      "sha256": "e214c01ae5f1489ded3d1e4c5db8d2acdefdc95a7b26bf0769dfcb4d1468a412",
+      "bytes": 2014
+    },
+    "experiments/c007-transactions/check-replay-resources.py": {
+      "sha256": "ac005c2eab8ea309326e12b013fa94414d041f12b9555c87db424889079b2b6a",
+      "bytes": 2949
+    },
+    "evidence/c007-resource-portability-20261108/platform-checks.json": {
+      "sha256": "b2f55f0cb8685854fbc67dec75e052127902cdb1d72cae00c7284f0424cb592c",
+      "bytes": 456
+    },
+    "evidence/c007-resource-portability-20261108/input-checks.json": {
+      "sha256": "ab6ada97cd8826eab3167792feb0f694b9c3198740dee52d153f0cae6959456a",
+      "bytes": 375
+    },
+    "evidence/c007-resource-portability-20261108/replay.json": {
+      "sha256": "c38e9460b02955434e791d50d2821716ce36cd5fe0fe98c4744272e85d6f7bea",
+      "bytes": 1259
+    },
+    "docs/REPLAY_RESOURCE_PORTABILITY.md": {
+      "sha256": "08ee04e1cb5b740f6f99126952b03988bb38d73c8cddc7778aba6b6356fa210c",
+      "bytes": 2581
+    },
+    "evidence/c007-frozen-replay-20261108/REPRODUCE.md": {
+      "sha256": "d01f39404f561b50a78b09f66205c66baecea53667a926bcd9bf3f771f27210a",
+      "bytes": 3749
+    }
+  }
+}

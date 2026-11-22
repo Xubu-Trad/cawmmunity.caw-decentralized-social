@@ -1,0 +1,89 @@
+{
+  "cases": [
+    {
+      "optimized": false,
+      "case": "genuine",
+      "accepted": true,
+      "summaryWritten": true
+    },
+    {
+      "optimized": false,
+      "case": "cleanup",
+      "accepted": false,
+      "summaryWritten": false
+    },
+    {
+      "optimized": false,
+      "case": "window",
+      "accepted": false,
+      "summaryWritten": false
+    },
+    {
+      "optimized": false,
+      "case": "isolation",
+      "accepted": false,
+      "summaryWritten": false
+    },
+    {
+      "optimized": false,
+      "case": "recovery",
+      "accepted": false,
+      "summaryWritten": false
+    },
+    {
+      "optimized": false,
+      "case": "proof",
+      "accepted": false,
+      "summaryWritten": false
+    },
+    {
+      "optimized": false,
+      "case": "scope",
+      "accepted": false,
+      "summaryWritten": false
+    },
+    {
+      "optimized": true,
+      "case": "genuine",
+      "accepted": true,
+      "summaryWritten": true
+    },
+    {
+      "optimized": true,
+      "case": "cleanup",
+      "accepted": false,
+      "summaryWritten": false
+    },
+    {
+      "optimized": true,
+      "case": "window",
+      "accepted": false,
+      "summaryWritten": false
+    },
+    {
+      "optimized": true,
+      "case": "isolation",
+      "accepted": false,
+      "summaryWritten": false
+    },
+    {
+      "optimized": true,
+      "case": "recovery",
+      "accepted": false,
+      "summaryWritten": false
+    },
+    {
+      "optimized": true,
+      "case": "proof",
+      "accepted": false,
+      "summaryWritten": false
+    },
+    {
+      "optimized": true,
+      "case": "scope",
+      "accepted": false,
+      "summaryWritten": false
+    }
+  ],
+  "scope": "mock process boundaries only"
+}

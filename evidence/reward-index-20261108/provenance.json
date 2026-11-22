@@ -1,0 +1,22 @@
+{
+  "parent": "1c3d4446284820c3abf6d8cd65a5f49e09173cdb",
+  "transform": "seeded exact-rational index and eager-reference comparison",
+  "files": {
+    "integration/core-baseline-v1/c007-reward-index-reference.py": {
+      "sha256": "721cdb525e259974fd955edeffab4c736a627dcf6a3ffe181736f8de0e988f4b",
+      "size": 5432
+    },
+    "docs/C007_REWARD_INDEX_RESEARCH.md": {
+      "sha256": "de0fd5083a797abb16ef0063a218a6aca75d87c7731dddbd65af2b295095daac",
+      "size": 4384
+    },
+    "evidence/reward-index-20261108/result.json": {
+      "sha256": "fe1fc38e93b4217a392e1436a0a246cd19dccfd17bfd3cf77069015f39831ee6",
+      "size": 22865
+    },
+    "docs/C007_DISTRIBUTION_DECISION_PACKET.md": {
+      "sha256": "b69ccce0feff0cbbf0ee76f969700e70841d62e73cded40a2a0bb3aca9c7197d",
+      "size": 5914
+    }
+  }
+}

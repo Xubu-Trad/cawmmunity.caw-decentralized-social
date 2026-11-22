@@ -1,0 +1,1 @@
+{"checks": 5, "results": ["genuine inputs accepted", "changed input rejected", "missing input rejected", "repinned inventory rejected", "external symlink rejected"]}

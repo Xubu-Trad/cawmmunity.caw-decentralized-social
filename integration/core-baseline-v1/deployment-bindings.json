@@ -1,0 +1,69 @@
+{
+  "rows": [
+    {
+      "name": "MockTokenResearch",
+      "address": "0x82c839fa4a41e158f613ec8a1a84be3c816d370f",
+      "sender": "0x6813Eb9362372EEF6200f3b1dbC3f819671cBA69",
+      "nonce": 0,
+      "transactionHash": "0x7bde0202cfbd483c4aa70d3cad12bfca929b2a67704c82ed79a68185312ebb35",
+      "blockHash": "0xf83be9c728535dd6c8d4afa3ab69d60e1eb58e2d0d71451121068a0adca883a2",
+      "constructorArgs": [],
+      "runtimeKeccak": "0xf6db929e302028413dc3d7f906b07c1bddfbbc9cead3248047ce6aee90df45f4",
+      "retainedRuntimeCompared": true
+    },
+    {
+      "name": "SignerWalletFixture",
+      "address": "0x19a827174f66b3c66ad7063951d7b4f94f996e77",
+      "sender": "0x6813Eb9362372EEF6200f3b1dbC3f819671cBA69",
+      "nonce": 1,
+      "transactionHash": "0xebf3f41996f72340719c48473267108316fa1940be6a7d8c41213649ee131e91",
+      "blockHash": "0x30ed61debce4f23a1641217e151b85b65f2cf5bb5116c72fc03bbb3514978bfd",
+      "constructorArgs": [
+        "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf"
+      ],
+      "runtimeKeccak": "0x31a03261b35af349ff25cf4ed296dee8dbe14904c3fb0547e9eb18f845a322b5",
+      "retainedRuntimeCompared": false
+    },
+    {
+      "name": "SignerWalletFixture",
+      "address": "0x985d0ce92f2af930e309f5ff89139490ac2d9e94",
+      "sender": "0x6813Eb9362372EEF6200f3b1dbC3f819671cBA69",
+      "nonce": 2,
+      "transactionHash": "0x8e107199fac59e4ef054805cb4ba176e91ce625f116802ab7dd7226a0dc95897",
+      "blockHash": "0x82110860eaf05ac8f909b57e0f3bb06d915f5cbe589b4116bb3b3446c19ba2a7",
+      "constructorArgs": [
+        "0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF"
+      ],
+      "runtimeKeccak": "0x54ad1f1a87aa5ac800d029d767837c8d9afec023e00acf1313239a6bea0cd808",
+      "retainedRuntimeCompared": false
+    },
+    {
+      "name": "DeployedCustodyStakeResearch",
+      "address": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+      "sender": "0x6813Eb9362372EEF6200f3b1dbC3f819671cBA69",
+      "nonce": 3,
+      "transactionHash": "0x08e86bb9859fc827dc732df26e2040ad7dab2fe0750ee0da39320e7775b5e5f2",
+      "blockHash": "0xea717e89cd841b4f62691939630e198966840110ff5d6dcad1688999e69b67aa",
+      "constructorArgs": [
+        "0x82c839Fa4a41E158f613EC8A1A84Be3c816D370F",
+        [
+          "0x19A827174F66B3c66ad7063951D7b4F94f996e77",
+          "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+          "0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF"
+        ]
+      ],
+      "runtimeKeccak": "0xf8e39aa08ef813a163e27f2f18b3c29a9cddf5dab2a99edb30ece99690406e01",
+      "retainedRuntimeCompared": true
+    }
+  ],
+  "negativeControls": [
+    "receipt address",
+    "receipt hash",
+    "chain",
+    "receipt status"
+  ],
+  "receiptInclusionReverified": false,
+  "accountProofReverified": false,
+  "lifecycleRerun": false,
+  "productionAccepted": false
+}

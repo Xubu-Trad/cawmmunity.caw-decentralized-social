@@ -1,0 +1,55 @@
+{
+  "parent": "843d59b2097d5d75242bf6a887f870e2ad034125",
+  "sourceSha256": "508fcadf4cab9b66771e74ad90a57d0bbd89d2a0e3977c89f8e0169780d540cb",
+  "nodeVersion": "v20.20.2",
+  "nodeSha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+  "counts": {
+    "successfulOperations": 20,
+    "expectedRejections": 8
+  },
+  "files": {
+    "experiments/c007-constructor/DeployedCustodyStakeResearch.sol": {
+      "sha256": "508fcadf4cab9b66771e74ad90a57d0bbd89d2a0e3977c89f8e0169780d540cb",
+      "bytes": 16714
+    },
+    "experiments/c007-constructor/run-lifecycle.mjs": {
+      "sha256": "b9392bde6b3a33685bf9cfa90f8b83f4c36d46d28e49a38001829a51da5c77c5",
+      "bytes": 10451
+    },
+    "experiments/c007-constructor/package.json": {
+      "sha256": "41819c975ded66c0d9eb6e2e7fc405f38c58a59a2fd2b09b1feb871de295faab",
+      "bytes": 191
+    },
+    "experiments/c007-constructor/package-lock.json": {
+      "sha256": "075099ec10674e1af3a00dbec5232321dede046d4f84d846d1419135ef8a8c9c",
+      "bytes": 10306
+    },
+    "evidence/c007-constructor-20261108/receipt.json": {
+      "sha256": "cfd1480925de16b7e5326cbe2374d83ed3d6ed91fd8deb1ce6287c1eae3833e3",
+      "bytes": 356
+    },
+    "evidence/c007-constructor-20261108/stdout.log": {
+      "sha256": "8b501b06d4e1575a2f988c284492027ec7d9cc845b8aa2c129ef22297fe99bcf",
+      "bytes": 69
+    },
+    "evidence/c007-constructor-20261108/stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "evidence/c007-constructor-20261108/execution/results.json": {
+      "sha256": "ac7cbebff3d9805f86a839310c8f4011c1e2c3ae3ee10ba119a1fc807f34f585",
+      "bytes": 193506
+    },
+    "evidence/c007-constructor-20261108/execution/compiler-input.json": {
+      "sha256": "422fcaccc10f7a8fe3b1e5ef4eebe6478543a89f416c41750b9719eedf8d0a9f",
+      "bytes": 17849
+    },
+    "evidence/c007-constructor-20261108/execution/compiler-output.json": {
+      "sha256": "db26070ddc049b27b70695ef2f416b8cdc3886fa426ae7b972f6f650b5ea8bbf",
+      "bytes": 77099
+    }
+  },
+  "directRuntimeInstall": false,
+  "directStorageInjection": false,
+  "signedEthereumTransactions": false
+}

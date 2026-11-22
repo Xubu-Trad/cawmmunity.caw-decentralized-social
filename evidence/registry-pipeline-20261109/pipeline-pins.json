@@ -1,0 +1,125 @@
+{
+  "sourceCommit": "aa4907ed1d4c66b75612a994596e0a7cf67f29e0",
+  "files": {
+    "evidence/registry-later-20261109/input-pins.json": {
+      "sha256": "27154e6869ffd89171fa74670557244e9a12c3d77ea40a0608f3bb02f02b22c8",
+      "size": 349
+    },
+    "evidence/registry-later-20261109/model.json": {
+      "sha256": "8ee9b87281b20a657724aadbcc3a625f867141499d2c365c9c1876595d4e675c",
+      "size": 9928
+    },
+    "evidence/registry-later-20261109/evidence.json": {
+      "sha256": "1cefa79b546397ee4172c667ee45d61e02a23407d876b0f689b9431d03cedeab",
+      "size": 22439
+    },
+    "evidence/registry-storage-20261109/evidence.json": {
+      "sha256": "9492e5adea28b2c7b8d82ed0a3fc7d80cd48ff741721b8861d81e1e2ed1cd56c",
+      "size": 33535
+    },
+    "evidence/registry-selection-20261109/manifest.json": {
+      "sha256": "33673024dbf0d57084e36cd62e8b9518f3fc6c346cf1807a71ba8b07e690a56a",
+      "size": 863
+    },
+    "evidence/registry-withdrawal-verification-20261109/input/result.json": {
+      "sha256": "9d03d40a75cb4969b2ea4230ae2aa5dbcdef90d993f7bdec75d03860e7bf8a39",
+      "size": 1120
+    },
+    "evidence/registry-withdrawal-verification-20261109/input/operations.json": {
+      "sha256": "51a138d15e5060344e914599c0e2e2624a90905a99bb8f08e1a9ca0c5b7361f3",
+      "size": 189594
+    },
+    "evidence/registry-withdrawal-verification-20261109/input/compiler-input.json": {
+      "sha256": "42567df856324630dff439a9bb60dbf4498d643633c66fe46efa50408955fa49",
+      "size": 15837
+    },
+    "evidence/registry-withdrawal-verification-20261109/fixture.json": {
+      "sha256": "7f115a6a1a8e55c75450db1719e381f57f70048575f2ec3b26b8269bfd3bdce6",
+      "size": 193606
+    },
+    "evidence/funded-claims-20261108/proofs.json": {
+      "sha256": "735d37ee57447ab8a15e25fe55327566e77a7b9da9d9ee638a44c5568059af20",
+      "size": 93655
+    },
+    "evidence/funded-claims-20261108/vectors.json": {
+      "sha256": "472ef013e7be3b6dd5f2eee8ba1deaed4b9244206c52491cfc8c0a9b6411750a",
+      "size": 334
+    },
+    "integration/core-baseline-v1/replay-registry-geth.py": {
+      "sha256": "5e7582c18e6acb716a2b37d627a721c96773097152d1345866c72a1903ab2518",
+      "size": 5072
+    },
+    "integration/core-baseline-v1/check-registry-later.mjs": {
+      "sha256": "90188d4dfadddbf7b8d4413342026ae760274256f53709e64d549639303571a2",
+      "size": 4480
+    },
+    "reference/ethereum-block-senders.mjs": {
+      "sha256": "65c787449418ace3091a79bb062e7cd5898f39fb53bfff48ef395adcc2d7befc",
+      "size": 16373
+    },
+    "reference/ethereum-block-transactions.mjs": {
+      "sha256": "bed33246e3708ac6838cddd5a7a2c88692b54cd998a3fc2e647497bf96c94cd5",
+      "size": 17590
+    },
+    "reference/ethereum-block-receipts.mjs": {
+      "sha256": "92b108bdc18d138ec8f8ee6569402045ee91460d0d80a2cc8f012fbdacf55ddd",
+      "size": 12920
+    },
+    "reference/ethereum-execution-header.mjs": {
+      "sha256": "dd69f58be27f861939432a2a140298fde3be1393e8d9bbd8b6dfb88c69cb34eb",
+      "size": 9631
+    },
+    "reference/keccak256.mjs": {
+      "sha256": "6ed8268eb811eddb3345ebb47e824346c00585d6bed2ec3767e1783d31615edf",
+      "size": 2961
+    },
+    "reference/header-bound-state-proof.mjs": {
+      "sha256": "244e2f468d02b362246ae8e8bc659801b233c7257d774a695d40e9c1d2428955",
+      "size": 3918
+    },
+    "reference/ethereum-state-proof.mjs": {
+      "sha256": "56c2278447b1eccef6a29dbeb4da7777ad5330fe5bb67655c1ed9f8564af628f",
+      "size": 12928
+    },
+    "public/bounded-json.mjs": {
+      "sha256": "73312692245add67ea140ef1393efe9577d337d917867f9edca02ce82af8b051",
+      "size": 6122
+    },
+    "integration/core-baseline-v1/registry-later-fields.mjs": {
+      "sha256": "76d90da00ab37f9dbc92d7206587403cc20ddc6feea16d5a1a1d1dbeedd4f20f",
+      "size": 2420
+    },
+    "integration/core-baseline-v1/check-registry-storage.mjs": {
+      "sha256": "28eb2347987c69e5744904c8a631f4c6fdf881b293057aaedbea2c4aaf4c95b0",
+      "size": 4535
+    },
+    "integration/core-baseline-v1/registry-initialization-fields.mjs": {
+      "sha256": "fc054a214f267eadf9077d90cdbbdea1db766fcdb853f845163c3da41e954408",
+      "size": 2154
+    },
+    "integration/core-baseline-v1/check-registry-selection.mjs": {
+      "sha256": "81595a14fb5bd436c9c6975d8bd832bde463b5fc4d492ca9c0ed491c5c4bc38a",
+      "size": 2899
+    },
+    "integration/core-baseline-v1/reconstruct-registry-later.mjs": {
+      "sha256": "e304958c1cbb4c44d202b428bee345d9934117c1171ca0971e3885a720ad89fa",
+      "size": 12317
+    },
+    "integration/core-baseline-v1/c007-admission-binding.mjs": {
+      "sha256": "eabe3822f8bc707b884a8a99641f0d40b0a2a29605c0a389707edda11adeb40c",
+      "size": 1620
+    },
+    "integration/core-baseline-v1/c007-claim-event-codec.mjs": {
+      "sha256": "ca1aabdef8f25ba530db9b768014f26a8710bc63c13694f797925aac43d0f093",
+      "size": 2311
+    },
+    "integration/core-baseline-v1/RegistryHookWithdrawalResearch.sol": {
+      "sha256": "cd9fd7aae43576fe6fcdda417d0161711f6aa58466af1ef702ef0a7b98a09671",
+      "size": 15103
+    },
+    "integration/core-baseline-v1/test-registry-hooks.mjs": {
+      "sha256": "7bc28a560508650f6c7f11dd6c0ee8bd1baf9016d4bc3549ba240993e7c1312a",
+      "size": 10071
+    }
+  }
+}

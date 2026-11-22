@@ -1,0 +1,17 @@
+{
+  "schema": "caw-portable-replay-check/1",
+  "codeCommit": "ecad6c83a0cb9a071bcf81b9c99495003f2a070d",
+  "fileCount": 4,
+  "totalInputBytes": 511096,
+  "blocks": 26,
+  "successful": 18,
+  "expectedReverts": 8,
+  "allRootsAndNativeBalancesMatched": true,
+  "isolatedWorkingDirectory": true,
+  "sanitizedEnvironment": true,
+  "privateCredentialsPassed": false,
+  "secondOperatorPerformed": false,
+  "networkIsolationEnforced": false,
+  "publicFixtureAvailable": false,
+  "limitation": "same operator/machine; public script and copied fixture/binary, no technical network namespace isolation"
+}

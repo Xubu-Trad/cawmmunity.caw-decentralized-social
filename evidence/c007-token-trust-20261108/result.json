@@ -1,0 +1,82 @@
+{
+  "schema": "caw-token-trust-boundary/1",
+  "sourceSha256": "d97dd9157a81611630ac876556684f7354f412e35a7a360662aab6ce2984e02c",
+  "tokenSha256": "70d5b7fb925ef9b269cfe062b506e6bb78aee79e222892882824c5debd3736c9",
+  "gasLimitPerCall": 500000,
+  "cases": [
+    {
+      "mode": 12,
+      "operation": "deposit",
+      "rollback": true
+    },
+    {
+      "mode": 12,
+      "operation": "withdraw",
+      "rollback": true
+    },
+    {
+      "mode": 13,
+      "operation": "deposit",
+      "rollback": true
+    },
+    {
+      "mode": 13,
+      "operation": "withdraw",
+      "rollback": true
+    }
+  ],
+  "recoveryCycles": 2,
+  "fakeDeposit": {
+    "account": {
+      "root": "111707771500532398228200638088803803714752446729802754429447215675024401231123",
+      "totalStake": "0",
+      "liabilities": "100",
+      "poolDust": "0",
+      "credit1": "100",
+      "credit2": "0",
+      "credit3": "0",
+      "stake1": "0",
+      "stake2": "0",
+      "stake3": "0",
+      "owner1": "721457446580647751014191829380889690493307935711",
+      "owner2": "721457446580647751014191829380889690493307935711",
+      "owner3": "247512291986854564435551364600938690683113101007",
+      "epoch1": "0",
+      "epoch2": "0",
+      "epoch3": "0",
+      "nonce": "0",
+      "balance": "0"
+    },
+    "wallet": "1000",
+    "allowance": "900",
+    "touched": "0"
+  },
+  "fakeWithdrawal": {
+    "account": {
+      "root": "111707771500532398228200638088803803714752446729802754429447215675024401231123",
+      "totalStake": "0",
+      "liabilities": "0",
+      "poolDust": "0",
+      "credit1": "0",
+      "credit2": "0",
+      "credit3": "0",
+      "stake1": "0",
+      "stake2": "0",
+      "stake3": "0",
+      "owner1": "721457446580647751014191829380889690493307935711",
+      "owner2": "721457446580647751014191829380889690493307935711",
+      "owner3": "247512291986854564435551364600938690683113101007",
+      "epoch1": "0",
+      "epoch2": "0",
+      "epoch3": "0",
+      "nonce": "0",
+      "balance": "100"
+    },
+    "wallet": "900",
+    "allowance": "900",
+    "touched": "0"
+  },
+  "misleadingReportsAccepted": true,
+  "signedEthereumTransactions": false,
+  "productionTokenFinding": false
+}

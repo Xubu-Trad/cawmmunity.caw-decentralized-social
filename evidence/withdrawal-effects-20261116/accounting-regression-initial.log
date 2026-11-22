@@ -1,0 +1,43 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected ... Lines skipped
+
+  {
++   accountCredits: {
++     '2': '0',
++     '3': '0',
++     '4': '0'
++   },
+    accountingHeaderHash: '0xb00f8e279e6e4cd9c3fd221d5a4904e5147080371f143833ddca26e31df8d76b',
+...
+    unallocatedBudget: '8',
+    unpaidLiability: '8'
+  }
+    at file://<local-evidence-directory>/src/integration/local-console/test-console-accounting.mjs:6:8
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: {
+    accountingProofsVerified: true,
+    accountingHeaderHash: '0xb00f8e279e6e4cd9c3fd221d5a4904e5147080371f143833ddca26e31df8d76b',
+    unpaidLiability: '8',
+    unallocatedBudget: '8',
+    creditedLiability: '0',
+    accountCredits: { '2': '0', '3': '0', '4': '0' }
+  },
+  expected: {
+    accountingProofsVerified: true,
+    accountingHeaderHash: '0xb00f8e279e6e4cd9c3fd221d5a4904e5147080371f143833ddca26e31df8d76b',
+    unpaidLiability: '8',
+    unallocatedBudget: '8',
+    creditedLiability: '0'
+  },
+  operator: 'deepStrictEqual'
+}
+
+Node.js v20.20.2

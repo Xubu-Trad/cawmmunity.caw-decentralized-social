@@ -1,0 +1,26 @@
+{
+  "parent": "4ff948cc82a5739c6d58762b75964bd6543abc81",
+  "spec": {
+    "commit": "b5c3b619887c7850a8c1d3540b471092be73ad84",
+    "sha256": "95519084a4689b0bbbbaa9db9fb1d6e48d6c7be83a8dd21bc82a83cf96a6254a"
+  },
+  "transform": "authored Python hashlib reference comparisons; Node execution",
+  "files": {
+    "experiments/signing-domain/vectors.json": {
+      "sha256": "f677a5be9aafde6ca0e667089c8db12eaf60139c0d0f68f4fd432eecdd2b8113",
+      "size": 1938
+    },
+    "evidence/signing-domain-20261108/result.json": {
+      "sha256": "bb3822049cf0c25fa2cb61dd479f251f081dc823a17c608cc72ae4e7cf5ca968",
+      "size": 281
+    },
+    "evidence/signing-domain-20261108/test-output.json": {
+      "sha256": "c6b07b7487b363a5740902a7e2d4fd5e06c6a92dfa2edb02f5517e9d8c80276f",
+      "size": 133
+    },
+    "docs/SIGNING_DOMAIN_RESEARCH.md": {
+      "sha256": "e113a7ba7cac426519c7e4d2c79d5542728a306e5061d65eb113b0f48169817c",
+      "size": 2382
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "commit": "d0e5e370875d71973cef14efcf86690cf2b7abc3",
+  "files": [
+    {
+      "path": "reference/ethereum-block-transactions.mjs",
+      "sha256": "bed33246e3708ac6838cddd5a7a2c88692b54cd998a3fc2e647497bf96c94cd5",
+      "size": 17590
+    },
+    {
+      "path": "reference/ethereum-block-senders.mjs",
+      "sha256": "65c787449418ace3091a79bb062e7cd5898f39fb53bfff48ef395adcc2d7befc",
+      "size": 16373
+    },
+    {
+      "path": "reference/header-bound-state-proof.mjs",
+      "sha256": "244e2f468d02b362246ae8e8bc659801b233c7257d774a695d40e9c1d2428955",
+      "size": 3918
+    },
+    {
+      "path": "integration/local-console/ui/post-plan.mjs",
+      "sha256": "ee45044113267f7bbf5eef8aa30807d21318038d3df735b526cf3c966495f19a",
+      "size": 3650
+    },
+    {
+      "path": "evidence/wallet-headers-20261112/expected-storage.json",
+      "sha256": "9ab867f53c465281e643041becc5b60167529dc03f7c765d2cd9055c5406a971",
+      "size": 3646
+    },
+    {
+      "path": "reference/keccak256.mjs",
+      "sha256": "6ed8268eb811eddb3345ebb47e824346c00585d6bed2ec3767e1783d31615edf",
+      "size": 2961
+    },
+    {
+      "path": "reference/ethereum-execution-header.mjs",
+      "sha256": "dd69f58be27f861939432a2a140298fde3be1393e8d9bbd8b6dfb88c69cb34eb",
+      "size": 9631
+    },
+    {
+      "path": "reference/ethereum-block-receipts.mjs",
+      "sha256": "92b108bdc18d138ec8f8ee6569402045ee91460d0d80a2cc8f012fbdacf55ddd",
+      "size": 12920
+    },
+    {
+      "path": "public/bounded-json.mjs",
+      "sha256": "73312692245add67ea140ef1393efe9577d337d917867f9edca02ce82af8b051",
+      "size": 6122
+    },
+    {
+      "path": "reference/ethereum-state-proof.mjs",
+      "sha256": "56c2278447b1eccef6a29dbeb4da7777ad5330fe5bb67655c1ed9f8564af628f",
+      "size": 12928
+    },
+    {
+      "path": "integration/local-console/ui/keccak256.mjs",
+      "sha256": "9fe8914f8781cb1a0a0111aa11bbe4855947998ec8beec3feb2e49c89e006cc3",
+      "size": 3185
+    }
+  ]
+}

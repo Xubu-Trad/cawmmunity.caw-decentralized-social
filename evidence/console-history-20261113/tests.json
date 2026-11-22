@@ -1,0 +1,18 @@
+{
+  "checks": [
+    "valid",
+    "raw",
+    "receipt",
+    "proof",
+    "missing",
+    "rpc-error",
+    "reorg",
+    "valid",
+    "UI renders literal verified text",
+    "UI clears accepted rows after failure",
+    "UI rejects incomplete acceptance",
+    "UI discards stale verification response"
+  ],
+  "passed": 12,
+  "scope": "HTTP integration with recorded valid proofs and mutated RPC responses; minimal DOM state tests, not live browser or fresh execution."
+}

@@ -1,0 +1,49 @@
+{
+  "parent": "d9dab1519e427706afc1aa1ff02adf54778eb002",
+  "files": {
+    "experiments/c007-wallet-transfer/DeployedCustodyStakeResearch.sol": {
+      "sha256": "d97dd9157a81611630ac876556684f7354f412e35a7a360662aab6ce2984e02c",
+      "bytes": 17976
+    },
+    "experiments/c007-wallet-transfer/SignerWalletFixture.sol": {
+      "sha256": "0f27beab9fa9ca8bc87a7cae857bca75285a92dab32d954f4e7b43d767f1d852",
+      "bytes": 1177
+    },
+    "experiments/c007-wallet-transfer/run-lifecycle.mjs": {
+      "sha256": "767e43ed1c4d5ecb054102844dd02fdf9ff0995a459833c5f94493130183e3b2",
+      "bytes": 13252
+    },
+    "experiments/c007-wallet-transfer/run-signed-lifecycle.mjs": {
+      "sha256": "67993a329cc43307e9dd524e2c5de58f10176d8ea885b3ca124124dea259460b",
+      "bytes": 18928
+    },
+    "experiments/c007-wallet-transfer/reconstruct-accounting.mjs": {
+      "sha256": "542a7aa599a698c03681201db7b1c19b5c8e109dd554d65df6e0acb107f06bad",
+      "bytes": 11519
+    },
+    "experiments/c007-wallet-transfer/reexecute-transactions.mjs": {
+      "sha256": "c2597cad92735b0adc02790972edbdf98d945817d493d2a5ed1dc6ee82495b65",
+      "bytes": 10235
+    },
+    "experiments/c007-wallet-transfer/package.json": {
+      "sha256": "3cd90dea6c442e62e1eb32e83c412a81d5725be928ecf34bf019702c6fc2f192",
+      "bytes": 215
+    },
+    "experiments/c007-wallet-transfer/package-lock.json": {
+      "sha256": "bdb139f0b431b0c820f38fa367443182a19f46107b8fd36f21385f05547972df",
+      "bytes": 14224
+    },
+    "evidence/c007-signer-wallet-20261108/transfer-transaction-replay.json": {
+      "sha256": "2022a469a775bdede05909f94073e3317e29dec5e977fc24a97068d3b460cb5a",
+      "bytes": 4449
+    },
+    "evidence/c007-signer-wallet-20261108/transfer-accounting-summary.json": {
+      "sha256": "47d779dfa1919f89bec531978bcdf9aecf704407accc025c9d00ef37514772fc",
+      "bytes": 1861
+    },
+    "docs/SIGNER_WALLET_REVIEW.md": {
+      "sha256": "36e6117186afe5ac32f8585bde7b82203cd28a25710e4b07f373598ecffad82b",
+      "bytes": 9958
+    }
+  }
+}

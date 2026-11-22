@@ -1,0 +1,15 @@
+PASS real server rejects zero, low reserved addresses, current-owner and selected-contract transfer recipients without submitting
+PASS initial page performs no wallet requests or transaction submission
+PASS original controller connects to owned account
+PASS altered posting calldata is rejected before any signing request
+PASS post review shows exact unicode and markup as inert text with current posting nonce
+PASS cancelling post review makes no signing request
+PASS editing post text invalidates its prepared transaction
+PASS explicit approval submits one wallet-wrapped post and blocks duplicate actions while receipt is pending
+PASS reloaded post recovers the same transaction; exact on-chain text appears safely and custody credit remains unchanged
+PASS freshly mined browser post passes strict server history and receipt binding
+PASS reload verifies retained post without reconnecting or resending
+PASS refresh discards a delayed real verification response without erasing receipt
+PASS explicit retry after interrupted delivery verifies without resubmission
+PASS fresh standalone ownership transfer passes strict receipt and boundary proof verification
+PASS transfer verification survives reload without wallet connection or resubmission

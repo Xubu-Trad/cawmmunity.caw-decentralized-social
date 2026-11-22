@@ -1,0 +1,11 @@
+file://<local-evidence-directory>/src/integration/local-console/server.mjs:11
+const addr=x=>getAddress(x).toLowerCase();const hash=x=>{if(!/^0x[0-9a-f]{64}$/.test(x))throw Error('INVALID_HASH');return x;};
+                                                                                              ^
+
+Error: INVALID_HASH
+    at hash (file://<local-evidence-directory>/src/integration/local-console/server.mjs:11:95)
+    at createConsole (file://<local-evidence-directory>/src/integration/local-console/server.mjs:16:180)
+    at file://<local-evidence-directory>/src/integration/local-console/test-console-withdrawal.mjs:44:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+Node.js v20.20.2

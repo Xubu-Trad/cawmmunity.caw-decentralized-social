@@ -1,0 +1,32 @@
+[
+  {
+    "case": "genuine",
+    "exit": 0,
+    "expectedAccepted": true
+  },
+  {
+    "case": "changed-header",
+    "exit": 1,
+    "expectedAccepted": false
+  },
+  {
+    "case": "missing-proof",
+    "exit": 1,
+    "expectedAccepted": false
+  },
+  {
+    "case": "false-summary",
+    "exit": 1,
+    "expectedAccepted": false
+  },
+  {
+    "case": "changed-reader",
+    "exit": 1,
+    "expectedAccepted": false
+  },
+  {
+    "case": "existing-output",
+    "exit": 1,
+    "expectedAccepted": false
+  }
+]

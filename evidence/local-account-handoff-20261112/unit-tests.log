@@ -1,0 +1,1205 @@
+TAP version 13
+# Subtest: manual wallet and EOA transfer encodings agree with ethers
+ok 1 - manual wallet and EOA transfer encodings agree with ethers
+  ---
+  duration_ms: 7.749864
+  ...
+# Subtest: rejects changed transfer action
+ok 2 - rejects changed transfer action
+  ---
+  duration_ms: 0.44491
+  ...
+# Subtest: rejects changed transfer owner
+ok 3 - rejects changed transfer owner
+  ---
+  duration_ms: 0.192512
+  ...
+# Subtest: rejects changed transfer registry
+ok 4 - rejects changed transfer registry
+  ---
+  duration_ms: 0.164527
+  ...
+# Subtest: rejects changed transfer recipient
+ok 5 - rejects changed transfer recipient
+  ---
+  duration_ms: 0.156181
+  ...
+# Subtest: rejects changed transfer from
+ok 6 - rejects changed transfer from
+  ---
+  duration_ms: 0.175185
+  ...
+# Subtest: rejects changed transfer to
+ok 7 - rejects changed transfer to
+  ---
+  duration_ms: 0.245913
+  ...
+# Subtest: rejects changed transfer epoch
+ok 8 - rejects changed transfer epoch
+  ---
+  duration_ms: 0.322641
+  ...
+# Subtest: rejects changed transfer chainId
+ok 9 - rejects changed transfer chainId
+  ---
+  duration_ms: 0.358734
+  ...
+# Subtest: rejects changed transfer value
+ok 10 - rejects changed transfer value
+  ---
+  duration_ms: 0.281354
+  ...
+# Subtest: rejects changed transfer genesisHash
+ok 11 - rejects changed transfer genesisHash
+  ---
+  duration_ms: 0.189796
+  ...
+# Subtest: rejects changed transfer blockHash
+ok 12 - rejects changed transfer blockHash
+  ---
+  duration_ms: 0.173996
+  ...
+# Subtest: rejects changed transfer blockNumber
+ok 13 - rejects changed transfer blockNumber
+  ---
+  duration_ms: 0.178772
+  ...
+# Subtest: rejects changed transfer amount
+ok 14 - rejects changed transfer amount
+  ---
+  duration_ms: 0.241256
+  ...
+# Subtest: rejects zero, self or selected contract recipient 0x0000000000000000000000000000000000000000
+ok 15 - rejects zero, self or selected contract recipient 0x0000000000000000000000000000000000000000
+  ---
+  duration_ms: 0.271622
+  ...
+# Subtest: rejects zero, self or selected contract recipient 0x2222222222222222222222222222222222222222
+ok 16 - rejects zero, self or selected contract recipient 0x2222222222222222222222222222222222222222
+  ---
+  duration_ms: 0.212333
+  ...
+# Subtest: rejects zero, self or selected contract recipient 0x2222222222222222222222222222222222222222
+ok 17 - rejects zero, self or selected contract recipient 0x2222222222222222222222222222222222222222
+  ---
+  duration_ms: 0.205273
+  ...
+# Subtest: rejects zero, self or selected contract recipient 0x3333333333333333333333333333333333333333
+ok 18 - rejects zero, self or selected contract recipient 0x3333333333333333333333333333333333333333
+  ---
+  duration_ms: 0.275112
+  ...
+# Subtest: rejects zero, self or selected contract recipient 0x4444444444444444444444444444444444444444
+ok 19 - rejects zero, self or selected contract recipient 0x4444444444444444444444444444444444444444
+  ---
+  duration_ms: 0.182701
+  ...
+# Subtest: rejects zero, self or selected contract recipient 0x5555555555555555555555555555555555555555
+ok 20 - rejects zero, self or selected contract recipient 0x5555555555555555555555555555555555555555
+  ---
+  duration_ms: 0.222382
+  ...
+# Subtest: rejects alternate account token, trailing bytes and wrong selector
+ok 21 - rejects alternate account token, trailing bytes and wrong selector
+  ---
+  duration_ms: 3.798013
+  ...
+# Subtest: rejects unsupported current owner and controller mismatch
+ok 22 - rejects unsupported current owner and controller mismatch
+  ---
+  duration_ms: 0.442111
+  ...
+# Subtest: epoch is review metadata rather than calldata authorization
+ok 23 - epoch is review metadata rather than calldata authorization
+  ---
+  duration_ms: 0.403177
+  ...
+# Subtest: rejects the entire local reserved low-address recipient range including precompiles
+ok 24 - rejects the entire local reserved low-address recipient range including precompiles
+  ---
+  duration_ms: 0.640696
+  ...
+# Subtest: allows the first address above the local reserved range when other constraints hold
+ok 25 - allows the first address above the local reserved range when other constraints hold
+  ---
+  duration_ms: 0.141434
+  ...
+# Subtest: confirms only the matching mined withdrawal on the selected local chain
+ok 26 - confirms only the matching mined withdrawal on the selected local chain
+  ---
+  duration_ms: 4.80444
+  ...
+# Subtest: null receipt is pending and is never treated as success
+ok 27 - null receipt is pending and is never treated as success
+  ---
+  duration_ms: 0.718452
+  ...
+# Subtest: matching failed execution returns reverted rather than confirmed
+ok 28 - matching failed execution returns reverted rather than confirmed
+  ---
+  duration_ms: 0.711637
+  ...
+# Subtest: rejects receipt transactionHash 0x6666666666666666666666666666666666666666666666666666666666666666
+ok 29 - rejects receipt transactionHash 0x6666666666666666666666666666666666666666666666666666666666666666
+  ---
+  duration_ms: 1.489087
+  ...
+# Subtest: rejects receipt from 0x6666666666666666666666666666666666666666
+ok 30 - rejects receipt from 0x6666666666666666666666666666666666666666
+  ---
+  duration_ms: 0.996666
+  ...
+# Subtest: rejects receipt to 0x6666666666666666666666666666666666666666
+ok 31 - rejects receipt to 0x6666666666666666666666666666666666666666
+  ---
+  duration_ms: 0.418549
+  ...
+# Subtest: rejects receipt status 0x2
+ok 32 - rejects receipt status 0x2
+  ---
+  duration_ms: 0.268147
+  ...
+# Subtest: rejects receipt status 0x01
+ok 33 - rejects receipt status 0x01
+  ---
+  duration_ms: 0.358539
+  ...
+# Subtest: rejects receipt status 1
+ok 34 - rejects receipt status 1
+  ---
+  duration_ms: 0.384216
+  ...
+# Subtest: rejects receipt blockHash 0x55
+ok 35 - rejects receipt blockHash 0x55
+  ---
+  duration_ms: 0.418887
+  ...
+# Subtest: rejects receipt blockNumber 0x0b
+ok 36 - rejects receipt blockNumber 0x0b
+  ---
+  duration_ms: 0.279335
+  ...
+# Subtest: rejects receipt blockNumber 0x9
+ok 37 - rejects receipt blockNumber 0x9
+  ---
+  duration_ms: 1.565259
+  ...
+# Subtest: rejects malformed receipt undefined
+ok 38 - rejects malformed receipt undefined
+  ---
+  duration_ms: 0.385999
+  ...
+# Subtest: rejects malformed receipt {}
+ok 39 - rejects malformed receipt {}
+  ---
+  duration_ms: 0.379966
+  ...
+# Subtest: rejects malformed receipt {"error":{"code":-32000,"message":"unavailable"}}
+ok 40 - rejects malformed receipt {"error":{"code":-32000,"message":"unavailable"}}
+  ---
+  duration_ms: 0.246874
+  ...
+# Subtest: rejects mined transaction hash mismatch
+ok 41 - rejects mined transaction hash mismatch
+  ---
+  duration_ms: 0.563799
+  ...
+# Subtest: rejects mined transaction from mismatch
+ok 42 - rejects mined transaction from mismatch
+  ---
+  duration_ms: 0.275548
+  ...
+# Subtest: rejects mined transaction to mismatch
+ok 43 - rejects mined transaction to mismatch
+  ---
+  duration_ms: 0.488353
+  ...
+# Subtest: rejects mined transaction input mismatch
+ok 44 - rejects mined transaction input mismatch
+  ---
+  duration_ms: 0.315398
+  ...
+# Subtest: rejects mined transaction value mismatch
+ok 45 - rejects mined transaction value mismatch
+  ---
+  duration_ms: 0.200372
+  ...
+# Subtest: rejects mined transaction value mismatch
+ok 46 - rejects mined transaction value mismatch
+  ---
+  duration_ms: 0.393826
+  ...
+# Subtest: rejects mined transaction blockHash mismatch
+ok 47 - rejects mined transaction blockHash mismatch
+  ---
+  duration_ms: 0.235351
+  ...
+# Subtest: rejects mined transaction blockNumber mismatch
+ok 48 - rejects mined transaction blockNumber mismatch
+  ---
+  duration_ms: 0.233518
+  ...
+# Subtest: rejects mined transaction chainId mismatch
+ok 49 - rejects mined transaction chainId mismatch
+  ---
+  duration_ms: 0.435948
+  ...
+# Subtest: rejects a receipt whose mined transaction is missing
+ok 50 - rejects a receipt whose mined transaction is missing
+  ---
+  duration_ms: 0.525565
+  ...
+# Subtest: rejects an RPC receipt error without changing it into pending
+ok 51 - rejects an RPC receipt error without changing it into pending
+  ---
+  duration_ms: 0.979069
+  ...
+# Subtest: rejects a reorg that changes the receipt block
+ok 52 - rejects a reorg that changes the receipt block
+  ---
+  duration_ms: 0.648294
+  ...
+# Subtest: rejects a missing canonical receipt block
+ok 53 - rejects a missing canonical receipt block
+  ---
+  duration_ms: 0.492162
+  ...
+# Subtest: rejects a canonical lookup returning the wrong block number
+ok 54 - rejects a canonical lookup returning the wrong block number
+  ---
+  duration_ms: 0.372917
+  ...
+# Subtest: rejects a provider whose selected history changed after the receipt lookup
+ok 55 - rejects a provider whose selected history changed after the receipt lookup
+  ---
+  duration_ms: 1.841644
+  ...
+# Subtest: rejects invalid selection before requesting provider data
+ok 56 - rejects invalid selection before requesting provider data
+  ---
+  duration_ms: 0.207191
+  ...
+# Subtest: rejects nonzero reviewed native value before requesting provider data
+ok 57 - rejects nonzero reviewed native value before requesting provider data
+  ---
+  duration_ms: 0.231558
+  ...
+# Subtest: mined receipt binds the optional selected nonce
+ok 58 - mined receipt binds the optional selected nonce
+  ---
+  duration_ms: 0.668646
+  ...
+# Subtest: receipt rejects mismatched or malformed nonce 0x8
+ok 59 - receipt rejects mismatched or malformed nonce 0x8
+  ---
+  duration_ms: 0.34592
+  ...
+# Subtest: receipt rejects mismatched or malformed nonce undefined
+ok 60 - receipt rejects mismatched or malformed nonce undefined
+  ---
+  duration_ms: 0.619816
+  ...
+# Subtest: receipt rejects mismatched or malformed nonce 0x07
+ok 61 - receipt rejects mismatched or malformed nonce 0x07
+  ---
+  duration_ms: 0.399603
+  ...
+# Subtest: receipt rejects mismatched or malformed nonce 0x10000000000000000
+ok 62 - receipt rejects mismatched or malformed nonce 0x10000000000000000
+  ---
+  duration_ms: 0.260075
+  ...
+# Subtest: receipt rejects mismatched or malformed nonce 7
+ok 63 - receipt rejects mismatched or malformed nonce 7
+  ---
+  duration_ms: 0.196234
+  ...
+# Subtest: receipt rejects mismatched or malformed nonce null
+ok 64 - receipt rejects mismatched or malformed nonce null
+  ---
+  duration_ms: 0.202958
+  ...
+# Subtest: rejects invalid recorded nonce before any provider request 0x00
+ok 65 - rejects invalid recorded nonce before any provider request 0x00
+  ---
+  duration_ms: 0.405924
+  ...
+# Subtest: rejects invalid recorded nonce before any provider request 0x10000000000000000
+ok 66 - rejects invalid recorded nonce before any provider request 0x10000000000000000
+  ---
+  duration_ms: 0.185173
+  ...
+# Subtest: rejects invalid recorded nonce before any provider request -1
+ok 67 - rejects invalid recorded nonce before any provider request -1
+  ---
+  duration_ms: 0.183204
+  ...
+# Subtest: rejects invalid recorded nonce before any provider request 0
+ok 68 - rejects invalid recorded nonce before any provider request 0
+  ---
+  duration_ms: 0.199159
+  ...
+# Subtest: rejects invalid recorded nonce before any provider request null
+ok 69 - rejects invalid recorded nonce before any provider request null
+  ---
+  duration_ms: 0.204187
+  ...
+# Subtest: rejects invalid recorded nonce before any provider request undefined
+ok 70 - rejects invalid recorded nonce before any provider request undefined
+  ---
+  duration_ms: 0.320881
+  ...
+# Subtest: rejects invalid recorded nonce before any provider request 7
+ok 71 - rejects invalid recorded nonce before any provider request 7
+  ---
+  duration_ms: 0.279325
+  ...
+# Subtest: rejects invalid recorded nonce before any provider request latest
+ok 72 - rejects invalid recorded nonce before any provider request latest
+  ---
+  duration_ms: 0.175289
+  ...
+# Subtest: manual recovery requires a nonce rather than matching only identical calldata
+ok 73 - manual recovery requires a nonce rather than matching only identical calldata
+  ---
+  duration_ms: 0.185366
+  ...
+# Subtest: pending transaction identity can be recovered without claiming a receipt
+ok 74 - pending transaction identity can be recovered without claiming a receipt
+  ---
+  duration_ms: 0.427394
+  ...
+# Subtest: manual recovery accepts boundary uint64 nonce 0x0
+ok 75 - manual recovery accepts boundary uint64 nonce 0x0
+  ---
+  duration_ms: 2.505441
+  ...
+# Subtest: manual recovery accepts boundary uint64 nonce 0xffffffffffffffff
+ok 76 - manual recovery accepts boundary uint64 nonce 0xffffffffffffffff
+  ---
+  duration_ms: 0.33154
+  ...
+# Subtest: manual recovery rejects transaction hash mismatch 0x6666666666666666666666666666666666666666666666666666666666666666
+ok 77 - manual recovery rejects transaction hash mismatch 0x6666666666666666666666666666666666666666666666666666666666666666
+  ---
+  duration_ms: 0.437135
+  ...
+# Subtest: manual recovery rejects transaction from mismatch 0x6666666666666666666666666666666666666666
+ok 78 - manual recovery rejects transaction from mismatch 0x6666666666666666666666666666666666666666
+  ---
+  duration_ms: 0.286386
+  ...
+# Subtest: manual recovery rejects transaction to mismatch 0x6666666666666666666666666666666666666666
+ok 79 - manual recovery rejects transaction to mismatch 0x6666666666666666666666666666666666666666
+  ---
+  duration_ms: 0.198125
+  ...
+# Subtest: manual recovery rejects transaction input mismatch 0x5678
+ok 80 - manual recovery rejects transaction input mismatch 0x5678
+  ---
+  duration_ms: 0.160199
+  ...
+# Subtest: manual recovery rejects transaction value mismatch 0x1
+ok 81 - manual recovery rejects transaction value mismatch 0x1
+  ---
+  duration_ms: 1.701598
+  ...
+# Subtest: manual recovery rejects transaction chainId mismatch 0x1
+ok 82 - manual recovery rejects transaction chainId mismatch 0x1
+  ---
+  duration_ms: 0.249086
+  ...
+# Subtest: manual recovery rejects transaction nonce mismatch 0x8
+ok 83 - manual recovery rejects transaction nonce mismatch 0x8
+  ---
+  duration_ms: 0.177934
+  ...
+# Subtest: manual recovery rejects transaction nonce mismatch undefined
+ok 84 - manual recovery rejects transaction nonce mismatch undefined
+  ---
+  duration_ms: 0.197314
+  ...
+# Subtest: manual recovery rejects missing or malformed transaction null
+ok 85 - manual recovery rejects missing or malformed transaction null
+  ---
+  duration_ms: 0.441665
+  ...
+# Subtest: manual recovery rejects missing or malformed transaction undefined
+ok 86 - manual recovery rejects missing or malformed transaction undefined
+  ---
+  duration_ms: 0.585387
+  ...
+# Subtest: manual recovery rejects missing or malformed transaction {}
+ok 87 - manual recovery rejects missing or malformed transaction {}
+  ---
+  duration_ms: 0.37965
+  ...
+# Subtest: manual recovery rejects missing or malformed transaction {"error":{"code":-32000,"message":"missing"}}
+ok 88 - manual recovery rejects missing or malformed transaction {"error":{"code":-32000,"message":"missing"}}
+  ---
+  duration_ms: 0.326889
+  ...
+# Subtest: manual recovery propagates transaction lookup error
+ok 89 - manual recovery propagates transaction lookup error
+  ---
+  duration_ms: 0.448744
+  ...
+# Subtest: manual recovery rejects selected history changing during lookup
+ok 90 - manual recovery rejects selected history changing during lookup
+  ---
+  duration_ms: 0.587224
+  ...
+# Subtest: transfer receipt requires exact matching account2 registry event
+ok 91 - transfer receipt requires exact matching account2 registry event
+  ---
+  duration_ms: 1.329492
+  ...
+# Subtest: transfer success rejects missing logs
+ok 92 - transfer success rejects missing logs
+  ---
+  duration_ms: 0.426931
+  ...
+# Subtest: transfer success rejects no event
+ok 93 - transfer success rejects no event
+  ---
+  duration_ms: 0.846438
+  ...
+# Subtest: transfer success rejects duplicate handoff
+ok 94 - transfer success rejects duplicate handoff
+  ---
+  duration_ms: 0.413975
+  ...
+# Subtest: transfer success rejects foreign registry
+ok 95 - transfer success rejects foreign registry
+  ---
+  duration_ms: 0.280156
+  ...
+# Subtest: transfer success rejects old owner
+ok 96 - transfer success rejects old owner
+  ---
+  duration_ms: 0.467045
+  ...
+# Subtest: transfer success rejects different recipient
+ok 97 - transfer success rejects different recipient
+  ---
+  duration_ms: 0.305733
+  ...
+# Subtest: transfer success rejects different account
+ok 98 - transfer success rejects different account
+  ---
+  duration_ms: 0.254983
+  ...
+# Subtest: transfer success rejects extra topic
+ok 99 - transfer success rejects extra topic
+  ---
+  duration_ms: 0.333314
+  ...
+# Subtest: transfer success rejects removed event
+ok 100 - transfer success rejects removed event
+  ---
+  duration_ms: 0.513404
+  ...
+# Subtest: transfer success rejects data payload
+ok 101 - transfer success rejects data payload
+  ---
+  duration_ms: 0.422487
+  ...
+# Subtest: transfer success rejects event transaction hash
+ok 102 - transfer success rejects event transaction hash
+  ---
+  duration_ms: 0.308814
+  ...
+# Subtest: transfer success rejects event block hash
+ok 103 - transfer success rejects event block hash
+  ---
+  duration_ms: 0.28048
+  ...
+# Subtest: transfer success rejects event block number
+ok 104 - transfer success rejects event block number
+  ---
+  duration_ms: 0.318809
+  ...
+# Subtest: reverted transfer is a known failure without requiring a successful Transfer event
+ok 105 - reverted transfer is a known failure without requiring a successful Transfer event
+  ---
+  duration_ms: 0.320535
+  ...
+# Subtest: rejects invalid transfer receipt selection missing nonce before RPC
+ok 106 - rejects invalid transfer receipt selection missing nonce before RPC
+  ---
+  duration_ms: 0.181559
+  ...
+# Subtest: rejects invalid transfer receipt selection wrong encoded recipient before RPC
+ok 107 - rejects invalid transfer receipt selection wrong encoded recipient before RPC
+  ---
+  duration_ms: 0.169112
+  ...
+# Subtest: rejects invalid transfer receipt selection amount before RPC
+ok 108 - rejects invalid transfer receipt selection amount before RPC
+  ---
+  duration_ms: 0.136387
+  ...
+# Subtest: rejects invalid transfer receipt selection unknown action before RPC
+ok 109 - rejects invalid transfer receipt selection unknown action before RPC
+  ---
+  duration_ms: 0.113836
+  ...
+# Subtest: rejects invalid transfer receipt selection changed route before RPC
+ok 110 - rejects invalid transfer receipt selection changed route before RPC
+  ---
+  duration_ms: 0.126303
+  ...
+# Subtest: rejects invalid transfer receipt selection direct owner mismatch before RPC
+ok 111 - rejects invalid transfer receipt selection direct owner mismatch before RPC
+  ---
+  duration_ms: 0.157566
+  ...
+# Subtest: rejects reserved-address transfer recovery before requesting provider data
+ok 112 - rejects reserved-address transfer recovery before requesting provider data
+  ---
+  duration_ms: 2.100156
+  ...
+# Subtest: accepts selected genesis and block while checking identity twice
+ok 113 - accepts selected genesis and block while checking identity twice
+  ---
+  duration_ms: 5.994197
+  ...
+# Subtest: rejects another genesis
+ok 114 - rejects another genesis
+  ---
+  duration_ms: 0.624185
+  ...
+# Subtest: rejects another selected block
+ok 115 - rejects another selected block
+  ---
+  duration_ms: 0.258892
+  ...
+# Subtest: rejects missing selected block
+ok 116 - rejects missing selected block
+  ---
+  duration_ms: 0.33308
+  ...
+# Subtest: rejects changed final chain
+ok 117 - rejects changed final chain
+  ---
+  duration_ms: 0.31226
+  ...
+# Subtest: rejects changed final account
+ok 118 - rejects changed final account
+  ---
+  duration_ms: 0.379618
+  ...
+# Subtest: rejects wrong initial chain
+ok 119 - rejects wrong initial chain
+  ---
+  duration_ms: 0.231679
+  ...
+# Subtest: rejects wrong initial account
+ok 120 - rejects wrong initial account
+  ---
+  duration_ms: 0.300883
+  ...
+# Subtest: rejects malformed block selection before asking provider
+ok 121 - rejects malformed block selection before asking provider
+  ---
+  duration_ms: 0.833524
+  ...
+# Subtest: begin persists and readback restores exact reviewed intent without transaction hash
+ok 122 - begin persists and readback restores exact reviewed intent without transaction hash
+  ---
+  duration_ms: 3.885413
+  ...
+# Subtest: restores historical intent after credit, owner and epoch change
+ok 123 - restores historical intent after credit, owner and epoch change
+  ---
+  duration_ms: 0.571562
+  ...
+# Subtest: only frozen contract/controller/genesis context is used to restore historical intent
+ok 124 - only frozen contract/controller/genesis context is used to restore historical intent
+  ---
+  duration_ms: 0.393212
+  ...
+# Subtest: empty journal is absent rather than a restored pending request
+ok 125 - empty journal is absent rather than a restored pending request
+  ---
+  duration_ms: 0.177975
+  ...
+# Subtest: remembered hash preserves intent and permits idempotent same-hash retry
+ok 126 - remembered hash preserves intent and permits idempotent same-hash retry
+  ---
+  duration_ms: 2.612076
+  ...
+# Subtest: verified finish clears only its matching record
+ok 127 - verified finish clears only its matching record
+  ---
+  duration_ms: 0.696757
+  ...
+# Subtest: rejects extra top-level field
+ok 128 - rejects extra top-level field
+  ---
+  duration_ms: 0.531069
+  ...
+# Subtest: rejects missing top-level field
+ok 129 - rejects missing top-level field
+  ---
+  duration_ms: 0.20295
+  ...
+# Subtest: rejects extra plan field
+ok 130 - rejects extra plan field
+  ---
+  duration_ms: 0.337539
+  ...
+# Subtest: rejects missing plan field
+ok 131 - rejects missing plan field
+  ---
+  duration_ms: 0.328925
+  ...
+# Subtest: rejects extra contract field
+ok 132 - rejects extra contract field
+  ---
+  duration_ms: 0.214963
+  ...
+# Subtest: rejects missing contract field
+ok 133 - rejects missing contract field
+  ---
+  duration_ms: 0.159482
+  ...
+# Subtest: rejects wrong version
+ok 134 - rejects wrong version
+  ---
+  duration_ms: 0.1615
+  ...
+# Subtest: rejects invalid record id
+ok 135 - rejects invalid record id
+  ---
+  duration_ms: 0.152693
+  ...
+# Subtest: rejects unknown phase
+ok 136 - rejects unknown phase
+  ---
+  duration_ms: 0.143677
+  ...
+# Subtest: rejects awaiting phase with hash
+ok 137 - rejects awaiting phase with hash
+  ---
+  duration_ms: 0.198161
+  ...
+# Subtest: rejects submitted phase without hash
+ok 138 - rejects submitted phase without hash
+  ---
+  duration_ms: 0.256081
+  ...
+# Subtest: rejects submitted phase with malformed hash
+ok 139 - rejects submitted phase with malformed hash
+  ---
+  duration_ms: 0.430067
+  ...
+# Subtest: rejects numeric amount
+ok 140 - rejects numeric amount
+  ---
+  duration_ms: 0.287802
+  ...
+# Subtest: rejects numeric epoch
+ok 141 - rejects numeric epoch
+  ---
+  duration_ms: 0.338318
+  ...
+# Subtest: rejects zero amount
+ok 142 - rejects zero amount
+  ---
+  duration_ms: 0.331725
+  ...
+# Subtest: rejects negative amount
+ok 143 - rejects negative amount
+  ---
+  duration_ms: 0.187217
+  ...
+# Subtest: rejects noncanonical amount
+ok 144 - rejects noncanonical amount
+  ---
+  duration_ms: 0.179595
+  ...
+# Subtest: rejects noncanonical epoch
+ok 145 - rejects noncanonical epoch
+  ---
+  duration_ms: 0.18292
+  ...
+# Subtest: rejects uint256 amount overflow
+ok 146 - rejects uint256 amount overflow
+  ---
+  duration_ms: 0.231901
+  ...
+# Subtest: rejects uint256 epoch overflow
+ok 147 - rejects uint256 epoch overflow
+  ---
+  duration_ms: 2.564649
+  ...
+# Subtest: rejects changed inner amount with unchanged labels
+ok 148 - rejects changed inner amount with unchanged labels
+  ---
+  duration_ms: 0.790787
+  ...
+# Subtest: rejects changed inner epoch with unchanged labels
+ok 149 - rejects changed inner epoch with unchanged labels
+  ---
+  duration_ms: 0.327169
+  ...
+# Subtest: rejects changed custody target with unchanged selection
+ok 150 - rejects changed custody target with unchanged selection
+  ---
+  duration_ms: 0.323659
+  ...
+# Subtest: rejects changed transaction sender
+ok 151 - rejects changed transaction sender
+  ---
+  duration_ms: 0.2925
+  ...
+# Subtest: rejects changed wallet target
+ok 152 - rejects changed wallet target
+  ---
+  duration_ms: 0.297703
+  ...
+# Subtest: rejects nonzero native value
+ok 153 - rejects nonzero native value
+  ---
+  duration_ms: 0.335734
+  ...
+# Subtest: rejects wrong chain id
+ok 154 - rejects wrong chain id
+  ---
+  duration_ms: 0.333013
+  ...
+# Subtest: rejects wrong genesis
+ok 155 - rejects wrong genesis
+  ---
+  duration_ms: 0.361342
+  ...
+# Subtest: rejects trailing calldata bytes
+ok 156 - rejects trailing calldata bytes
+  ---
+  duration_ms: 0.338501
+  ...
+# Subtest: rejects missing calldata
+ok 157 - rejects missing calldata
+  ---
+  duration_ms: 0.303454
+  ...
+# Subtest: rejects malformed selected block hash
+ok 158 - rejects malformed selected block hash
+  ---
+  duration_ms: 0.228299
+  ...
+# Subtest: rejects noncanonical selected block number
+ok 159 - rejects noncanonical selected block number
+  ---
+  duration_ms: 0.293332
+  ...
+# Subtest: rejects numeric nonce
+ok 160 - rejects numeric nonce
+  ---
+  duration_ms: 0.214372
+  ...
+# Subtest: rejects noncanonical nonce
+ok 161 - rejects noncanonical nonce
+  ---
+  duration_ms: 0.218362
+  ...
+# Subtest: rejects negative nonce
+ok 162 - rejects negative nonce
+  ---
+  duration_ms: 0.192737
+  ...
+# Subtest: rejects uint64 nonce overflow
+ok 163 - rejects uint64 nonce overflow
+  ---
+  duration_ms: 0.177535
+  ...
+# Subtest: accepts explicitly bounded uint64 nonce endpoints
+ok 164 - accepts explicitly bounded uint64 nonce endpoints
+  ---
+  duration_ms: 0.332223
+  ...
+# Subtest: rejects changed selected wallet
+ok 165 - rejects changed selected wallet
+  ---
+  duration_ms: 0.35253
+  ...
+# Subtest: rejects changed selected registry
+ok 166 - rejects changed selected registry
+  ---
+  duration_ms: 0.110318
+  ...
+# Subtest: rejects changed selected custody
+ok 167 - rejects changed selected custody
+  ---
+  duration_ms: 0.092822
+  ...
+# Subtest: rejects changed selected token
+ok 168 - rejects changed selected token
+  ---
+  duration_ms: 0.089351
+  ...
+# Subtest: rejects selected controller change
+ok 169 - rejects selected controller change
+  ---
+  duration_ms: 0.20483
+  ...
+# Subtest: rejects selected genesis change
+ok 170 - rejects selected genesis change
+  ---
+  duration_ms: 0.231204
+  ...
+# Subtest: rejects selected chain change
+ok 171 - rejects selected chain change
+  ---
+  duration_ms: 0.267542
+  ...
+# Subtest: rejects duplicate contract roles even when selection duplicates them
+ok 172 - rejects duplicate contract roles even when selection duplicates them
+  ---
+  duration_ms: 0.222045
+  ...
+# Subtest: accepts hexadecimal address case differences without relaxing identity
+ok 173 - accepts hexadecimal address case differences without relaxing identity
+  ---
+  duration_ms: 0.219925
+  ...
+# Subtest: corrupt journal invalid JSON is preserved and blocks a new intent
+ok 174 - corrupt journal invalid JSON is preserved and blocks a new intent
+  ---
+  duration_ms: 0.637367
+  ...
+# Subtest: corrupt journal oversized data is preserved and blocks a new intent
+ok 175 - corrupt journal oversized data is preserved and blocks a new intent
+  ---
+  duration_ms: 0.164424
+  ...
+# Subtest: corrupt journal array is preserved and blocks a new intent
+ok 176 - corrupt journal array is preserved and blocks a new intent
+  ---
+  duration_ms: 0.116022
+  ...
+# Subtest: corrupt journal null is preserved and blocks a new intent
+ok 177 - corrupt journal null is preserved and blocks a new intent
+  ---
+  duration_ms: 0.167355
+  ...
+# Subtest: corrupt journal scalar is preserved and blocks a new intent
+ok 178 - corrupt journal scalar is preserved and blocks a new intent
+  ---
+  duration_ms: 0.377171
+  ...
+# Subtest: wrong-selection journal blocks begin without erasing evidence
+ok 179 - wrong-selection journal blocks begin without erasing evidence
+  ---
+  duration_ms: 0.510027
+  ...
+# Subtest: unavailable storage fails before writes
+ok 180 - unavailable storage fails before writes
+  ---
+  duration_ms: 0.531654
+  ...
+# Subtest: quota error prevents beginning and leaves storage empty
+ok 181 - quota error prevents beginning and leaves storage empty
+  ---
+  duration_ms: 0.669559
+  ...
+# Subtest: unreliable save readback fails closed
+ok 182 - unreliable save readback fails closed
+  ---
+  duration_ms: 0.558815
+  ...
+# Subtest: failed hash write preserves prior awaiting-wallet record
+ok 183 - failed hash write preserves prior awaiting-wallet record
+  ---
+  duration_ms: 0.550797
+  ...
+# Subtest: failed clear keeps the submitted record and rejects completion
+ok 184 - failed clear keeps the submitted record and rejects completion
+  ---
+  duration_ms: 0.520135
+  ...
+# Subtest: missing lock support fails before storage access
+ok 185 - missing lock support fails before storage access
+  ---
+  duration_ms: 0.241497
+  ...
+# Subtest: busy lock fails before storage access
+ok 186 - busy lock fails before storage access
+  ---
+  duration_ms: 0.579824
+  ...
+# Subtest: simultaneous begins persist exactly one intent
+ok 187 - simultaneous begins persist exactly one intent
+  ---
+  duration_ms: 0.596358
+  ...
+# Subtest: late remember cannot overwrite or clear another intent
+ok 188 - late remember cannot overwrite or clear another intent
+  ---
+  duration_ms: 0.365794
+  ...
+# Subtest: late finish cannot overwrite or clear another intent
+ok 189 - late finish cannot overwrite or clear another intent
+  ---
+  duration_ms: 0.410036
+  ...
+# Subtest: submitted hash cannot be replaced by another hash
+ok 190 - submitted hash cannot be replaced by another hash
+  ---
+  duration_ms: 0.335052
+  ...
+# Subtest: missing record cannot be updated or cleared
+ok 191 - missing record cannot be updated or cleared
+  ---
+  duration_ms: 0.355543
+  ...
+# Subtest: transfer journal preserves exact intent and restores after ownership changes
+ok 192 - transfer journal preserves exact intent and restores after ownership changes
+  ---
+  duration_ms: 1.13151
+  ...
+# Subtest: withdrawals and transfers share one exclusive journal and cannot overwrite one another
+ok 193 - withdrawals and transfers share one exclusive journal and cannot overwrite one another
+  ---
+  duration_ms: 1.178558
+  ...
+# Subtest: direct new-owner withdrawal stays v1 and restores without treating original controller as owner
+ok 194 - direct new-owner withdrawal stays v1 and restores without treating original controller as owner
+  ---
+  duration_ms: 0.608815
+  ...
+# Subtest: direct-owner transfer restores against historical owner, not the current owner
+ok 195 - direct-owner transfer restores against historical owner, not the current owner
+  ---
+  duration_ms: 0.808459
+  ...
+# Subtest: rejects malformed transfer journal action
+ok 196 - rejects malformed transfer journal action
+  ---
+  duration_ms: 0.289222
+  ...
+# Subtest: rejects malformed transfer journal amount present
+ok 197 - rejects malformed transfer journal amount present
+  ---
+  duration_ms: 0.192199
+  ...
+# Subtest: rejects malformed transfer journal registry
+ok 198 - rejects malformed transfer journal registry
+  ---
+  duration_ms: 0.260249
+  ...
+# Subtest: rejects malformed transfer journal owner
+ok 199 - rejects malformed transfer journal owner
+  ---
+  duration_ms: 0.217414
+  ...
+# Subtest: rejects malformed transfer journal recipient label
+ok 200 - rejects malformed transfer journal recipient label
+  ---
+  duration_ms: 0.472382
+  ...
+# Subtest: rejects malformed transfer journal nonce missing
+ok 201 - rejects malformed transfer journal nonce missing
+  ---
+  duration_ms: 0.255096
+  ...
+# Subtest: rejects malformed transfer journal version downgrade
+ok 202 - rejects malformed transfer journal version downgrade
+  ---
+  duration_ms: 2.366537
+  ...
+# Subtest: starting action requires current authority even though recovery accepts historical authority
+ok 203 - starting action requires current authority even though recovery accepts historical authority
+  ---
+  duration_ms: 0.409994
+  ...
+# Subtest: manual fixed ABI matches independent ethers encoder
+ok 204 - manual fixed ABI matches independent ethers encoder
+  ---
+  duration_ms: 3.459153
+  ...
+# Subtest: rejects inner amount with unchanged displayed metadata
+ok 205 - rejects inner amount with unchanged displayed metadata
+  ---
+  duration_ms: 1.059967
+  ...
+# Subtest: rejects inner epoch with unchanged displayed metadata
+ok 206 - rejects inner epoch with unchanged displayed metadata
+  ---
+  duration_ms: 1.025871
+  ...
+# Subtest: rejects inner account number with unchanged displayed metadata
+ok 207 - rejects inner account number with unchanged displayed metadata
+  ---
+  duration_ms: 0.690517
+  ...
+# Subtest: rejects inner custody target with unchanged displayed metadata
+ok 208 - rejects inner custody target with unchanged displayed metadata
+  ---
+  duration_ms: 0.774459
+  ...
+# Subtest: rejects outer selector with unchanged displayed metadata
+ok 209 - rejects outer selector with unchanged displayed metadata
+  ---
+  duration_ms: 0.714284
+  ...
+# Subtest: rejects inner selector with unchanged displayed metadata
+ok 210 - rejects inner selector with unchanged displayed metadata
+  ---
+  duration_ms: 1.410322
+  ...
+# Subtest: rejects trailing bytes with unchanged displayed metadata
+ok 211 - rejects trailing bytes with unchanged displayed metadata
+  ---
+  duration_ms: 1.450105
+  ...
+# Subtest: rejects truncated data with unchanged displayed metadata
+ok 212 - rejects truncated data with unchanged displayed metadata
+  ---
+  duration_ms: 0.98994
+  ...
+# Subtest: permits hexadecimal letter case without changing bytes
+ok 213 - permits hexadecimal letter case without changing bytes
+  ---
+  duration_ms: 1.668694
+  ...
+# Subtest: zero epoch and maximum uint256 amount match the reference
+ok 214 - zero epoch and maximum uint256 amount match the reference
+  ---
+  duration_ms: 1.192253
+  ...
+# Subtest: maximum uint256 epoch matches the reference
+ok 215 - maximum uint256 epoch matches the reference
+  ---
+  duration_ms: 0.455738
+  ...
+# Subtest: rejects invalid or out-of-range amount 0
+ok 216 - rejects invalid or out-of-range amount 0
+  ---
+  duration_ms: 0.190512
+  ...
+# Subtest: rejects invalid or out-of-range amount -1
+ok 217 - rejects invalid or out-of-range amount -1
+  ---
+  duration_ms: 0.128058
+  ...
+# Subtest: rejects invalid or out-of-range amount 01
+ok 218 - rejects invalid or out-of-range amount 01
+  ---
+  duration_ms: 0.095703
+  ...
+# Subtest: rejects invalid or out-of-range amount 1.5
+ok 219 - rejects invalid or out-of-range amount 1.5
+  ---
+  duration_ms: 0.210715
+  ...
+# Subtest: rejects invalid or out-of-range amount 1e2
+ok 220 - rejects invalid or out-of-range amount 1e2
+  ---
+  duration_ms: 0.09645
+  ...
+# Subtest: rejects invalid or out-of-range amount 115792089237316195423570985008687907853269984665640564039457584007913129639936
+ok 221 - rejects invalid or out-of-range amount 115792089237316195423570985008687907853269984665640564039457584007913129639936
+  ---
+  duration_ms: 0.213626
+  ...
+# Subtest: rejects invalid or out-of-range epoch -1
+ok 222 - rejects invalid or out-of-range epoch -1
+  ---
+  duration_ms: 0.211324
+  ...
+# Subtest: rejects invalid or out-of-range epoch 01
+ok 223 - rejects invalid or out-of-range epoch 01
+  ---
+  duration_ms: 0.130512
+  ...
+# Subtest: rejects invalid or out-of-range epoch 1.5
+ok 224 - rejects invalid or out-of-range epoch 1.5
+  ---
+  duration_ms: 0.089182
+  ...
+# Subtest: rejects invalid or out-of-range epoch 115792089237316195423570985008687907853269984665640564039457584007913129639936
+ok 225 - rejects invalid or out-of-range epoch 115792089237316195423570985008687907853269984665640564039457584007913129639936
+  ---
+  duration_ms: 1.118962
+  ...
+# Subtest: rejects incorrect plan chainId
+ok 226 - rejects incorrect plan chainId
+  ---
+  duration_ms: 0.767441
+  ...
+# Subtest: rejects incorrect plan from
+ok 227 - rejects incorrect plan from
+  ---
+  duration_ms: 0.565176
+  ...
+# Subtest: rejects incorrect plan to
+ok 228 - rejects incorrect plan to
+  ---
+  duration_ms: 0.366329
+  ...
+# Subtest: rejects incorrect plan value
+ok 229 - rejects incorrect plan value
+  ---
+  duration_ms: 0.307343
+  ...
+# Subtest: rejects incorrect plan amount
+ok 230 - rejects incorrect plan amount
+  ---
+  duration_ms: 0.34006
+  ...
+# Subtest: rejects incorrect plan epoch
+ok 231 - rejects incorrect plan epoch
+  ---
+  duration_ms: 0.307235
+  ...
+# Subtest: rejects incorrect plan genesisHash
+ok 232 - rejects incorrect plan genesisHash
+  ---
+  duration_ms: 0.29793
+  ...
+# Subtest: rejects incorrect plan blockHash
+ok 233 - rejects incorrect plan blockHash
+  ---
+  duration_ms: 0.294359
+  ...
+# Subtest: rejects incorrect plan blockNumber
+ok 234 - rejects incorrect plan blockNumber
+  ---
+  duration_ms: 0.38301
+  ...
+# Subtest: rejects amount greater than displayed credit
+ok 235 - rejects amount greater than displayed credit
+  ---
+  duration_ms: 0.450424
+  ...
+# Subtest: rejects registry owner different from the selected wallet
+ok 236 - rejects registry owner different from the selected wallet
+  ---
+  duration_ms: 0.517823
+  ...
+# Subtest: rejects another connected controller
+ok 237 - rejects another connected controller
+  ---
+  duration_ms: 0.339517
+  ...
+# Subtest: EOA owner withdraws directly with independently encoded bytes
+ok 238 - EOA owner withdraws directly with independently encoded bytes
+  ---
+  duration_ms: 0.479018
+  ...
+# Subtest: direct EOA path rejects old controller, wrapper and unsupported owner type
+ok 239 - direct EOA path rejects old controller, wrapper and unsupported owner type
+  ---
+  duration_ms: 0.678027
+  ...
+1..239
+# tests 239
+# suites 0
+# pass 239
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 661.223734

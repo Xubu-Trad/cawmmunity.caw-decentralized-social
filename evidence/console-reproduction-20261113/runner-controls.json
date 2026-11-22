@@ -1,0 +1,11 @@
+{
+  "passed": 5,
+  "checks": [
+    "modified verifier rejected before execution",
+    "modified manifest rejected before execution",
+    "symlinked source rejected before execution",
+    "existing output refused without overwrite",
+    "unmodified source validates"
+  ],
+  "scope": "Pre-execution source selection and output preservation controls; process launch mocked to fail if reached."
+}

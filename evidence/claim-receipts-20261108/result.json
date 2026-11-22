@@ -1,0 +1,32 @@
+{
+  "status": "SYNTHETIC_RECEIPT_COMMITMENT_TEST",
+  "selectedHeader": "0x2326a02ae4e4f9a3da736d6dd8ff8c1cbcf03836c7eb34bfd51cc58e39414fe2",
+  "extractedEvents": 2,
+  "positions": [
+    [
+      0,
+      0
+    ],
+    [
+      2,
+      0
+    ]
+  ],
+  "foreignEmitterIgnored": true,
+  "rejected": [
+    "failed-with-log",
+    "wrong-record-fee",
+    "missing receipt",
+    "duplicate receipt",
+    "receipt order",
+    "changed payload",
+    "changed status",
+    "wrong selected header",
+    "removed log",
+    "caller verified flag"
+  ],
+  "executionVerified": false,
+  "signatureVerified": false,
+  "feeBackingVerified": false,
+  "limits": "Real existing receipt reader, synthetic committed headers/receipts. No transactions or EVM execution, canonical chain or actual claim producer."
+}

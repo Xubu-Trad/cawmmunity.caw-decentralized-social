@@ -1,0 +1,15 @@
+{
+  "node": "20.20.2",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "packages": {
+    "ethers": "6.16.0",
+    "solc": "0.8.30",
+    "@ethereumjs/vm": "10.1.3",
+    "@ethereumjs/tx": "10.1.3",
+    "@ethereumjs/block": "10.1.3",
+    "@ethereumjs/statemanager": "10.1.3",
+    "@ethereumjs/common": "10.1.3",
+    "@ethereumjs/util": "10.1.3"
+  },
+  "scope": "Observed installed versions, not a supply-chain attestation or independent engine."
+}

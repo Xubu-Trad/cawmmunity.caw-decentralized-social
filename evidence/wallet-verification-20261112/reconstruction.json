@@ -1,0 +1,269 @@
+{
+  "status": "RECONSTRUCTED_WALLET_OWNER_WITHDRAWALS",
+  "transactions": 21,
+  "rejected": [
+    "missing operation",
+    "duplicate operation",
+    "changed hash",
+    "missing registry mint log",
+    "withdrawal amount altered",
+    "wallet transfer event omitted",
+    "revert labelled success",
+    "ownership event altered"
+  ],
+  "final": {
+    "walletBalance": "1",
+    "payer": "90",
+    "vault": "8",
+    "allowance": "90",
+    "nonce": "2",
+    "liability": "8",
+    "nextBudget": "0",
+    "credit": "0",
+    "owner": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+    "epoch": "2",
+    "other": "1",
+    "credited": "0",
+    "unallocated": "8",
+    "approved": "0x0000000000000000000000000000000000000000",
+    "ownerBalance": "1"
+  },
+  "trace": [
+    {
+      "index": 0,
+      "hash": "0x4af0c0b01cfd2e23de22935ea1d1f18361ff4274485e4d5ae2be4c13188e3e50",
+      "status": 1,
+      "epoch": "0",
+      "vault": "0",
+      "credit": "0",
+      "liability": "0"
+    },
+    {
+      "index": 1,
+      "hash": "0xce02b82201a7e720d4ab7c94b291c36695bcbb24be092799b15c54d2a5fb9adb",
+      "status": 1,
+      "owner": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "epoch": "0",
+      "vault": "0",
+      "credit": "0",
+      "liability": "0"
+    },
+    {
+      "index": 2,
+      "hash": "0x3f41d479783316d0953a5bf7622d0823a95d7485d49910be89774bc42c1a1c29",
+      "status": 1,
+      "owner": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "epoch": "0",
+      "vault": "0",
+      "credit": "0",
+      "liability": "0"
+    },
+    {
+      "index": 3,
+      "hash": "0xc3943ce57c68ec3b8183d9480c693a2282ca002a14bed6ac3583e8cb632a316e",
+      "status": 1,
+      "owner": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "epoch": "0",
+      "vault": "0",
+      "credit": "0",
+      "liability": "0"
+    },
+    {
+      "index": 4,
+      "hash": "0x7766656427aec7080786763ae959c8f01ba3583091be1266b7c89adfd9acf493",
+      "status": 1,
+      "owner": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "epoch": "0",
+      "vault": "0",
+      "credit": "0",
+      "liability": "0"
+    },
+    {
+      "index": 5,
+      "hash": "0x2cf111e442dd01a619065284933f0c6a9a14a1b7987c8b6c294ed4899ab46df9",
+      "status": 1,
+      "owner": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "epoch": "0",
+      "vault": "5",
+      "credit": "0",
+      "liability": "5"
+    },
+    {
+      "index": 6,
+      "hash": "0xe51be057995dcfcad82e98b12011a214643fb385114a3d3e6747079841630348",
+      "status": 1,
+      "owner": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "epoch": "0",
+      "vault": "10",
+      "credit": "0",
+      "liability": "10"
+    },
+    {
+      "index": 7,
+      "hash": "0xef15ce68cd8bb842f86be102a797315de6f95daee640185e1aa14cf7004518fb",
+      "status": 1,
+      "owner": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "epoch": "0",
+      "vault": "10",
+      "credit": "1",
+      "liability": "10"
+    },
+    {
+      "index": 8,
+      "hash": "0xc507b40e739d0b391d586b232712423916384cd31e9e4f2062cde0431b0616c3",
+      "status": 1,
+      "owner": "0x6813eb9362372eef6200f3b1dbc3f819671cba69",
+      "epoch": "0",
+      "vault": "10",
+      "credit": "2",
+      "liability": "10"
+    },
+    {
+      "index": 9,
+      "hash": "0xb0ac4ffe34ffd317bffacf77914c408b948e1dc063f50823757f441bc5a6c4ef",
+      "status": 1,
+      "owner": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+      "epoch": "1",
+      "vault": "10",
+      "credit": "2",
+      "liability": "10"
+    },
+    {
+      "index": 10,
+      "hash": "0xdebe682d33d767332d20e6a2a5f1d96217025c33eeabf49d3f066fa450a839c6",
+      "status": 0,
+      "owner": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+      "epoch": "1",
+      "vault": "10",
+      "credit": "2",
+      "liability": "10"
+    },
+    {
+      "index": 11,
+      "hash": "0x81dddd271fa7868309718eb66fa9a9590d49af1669b7ccb5ac6d7b5db44993b1",
+      "status": 0,
+      "owner": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+      "epoch": "1",
+      "vault": "10",
+      "credit": "2",
+      "liability": "10"
+    },
+    {
+      "index": 12,
+      "hash": "0xf9fc8569a5b33de8c00e235a3740e423cfc4867eb09681a007c9922902d5a42f",
+      "status": 0,
+      "owner": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+      "epoch": "1",
+      "vault": "10",
+      "credit": "2",
+      "liability": "10"
+    },
+    {
+      "index": 13,
+      "hash": "0xa0d5e1bddfb4405af380e09b29ce86bca234d5fd2362bd67f4c4538fc580459a",
+      "status": 1,
+      "owner": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+      "epoch": "1",
+      "vault": "10",
+      "credit": "2",
+      "liability": "10"
+    },
+    {
+      "index": 14,
+      "hash": "0xf0be54894543e59e267380f1ee34d3d7d2e269b4b9a1a12e1f71e5da69108182",
+      "status": 0,
+      "owner": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+      "epoch": "1",
+      "vault": "10",
+      "credit": "2",
+      "liability": "10"
+    },
+    {
+      "index": 15,
+      "hash": "0x8ea502feb6b665cd98dc07630a6f7590f33c3e0943b6eff22b717db9e30c1343",
+      "status": 1,
+      "owner": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+      "epoch": "1",
+      "vault": "10",
+      "credit": "2",
+      "liability": "10"
+    },
+    {
+      "index": 16,
+      "hash": "0xcd42cc4aebe1fcfdaecbf951e8bc8dcc3b7a350915d3aeb4c46325fbe91d85ad",
+      "status": 1,
+      "owner": "0xbff9228b938b3676578a88b5962abbd2709c9c46",
+      "epoch": "1",
+      "vault": "9",
+      "credit": "1",
+      "liability": "9"
+    },
+    {
+      "index": 17,
+      "hash": "0x2fb7d33682f06702d6feffcd04c42216a18328c6eb73627da72bb59c50da1865",
+      "status": 1,
+      "owner": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+      "epoch": "2",
+      "vault": "9",
+      "credit": "1",
+      "liability": "9"
+    },
+    {
+      "index": 18,
+      "hash": "0xfc57738fd97d692e9b750ead1f57212cc1a3d8f4bef85685a346036384744f56",
+      "status": 0,
+      "owner": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+      "epoch": "2",
+      "vault": "9",
+      "credit": "1",
+      "liability": "9"
+    },
+    {
+      "index": 19,
+      "hash": "0x8002c1010b56c65fbbf0ba86d0514a5ae5e4a2d7885277dc0d0eb27461ae3b99",
+      "status": 0,
+      "owner": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+      "epoch": "2",
+      "vault": "9",
+      "credit": "1",
+      "liability": "9"
+    },
+    {
+      "index": 20,
+      "hash": "0xbec29cf05c195a4847ed3378cf1f59bcea4ec495cbc719701360fec68c812174",
+      "status": 1,
+      "owner": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+      "epoch": "2",
+      "vault": "8",
+      "credit": "0",
+      "liability": "8"
+    }
+  ],
+  "failures": [
+    {
+      "index": 10,
+      "reason": "OWNER"
+    },
+    {
+      "index": 11,
+      "reason": "CONTROLLER"
+    },
+    {
+      "index": 12,
+      "reason": "EPOCH"
+    },
+    {
+      "index": 14,
+      "reason": "TOKEN_FALSE"
+    },
+    {
+      "index": 18,
+      "reason": "OWNER"
+    },
+    {
+      "index": 19,
+      "reason": "EPOCH"
+    }
+  ],
+  "limits": "Separate state model, not EVM execution. Signed bytes and all predicted logs checked; no gas model or public-chain authentication. Direct wallet caller modeled from decoded execute calls; no general wallet certification."
+}

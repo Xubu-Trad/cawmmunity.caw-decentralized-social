@@ -1,0 +1,27 @@
+{
+  "status": "LOCAL_MOCK_FUNDED_ADMISSION_ONLY",
+  "localTransactions": 15,
+  "successfulAdmissions": 2,
+  "rejected": [
+    "no allowance",
+    "insufficient allowance",
+    "duplicate nonce",
+    "false after token mutation",
+    "unauthorized caller",
+    "insufficient payer balance"
+  ],
+  "final": {
+    "payer": "1",
+    "vault": "10",
+    "allowance": "90",
+    "nonce": "2",
+    "liability": "10",
+    "nextBudget": "0"
+  },
+  "outsiderMockBalance": "89",
+  "recordIds": [
+    "0x609b2bbc6bbbb2b093318694a07c307f7aec243fe3bc5fcd63ad8822ce9cbd0b",
+    "0xe17226ddac55a4e0deef7aed50cc7c217bba0b767c039c82a0cb8d1ad423acfd"
+  ],
+  "limits": "Single fixed payer and constructor snapshot, direct calls, fee5 mock base units, no claims/withdrawals/NFT/stake authentication or actual CAW. Local EVM only; no adopted economics or production backing certification."
+}

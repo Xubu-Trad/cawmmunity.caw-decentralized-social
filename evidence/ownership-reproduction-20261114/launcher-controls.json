@@ -1,0 +1,13 @@
+{
+  "passed": 7,
+  "checks": [
+    "pinned64inputs accepted",
+    "modified verifier rejected",
+    "modified manifest rejected",
+    "symlinked input rejected",
+    "existing output preserved",
+    "output inside source rejected",
+    "wrong geth rejected"
+  ],
+  "scope": "Pre-execution controls; process starts forbidden."
+}

@@ -1,0 +1,48 @@
+{
+  "syntheticCapturedAccount": true,
+  "actualCawTokenProof": false,
+  "result": {
+    "schema": "caw-header-bound-asset-inventory/1",
+    "inventory": {
+      "context": {
+        "chainId": "31337",
+        "blockNumber": "26",
+        "blockHash": "0x2198aca3155d6835351c06af228cd0044a5be79b26279f5adbfa4e1b530c4028",
+        "address": "0x82c839fa4a41e158f613ec8a1a84be3c816d370f",
+        "codeHash": "0x337aa3849533ef8f71b484567c0a018f8bcbadd845d9ec8487a54540514bd513"
+      },
+      "bytes": 1186,
+      "flags": [],
+      "format": "legacy-linear-scan",
+      "status": "REVIEW_REQUIRED",
+      "chainEvidenceVerified": false,
+      "sourceMatchVerified": false,
+      "upgradeAuthorityVerified": false,
+      "tokenSemanticsVerified": false,
+      "productionAccepted": false,
+      "limitations": "Caller-supplied context and hash are not authenticated state evidence. No flags does not prove immutability or safety. Resolve external targets, storage, source, authority and chain proofs separately."
+    },
+    "accountProofAgainstSelectedHeaderVerified": true,
+    "selectedStateRoot": "0x9dab5734557bb6044e8a1dac35b73a0b2bd40f44117c2a9f27ec8eacb4689dde",
+    "storageVerified": false,
+    "chainIdAuthenticated": false,
+    "consensusVerified": false,
+    "finalityVerified": false,
+    "currentStateVerified": false,
+    "sourceMatchVerified": false,
+    "upgradeAuthorityVerified": false,
+    "productionAccepted": false
+  },
+  "negativeControls": [
+    "changed runtime",
+    "changed account proof",
+    "wrong account",
+    "wrong selected header",
+    "changed header state root",
+    "wrong selected code hash",
+    "wrong block number",
+    "storage proof not silently ignored",
+    "extra selection field",
+    "duplicate selection key"
+  ]
+}

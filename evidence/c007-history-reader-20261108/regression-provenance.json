@@ -1,0 +1,26 @@
+{
+  "parent": "c27f98264e8d35a8418431b5daf3f093c9fa32dd",
+  "exactBaselineFiles": [
+    "experiments/paid-body-acquisition/verify_body.mjs",
+    "experiments/paid-reorg/history-left-hash.json",
+    "experiments/paid-reorg/history-left-number.json",
+    "experiments/paid-reorg/history-right-hash.json",
+    "experiments/paid-reorg/history-right-number.json",
+    "experiments/paid-signed-body-acquisition/body-captures.json",
+    "reference/ethereum-block-receipts.mjs",
+    "reference/ethereum-block-senders.mjs",
+    "reference/ethereum-block-transactions.mjs",
+    "reference/ethereum-execution-header.mjs",
+    "reference/fixtures/block-receipts-v1.json",
+    "reference/fixtures/block-senders-v1.json",
+    "reference/fixtures/block-transactions-v1.json",
+    "reference/fixtures/generate-block-receipts-fixtures.py",
+    "reference/fixtures/generate-block-transactions-fixtures.py",
+    "reference/fixtures/generate-ethereum-proof-fixtures.py",
+    "reference/keccak256.mjs",
+    "tests/block-receipts.test.mjs",
+    "tests/block-senders.test.mjs",
+    "tests/block-transactions.test.mjs"
+  ],
+  "exitCode": 0
+}

@@ -1,0 +1,27 @@
+{
+  "status": "DEPLOYMENT_AND_CODE_BOUND_TO_SELECTED_HEADER",
+  "blockHash": "0xb3dbaa5ffc6b59626a68b5853949ed92cde3c2d036b48bafafb7845abe05b717",
+  "index": 1,
+  "address": "0x19A827174F66B3c66ad7063951D7b4F94f996e77",
+  "transactionHash": "0x07afc316a9616a5a2dbc695400cacf44ad6f177d29e97dd084ab0938e97cef7f",
+  "transactionCommitmentVerified": true,
+  "receiptCommitmentVerified": true,
+  "signatureVerified": true,
+  "chainAuthenticated": false,
+  "accountCodeProofVerified": true,
+  "consensusVerified": false,
+  "finalityVerified": false,
+  "controls": [
+    "wrong selected header",
+    "changed signed transaction",
+    "missing transaction",
+    "changed receipt status",
+    "changed receipt logs",
+    "wrong receipt index",
+    "changed runtime",
+    "wrong account",
+    "wrong code hash",
+    "missing account proof"
+  ],
+  "limits": "Synthetic header contains the retained Geth post-deployment state root. Account code and deployment commitments verified under selected root; no public-chain anchor or finality. No storage slots or ownership state authenticated by this account-only proof."
+}

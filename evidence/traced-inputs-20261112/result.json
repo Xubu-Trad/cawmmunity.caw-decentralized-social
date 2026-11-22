@@ -1,0 +1,19 @@
+{
+  "pin": "5ced0bcc0427672c959b54cb3b7d8ba5fad4b586",
+  "inputCount": 17,
+  "historical14Unchanged": true,
+  "inventoryFingerprint": "7b11dd82432b189a77b9928b60e42c7345a6991d48898941fdc67c3d5185620e",
+  "tests": {
+    "checks": 7,
+    "results": [
+      "genuine inputs accepted",
+      "changed input rejected",
+      "missing input rejected",
+      "repinned inventory rejected",
+      "external symlink rejected",
+      "integration/peer-sync/tracing-capability.py mutation rejected",
+      "integration/peer-sync/run-header-sync-early-trace.py mutation rejected"
+    ]
+  },
+  "scope": "public source acquisition, input verification and trusted tool inventory; no new recovery execution"
+}

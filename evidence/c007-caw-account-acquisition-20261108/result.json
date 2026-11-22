@@ -1,0 +1,17 @@
+{
+  "attempts": [
+    {
+      "provider": "publicnode",
+      "acquired": false,
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "provider": "drpc",
+      "acquired": false,
+      "error": "HTTP Error 400: Bad Request"
+    }
+  ],
+  "accountProofAcquired": false,
+  "actualAssetProofVerified": false,
+  "productionAccepted": false
+}

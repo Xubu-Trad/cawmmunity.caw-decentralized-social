@@ -1,0 +1,30 @@
+{
+  "status": "CONTRACT_WALLET_OWNER_RESEARCH_ONLY",
+  "transactions": 21,
+  "rejected": [
+    "controller cannot bypass wallet",
+    "outsider cannot execute wallet",
+    "wallet rejects stale NFT epoch",
+    "token false rolls back wallet withdrawal",
+    "former wallet loses withdrawal authority",
+    "new owner stale epoch"
+  ],
+  "final": {
+    "payer": "90",
+    "vault": "8",
+    "allowance": "90",
+    "nonce": "2",
+    "liability": "8",
+    "nextBudget": "0",
+    "credit": "0",
+    "owner": "0x1efF47bc3a10a45D4B230B5d10E37751FE6AA718",
+    "epoch": "2",
+    "other": "1",
+    "credited": "0",
+    "unallocated": "8",
+    "approved": "0x0000000000000000000000000000000000000000",
+    "ownerBalance": "1",
+    "walletBalance": "1"
+  },
+  "limits": "Direct immutable-controller test wallet only; no ERC1271, ERC4337, signature delegation, real CAW, public registration, adopted economics, independent reconstruction or second-engine replay."
+}

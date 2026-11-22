@@ -1,0 +1,3 @@
+PARENTS=[4a02acfda69a62bd512269d896420fb72874392f] TRANSFORM="independent trie and size-boundary diagnosis" SHA256=defc6e9bae24c4f941d1d3763fd17e3e4e6e13b6c91916a1eaad24c7faa0c257 SIZE=3812 PATH=docs/REGISTRY_CONTIGUOUS_DIAGNOSIS.md
+PARENTS=[4a02acfda69a62bd512269d896420fb72874392f] TRANSFORM="independent trie and size-boundary diagnosis" SHA256=7bf86552ea76bb0aba5c573bdf2815b7c11c43ba6485c3ca6d38f76cfc5db8e7 SIZE=5675 PATH=integration/core-baseline-v1/diagnose-contiguous.mjs
+PARENTS=[4a02acfda69a62bd512269d896420fb72874392f] TRANSFORM="independent trie and size-boundary diagnosis" SHA256=dc5860915b6d4ee0b9116a398ba03305eb797e8612a91f67fdb3e2a27b791ca7 SIZE=2079 PATH=evidence/registry-contiguous-diagnosis-20261110/result.json

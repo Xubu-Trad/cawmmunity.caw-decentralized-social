@@ -1,0 +1,16 @@
+{
+  "status": "FROZEN_WITHDRAWAL_GETH_COMPARISON_PASS",
+  "operations": 61,
+  "controls": [
+    "stateRoot",
+    "gasUsed",
+    "status",
+    "logs",
+    "signed_bytes",
+    "wrong_chain",
+    "spent_nonce"
+  ],
+  "finalStateRoot": "0xea166946a6149296a17b3befc25b7c27ddf8ee3cba7a723bff3af4244b8ab3e1",
+  "fixtureSha256": "4e199d2561d354a2f01718901ff18d774ede034d8d000c6957e66f2a4a654f9c",
+  "limits": "Comparison against retained EthereumJS states under repeated synthetic contexts; not consensus, independent audit or production acceptance."
+}

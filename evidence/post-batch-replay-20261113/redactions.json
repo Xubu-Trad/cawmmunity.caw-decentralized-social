@@ -1,0 +1,17 @@
+[
+  {
+    "path": "reverse-batch.log",
+    "originalSha256": "5f1ea3a49dacf8d98a86aed7cf872d32d35570485fc7061c84310d1000855f1a",
+    "publicSha256": "93483118c306ecfabb4e544dd3344f803fbf3425708f68a5f1b986d8a67fc731"
+  },
+  {
+    "path": "alter-gas.log",
+    "originalSha256": "091f82c8f48c8555c74788fcf91d854e88289b590a8d3bcbbc557b16ec5c8d1f",
+    "publicSha256": "79d6ec8eb9109d26687f13cde9954cf937655ebf7097296f43eb13e3f901198b"
+  },
+  {
+    "path": "alter-root.log",
+    "originalSha256": "f00002b2d5ef15fdd6d38df9bfbed0bd6ed46982c2f27d0f98d0238ea8356290",
+    "publicSha256": "6fd6a00086fba0154c2aa6c9b3069b57e085dfafb67ab7a141d87caa6bd8cb90"
+  }
+]

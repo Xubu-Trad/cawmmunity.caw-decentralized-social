@@ -1,0 +1,16 @@
+{
+  "status": "WALLET_OWNER_GETH_COMPARISON_PASS",
+  "operations": 21,
+  "controls": [
+    "stateRoot",
+    "gasUsed",
+    "status",
+    "logs",
+    "signed_bytes",
+    "wrong_chain",
+    "spent_nonce"
+  ],
+  "finalStateRoot": "0xd7044e64bfe7b918e5361d9f2f561e3c702012ce26ce233cde3b405331f65142",
+  "fixtureSha256": "2f28c4812aacbcef6c78ad410a1c4ec83e4cd899748a95069369fe19cefb9d9d",
+  "limits": "Comparison against retained EthereumJS states under repeated synthetic contexts; not consensus, independent audit or production acceptance."
+}

@@ -1,0 +1,17 @@
+{
+  "parent": "a967c8405aa94ec4c2d28e3f4c531dd87aa41357",
+  "files": {
+    "experiments/c007-signer-wallet/run-wallet-transfer.mjs": {
+      "sha256": "767e43ed1c4d5ecb054102844dd02fdf9ff0995a459833c5f94493130183e3b2",
+      "bytes": 13252
+    },
+    "evidence/c007-signer-wallet-20261108/wallet-transfer.json": {
+      "sha256": "1a00480c792077a095c9fc28a2d34430e70e9a5eae124b41ef774beaeea35a72",
+      "bytes": 6653
+    },
+    "docs/SIGNER_WALLET_REVIEW.md": {
+      "sha256": "e6acbcd0fce0c3463cc43193201f57467cf878fe5545e711a0334055a6a7d4f5",
+      "bytes": 8344
+    }
+  }
+}

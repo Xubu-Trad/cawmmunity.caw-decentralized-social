@@ -1,0 +1,30 @@
+--- a/compare_traces.py
++++ b/compare_traces.py
+@@ -162,6 +162,27 @@
+     ind = json.loads(Path(args.independent_trace).read_text())
+     summary = json.loads(Path(args.retained_summary).read_text())
+ 
++    # Reject receipt envelope types before helpers access response fields.
++    # This validates parsed receipts only, not raw_response equivalence.
++    bad = []
++    for trace_name, trace in [("retained", ret), ("independent", ind)]:
++        for call in trace["local_calls"]:
++            if (call.get("request") or {}).get("method") != RECEIPT_METHOD:
++                continue
++            response = call.get("response")
++            if not isinstance(response, dict) or "error" in response or "result" not in response:
++                bad.append(f"{trace_name}: invalid receipt response envelope")
++    if bad:
++        result = {"schema": "caw-paid-adversarial-comparison/1",
++                  "baseline_commit": ind["baseline_commit"], "verdict": "FAIL",
++                  "checks": [{"check": "receipt_response_envelopes", "status": DIFFER,
++                              "detail": "; ".join(bad)}]}
++        if args.out:
++            Path(args.out).write_text(json.dumps(result, indent=2) + "\n")
++        print("[DIFFER] " + "; ".join(bad))
++        print("VERDICT: FAIL")
++        return 1
++
+     checks = []
+ 
+     def record(name, status, detail):

@@ -1,0 +1,34 @@
+[
+  {
+    "name": "reversed raw",
+    "error": "BLOCK_TRANSACTIONS_ROOT_MISMATCH"
+  },
+  {
+    "name": "missing receipt",
+    "error": "BLOCK_RECEIPTS_BLOCK_GAS"
+  },
+  {
+    "name": "false status",
+    "error": "BLOCK_RECEIPTS_ROOT_MISMATCH"
+  },
+  {
+    "name": "corrupt initial registry",
+    "error": "ETH_PROOF_NODE"
+  },
+  {
+    "name": "corrupt final registry",
+    "error": "ETH_PROOF_NODE"
+  },
+  {
+    "name": "false final epoch",
+    "error": "ETH_PROOF_CLAIM"
+  },
+  {
+    "name": "missing recipient proof",
+    "error": "HEADER_STATE_SCHEMA"
+  },
+  {
+    "name": "false final nonce",
+    "error": "ETH_PROOF_CLAIM"
+  }
+]

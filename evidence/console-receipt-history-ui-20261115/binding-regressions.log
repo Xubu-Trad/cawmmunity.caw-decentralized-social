@@ -1,0 +1,19 @@
+{
+  "passed": 13,
+  "checks": [
+    "contract wallet exported post binds to signed committed history",
+    "later EOA owner exported post binds to signed committed history",
+    "changed receipt status retained as discrepancy rather than accepted match",
+    "changed receipt block retained as discrepancy rather than accepted match",
+    "changed transaction nonce retained as discrepancy rather than accepted match",
+    "different text with coherent calldata retained as discrepancy rather than accepted match",
+    "unselected review anchor retained as discrepancy rather than accepted match",
+    "absent transaction is only absent in selected range",
+    "prior failed recheck remains separate from verified inclusion",
+    "changed signed transaction rejects even when exported checksum is valid",
+    "changed receipt status rejects even when exported checksum is valid",
+    "changed state proof rejects even when exported checksum is valid",
+    "omitted history block rejects even when exported checksum is valid"
+  ],
+  "scope": "Retained local signed-chain capture; selected endpoints trusted, no fresh execution or public finality."
+}

@@ -1,0 +1,18 @@
+{
+  "passed": 12,
+  "checks": [
+    "valid fresh owner/epoch/nonce proof",
+    "contradictory owner rejected",
+    "contradictory epoch rejected",
+    "contradictory nonce rejected",
+    "header root rejected",
+    "missing registry proof rejected",
+    "missing owner proof rejected",
+    "registry account node rejected",
+    "posting slot value rejected",
+    "wrong registry code selection rejected",
+    "wrong posting code selection rejected",
+    "wrong owner address rejected"
+  ],
+  "scope": "Fresh state-proof fixture and mutations; selected local header, not public consensus."
+}

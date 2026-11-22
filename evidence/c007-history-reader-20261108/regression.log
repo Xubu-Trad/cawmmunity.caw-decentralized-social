@@ -1,0 +1,845 @@
+TAP version 13
+# Subtest: independent receipt fixtures pin their generator and shared Python primitives
+ok 1 - independent receipt fixtures pin their generator and shared Python primitives
+  ---
+  duration_ms: 10.262083
+  ...
+# Subtest: independent receipt trie and encoding vector: empty
+ok 2 - independent receipt trie and encoding vector: empty
+  ---
+  duration_ms: 9.80029
+  ...
+# Subtest: independent receipt trie and encoding vector: legacy-failed
+ok 3 - independent receipt trie and encoding vector: legacy-failed
+  ---
+  duration_ms: 6.42399
+  ...
+# Subtest: independent receipt trie and encoding vector: legacy-success
+ok 4 - independent receipt trie and encoding vector: legacy-success
+  ---
+  duration_ms: 2.795337
+  ...
+# Subtest: independent receipt trie and encoding vector: type-1
+ok 5 - independent receipt trie and encoding vector: type-1
+  ---
+  duration_ms: 2.561319
+  ...
+# Subtest: independent receipt trie and encoding vector: type-2
+ok 6 - independent receipt trie and encoding vector: type-2
+  ---
+  duration_ms: 2.784651
+  ...
+# Subtest: independent receipt trie and encoding vector: mixed-log-boundaries
+ok 7 - independent receipt trie and encoding vector: mixed-log-boundaries
+  ---
+  duration_ms: 6.463996
+  ...
+# Subtest: independent receipt trie and encoding vector: typed-index-boundaries-130
+ok 8 - independent receipt trie and encoding vector: typed-index-boundaries-130
+  ---
+  duration_ms: 61.718084
+  ...
+# Subtest: independent receipt trie and encoding vector: typed-index-boundaries-256
+ok 9 - independent receipt trie and encoding vector: typed-index-boundaries-256
+  ---
+  duration_ms: 122.329722
+  ...
+# Subtest: independent receipt trie and encoding vector: receipt-log-limit-64
+ok 10 - independent receipt trie and encoding vector: receipt-log-limit-64
+  ---
+  duration_ms: 11.157082
+  ...
+# Subtest: independent receipt trie and encoding vector: block-log-limit-512
+ok 11 - independent receipt trie and encoding vector: block-log-limit-512
+  ---
+  duration_ms: 89.595633
+  ...
+# Subtest: independent receipt trie and encoding vector: log-data-limit-8192
+ok 12 - independent receipt trie and encoding vector: log-data-limit-8192
+  ---
+  duration_ms: 10.449029
+  ...
+# Subtest: all 60 retained London block receipt sets match the original header commitments
+ok 13 - all 60 retained London block receipt sets match the original header commitments
+  ---
+  duration_ms: 128.637713
+  ...
+# Subtest: the empty receipt set matches the standard empty trie root and has no accepted transaction claim
+ok 14 - the empty receipt set matches the standard empty trie root and has no accepted transaction claim
+  ---
+  duration_ms: 0.921843
+  ...
+# Subtest: type envelopes and status remain distinct independently pinned receipt bytes
+ok 15 - type envelopes and status remain distinct independently pinned receipt bytes
+  ---
+  duration_ms: 4.68181
+  ...
+# Subtest: changing log data preserves its bloom but invalidates its receipt commitment
+ok 16 - changing log data preserves its bloom but invalidates its receipt commitment
+  ---
+  duration_ms: 3.628217
+  ...
+# Subtest: log order and topic order are committed even when the bloom stays unchanged
+ok 17 - log order and topic order are committed even when the bloom stays unchanged
+  ---
+  duration_ms: 6.823617
+  ...
+# Subtest: changing a well-formed receipt type or status fails the independent receipt root
+ok 18 - changing a well-formed receipt type or status fails the independent receipt root
+  ---
+  duration_ms: 2.050074
+  ...
+# Subtest: altered receipt blooms, log addresses and log topics are rejected
+ok 19 - altered receipt blooms, log addresses and log topics are rejected
+  ---
+  duration_ms: 7.659503
+  ...
+# Subtest: a matching reported header hash cannot hide altered header fields or selected endpoints
+ok 20 - a matching reported header hash cannot hide altered header fields or selected endpoints
+  ---
+  duration_ms: 5.250012
+  ...
+# Subtest: missing, duplicated, reordered and reindexed receipt sets cannot substitute for a complete root
+ok 21 - missing, duplicated, reordered and reindexed receipt sets cannot substitute for a complete root
+  ---
+  duration_ms: 10.272932
+  ...
+# Subtest: reordering different receipt payloads still fails after repairing indices and cumulative gas
+ok 22 - reordering different receipt payloads still fails after repairing indices and cumulative gas
+  ---
+  duration_ms: 6.617186
+  ...
+# Subtest: cumulative gas must increase and finish at the selected header gas used
+ok 23 - cumulative gas must increase and finish at the selected header gas used
+  ---
+  duration_ms: 63.782616
+  ...
+# Subtest: receipt and supplied log block associations and ordinal metadata fail closed
+ok 24 - receipt and supplied log block associations and ordinal metadata fail closed
+  ---
+  duration_ms: 6.776245
+  ...
+# Subtest: supplied log indices are global across receipts and cannot restart at each transaction
+ok 25 - supplied log indices are global across receipts and cannot restart at each transaction
+  ---
+  duration_ms: 9.87032
+  ...
+# Subtest: receipt-root matching does not authenticate transaction hashes, calldata or RPC summary metadata
+ok 26 - receipt-root matching does not authenticate transaction hashes, calldata or RPC summary metadata
+  ---
+  duration_ms: 7.642505
+  ...
+# Subtest: optional receipt and log metadata can be absent without changing consensus-only output
+ok 27 - optional receipt and log metadata can be absent without changing consensus-only output
+  ---
+  duration_ms: 5.540505
+  ...
+# Subtest: explicit London selection and exact argument shape cannot silently downgrade
+ok 28 - explicit London selection and exact argument shape cannot silently downgrade
+  ---
+  duration_ms: 0.92363
+  ...
+# Subtest: missing, null and unknown receipt or log fields are rejected
+ok 29 - missing, null and unknown receipt or log fields are rejected
+  ---
+  duration_ms: 17.99943
+  ...
+# Subtest: only London receipt types and status bits use canonical lower-case quantities
+ok 30 - only London receipt types and status bits use canonical lower-case quantities
+  ---
+  duration_ms: 28.139878
+  ...
+# Subtest: receipt bloom, log address/topic and log data widths are strict
+ok 31 - receipt bloom, log address/topic and log data widths are strict
+  ---
+  duration_ms: 5.354719
+  ...
+# Subtest: captured input and nested result values are isolated and deeply immutable
+ok 32 - captured input and nested result values are isolated and deeply immutable
+  ---
+  duration_ms: 4.556515
+  ...
+# Subtest: plain-data capture rejects getters without invoking them and does not invoke toJSON
+ok 33 - plain-data capture rejects getters without invoking them and does not invoke toJSON
+  ---
+  duration_ms: 1.021313
+  ...
+# Subtest: cycles, exotic prototypes, symbols, non-enumerable fields and sparse arrays fail before encoding
+ok 34 - cycles, exotic prototypes, symbols, non-enumerable fields and sparse arrays fail before encoding
+  ---
+  duration_ms: 0.626438
+  ...
+# Subtest: null-prototype plain data and frozen inputs preserve the same validated receipt output
+ok 35 - null-prototype plain data and frozen inputs preserve the same validated receipt output
+  ---
+  duration_ms: 5.86898
+  ...
+# Subtest: more than 256 receipts is rejected before attempting an unbounded trie
+ok 36 - more than 256 receipts is rejected before attempting an unbounded trie
+  ---
+  duration_ms: 11.722436
+  ...
+# Subtest: more than 64 logs in one receipt and more than 8192 data bytes in a log are rejected
+ok 37 - more than 64 logs in one receipt and more than 8192 data bytes in a log are rejected
+  ---
+  duration_ms: 2.40922
+  ...
+# Subtest: two individually bounded data fields cannot exceed the 16 KiB encoded receipt budget
+ok 38 - two individually bounded data fields cannot exceed the 16 KiB encoded receipt budget
+  ---
+  duration_ms: 3.973099
+  ...
+# Subtest: individually valid log counts cannot exceed the aggregate 512-log bound
+ok 39 - individually valid log counts cannot exceed the aggregate 512-log bound
+  ---
+  duration_ms: 72.123899
+  ...
+# Subtest: individually bounded encoded receipts cannot exceed the aggregate 1 MiB budget
+ok 40 - individually bounded encoded receipts cannot exceed the aggregate 1 MiB budget
+  ---
+  duration_ms: 31.810691
+  ...
+# Subtest: capture bounds reject excessive metadata depth, array length, values and aggregate size
+ok 41 - capture bounds reject excessive metadata depth, array length, values and aggregate size
+  ---
+  duration_ms: 27.248316
+  ...
+# Subtest: sender vector: unprotected-legacy-parity-zero
+ok 42 - sender vector: unprotected-legacy-parity-zero
+  ---
+  duration_ms: 23.991814
+  ...
+# Subtest: sender vector: unprotected-legacy-parity-one-creation
+ok 43 - sender vector: unprotected-legacy-parity-one-creation
+  ---
+  duration_ms: 8.289583
+  ...
+# Subtest: sender vector: protected-legacy-chain-zero
+ok 44 - sender vector: protected-legacy-chain-zero
+  ---
+  duration_ms: 9.352052
+  ...
+# Subtest: sender vector: protected-legacy-chain-31337-parity-one
+ok 45 - sender vector: protected-legacy-chain-31337-parity-one
+  ---
+  duration_ms: 5.189643
+  ...
+# Subtest: sender vector: type-one-chain-zero-parity-zero
+ok 46 - sender vector: type-one-chain-zero-parity-zero
+  ---
+  duration_ms: 6.447324
+  ...
+# Subtest: sender vector: type-one-chain-one-parity-one
+ok 47 - sender vector: type-one-chain-one-parity-one
+  ---
+  duration_ms: 4.936768
+  ...
+# Subtest: sender vector: type-one-chain-31337
+ok 48 - sender vector: type-one-chain-31337
+  ---
+  duration_ms: 4.720396
+  ...
+# Subtest: sender vector: type-two-chain-one-parity-zero
+ok 49 - sender vector: type-two-chain-one-parity-zero
+  ---
+  duration_ms: 5.174167
+  ...
+# Subtest: sender vector: type-two-chain-31337-parity-one
+ok 50 - sender vector: type-two-chain-31337-parity-one
+  ---
+  duration_ms: 5.512451
+  ...
+# Subtest: sender vector: official-eip155-example
+ok 51 - sender vector: official-eip155-example
+  ---
+  duration_ms: 4.42814
+  ...
+# Subtest: sender vector: official-eip155-flipped-parity-different-sender
+ok 52 - sender vector: official-eip155-flipped-parity-different-sender
+  ---
+  duration_ms: 4.352059
+  ...
+# Subtest: sender vector: empty-block-chain-zero
+ok 53 - sender vector: empty-block-chain-zero
+  ---
+  duration_ms: 0.762541
+  ...
+# Subtest: sender vector: mixed-types-chain-31337
+ok 54 - sender vector: mixed-types-chain-31337
+  ---
+  duration_ms: 17.434577
+  ...
+# Subtest: sender vector: maximum-256-transactions
+ok 55 - sender vector: maximum-256-transactions
+  ---
+  duration_ms: 973.62422
+  ...
+# Subtest: sender rejection: legacy-r-zero
+ok 56 - sender rejection: legacy-r-zero
+  ---
+  duration_ms: 2.631788
+  ...
+# Subtest: sender rejection: legacy-r-order
+ok 57 - sender rejection: legacy-r-order
+  ---
+  duration_ms: 1.565388
+  ...
+# Subtest: sender rejection: legacy-r-over-order
+ok 58 - sender rejection: legacy-r-over-order
+  ---
+  duration_ms: 1.930609
+  ...
+# Subtest: sender rejection: legacy-s-zero
+ok 59 - sender rejection: legacy-s-zero
+  ---
+  duration_ms: 2.164405
+  ...
+# Subtest: sender rejection: legacy-s-order
+ok 60 - sender rejection: legacy-s-order
+  ---
+  duration_ms: 2.411043
+  ...
+# Subtest: sender rejection: legacy-s-over-order
+ok 61 - sender rejection: legacy-s-over-order
+  ---
+  duration_ms: 1.637566
+  ...
+# Subtest: sender rejection: legacy-s-high
+ok 62 - sender rejection: legacy-s-high
+  ---
+  duration_ms: 2.012396
+  ...
+# Subtest: sender rejection: typed-1-zero-r
+ok 63 - sender rejection: typed-1-zero-r
+  ---
+  duration_ms: 2.335506
+  ...
+# Subtest: sender rejection: typed-2-zero-r
+ok 64 - sender rejection: typed-2-zero-r
+  ---
+  duration_ms: 2.289876
+  ...
+# Subtest: sender rejection: recovery-x-is-nonresidue
+ok 65 - sender rejection: recovery-x-is-nonresidue
+  ---
+  duration_ms: 2.103618
+  ...
+# Subtest: sender rejection: recovered-public-key-is-infinity
+ok 66 - sender rejection: recovered-public-key-is-infinity
+  ---
+  duration_ms: 3.422241
+  ...
+# Subtest: sender rejection: unprotected-legacy-policy-refused
+ok 67 - sender rejection: unprotected-legacy-policy-refused
+  ---
+  duration_ms: 1.736816
+  ...
+# Subtest: sender rejection: protected-legacy-chain-mismatch
+ok 68 - sender rejection: protected-legacy-chain-mismatch
+  ---
+  duration_ms: 1.779159
+  ...
+# Subtest: sender rejection: protected-legacy-chain-zero-wrong-selection
+ok 69 - sender rejection: protected-legacy-chain-zero-wrong-selection
+  ---
+  duration_ms: 1.881538
+  ...
+# Subtest: sender rejection: type-one-chain-zero-parity-zero-wrong-selection
+ok 70 - sender rejection: type-one-chain-zero-parity-zero-wrong-selection
+  ---
+  duration_ms: 2.595595
+  ...
+# Subtest: sender rejection: type-two-chain-31337-parity-one-wrong-selection
+ok 71 - sender rejection: type-two-chain-31337-parity-one-wrong-selection
+  ---
+  duration_ms: 2.483748
+  ...
+# Subtest: a parity change can be valid for another sender without authenticating the original identity
+ok 72 - a parity change can be valid for another sender without authenticating the original identity
+  ---
+  duration_ms: 9.07771
+  ...
+# Subtest: all retained signed branch bodies derive the recorded fixture senders offline
+ok 73 - all retained signed branch bodies derive the recorded fixture senders offline
+  ---
+  duration_ms: 303.578871
+  ...
+# Subtest: RPC sender labels are not inputs to recovered identity
+ok 74 - RPC sender labels are not inputs to recovered identity
+  ---
+  duration_ms: 21.238011
+  ...
+# Subtest: chain choice and unprotected-legacy policy must be explicit and canonical
+ok 75 - chain choice and unprotected-legacy policy must be explicit and canonical
+  ---
+  duration_ms: 1.251039
+  ...
+# Subtest: unprotected permission never excuses a protected transaction for a different chain
+ok 76 - unprotected permission never excuses a protected transaction for a different chain
+  ---
+  duration_ms: 1.504647
+  ...
+# Subtest: unknown profiles, schemas and extra selection fields fail
+ok 77 - unknown profiles, schemas and extra selection fields fail
+  ---
+  duration_ms: 0.367528
+  ...
+# Subtest: selection and header changes cannot be hidden behind a correct signature
+ok 78 - selection and header changes cannot be hidden behind a correct signature
+  ---
+  duration_ms: 2.172028
+  ...
+# Subtest: all arguments are captured without getters, toJSON or custom iteration
+ok 79 - all arguments are captured without getters, toJSON or custom iteration
+  ---
+  duration_ms: 0.314588
+  ...
+# Subtest: inherited, sparse, cyclic and oversized inputs fail before unchecked work
+ok 80 - inherited, sparse, cyclic and oversized inputs fail before unchecked work
+  ---
+  duration_ms: 1.488341
+  ...
+# Subtest: result is immutable and detached while caller inputs remain unchanged
+ok 81 - result is immutable and detached while caller inputs remain unchanged
+  ---
+  duration_ms: 4.805212
+  ...
+# Subtest: independent transaction fixtures pin their generator and Python primitives
+ok 82 - independent transaction fixtures pin their generator and Python primitives
+  ---
+  duration_ms: 8.123363
+  ...
+# Subtest: independent transaction bytes, hashes, trie and receipt association: empty
+ok 83 - independent transaction bytes, hashes, trie and receipt association: empty
+  ---
+  duration_ms: 11.067083
+  ...
+# Subtest: independent transaction bytes, hashes, trie and receipt association: tiny-legacy-short-root
+ok 84 - independent transaction bytes, hashes, trie and receipt association: tiny-legacy-short-root
+  ---
+  duration_ms: 6.832744
+  ...
+# Subtest: independent transaction bytes, hashes, trie and receipt association: tiny-legacy-inline-children
+ok 85 - independent transaction bytes, hashes, trie and receipt association: tiny-legacy-inline-children
+  ---
+  duration_ms: 6.583634
+  ...
+# Subtest: independent transaction bytes, hashes, trie and receipt association: legacy-nonce-zero
+ok 86 - independent transaction bytes, hashes, trie and receipt association: legacy-nonce-zero
+  ---
+  duration_ms: 5.181768
+  ...
+# Subtest: independent transaction bytes, hashes, trie and receipt association: legacy-large-integers
+ok 87 - independent transaction bytes, hashes, trie and receipt association: legacy-large-integers
+  ---
+  duration_ms: 5.146988
+  ...
+# Subtest: independent transaction bytes, hashes, trie and receipt association: zero-signature-scalars-formatting-only
+ok 88 - independent transaction bytes, hashes, trie and receipt association: zero-signature-scalars-formatting-only
+  ---
+  duration_ms: 9.53328
+  ...
+# Subtest: independent transaction bytes, hashes, trie and receipt association: mixed-types-contract-creation-and-data-boundaries
+ok 89 - independent transaction bytes, hashes, trie and receipt association: mixed-types-contract-creation-and-data-boundaries
+  ---
+  duration_ms: 9.373803
+  ...
+# Subtest: independent transaction bytes, hashes, trie and receipt association: typed-index-boundaries-130
+ok 90 - independent transaction bytes, hashes, trie and receipt association: typed-index-boundaries-130
+  ---
+  duration_ms: 173.438085
+  ...
+# Subtest: independent transaction bytes, hashes, trie and receipt association: typed-index-boundaries-256
+ok 91 - independent transaction bytes, hashes, trie and receipt association: typed-index-boundaries-256
+  ---
+  duration_ms: 307.253671
+  ...
+# Subtest: independent transaction bytes, hashes, trie and receipt association: calldata-limit-8192
+ok 92 - independent transaction bytes, hashes, trie and receipt association: calldata-limit-8192
+  ---
+  duration_ms: 27.436499
+  ...
+# Subtest: independent transaction bytes, hashes, trie and receipt association: access-address-limit-64
+ok 93 - independent transaction bytes, hashes, trie and receipt association: access-address-limit-64
+  ---
+  duration_ms: 8.967502
+  ...
+# Subtest: independent transaction bytes, hashes, trie and receipt association: access-slot-limit-256
+ok 94 - independent transaction bytes, hashes, trie and receipt association: access-slot-limit-256
+  ---
+  duration_ms: 28.294107
+  ...
+# Subtest: independent transaction bytes, hashes, trie and receipt association: raw-transaction-limit-16384
+ok 95 - independent transaction bytes, hashes, trie and receipt association: raw-transaction-limit-16384
+  ---
+  duration_ms: 57.308339
+  ...
+# Subtest: empty transactions and receipts are complete under the standard empty trie root
+ok 96 - empty transactions and receipts are complete under the standard empty trie root
+  ---
+  duration_ms: 1.389256
+  ...
+# Subtest: contract creation, calldata length boundaries and repeated access-list entries are preserved exactly
+ok 97 - contract creation, calldata length boundaries and repeated access-list entries are preserved exactly
+  ---
+  duration_ms: 1.875821
+  ...
+# Subtest: zero and out-of-curve signature scalars are structural data without signature or sender claims
+ok 98 - zero and out-of-curve signature scalars are structural data without signature or sender claims
+  ---
+  duration_ms: 5.508821
+  ...
+# Subtest: calldata bytes are committed independently of unchanged RLP length and signature fields
+ok 99 - calldata bytes are committed independently of unchanged RLP length and signature fields
+  ---
+  duration_ms: 5.997381
+  ...
+# Subtest: both roots independently pass but combined receipt association rejects: separate-roots-valid-receipt-type-mismatch
+ok 100 - both roots independently pass but combined receipt association rejects: separate-roots-valid-receipt-type-mismatch
+  ---
+  duration_ms: 4.055283
+  ...
+# Subtest: both roots independently pass but combined receipt association rejects: separate-roots-valid-receipt-count-mismatch
+ok 101 - both roots independently pass but combined receipt association rejects: separate-roots-valid-receipt-count-mismatch
+  ---
+  duration_ms: 6.29306
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: empty-envelope
+ok 102 - malformed envelope rejected despite its independently matching header commitment: empty-envelope
+  ---
+  duration_ms: 1.739958
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: scalar-envelope
+ok 103 - malformed envelope rejected despite its independently matching header commitment: scalar-envelope
+  ---
+  duration_ms: 1.046154
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: empty-legacy-list
+ok 104 - malformed envelope rejected despite its independently matching header commitment: empty-legacy-list
+  ---
+  duration_ms: 1.004697
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: unsupported-type-zero
+ok 105 - malformed envelope rejected despite its independently matching header commitment: unsupported-type-zero
+  ---
+  duration_ms: 0.954117
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: unsupported-type-three
+ok 106 - malformed envelope rejected despite its independently matching header commitment: unsupported-type-three
+  ---
+  duration_ms: 1.574567
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: type-one-empty-payload
+ok 107 - malformed envelope rejected despite its independently matching header commitment: type-one-empty-payload
+  ---
+  duration_ms: 1.049373
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: type-two-empty-list
+ok 108 - malformed envelope rejected despite its independently matching header commitment: type-two-empty-list
+  ---
+  duration_ms: 1.07151
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: type-two-string-payload
+ok 109 - malformed envelope rejected despite its independently matching header commitment: type-two-string-payload
+  ---
+  duration_ms: 0.920995
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: trailing-byte
+ok 110 - malformed envelope rejected despite its independently matching header commitment: trailing-byte
+  ---
+  duration_ms: 1.035055
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: truncated-envelope
+ok 111 - malformed envelope rejected despite its independently matching header commitment: truncated-envelope
+  ---
+  duration_ms: 1.392023
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: long-list-below-56
+ok 112 - malformed envelope rejected despite its independently matching header commitment: long-list-below-56
+  ---
+  duration_ms: 0.901334
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: leading-zero-list-length
+ok 113 - malformed envelope rejected despite its independently matching header commitment: leading-zero-list-length
+  ---
+  duration_ms: 0.938065
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: nonminimal-single-byte
+ok 114 - malformed envelope rejected despite its independently matching header commitment: nonminimal-single-byte
+  ---
+  duration_ms: 1.01416
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: long-string-below-56
+ok 115 - malformed envelope rejected despite its independently matching header commitment: long-string-below-56
+  ---
+  duration_ms: 1.618667
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: leading-zero-nonce-type-0
+ok 116 - malformed envelope rejected despite its independently matching header commitment: leading-zero-nonce-type-0
+  ---
+  duration_ms: 1.088422
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: nonce-over-256-bits-type-0
+ok 117 - malformed envelope rejected despite its independently matching header commitment: nonce-over-256-bits-type-0
+  ---
+  duration_ms: 1.195009
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: leading-zero-nonce-type-1
+ok 118 - malformed envelope rejected despite its independently matching header commitment: leading-zero-nonce-type-1
+  ---
+  duration_ms: 1.088507
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: nonce-over-256-bits-type-1
+ok 119 - malformed envelope rejected despite its independently matching header commitment: nonce-over-256-bits-type-1
+  ---
+  duration_ms: 0.944395
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: leading-zero-nonce-type-2
+ok 120 - malformed envelope rejected despite its independently matching header commitment: leading-zero-nonce-type-2
+  ---
+  duration_ms: 1.620546
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: nonce-over-256-bits-type-2
+ok 121 - malformed envelope rejected despite its independently matching header commitment: nonce-over-256-bits-type-2
+  ---
+  duration_ms: 1.002526
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: legacy-list-nonce
+ok 122 - malformed envelope rejected despite its independently matching header commitment: legacy-list-nonce
+  ---
+  duration_ms: 1.104111
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: legacy-recipient-19
+ok 123 - malformed envelope rejected despite its independently matching header commitment: legacy-recipient-19
+  ---
+  duration_ms: 0.976009
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: legacy-recipient-21
+ok 124 - malformed envelope rejected despite its independently matching header commitment: legacy-recipient-21
+  ---
+  duration_ms: 1.67838
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: legacy-v-0
+ok 125 - malformed envelope rejected despite its independently matching header commitment: legacy-v-0
+  ---
+  duration_ms: 0.93282
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: legacy-v-1
+ok 126 - malformed envelope rejected despite its independently matching header commitment: legacy-v-1
+  ---
+  duration_ms: 0.970354
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: legacy-v-29
+ok 127 - malformed envelope rejected despite its independently matching header commitment: legacy-v-29
+  ---
+  duration_ms: 0.916767
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: legacy-v-34
+ok 128 - malformed envelope rejected despite its independently matching header commitment: legacy-v-34
+  ---
+  duration_ms: 0.937631
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: type-one-parity-two
+ok 129 - malformed envelope rejected despite its independently matching header commitment: type-one-parity-two
+  ---
+  duration_ms: 1.496069
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: type-two-parity-list
+ok 130 - malformed envelope rejected despite its independently matching header commitment: type-two-parity-list
+  ---
+  duration_ms: 1.531062
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: leading-zero-signature-r
+ok 131 - malformed envelope rejected despite its independently matching header commitment: leading-zero-signature-r
+  ---
+  duration_ms: 1.435521
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: signature-s-over-256-bits
+ok 132 - malformed envelope rejected despite its independently matching header commitment: signature-s-over-256-bits
+  ---
+  duration_ms: 0.974563
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: access-list-is-scalar
+ok 133 - malformed envelope rejected despite its independently matching header commitment: access-list-is-scalar
+  ---
+  duration_ms: 1.899381
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: access-tuple-one-field
+ok 134 - malformed envelope rejected despite its independently matching header commitment: access-tuple-one-field
+  ---
+  duration_ms: 0.958071
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: access-tuple-three-fields
+ok 135 - malformed envelope rejected despite its independently matching header commitment: access-tuple-three-fields
+  ---
+  duration_ms: 0.883149
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: access-address-19
+ok 136 - malformed envelope rejected despite its independently matching header commitment: access-address-19
+  ---
+  duration_ms: 0.874108
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: access-storage-is-scalar
+ok 137 - malformed envelope rejected despite its independently matching header commitment: access-storage-is-scalar
+  ---
+  duration_ms: 0.906782
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: access-storage-key-31
+ok 138 - malformed envelope rejected despite its independently matching header commitment: access-storage-key-31
+  ---
+  duration_ms: 1.472226
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: access-storage-key-33
+ok 139 - malformed envelope rejected despite its independently matching header commitment: access-storage-key-33
+  ---
+  duration_ms: 0.94736
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: calldata-over-8192
+ok 140 - malformed envelope rejected despite its independently matching header commitment: calldata-over-8192
+  ---
+  duration_ms: 0.919265
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: access-tuples-over-64
+ok 141 - malformed envelope rejected despite its independently matching header commitment: access-tuples-over-64
+  ---
+  duration_ms: 1.228474
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: access-storage-keys-over-256-across-tuples
+ok 142 - malformed envelope rejected despite its independently matching header commitment: access-storage-keys-over-256-across-tuples
+  ---
+  duration_ms: 1.629735
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: nested-rlp-over-depth
+ok 143 - malformed envelope rejected despite its independently matching header commitment: nested-rlp-over-depth
+  ---
+  duration_ms: 1.040062
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: rlp-over-node-count
+ok 144 - malformed envelope rejected despite its independently matching header commitment: rlp-over-node-count
+  ---
+  duration_ms: 1.661127
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: parent-child-escape
+ok 145 - malformed envelope rejected despite its independently matching header commitment: parent-child-escape
+  ---
+  duration_ms: 1.555172
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: missing-field-type-0
+ok 146 - malformed envelope rejected despite its independently matching header commitment: missing-field-type-0
+  ---
+  duration_ms: 1.123222
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: extra-field-type-0
+ok 147 - malformed envelope rejected despite its independently matching header commitment: extra-field-type-0
+  ---
+  duration_ms: 2.306785
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: missing-field-type-1
+ok 148 - malformed envelope rejected despite its independently matching header commitment: missing-field-type-1
+  ---
+  duration_ms: 1.856008
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: extra-field-type-1
+ok 149 - malformed envelope rejected despite its independently matching header commitment: extra-field-type-1
+  ---
+  duration_ms: 1.760061
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: missing-field-type-2
+ok 150 - malformed envelope rejected despite its independently matching header commitment: missing-field-type-2
+  ---
+  duration_ms: 1.829799
+  ...
+# Subtest: malformed envelope rejected despite its independently matching header commitment: extra-field-type-2
+ok 151 - malformed envelope rejected despite its independently matching header commitment: extra-field-type-2
+  ---
+  duration_ms: 2.256576
+  ...
+# Subtest: missing, duplicated and reordered raw transactions cannot substitute for the complete ordered root
+ok 152 - missing, duplicated and reordered raw transactions cannot substitute for the complete ordered root
+  ---
+  duration_ms: 100.565454
+  ...
+# Subtest: transaction ordering stays committed across RLP index 127, 128 and 255 boundaries
+ok 153 - transaction ordering stays committed across RLP index 127, 128 and 255 boundaries
+  ---
+  duration_ms: 138.517822
+  ...
+# Subtest: changing a signed-shaped scalar preserves syntax but breaks the checked transaction root
+ok 154 - changing a signed-shaped scalar preserves syntax but breaks the checked transaction root
+  ---
+  duration_ms: 1.558859
+  ...
+# Subtest: a matching reported header hash cannot hide a changed body commitment or header field
+ok 155 - a matching reported header hash cannot hide a changed body commitment or header field
+  ---
+  duration_ms: 3.83206
+  ...
+# Subtest: changing a receipt status leaves the transaction commitment valid and breaks joint receipt binding
+ok 156 - changing a receipt status leaves the transaction commitment valid and breaks joint receipt binding
+  ---
+  duration_ms: 7.328476
+  ...
+# Subtest: forged RPC transaction hash and sender metadata cannot change computed transaction associations
+ok 157 - forged RPC transaction hash and sender metadata cannot change computed transaction associations
+  ---
+  duration_ms: 8.617245
+  ...
+# Subtest: both entry points require exact arguments and an explicit London transaction selection
+ok 158 - both entry points require exact arguments and an explicit London transaction selection
+  ---
+  duration_ms: 1.48778
+  ...
+# Subtest: raw transactions must be complete lower-case byte strings in a dense array
+ok 159 - raw transactions must be complete lower-case byte strings in a dense array
+  ---
+  duration_ms: 11.35439
+  ...
+# Subtest: input capture and both result trees are deeply isolated and immutable
+ok 160 - input capture and both result trees are deeply isolated and immutable
+  ---
+  duration_ms: 7.120668
+  ...
+# Subtest: capture rejects getters, conversion hooks and caller iterators without running them
+ok 161 - capture rejects getters, conversion hooks and caller iterators without running them
+  ---
+  duration_ms: 0.913464
+  ...
+# Subtest: cycles, exotic prototypes, symbols, hidden fields and sparse arrays fail closed
+ok 162 - cycles, exotic prototypes, symbols, hidden fields and sparse arrays fail closed
+  ---
+  duration_ms: 0.751236
+  ...
+# Subtest: null-prototype plain data and frozen inputs preserve computed commitments and associations
+ok 163 - null-prototype plain data and frozen inputs preserve computed commitments and associations
+  ---
+  duration_ms: 13.36
+  ...
+# Subtest: transaction count and envelope size budgets reject before building unbounded tries
+ok 164 - transaction count and envelope size budgets reject before building unbounded tries
+  ---
+  duration_ms: 1.889078
+  ...
+# Subtest: individually bounded envelopes cannot exceed the aggregate one MiB transaction byte budget
+ok 165 - individually bounded envelopes cannot exceed the aggregate one MiB transaction byte budget
+  ---
+  duration_ms: 3.421942
+  ...
+# Subtest: capture bounds cover depth, array length, node count and aggregate metadata bytes
+ok 166 - capture bounds cover depth, array length, node count and aggregate metadata bytes
+  ---
+  duration_ms: 35.565322
+  ...
+# Subtest: joint capture charges all four inputs against one budget before validating either root
+ok 167 - joint capture charges all four inputs against one budget before validating either root
+  ---
+  duration_ms: 1.588141
+  ...
+1..167
+# tests 167
+# suites 0
+# pass 167
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3912.161603

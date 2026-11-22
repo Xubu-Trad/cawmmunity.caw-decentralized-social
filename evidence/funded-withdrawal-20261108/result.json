@@ -1,0 +1,88 @@
+{
+  "status": "EXPERIMENTAL_ACCOUNT_BOUND_WITHDRAWAL_ONLY",
+  "localTransactions": 61,
+  "admissionRejections": [
+    "no allowance",
+    "insufficient allowance",
+    "duplicate nonce",
+    "false after token mutation",
+    "unauthorized caller",
+    "insufficient payer balance"
+  ],
+  "claimRejections": [
+    "unfunded nonce",
+    "payer cannot claim",
+    "wrong leaf weight",
+    "changed recipient proof",
+    "changed payer proof",
+    "short proof",
+    "duplicate positive claim",
+    "duplicate zero claim"
+  ],
+  "withdrawalRejections": [
+    "former owner",
+    "new owner stale epoch",
+    "excess withdrawal",
+    "zero amount",
+    "other account",
+    "unknown account",
+    "nonowner transfer",
+    "zero new owner",
+    "token mode 1",
+    "token mode 2",
+    "token mode 3",
+    "token mode 4",
+    "spent credit",
+    "ABA old epoch"
+  ],
+  "callbackChecks": [
+    "admit",
+    "claim",
+    "transferAccount",
+    "withdraw"
+  ],
+  "final": {
+    "base": {
+      "payer": "9",
+      "vault": "0",
+      "allowance": "90",
+      "nonce": "2",
+      "liability": "0",
+      "nextBudget": "0"
+    },
+    "credited": "0",
+    "credits": [
+      "0",
+      "0",
+      "0"
+    ],
+    "budgets": [
+      "0",
+      "0"
+    ],
+    "markers": [
+      false,
+      true,
+      true,
+      true,
+      false,
+      true,
+      true,
+      true
+    ],
+    "owners": [
+      "0x6813Eb9362372EEF6200f3b1dbC3f819671cBA69",
+      "0x6813Eb9362372EEF6200f3b1dbC3f819671cBA69",
+      "0x6813Eb9362372EEF6200f3b1dbC3f819671cBA69"
+    ],
+    "epochs": [
+      "2",
+      "0",
+      "0"
+    ],
+    "other": "91",
+    "unallocated": "0",
+    "callbackCount": "4"
+  },
+  "limits": "Fixed constructor owners and snapshot; no NFT registry, adopted C007 policy, real CAW proof, independent execution or production readiness."
+}

@@ -1,0 +1,262 @@
+{
+  "schema": "caw-contiguous-context-replay/1",
+  "captureSha256": "23b89c222cc47046db26fe3d770f7291c2af6aa857bd80f1c2053ae5617ef65e",
+  "rows": [
+    {
+      "index": 0,
+      "blockHash": "0xa67d9b555aebdc6d71e64237b6ec44eab35ec188c4d0db721194273b9e759dda",
+      "capturedStateRoot": "0xf1f0072ba8927698aea89d317d2cc91f28e8570e9ed9464c0c08f27c33b7ecc0",
+      "gethStateRoot": "0xf1f0072ba8927698aea89d317d2cc91f28e8570e9ed9464c0c08f27c33b7ecc0",
+      "stateRootMatches": true,
+      "receiptRootMatches": true,
+      "transactionRootMatches": true
+    },
+    {
+      "index": 1,
+      "blockHash": "0xb0e410b90d78883fbdba0021da3e039750730fe1cfa53f778eba5f6884e34602",
+      "capturedStateRoot": "0xa8935dc12cce99a8ae28cea6b031f8c9b83b7ebc137e7d0a9793c84f847e9d15",
+      "gethStateRoot": "0xa8935dc12cce99a8ae28cea6b031f8c9b83b7ebc137e7d0a9793c84f847e9d15",
+      "stateRootMatches": true,
+      "receiptRootMatches": true,
+      "transactionRootMatches": true
+    },
+    {
+      "index": 2,
+      "blockHash": "0xfb4b53ce47c246b2875c48b7df00ba642eda6a48ff22ecbb4c3d7abbf11afe46",
+      "capturedStateRoot": "0xb7e651b7daafc0e8e4eb16a7a38c2b54935d54fc956bc8e3bcb34d02c13b043c",
+      "gethStateRoot": "0xb7e651b7daafc0e8e4eb16a7a38c2b54935d54fc956bc8e3bcb34d02c13b043c",
+      "stateRootMatches": true,
+      "receiptRootMatches": true,
+      "transactionRootMatches": true
+    },
+    {
+      "index": 3,
+      "blockHash": "0x9ca27af9f73ff173ba9e509d88f632c12d102c532c10c1ae74a2d422a9cace57",
+      "capturedStateRoot": "0xab5c916ace9650af3d32f0bd83003ecf94c042abb5666c92cd483eed93982189",
+      "gethStateRoot": "0xab5c916ace9650af3d32f0bd83003ecf94c042abb5666c92cd483eed93982189",
+      "stateRootMatches": true,
+      "receiptRootMatches": true,
+      "transactionRootMatches": true
+    },
+    {
+      "index": 4,
+      "blockHash": "0xc716b7958bc11a35fc300a6c2b584c6d7788b4bf0440d0473a99500e5de443e6",
+      "capturedStateRoot": "0xd8a41469fb4e855135a1be66ee98565bf4feee28c0b4d84c85bf1395f37d0721",
+      "gethStateRoot": "0x3a553b8627e939042c11041d338766d0303dd0ca20ebf86115d2ba2a553f27d8",
+      "stateRootMatches": false,
+      "receiptRootMatches": true,
+      "transactionRootMatches": true
+    },
+    {
+      "index": 5,
+      "blockHash": "0xacf34b892bf336088f106860805918fa8ea0e435598d0f7775fb5df134b68eea",
+      "capturedStateRoot": "0x982a3860f9d635e0d9b6f95b1b452a8afae163159b3b5dd7149674ff941ec93d",
+      "gethStateRoot": "0xbd9fd649a866d406ab2972b22deea63b78ed17acbdb0a937814564b1469bcc26",
+      "stateRootMatches": false,
+      "receiptRootMatches": true,
+      "transactionRootMatches": true
+    },
+    {
+      "index": 6,
+      "blockHash": "0xc9b9a32c0cdd83537dd5aed3f860014b6d52df6d82521d92fb1e8a2d0a41b832",
+      "capturedStateRoot": "0xda9ae2158a05939d2ba1f3f9e67cdd51447cc9dcbdfa938aa55b1d257037851a",
+      "gethStateRoot": "0x465d8688c80f984c5ed349eb6c8c002f442e359fbe12ca37cbfcea30d222894e",
+      "stateRootMatches": false,
+      "receiptRootMatches": true,
+      "transactionRootMatches": true
+    },
+    {
+      "index": 7,
+      "blockHash": "0x87cc62e40043ad858765deede93250682645efac51e6a9cb154210c0e8a51ced",
+      "capturedStateRoot": "0x9d6d650666742f024a1602f1a6dca832668b96183f2b1654c586806e88565d38",
+      "gethStateRoot": "0x9a07dfe1854c206ade1d40bfc1cf35c1183b2e7d9a88cf3e86cc2136e2187a2f",
+      "stateRootMatches": false,
+      "receiptRootMatches": true,
+      "transactionRootMatches": true
+    },
+    {
+      "index": 8,
+      "blockHash": "0x679932d92aadce313684b9f98f9532bbe91d7191257ddd6a08fa9876eb74654d",
+      "capturedStateRoot": "0xd2039f972cb07158c0bd39d076951ea9402c4bfe98ac023639267f33581d7e17",
+      "gethStateRoot": "0x67323dfff1a197454c84402fedad759c12736c123038d2a67a9e1b0fefcf093f",
+      "stateRootMatches": false,
+      "receiptRootMatches": true,
+      "transactionRootMatches": true
+    },
+    {
+      "index": 9,
+      "blockHash": "0x6bfb0018f0d4281211418f0780c1eb7ca42b8556255e5932402c696d454ce7b9",
+      "capturedStateRoot": "0x72bb0eb4849ac180acbb1276451e530d54792067088713bf21c11bf02c7c66d1",
+      "gethStateRoot": "0x726b831c8bc903800e1f47c55d6a396909ffc9cdec512393e0a9fda30c6b30fd",
+      "stateRootMatches": false,
+      "receiptRootMatches": true,
+      "transactionRootMatches": true
+    },
+    {
+      "index": 10,
+      "blockHash": "0x521ff902d359c06dc98f05fa346f6e5072f7ba717ed8f4be8a9dcd1a3b1981cf",
+      "capturedStateRoot": "0x66479a354c8fc11e3b74a788f58a2891725b935fb237a420a607f642808dd023",
+      "gethStateRoot": "0xa3e56230302731d392f7bc7214f4c28a0b58b125b5d4d7e586e226adca3728f3",
+      "stateRootMatches": false,
+      "receiptRootMatches": true,
+      "transactionRootMatches": true
+    },
+    {
+      "index": 11,
+      "blockHash": "0xbe88ffe3412704f45ae9e7b37b707f47c43f9c3de9de4feb5cfc907a7c11ea8f",
+      "capturedStateRoot": "0xd1a71fa257946e6979d7c897275ca27fe4e685befb10beb8a2972c0e0ebcc67e",
+      "gethStateRoot": "0xaa459848d1290875c75a8c386786af5352446881eb6e37ab27198e4d00691342",
+      "stateRootMatches": false,
+      "receiptRootMatches": true,
+      "transactionRootMatches": true
+    },
+    {
+      "index": 12,
+      "blockHash": "0xb608d5594fdc75fd2c450c3ffb38b863059b3574a132cbde2e2d20ab074fe184",
+      "capturedStateRoot": "0x46bef674eef93f1a008bad49a90bedff9e15e635f3e47d862cdce502a5c5c95b",
+      "gethStateRoot": "0xd8b46ff416a5d7d8d522cf0f1933627cac312589920834f632247ca67396ad59",
+      "stateRootMatches": false,
+      "receiptRootMatches": true,
+      "transactionRootMatches": true
+    },
+    {
+      "index": 13,
+      "blockHash": "0x65e2659430002ba8d9c27e595ebc375ec167a9bef2d3fdfe07b26064cc1e9a04",
+      "capturedStateRoot": "0x9a26aa65abe0fa6b6fc183af09cea31edf895cfd9acaa3c0722e435c538d42ee",
+      "gethStateRoot": "0x761ad7e6bdb57db02047219eac7c8238b5592df79c097fe60caf6366ee17fc2b",
+      "stateRootMatches": false,
+      "receiptRootMatches": true,
+      "transactionRootMatches": true
+    },
+    {
+      "index": 14,
+      "blockHash": "0x3009fa58072b4122c166e2f6699f431e0688b35564e71f5e2e99bb273c6bd18a",
+      "capturedStateRoot": "0x32f4d7ecab0c84056288974607576ee5f8b589fcd0140130c11951f0158250c2",
+      "gethStateRoot": "0xe4b32504a40a71b90f9afaef34ccb1670a29bf9b934d05c4e6b765b7dbd6a652",
+      "stateRootMatches": false,
+      "receiptRootMatches": true,
+      "transactionRootMatches": true
+    },
+    {
+      "index": 15,
+      "blockHash": "0x9da5698d44f93e14f246ddf885bf38905aa33a57a29f46f49251f327848204d7",
+      "capturedStateRoot": "0xa7a9ec460fdc58ce0b0ed8e7827395f5b28eaa16800dacfc3df12b9d3e4f60a7",
+      "gethStateRoot": "0x6bc63bdeb4d75ab3f20ae7b1dc1bfa8fac9c8ce4d50c0f49f64e5f0d3c633945",
+      "stateRootMatches": false,
+      "receiptRootMatches": true,
+      "transactionRootMatches": true
+    },
+    {
+      "index": 16,
+      "blockHash": "0x90f229cbb2ea6c4388ba72b6bdc541c581f69543da6a79c4e1bb3049e5f47302",
+      "capturedStateRoot": "0x3f5bc9db9ca9b326de544f50881c167ee5a693584b0d4d007ced7371af0a7687",
+      "gethStateRoot": "0xd4e03a017514d557816fb9fa20e1aa6d35d117da71615f3145218f259f17db1e",
+      "stateRootMatches": false,
+      "receiptRootMatches": true,
+      "transactionRootMatches": true
+    },
+    {
+      "index": 17,
+      "blockHash": "0x375f38aa4f709cd8201c6d806fe211bbaae8669a0b9c4d47c75b1926baf411f6",
+      "capturedStateRoot": "0xf0fdb98c7849ce9eb5c5579fa88b78cfd8bd89cf6b79fce52020761ba9a45f5b",
+      "gethStateRoot": "0xc75cb92da23f680f17dadfa35b12c05d5832a53c1e0e1418673492a8d53406f1",
+      "stateRootMatches": false,
+      "receiptRootMatches": true,
+      "transactionRootMatches": true
+    },
+    {
+      "index": 18,
+      "blockHash": "0x731a1dceeacddcfae46c120a3c4b5dc212ef3b4302b7bd2a1f805ca61eaacee6",
+      "capturedStateRoot": "0x82b2f0659773156054258813884c14ca90f71ad225a4d44faf124a1bd54c1bbe",
+      "gethStateRoot": "0xf9ade22d408cbe70a9c5bc358aa3dc9683ccd7e5df40ca9b9d4ebf87e070f606",
+      "stateRootMatches": false,
+      "receiptRootMatches": true,
+      "transactionRootMatches": true
+    },
+    {
+      "index": 19,
+      "blockHash": "0xb023d9b38b57bd4f216f69b3ee7d6f0647c33041eae8b463e2ef5d289f5edd71",
+      "capturedStateRoot": "0x33e8501b8080be82d8dbaaea81d77831d88c4577639808d43fa51411072d38f3",
+      "gethStateRoot": "0xb96c12210663686828e7a8bbe5cc05b390fbbeb36207094c0e6c68b3a76e2be5",
+      "stateRootMatches": false,
+      "receiptRootMatches": true,
+      "transactionRootMatches": true
+    },
+    {
+      "index": 20,
+      "blockHash": "0x7051ea2ccc5446fcd27d6b40a122d7967adaec18c782e311ee58ee640ce45730",
+      "capturedStateRoot": "0x24c0dfdbfa2fb02415b09cbc052bc8c8604c691b3ca7a687d414a30491f3d34a",
+      "gethStateRoot": "0x2b9e9ff9c4d3d164574c0c10e3205f86bc21b45cd41a5354e3a867dfe708dd1b",
+      "stateRootMatches": false,
+      "receiptRootMatches": true,
+      "transactionRootMatches": true
+    },
+    {
+      "index": 21,
+      "blockHash": "0xd6769edcb79afe98348f429a02ec93cf2803215e1a9de15e45b4673a2787efbc",
+      "capturedStateRoot": "0x42854ca05fb9759884017c26c7c279683487161ad1610e643cc6a989e72b5357",
+      "gethStateRoot": "0x868cef13f3d0b6e0f7351846bd7dbfa683830326c5cd4331210647a22976f9b5",
+      "stateRootMatches": false,
+      "receiptRootMatches": true,
+      "transactionRootMatches": true
+    },
+    {
+      "index": 22,
+      "blockHash": "0x96cc6e9ad6dd77db35742555e3d46ff2bc6d8bb57f0d03d93f846ff79260059f",
+      "capturedStateRoot": "0x5e692d3d45d57c8a1cd4f45c192835f6e6a36c1a8f0bca90213769b5175d542f",
+      "gethStateRoot": "0xf04e1f0ec624c793ebb5b3966f474ace05571bc3dbbac2630dca84c1de43f855",
+      "stateRootMatches": false,
+      "receiptRootMatches": true,
+      "transactionRootMatches": true
+    },
+    {
+      "index": 23,
+      "blockHash": "0x743f433319239d6d6f68ab83cddc3e53d3dd79c2cf7f6d83362a4a5ca474db73",
+      "capturedStateRoot": "0xa9bfc64db3726c8657949086b5569baa67c8ca0dcfd95c92394794031f9c5ac8",
+      "gethStateRoot": "0x71429376312ff4fa9ac68cb01a742491679a21bd89709bec3671d57913647939",
+      "stateRootMatches": false,
+      "receiptRootMatches": true,
+      "transactionRootMatches": true
+    },
+    {
+      "index": 24,
+      "blockHash": "0x7acc5bd62a767a56fda08022620d1d349587ef3a1044d513186970ff4d92d5a4",
+      "capturedStateRoot": "0x5fc3c92da37abfd55c8414269475f25464554f13c9741e8258f4025a6129b013",
+      "gethStateRoot": "0xd6c1e0bdacc6907a24c3f30df5987028a73fdf75a916546092302c2ede32c978",
+      "stateRootMatches": false,
+      "receiptRootMatches": true,
+      "transactionRootMatches": true
+    },
+    {
+      "index": 25,
+      "blockHash": "0x9c6b58c918828723f32c28434cd3846016d4ec88ada2970fa91a5f42131aa2f5",
+      "capturedStateRoot": "0xabed50e913c5c423fd032fc06360eea4f31608d247d12a8bfb6e117174f42726",
+      "gethStateRoot": "0xbeece55adba4317a5e902b9d7490b77570f465b7deefba1d32b46ae5f9b641e5",
+      "stateRootMatches": false,
+      "receiptRootMatches": true,
+      "transactionRootMatches": true
+    },
+    {
+      "index": 26,
+      "blockHash": "0x8f54460925d900c6f0b1719f12389093fd6a26279ed6837031a752959227b9ba",
+      "capturedStateRoot": "0x2f7e57e3a27a7fdaa0ecce15af7473a620d8cf2e6dc34184f55977b9fa5c5654",
+      "gethStateRoot": "0xd8f0170b737319d3ff2144275d7bc3b3b3201e3151022a75cb0d7de04ee3b7ef",
+      "stateRootMatches": false,
+      "receiptRootMatches": true,
+      "transactionRootMatches": true
+    },
+    {
+      "index": 27,
+      "blockHash": "0xee774a519a1190ddbeb6ef34e359ad651838a8864343f522be7877e5b59b5ad7",
+      "capturedStateRoot": "0x3f7ed246ee8840424f33f6db73c17e6d3fba93af26f91e13c23afb4da637793b",
+      "gethStateRoot": "0x87510643272dc550d8fab031a3291505960b30f1fecdddd5a611d161efdb873f",
+      "stateRootMatches": false,
+      "receiptRootMatches": true,
+      "transactionRootMatches": true
+    }
+  ],
+  "matchingStateRoots": 4,
+  "firstMismatch": 4,
+  "chainAuthenticated": false,
+  "limits": "Geth sequential execution with captured environment, locally selected genesis. No consensus verification; root mismatches are retained, not repaired."
+}

@@ -1,0 +1,28 @@
+{
+  "schema": "caw-verified-local-history/1",
+  "selected": {
+    "startHash": "0xf83be9c728535dd6c8d4afa3ab69d60e1eb58e2d0d71451121068a0adca883a2",
+    "endHash": "0x58b07e211c529b231e621e101077d1656ef86aec8f0b58a1e57d70e795fb70d5",
+    "chainId": "0x7a69"
+  },
+  "blocks": 27,
+  "transactions": 27,
+  "negatives": [
+    "missing_middle_block",
+    "missing_tail",
+    "reordered_blocks",
+    "altered_raw_transaction",
+    "missing_transaction",
+    "changed_receipt_status",
+    "missing_receipt",
+    "wrong_chain",
+    "altered_event_bytes"
+  ],
+  "headerChainVerified": true,
+  "bodyAndReceiptCommitmentsVerified": true,
+  "senderRecoveryVerified": true,
+  "endpointAuthenticated": false,
+  "executionReplayed": false,
+  "consensusVerified": false,
+  "finalityVerified": false
+}

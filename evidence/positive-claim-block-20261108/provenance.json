@@ -1,0 +1,31 @@
+{
+  "parent": "dac7ff7500334938cccff95333d72d5252aa3598",
+  "sourceCaptureSha256": "689f880143cdc55f3016dcad42b70bb188af35ad296305e4ee42a9f058a76742",
+  "transform": "new synthetic header/receipts around retained disposable-test signed bytes; no execution claimed",
+  "files": {
+    "integration/core-baseline-v1/make-positive-claim-block.py": {
+      "sha256": "23a5aefc46eb561338a9f6c2131032e7ce74117731e0275a68827d63423c6d52",
+      "size": 2062
+    },
+    "integration/core-baseline-v1/test-c007-positive-block.mjs": {
+      "sha256": "679600cab5ff54e4c642f5b36f525fa730cf28205475232f00176a50accddd14",
+      "size": 2464
+    },
+    "docs/C007_POSITIVE_EVENT_PROJECTION.md": {
+      "sha256": "5fea80603a18b95ad33c774037a6730063573897887cffbceaf2e03bc8481ec5",
+      "size": 3623
+    },
+    "evidence/positive-claim-block-20261108/result.json": {
+      "sha256": "8660095a8126d939df92a42f8d4bb66a4746a1ca4ef738cdd01f5e0337ec2c8e",
+      "size": 739
+    },
+    "evidence/positive-claim-block-20261108/synthetic-not-executed.json": {
+      "sha256": "b4f465819b727ce5257749ca710e0cf8a259f2cbc254b1ede9316d08696a7ed4",
+      "size": 7009
+    },
+    "docs/C007_BLOCK_EVENT_COMPOSITION.md": {
+      "sha256": "89090ac51a2a095d3d7f5670da15570c3e06b88b49b25bfc77cbb3251696a641",
+      "size": 4093
+    }
+  }
+}

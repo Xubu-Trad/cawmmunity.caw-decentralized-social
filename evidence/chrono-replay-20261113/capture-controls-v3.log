@@ -1,0 +1,37 @@
+{
+  "result": {
+    "status": "INCOMPLETE",
+    "headers": 22,
+    "strictlyVerifiedTransactions": 19,
+    "matchedSignedInputs": 21,
+    "matchedStateRoots": 21,
+    "registryFields": 16,
+    "blocked": [
+      {
+        "block": 8,
+        "code": "BLOCK_TRANSACTIONS_TRANSACTION_ENCODED_LIMIT",
+        "encodedBytes": 33230
+      },
+      {
+        "block": 9,
+        "code": "BLOCK_TRANSACTIONS_TRANSACTION_ENCODED_LIMIT",
+        "encodedBytes": 33231
+      }
+    ],
+    "endpoint": "0x9614c671426e14f020a9f8e705c4d7f361c0df64b00817c86f46b424c406e4ae",
+    "allRecordedCommitmentsVerified": false,
+    "executionReplayed": false,
+    "publicChainAuthenticated": false
+  },
+  "negativeControls": [
+    "omitted block",
+    "reordered blocks",
+    "altered signed input",
+    "receipt status change",
+    "state-root change",
+    "different proof endpoint",
+    "missing proof field",
+    "changed expected storage"
+  ],
+  "passed": 8
+}

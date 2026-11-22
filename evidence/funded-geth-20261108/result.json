@@ -1,0 +1,16 @@
+{
+  "status": "FROZEN_FUNDED_GETH_COMPARISON_PASS",
+  "operations": 15,
+  "controls": [
+    "stateRoot",
+    "gasUsed",
+    "status",
+    "logs",
+    "signed_bytes",
+    "wrong_chain",
+    "spent_nonce"
+  ],
+  "finalStateRoot": "0x8718a3405f47d872a336d0b8a2a8be0140cc9df89607f5949e8e7ba08be59a96",
+  "fixtureSha256": "05e02e0c375e68b6b6e92c5fdf29b462d3323d8d2762e047c3af7a9585f53334",
+  "limits": "Comparison against retained EthereumJS states under repeated synthetic contexts; not consensus, independent audit or production acceptance."
+}

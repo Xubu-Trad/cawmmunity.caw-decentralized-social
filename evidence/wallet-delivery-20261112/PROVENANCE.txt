@@ -1,0 +1,5 @@
+PARENTS=[9c097844b67859b17b14d4158d6cf557edfb51e1] TRANSFORM="approved delivery test publication" SHA256=0162c6bb81991fe7879f2faa4839dc910594e75478535f35e3f40c01544c1b4a SIZE=1523 PATH=integration/core-baseline-v1/wallet-recovery-store.mjs
+PARENTS=[9c097844b67859b17b14d4158d6cf557edfb51e1] TRANSFORM="approved delivery test publication" SHA256=f1e957fdd12393c34a17330c432639688361ba0054df1f4b94b7f44d54e6fa0a SIZE=2578 PATH=integration/core-baseline-v1/test-wallet-recovery-store.mjs
+PARENTS=[9c097844b67859b17b14d4158d6cf557edfb51e1] TRANSFORM="approved delivery test publication" SHA256=c9cda6fbe34301b3154751e57e731422155a8ce57015afd23315c3bb9fbc0088 SIZE=456 PATH=evidence/wallet-delivery-20261112/result.json
+PARENTS=[9c097844b67859b17b14d4158d6cf557edfb51e1] TRANSFORM="approved delivery test publication" SHA256=c6b77af7538eae6c76bf5bd3e43ef112864a7265ab240136ea3bea2bf4274016 SIZE=346 PATH=evidence/wallet-delivery-20261112/reviewer-rerun.json
+PARENTS=[9c097844b67859b17b14d4158d6cf557edfb51e1] TRANSFORM="approved delivery test publication" SHA256=133e7c35597fd79b5357c83c5adc99c43f31dc10c467a7b211748cd52cb0a3af SIZE=1524 PATH=docs/WALLET_DELIVERY_PERSISTENCE.md

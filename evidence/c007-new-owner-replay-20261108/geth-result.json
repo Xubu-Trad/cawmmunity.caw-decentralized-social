@@ -1,0 +1,30 @@
+{
+  "schema": "caw-geth-transition-comparison/1",
+  "blocks": 38,
+  "successes": 27,
+  "reverts": 11,
+  "finalStateRoot": "0xe3b8d6dcdea415fa491181888bcdf2774fe22345eae8bcba6f0b9a4e11a31399",
+  "allIntermediateStateRootsMatched": true,
+  "allTransactionAndReceiptRootsMatched": true,
+  "nativeAccountsMatched": 4,
+  "controls": [
+    "comparison_stateRoot",
+    "comparison_transactionsRoot",
+    "comparison_receiptsRoot",
+    "comparison_gasUsed",
+    "wrong_chain",
+    "spent_nonce"
+  ],
+  "engine": "Geth evm 1.17.10-stable-1df30b18",
+  "comparisonEngine": "EthereumJS 10.1.3",
+  "scope": "Shanghai state transitions under supplied synthetic block contexts; not Geth header or consensus validation",
+  "originalAnvilChainRepaired": false,
+  "binarySignatureVerifiedByThisRunner": false,
+  "inputSelection": "frozen fixture digests; not chain authentication",
+  "inputDigests": {
+    "acquired-history.json": "689f880143cdc55f3016dcad42b70bb188af35ad296305e4ee42a9f058a76742",
+    "genesis.json": "7a113bfbcce39f22659ab8021ed687553b51924930206c1f7e15dd5bdd7a2a11",
+    "transaction-result.json": "a0b59b6399a008cc11bf18453167c5b070b04c7e7fcaf72ee7bfd21a4fc2c3d8",
+    "blocks.json": "fd2acf1647da1f6c7338269b4e70cbfe349ff523bd4b2cf2a1c03bf3c2ad2e53"
+  }
+}

@@ -1,0 +1,11 @@
+# Refreshed recovery reproduction package
+
+The experiment inputs are frozen at `e250e4061dd822c1a3dc9bf7627343753ebc7ba3`; the matching manifest, preflight and runner are acquired from `dbf8c39b798b1a37fa886b7b492d3e90d43c4fce`. The canonical manifest fingerprint is `68129c10f2d6da410c07e1cfb61584fea5ba1a68ce232c2cd0c6458374d273f4`. The acquisition tool verifies 20 exact files; the preflight verifies 17 experiment files. Previous commits and failed evidence lanes remain available.
+
+The Python entrypoint audit found assertion-dependent checks in both recovery drivers and an embedded tracing probe. Optimized Python can suppress required checks and even calls inside assertions. All seven packaged Python entrypoints now reject `-O`, `-OO` and `PYTHONOPTIMIZE` before setup; 21 early-rejection checks passed. This is an explicit unsupported-runtime policy, not a claim that every script is optimization-compatible. The wrapper's six acceptance checks additionally use explicit failures.
+
+The refreshed 20-file public acquisition and 17-file verification succeeded. Seven acquisition controls and seven mocked runner controls passed using these refreshed inputs. This is setup verification, not a new Geth/Reth run or independent operator result. The earlier real same-host recovery remains historical evidence for its original pins.
+
+Download and review `integration/peer-sync/acquire-persistence-inputs.py` at this document's commit. Run it with `--output NEW_SOURCE_DIRECTORY`. Then run the acquired `integration/peer-sync/reproduce-traced-persistence.py` with `--source NEW_SOURCE_DIRECTORY --manifest NEW_SOURCE_DIRECTORY/evidence/traced-inputs-20261112/inputs.json --geth TRUSTED_GETH --reth-command TRUSTED_RETH_COMMAND_JSON --output NEW_RUN_DIRECTORY`. Use ordinary Python 3.10+, with PYTHONOPTIMIZE unset, and authorized tracing support. The runtime/client provenance and resource requirements still apply. Never reuse an evidence directory or bypass failed proof checks.
+
+Independent operator recovery, public-chain authentication, finality and production readiness remain unproven. PR16's receipt-error correction is still pending at `aba275b8239289ed63de331961207c6a13f47f41`. Other builds are paused.

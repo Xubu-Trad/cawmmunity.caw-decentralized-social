@@ -107,7 +107,7 @@ function freeze(value) {
 function checkSelection(selection) {
   fields(selection, ['schema', 'profile', 'hash', 'chainId', 'allowUnprotectedLegacy']);
   need(selection.schema === 'caw-block-senders-selection/1', 'SCHEMA');
-  need(selection.profile === 'london-16', 'PROFILE');
+  need((selection.profile === 'london-16' || selection.profile === 'shanghai-17'), 'PROFILE');
   need(typeof selection.hash === 'string' && /^0x[0-9a-f]{64}$/.test(selection.hash), 'HASH');
   need(typeof selection.chainId === 'string' && selection.chainId.length <= 66
     && /^0x(?:0|[1-9a-f][0-9a-f]*)$/.test(selection.chainId), 'CHAIN_ID');

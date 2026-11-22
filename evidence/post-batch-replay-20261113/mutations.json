@@ -1,0 +1,42 @@
+[
+  {
+    "name": "missing raw",
+    "code": "BLOCK_TRANSACTIONS_ROOT_MISMATCH",
+    "message": "Block transactions rejected: ROOT_MISMATCH."
+  },
+  {
+    "name": "reordered raw",
+    "code": "BLOCK_TRANSACTIONS_ROOT_MISMATCH",
+    "message": "Block transactions rejected: ROOT_MISMATCH."
+  },
+  {
+    "name": "missing receipt",
+    "code": "BLOCK_RECEIPTS_BLOCK_GAS",
+    "message": "Block receipts rejected: BLOCK_GAS."
+  },
+  {
+    "name": "reordered receipt",
+    "code": "BLOCK_RECEIPTS_INDEX",
+    "message": "Block receipts rejected: INDEX."
+  },
+  {
+    "name": "modified receipt status",
+    "code": "BLOCK_RECEIPTS_ROOT_MISMATCH",
+    "message": "Block receipts rejected: ROOT_MISMATCH."
+  },
+  {
+    "name": "modified event epoch",
+    "code": "BLOCK_RECEIPTS_BLOOM",
+    "message": "Block receipts rejected: BLOOM."
+  },
+  {
+    "name": "corrupt parent registry account proof",
+    "code": "ETH_PROOF_NODE",
+    "message": "Ethereum state proof rejected: NODE."
+  },
+  {
+    "name": "corrupt final nonce proof",
+    "code": "ETH_PROOF_CLAIM",
+    "message": "Ethereum state proof rejected: CLAIM."
+  }
+]

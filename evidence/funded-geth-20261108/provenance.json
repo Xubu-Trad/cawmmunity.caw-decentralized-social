@@ -1,0 +1,34 @@
+{
+  "parent": "1e5cfe49bb95a420d80bbbd6922603cfd9411557",
+  "transform": "retain exact synthetic signed operations with EthereumJS roots; replay in pinned Geth",
+  "files": {
+    "integration/core-baseline-v1/replay-funded-geth.py": {
+      "sha256": "19f9d1279cacc3840f1b84f7dc16fdc2c865551747404442d78ce8fb77913e58",
+      "size": 5070
+    },
+    "integration/core-baseline-v1/test-funded-admission-roots.mjs": {
+      "sha256": "c53575d27cccb64fc28407fb007849e262b2143a4facd0c9b076fe9c3d58ed9a",
+      "size": 7158
+    },
+    "docs/C007_FUNDED_GETH_COMPARISON.md": {
+      "sha256": "df1fabff57e2a1eaa6454e5e24370fe154316af08bd974df7f45418e7fd8584f",
+      "size": 3650
+    },
+    "evidence/funded-geth-20261108/fixture.json": {
+      "sha256": "05e02e0c375e68b6b6e92c5fdf29b462d3323d8d2762e047c3af7a9585f53334",
+      "size": 19681
+    },
+    "evidence/funded-geth-20261108/result.json": {
+      "sha256": "51ce22591fdd88f6ed60fc0bdb5afbc02e100617d5c29e52c04f57f96458a073",
+      "size": 541
+    },
+    "evidence/funded-geth-20261108/selection-controls.json": {
+      "sha256": "82eff899da532e3c3043e385ce2a6e25fa0981ec7bd98045dac29d38c886fee1",
+      "size": 90
+    },
+    "docs/C007_FUNDED_ADMISSION_RECONSTRUCTION.md": {
+      "sha256": "b46908210f45558cc88df2abddae3b462f0da1ed744310e1a707803edd87eea6",
+      "size": 4208
+    }
+  }
+}

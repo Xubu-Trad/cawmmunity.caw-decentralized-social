@@ -1,0 +1,14 @@
+{
+  "cases": [
+    "frozen_inputs_accepted",
+    "changed_acquired-history.json_rejected",
+    "changed_genesis.json_rejected",
+    "changed_transaction-result.json_rejected",
+    "changed_blocks.json_rejected",
+    "truncated_rejected",
+    "oversize_rejected",
+    "optimized_mode_rejected_before_argument_processing"
+  ],
+  "passed": 8,
+  "fixtureAuthentication": false
+}

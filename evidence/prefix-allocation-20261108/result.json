@@ -1,0 +1,39 @@
+{
+  "status": "RESEARCH_NOT_ADOPTED",
+  "tree_depth": 256,
+  "snapshot_roots": [
+    "698937a9a1dfb22086974b851e90872e5da05a791e97a5f05f15fa9a18ce80d2",
+    "7ac4d0a51deb156f6e083f544337e36ed9e108f2a6de8b346c96ac59d0c6d13c",
+    "0f5e11bf81f3194117947ff42a55e62d745086258bd50797e7cecf23322e0b40"
+  ],
+  "allocation_cases": 210,
+  "rejected_proof_variants": [
+    "sibling sum",
+    "sibling hash",
+    "short proof",
+    "payer proof from different snapshot",
+    "wrong account",
+    "wrong weight",
+    "wrong total"
+  ],
+  "order_counterexample": {
+    "A_first": 1,
+    "A_last": 2,
+    "fee": 5,
+    "A_weight": 1,
+    "B_weight": 2
+  },
+  "account_position_counterexample": {
+    "fee": 1,
+    "three_equal_weight_accounts": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 1
+    },
+    "A_accounts_1_and_2": 0,
+    "A_accounts_1_and_3": 1
+  },
+  "max_uint256_fee_conserved": true,
+  "limits": "Frozen tree hash/namespace encoding reused in Python; no deployed proof verifier, custody debit, claim nullifier, NFT entitlement or gas certification."
+}

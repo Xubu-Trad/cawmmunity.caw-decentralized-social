@@ -1,0 +1,29 @@
+{
+  "status": "RESEARCH_NOT_ADOPTED",
+  "full_journal_sha256": "65f819388283c51573336bf5ca983a5dc4e2b4f9eb8a679f4b4f7b82adf161ae",
+  "replacement_sha256": "59895b1adeff51ebc41e1bd732212020fdf4e14b0a0cfde310955acf161b029a",
+  "full_credits": {
+    "2": 1,
+    "3": 11
+  },
+  "replacement_credits": {
+    "3": 4
+  },
+  "reapplied_credits": {
+    "3": 4,
+    "2": 1
+  },
+  "rejected": [
+    "stale prepared branch",
+    "stale selection token",
+    "history changed under selected digest",
+    "orphan claim without admission",
+    "duplicate claim",
+    "claim before admission",
+    "duplicate admission",
+    "malformed new selection"
+  ],
+  "fresh_replay_matches_reselection": true,
+  "returned_view_is_detached": true,
+  "limits": "Synthetic journal selection, no Ethereum event ABI, receipt/header/body validation, canonicality, real token escrow or production rollback."
+}

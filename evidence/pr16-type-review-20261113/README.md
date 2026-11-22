@@ -1,0 +1,7 @@
+# PR16 receipt-response type ordering follow-up
+
+Reviewed head310d6a4e86b6f2f91f8d60fd0accfa4f30368f9d. [ahdmesh R-05](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/16#issuecomment-6853609997) reports four unhandled AttributeError outcomes for truthy string/array receipt responses, in either retained or independent trace. We independently reproduced all four using the exact pinned comparator. Each exits1 without structured comparison JSON; none is a false acceptance.
+
+The proposed patch validates parsed receipt envelopes before any helper accesses their fields. Four controls then exit1 with a structured FAIL and the explicit invalid receipt response envelope diagnostic. All22 submitted regression cases still pass. This is an offered patch, not an update to WD-27's branch or PR-wide approval. Raw/parsed response byte consistency remains outside this correction; no EVM or Node checker rerun was performed.
+
+To reproduce, obtain the existing PR16 evidence directory at the exact head. Copy compare_traces.py to compare_traces_original.py, apply pr16-type-guard.patch to compare_traces.py, and invoke `python3 test-receipt-types.py /absolute/path/to/evidence /absolute/path/to/new-output`. The script preserves malformed copies separately, tests original crashes versus proposed controlled rejections, and runs the submitted22cases. Output must not exist. Original retained evidence is never edited.

@@ -1,0 +1,26 @@
+{
+  "parent": "376012c5adbe57ea199a82a8fde3f884a7163e31",
+  "transform": "candidate ABI encoding compared with manual fixed-word decoding",
+  "files": {
+    "integration/core-baseline-v1/c007-claim-event-codec.mjs": {
+      "sha256": "ca1aabdef8f25ba530db9b768014f26a8710bc63c13694f797925aac43d0f093",
+      "size": 2311
+    },
+    "integration/core-baseline-v1/test-c007-claim-event-codec.mjs": {
+      "sha256": "fcb0edd59c928ab11d84697b9d8ed6fe7d6e6cd27d77f1e0be3c8db185833151",
+      "size": 2669
+    },
+    "docs/C007_CLAIM_EVENT_SCHEMA.md": {
+      "sha256": "04c50ff723cba43c31a3682ba724d93418dd635d848f69734d5efebd9307f36b",
+      "size": 4482
+    },
+    "evidence/claim-event-codec-20261108/result.json": {
+      "sha256": "4d21337314e83bacc897762becd409451d3f2896fc77ac25852cd1f5c285fb38",
+      "size": 689
+    },
+    "docs/C007_CLAIM_RECONSTRUCTION_RESEARCH.md": {
+      "sha256": "6b36faad500327ef0a8773a4b96f40dbeb90838f41ff69aaee2fad738665b1b9",
+      "size": 4301
+    }
+  }
+}

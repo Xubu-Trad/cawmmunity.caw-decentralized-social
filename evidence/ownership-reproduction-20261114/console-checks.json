@@ -1,0 +1,16 @@
+{
+  "passed": 10,
+  "checks": [
+    "HTTP200",
+    "verified status",
+    "fresh header match",
+    "ownership path",
+    "one post and one transfer",
+    "new owner",
+    "new epoch",
+    "nonce and signed transaction",
+    "local-only label",
+    "repeat identical"
+  ],
+  "scope": "Fresh isolated local Geth via actual console HTTP; same operator, not independent reproduction."
+}

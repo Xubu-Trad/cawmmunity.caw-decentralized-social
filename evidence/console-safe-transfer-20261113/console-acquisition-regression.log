@@ -1,0 +1,21 @@
+{
+  "passed": 15,
+  "checks": [
+    "HTTP verifies transfer then new-owner post",
+    "bad-final rejects without accepted rows",
+    "bad-recipient rejects without accepted rows",
+    "missing-recipient rejects without accepted rows",
+    "receipt rejects without accepted rows",
+    "rpc-error rejects without accepted rows",
+    "reorg rejects without accepted rows",
+    "clean reacquisition after rejection",
+    "cancel recipient stops upstream and allows retry",
+    "truncated recipient rejects then retry succeeds",
+    "cancel final-registry stops upstream and allows retry",
+    "truncated final-registry rejects then retry succeeds",
+    "initial posting nonce gap rejected",
+    "existing UI renders verified new-owner post",
+    "UI clears history after failed recheck"
+  ],
+  "scope": "Actual loopback console HTTP with preserved mined evidence and injected transport failures; not fresh execution or independent operator."
+}

@@ -1,0 +1,6 @@
+{
+  "rejectedBeforeReplay": [
+    "fixture",
+    "assertions"
+  ]
+}

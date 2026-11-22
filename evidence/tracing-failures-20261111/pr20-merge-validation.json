@@ -1,0 +1,7 @@
+{
+  "head": "9238bb7eaef018fa13e9d1f35633a5a03efe82d6",
+  "mergeCandidate": "2be141b185046958f363defeb210841cd8642a57",
+  "testsPassed": 37,
+  "initialInputAcquisitionFailuresPreserved": true,
+  "scope": "24 model and 13 paid-action tests; no full suite or EVM rerun"
+}

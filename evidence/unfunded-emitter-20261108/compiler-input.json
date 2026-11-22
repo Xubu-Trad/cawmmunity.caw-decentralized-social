@@ -1,0 +1,24 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "UnfundedEmitterResearch.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity 0.8.30;\n\n// Negative-control assets only. Not CAW and not production contracts.\ncontract UnfundedTokenFixture {\n    mapping(address => uint256) public balanceOf;\n    constructor() { balanceOf[msg.sender] = 100; }\n    function transfer(address to, uint256 amount) external returns (bool) {\n        require(balanceOf[msg.sender] >= amount);\n        balanceOf[msg.sender] -= amount;\n        balanceOf[to] += amount;\n        return true;\n    }\n}\n\ncontract UnfundedEmitterResearch {\n    address public immutable token;\n    bytes32 public constant PROFILE = bytes32(uint256(0x3333333333333333333333333333333333333333333333333333333333333333));\n    event ResearchFeeAdmitted(bytes32 indexed recordId,uint256 indexed payerAccount,uint256 epoch,uint256 nonce,uint256 fee,bytes32 stakeRoot,uint256 totalStake,uint256 payerStake,bytes32 profile);\n    event ResearchFeeClaimed(bytes32 indexed recordId,uint256 indexed accountId,uint256 amount);\n    constructor(address token_) { token = token_; }\n    function emitWithoutPayment(bytes32 root) external {\n        bytes32 recordId = sha256(abi.encodePacked(\n            \"CAW_C007_CLAIM_RECORD_RESEARCH_V1\", bytes1(0),\n            uint256(block.chainid), address(this), PROFILE,\n            uint256(1), uint256(0), uint256(0), uint256(5), root, uint256(10)\n        ));\n        // Deliberately false economic statements: no token transfer or account debit.\n        emit ResearchFeeAdmitted(recordId,1,0,0,5,root,10,2,PROFILE);\n        emit ResearchFeeClaimed(recordId,3,4);\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "evmVersion": "shanghai",
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode.object",
+          "evm.deployedBytecode.object"
+        ]
+      }
+    }
+  }
+}
