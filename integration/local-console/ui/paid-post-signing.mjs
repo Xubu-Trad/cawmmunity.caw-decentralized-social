@@ -129,6 +129,9 @@ export async function signReviewedPaidPost({provider, review, recheck, verifySig
     if (verified?.digest !== original.preview.digest || verified?.signer?.toLowerCase() !== original.controller) {
       throw Error('Signature verification differs from the reviewed controller or digest.');
     }
+    // A provider can change silently during server recovery or ERC-1271 verification.
+    await checkWallet(provider,latest);
+    guard();
     return {digest:original.preview.digest, signer:original.controller, block:latest.block};
   } finally {
     active.delete(provider);

@@ -71,7 +71,7 @@ test('signs the exact reviewed typed data and verifies a real disposable control
   assert.equal(env.proofCalls,2);
   assert.equal(env.signatureCalls,1);
   assert.deepEqual(env.phases,['rechecking','awaiting-wallet','verifying']);
-  assert.equal(env.requests.filter(method => method === 'eth_getBlockByNumber').length,4);
+  assert.equal(env.requests.filter(method => method === 'eth_getBlockByNumber').length,6);
   assert.deepEqual(env.provider.eventNames(),[]);
 });
 
@@ -171,4 +171,32 @@ test('only one open prompt per provider and a late answer is discarded after UI 
   await assert.rejects(first,/changed/);
   assert.equal(env.signatureCalls,1);
   assert.equal(env.acceptedCalls,0);
+});
+
+for (const [field, replacement] of [
+  ['account', otherWallet.address], ['chain', '0x1'], ['genesis', block.hash], ['head', fixture.genesisHash]
+]) {
+  test('discards a silent wallet '+field+' change during final signature verification', async () => {
+    const env = setup();
+    const verify = env.options.verifySignature;
+    env.options.verifySignature = async signed => {
+      const result = await verify(signed);
+      env[field] = replacement;
+      return result;
+    };
+    await assert.rejects(signReviewedPaidPost(env.options), /wallet|Wallet/);
+    assert.equal(env.acceptedCalls,1);
+    assert.deepEqual(env.provider.eventNames(),[]);
+  });
+}
+
+test('discards a review invalidated while the final wallet read resolves', async () => {
+  const env = setup();
+  const request = env.provider.request;
+  env.provider.request = async input => {
+    const result = await request(input);
+    if (env.acceptedCalls && input.method === 'eth_accounts') env.current = false;
+    return result;
+  };
+  await assert.rejects(signReviewedPaidPost(env.options), /changed/);
 });
