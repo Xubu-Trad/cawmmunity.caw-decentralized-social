@@ -7,8 +7,9 @@ import {preparePaidPost} from './paid-post-state.mjs';
 import {previewPaidPost} from './paid-post-preview.mjs';
 import {readPublishedPost} from './paid-post-settlement.mjs';
 
-const mixed = process.argv.includes('--mixed');
-const [mode, endpoint, hash] = process.argv.slice(2).filter(arg => arg !== '--mixed');
+const custody = process.argv.includes('--custody');
+const mixed = custody || process.argv.includes('--mixed');
+const [mode, endpoint, hash] = process.argv.slice(2).filter(arg => arg !== '--mixed' && arg !== '--custody');
 assert((mode === 'send' && process.argv.length === 4 + Number(mixed)) || (mode === 'verify' && process.argv.length === 5 + Number(mixed)),
   'Usage: node test-paid-post-inclusion-time.mjs send|verify loopback-rpc [transaction-hash]');
 const read = createLocalRpc(endpoint,{limit:262144,timeout:5000});
@@ -35,16 +36,25 @@ if (mode === 'send') {
     wallet.signingKey.sign(preview.digest).serialized,hexlify(toUtf8Bytes(text))
   ]);
   const senderNonce = Number(BigInt(await read('eth_getTransactionCount',[wallet.address,'pending'])));
-  async function selfTransfer(nonce) {
+  async function sendSibling(nonce) {
+    if (custody) {
+      const vault = new Interface(['function withdraw(uint256,uint256,uint256)']);
+      const amount = nonce === senderNonce ? 10n**18n : 2n*10n**18n;
+      const withdrawal = await wallet.signTransaction({chainId:31337,type:2,to:fixture.vault,nonce,
+        data:vault.encodeFunctionData('withdraw',[2,0,amount]),gasLimit:300000,
+        maxPriorityFeePerGas:1000000000n,maxFeePerGas:5000000000n});
+      await read('eth_sendRawTransaction',[withdrawal]);
+      return;
+    }
     const transfer = await wallet.signTransaction({chainId:31337,type:2,to:wallet.address,nonce,
       value:1n,gasLimit:21000,maxPriorityFeePerGas:1000000000n,maxFeePerGas:5000000000n});
     await read('eth_sendRawTransaction',[transfer]);
   }
-  if (mixed) await selfTransfer(senderNonce);
+  if (mixed) await sendSibling(senderNonce);
   const raw = await wallet.signTransaction({chainId:31337,type:2,to:fixture.vault,nonce:senderNonce+Number(mixed),data,
     value:0,gasLimit:900000,maxPriorityFeePerGas:1000000000n,maxFeePerGas:5000000000n});
   const selected = await read('eth_sendRawTransaction',[raw]);
-  if (mixed) await selfTransfer(senderNonce+2);
+  if (mixed) await sendSibling(senderNonce+2);
   console.log(selected);
 } else {
   const calls = new Map();
@@ -63,6 +73,10 @@ if (mode === 'send') {
     assert.equal(result.transactionCount,3);
     assert.deepEqual(result.settlement,{fee:'5000000000000000000000',share2:'1363636363636363636363',
       share3:'3636363636363636363636',dust:'1'});
+    if (custody) {
+      assert.deepEqual(result.siblingWithdrawals.map(w => [w.index,w.account,w.amount]),[
+        [0,'2',String(10n**18n)],[2,'2',String(2n*10n**18n)]]);
+    }
     const selected = header.transactions[1];
     assert.equal(selected,hash);
     for (const other of [header.transactions[0],header.transactions[2]]) {

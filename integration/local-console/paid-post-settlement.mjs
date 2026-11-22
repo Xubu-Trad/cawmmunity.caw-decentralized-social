@@ -8,6 +8,7 @@ import {checkPaidPostNetwork, readPaidPostLedger, reviewFromLedger} from './paid
 
 const contract = new Interface([
   'function settleFixedPool1((uint256 accountId,uint256 epoch,uint256 nonce,uint256 validAfter,uint256 deadline,bytes32 stakeRoot,bytes32 textHash) req,bytes signature,bytes text)',
+  'function withdraw(uint256 id,uint256 epoch,uint256 amount)',
   'event ExperimentalFeeSettled(uint256 indexed payerAccount,uint256 indexed nonce,uint256 allocation2,uint256 allocation3,uint256 dust,bytes32 textHash)',
   'event ExperimentalTextPublished(uint256 indexed payerAccount,uint256 indexed nonce,bytes text)'
 ]);
@@ -57,9 +58,21 @@ async function locatePost(read, hash, allowMixed = false) {
   });
   const signed = inspectBlockSenders(header,raw,{...select,schema:'caw-block-senders-selection/1',
     chainId:'0x7a69',allowUnprotectedLegacy:false}).transactions;
+  const withdrawals = [];
   for (const [i,sibling] of signed.entries()) {
     requireMatch(sibling.hash === hashes[i], 'Incorrect transaction order');
     if (i === index) continue;
+    if (sibling.to === fixture.vault && BigInt(sibling.value) === 0n) {
+      const {id,epoch,amount} = contract.decodeFunctionData('withdraw',sibling.data);
+      requireMatch((id === 2n || id === 3n) && amount > 0n &&
+        contract.encodeFunctionData('withdraw',[id,epoch,amount]) === sibling.data &&
+        joined.receipts[i].status === '0x1' && joined.receipts[i].logs.length === 0,
+        'Unsupported custody sibling');
+      // Success on the pinned vault checks owner and epoch and transfers exactly
+      // amount to msg.sender using the pinned mock token.
+      withdrawals.push({index:i,hash:sibling.hash,recipient:sibling.from,account:String(id),amount:String(amount)});
+      continue;
+    }
     // Under Shanghai a valid EOA sender has no code. A plain self-transfer
     // consumes only intrinsic gas and cannot execute a custody storage write.
     requireMatch(sibling.from === sibling.to && sibling.data === '0x' &&
@@ -70,7 +83,7 @@ async function locatePost(read, hash, allowMixed = false) {
   requireMatch(tx.hash === hash && tx.to === fixture.vault && BigInt(tx.value) === 0n,
     'Transaction differs from selected post hash, target or value');
   const call = contract.decodeFunctionData('settleFixedPool1',tx.data);
-  return {header, tx, call, index, receipt:joined.receipts[index]};
+  return {header, tx, call, index, withdrawals, receipt:joined.receipts[index]};
 }
 
 function verifyAuthorization(tx, signature, review) {
@@ -95,7 +108,22 @@ function verifyPublishedEvents(logs, review) {
   requireMatch(isDeepStrictEqual(logs, expected), 'Mined settlement events differ from the reviewed fee or exact text');
 }
 
-function verifyAccounting(before, after, review) {
+function applyWithdrawals(ledger, withdrawals) {
+  const values = {...ledger.values};
+  let backing = ledger.backing;
+  for (const withdrawal of withdrawals) {
+    const credit = 'credit' + withdrawal.account;
+    const amount = BigInt(withdrawal.amount);
+    requireMatch(values[credit] >= values['stake' + withdrawal.account] + amount &&
+      values.liabilities >= amount && backing >= amount, 'Unavailable withdrawal credit');
+    values[credit] -= amount;
+    values.liabilities -= amount;
+    backing -= amount;
+  }
+  return {...ledger,values,backing};
+}
+
+function verifyAccounting(before, after, review, laterWithdrawals) {
   const {share2,share3,dust} = review.settlement;
   const fee = review.preview.typedData.message.fee;
   const v = before.values;
@@ -103,7 +131,8 @@ function verifyAccounting(before, after, review) {
     credit1:v.credit1-BigInt(fee), credit2:v.credit2+BigInt(share2), credit3:v.credit3+BigInt(share3),
     liabilities:v.liabilities-BigInt(dust), dust:v.dust+BigInt(dust), nonce:v.nonce+1n
   };
-  requireMatch(isDeepStrictEqual(after.values, expected) && before.backing === after.backing,
+  const final = applyWithdrawals({...before,values:expected},laterWithdrawals);
+  requireMatch(isDeepStrictEqual(after.values, final.values) && final.backing === after.backing,
     'Proven custody changes differ from reviewed settlement');
   return {fee,share2,share3,dust};
 }
@@ -149,11 +178,11 @@ async function checkCanonical(read, header) {
   requireMatch(canonical?.hash === header.hash, 'Settlement block left canonical history');
 }
 
-async function verifySettlement(read, header, receipt, before, review) {
+async function verifySettlement(read, header, receipt, before, review, laterWithdrawals = []) {
   requireMatch(BigInt(header.timestamp) >= BigInt(review.intent.validAfter) &&
     BigInt(header.timestamp) < BigInt(review.intent.deadline), 'Mined outside reviewed validity window');
   verifyPublishedEvents(receipt.logs,review);
-  return verifyAccounting(before,await readPaidPostLedger(read,header),review);
+  return verifyAccounting(before,await readPaidPostLedger(read,header),review,laterWithdrawals);
 }
 
 // The transaction selects the post. The connected node selects the canonical branch.
@@ -174,14 +203,16 @@ export async function readPublishedPost(read, inputHash) {
   requireMatch(parent?.hash === header.parentHash, 'Missing parent of settlement block');
   inspectExecutionHeaderChain([parent,header], {schema:'caw-execution-header-chain-selection/1',
     profile:'shanghai-17', startHash:parent.hash, endHash:header.hash});
-  const before = await readPaidPostLedger(read,parent);
+  const parentLedger = await readPaidPostLedger(read,parent);
+  const before = applyWithdrawals(parentLedger,post.withdrawals.filter(w => w.index < post.index));
   const intent = {text:toUtf8String(call.text), validAfter:String(call.req.validAfter), deadline:String(call.req.deadline)};
   // The balance and authority immediately before execution determine the fee and signer.
   // The contract evaluates the validity window at the timestamp of the containing block.
   const reconstructed = reviewFromLedger(header,intent,before);
   verifyAuthorization(tx,call.signature,reconstructed);
-  const settlement = await verifySettlement(read,header,receipt,before,reconstructed);
+  const settlement = await verifySettlement(read,header,receipt,before,reconstructed,
+    post.withdrawals.filter(w => w.index > post.index));
   await checkCanonical(read,header);
-  return {status:'settled',hash,block,transactionIndex:post.index,transactionCount:header.transactions.length,calldataHash:keccak256(tx.data),signer:reconstructed.controller,submitter:tx.from,
+  return {status:'settled',hash,block,...(post.withdrawals.length ? {siblingWithdrawals:post.withdrawals} : {}),transactionIndex:post.index,transactionCount:header.transactions.length,calldataHash:keccak256(tx.data),signer:reconstructed.controller,submitter:tx.from,
     text:intent.text,digest:reconstructed.preview.digest,settlement};
 }

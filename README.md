@@ -63,7 +63,7 @@ the experimental application lives on [draft PR #19](https://github.com/Xubu-Tra
 
 ## what comes next
 
-the hash reader now verifies a post between two ordinary native self-transfers. the post alone debited 5,000 mock tokens. both recipient credits and the one-unit remainder match the state proofs. [replay the mixed block](docs/PRODUCT_DELIVERY.md#mixed-block-post-accounting). next, handle neighboring transactions that can change custody state. independent operator reproduction of the hash reader and operation of a public social network remain open.
+the hash reader now verifies a post between two ordinary native self-transfers. the post alone debited 5,000 mock tokens. both recipient credits and the one-unit remainder match the state proofs. [replay the mixed block](docs/PRODUCT_DELIVERY.md#mixed-block-post-accounting). a second run put account 2 withdrawals of 1 and 2 mock tokens around that same signed post. account 2 gained 1,360.636363636363636363 across the block, including a 1,363.636363636363636363 credit from the post. [verify the individual changes](docs/PRODUCT_DELIVERY.md#post-between-two-custody-withdrawals). independent operator reproduction of the hash reader and operation of a public social network remain open.
 
 ## find your starting point
 

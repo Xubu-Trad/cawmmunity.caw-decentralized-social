@@ -1,3 +1,7 @@
+## Post between two withdrawals — November 22, 2026
+
+Verified the selected post and both pool-account withdrawals in transaction order against the signed block body, receipt root and custody proofs. The next case is a neighboring call that changes eligible stake and therefore the fee split. [Replay the evidence](PRODUCT_DELIVERY.md#post-between-two-custody-withdrawals).
+
 ## Mixed-block paid post — November 22, 2026
 
 Verified a post at index 1 between two signed native self-transfers. The reader checks every transaction and receipt against the selected header. Next, replay neighboring contract calls that can also change custody. [Evidence and reproduction](PRODUCT_DELIVERY.md#mixed-block-post-accounting).

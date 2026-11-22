@@ -140,6 +140,7 @@ def main():
                       help="mine one private test post that first becomes valid at inclusion")
     mode.add_argument("--mixed-post-test", action="store_true",
                       help="mine two native self-transfers around a signed paid post and verify its individual credits")
+    mode.add_argument("--custody-post-test", action="store_true", help="mine withdrawals on both sides of a paid post")
     args = parser.parse_args()
     geth, out = args.geth.resolve(), args.output.resolve()
     verified_geth(geth)
@@ -189,8 +190,10 @@ def main():
                     raise RuntimeError("C-007 node startup timed out")
                 rpc_url = f"http://127.0.0.1:{http}"
                 for height, head in replay(http, engine, secret, capture, records):
-                    if height == 17 and (args.inclusion_time_test or args.mixed_post_test):
+                    if height == 17 and (args.inclusion_time_test or args.mixed_post_test or args.custody_post_test):
                         timing_test = [node, HERE / "test-paid-post-inclusion-time.mjs"]
+                        if args.custody_post_test:
+                            timing_test.append("--custody")
                         if args.mixed_post_test:
                             timing_test.append("--mixed")
                         tx_hash = subprocess.check_output(timing_test + ["send", rpc_url],
