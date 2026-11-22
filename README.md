@@ -33,6 +33,8 @@ The destination is a system others can reproduce and operate without Xubu's acco
 
 ## where the build stands
 
+the green portal can check a name against a disposable registry at a specific block. run the registration reproduction, use the printed candidate address on the local portal and select the development chain in your browser wallet. the lookup reads availability and the current nft owner without requesting an account or signature.
+
 username registration now has an ERC-721 candidate for local review. the proposed destination is the address used by the riddle-announcement wallet and gilgamesh’s username minter. it changes where CAW sits while total supply stays the same. the portal quotes the cost. [read the burn decision and reproduce the registration](docs/C001_REGISTRATION_DECISION_PACKET.md#historical-sink-candidate-for-public-review).
 
 the green portal now prices a username using the manifesto’s recommended burn schedule. the same rules ran as compiled Solidity on a disposable Geth chain. this is a quote only. the actual CAW token rejects the specified zero-address transfer; registration and the burn decision still need public review.

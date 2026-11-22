@@ -43,7 +43,11 @@
           <input id="portal-name" placeholder="cawdev" autocomplete="off" spellcheck="false" autocapitalize="none" aria-describedby="portal-rule">
           <p id="portal-rule">Lowercase letters and digits only. Shorter names cost more.</p>
           <output id="portal-quote" for="portal-name" aria-live="polite">Enter a username.</output>
-          <p>Manifesto estimate. Registration awaits community review. The proposed historical burn address receives CAW; total supply stays the same.</p></div>
+          <p>Manifesto estimate. Registration awaits community review. The proposed historical burn address receives CAW; total supply stays the same.</p>
+          <div id="local-name-lookup" hidden><label for="local-registry">Disposable registry address</label>
+          <input id="local-registry" autocomplete="off" spellcheck="false" placeholder="0x…">
+          <button type="button" class="terminal-link">Check local availability</button>
+          <output aria-live="polite"></output></div></div>
         </aside>
       </div>
       <ol class="demo-sequence" aria-label="Try the local demonstration"><li><span>01 / WRITE</span><p>Draft a CAW.</p></li><li><span>02 / REVIEW</span><p>Inspect the demo cost.</p></li><li><span>03 / RECEIPT</span><p>Follow simulated settlement.</p></li></ol>

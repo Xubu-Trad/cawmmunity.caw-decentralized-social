@@ -52,5 +52,7 @@ The [April 2022 funding transaction](https://etherscan.io/tx/0xb875a9cd6b74facc3
 
 **Review workflow.** Compare the literal rule and the existing alternatives above. Review whether a transfer with unchanged supply is acceptable and record the exact recipient, economic effect, objections and community decision before enabling registration. R2 calls for peer review and agreed changes. The candidate has a fixed recipient, an immutable token and no administrator. NFT ownership alone does not implement account custody or authorize posting in this candidate.
 
+**Local portal lookup.** Keep the disposable Geth node running after the test below. Serve the portal on localhost, open website.html, enter a username and paste the registry address printed by the test. Select chain 1337 in the browser wallet and choose Check local availability. The answer is scoped to that registry and block. A newer candidate deployment is required for the lookup method.
+
 **Reproduction.** With the existing local-console dependencies installed, run `npm ci --prefix integration/local-console/registration`. Start a fresh disposable Geth dev chain as in the local-console workflow. From the repository root run `node integration/local-console/registration/test-registration.mjs http://127.0.0.1:PORT` with its actual port. The test deploys a fixture token and registration candidate, checks the payment and unchanged supply, transfers the NFT and checks duplicate names remain unavailable.
 

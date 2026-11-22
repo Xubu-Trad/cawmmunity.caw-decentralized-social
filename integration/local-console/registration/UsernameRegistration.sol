@@ -21,6 +21,11 @@ contract UsernameRegistration is ERC721, UsernameTerms, ReentrancyGuard {
         paymentToken = IERC20(token);
     }
 
+    /// A zero owner means the name was available at the block being read.
+    function lookup(string calldata name) external view returns (uint256 price, address owner) {
+        return (quote(name), _ownerOf(uint256(keccak256(bytes(name)))));
+    }
+
     function register(string calldata name) external nonReentrant returns (uint256 id) {
         uint256 price = quote(name);
         id = uint256(keccak256(bytes(name)));
