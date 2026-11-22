@@ -136,6 +136,8 @@ def main():
                       help="hold the paid fixture at block 17 and start the interactive console")
     mode.add_argument("--signing-test", action="store_true",
                       help="exercise the HTTP signing flow at block 17 before completing the replay")
+    mode.add_argument("--inclusion-time-test", action="store_true",
+                      help="mine one private test post that first becomes valid at inclusion")
     args = parser.parse_args()
     geth, out = args.geth.resolve(), args.output.resolve()
     verified_geth(geth)
@@ -185,6 +187,13 @@ def main():
                     raise RuntimeError("C-007 node startup timed out")
                 rpc_url = f"http://127.0.0.1:{http}"
                 for height, head in replay(http, engine, secret, capture, records):
+                    if height == 17 and args.inclusion_time_test:
+                        timing_test = [node, HERE / "test-paid-post-inclusion-time.mjs"]
+                        tx_hash = subprocess.check_output(timing_test + ["send", rpc_url],
+                                                          text=True, timeout=90).strip()
+                        include_pending_post(http, engine, secret)
+                        subprocess.run(timing_test + ["verify", rpc_url, tx_hash], check=True, timeout=90)
+                        return
                     if height == 17 and (args.serve_console or args.signing_test):
                         current = PEER["rpc"](http, "eth_getBlockByNumber", ["latest", False])
                         if current["hash"] != head or current["number"] != "0x11":
@@ -196,6 +205,8 @@ def main():
                         subprocess.run([node, HERE / "test-paid-post-http.mjs", rpc_url],
                                        check=True, timeout=90)
                 subprocess.run([node, HERE / "test-paid-post-live.mjs", rpc_url],
+                               check=True, timeout=90)
+                subprocess.run([node, HERE / "test-paid-post-by-hash.mjs", rpc_url, "--historical"],
                                check=True, timeout=90)
             finally:
                 PEER["stop"](proc)

@@ -1,0 +1,36 @@
+Fresh research node and independent browser
+Fresh Geth and publishing console started.
+Publisher browser exited. Transaction 0xd0051e7a446441a8aa7156367b7381b96dfe5ffb11b7ed4307a9b7b38ce1fd6b
+Checked unknown hash, case normalization, three malformed inputs, wrong chain and wrong genesis.
+Rejected: receipt points to another transaction
+Rejected: conflicting raw transaction bytes
+Rejected: unexpected second transaction
+Rejected: unavailable parent header
+Rejected: changed publication event
+Rejected: conflicting receipt status
+Rejected: parent custody proof
+Rejected: mined custody proof
+Rejected: reorganized block
+Verified the selected post from its transaction hash and rejected nine conflicting reads.
+Pending receipt and five malformed, wrong-chain or mismatched inputs checked.
+Live signed post, exact fee and text, verified balance changes and eight conflicting-evidence controls passed.
+PASS: 0xd0051e7a446441a8aa7156367b7381b96dfe5ffb11b7ed4307a9b7b38ce1fd6b, block 18, node evidence, exact post and fee.
+Fresh reader, reload, unknown hash, six substituted responses and an interrupted lookup passed.
+Live verifier and clean second browser passed.
+
+Offline reader after node shutdown
+PASS: 0xd0051e7a446441a8aa7156367b7381b96dfe5ffb11b7ed4307a9b7b38ce1fd6b, block 18, recorded evidence, exact post and fee.
+Fresh reader, reload, unknown hash, six substituted responses and an interrupted lookup passed.
+Completed with no chain process and no publishing browser.
+
+32-block history with relayed posts
+Verified both historical owner previews and fresh rechecks. Nine stale, altered or invalid cases rejected.
+Checked unknown hash, case normalization, three malformed inputs, wrong chain and wrong genesis.
+Verified relayed post 0x701c778a569a6696389f2273e6ed8ce57bc795f85b5a057ea51a31822f36e04d author 0x7e5f4552091a69125d5dfcb7b8c2659029395bdf sender 0x6813eb9362372eef6200f3b1dbc3f819671cba69
+Verified relayed post 0xfb8f55e4ab8d4b4f6daeb5f2ed62e2318e50b0d27fabff443e04d4469d151246 author 0x2b5ad5c4795c026514f8317c7a215e218dccd6cf sender 0x6813eb9362372eef6200f3b1dbc3f819671cba69
+Verified reverted attempt at block 17 with no published body.
+{"status": "PASS", "genesis": "0x6c383946adbe554271ffb1f227933d44864ce5f9a1633f3a646843a895903a9f", "headNumber": 32, "headHash": "0x8082b6357a2f9883edcbbb8cf18ce483d36c4699aa19699d7ce30ff593295da3", "gethSha256": "45335929e149413c9f680209c87fa14adc5750387da6f5f30b7b2bd24d2d54ea", "independentOperator": false, "publicNetwork": false}
+
+Authorization first valid in inclusion block
+Included 1 transaction(s) in 0x993c8eaf16990d4ecc68b9e7c34e1e3d356c476753d047723d717660c69b8bf6
+{"status":"settled","hash":"0xd0c2f932ca1f332a6a15bd1b4f4ed401e2d6b049361b395ad7f5d51844c6bef8","block":"0x993c8eaf16990d4ecc68b9e7c34e1e3d356c476753d047723d717660c69b8bf6","parentTime":19,"validAfter":20,"inclusionTime":20,"signer":"0x7e5f4552091a69125d5dfcb7b8c2659029395bdf"}

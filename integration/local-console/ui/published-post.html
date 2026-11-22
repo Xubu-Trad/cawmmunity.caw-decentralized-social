@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Published post reader · community.caw</title>
+  <link rel="stylesheet" href="/style.css">
+  <script type="module" src="/published-post.mjs"></script>
+</head>
+<body>
+  <a class="skip-link" href="#workspace">Skip to reader</a>
+  <header class="masthead"><div class="masthead-inner">
+    <a class="brand" href="/published-post.html" aria-label="Community CAW post reader home"><span class="terminal-mark" aria-hidden="true">&gt;_</span>cawmmunity<span class="brand-suffix">.caw</span></a>
+    <span class="fixture-mode">Research / C-007</span>
+  </div></header>
+  <main id="workspace" class="post-reader" tabindex="-1">
+    <h1>Published post reader<span class="cursor" aria-hidden="true"></span></h1>
+    <p class="intro">Read a paid post from its transaction hash. The reader checks C-007 research evidence and shows where it came from. No wallet is needed.</p>
+    <form id="reader-form" class="panel" novalidate>
+      <label for="reader-hash">Transaction hash</label>
+      <div class="reader-input"><input id="reader-hash" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="0x…" required>
+      <button class="primary" type="submit">Verify post</button></div>
+      <p id="reader-status" role="status" aria-live="polite">Enter the hash from the publishing transaction.</p>
+      <p class="subtle"><a href="#0xd0051e7a446441a8aa7156367b7381b96dfe5ffb11b7ed4307a9b7b38ce1fd6b">Try the hash from the recorded example</a></p>
+    </form>
+    <article id="reader-result" class="panel" aria-labelledby="result-title" hidden>
+      <h2 id="result-title">Published post</h2>
+      <p id="reader-text" dir="auto"></p>
+      <dl id="reader-facts" class="proof-rows"></dl>
+      <details><summary>Inspect verification details</summary><dl id="reader-proof" class="proof-rows"></dl></details>
+      <p id="reader-scope" class="subtle"></p>
+    </article>
+    <noscript>Enable JavaScript to read the post from your node.</noscript>
+  </main>
+</body>
+</html>

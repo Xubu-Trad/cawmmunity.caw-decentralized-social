@@ -1,5 +1,5 @@
 import {isDeepStrictEqual} from 'node:util';
-import {Interface, hexlify, keccak256, recoverAddress, toUtf8Bytes} from 'ethers';
+import {Interface, hexlify, keccak256, recoverAddress, toUtf8Bytes, toUtf8String} from 'ethers';
 import {inspectExecutionHeaderChain} from '../../reference/ethereum-execution-header.mjs';
 import {inspectBlockTransactionReceipts} from '../../reference/ethereum-block-transactions.mjs';
 import {inspectBlockSenders} from '../../reference/ethereum-block-senders.mjs';
@@ -33,19 +33,29 @@ async function reviewInterval(read, end, start) {
   return {reviewHeader:headers[0], parent:headers.at(-2)};
 }
 
-function verifyCall(header, raw, receipt, hash, calldataHash, review) {
+async function locatePost(read, hash) {
+  await checkPaidPostNetwork(read);
+  const receipt = await read('eth_getTransactionReceipt',[hash]);
+  if (receipt === null) return null;
+  requireMatch(receipt?.transactionHash === hash && hashPattern.test(receipt.blockHash), 'Receipt locator mismatch');
+  const header = await read('eth_getBlockByHash',[receipt.blockHash,false]);
+  requireMatch(header?.hash === receipt.blockHash && Array.isArray(header.transactions) &&
+    header.transactions.length === 1 && header.transactions[0] === hash, 'Expected a block containing only the selected post');
+  const raw = await read('eth_getRawTransactionByHash',[hash]);
   const select = {profile:'shanghai-17',hash:header.hash};
   const joined = inspectBlockTransactionReceipts(header,[raw],[receipt],{
     ...select,schema:'caw-block-transactions-selection/1'
   });
   const tx = inspectBlockSenders(header,[raw],{...select,schema:'caw-block-senders-selection/1',
     chainId:'0x7a69',allowUnprotectedLegacy:false}).transactions[0];
-  requireMatch(tx.hash === hash && tx.from === review.controller && tx.to === fixture.vault &&
-    BigInt(tx.value) === 0n, 'Transaction differs from reviewed controller, target or value');
+  requireMatch(tx.hash === hash && tx.to === fixture.vault && BigInt(tx.value) === 0n,
+    'Transaction differs from selected post hash, target or value');
+  const call = contract.decodeFunctionData('settleFixedPool1',tx.data);
+  return {header, tx, call, receipt:joined.receipts[0]};
+}
 
-  requireMatch(keccak256(tx.data) === calldataHash, 'Mined calldata differs from the wallet-reviewed bytes');
+function verifyAuthorization(tx, signature, review) {
   const message = review.preview.typedData.message;
-  const signature = contract.decodeFunctionData('settleFixedPool1',tx.data).signature;
   requireMatch(/^0x[0-9a-f]{128}1[bc]$/.test(signature) &&
     recoverAddress(review.preview.digest,signature).toLowerCase() === review.controller,
     'Settlement authorization signature differs from review');
@@ -54,7 +64,6 @@ function verifyCall(header, raw, receipt, hash, calldataHash, review) {
   const text = hexlify(toUtf8Bytes(review.intent.text));
   requireMatch(contract.encodeFunctionData('settleFixedPool1',[fields,signature,text]) === tx.data,
     'Signed settlement calldata differs from the reviewed intent');
-  return joined.receipts[0];
 }
 
 function verifyPublishedEvents(logs, review) {
@@ -88,20 +97,17 @@ export async function verifyPaidPostReceipt(read, input) {
   const {hash,calldataHash,review} = input;
   requireMatch(typeof review?.block?.hash === 'string' && hashPattern.test(review.block.hash) &&
     typeof review.block.number === 'string' && heightPattern.test(review.block.number), 'Missing review header');
-  await checkPaidPostNetwork(read);
-  const located = await read('eth_getTransactionReceipt',[hash]);
-  if (located === null) return {status:'pending',hash};
-  requireMatch(located?.transactionHash === hash && hashPattern.test(located.blockHash), 'Receipt locator mismatch');
-  const header = await read('eth_getBlockByHash',[located.blockHash,false]);
-  requireMatch(header?.hash === located.blockHash && Array.isArray(header?.transactions) &&
-    header.transactions.length === 1 && header.transactions[0] === hash, 'Expected a block containing only the selected post');
+  const post = await locatePost(read,hash);
+  if (!post) return {status:'pending',hash};
+  const {header,tx,receipt,call} = post;
   const {reviewHeader,parent} = await reviewInterval(read,header,review.block);
   const savedLedger = await readPaidPostLedger(read,reviewHeader);
   const saved = reviewFromLedger(reviewHeader,review.intent,savedLedger);
   requireMatch(isDeepStrictEqual(saved,review), 'Saved review differs from authenticated state');
 
-  const raw = await read('eth_getRawTransactionByHash',[hash]);
-  const receipt = verifyCall(header,raw,located,hash,calldataHash,saved);
+  requireMatch(keccak256(tx.data) === calldataHash, 'Mined calldata differs from the wallet-reviewed bytes');
+  requireMatch(tx.from === saved.controller, 'Transaction differs from reviewed controller');
+  verifyAuthorization(tx,call.signature,saved);
   const result = {hash,calldataHash,block:{hash:header.hash,number:header.number},signer:saved.controller,
     text:saved.intent.text,digest:saved.preview.digest};
   if (receipt.status === '0x0') {
@@ -112,13 +118,51 @@ export async function verifyPaidPostReceipt(read, input) {
     const atParent = reviewFromLedger(parent,saved.intent,before);
     requireMatch(isDeepStrictEqual({...atParent,block:saved.block},saved),
       'Settlement inputs changed between the original review and execution');
-    requireMatch(BigInt(header.timestamp) >= BigInt(saved.intent.validAfter) &&
-      BigInt(header.timestamp) < BigInt(saved.intent.deadline), 'Mined outside reviewed validity window');
-    verifyPublishedEvents(receipt.logs,saved);
-    result.settlement = verifyAccounting(before,await readPaidPostLedger(read,header),saved);
+    result.settlement = await verifySettlement(read,header,receipt,before,saved);
     result.status = 'settled';
   }
+  await checkCanonical(read, header);
+  return result;
+}
+
+async function checkCanonical(read, header) {
   const canonical = await read('eth_getBlockByNumber',[header.number,false]);
   requireMatch(canonical?.hash === header.hash, 'Settlement block left canonical history');
-  return result;
+}
+
+async function verifySettlement(read, header, receipt, before, review) {
+  requireMatch(BigInt(header.timestamp) >= BigInt(review.intent.validAfter) &&
+    BigInt(header.timestamp) < BigInt(review.intent.deadline), 'Mined outside reviewed validity window');
+  verifyPublishedEvents(receipt.logs,review);
+  return verifyAccounting(before,await readPaidPostLedger(read,header),review);
+}
+
+// The transaction selects the post. The connected node selects the canonical branch.
+export async function readPublishedPost(read, inputHash) {
+  requireMatch(typeof inputHash === 'string' && /^0x[0-9a-fA-F]{64}$/.test(inputHash), 'Expected a 32-byte transaction hash');
+  const hash = inputHash.toLowerCase();
+  const post = await locatePost(read,hash);
+  if (!post) return {status:'pending',hash};
+  const {header, tx, receipt, call} = post;
+  const block = {number:header.number,hash:header.hash};
+  if (receipt.status === '0x0') {
+    requireMatch(receipt.logs.length === 0,'Reverted transaction has unexpected events');
+    await checkCanonical(read,header);
+    return {status:'reverted',hash,block};
+  }
+
+  const parent = await read('eth_getBlockByHash',[header.parentHash,false]);
+  requireMatch(parent?.hash === header.parentHash, 'Missing parent of settlement block');
+  inspectExecutionHeaderChain([parent,header], {schema:'caw-execution-header-chain-selection/1',
+    profile:'shanghai-17', startHash:parent.hash, endHash:header.hash});
+  const before = await readPaidPostLedger(read,parent);
+  const intent = {text:toUtf8String(call.text), validAfter:String(call.req.validAfter), deadline:String(call.req.deadline)};
+  // The balance and authority immediately before execution determine the fee and signer.
+  // The contract evaluates the validity window at the timestamp of the containing block.
+  const reconstructed = reviewFromLedger(header,intent,before);
+  verifyAuthorization(tx,call.signature,reconstructed);
+  const settlement = await verifySettlement(read,header,receipt,before,reconstructed);
+  await checkCanonical(read,header);
+  return {status:'settled',hash,block,calldataHash:keccak256(tx.data),signer:reconstructed.controller,submitter:tx.from,
+    text:intent.text,digest:reconstructed.preview.digest,settlement};
 }

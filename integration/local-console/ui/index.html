@@ -10,7 +10,7 @@
     <div class="masthead-inner">
       <a class="brand" href="/" aria-label="Community CAW home"><span class="terminal-mark" aria-hidden="true">&gt;_</span>cawmmunity<span class="brand-suffix">.caw</span></a>
       <nav aria-label="Console sections">
-        <a href="#account">Account</a><a href="#actions">Actions</a><a href="#paid-post">Signing desk</a><a href="#history">History</a><a href="#receipts">Receipts</a>
+        <a href="#account">Account</a><a href="#actions">Actions</a><a href="#paid-post">Signing desk</a><a href="/published-post.html">Post reader</a><a href="#history">History</a><a href="#receipts">Receipts</a>
       </nav>
     </div>
   </header>
@@ -72,7 +72,7 @@
             <label for="paid-recovery-hash">Transaction hash</label>
             <input id="paid-recovery-hash" type="text" maxlength="66" autocomplete="off" spellcheck="false">
             <button id="paid-check-receipt" type="button">Check settlement</button>
-            <dl id="paid-settlement" class="proof-rows" hidden></dl>
+            <div id="paid-settlement" hidden><dl id="paid-settlement-details" class="proof-rows"></dl><a id="paid-reader-link" href="/published-post.html">Open this post in the reader ↗</a></div>
           </div>
         </div>
       </div>
