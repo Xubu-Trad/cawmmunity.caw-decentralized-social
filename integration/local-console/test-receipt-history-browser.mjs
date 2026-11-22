@@ -76,7 +76,31 @@ try{
   if(browser.exitCode!==null||browser.signalCode)throw Error('Chromium exited before opening its debugging port: '+(browser.signalCode??browser.exitCode));
   try{port=Number((await fs.readFile(path.join(out,'profile/DevToolsActivePort'),'utf8')).split('\n')[0]);break;}catch{await sleep(100);}
  }assert(port,'Chromium debugging port did not open in time.');
- const tabs=await(await fetch('http://127.0.0.1:'+port+'/json/list')).json();ws=new WebSocket(tabs.find(t=>t.type==='page').webSocketDebuggerUrl);await new Promise(r=>ws.addEventListener('open',r,{once:true}));ws.addEventListener('message',e=>{const v=JSON.parse(e.data),p=pending.get(v.id);if(p){pending.delete(v.id);clearTimeout(p.timer);v.error?p.reject(Error(JSON.stringify(v.error))):p.resolve(v.result);}});
+ stage='CDP discovery';
+ const response=await fetch('http://127.0.0.1:'+port+'/json/list',{signal:AbortSignal.timeout(5000)});
+ if(!response.ok)throw Error('CDP discovery HTTP '+response.status);
+ const tabs=await response.json();
+ const endpoint=tabs.find(tab=>tab.type==='page')?.webSocketDebuggerUrl;
+ if(!endpoint)throw Error('CDP discovery returned no page WebSocket URL.');
+ stage='CDP WebSocket connection';
+ ws=new WebSocket(endpoint);
+ await new Promise((resolve,reject)=>{
+  function cleanup(){
+   clearTimeout(timer);
+   ws.removeEventListener('open',open);
+   ws.removeEventListener('error',error);
+   ws.removeEventListener('close',close);
+  }
+  function open(){cleanup();resolve();}
+  function error(event){cleanup();reject(Error('CDP WebSocket connection failed: '+(event.error?.message||event.message||'upgrade error')));}
+  function close(event){cleanup();reject(Error('CDP WebSocket closed before open: '+event.code));}
+  const timer=setTimeout(()=>{cleanup();reject(Error('CDP WebSocket connection timed out after 5000 ms.'));},5000);
+  ws.addEventListener('open',open);
+  ws.addEventListener('error',error);
+  ws.addEventListener('close',close);
+ });
+ stage='CDP initialization';
+ ws.addEventListener('message',e=>{const v=JSON.parse(e.data),p=pending.get(v.id);if(p){pending.delete(v.id);clearTimeout(p.timer);v.error?p.reject(Error(JSON.stringify(v.error))):p.resolve(v.result);}});
  await cmd('Page.enable');await cmd('Page.addScriptToEvaluateOnNewDocument',{source:`window.ethereum={async request(q){const r=await fetch('/test-wallet',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(q)});return r.json();},on(){},removeListener(){}};const set=Storage.prototype.setItem;Storage.prototype.setItem=function(k,v){if(window.failArchive&&(k.startsWith('caw.local.receipt-outcome.v1.')||k.startsWith('caw.local.receipt-rechecks.v1.')))throw Error('Test archive write failure');return set.call(this,k,v);};`});
  await cmd('Page.navigate',{url:'http://127.0.0.1:'+server.address().port});await until(el('accounting-status')+"?.textContent==='Verified against selected local state'");await until('!'+el('connect')+'.disabled');await ev(el('connect')+'.click()');await until('!'+el('prepare')+'.disabled');
  const journal='caw.local.withdrawal.v1',last='caw.local.receipt-outcome.latest.v1',prefix='caw.local.receipt-outcome.v1.';
