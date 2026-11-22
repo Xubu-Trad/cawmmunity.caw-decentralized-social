@@ -1,0 +1,17 @@
+{
+  "amount": "313,092,712,036.671223185799756511 CAW",
+  "holder": "0x000000000000000000000000000000000000dEaD",
+  "units": "313092712036671223185799756511",
+  "height": "26471059",
+  "hash": "0x36be08a9251dcf0185c0cb35812e72b933d74a8c1cde746014db0c2b0e894e92",
+  "time": "2026-11-22 13:49:11 UTC",
+  "checkedAt": "2026-11-22T14:08:06.840843+00:00",
+  "documentSha256": "33902b1018620fb058e21d616620af20e2c9cfe6315eb6a2d07d2082056a4c8b",
+  "browser": "145.0.7632.6",
+  "providers": [
+    "https://eth.drpc.org/",
+    "https://ethereum-rpc.publicnode.com/"
+  ],
+  "walletRequested": false,
+  "transactionsSubmitted": 0
+}

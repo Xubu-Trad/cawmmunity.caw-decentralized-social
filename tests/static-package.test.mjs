@@ -9,7 +9,7 @@ test('static archive is byte reproducible and contains exactly the build assets'
   assert.deepEqual(a.bytes, b.bytes); assert.equal(a.sha256,b.sha256);
   assert.equal(a.sha256,createHash('sha256').update(a.bytes).digest('hex'));
   const entries = await collectStatic(); let offset = 0;
-  assert.equal(a.files,23); assert.equal(a.manifestSha256,entries.at(-1).sha256);
+  assert.equal(a.files,24); assert.equal(a.manifestSha256,entries.at(-1).sha256);
   for (const entry of entries) {
     const h = a.bytes.subarray(offset,offset+512);
     const string = (start,end) => h.subarray(start,end).toString('ascii').replace(/\0.*$/s,'');

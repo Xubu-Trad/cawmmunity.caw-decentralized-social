@@ -7,6 +7,7 @@ const PUBLIC_ROOT = new URL('./public/', import.meta.url);
 const MAX_FILE_BYTES = 1024 * 1024;
 const MAX_ACTIVE_READS = 8;
 const MAX_HEADER_PAIRS = 32;
+const balanceHeaders = Object.freeze({'Content-Security-Policy': "default-src 'none'; script-src 'sha256-QW9NUcs6kK85OJOVBeItsGB+uPvNx5dYs10Wu83/nFE='; style-src 'sha256-ppy98xcat17vJ+tK8KZp4kHl7LjUckiiE1q8SdTYpnk='; connect-src https://ethereum-rpc.publicnode.com https://eth.drpc.org; base-uri 'none'; form-action 'none'; object-src 'none'; frame-ancestors 'none'"});
 const ROUTES = new Map([
   ['/', [new URL('./public/index.html', import.meta.url), 'text/html; charset=utf-8']],
   ['/index.html', [new URL('./public/index.html', import.meta.url), 'text/html; charset=utf-8']],
@@ -28,6 +29,7 @@ const ROUTES = new Map([
   ['/bounded-json.mjs', [new URL('./public/bounded-json.mjs', import.meta.url), 'text/javascript; charset=utf-8']],
   ['/deployment.json', [new URL('./public/deployment.json', import.meta.url), 'application/json; charset=utf-8']],
   ['/alpha.mjs', [new URL('./public/alpha.mjs', import.meta.url), 'text/javascript; charset=utf-8']],
+  ['/caw-balance.html', [new URL('./public/caw-balance.html', import.meta.url), 'text/html; charset=utf-8', MAX_FILE_BYTES, balanceHeaders]],
   ['/website.html', [new URL('./public/website.html', import.meta.url), 'text/html; charset=utf-8']],
   ['/website.css', [new URL('./public/website.css', import.meta.url), 'text/css; charset=utf-8']],
   ['/caw-symbol.png', [new URL('./public/caw-symbol.png', import.meta.url), 'image/png', 2 * 1024 * 1024]],
@@ -157,7 +159,7 @@ export function createServer() {
     }
     activeReads += 1;
     readPublicFile(asset[0], asset[2])
-      .then(bytes => respond(request, response, 200, bytes, asset[1]))
+      .then(bytes => respond(request, response, 200, bytes, asset[1], asset[3]))
       .catch(() => {
         if (response.headersSent) response.destroy();
         else respond(request, response, 503, 'Temporarily unavailable.');

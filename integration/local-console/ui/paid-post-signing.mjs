@@ -39,7 +39,7 @@ function sameJson(a, b) {
   return keys.length === Object.keys(b).length && keys.every(key => Object.hasOwn(b,key) && sameJson(a[key],b[key]));
 }
 
-function validateReview(review) {
+export function validateReview(review) {
   const {intent, preview} = review;
   const data = preview?.typedData;
   const message = data?.message;
@@ -64,14 +64,14 @@ function validateReview(review) {
 
 // A block may advance with identical signing state. Every reviewed field other
 // than the selected block must survive both independent state acquisitions.
-function checkReacquired(original, current) {
+export function checkReacquired(original, current) {
   validateReview(current);
   if (!sameJson({...original,block:null}, {...current,block:null})) {
     throw Error('Paid-post review changed. Prepare and review again.');
   }
 }
 
-async function checkWallet(provider, review) {
+export async function checkWallet(provider, review) {
   await verifyWalletProviderContext(provider, {
     chainId, from: review.controller, genesisHash: fixture.genesisHash,
     blockHash: review.block.hash, blockNumber: review.block.number

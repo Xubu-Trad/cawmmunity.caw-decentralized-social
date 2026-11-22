@@ -29,7 +29,7 @@
     <section id="paid-post" class="panel signing-terminal" aria-labelledby="paid-heading" tabindex="-1">
       <header class="signing-header">
         <div><h2 id="paid-heading">Paid-post signing desk</h2>
-        <p>Check account 1’s fee and settlement against the local C-007 chain, then sign with its disposable controller. This desk never submits a transaction.</p></div>
+        <p>Check account 1’s fee and settlement against the local C-007 chain, then sign with its disposable controller. A separate approval publishes the paid post.</p></div>
         <span class="fixture-mode">Local / C-007</span>
       </header>
       <div class="signing-columns">
@@ -61,6 +61,19 @@
             <button id="paid-sign" class="primary" type="button" disabled>Recheck &amp; sign</button>
           </div>
           <dl id="paid-result" class="proof-rows" hidden></dl>
+          <div id="paid-delivery" hidden>
+            <p>Publishing sends the signed post to the fixture vault. Your wallet pays the local network gas.</p>
+            <button id="paid-submit" class="primary" type="button" disabled>Publish paid post</button>
+          </div>
+          <p id="paid-submission-status" role="status" aria-live="polite"></p>
+          <div id="paid-recovery" hidden>
+            <h3>Transaction receipt</h3>
+            <dl class="proof-rows"><div><dt>Saved post</dt><dd id="paid-saved-post"></dd></div><div><dt>Signing digest</dt><dd id="paid-saved-digest"></dd></div></dl>
+            <label for="paid-recovery-hash">Transaction hash</label>
+            <input id="paid-recovery-hash" type="text" maxlength="66" autocomplete="off" spellcheck="false">
+            <button id="paid-check-receipt" type="button">Check settlement</button>
+            <dl id="paid-settlement" class="proof-rows" hidden></dl>
+          </div>
         </div>
       </div>
     </section>

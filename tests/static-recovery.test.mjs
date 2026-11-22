@@ -19,7 +19,7 @@ function rejects(root, pin, code) { assert.throws(() => checkStaticDirectory(roo
 test('copied build verifies exact bytes and retains all trust limits', async () => {
   const {root,pin} = await fixture();
   const a = checkStaticDirectory(root,pin), b = checkStaticDirectory(root,pin);
-  assert.deepEqual(a,b); assert.equal(a.files,23); assert.equal(a.assetHashesMatched,true);
+  assert.deepEqual(a,b); assert.equal(a.files,24); assert.equal(a.assetHashesMatched,true);
   for (const key of ['originAuthenticated','hostedContentVerified','protocolVerified','productionAccepted']) assert.equal(a[key],false);
   assert.ok(Object.isFrozen(a));
 });

@@ -33,7 +33,11 @@ The destination is a system others can reproduce and operate without Xubu's acco
 
 ## where the build stands
 
-a builder can now check a 5,000 mock-token post against a fresh local node before asking a wallet to sign. the reader proves who controls the account, what the payer can spend and how the fee would be split. in a 32-block replay it matched both historical signing requests and rejected the old review after ownership changed. the reader runs on the command line and in the developer console. the new signing desk shows the text and fee split, checks the connected wallet before and after its prompt, and verifies the returned signature with the account’s contract wallet. signing stops before submission. [open the signing desk](docs/PAID_POST_PREVIEW.md#run-the-signing-desk).
+anyone can now [download the Ethereum CAW balance reader](public/caw-balance.html?raw=1) and open the file directly in a browser. enter a public address to check its real CAW balance. the browser asks two Ethereum services for the same finalized block and checks the token code before showing the result. it needs no installation, wallet connection or gas.
+
+the developer console can sign **and publish** a paid post on the disposable research network. a separate wallet approval sends the transaction. after a reload, the console checks the mined text and fee split against the saved review. the new transaction uses mock tokens. [run the product and inspect the receipt](docs/PRODUCT_DELIVERY.md).
+
+a builder can now check a 5,000 mock-token post against a fresh local node before asking a wallet to sign. the reader proves who controls the account, what the payer can spend and how the fee would be split. in a 32-block replay it matched both historical signing requests and rejected the old review after ownership changed. the reader runs on the command line and in the developer console. the new signing desk shows the text and fee split, checks the connected wallet before and after its prompt, and verifies the returned signature with the account’s contract wallet. submission now requires a separate wallet approval. [open the signing desk](docs/PAID_POST_PREVIEW.md#run-the-signing-desk).
 
 the local execution console now puts the account, actions, history and receipts in a keyboard-accessible terminal layout. its server rejects ambiguous requests and malformed node responses before using them in a review. [run the console](docs/LOCAL_EXECUTION_CONSOLE.md).
 
@@ -43,7 +47,7 @@ we followed a withdrawal through the contract wallet. the controller signed it, 
 
 we verified the block 14 withdrawal again from a fresh node. it started at genesis, synced from a peer and supplied the signed transaction, receipt and ten account proofs. its headers linked the withdrawal to a new block 15 checkpoint calculated before either node started. both nodes ran on one machine. a checkpoint kept by another operator from the original run is still missing. [reviewer workflow](docs/WITHDRAWAL_PROOF_EXPORT.md#repeat-the-two-node-run)
 
-updated November 21, 2026. **this is unfinished research software. there is no production-ready community.CAW network, and the local experiments use mock tokens.**
+updated November 22, 2026. **this is unfinished research software. there is no production-ready community.CAW network, and the local experiments use mock tokens.**
 
 we are building something another person can inspect, reproduce and carry forward. the local execution console can already submit signed posts, transfer an experimental account and withdraw its credited mock tokens on a disposable chain. the original alpha interface remains a simulation. the console does real local execution, but its posts do not yet implement the manifesto's CAW payment and settlement rules.
 
@@ -51,13 +55,13 @@ after the console verifies a withdrawal, you can download the evidence and close
 
 ahdmesh found four ways the console or its reader could give an incomplete picture around signing and receipts. the changes on draft PR #19 clear stale balances after a failed pre-sign check, bind a transfer recheck to the verified block and reject incomplete or contradictory history. the reviewer's hold is still in place. [independent review](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/19#issuecomment-6918751018).
 
-these results come from local experiments run by us. **independent reproduction is still pending.** selected local headers are not proof of public-chain finality, and this storage layout only supports the selected research contracts. general wallet support, actual CAW compatibility, registration, paid-post economics, durable public operation and release agreement remain unfinished.
+ahdmesh independently reproduced the scoped withdrawal replay, signing preview and state-proof checks on PRs #26–28. the new mined-post delivery still needs separate reproduction. selected local headers are not proof of public-chain finality, and this storage layout only supports the selected research contracts. general wallet support, actual CAW compatibility, registration, paid-post economics, durable public operation and release agreement remain unfinished.
 
 the experimental application lives on [draft PR #19](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/19). this README does not imply that its code has merged into main. [PR #16](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/16) remains open at `60d5255`; the receipt-response guard was incorporated and its scoped checks passed. there was no new reply requiring a response at this check. that is not approval of the whole PR.
 
 ## what comes next
 
-submit one reviewed, signed paid post to the research contract after explicit confirmation. verify its individual receipt and settlement against the review, including the fee, both recipient shares and the rounding remainder. independent reproduction of the browser and withdrawal flows is still open.
+make confirmed posts readable from a separately operated service, starting with recovery from a transaction hash without the publishing browser’s local storage. general paid-post verification in mixed-transaction blocks and a publicly operated social network remain open.
 
 ## find your starting point
 

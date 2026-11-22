@@ -1,3 +1,9 @@
+## public token reader and mined paid-post delivery — November 22, 2026
+
+the first wallet-free public product reads real Ethereum CAW balances in an ordinary browser from a single downloadable file. the signing desk now publishes separately approved posts to a running private Geth node and recovers the result after reload. it checks the exact signed transaction, both events and the account balances. independent comment reviews on #26–28 passed within scope. #19 and #29 have new fixes awaiting reviewer recheck. [operator guide and results](PRODUCT_DELIVERY.md).
+
+next, let a reader on another machine discover and verify a confirmed post from a transaction hash without the publisher’s saved review. broader block layouts and operation of a public social network need their own evidence.
+
 ## paid-post wallet signing — November 21, 2026
 
 the developer console now takes a proof-backed review through a disposable wallet prompt and checks the signature with the account’s contract wallet. the signing desk shows exact text, fee and settlement, then the verified signer, digest and block. it rejects an altered review, a wallet switch and a signature from the wrong controller. browser requests from another site can no longer start console proof work when the browser supplies its request origin metadata. [run the signing desk](PAID_POST_PREVIEW.md#run-the-signing-desk).
