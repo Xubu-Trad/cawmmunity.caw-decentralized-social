@@ -138,6 +138,8 @@ def main():
                       help="exercise the HTTP signing flow at block 17 before completing the replay")
     mode.add_argument("--inclusion-time-test", action="store_true",
                       help="mine one private test post that first becomes valid at inclusion")
+    mode.add_argument("--mixed-post-test", action="store_true",
+                      help="mine two native self-transfers around a signed paid post and verify its individual credits")
     args = parser.parse_args()
     geth, out = args.geth.resolve(), args.output.resolve()
     verified_geth(geth)
@@ -187,12 +189,14 @@ def main():
                     raise RuntimeError("C-007 node startup timed out")
                 rpc_url = f"http://127.0.0.1:{http}"
                 for height, head in replay(http, engine, secret, capture, records):
-                    if height == 17 and args.inclusion_time_test:
+                    if height == 17 and (args.inclusion_time_test or args.mixed_post_test):
                         timing_test = [node, HERE / "test-paid-post-inclusion-time.mjs"]
+                        if args.mixed_post_test:
+                            timing_test.append("--mixed")
                         tx_hash = subprocess.check_output(timing_test + ["send", rpc_url],
                                                           text=True, timeout=90).strip()
                         include_pending_post(http, engine, secret)
-                        subprocess.run(timing_test + ["verify", rpc_url, tx_hash], check=True, timeout=90)
+                        subprocess.run(timing_test + ["verify", rpc_url, tx_hash], cwd=out, check=True, timeout=90)
                         return
                     if height == 17 and (args.serve_console or args.signing_test):
                         current = PEER["rpc"](http, "eth_getBlockByNumber", ["latest", False])

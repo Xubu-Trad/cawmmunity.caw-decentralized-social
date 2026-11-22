@@ -33,25 +33,44 @@ async function reviewInterval(read, end, start) {
   return {reviewHeader:headers[0], parent:headers.at(-2)};
 }
 
-async function locatePost(read, hash) {
+async function locatePost(read, hash, allowMixed = false) {
   await checkPaidPostNetwork(read);
   const receipt = await read('eth_getTransactionReceipt',[hash]);
   if (receipt === null) return null;
   requireMatch(receipt?.transactionHash === hash && hashPattern.test(receipt.blockHash), 'Receipt locator mismatch');
   const header = await read('eth_getBlockByHash',[receipt.blockHash,false]);
   requireMatch(header?.hash === receipt.blockHash && Array.isArray(header.transactions) &&
-    header.transactions.length === 1 && header.transactions[0] === hash, 'Expected a block containing only the selected post');
-  const raw = await read('eth_getRawTransactionByHash',[hash]);
+    header.transactions.length > 0 && header.transactions.length <= (allowMixed ? 16 : 1) &&
+    header.transactions.includes(hash) && new Set(header.transactions).size === header.transactions.length,
+    'Unsupported block or missing selected post');
+  const hashes = header.transactions;
+  const index = hashes.indexOf(hash);
+  const raw = [], receipts = [];
+  for (const id of hashes) {
+    requireMatch(typeof id === 'string' && hashPattern.test(id), 'Invalid transaction hash');
+    raw.push(await read('eth_getRawTransactionByHash',[id]));
+    receipts.push(id === hash ? receipt : await read('eth_getTransactionReceipt',[id]));
+  }
   const select = {profile:'shanghai-17',hash:header.hash};
-  const joined = inspectBlockTransactionReceipts(header,[raw],[receipt],{
+  const joined = inspectBlockTransactionReceipts(header,raw,receipts,{
     ...select,schema:'caw-block-transactions-selection/1'
   });
-  const tx = inspectBlockSenders(header,[raw],{...select,schema:'caw-block-senders-selection/1',
-    chainId:'0x7a69',allowUnprotectedLegacy:false}).transactions[0];
+  const signed = inspectBlockSenders(header,raw,{...select,schema:'caw-block-senders-selection/1',
+    chainId:'0x7a69',allowUnprotectedLegacy:false}).transactions;
+  for (const [i,sibling] of signed.entries()) {
+    requireMatch(sibling.hash === hashes[i], 'Incorrect transaction order');
+    if (i === index) continue;
+    // Under Shanghai a valid EOA sender has no code. A plain self-transfer
+    // consumes only intrinsic gas and cannot execute a custody storage write.
+    requireMatch(sibling.from === sibling.to && sibling.data === '0x' &&
+      BigInt(sibling.gasLimit) === 21000n && joined.receipts[i].status === '0x1' &&
+      joined.receipts[i].logs.length === 0, 'Unsupported sibling transaction');
+  }
+  const tx = signed[index];
   requireMatch(tx.hash === hash && tx.to === fixture.vault && BigInt(tx.value) === 0n,
     'Transaction differs from selected post hash, target or value');
   const call = contract.decodeFunctionData('settleFixedPool1',tx.data);
-  return {header, tx, call, receipt:joined.receipts[0]};
+  return {header, tx, call, index, receipt:joined.receipts[index]};
 }
 
 function verifyAuthorization(tx, signature, review) {
@@ -141,7 +160,7 @@ async function verifySettlement(read, header, receipt, before, review) {
 export async function readPublishedPost(read, inputHash) {
   requireMatch(typeof inputHash === 'string' && /^0x[0-9a-fA-F]{64}$/.test(inputHash), 'Expected a 32-byte transaction hash');
   const hash = inputHash.toLowerCase();
-  const post = await locatePost(read,hash);
+  const post = await locatePost(read,hash,true);
   if (!post) return {status:'pending',hash};
   const {header, tx, receipt, call} = post;
   const block = {number:header.number,hash:header.hash};
@@ -163,6 +182,6 @@ export async function readPublishedPost(read, inputHash) {
   verifyAuthorization(tx,call.signature,reconstructed);
   const settlement = await verifySettlement(read,header,receipt,before,reconstructed);
   await checkCanonical(read,header);
-  return {status:'settled',hash,block,calldataHash:keccak256(tx.data),signer:reconstructed.controller,submitter:tx.from,
+  return {status:'settled',hash,block,transactionIndex:post.index,transactionCount:header.transactions.length,calldataHash:keccak256(tx.data),signer:reconstructed.controller,submitter:tx.from,
     text:intent.text,digest:reconstructed.preview.digest,settlement};
 }
