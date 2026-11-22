@@ -141,3 +141,43 @@ footer { padding: 16px 0 24px; text-align: right; }
   .terminal-mark, .cursor { border: 1px solid CanvasText; }
   .panel::before { display: none; }
 }
+
+/* Signing desk */
+.signing-terminal { --signal: #a1e2ff; margin-top: 18px; padding: 0; }
+.signing-terminal::before { width: 74px; background: var(--signal); }
+.signing-header {
+  display: flex; justify-content: space-between; align-items: start; gap: 16px;
+  padding: clamp(18px, 2vw, 26px); border-bottom: 1px solid var(--line);
+  background: linear-gradient(110deg, #14242c, #10191e 70%);
+}
+.signing-header h2 { margin: 0 0 8px; padding: 0; border: 0; }
+.signing-header p { max-width: 69ch; color: var(--muted); }
+.fixture-mode { flex: none; padding: 3px 8px; border: 1px solid #3a6372; color: var(--signal); font: 12px/1.6 var(--mono); }
+.signing-columns { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); }
+.signing-columns form, .signing-readout { margin: 0; border: 0; padding: clamp(18px, 2vw, 26px); min-width: 0; }
+.signing-columns fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+.signing-columns legend, .signing-readout h3 { font: 600 16px/1.35 var(--mono); margin: 0 0 10px; padding: 0; }
+.times { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.times label { margin: 0; font-size: 13px; }
+.times label span { color: var(--muted); }
+.times input { margin-top: 5px; }
+.signing-readout { background: #0c1419; border-left: 1px solid var(--line); }
+#paid-status { font: 14px/1.6 var(--mono); border-left: 3px solid var(--line); padding-left: 10px; }
+#paid-status[data-tone="ready"] { color: var(--accent); border-left-color: var(--accent); }
+#paid-status[data-tone="busy"] { color: var(--signal); border-left-color: var(--signal); }
+#paid-status[data-tone="error"] { color: var(--amber); border-left-color: var(--amber); }
+.proof-rows { margin: 12px 0; }
+.proof-rows div { display: grid; grid-template-columns: minmax(6.8rem, 0.7fr) minmax(0, 1.5fr); gap: 12px; border-bottom: 1px solid #263a42; padding: 6px 0; }
+.proof-rows dd, .wallet-readout { margin: 0; font: 12px/1.6 var(--mono); white-space: pre-wrap; overflow-wrap: anywhere; unicode-bidi: plaintext; }
+.signing-readout .wallet-readout { margin: 14px 0 8px; color: var(--muted); }
+.signing-buttons { display: flex; flex-wrap: wrap; gap: 8px; }
+#paid-retry { margin-top: 10px; }
+@media (max-width: 800px) {
+  .signing-columns { grid-template-columns: minmax(0, 1fr); }
+  .signing-readout { border-left: 0; border-top: 1px solid var(--line); }
+}
+@media (max-width: 480px) {
+  .signing-header { flex-wrap: wrap-reverse; }
+  .times, .proof-rows div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .times { gap: 8px; }
+}

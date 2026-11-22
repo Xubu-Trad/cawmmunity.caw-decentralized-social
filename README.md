@@ -33,7 +33,7 @@ The destination is a system others can reproduce and operate without Xubu's acco
 
 ## where the build stands
 
-a builder can now check a 5,000 mock-token post against a fresh local node before asking a wallet to sign. the reader proves who controls the account, what the payer can spend and how the fee would be split. in a 32-block replay it matched both historical signing requests and rejected the old review after ownership changed. the paid-post reader runs on the command line. [repeat the proof check](docs/PAID_POST_PREVIEW.md#repeat-the-live-proof-check).
+a builder can now check a 5,000 mock-token post against a fresh local node before asking a wallet to sign. the reader proves who controls the account, what the payer can spend and how the fee would be split. in a 32-block replay it matched both historical signing requests and rejected the old review after ownership changed. the reader runs on the command line and in the developer console. the new signing desk shows the text and fee split, checks the connected wallet before and after its prompt, and verifies the returned signature with the account’s contract wallet. signing stops before submission. [open the signing desk](docs/PAID_POST_PREVIEW.md#run-the-signing-desk).
 
 the local execution console now puts the account, actions, history and receipts in a keyboard-accessible terminal layout. its server rejects ambiguous requests and malformed node responses before using them in a review. [run the console](docs/LOCAL_EXECUTION_CONSOLE.md).
 
@@ -57,7 +57,7 @@ the experimental application lives on [draft PR #19](https://github.com/Xubu-Tra
 
 ## what comes next
 
-connect the paid-post recheck to a disposable wallet prompt, verify the returned signature against the reviewed controller and digest, then test submission against the research contract. independent browser and withdrawal reproduction are still open.
+submit one reviewed, signed paid post to the research contract after explicit confirmation. verify its individual receipt and settlement against the review, including the fee, both recipient shares and the rounding remainder. independent reproduction of the browser and withdrawal flows is still open.
 
 ## find your starting point
 

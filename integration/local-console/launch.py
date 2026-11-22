@@ -1,7 +1,7 @@
 from pathlib import Path
 import argparse,subprocess,socket,urllib.request,json,time,os,shutil,sys,hashlib
 from receipt_poll import rpc_result,wait_for_receipt
-p=argparse.ArgumentParser();p.add_argument('--geth',required=True);p.add_argument('--capture',required=True);p.add_argument('--genesis',required=True);p.add_argument('--selection',required=True);p.add_argument('--registry-proof',required=True);p.add_argument('--output',required=True);p.add_argument('--smoke',action='store_true');p.add_argument('--receipt-history',action='store_true');a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('--geth',required=True);p.add_argument('--capture',required=True);p.add_argument('--genesis',required=True);p.add_argument('--selection',required=True);p.add_argument('--registry-proof',required=True);p.add_argument('--output',required=True);p.add_argument('--smoke',action='store_true');p.add_argument('--receipt-history',action='store_true');p.add_argument('--paid-post-rpc',help='Optional loopback RPC for the separate C-007 proof and signing fixture');a=p.parse_args()
 if a.smoke and a.receipt_history:raise SystemExit('SELECT_ONE_SCENARIO')
 if sys.flags.optimize:raise SystemExit('OPTIMIZED_PYTHON_UNSUPPORTED')
 o=Path(a.output).resolve();src=Path(__file__).resolve().parent
@@ -36,7 +36,9 @@ try:
   # Separate unpaid posting capability; never replaces the preserved custody runtime.
   q=subprocess.run(['node','--max-old-space-size=256',str(src/'build-posting.mjs'),str(o/'posting-build')],capture_output=True,text=True,timeout=90);(o/'posting-build.log').write_text(q.stdout+q.stderr);assert q.returncode==0,'POSTING_BUILD'
   q=subprocess.run(['node','--max-old-space-size=128',str(src/'deploy-posting.mjs'),str(o/'console.json'),str(o/'posting-build/posting-artifact.json'),str(o/'posting-deployment')],capture_output=True,text=True,timeout=90);(o/'posting-deployment.log').write_text(q.stdout+q.stderr);assert q.returncode==0,'POSTING_DEPLOYMENT'
-  config=json.loads((o/'posting-deployment/console.json').read_text());(o/'console.json').write_text(json.dumps(config,indent=2))
+  config=json.loads((o/'posting-deployment/console.json').read_text())
+  if a.paid_post_rpc:config['paidPostRpcUrl']=a.paid_post_rpc
+  (o/'console.json').write_text(json.dumps(config,indent=2))
   if a.receipt_history:
    q=subprocess.run(['node','--max-old-space-size=256',str(src/'fresh-receipt-console.mjs'),str(o/'console.json'),str(o/'receipt-history')],capture_output=True,text=True,timeout=150);(o/'receipt-history.log').write_text(q.stdout+q.stderr);assert q.returncode==0,'RECEIPT_HISTORY_FAILED'
   elif a.smoke:

@@ -8,7 +8,9 @@ from pathlib import Path
 import runpy
 import secrets
 import shutil
+import signal
 import subprocess
+import sys
 import tempfile
 import time
 
@@ -62,13 +64,45 @@ def replay(http, engine, secret, capture, records):
         if result["status"] != "VALID" or PEER["forkchoice"](engine, header["hash"], secret) != "VALID":
             raise ValueError(f"Geth rejected C-007 block {number}: {result}")
         parent = header["hash"]
-    return parent
+        yield number, parent
+
+
+def serve_console(geth, output, paid_rpc):
+    headers = ROOT / "evidence/wallet-headers-20261112"
+    args = [sys.executable, str(HERE / "launch.py"), "--geth", str(geth),
+            "--capture", str(headers / "capture.json"), "--genesis", str(headers / "genesis.json"),
+            "--registry-proof", str(headers / "evidence.json"),
+            "--selection", str(ROOT / "evidence/wallet-state-20261112/selection.json"),
+            "--output", str(output), "--paid-post-rpc", paid_rpc]
+    print(f"Paid-post wallet RPC: {paid_rpc} (disposable C-007 chain, held at block 17).", flush=True)
+    print("Starting the console. Press Ctrl+C to stop both local chains.", flush=True)
+    launcher = subprocess.Popen(args, start_new_session=True)
+    try:
+        code = launcher.wait()
+        if code:
+            raise RuntimeError(f"Console launcher exited with status {code}")
+    except KeyboardInterrupt:
+        # The launcher owns its web server and the other fixture node. Give its
+        # finally block time to stop those children and write the shutdown log.
+        if launcher.poll() is None:
+            launcher.send_signal(signal.SIGINT)
+            try:
+                launcher.wait(timeout=35)
+            except subprocess.TimeoutExpired:
+                os.killpg(launcher.pid, signal.SIGKILL)
+                launcher.wait()
+        print("Stopping the paid-post fixture.", flush=True)
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--geth", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--serve-console", action="store_true",
+                      help="hold the paid fixture at block 17 and start the interactive console")
+    mode.add_argument("--signing-test", action="store_true",
+                      help="exercise the HTTP signing flow at block 17 before completing the replay")
     args = parser.parse_args()
     geth, out = args.geth.resolve(), args.output.resolve()
     verified_geth(geth)
@@ -104,7 +138,7 @@ def main():
         with (out / "geth.log").open("xb") as log:
             subprocess.run(binary + ["init", genesis_path], env=env, check=True, timeout=60,
                            stdout=log, stderr=log)
-            proc = subprocess.Popen(serve, env=env, stdout=log, stderr=log)
+            proc = subprocess.Popen(serve, env=env, stdout=log, stderr=log, start_new_session=True)
             try:
                 for _ in range(100):
                     if proc.poll() is not None:
@@ -116,13 +150,25 @@ def main():
                         time.sleep(.1)
                 else:
                     raise RuntimeError("C-007 node startup timed out")
-                head = replay(http, engine, secret, capture, records)
-                subprocess.run([node, HERE / "test-paid-post-live.mjs", f"http://127.0.0.1:{http}"],
+                rpc_url = f"http://127.0.0.1:{http}"
+                for height, head in replay(http, engine, secret, capture, records):
+                    if height == 17 and (args.serve_console or args.signing_test):
+                        current = PEER["rpc"](http, "eth_getBlockByNumber", ["latest", False])
+                        if current["hash"] != head or current["number"] != "0x11":
+                            raise RuntimeError("Expected the first reviewable C-007 head")
+                        if args.serve_console:
+                            serve_console(geth, out / "console", rpc_url)
+                            return
+                        subprocess.run([node, HERE / "test-paid-post-http.mjs", rpc_url],
+                                       check=True, timeout=90)
+                subprocess.run([node, HERE / "test-paid-post-live.mjs", rpc_url],
                                check=True, timeout=90)
             finally:
                 PEER["stop"](proc)
     result = {"status": "PASS", "genesis": GENESIS_HASH, "headNumber": 32, "headHash": head,
               "gethSha256": GETH_HASH, "independentOperator": False, "publicNetwork": False}
+    if args.signing_test:
+        result["httpSigningTest"] = True
     (out / "result.json").write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps(result))
 
