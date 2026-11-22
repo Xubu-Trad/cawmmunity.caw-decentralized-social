@@ -33,6 +33,8 @@ The destination is a system others can reproduce and operate without Xubu's acco
 
 ## where the build stands
 
+username registration now has an ERC-721 candidate for local review. the proposed destination is the address used by the riddle-announcement wallet and gilgamesh’s username minter. it changes where CAW sits while total supply stays the same. the portal quotes the cost. [read the burn decision and reproduce the registration](docs/C001_REGISTRATION_DECISION_PACKET.md#historical-sink-candidate-for-public-review).
+
 the green portal now prices a username using the manifesto’s recommended burn schedule. the same rules ran as compiled Solidity on a disposable Geth chain. this is a quote only. the actual CAW token rejects the specified zero-address transfer; registration and the burn decision still need public review.
 
 anyone can now [download the Ethereum CAW balance reader](public/caw-balance.html?raw=1) and open the file directly in a browser. enter a public address to check its real CAW balance. the browser asks two Ethereum services for the same finalized block and checks the token code before showing the result. it needs no installation, wallet connection or gas.

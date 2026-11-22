@@ -43,3 +43,14 @@ R2-004, `8f9da9c32b3aa4ff9f3fb095d9995fd38a8f54a6`, layers/R2-020_hex_transposit
 R2-005, `8f9da9c32b3aa4ff9f3fb095d9995fd38a8f54a6`, layers/R2-020_hex_transposition/EVIDENCE/reading_rotation.txt:L7:
 
 > 3- eventually we have a thing that is solid, peer reviewed, contributed to by many and it is agreed to be released
+
+### Historical sink candidate for public review
+
+The manifesto specifies a transfer to the zero address when a username is minted. The deployed CAW token rejects that transfer. The proposed alternative pays the recommended amount to `0xdEAD000000000000000042069420694206942069` and issues a transferable ERC-721 in the same transaction. This is a change to C001. A transfer to this address increases its balance and leaves total supply unchanged. Its spelling provides no proof that spending from it is impossible.
+
+The [April 2022 funding transaction](https://etherscan.io/tx/0xb875a9cd6b74facc3d6da59fd350ce69ea07c79b07b598e41bd1cebfdcf4be27) connects the CAW token deployer to the riddle-announcement wallet. The [transfer to the proposed sink](https://etherscan.io/tx/0x0377e91a52b5c4ffdae4c4bd6d1fcf9e928bd7b5f1ac25b56ae72029ccf32a76) came from that second wallet. These records establish funding and use. They leave common control and endorsement unverified. [Gilgamesh’s profile minter](https://github.com/GilgameshCaw/Caw/blob/97cd13f3a1423f702d411472fdd2b2a2e7bfbd59/solidity/contracts/CawProfileMinter.sol#L390) uses the same destination for usernames. Its separate buy-and-burn contract uses a different address.
+
+**Review workflow.** Compare the literal rule and the existing alternatives above. Review whether a transfer with unchanged supply is acceptable and record the exact recipient, economic effect, objections and community decision before enabling registration. R2 calls for peer review and agreed changes. The candidate has a fixed recipient, an immutable token and no administrator. NFT ownership alone does not implement account custody or authorize posting in this candidate.
+
+**Reproduction.** With the existing local-console dependencies installed, run `npm ci --prefix integration/local-console/registration`. Start a fresh disposable Geth dev chain as in the local-console workflow. From the repository root run `node integration/local-console/registration/test-registration.mjs http://127.0.0.1:PORT` with its actual port. The test deploys a fixture token and registration candidate, checks the payment and unchanged supply, transfers the NFT and checks duplicate names remain unavailable.
+
