@@ -1,0 +1,18 @@
+{
+  "c007": "OPEN",
+  "control_receipt": "0x0",
+  "control_revert_selector": "0xfcfdb9b5",
+  "original_rpc_execution_rerun": false,
+  "parent_intent_sha256": "0e4eff27c90454790ce8f0447219dedca42c02f1c64da00fa201720d32a8922a",
+  "parent_results_sha256": "7fadb2d9dbe81b7e62023f7647548eb8082d60607f150f03ccbbdf5db84f97a7",
+  "post_states_equal": true,
+  "posted_events_equal": true,
+  "recipient_balance_delta": "100000000000000000000",
+  "schema": "caw-c007-withdrawal-independent-audit/1",
+  "synthetic_only": true,
+  "treatment_receipt": "0x1",
+  "vault_balance_delta": "-100000000000000000000",
+  "withdrawal_accounting_conserved": true,
+  "withdrawal_amount_base_units": "100000000000000000000",
+  "withdrawal_event_bytes_valid": true
+}
