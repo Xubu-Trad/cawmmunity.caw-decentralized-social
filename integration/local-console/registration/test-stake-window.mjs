@@ -3,7 +3,7 @@ import {execFile, spawn} from 'node:child_process';
 import {once} from 'node:events';
 import {promisify} from 'node:util';
 import {setTimeout as delay} from 'node:timers/promises';
-import {Contract, JsonRpcProvider, parseEther} from 'ethers';
+import {Contract, JsonRpcProvider, parseEther, AbiCoder, keccak256} from 'ethers';
 import {createLocalRpc} from '../local-rpc.mjs';
 import {readStakeWindow} from './stake-window.mjs';
 
@@ -13,6 +13,7 @@ const reader = 'http://127.0.0.1:38654';
 const rpc = createLocalRpc(endpoint);
 const provider = new JsonRpcProvider(endpoint, 1337, {cacheTimeout:-1});
 provider.pollingInterval = 100;
+const checkRoot=process.argv.includes('--root-replay');
 const children = [];
 function start(command,args) {
   const child = spawn(command,args,{cwd,stdio:['ignore','pipe','inherit']});
@@ -27,8 +28,10 @@ async function ready(child, probe) {
   throw Error('Test process did not become ready.');
 }
 try {
-  const node = start('anvil',['--host','127.0.0.1','--port','38653','--chain-id','1337','--order','fifo','--silent']);
+  const node = start('anvil',['--host','127.0.0.1','--port','38653','--chain-id','1337','--order','fifo',...(checkRoot?['--hardfork','shanghai','--disable-default-create2-deployer','--accounts','10','--balance','10000']:[]),'--silent']);
   await ready(node,()=>rpc('eth_chainId',[]));
+  // Credit block tips to a funded account in the cross-engine Shanghai fixture.
+  if(checkRoot) await rpc('anvil_setCoinbase',['0xa0ee7a142d267c1f36714e4a8f75612f20a79720']);
   const {stdout} = await promisify(execFile)(process.execPath,['test-registration.mjs',endpoint],{cwd});
   const registry = stdout.match(/Local registry: (0x[0-9a-fA-F]{40})/)[1];
   const service = start(process.execPath,['staked-post-service.mjs',endpoint,registry,'--deploy','38654']);
@@ -75,6 +78,24 @@ try {
     return rpc(method,args);
   };
   await assert.rejects(verify(wrongBoundary,paid),/boundary/);
+  if(checkRoot){
+    const {replayWindow}=await import('../../../experiments/c007-transactions/stake-window-root.mjs');
+    const mapping=(account,slot)=>keccak256(AbiCoder.defaultAbiCoder().encode(['address','uint256'],[account,slot]));
+    // StakedNamePosts.stakeOf uses slot 1. The fixture ERC20 balances use slot 0.
+    const slots=[['pool',mapping(transient.address,1)],['pool',mapping(permanent.address,1)],
+      ...[author,permanent,transient].map(s=>['token',mapping(s.address,0)])];
+    const replay=await replayWindow({rpc,accounts:await rpc('eth_accounts',[]),head:block,slots,
+      pool:config.posts,token:config.token,hashes:[enter.hash,post.hash,exit.hash]});
+    assert.equal(replay.states.length,4);
+    assert.deepEqual(replay.states.map(row=>row[0]),['0','300','300','0'].map(s=>parseEther(s)));
+    assert.deepEqual(replay.states.map(row=>row[1]),Array(4).fill(parseEther('100')));
+    const changes=(i)=>replay.states[i].slice(2).map((v,j)=>v-replay.states[i-1][j+2]);
+    assert.deepEqual(changes(1),[0n,0n,-parseEther('300')]);
+    assert.deepEqual(changes(2),[-parseEther('5000'),...result.credits.map(c=>parseEther(c.amount))]);
+    assert.deepEqual(changes(3),[0n,0n,parseEther('300')]);
+    console.log(JSON.stringify({headerState:replay.mismatches.length?'MISMATCH':'MATCH',headerStateRoot:block.stateRoot,blocks:replay.blocks,intermediateRoots:replay.intermediateRoots,anvilHeaderDisagreements:replay.mismatches,parentStateRoot:replay.parentStateRoot,stateRoot:replay.stateRoot}));
+    if(!process.argv.includes('--compare-only')) assert.deepEqual(replay.mismatches,[],'SOURCE_HEADER_ROOT_MISMATCH');
+  }
   console.log(JSON.stringify({post:post.hash,block:block.hash,credits:result.credits,window:result.stakeWindow,negativeControls:3}));
 } finally {
   provider.destroy();

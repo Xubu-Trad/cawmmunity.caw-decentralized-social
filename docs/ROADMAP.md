@@ -1,6 +1,10 @@
+## Same-block stake replay — November 23, 2026
+
+Geth and EthereumJS agree on the execution roots across 15 disposable blocks and at all three transaction boundaries in the selected block. Each fixture credit agrees with the change in the recipient’s token balance during the post. Strict Anvil header authentication failed starting at block 5; the first divergent state is the next investigation. [Exact commands and limits](../integration/local-console/registration/OPERATOR.md#independent-execution-roots).
+
 ## Stake at publication — November 22, 2026
 
-The portal reader reconstructed an entry, paid post and exit in the same block on a fresh Anvil node. It checked participant weights using hash-pinned node reads and matched payments to the post receipt. This covers the direct three-transaction case. The next proof step is to replay this stake change against an independently checked state root. The independent operator replay of the PR #36 feed sample is still pending. [Operator workflow](../integration/local-console/registration/OPERATOR.md#stake-at-publication).
+The portal reader reconstructed an entry, paid post and exit in the same block on a fresh Anvil node. It checked participant weights using hash-pinned node reads and matched payments to the post receipt. This covers the direct three-transaction case. The next proof step is to replay this stake change against an independently checked state root. Ahdmesh subsequently reproduced the PR #36 feed sample on a separate machine. [Operator workflow](../integration/local-console/registration/OPERATOR.md#stake-at-publication).
 
 ## Post between two withdrawals — November 22, 2026
 

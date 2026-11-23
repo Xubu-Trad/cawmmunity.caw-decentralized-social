@@ -56,3 +56,19 @@ unshare -Urn sh -ec 'ip link set lo up; node test-stake-window.mjs'
 ```
 
 The test starts a fresh loopback node and the actual paid-post reader, registers a name, and mines three calls in order. A wallet stakes 300, the author publishes, then the wallet withdraws its stake. The other staker holds 100 throughout. The reader must report credits of 3,750 and 1,250 respectively, and the transient wallet must have zero stake at both ends of the block. The command prints the new block and transaction hashes. Three negative controls cover a wrong recipient weight, misplaced receipt and conflicting block-end state. This test trusts the selected node for its historical state and receipts. It uses a separate chain from the downloadable PR #36 sample.
+
+## Independent execution roots
+
+Use the registration dependencies above, Node 20.20.2, Anvil 1.5.1 and the Linux Geth 1.17.10 `evm` tool (SHA-256 `d8cfddad15a8c601e7b069bc5973ad073dbc2d632b8c5ab50e513ef27c53d6da`). From the checkout root:
+
+```sh
+npm ci --prefix experiments/c007-transactions --ignore-scripts --no-audit --no-fund
+export GETH_EVM=/absolute/path/to/evm
+cd integration/local-console/registration
+unshare -Urn sh -ec 'ip link set lo up; node test-stake-window.mjs --root-replay --compare-only'
+unshare -Urn sh -ec 'ip link set lo up; node test-stake-window.mjs --root-replay'
+```
+
+The first command inside a namespace compares the execution engines. The second additionally requires agreement with every mined post-genesis header root. On November 23 the comparison succeeded and the strict check rejected blocks 5–15. Anvil also reported the empty trie root at genesis despite its funded accounts. Replay starts from the pinned ten-account funded allocation. The Shanghai fixture uses a funded block beneficiary and disables the default CREATE2 deployer. This is a fresh execution of the PR #37 scenario. The browser still uses its selected node.
+
+Both engines computed `0xc72bc33605ce3958d5d3491915d068f5ec8a990d17de60cdf50d4a88f88ebe91` immediately after the post. Its author spent 5,000 fixture CAW, and recipients gained 1,250 and 3,750. The separate exit transaction returned 300 staked tokens. Both engines ended at `0xfa5685c725e5b492f08b9a7769788ff687f489918b9ca432cb1f76434248e1b3`; the selected Anvil header reported `0x8316f2efcc374d066e5e8ae862f0645eebf4a21a6c6f33e5c20f6cd7a0402feb`. Transaction and receipt roots, gas used and receipt blooms matched throughout.
