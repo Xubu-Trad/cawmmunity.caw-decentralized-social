@@ -138,3 +138,17 @@ bash packet/reproduce.sh "$work/repo"
 ```
 
 The wrapper hashes both executables, installs the three locked dependency sets, and compares fresh results with both reference files. It checks the exact slots, roots and credits. Fresh mining timestamps can change block hashes, so it checks those references within each run. The expected exit codes are 0 for the cross-engine comparison and 1 for strict header authentication with `SOURCE_HEADER_ROOT_MISMATCH`. The wrapper exits 0 only when both expected outcomes reproduce. Its first line gives the results directory containing the two JSONL traces, stderr and exit codes. For an independent operator report, include the tested commit, archive digest and those results.
+
+## CAW token registration and settlement
+
+From the repository root, use Linux, Node 20.20.2, Anvil 1.5.1 on PATH, iproute2 and unprivileged network namespaces:
+
+```sh
+npm ci --prefix integration/local-console --ignore-scripts --no-audit --no-fund
+npm ci --prefix integration/local-console/registration --ignore-scripts --no-audit --no-fund
+unshare -Urn sh -ec 'ip link set lo up; node integration/local-console/registration/test-caw-runtime.mjs'
+```
+
+The test starts its own disposable node, installs the captured 2,278-byte CAW runtime at the historical address, and seeds synthetic balance and supply slots. The registration candidate checks the runtime hash at construction and on Ethereum chain ID 1 additionally requires the historical token address. Code identity alone cannot authenticate a token’s ledger or deployment.
+
+The run rejects a different runtime and a zero-address payment. It checks username NFT ownership, the exact sink credit, reduction of maximum allowance, ownership and length controls on publication, the 5,000-token staker credit, the 100-token stake withdrawal and unchanged supply. No real assets are used. The local posting pool remains bounded and chain-specific. This candidate does not establish testnet readiness or community acceptance of the sink.

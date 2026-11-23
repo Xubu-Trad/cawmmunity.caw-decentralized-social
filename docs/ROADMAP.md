@@ -1,3 +1,18 @@
+## Protocol delivery priorities
+
+The release target is a usable protocol that another community member can deploy, read and maintain. The #36 and #37 evidence remains available for independent reproduction. The next implementation priority is the combined protocol path.
+
+| Milestone | Current evidence and next acceptance test |
+|---|---|
+| Username ownership and CAW payments | The candidate pins the observed CAW runtime. A disposable test exercises mint, post, payout and stake withdrawal. C-001 is open: document and publicly decide the username payment destination and supply semantics. |
+| All paid actions and custody | Carry this runtime through follow, like and reCAW. Check each fee split, staking eligibility, transfer of the username, account withdrawals and reverted transactions against a shared deployment. Stake withdrawal alone covers only one exit path. |
+| Durable, independently readable history | Have two operators reconstruct the same feed from separately sourced chain data. Test reorg rollback and archive recovery, including the case where the first reader goes offline. Record checkpoint provenance and mixed-block accounting. |
+| Public testnet and general wallets | Integrate the same contracts with the green portal, discover wallets and recheck account, chain, runtime and receipt state before showing success. Publish reproducible bytecode and a test-asset manifest. Inventory every privileged function, upgrade path and dependency. Verify post-setup authority on-chain for each deployed contract. |
+| Loss of the original operator | Take the original front end, domain, indexer and deployer credentials out of the exercise. A second operator must rebuild from public artifacts and independently register, publish, read and withdraw with a fresh wallet. Record service outages and discrepancies. |
+| Community acceptance | Track each manifesto and R2 requirement against a pinned revision, test and independent review. Record dissent, unresolved rules and the public acceptance decision before describing a release as accepted. |
+
+Gilgamesh is a functional reference. Each proposed behavior here still needs a source requirement or a documented community decision.
+
 ## Block 5–15 operator packet — November 23, 2026
 
 Published the [pinned packet and clean-checkout commands](../integration/local-console/registration/OPERATOR.md#reproduce-the-published-pr-37-trace-packet). A local unpack-and-replay matched the reference traces and reproduced the strict rejection. Independent operator reproduction is pending.
