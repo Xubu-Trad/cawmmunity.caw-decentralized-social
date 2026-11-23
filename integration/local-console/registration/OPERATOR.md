@@ -166,3 +166,10 @@ Run the [CAW runtime integration command above](#caw-token-registration-and-sett
 For each row the run checks the action receipt, CAW transfer logs, both staker credits, the payer’s allowance, actual wallet balance changes and the recorded action. Social fees come from wallet allowances. Account custody uses a separate deposit keyed by the username NFT ID.
 
 The runner deploys the existing account-custody probe against this registry and its runtime hash. It deposits 900, transfers the NFT, checks rejection of the former owner and stale ownership epoch using read-only calls, then mines a withdrawal of 900 by the current owner. The withdrawal receipt, actual recipient and vault balances, account credit and aggregate liability must agree. A second withdrawal must be rejected. The run prints transaction hashes; monetary fields named payerDebit, directCredit and amount on the withdrawal record use base units (18 decimals). The token storage setup is synthetic. The current browser readers still have fixture-specific assumptions.
+
+
+## Choose a registration wallet
+
+Open the local registration page, select a signing wallet and click **Connect local wallet**. A wallet that announces itself through EIP-6963 can appear alongside other wallets. The page also accepts an injected browser wallet. Changing the selection clears the account and quote. Reconnect and review the username price before signing. The chain ID and genesis checks still apply.
+
+From the repository root, install the console dependencies with `npm ci --prefix integration/local-console --ignore-scripts`. With Python Playwright and its Chromium installed, run `python3 integration/local-console/registration/test-wallet-selection.py`. This checks selection, duplicate announcements, inactive-wallet events, active account changes and legacy fallback with browser test providers. The real-extension compatibility matrix and wallet selection on other action pages remain open.

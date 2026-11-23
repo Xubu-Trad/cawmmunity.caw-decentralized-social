@@ -1,7 +1,9 @@
 import {BrowserProvider,Contract,Interface,formatEther,getAddress,id,ZeroAddress} from '/ethers.mjs';
 const $ = key => document.getElementById(key);
 const config = await (await fetch('/config')).json();
-const wallet = window.ethereum;
+const chooser = $('wallet-choice');
+const wallets = [];
+let wallet;
 const registryAbi = ['function lookup(string) view returns(uint256,address)','function register(string)','function ownerOf(uint256) view returns(address)','function usernameOf(uint256) view returns(string)','event Transfer(address indexed from,address indexed to,uint256 indexed tokenId)'];
 const tokenAbi = ['function balanceOf(address) view returns(uint256)','function allowance(address,address) view returns(uint256)','function approve(address,uint256) returns(bool)'];
 let account,provider,registry,token,review,busy=false,epoch=0;
@@ -9,6 +11,7 @@ const key='caw-registration:'+config.genesis+':'+config.registry;
 function saved(){try{return JSON.parse(localStorage.getItem(key));}catch{return null;}}
 function refresh(){
   for(const k of ['connect','fund','review','approve','register','recheck']) $(k).disabled=busy;
+  chooser.disabled=busy || wallets.length<2;
   $('fund').disabled ||= !account; $('review').disabled ||= !account;
   $('approve').disabled ||= !review || review.approved;
   $('register').disabled ||= !review?.approved;
@@ -16,7 +19,34 @@ function refresh(){
 }
 function invalidate(){epoch++;review=null;$('quote').textContent='';refresh();}
 function reset(){account=null;$('account').textContent='';invalidate();}
-wallet?.on?.('chainChanged',reset);wallet?.on?.('accountsChanged',reset);
+function addWallet(candidate,label){
+  if(!candidate || typeof candidate.request!=='function')return;
+  const existing=wallets.indexOf(candidate);
+  if(existing!==-1){
+    if(label)chooser.options[existing].textContent=label;
+    return;
+  }
+  const index=wallets.push(candidate)-1;
+  chooser.add(new Option(label || 'Browser wallet',String(index)));
+  if(!wallet)wallet=candidate;
+  for(const event of ['chainChanged','accountsChanged']){
+    candidate.on?.(event,()=>{if(wallet===candidate)reset();});
+  }
+  refresh();
+}
+chooser.onchange=()=>{
+  wallet=wallets[chooser.selectedIndex];
+  provider=null;registry=null;token=null;
+  $('receipt').textContent='';
+  $('status').textContent='Connect the selected wallet to continue.';
+  reset();
+};
+window.addEventListener('eip6963:announceProvider',event=>{
+  const detail=event.detail;
+  if(typeof detail?.info?.name==='string')addWallet(detail.provider,detail.info.name);
+});
+window.dispatchEvent(new Event('eip6963:requestProvider'));
+addWallet(window.ethereum);
 $('name').addEventListener('input',invalidate);
 async function check(){
   if (!wallet) throw Error('Open this portal in a browser with your local wallet enabled.');
