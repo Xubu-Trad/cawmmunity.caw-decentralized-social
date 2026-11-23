@@ -33,6 +33,8 @@ The destination is a system others can reproduce and operate without Xubu's acco
 
 ## where the build stands
 
+one disposable deployment now runs likes, recaws, follows and nft-account withdrawals with the captured caw token code. the test checks what each wallet actually gained or spent. when the username changes hands, its new owner can withdraw its existing deposit. [fee splits, custody results and operator commands](integration/local-console/registration/OPERATOR.md#social-fees-and-nft-account-withdrawal)
+
 the first protocol integration now runs username registration, a 420-character paid post, staker payout and stake withdrawal with the captured ethereum caw token code and disposable balances. the proposed username payment moves tokens to a sink and leaves supply unchanged. [replay the integration](integration/local-console/registration/OPERATOR.md#caw-token-registration-and-settlement) · [protocol delivery priorities](docs/ROADMAP.md#protocol-delivery-priorities)
 
 another operator can now [download the hashed #37 trace and replay blocks 5–15](integration/local-console/registration/OPERATOR.md#reproduce-the-published-pr-37-trace-packet). the packet checks both the reproduced credits and the strict header failure. independent operator results for this packet are pending.

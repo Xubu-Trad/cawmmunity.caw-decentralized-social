@@ -5,6 +5,7 @@ import {once} from 'node:events';
 import {createInterface} from 'node:readline';
 import {Contract, ContractFactory, JsonRpcProvider, MaxUint256, ZeroAddress,
   solidityPackedKeccak256, zeroPadValue, toBeHex, keccak256, id, parseEther} from 'ethers';
+import {exerciseAccountActions} from './exercise-caw-actions.mjs';
 import solc from 'solc';
 
 const read=path=>readFileSync(new URL(path,import.meta.url),'utf8');
@@ -12,11 +13,11 @@ const capture=JSON.parse(read('../../../reference/fixtures/caw-token-publicnode.
 const runtime=capture.calls.find(c=>c.request.method==='eth_getCode').response.result;
 const expected='0x6ee560d3e6b1f881a8711e0be0b30a0e8e0cf8b915ce8f75ea05002126c94256';
 assert.equal(keccak256(runtime),expected);
-const names=['CawUsernameRegistration','UsernameRegistration','StakedNamePosts'];
+const names=['CawUsernameRegistration','UsernameRegistration','StakedNamePosts','PaidLikes','PaidReCAWs','PaidFollows'];
 const sources=Object.fromEntries(names.map(n=>['registration/'+n+'.sol',{content:read(n+'.sol')}]));
 sources['UsernameTerms.sol']={content:read('../UsernameTerms.sol')};
 const build=JSON.parse(solc.compile(JSON.stringify({language:'Solidity',sources,
-  settings:{evmVersion:'shanghai',outputSelection:{'*':{'*':['abi','evm.bytecode.object']}}}}),
+  settings:{viaIR:true,optimizer:{enabled:true,runs:200},evmVersion:'shanghai',outputSelection:{'*':{'*':['abi','evm.bytecode.object']}}}}),
   {import:path=>({contents:read('node_modules/'+path)})}));
 assert.deepEqual((build.errors??[]).filter(e=>e.severity==='error'),[]);
 
@@ -37,7 +38,7 @@ try {
   provider.pollingInterval=100;
   const [payer,staker]=await Promise.all([0,1].map(i=>provider.getSigner(i)));
   const word=n=>zeroPadValue(toBeHex(n),32);
-  const supply=parseEther('2000000');
+  const supply=parseEther('4000000');
   await provider.send('anvil_setCode',[capture.token,runtime]);
   const balanceSlot=solidityPackedKeccak256(['bytes32','bytes32'],[zeroPadValue(payer.address,32),word(0)]);
   await provider.send('anvil_setStorageAt',[capture.token,balanceSlot,word(supply)]);
@@ -76,10 +77,13 @@ try {
   assert.equal(await token.balanceOf(staker.address),fee);
   assert.equal(await token.balanceOf(pool.target),stake);
   assert.equal(await token.allowance(payer.address,pool.target),0n);
-  await mine(pool.connect(staker).unstake());
-  assert.equal(await token.balanceOf(staker.address),fee+stake);
-  assert.equal(await token.balanceOf(pool.target),0n);
   assert.equal(await token.balanceOf(payer.address),supply-price-fee-stake);
+  await exerciseAccountActions({provider,registry,token,pool,payer,staker,name,post,deploy,mine,read});
+  const beforeExit=await token.balanceOf(staker.address);
+  await mine(pool.connect(staker).unstake());
+  assert.equal(await token.balanceOf(staker.address),beforeExit+stake);
+  assert.equal(await token.balanceOf(pool.target),0n);
+
   assert.equal(await token.totalSupply(),supply);
   console.log(JSON.stringify({runtime:expected,name,sink:await registry.SINK(),price:price.toString(),
     post:post.hash,credit:fee.toString(),withdrawnStake:stake.toString(),totalSupplyUnchanged:true}));

@@ -13,4 +13,15 @@ contract CawUsernameRegistration is UsernameRegistration {
             revert InvalidPaymentToken();
         }
     }
+
+    mapping(uint256 => uint256) private ownershipEpoch;
+
+    function authority(uint256 accountId) external view returns (address, uint256) {
+        return (ownerOf(accountId), ownershipEpoch[accountId]);
+    }
+
+    function _update(address to, uint256 accountId, address auth) internal override returns (address from) {
+        from = super._update(to, accountId, auth);
+        if (from != to) ownershipEpoch[accountId]++;
+    }
 }
