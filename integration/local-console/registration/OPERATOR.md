@@ -117,8 +117,8 @@ Download the immutable packet and verify its bytes before extracting:
 set -eu
 work=$(mktemp -d)
 cd "$work"
-curl -fL --retry 2 https://raw.githubusercontent.com/Xubu-Trad/cawmmunity.caw-decentralized-social/fe5c87b7d9dc8b8182595c6efea1ac2765a7debb/evidence/pr37-block-trace-v1.tar.gz -o trace.tar.gz
-echo '97f8ff4ab7155a14784ab099c743ff1065164e07f6db410a0a48eb7a37cdd86b  trace.tar.gz' | sha256sum -c -
+curl -fL --retry 2 https://raw.githubusercontent.com/Xubu-Trad/cawmmunity.caw-decentralized-social/f0aacba2c93e0fbb2cc4e7eb5e789ef2365e69a1/evidence/pr37-block-trace-v1.tar.gz -o trace.tar.gz
+echo 'f57da9b76859788bd1aedcbf3dafe0c70e76961747f775323b121ebde686cf2e  trace.tar.gz' | sha256sum -c -
 tar -xzf trace.tar.gz
 (cd packet && sha256sum --strict -c SHA256SUMS)
 ```
