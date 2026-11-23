@@ -5,7 +5,7 @@ import {promisify} from 'node:util';
 import {setTimeout as delay} from 'node:timers/promises';
 import {Contract, JsonRpcProvider, parseEther, AbiCoder, keccak256} from 'ethers';
 import {createLocalRpc} from '../local-rpc.mjs';
-import {readStakeWindow} from './stake-window.mjs';
+import {readStakeWindow,optionalStakeWindow} from './stake-window.mjs';
 
 const cwd = new URL('.', import.meta.url);
 const endpoint = 'http://127.0.0.1:38653';
@@ -78,6 +78,34 @@ try {
     return rpc(method,args);
   };
   await assert.rejects(verify(wrongBoundary,paid),/boundary/);
+  const explain=query=>optionalStakeWindow(query,block,1,config.posts,author.address,paid,parseEther('400'));
+  assert.deepEqual(await explain(async()=>null),{stakeWindowStatus:'unavailable'});
+  for(const [method,field,value] of [
+    ['eth_getTransactionReceipt','transactionIndex',false],
+    ['eth_getTransactionByHash','transactionIndex',''],
+    ['eth_getTransactionByHash','input',pool.interface.encodeFunctionData('stake',[0n])],
+    ['eth_getTransactionByHash','input',pool.interface.encodeFunctionData('stake',[1n<<128n])]
+  ]){
+    const modified=async(m,args)=>{
+      const v=await rpc(m,args);
+      return m===method && args[0]===enter.hash?{...v,[field]:value}:v;
+    };
+    assert.deepEqual(await explain(modified),{stakeWindowStatus:'conflicting'});
+  }
+  const observed=new Set();
+  const oncePerKey=async(m,args)=>{
+    if(m==='eth_call'){
+      const key=JSON.stringify(args);
+      assert.ok(!observed.has(key),'duplicate historical read');
+      observed.add(key);
+    }
+    return rpc(m,args);
+  };
+  assert.deepEqual((await explain(oncePerKey)).stakeWindow,result.stakeWindow);
+  observed.clear();
+  const authorWindow=await readStakeWindow(oncePerKey,block,1,config.posts,transient.address,[paid[0]],parseEther('100'));
+  assert.equal(authorWindow.atPublication,'300.0');
+  assert.equal(authorWindow.eligible,'100.0');
   if(checkRoot){
     const {replayWindow}=await import('../../../experiments/c007-transactions/stake-window-root.mjs');
     const mapping=(account,slot)=>keccak256(AbiCoder.defaultAbiCoder().encode(['address','uint256'],[account,slot]));

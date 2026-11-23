@@ -1,6 +1,6 @@
 ## Same-block stake replay — November 23, 2026
 
-Geth and EthereumJS agree on the execution roots across 15 disposable blocks and at all three transaction boundaries in the selected block. Each fixture credit agrees with the change in the recipient’s token balance during the post. Strict Anvil header authentication failed starting at block 5; the first divergent state is the next investigation. [Exact commands and limits](../integration/local-console/registration/OPERATOR.md#independent-execution-roots).
+Geth and EthereumJS agree on the execution roots across 15 disposable blocks and at all three transaction boundaries in the selected block. Each fixture credit agrees with the change in the recipient’s token balance during the post. Ahdmesh’s [#37 R-01 HOLD](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/37) applies to the original head. The revised reader reuses each historical stake value, checks stake limits and indexes, and labels missing or conflicting auxiliary evidence separately from settlement. Independent remediation review is pending. Strict Anvil header authentication failed starting at block 5; the first divergent state is the next investigation. [Exact commands and limits](../integration/local-console/registration/OPERATOR.md#independent-execution-roots).
 
 ## Stake at publication — November 22, 2026
 

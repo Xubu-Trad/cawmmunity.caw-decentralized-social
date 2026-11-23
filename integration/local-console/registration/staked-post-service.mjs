@@ -1,4 +1,4 @@
-import {readStakeWindow} from './stake-window.mjs';
+import {optionalStakeWindow} from './stake-window.mjs';
 import http from 'node:http';
 import {readFile} from 'node:fs/promises';
 import {createRequire} from 'node:module';
@@ -63,8 +63,8 @@ async function readPost(hash){
   if(sum!==eligibleWeight||previous!==fee||BigInt(paid.length)!==recipients||transferIndex!==payments.length)throw Error('Settlement totals differ.');
   const block=await rpc('eth_getBlockByNumber',[tx.blockNumber===0?'0x0':'0x'+tx.blockNumber.toString(16),false]);
   if(block?.hash!==receipt.blockHash||block.transactions[receipt.index]?.toLowerCase()!==hash.toLowerCase())throw Error('Block inclusion mismatch.');
-  const stakeWindow=await readStakeWindow(rpc,block,receipt.index,posts.target,tx.from,paid,eligibleWeight);
-  return {...(stakeWindow && {stakeWindow}),credits,name,body,author:tx.from,tokenId:e.tokenId.toString(),fee:'5,000 fixture CAW',hash:tx.hash,block:tx.blockNumber,blockHash:receipt.blockHash};
+  const explanation=await optionalStakeWindow(rpc,block,receipt.index,posts.target,tx.from,paid,eligibleWeight);
+  return {...explanation,credits,name,body,author:tx.from,tokenId:e.tokenId.toString(),fee:'5,000 fixture CAW',hash:tx.hash,block:tx.blockNumber,blockHash:receipt.blockHash};
 }
 const port=Number(portArg),host='127.0.0.1:'+port;
 const files=new Map([['/',['text/html','staked-post.html']],['/post.mjs',['text/javascript','staked-post.mjs']],['/ethers.mjs',['text/javascript',resolve(dirname(createRequire(import.meta.url).resolve('ethers')),'../dist/ethers.min.js')]],['/styles.css',['text/css','../../../public/styles.css']],['/website.css',['text/css','../../../public/website.css']]]);
