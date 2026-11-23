@@ -1,3 +1,4 @@
+import {trackStorageAccess, explainZeroLeaves} from './trace-stake-roots.mjs';
 import {diagnose} from './diagnose-stake-root.mjs';
 import {gethTransition,checkGethBinary} from './geth-window-transition.mjs';
 import assert from 'node:assert/strict';
@@ -17,6 +18,8 @@ export async function replayWindow({rpc, accounts, head, slots, pool, token, has
     await stateManager.putAccount(createAddressFromString(account), new Account(0n, 10000n * 10n**18n));
   }
   const vm = await createVM({common,stateManager});
+  const candidates=trackStorageAccess(vm);
+  let priorLeaves=[];
   const genesis = await rpc('eth_getBlockByNumber',['0x0',false]);
   const root = async () => bytesToHex(await stateManager.getStateRoot());
   assert.equal(await root(),'0xe914d7e6a70676d0aecddd6b3e1110d78639f4e45a167334b8ba589316f48632','explicit funded allocation');
@@ -67,6 +70,11 @@ export async function replayWindow({rpc, accounts, head, slots, pool, token, has
     if(number===5){
       assert.equal(mismatches.length,0,'earlier block already diverged');
       console.log(JSON.stringify({firstMismatch:await diagnose(rpc,data,previous,stateManager,reference.alloc)}));
+    }
+    if(number>=5){
+      const report=await explainZeroLeaves(rpc,data,stateManager,reference.alloc,candidates,priorLeaves);
+      console.log(JSON.stringify({headerReconstruction:report}));
+      priorLeaves=report.active;
     }
     if(data.stateRoot!==reference.result.stateRoot)mismatches.push(number);
     alloc=reference.alloc;

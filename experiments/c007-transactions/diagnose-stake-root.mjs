@@ -9,7 +9,7 @@ function mappingSlot(key,index){
 }
 
 // Open the registry account against the block header, then its four storage paths.
-async function openSlots(rpc,header,address,keys){
+export async function openSlots(rpc,header,address,keys){
   const proof=await rpc('eth_getProof',[address,keys,header.number]);
   const trie=await createMPT({useKeyHashing:true});
   const verify=(root,key,nodes)=>verifyMPTWithMerkleProof(trie,hexToBytes(root),hexToBytes(key),nodes.map(hex=>hexToBytes(hex)));
@@ -22,6 +22,17 @@ async function openSlots(rpc,header,address,keys){
     return leaf===null?null:bytesToHex(leaf);
   }));
   return {storageRoot:proof.storageHash,leaves};
+}
+
+export async function replayStorage(alloc,address){
+  const storage=await createMPT({useKeyHashing:true});
+  const replayAccount=alloc[address.slice(2)]??alloc[address];
+  for(const [key,word] of Object.entries(replayAccount.storage??{})){
+    const value=hexToBytes('0x'+word.slice(2).replace(/^(00)+/,''));
+    assert.ok(value.length,'unexpected zero in replay allocation');
+    await storage.put(hexToBytes(key),RLP.encode(value));
+  }
+  return storage;
 }
 
 export async function diagnose(rpc,block,parent,state,alloc){
@@ -40,13 +51,7 @@ export async function diagnose(rpc,block,parent,state,alloc){
 
   const address=createAddressFromString(tx.to);
   const account=await state.getAccount(address);
-  const storage=await createMPT({useKeyHashing:true});
-  const replayAccount=alloc[tx.to.slice(2)]??alloc[tx.to];
-  for(const [key,word] of Object.entries(replayAccount.storage)){
-    const value=hexToBytes('0x'+word.slice(2).replace(/^(00)+/,''));
-    assert.ok(value.length,'unexpected zero in replay allocation');
-    await storage.put(hexToBytes(key),RLP.encode(value));
-  }
+  const storage=await replayStorage(alloc,tx.to);
   const replayStorageRoot=bytesToHex(storage.root());
   assert.equal(replayStorageRoot,bytesToHex(account.storageRoot));
   const copy=state.shallowCopy();

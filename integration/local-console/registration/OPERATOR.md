@@ -92,3 +92,17 @@ The recipient balance rises to one and the owner becomes the recipient. Both zer
 - Anvil world root: `0x98c3a14cc23e080a852e6a124596093ab397376398a02b3772e03ec4408d481c`
 
 The live replay state is preserved for blocks 6–15. Matching a diagnostic copy at block 5 does not authenticate the later headers or change #37’s review status.
+
+## How the difference changes through block 15
+
+Run the same `--root-replay --compare-only` command above. Each `headerReconstruction` line prints the height, block hash, source and replay roots, and contract/slot pairs added, removed and still active. The `readOnly` list identifies active keys that EthereumJS observed being read but never written since the start of this fixture.
+
+| Block | Explicit zero leaves absent from replay | Change since preceding block |
+|---|---:|---|
+| 6–7 | 2 | Both block-5 NFT entries persist. |
+| 8 | 2 | Registering the next name restores the sender’s NFT balance to one. That difference disappears. Spending the registration allowance leaves an explicit zero in its place. The earlier NFT approval difference persists. |
+| 9–13 | 2 | The NFT approval and registration allowance differences persist. |
+| 14 | 4 | The persistent staker deposits its full fixture-token balance. Its token balance and its allowance to the pool both join the set. |
+| 15 | 8 | The post payout restores the persistent staker’s token balance, removing that difference. Five entries join: the author’s and temporary staker’s allowances to the pool, the temporary staker’s stake, its vacated member-array element, and the author’s zero stake. |
+
+At block 15 the pool reads the author’s stake to exclude it from eligible weight. The replay observed no write to that slot. Searching only zero writes missed it. Header-bound account and storage proofs establish exactly which raw leaves Anvil includes. For each height the verifier rebuilds each touched contract’s storage from Geth’s allocation, compares it with EthereumJS, and inserts only proven explicit zeros into a separate copy. Omitting any one produces a different contract storage root. Inserting the full set yields the exact Anvil world root at every height. The unmodified replay still rejects those headers; stake and credits retain the independently computed values above.
