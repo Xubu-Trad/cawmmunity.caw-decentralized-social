@@ -33,6 +33,10 @@ The destination is a system others can reproduce and operate without Xubu's acco
 
 ## where the build stands
 
+the pr #36 sample is public. [download, check the hashes and replay the feed on your own machine](docs/PR36_OPERATOR_SAMPLE.md). the sample is pinned to block 70.
+
+run the green portal from a clean checkout against your own disposable-chain node and compare a saved following feed byte for byte. [operator setup and block replay](integration/local-console/registration/OPERATOR.md).
+
 the green portal now opens a local wallet registration flow. fund a disposable account, review the exact fixture price and recipient, approve, then register. the receipt checks the mint event and the nft owner at the mined block. [local setup](docs/C001_REGISTRATION_DECISION_PACKET.md#local-wallet-registration).
 
 the green portal can check a name against a disposable registry at a specific block. run the registration reproduction, use the printed candidate address on the local portal and select the development chain in your browser wallet. the lookup reads availability and the current nft owner without requesting an account or signature.
