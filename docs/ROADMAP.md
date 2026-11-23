@@ -1,3 +1,7 @@
+## Stake at publication — November 22, 2026
+
+The portal reader reconstructed an entry, paid post and exit in the same block on a fresh Anvil node. It checked participant weights using hash-pinned node reads and matched payments to the post receipt. This covers the direct three-transaction case. The next proof step is to replay this stake change against an independently checked state root. The independent operator replay of the PR #36 feed sample is still pending. [Operator workflow](../integration/local-console/registration/OPERATOR.md#stake-at-publication).
+
 ## Post between two withdrawals — November 22, 2026
 
 Verified the selected post and both pool-account withdrawals in transaction order against the signed block body, receipt root and custody proofs. The next case is a neighboring call that changes eligible stake and therefore the fee split. [Replay the evidence](PRODUCT_DELIVERY.md#post-between-two-custody-withdrawals).

@@ -33,6 +33,8 @@ The destination is a system others can reproduce and operate without Xubu's acco
 
 ## where the build stands
 
+the paid-post reader now shows how a wallet can earn part of the fee even when its stake is zero at both ends of the block. on a fresh disposable chain it earned 3,750 of the 5,000 fixture CAW by holding 300 of the 400 eligible stake when the post executed. [replay the three transactions](integration/local-console/registration/OPERATOR.md#stake-at-publication).
+
 the pr #36 sample is public. [download, check the hashes and replay the feed on your own machine](docs/PR36_OPERATOR_SAMPLE.md). the sample is pinned to block 70.
 
 run the green portal from a clean checkout against your own disposable-chain node and compare a saved following feed byte for byte. [operator setup and block replay](integration/local-console/registration/OPERATOR.md).
