@@ -1,0 +1,6 @@
+{
+  "expectedFailure": true,
+  "exitCode": 1,
+  "assertion": "signed_empty",
+  "mutation": "remove only _validateUtf8Text(text) call"
+}

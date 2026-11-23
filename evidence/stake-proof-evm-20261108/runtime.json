@@ -1,0 +1,184 @@
+{
+  "schema": "caw-stake-proof-runtime/1",
+  "parent": "341dbc5921fa76d944259f337e96eb49df1632be",
+  "nodeVersion": "v24.22.1",
+  "pythonVersion": "Python 3.12.14",
+  "compilerModuleSha256": "3bb491a777f76dff9b2fe73ce29ca20e21a971b59a2f2cf8f73415424f00be06",
+  "nodeExecutableSha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+  "pythonExecutableSha256": "fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7",
+  "dependencies": [
+    {
+      "package": "@ethereumjs/binarytree",
+      "version": "10.1.3",
+      "license": "MIT",
+      "lockIntegrity": "sha512-XWHuNNVZVtSfr6/2UbAhCXf848s4rNKUuVKFNG6O18lz0anuaMiIADfNQJ5DOhOfflZVIPRvGWegDMoU6xRaBA==",
+      "packageJsonSha256": "cb8039bf184f3911a42b7e880212a2051e028bbd3f4f8e7d680ed67ad8dd3728"
+    },
+    {
+      "package": "@ethereumjs/common",
+      "version": "10.1.3",
+      "license": "MIT",
+      "lockIntegrity": "sha512-ECWwbc4s8Ji7U0mkfZP6gIDy1FxXe0ZyVOTt0adkztPQRzX2DbH2ul7a83DSS8qYAiG6//vVXMkP60TyYOnv8Q==",
+      "packageJsonSha256": "c17012956360864f36c257791c3a6036c844e09e70417d25997605106e5b5ba8"
+    },
+    {
+      "package": "@ethereumjs/evm",
+      "version": "10.1.3",
+      "license": "MPL-2.0",
+      "lockIntegrity": "sha512-7C6oo3f1rvtsFAQOURcmEkyUTBTePBbQUgWTfzrual8kbb0R8053rY+PolvFDETfVSK/TrPzZFhFe5sgz+Clgw==",
+      "packageJsonSha256": "8a3c432434a6250963e416156e0387f016db477d95660114c9d595e3602b3b66"
+    },
+    {
+      "package": "@ethereumjs/mpt",
+      "version": "10.1.3",
+      "license": "MPL-2.0",
+      "lockIntegrity": "sha512-pN43KoH8V0afpIltMFJf0tSSpX9Xssp9LGAyamnYc93oe0r8bRafeizPWR9aDsS+WXSg/IWQscoZ3xTybQSYoA==",
+      "packageJsonSha256": "46002e7b962eb170f62411fd8ce3ffeaae344de986aa0d3a9f4a94d122eaed9a"
+    },
+    {
+      "package": "@ethereumjs/rlp",
+      "version": "10.1.3",
+      "license": "MPL-2.0",
+      "lockIntegrity": "sha512-d795YWkN6O8EJh/PgJ2zZKCdBMl8OlqkuVQESoidH666gaFtUuJ01jDtiuqfyOqTNcTdGhHi8LkQv1WEZzvZZw==",
+      "packageJsonSha256": "f9ab5fa7e46e97fe599182646794057f07b9096b18349c03a999b2c3e9a73cf7"
+    },
+    {
+      "package": "@ethereumjs/statemanager",
+      "version": "10.1.3",
+      "license": "MPL-2.0",
+      "lockIntegrity": "sha512-d56NBae8xjh/ZY+orqvIfE30WLHOn2okacUekbM9J7VZrokjxQ2800sb6K6srffoSekcgbHxIWFJ3r+81jzrrA==",
+      "packageJsonSha256": "5d07fad4e721bea58e729b0986ea497ac169cf5762c71c94f5e3afd68544fe79"
+    },
+    {
+      "package": "@ethereumjs/util",
+      "version": "10.1.3",
+      "license": "MPL-2.0",
+      "lockIntegrity": "sha512-PhezOVe4DFaC+QLIsnK/tiOaXjpjS2F9AH4Ez0EfWevFw9NWNSg95l7I0dWuHF0B7v9odm2Ijqwo0EnARXtUmA==",
+      "packageJsonSha256": "ea68e9bde58b3dcb293d36ebbe53cd04e87c71f4d978dc6ac80f1466b59839fa"
+    },
+    {
+      "package": "@js-sdsl/ordered-map",
+      "version": "4.4.2",
+      "license": "MIT",
+      "lockIntegrity": "sha512-iUKgm52T8HOE/makSxjqoWhe95ZJA1/G1sYsGev2JDKUSS14KAgg1LHb+Ba+IPow0xflbnSkOsZcO08C7w1gYw==",
+      "packageJsonSha256": "2858688bad5a7a1ed196247429a5371f3dba8e0d770762b1e7d69aaef1858ba5"
+    },
+    {
+      "package": "@noble/curves",
+      "version": "2.4.0",
+      "license": "MIT",
+      "lockIntegrity": "sha512-P4/62zrgfH33CneE3Dn4WhJVA22YUU0eR51wKIan4NVRvwsA0YnPTwWGpNbpuacSujmSFLvyzpyuR30+fbq2Ew==",
+      "packageJsonSha256": "63d976a6ee72f2dcdc81e6c8bf907edff54eb20e8423218578fbfaf29cff96e6"
+    },
+    {
+      "package": "@noble/hashes",
+      "version": "2.4.0",
+      "license": "MIT",
+      "lockIntegrity": "sha512-X5XaVWZIBCT7HHZGm5I7ZQXDwLG+bGXuSrMQAW+7Zvl87h1kmc1ZB1VSRJcpUfoUrGQp4Fkoxm5kZ+Ms+aW+eA==",
+      "packageJsonSha256": "3e361734f5269de162fa362483d7f45dee7efb533ec217157945338f7591baaf"
+    },
+    {
+      "package": "command-exists",
+      "version": "1.2.9",
+      "license": "MIT",
+      "lockIntegrity": "sha512-LTQ/SGc+s0Xc0Fu5WaKnR0YiygZkm9eKFvyS+fRsU7/ZWFF8ykFM6Pc9aCVf1+xasOOZpO3BAVgVrKvsqKHV7w==",
+      "packageJsonSha256": "c0acc936f656bc164946c40c8283b18d53f33cf316569adaf8b6eee195d512cf"
+    },
+    {
+      "package": "commander",
+      "version": "8.3.0",
+      "license": "MIT",
+      "lockIntegrity": "sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==",
+      "packageJsonSha256": "5f5944b2fa479bf68003ca239940f8ad9cae893ddfc3662272a1855dfb9ce4db"
+    },
+    {
+      "package": "debug",
+      "version": "4.4.3",
+      "license": "MIT",
+      "lockIntegrity": "sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==",
+      "packageJsonSha256": "ea8e33d63fe5f3a4c36609b6c3df8e2ef1f8b8ba2fc3a2e1e53cb27291f384af"
+    },
+    {
+      "package": "eventemitter3",
+      "version": "5.0.4",
+      "license": "MIT",
+      "lockIntegrity": "sha512-mlsTRyGaPBjPedk6Bvw+aqbsXDtoAyAzm5MO7JgU+yVRyMQ5O8bD4Kcci7BS85f93veegeCPkL8R4GLClnjLFw==",
+      "packageJsonSha256": "0dd9bc32a77be8238fad41d58aa5b24ccdfee79d8bcf4cbee85f16e3d15c1658"
+    },
+    {
+      "package": "follow-redirects",
+      "version": "1.16.2",
+      "license": "MIT",
+      "lockIntegrity": "sha512-/kVP2U8z596Ia0gwFrwyIeo74ta5aVmSeU1FfAUMAmcEP5EP7zydmag3SLiN64NaRKef3lxsq7i/g7ltJQDGow==",
+      "packageJsonSha256": "04ad04efe80b8a05d7dc20a2b30831a93f22dfe358948eca019f003b71f90026"
+    },
+    {
+      "package": "js-sha3",
+      "version": "0.8.0",
+      "license": "MIT",
+      "lockIntegrity": "sha512-gF1cRrHhIzNfToc802P800N8PpXS+evLLXfsVpowqmAFR9uwbi89WvXg2QspOmXL8QL86J4T1EpFu+yUkwJY3Q==",
+      "packageJsonSha256": "ba89a2a2189db98b8b9a4134ec744737f2ed3e26ee59357279a170faf93709dd"
+    },
+    {
+      "package": "lru-cache",
+      "version": "11.0.2",
+      "license": "ISC",
+      "lockIntegrity": "sha512-123qHRfJBmo2jXDbo/a5YOQrJoHF/GNQTLzQ5+IdK5pWpceK17yRc6ozlWd25FxvGKQbIUs91fDFkXmDHTKcyA==",
+      "packageJsonSha256": "a30048bd69c305409cbab98f5ccc21f16bd7cef80198f2de5051034a6ebf9254"
+    },
+    {
+      "package": "memorystream",
+      "version": "0.3.1",
+      "license": [
+        {
+          "type": "MIT",
+          "url": "http://github.com/JSBizon/node-memorystream/raw/master/LICENSE"
+        }
+      ],
+      "lockIntegrity": "sha512-S3UwM3yj5mtUSEfP41UZmt/0SCoVYUcU1rkXv+BQ5Ig8ndL4sPoJNBUJERafdPb5jjHJGuMgytgKvKIf58XNBw==",
+      "packageJsonSha256": "dfff650f4c6c600aaaeeab58f50429325a94ebcbe28a0689c3c4b545b270b76a"
+    },
+    {
+      "package": "ms",
+      "version": "2.1.3",
+      "license": "MIT",
+      "lockIntegrity": "sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==",
+      "packageJsonSha256": "1a6b4d9739790c0b94ab96c8cc0507e281c164c311ff4fbf5e57fb8d26290b40"
+    },
+    {
+      "package": "os-tmpdir",
+      "version": "1.0.2",
+      "license": "MIT",
+      "lockIntegrity": "sha512-D2FR03Vir7FIu45XBY20mTb+/ZSWB00sjU9jdQXt83gDrI4Ztz5Fs7/yy74g2N5SVQY4xY1qDr4rNddwYRVX0g==",
+      "packageJsonSha256": "708404ce657fbad57a4804f3ccfcda877e038b981fb9675aebcc57de91e95694"
+    },
+    {
+      "package": "semver",
+      "version": "5.7.3",
+      "license": "ISC",
+      "lockIntegrity": "sha512-kM18BPOqTi0+TB68703/GJRpAML5Me+IDQsR1J26YB3EFKKNEyHIVZuWDX7+WKQB3tHwDwgk24BfhdpWUbytvQ==",
+      "packageJsonSha256": "caff547bcb99c4985491ad5baa9c0dcc433ccb6f13413b789a087bf2217ffe3a"
+    },
+    {
+      "package": "solc",
+      "version": "0.8.30",
+      "license": "MIT",
+      "lockIntegrity": "sha512-9Srk/gndtBmoUbg4CE6ypAzPQlElv8ntbnl6SigUBAzgXKn35v87sj04uZeoZWjtDkdzT0qKFcIo/wl63UMxdw==",
+      "packageJsonSha256": "d3059631769ee89e919b784e84566f7853300d5353b624f348d567577cf5c384"
+    },
+    {
+      "package": "tmp",
+      "version": "0.0.33",
+      "license": "MIT",
+      "lockIntegrity": "sha512-jRCJlojKnZ3addtTOjdIqoRuPEKBvNXcGYqzO6zWZX8KfKEpnGY5jfggJQ3EjKuu8D4bJRr0y+cYJFmYbImXGw==",
+      "packageJsonSha256": "0d16aba4ccec87190ee9759b70afcb3e57f068f311d440b5093bde3a4c7a8175"
+    }
+  ],
+  "commands": [
+    "npm ci --prefix experiments/stake-commitment-evm --ignore-scripts --no-audit --no-fund",
+    "python3 -I -B experiments/stake-commitment-evm/vectors.py experiments/paid-action/stake_commitment.py > NEW_VECTORS.json",
+    "node --max-old-space-size=512 experiments/stake-commitment-evm/run.mjs NEW_VECTORS.json NEW_OUTPUT_DIRECTORY"
+  ],
+  "actualRun": "Internal scratch layout used equivalent paths; npm install generated the retained lock, not npm ci. No deployment or transaction run. Initial run used Node heap cap 512 MiB and a pre-install 2 GiB disk check; no outer CPU/wall/address-space limit was installed.",
+  "kernelSha256": "b3c402651d8d910a93f554b5fb4025262e537dadd81f09b24fa2515dbddfdda5"
+}

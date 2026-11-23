@@ -1,0 +1,61 @@
+{
+  "schema": "caw-artifact-provenance/1",
+  "scope": "Authored research and internally executed tests; not independently reproduced build origin",
+  "artifacts": [
+    {
+      "PARENTS": [
+        "d7579d6851e7d4a5873df38ec3130272ed47b90b"
+      ],
+      "TRANSFORM": "Authored via apply_patch",
+      "SHA256": "b3c402651d8d910a93f554b5fb4025262e537dadd81f09b24fa2515dbddfdda5",
+      "SIZE": 4312,
+      "PATH": "experiments/paid-action/stake_commitment.py"
+    },
+    {
+      "PARENTS": [
+        "d7579d6851e7d4a5873df38ec3130272ed47b90b"
+      ],
+      "TRANSFORM": "Authored via apply_patch",
+      "SHA256": "9549809ae0d7a6c05883882cf9e8534508ca473acfde9b0db6440945a132bffe",
+      "SIZE": 6285,
+      "PATH": "tests/test_stake_commitment.py"
+    },
+    {
+      "PARENTS": [
+        "d7579d6851e7d4a5873df38ec3130272ed47b90b"
+      ],
+      "TRANSFORM": "Authored via apply_patch",
+      "SHA256": "400436627e925076e1c99a1c1604f161153df203643435cc2676a000476dbfe8",
+      "SIZE": 7785,
+      "PATH": "docs/STAKE_COMMITMENT_RESEARCH.md"
+    },
+    {
+      "PARENTS": [
+        "d7579d6851e7d4a5873df38ec3130272ed47b90b"
+      ],
+      "TRANSFORM": "Authored via apply_patch",
+      "SHA256": "4406f10fc010ebbac5f718ca7abbd8358bbaec5d0af0d4640d098cec16ab4eea",
+      "SIZE": 14201,
+      "PATH": "docs/ONE_ACTION_PROFILE_PROPOSAL.md"
+    },
+    {
+      "PARENTS": [
+        "d7579d6851e7d4a5873df38ec3130272ed47b90b"
+      ],
+      "TRANSFORM": "Recorded internal runtime, guards, source hashes and test observations",
+      "SHA256": "f00a05b524b50b77a9bb3a0491980408bc5a0d90ba11ab7b76046cc0e444140e",
+      "SIZE": 1287,
+      "PATH": "evidence/stake-commitment-20261108/run.json"
+    },
+    {
+      "PARENTS": [
+        "experiments/paid-action/stake_commitment.py",
+        "tests/test_stake_commitment.py"
+      ],
+      "TRANSFORM": "python3 -I -B tests/test_stake_commitment.py (stdout/stderr captured under recorded resource limits)",
+      "SHA256": "20a32784958b88ee0a44ebeb3fd4a9d2f4ba12e2e10af11db07a4f7a4b69acce",
+      "SIZE": 906,
+      "PATH": "evidence/stake-commitment-20261108/tests.log"
+    }
+  ]
+}

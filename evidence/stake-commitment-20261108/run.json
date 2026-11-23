@@ -1,0 +1,38 @@
+{
+  "schema": "caw-stake-commitment-run/1",
+  "parentCommit": "d7579d6851e7d4a5873df38ec3130272ed47b90b",
+  "runtime": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "runtimeSha256": "fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7",
+  "command": "python3 -I -B tests/test_stake_commitment.py",
+  "resourceGuards": {
+    "diskMinimumBytes": 2147483648,
+    "memoryAvailableMinimumBytes": 1073741824,
+    "addressSpaceBytes": 536870912,
+    "cpuSeconds": 15,
+    "timeoutSeconds": 30
+  },
+  "focusedMethods": 8,
+  "exitCode": 0,
+  "sourceHashes": {
+    "experiments/paid-action/stake_commitment.py": "b3c402651d8d910a93f554b5fb4025262e537dadd81f09b24fa2515dbddfdda5",
+    "tests/test_stake_commitment.py": "9549809ae0d7a6c05883882cf9e8534508ca473acfde9b0db6440945a132bffe"
+  },
+  "inputBytesUnchanged": true,
+  "independentRebuildUpdateComparisons": 96,
+  "singleSiblingHashMutations": 256,
+  "instrumentedPopulations": [
+    4,
+    17,
+    65
+  ],
+  "observedUpdateSiblingReads": 256,
+  "observedUpdateNodeWrites": 257,
+  "observedUpdateHashes": 257,
+  "observedProofSiblingReads": 256,
+  "rootAuthenticated": false,
+  "evmExecuted": false,
+  "gasMeasured": false,
+  "settlementImplemented": false,
+  "fullSuiteRerun": false,
+  "productionAccepted": false
+}
