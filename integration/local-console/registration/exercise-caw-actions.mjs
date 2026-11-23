@@ -82,4 +82,5 @@ export async function exerciseAccountActions({provider,registry,token,pool,payer
   const final=await token.balanceOf(second.address);
   await mine(pool.connect(second).unstake());
   assert.equal(await token.balanceOf(second.address),final+units(300));
+  return {likes:likes.target,recaw:recaws.target,follow:follows.target,vault:vault.target};
 }

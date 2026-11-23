@@ -78,7 +78,7 @@ try {
   assert.equal(await token.balanceOf(pool.target),stake);
   assert.equal(await token.allowance(payer.address,pool.target),0n);
   assert.equal(await token.balanceOf(payer.address),supply-price-fee-stake);
-  await exerciseAccountActions({provider,registry,token,pool,payer,staker,name,post,deploy,mine,read});
+  const actions=await exerciseAccountActions({provider,registry,token,pool,payer,staker,name,post,deploy,mine,read});
   const beforeExit=await token.balanceOf(staker.address);
   await mine(pool.connect(staker).unstake());
   assert.equal(await token.balanceOf(staker.address),beforeExit+stake);
@@ -87,6 +87,18 @@ try {
   assert.equal(await token.totalSupply(),supply);
   console.log(JSON.stringify({runtime:expected,name,sink:await registry.SINK(),price:price.toString(),
     post:post.hash,credit:fee.toString(),withdrawnStake:stake.toString(),totalSupplyUnchanged:true}));
+  if(process.argv.includes('--portal')){
+    await mine(token.transfer(staker.address,stake));
+    await mine(token.connect(staker).approve(pool.target,stake));
+    await mine(pool.connect(staker).stake(stake));
+    const server=spawn(process.execPath,[new URL('wallet-server.mjs',import.meta.url).pathname,endpoint,registry.target],{
+      stdio:'inherit',env:{...process.env,CAW_RUNTIME_ACTIONS:JSON.stringify({...actions,posts:pool.target})}});
+    const stop=()=>server.kill();
+    process.once('SIGTERM',stop);
+    process.once('SIGINT',stop);
+    try {const [code,signal]=await once(server,'exit');if(code!==0 && signal!=='SIGTERM')throw Error('Portal stopped unexpectedly');}
+    finally {process.off('SIGTERM',stop);process.off('SIGINT',stop);server.kill();}
+  }
 } finally {
   provider?.destroy();
   if(node.exitCode===null && node.signalCode===null)node.kill();

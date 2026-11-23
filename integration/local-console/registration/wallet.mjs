@@ -6,18 +6,21 @@ const wallets = [];
 let wallet;
 const registryAbi = ['function lookup(string) view returns(uint256,address)','function register(string)','function ownerOf(uint256) view returns(address)','function usernameOf(uint256) view returns(string)','event Transfer(address indexed from,address indexed to,uint256 indexed tokenId)'];
 const tokenAbi = ['function balanceOf(address) view returns(uint256)','function allowance(address,address) view returns(uint256)','function approve(address,uint256) returns(bool)'];
+let actionReview=null;
 let account,provider,registry,token,review,busy=false,epoch=0;
 const key='caw-registration:'+config.genesis+':'+config.registry;
 function saved(){try{return JSON.parse(localStorage.getItem(key));}catch{return null;}}
 function refresh(){
   for(const k of ['connect','fund','review','approve','register','recheck']) $(k).disabled=busy;
+  $('inspect-action').disabled=busy||!account;
+  $('sign-action').disabled=busy||!actionReview;
   chooser.disabled=busy || wallets.length<2;
   $('fund').disabled ||= !account; $('review').disabled ||= !account;
   $('approve').disabled ||= !review || review.approved;
   $('register').disabled ||= !review?.approved;
   $('recheck-wrap').hidden=!saved();
 }
-function invalidate(){epoch++;review=null;$('quote').textContent='';refresh();}
+function invalidate(){epoch++;actionReview=null;$('terms').textContent='';review=null;$('quote').textContent='';refresh();}
 function reset(){account=null;$('account').textContent='';invalidate();}
 function addWallet(candidate,label){
   if(!candidate || typeof candidate.request!=='function')return;
@@ -113,3 +116,38 @@ async function verify(record){
 }
 action('recheck',async()=>{if(!saved())throw Error('No saved registration.');await verify(saved());});
 refresh();
+
+if(config.actions){
+  const {prepareAction}=await import('/runtime-actions.mjs');
+  $('runtime').hidden=false;
+  $('legacy-post').hidden=true;
+  $('argument').oninput=invalidate;
+  $('operation').onchange=()=>{
+    $('argument').value='';
+    $('argument-label').textContent={post:'Post text',like:'Original post transaction hash',recaw:'Original post transaction hash',follow:'Username to follow',deposit:'CAW amount',withdraw:'CAW amount'}[$('operation').value];
+    invalidate();
+  };
+  async function inspect(){
+    await check();
+    return prepareAction(config,provider,account,$('operation').value,$('name').value,$('argument').value);
+  }
+  action('inspect-action',async()=>{
+    invalidate();const n=epoch,r=await inspect();
+    if(n!==epoch)return;
+    actionReview=r;$('terms').textContent=r.summary;
+    $('sign-action').textContent=r.needsApproval?'Approve exact amount':'Sign action';
+  });
+  action('sign-action',async()=>{
+    const n=epoch,old=actionReview,r=await inspect();
+    await check();
+    if(n!==epoch||!old||JSON.stringify(old)!==JSON.stringify(r)){invalidate();throw Error('Action changed. Review again.');}
+    const sender=account,p=provider;
+    invalidate();
+    const hash=await wallet.request({method:'eth_sendTransaction',params:[{...r.tx,from:sender,chainId:'0x539'}]});
+    $('action-receipt').textContent='Submitted '+hash;
+    const rc=await p.waitForTransaction(hash,1,60000),tx=await p.getTransaction(hash);
+    if(rc?.status!==1||rc.from!==sender||tx?.to!==getAddress(r.tx.to)||tx.data!==r.tx.data||tx.value!==0n||
+      (await p.getBlock(rc.blockNumber))?.hash!==rc.blockHash)throw Error('Mined transaction did not match the review.');
+    $('action-receipt').textContent=(r.needsApproval?'Approval mined. Review the action again.':'Action mined.')+' '+hash+' · '+sender;
+  });
+}

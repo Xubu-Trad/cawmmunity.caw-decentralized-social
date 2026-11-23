@@ -173,3 +173,26 @@ The runner deploys the existing account-custody probe against this registry and 
 Open the local registration page, select a signing wallet and click **Connect local wallet**. A wallet that announces itself through EIP-6963 can appear alongside other wallets. The page also accepts an injected browser wallet. Changing the selection clears the account and quote. Reconnect and review the username price before signing. The chain ID and genesis checks still apply.
 
 From the repository root, install the console dependencies with `npm ci --prefix integration/local-console --ignore-scripts`. With Python Playwright and its Chromium installed, run `python3 integration/local-console/registration/test-wallet-selection.py`. This checks selection, duplicate announcements, inactive-wallet events, active account changes and legacy fallback with browser test providers. The real-extension compatibility matrix and wallet selection on other action pages remain open.
+
+
+## Use one wallet across the runtime deployment
+
+From the repository root on Linux, install the two locked dependency sets and start the portal. Put Anvil on PATH first. This starts its own loopback-only disposable chain and seeds local balances. Keep the process running during the browser session.
+
+```sh
+npm ci --prefix integration/local-console --ignore-scripts
+npm ci --prefix integration/local-console/registration --ignore-scripts
+node integration/local-console/registration/test-caw-runtime.mjs --portal
+```
+
+Open **http://127.0.0.1:34736/**. Choose your disposable wallet, connect, get test funds and register an available eight-character username. On the same page, leave the username in place and choose **Use your username**. Supply a post body, original post transaction hash, target username, or amount as prompted. Review the signer, destination and fee. When an allowance is needed, approve the exact amount and review again before signing the action. A withdrawal requires credit in the NFT account. Deposit first to try it. Every successful submission shows its transaction hash. The legacy portals on separate ports use their own wallet handling.
+
+For a fresh automated run, use the `post` hash printed by this launcher, belonging to `hunter01`. Install Python Playwright and its Chromium first. Use a newly launched chain for each signing run to replenish the limited faucet.
+
+```sh
+python3 integration/local-console/registration/test-wallet-browser.py --runtime-post POST_HASH
+python3 integration/local-console/registration/test-wallet-selection.py
+python3 integration/local-console/registration/test-wallet-extension.py /path/to/unpacked/metamask
+```
+
+The signing test chooses the second provider with a rejecting decoy installed and signs locally. It registers a username, reloads, then publishes, likes, reCAWs, follows, deposits 10 CAW and withdraws 10 CAW. The browser checks the mined sender, destination, calldata, value and block hash. The MetaMask check uses the installed extension code and a fresh profile with no existing wallet data. It checks wallet discovery, chain ID and authorized accounts. Real-extension transaction signing and independent reproduction are pending. Use Ctrl-C to stop the launcher.

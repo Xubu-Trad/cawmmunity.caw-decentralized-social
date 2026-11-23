@@ -33,6 +33,8 @@ The destination is a system others can reproduce and operate without Xubu's acco
 
 ## where the build stands
 
+on the disposable CAW runtime, the registration page now keeps the wallet you selected for posts, likes, recaws, follows, account deposits and withdrawals. we mined all six from one browser test signer with a second wallet present. a fresh MetaMask profile passed discovery and read-only checks. extension-signed settlement still needs a run. [start the portal and repeat both wallet tests](integration/local-console/registration/OPERATOR.md#use-one-wallet-across-the-runtime-deployment)
+
 the green registration portal now lets you choose which browser wallet signs when several are installed. switching wallets clears the account and name review. [wallet checks and remaining limits](integration/local-console/registration/OPERATOR.md#choose-a-registration-wallet) · [five protocol delivery milestones](docs/ROADMAP.md#protocol-delivery-priorities)
 
 one disposable deployment now runs likes, recaws, follows and nft-account withdrawals with the captured caw token code. the test checks what each wallet actually gained or spent. when the username changes hands, its new owner can withdraw its existing deposit. [fee splits, custody results and operator commands](integration/local-console/registration/OPERATOR.md#social-fees-and-nft-account-withdrawal)
