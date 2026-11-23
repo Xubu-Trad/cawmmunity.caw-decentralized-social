@@ -22,21 +22,30 @@ await checkChain();
 const registry = new Contract(getAddress(address), ['function paymentToken() view returns(address)','function SINK() view returns(address)'],provider);
 const tokenAddress = await registry.paymentToken();
 const sink = await registry.SINK();
-const signer = await provider.getSigner();
+const signer = process.env.CAW_OPERATOR_READ_ONLY==='1'?provider:await provider.getSigner();
 const token = new Contract(tokenAddress,['function symbol() view returns(string)','function balanceOf(address) view returns(uint256)','function transfer(address,uint256) returns(bool)'],signer);
 if (await token.symbol() !== 'FIX' || sink.toLowerCase() !== '0xdead000000000000000042069420694206942069') throw Error('Wrong fixture');
 const config = {endpoint, genesis, registry:registry.target, token:tokenAddress, sink};
 let funding = false;
 const cap = parseEther('1000000000000');
+async function waitFunding(tx) {
+  for (let i=0;i<120;i++) {
+    const receipt=await rpc('eth_getTransactionReceipt',[tx.hash]);
+    if(receipt){if(receipt.status!=='0x1')throw Error('Fixture funding reverted.');return;}
+    await new Promise(done=>setTimeout(done,500));
+  }
+  throw Error('Fixture funding still pending: '+tx.hash);
+}
 async function fund(account) {
+  if(process.env.CAW_OPERATOR_READ_ONLY==='1')throw Error('Funding disabled in operator verification mode.');
   if (funding) throw Error('Another fixture request is pending. Try again.');
   funding = true;
   try {
     await checkChain();
     const eth = await provider.send('eth_getBalance',[account,'latest']);
-    if (BigInt(eth) < parseEther('0.01')) await (await signer.sendTransaction({to:account,value:parseEther('0.02')})).wait();
+    if (BigInt(eth) < parseEther('0.01')) await waitFunding(await signer.sendTransaction({to:account,value:parseEther('0.02')}));
     const balance = await token.balanceOf(account);
-    if (balance < cap) await (await token.transfer(account,cap-balance)).wait();
+    if (balance < cap) await waitFunding(await token.transfer(account,cap-balance));
   } finally { funding = false; }
 }
 const files = new Map([['/', ['text/html','./wallet.html']],['/wallet.mjs',['text/javascript','./wallet.mjs']],['/ethers.mjs',['text/javascript',ethersFile]],['/website.css',['text/css','../../../public/website.css']],['/styles.css',['text/css','../../../public/styles.css']]]);

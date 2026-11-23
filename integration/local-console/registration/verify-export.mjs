@@ -1,0 +1,13 @@
+import {readFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+const input=await readFile(process.argv[2]);
+const text=input.toString('utf8');
+const name=/<title>Following · ([a-z0-9]+)<\/title>/.exec(text)?.[1];
+const height=/at block (\d+)\. This offline copy/.exec(text)?.[1];
+const hash=/Block hash <code>(0x[a-f0-9]{64})<\/code>/.exec(text)?.[1];
+if(!name||!height||!hash)throw Error('Unsupported feed document');
+const res=await fetch('http://127.0.0.1:34742/reproduce/'+name+'/'+height+'/'+hash,{redirect:'error'});
+if(!res.ok)throw Error(await res.text());
+const rebuilt=Buffer.from(await res.arrayBuffer());
+if(!input.equals(rebuilt))throw Error('Feed differs from the independent local reconstruction');
+console.log('MATCH',createHash('sha256').update(input).digest('hex'),name,height,hash);
