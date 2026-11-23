@@ -74,3 +74,21 @@ The first command inside a namespace compares the execution engines. The second 
 Both engines computed `0xc72bc33605ce3958d5d3491915d068f5ec8a990d17de60cdf50d4a88f88ebe91` immediately after the post. Its author spent 5,000 fixture CAW, and recipients gained 1,250 and 3,750. The separate exit transaction returned 300 staked tokens. Both engines ended at `0xfa5685c725e5b492f08b9a7769788ff687f489918b9ca432cb1f76434248e1b3`; the selected Anvil header reported `0x8316f2efcc374d066e5e8ae862f0645eebf4a21a6c6f33e5c20f6cd7a0402feb`. Transaction and receipt roots, gas used and receipt blooms matched throughout.
 
 The baseline post and payment checks still run first. If a supported window lacks evidence, the reader labels it unavailable. Inconsistent metadata or weights produce a conflicting-evidence label. Neither case displays a verified stake explanation. Mixed-case hex digits are accepted for canonical ABI calldata; trailing bytes are outside this supported shape.
+
+## Why block 5 diverges
+
+Run the `--root-replay --compare-only` command above. Its `firstMismatch` record prints the fresh block hash, transaction, registry, both raw storage keys and both pairs of roots. The strict command continues to reject the source header. This diagnosis applies to Anvil 1.5.1 and the pinned Shanghai fixture.
+
+Block 5 transfers the username NFT to `0x0000000000000000000000000000000000001234`. Its registry is `0xe7f1725e7734ce288f8367e1bb143e90bb3f0512`. The verifier opens the account proof against each header, then the storage proofs against that account’s storage root. It decodes the raw leaves so that absence and an explicit zero remain distinguishable.
+
+| Registry entry | Block 4 | Block 5 Anvil | Block 5 Geth / EthereumJS |
+|---|---|---|---|
+| Sender’s NFT balance (mapping slot 3) | 1 | Stored zero | Absent |
+| Token approval (mapping slot 4) | Absent | Stored zero | Absent |
+
+The recipient balance rises to one and the owner becomes the recipient. Both zero representations read as zero through normal storage calls. The verifier rebuilds the replay storage trie from Geth’s allocation and checks it against EthereumJS. Neither zero leaf alone reproduces Anvil’s storage root. Inserting both as the one-byte RLP value `0x80` reproduces it exactly. Replacing only the registry’s storage root on a separate copy of the replay world state reproduces the full block-5 header root.
+
+- Replay world root: `0x70dcd697584c81d383333f1796f7e2d979c8595a97eb08f49c5b9e4daf26409a`
+- Anvil world root: `0x98c3a14cc23e080a852e6a124596093ab397376398a02b3772e03ec4408d481c`
+
+The live replay state is preserved for blocks 6–15. Matching a diagnostic copy at block 5 does not authenticate the later headers or change #37’s review status.

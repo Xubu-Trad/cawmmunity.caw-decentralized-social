@@ -33,7 +33,7 @@ The destination is a system others can reproduce and operate without Xubu's acco
 
 ## where the build stands
 
-ahdmesh independently reproduced the [block-70 feed in #36](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/36#issuecomment-7099431981). checkpoint provenance remains open. for #37, geth and ethereumjs agree on the stake and both credits after replaying the signed transactions. anvil reports a different state root from block 5 onward. [run the comparison and strict header check](integration/local-console/registration/OPERATOR.md#independent-execution-roots).
+ahdmesh independently reproduced the [block-70 feed in #36](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/36#issuecomment-7099431981). checkpoint provenance remains open. for #37, geth and ethereumjs agree on the stake and both credits after replaying the signed transactions. the first mismatch is in the username nft transfer at block 5. anvil kept two zero-valued storage entries for the sender’s nft balance and the token approval. inserting just those entries into a replay copy reproduces the exact anvil header root. [run the comparison and strict header check](integration/local-console/registration/OPERATOR.md#independent-execution-roots).
 
 the paid-post reader now shows how a wallet can earn part of the fee even when its stake is zero at both ends of the block. on a fresh disposable chain it earned 3,750 of the 5,000 fixture CAW by holding 300 of the 400 eligible stake when the post executed. [replay the three transactions](integration/local-console/registration/OPERATOR.md#stake-at-publication).
 

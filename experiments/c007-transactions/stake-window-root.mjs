@@ -1,3 +1,4 @@
+import {diagnose} from './diagnose-stake-root.mjs';
 import {gethTransition,checkGethBinary} from './geth-window-transition.mjs';
 import assert from 'node:assert/strict';
 import {createCustomCommon, Mainnet, Hardfork} from '@ethereumjs/common';
@@ -62,6 +63,10 @@ export async function replayWindow({rpc, accounts, head, slots, pool, token, has
         assert.equal(prefix.result.stateRoot,intermediateRoots[count-1],'intrablock state root');
       }
       assert.equal(intermediateRoots[2],reference.result.stateRoot);
+    }
+    if(number===5){
+      assert.equal(mismatches.length,0,'earlier block already diverged');
+      console.log(JSON.stringify({firstMismatch:await diagnose(rpc,data,previous,stateManager,reference.alloc)}));
     }
     if(data.stateRoot!==reference.result.stateRoot)mismatches.push(number);
     alloc=reference.alloc;
