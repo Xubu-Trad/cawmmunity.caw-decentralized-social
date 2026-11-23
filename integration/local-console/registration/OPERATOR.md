@@ -106,3 +106,35 @@ Run the same `--root-replay --compare-only` command above. Each `headerReconstru
 | 15 | 8 | The post payout restores the persistent staker’s token balance, removing that difference. Five entries join: the author’s and temporary staker’s allowances to the pool, the temporary staker’s stake, its vacated member-array element, and the author’s zero stake. |
 
 At block 15 the pool reads the author’s stake to exclude it from eligible weight. The replay observed no write to that slot. Searching only zero writes missed it. Header-bound account and storage proofs establish exactly which raw leaves Anvil includes. For each height the verifier rebuilds each touched contract’s storage from Geth’s allocation, compares it with EthereumJS, and inserts only proven explicit zeros into a separate copy. Omitting any one produces a different contract storage root. Inserting the full set yields the exact Anvil world root at every height. The unmodified replay still rejects those headers; stake and credits retain the independently computed values above.
+
+## Reproduce the published PR 37 trace packet
+
+Use Linux x86-64 with Node 20.20.2, npm 10.8.2, Bash, Git, Python 3, curl, GNU tar, coreutils, iproute2 and util-linux. Both unprivileged user namespaces and network namespaces must be available. The checkout and npm installs need internet access. Each execution starts its own disposable node inside an isolated loopback network.
+
+Download the immutable packet and verify its bytes before extracting:
+
+```sh
+set -eu
+work=$(mktemp -d)
+cd "$work"
+curl -fL --retry 2 https://raw.githubusercontent.com/Xubu-Trad/cawmmunity.caw-decentralized-social/fe5c87b7d9dc8b8182595c6efea1ac2765a7debb/evidence/pr37-block-trace-v1.tar.gz -o trace.tar.gz
+echo '97f8ff4ab7155a14784ab099c743ff1065164e07f6db410a0a48eb7a37cdd86b  trace.tar.gz' | sha256sum -c -
+tar -xzf trace.tar.gz
+(cd packet && sha256sum --strict -c SHA256SUMS)
+```
+
+Fetch the pinned Linux tools, or use matching local binaries. Continue in the same shell:
+
+```sh
+mkdir tools
+curl -fL --retry 2 https://github.com/foundry-rs/foundry/releases/download/v1.5.1/foundry_v1.5.1_linux_amd64.tar.gz -o foundry.tar.gz
+tar -xzf foundry.tar.gz -C tools anvil
+curl -fL --retry 2 https://gethstore.blob.core.windows.net/builds/geth-alltools-linux-amd64-1.17.10-1df30b18.tar.gz -o geth.tar.gz
+tar -xzf geth.tar.gz -C tools --strip-components=1 geth-alltools-linux-amd64-1.17.10-1df30b18/evm
+export PATH="$work/tools:$PATH" GETH_EVM="$work/tools/evm"
+git clone https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social.git repo
+git -C repo checkout --detach 68ee9ab52ebbf27827792318b54144c3fbf196a2
+bash packet/reproduce.sh "$work/repo"
+```
+
+The wrapper hashes both executables, installs the three locked dependency sets, and compares fresh results with both reference files. It checks the exact slots, roots and credits. Fresh mining timestamps can change block hashes, so it checks those references within each run. The expected exit codes are 0 for the cross-engine comparison and 1 for strict header authentication with `SOURCE_HEADER_ROOT_MISMATCH`. The wrapper exits 0 only when both expected outcomes reproduce. Its first line gives the results directory containing the two JSONL traces, stderr and exit codes. For an independent operator report, include the tested commit, archive digest and those results.
