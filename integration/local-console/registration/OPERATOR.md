@@ -12,6 +12,8 @@ npm ci --prefix integration/local-console --ignore-scripts --no-audit --no-fund
 npm ci --prefix "$b" --ignore-scripts --no-audit --no-fund
 ```
 
+For a paid action, compare the token address, spender and CAW amount on the approval screen with your deployment. The next signature sends the action to its own contract. Withdrawals require only the action signature.
+
 ## Using a node you already operate
 
 Select the deployment addresses independently of the HTML. The example manifest is for the disposable November 22 chain. Your node must have its canonical blocks, transactions, receipts, logs and historical registry state. A new empty chain with ID 1337 cannot verify an earlier export.

@@ -4,7 +4,8 @@ parser.add_argument("--runtime-post",help="post hash from the disposable runtime
 args=parser.parse_args()
 from playwright.sync_api import sync_playwright,expect
 url='http://127.0.0.1:34736'
-endpoint=json.load(urllib.request.urlopen(url+"/config"))["endpoint"]
+config=json.load(urllib.request.urlopen(url+"/config"))
+endpoint=config["endpoint"]
 from urllib.parse import urlsplit
 assert urlsplit(endpoint).hostname=="127.0.0.1"
 def rpc(q):
@@ -51,6 +52,13 @@ with sync_playwright() as pw:
     page.click('#inspect-action')
     expect(page.locator('#terms')).to_contain_text(account,timeout=30000)
     expect(page.locator('#sign-action')).to_have_text('Approve exact amount' if approval else 'Sign action')
+    role={'post':'posts','like':'likes','recaw':'recaw','follow':'follow','deposit':'vault','withdraw':'vault'}[kind]
+    terms=page.locator('#terms').inner_text().lower()
+    if approval:
+     assert 'approval transaction to token '+config['token'].lower() in terms
+     assert 'spender '+config['actions'][role].lower() in terms
+    else:
+     assert 'action transaction to '+config['actions'][role].lower() in terms
     previous=page.locator('#action-receipt').inner_text()
     page.click('#sign-action')
     page.wait_for_function("([old,prefix])=>{const t=document.querySelector('#action-receipt').textContent;return t!==old && t.startsWith(prefix)}",arg=[previous,'Approval mined.' if approval else 'Action mined.'],timeout=90000)

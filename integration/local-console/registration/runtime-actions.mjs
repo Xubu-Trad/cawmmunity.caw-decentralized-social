@@ -61,5 +61,9 @@ export async function prepareAction(cfg,provider,account,kind,name,input){
   const needsApproval=kind!=='withdraw' && await token.allowance(account,to)<amount;
   const tx=needsApproval?{to:cfg.token,data:token.interface.encodeFunctionData('approve',[to,amount])}:{to,data};
   await provider.call({...tx,from:account});
-  return {tx,data,epoch:String(epoch),needsApproval,summary:[kind,name,formatEther(amount)+' CAW',terms,recipient,'signer '+account,'contract '+to].filter(Boolean).join(' · ')};
+  const destination=needsApproval
+    ? ['approval transaction to token '+getAddress(tx.to),'spender '+to]
+    : ['action transaction to '+to];
+  const summary=[kind,name,formatEther(amount)+' CAW',terms,recipient,'signer '+account,...destination];
+  return {tx,data,epoch:String(epoch),needsApproval,summary:summary.filter(Boolean).join(' · ')};
 }
