@@ -1,0 +1,86 @@
+import assert from 'node:assert/strict';
+import {ContractFactory,Interface,getAddress,id,keccak256,parseEther} from 'ethers';
+import {singlePostProof} from './single-post-proof.mjs';
+import {verifyCredits} from './verify-action-credits.mjs';
+
+const units=n=>parseEther(String(n));
+export async function exerciseAccountActions({provider,registry,token,pool,payer,staker,name,post,deploy,mine,read}){
+  const [actor,second,buyer]=await Promise.all([2,3,4].map(i=>provider.getSigner(i)));
+  const actorName='reader01',accountId=BigInt(id(actorName));
+  await mine(token.transfer(actor.address,units(1100000)));
+  const [price]=await registry.lookup(actorName);
+  await mine(token.connect(actor).approve(registry.target,price));
+  await mine(registry.connect(actor).register(actorName));
+  await mine(token.transfer(second.address,units(300)));
+  await mine(token.connect(second).approve(pool.target,units(300)));
+  await mine(pool.connect(second).stake(units(300)));
+  const members=[staker.address,second.address].sort((a,b)=>BigInt(a)<BigInt(b)?-1:1);
+  const likes=await deploy('PaidLikes',pool.target);
+  const recaws=await deploy('PaidReCAWs',likes.target);
+  const follows=await deploy('PaidFollows',pool.target);
+  const rpc=provider.send.bind(provider);
+  const proof=await singlePostProof(rpc,{hash:post.hash,blockHash:post.blockHash,block:post.blockNumber},await rpc('eth_blockNumber',[]));
+  const balances=accounts=>Promise.all(accounts.map(a=>token.balanceOf(a)));
+  const payment=async(contract,kind,direct,shared,action)=>{
+    const fee=units(direct+shared);
+    await mine(token.connect(actor).approve(contract.target,fee));
+    const accounts=[actor.address,payer.address,staker.address,second.address,pool.target,contract.target];
+    const before=await balances(accounts);
+    const receipt=await mine(action());
+    const after=await balances(accounts);
+    assert.deepEqual(after.map((v,i)=>v-before[i]),[-fee,units(direct),units(shared)/4n,units(shared)*3n/4n,0n,0n]);
+    assert.equal(await token.allowance(actor.address,contract.target),0n);
+    const logs=receipt.logs.filter(l=>l.address===contract.target).map(l=>contract.interface.parseLog(l));
+    const actions=logs.filter(e=>e.name===kind);
+    assert.equal(actions.length,1);
+    const e=actions[0].args;
+    assert.equal(e.payer,actor.address);
+    assert.equal(e.author??e.recipient,payer.address);
+    assert.equal(e.name,actorName);
+    if(kind==='Followed')assert.equal(e.target,name);else assert.equal(e.post,post.hash);
+    assert.equal(e.eligible,units(400));
+    const credits=verifyCredits({rc:receipt,tokenAddress:getAddress(token.target),payer:actor.address,recipient:payer.address,
+      requested:members,events:logs.filter(e=>e.name==='Credit'),eligible:e.eligible,direct:String(direct),poolShare:String(shared)});
+    assert.equal(credits.length,2);
+    console.log(JSON.stringify({kind,hash:receipt.hash,payerDebit:String(fee),directCredit:String(units(direct)),credits}));
+  };
+  await payment(likes,'Liked',1600,400,()=>likes.connect(actor).like(actorName,post.hash,members,proof));
+  assert.equal(await likes.liked(post.hash,id(actorName)),true);
+  await payment(recaws,'ReCAWed',2000,2000,()=>recaws.connect(actor).recaw(actorName,post.hash,members,proof));
+  assert.equal(await recaws.reposted(post.hash,id(actorName)),true);
+  await payment(follows,'Followed',24000,6000,()=>follows.connect(actor).follow(actorName,name,payer.address,members));
+  assert.equal(await follows.following(id(actorName),id(name)),true);
+
+  const artifact=JSON.parse(read('../../../experiments/account-authority/authority-build.json')).contracts.CawAccountCustodyProbe;
+  const vault=await (await new ContractFactory(artifact.abi,artifact.bytecode,payer).deploy(
+    registry.target,keccak256(await provider.getCode(registry.target)))).waitForDeployment();
+  assert.equal(await vault.TOKEN(),getAddress(token.target));
+  const amount=units(900),before=await token.balanceOf(actor.address);
+  const [owner,epoch]=await registry.authority(accountId);
+  assert.equal(owner,actor.address);
+  await mine(token.connect(actor).approve(vault.target,amount));
+  await mine(vault.connect(actor).deposit(accountId,epoch,amount));
+  assert.deepEqual(await balances([actor.address,vault.target]),[before-amount,amount]);
+  assert.equal(await vault.credits(accountId),amount);
+  assert.equal(await vault.totalCredits(),amount);
+  await mine(registry.connect(actor).transferFrom(actor.address,buyer.address,accountId));
+  const [nextOwner,nextEpoch]=await registry.authority(accountId);
+  assert.equal(nextOwner,buyer.address); assert.equal(nextEpoch,epoch+1n);
+  await assert.rejects(vault.connect(actor).withdraw.staticCall(accountId,nextEpoch,amount),/NotAccountOwner/);
+  await assert.rejects(vault.connect(buyer).withdraw.staticCall(accountId,epoch,amount),/StaleEpoch/);
+  const recipientBefore=await token.balanceOf(buyer.address);
+  const receipt=await mine(vault.connect(buyer).withdraw(accountId,nextEpoch,amount));
+  const event=receipt.logs.filter(l=>l.address===vault.target).map(l=>vault.interface.parseLog(l));
+  assert.equal(event.length,1);assert.equal(event[0].name,'Withdrawn');
+  assert.deepEqual(Array.from(event[0].args),[accountId,buyer.address,amount,0n,nextEpoch]);
+  const transfer=new Interface(['event Transfer(address indexed from,address indexed to,uint256 amount)']);
+  const moves=receipt.logs.filter(l=>l.address===getAddress(token.target)&&l.topics[0]===transfer.getEvent('Transfer').topicHash);
+  assert.equal(moves.length,1);assert.deepEqual(Array.from(transfer.parseLog(moves[0]).args),[vault.target,buyer.address,amount]);
+  assert.deepEqual(await balances([actor.address,buyer.address,vault.target]),[before-amount,recipientBefore+amount,0n]);
+  assert.equal(await vault.credits(accountId),0n);assert.equal(await vault.totalCredits(),0n);
+  console.log(JSON.stringify({kind:'AccountWithdrawal',hash:receipt.hash,accountId:String(accountId),recipient:buyer.address,amount:String(amount)}));
+  const final=await token.balanceOf(second.address);
+  await mine(pool.connect(second).unstake());
+  assert.equal(await token.balanceOf(second.address),final+units(300));
+  return {likes:likes.target,recaw:recaws.target,follow:follows.target,vault:vault.target};
+}

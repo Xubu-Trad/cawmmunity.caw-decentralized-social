@@ -12,6 +12,8 @@ npm ci --prefix integration/local-console --ignore-scripts --no-audit --no-fund
 npm ci --prefix "$b" --ignore-scripts --no-audit --no-fund
 ```
 
+For a paid action, compare the token address, spender and CAW amount on the approval screen with your deployment. The next signature sends the action to its own contract. Withdrawals require only the action signature.
+
 ## Using a node you already operate
 
 Select the deployment addresses independently of the HTML. The example manifest is for the disposable November 22 chain. Your node must have its canonical blocks, transactions, receipts, logs and historical registry state. A new empty chain with ID 1337 cannot verify an earlier export.
@@ -138,3 +140,61 @@ bash packet/reproduce.sh "$work/repo"
 ```
 
 The wrapper hashes both executables, installs the three locked dependency sets, and compares fresh results with both reference files. It checks the exact slots, roots and credits. Fresh mining timestamps can change block hashes, so it checks those references within each run. The expected exit codes are 0 for the cross-engine comparison and 1 for strict header authentication with `SOURCE_HEADER_ROOT_MISMATCH`. The wrapper exits 0 only when both expected outcomes reproduce. Its first line gives the results directory containing the two JSONL traces, stderr and exit codes. For an independent operator report, include the tested commit, archive digest and those results.
+
+## CAW token registration and settlement
+
+From the repository root, use Linux, Node 20.20.2, Anvil 1.5.1 on PATH, iproute2 and unprivileged network namespaces:
+
+```sh
+npm ci --prefix integration/local-console --ignore-scripts --no-audit --no-fund
+npm ci --prefix integration/local-console/registration --ignore-scripts --no-audit --no-fund
+unshare -Urn sh -ec 'ip link set lo up; node integration/local-console/registration/test-caw-runtime.mjs'
+```
+
+The test starts its own disposable node, installs the captured 2,278-byte CAW runtime at the historical address, and seeds synthetic balance and supply slots. The registration candidate checks the runtime hash at construction and on Ethereum chain ID 1 additionally requires the historical token address. Code identity alone cannot authenticate a token’s ledger or deployment.
+
+The run rejects a different runtime and a zero-address payment. It checks username NFT ownership, the exact sink credit, reduction of maximum allowance, ownership and length controls on publication, the 5,000-token staker credit, the 100-token stake withdrawal and unchanged supply. No real assets are used. The local posting pool remains bounded and chain-specific. This candidate does not establish testnet readiness or community acceptance of the sink.
+
+## Social fees and NFT-account withdrawal
+
+Run the [CAW runtime integration command above](#caw-token-registration-and-settlement). The same child node, token, NFT registry and posting pool serve all actions. First the author registers and publishes. A second username then likes and reCAWs that mined post and follows the author. The like uses the posting reader’s single-transaction block proof; the reCAW uses the author recorded by that verifier.
+
+| Action | Wallet debit | Author or followed owner | Staker with 100 | Staker with 300 |
+|---|---:|---:|---:|---:|
+| Like | 2,000 | 1,600 | 100 | 300 |
+| ReCAW | 4,000 | 2,000 | 500 | 1,500 |
+| Follow | 30,000 | 24,000 | 1,500 | 4,500 |
+
+For each row the run checks the action receipt, CAW transfer logs, both staker credits, the payer’s allowance, actual wallet balance changes and the recorded action. Social fees come from wallet allowances. Account custody uses a separate deposit keyed by the username NFT ID.
+
+The runner deploys the existing account-custody probe against this registry and its runtime hash. It deposits 900, transfers the NFT, checks rejection of the former owner and stale ownership epoch using read-only calls, then mines a withdrawal of 900 by the current owner. The withdrawal receipt, actual recipient and vault balances, account credit and aggregate liability must agree. A second withdrawal must be rejected. The run prints transaction hashes; monetary fields named payerDebit, directCredit and amount on the withdrawal record use base units (18 decimals). The token storage setup is synthetic. The current browser readers still have fixture-specific assumptions.
+
+
+## Choose a registration wallet
+
+Open the local registration page, select a signing wallet and click **Connect local wallet**. A wallet that announces itself through EIP-6963 can appear alongside other wallets. The page also accepts an injected browser wallet. Changing the selection clears the account and quote. Reconnect and review the username price before signing. The chain ID and genesis checks still apply.
+
+From the repository root, install the console dependencies with `npm ci --prefix integration/local-console --ignore-scripts`. With Python Playwright and its Chromium installed, run `python3 integration/local-console/registration/test-wallet-selection.py`. This checks selection, duplicate announcements, inactive-wallet events, active account changes and legacy fallback with browser test providers. The real-extension compatibility matrix and wallet selection on other action pages remain open.
+
+
+## Use one wallet across the runtime deployment
+
+From the repository root on Linux, install the two locked dependency sets and start the portal. Put Anvil on PATH first. This starts its own loopback-only disposable chain and seeds local balances. Keep the process running during the browser session.
+
+```sh
+npm ci --prefix integration/local-console --ignore-scripts
+npm ci --prefix integration/local-console/registration --ignore-scripts
+node integration/local-console/registration/test-caw-runtime.mjs --portal
+```
+
+Open **http://127.0.0.1:34736/**. Choose your disposable wallet, connect, get test funds and register an available eight-character username. On the same page, leave the username in place and choose **Use your username**. Supply a post body, original post transaction hash, target username, or amount as prompted. Review the signer, destination and fee. When an allowance is needed, approve the exact amount and review again before signing the action. A withdrawal requires credit in the NFT account. Deposit first to try it. Every successful submission shows its transaction hash. The legacy portals on separate ports use their own wallet handling.
+
+For a fresh automated run, use the `post` hash printed by this launcher, belonging to `hunter01`. Install Python Playwright and its Chromium first. Use a newly launched chain for each signing run to replenish the limited faucet.
+
+```sh
+python3 integration/local-console/registration/test-wallet-browser.py --runtime-post POST_HASH
+python3 integration/local-console/registration/test-wallet-selection.py
+python3 integration/local-console/registration/test-wallet-extension.py /path/to/unpacked/metamask
+```
+
+The signing test chooses the second provider with a rejecting decoy installed and signs locally. It registers a username, reloads, then publishes, likes, reCAWs, follows, deposits 10 CAW and withdraws 10 CAW. The browser checks the mined sender, destination, calldata, value and block hash. The MetaMask check uses the installed extension code and a fresh profile with no existing wallet data. It checks wallet discovery, chain ID and authorized accounts. Real-extension transaction signing and independent reproduction are pending. Use Ctrl-C to stop the launcher.

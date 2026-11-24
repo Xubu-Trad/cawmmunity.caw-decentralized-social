@@ -1,9 +1,10 @@
+import {singlePostProof} from './single-post-proof.mjs';
 import {verifyCredits} from './verify-action-credits.mjs';
 import http from 'node:http';
 import {readFile} from 'node:fs/promises';
 import {createRequire} from 'node:module';
 import {dirname,resolve} from 'node:path';
-import {Contract,ContractFactory,Interface,JsonRpcProvider,ZeroAddress,ZeroHash,concat,encodeRlp,formatEther,getAddress,keccak256,parseEther,toBeHex,toQuantity} from 'ethers';
+import {Contract,ContractFactory,Interface,JsonRpcProvider,ZeroAddress,ZeroHash,formatEther,getAddress,keccak256,parseEther,toQuantity} from 'ethers';
 import solc from 'solc';
 import {createLocalRpc} from '../local-rpc.mjs';
 
@@ -36,7 +37,6 @@ if(recaw && await likes.source()!==known.likes)throw Error('Incorrect proof veri
 const verifier=recaw?new Contract(known.likes,known.abi,provider):likes;
 const config={...cfg,likes:likes.target,abi,action,label,direct,poolShare,fee:follow?'30000':recaw?'4000':'2000'};
 const token=new Interface(['event Transfer(address indexed from,address indexed to,uint256 amount)']);
-const quantity=n=>BigInt(n)===0n?'0x':toBeHex(BigInt(n));
 async function prepare(hash){
   const post=follow?null:await postReader('/post/'+hash);
   const latest=await rpc('eth_blockNumber',[]);
@@ -49,18 +49,7 @@ async function prepare(hash){
   if(follow)return {members};
   let proof={height:0,header:'0x',txBytes:'0x',receipt:'0x'};
   if(await verifier.authorOf(hash)===ZeroAddress){
-    const b=await rpc('eth_getBlockByHash',[post.blockHash,false]);
-    if(BigInt(latest)-BigInt(b.number)>=256n||b.transactions.length!==1)throw Error('First recognition requires a single-transaction post block within the last 256 blocks.');
-    const keys=['parentHash','sha3Uncles','miner','stateRoot','transactionsRoot','receiptsRoot','logsBloom','difficulty','number','gasLimit','gasUsed','timestamp','extraData','mixHash','nonce','baseFeePerGas','withdrawalsRoot','blobGasUsed','excessBlobGas','parentBeaconBlockRoot','requestsHash'];
-    const nums=new Set(['difficulty','number','gasLimit','gasUsed','timestamp','baseFeePerGas','blobGasUsed','excessBlobGas']);
-    const header=encodeRlp(keys.filter(k=>b[k]!=null).map(k=>nums.has(k)?quantity(b[k]):b[k]));
-    if(keccak256(header)!==b.hash)throw Error('Header mismatch');
-    const txBytes=await rpc('eth_getRawTransactionByHash',[hash]),rc=await rpc('eth_getTransactionReceipt',[hash]);
-    const payload=encodeRlp([quantity(rc.status),quantity(rc.cumulativeGasUsed),rc.logsBloom,rc.logs.map(l=>[l.address,l.topics,l.data])]);
-    const receipt=BigInt(rc.type)?concat([quantity(rc.type),payload]):payload;
-    const leaf=raw=>keccak256(encodeRlp(['0x2080',raw]));
-    if(leaf(txBytes)!==b.transactionsRoot||leaf(receipt)!==b.receiptsRoot)throw Error('Post inclusion mismatch');
-    proof={height:post.block,header,txBytes,receipt};
+    proof=await singlePostProof(rpc,post,latest);
   }
   return {post,members,proof};
 }

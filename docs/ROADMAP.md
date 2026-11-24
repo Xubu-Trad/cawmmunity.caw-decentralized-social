@@ -1,3 +1,18 @@
+## Protocol delivery priorities
+
+The release target is a usable protocol that another community member can deploy, read and maintain. The #36 and #37 evidence remains available for independent reproduction. The next implementation priority is the combined protocol path.
+
+| Milestone | Current evidence and next acceptance test |
+|---|---|
+| Username ownership and CAW payments | The candidate pins the observed CAW runtime. A disposable test exercises mint, post, payout and stake withdrawal. C-001 is open: document and publicly decide the username payment destination and supply semantics. |
+| All paid actions and custody | The shared disposable deployment now covers follow, like, reCAW, two weighted stakers, and separate account and stake withdrawals. The NFT-account deposit follows the username to its new owner. The registration portal now submits all six actions through its selected wallet. Next, reproduce their signed history independently and check settlement through an unlocked real wallet extension. Social fees in this version are paid directly from the wallet allowance. |
+| Durable, independently readable history | Have two operators reconstruct the same feed from separately sourced chain data. Test reorg rollback and archive recovery, including the case where the first reader goes offline. Record checkpoint provenance and mixed-block accounting. |
+| Public testnet and general wallets | The registration page discovers multiple browser wallets and clears the review on a switch. Chromium selection and fallback checks passed with test providers. The combined portal has mined six actions through a selected browser test provider. MetaMask 13.22.0 passed discovery and read-only checks. Extension-signed actions and independent operator reproduction remain open. Recheck account, chain, runtime and receipt state before showing success. Publish reproducible bytecode and a test-asset manifest. Inventory every privileged function, upgrade path and dependency. Verify post-setup authority on-chain for each deployed contract. |
+| Loss of the original operator | Take the original front end, domain, indexer and deployer credentials out of the exercise. A second operator must rebuild from public artifacts and independently register, publish, read and withdraw with a fresh wallet. Record service outages and discrepancies. |
+| Community acceptance | Track each manifesto and R2 requirement against a pinned revision, test and independent review. Record dissent, unresolved rules and the public acceptance decision before describing a release as accepted. |
+
+Gilgamesh is a functional reference. Each proposed behavior here still needs a source requirement or a documented community decision.
+
 ## Block 5–15 operator packet — November 23, 2026
 
 Published the [pinned packet and clean-checkout commands](../integration/local-console/registration/OPERATOR.md#reproduce-the-published-pr-37-trace-packet). A local unpack-and-replay matched the reference traces and reproduced the strict rejection. Independent operator reproduction is pending.
