@@ -92,6 +92,26 @@ try {
     };
     assert.deepEqual(await explain(modified),{stakeWindowStatus:'conflicting'});
   }
+  async function classify(entries, signer=author.address, eligible=parseEther('400')){
+    return optionalStakeWindow(rpc,block,1,config.posts,signer,entries,eligible);
+  }
+  const conflict={stakeWindowStatus:'conflicting'};
+  const substitute=(await provider.getSigner(3)).address;
+  const fakeParent=async(method,params)=>{
+    if(method==='eth_call' && params[1].blockHash===block.parentHash &&
+       params[0].data.toLowerCase().endsWith(substitute.slice(2).toLowerCase()))
+      return AbiCoder.defaultAbiCoder().encode(['uint256'],[parseEther('300')]);
+    return rpc(method,params);
+  };
+  const substituted=[paid[0],{staker:substitute,weight:paid[1].weight}];
+  assert.deepEqual(await optionalStakeWindow(fakeParent,block,1,config.posts,author.address,substituted,parseEther('400')),
+    conflict,'R02-F05: omitted participant and substitute weight above parent total');
+  assert.deepEqual(await classify([paid[0]]),conflict,'missing non-author participant');
+  assert.deepEqual(await classify([paid[1]]),conflict,'incomplete paid weight');
+  assert.deepEqual(await classify([paid[0],paid[0],paid[1]]),conflict,'duplicate recipient');
+  const lower=paid.map(c=>({...c,staker:c.staker.toLowerCase()}));
+  assert.deepEqual((await classify(lower)).stakeWindow,result.stakeWindow);
+  assert.equal((await classify([lower[0]],transient.address.toLowerCase(),parseEther('100'))).stakeWindow.eligible,'100.0');
   const observed=new Set();
   const oncePerKey=async(m,args)=>{
     if(m==='eth_call'){

@@ -1,3 +1,7 @@
+## Paid-recipient verification on PR #37
+
+For R-03, run `node integration/local-console/registration/test-stake-window.mjs` after installing the operator dependencies with Anvil on PATH. The regression supplies a substitute recipient with 300 units of parent stake against a parent total of 100. The reader must return `conflicting`. The mined case must still pay 1,250 and 3,750. Independent verification and authentication of the original source headers remain open.
+
 ## Block 5–15 operator packet — November 23, 2026
 
 Published the [pinned packet and clean-checkout commands](../integration/local-console/registration/OPERATOR.md#reproduce-the-published-pr-37-trace-packet). A local unpack-and-replay matched the reference traces and reproduced the strict rejection. Independent operator reproduction is pending.

@@ -48,13 +48,26 @@ export async function readStakeWindow(rpc, block, index, address, author, paid, 
     state(block.parentHash,'totalStake'), state(block.hash,'totalStake'), before(participant),
     state(block.hash,'stakeOf',[participant]), before(author)
   ]);
-  const expected = start + added - authorBefore - (participant === author ? added : 0n);
+  const authorAddress=getAddress(author);
+  const expected = start + added - authorBefore - (participant === authorAddress ? added : 0n);
   if (old>start || authorBefore>start || start+added>limit || after !== 0n || end !== start-old || expected !== eligible)
     throw Error('Stake window boundary or eligible total mismatch.');
-  await Promise.all(paid.map(async ({staker,weight}) => {
-    if (weight !== await before(staker) + (staker === participant ? added : 0n))
-      throw Error('Stake window recipient weight mismatch.');
-  }));
+  const recipients=new Set();
+  let totalWeight=0n;
+  for(const {staker,weight} of paid){
+    const recipient=getAddress(staker);
+    if(recipient===authorAddress || recipients.has(recipient) || weight<=0n)
+      throw Error('Invalid stake window recipient.');
+    recipients.add(recipient);
+    const parentWeight=await before(recipient);
+    if(parentWeight>start)throw Error('Recipient weight exceeds parent stake.');
+    const reconstructed=parentWeight+(recipient===participant ? added : 0n);
+    if(weight!==reconstructed)throw Error('Stake window recipient weight mismatch.');
+    totalWeight+=weight;
+  }
+  if(participant!==authorAddress && !recipients.has(participant))
+    throw Error('Missing stake window participant in settlement.');
+  if(totalWeight!==expected)throw Error('Stake window paid weight does not match eligible total.');
   return {participant, stakeTransaction:entry.hash, exitTransaction:exit.hash, parentHash:block.parentHash,
     before:formatEther(old), atPublication:formatEther(old+added), after:formatEther(after),
     eligible:formatEther(expected)};
