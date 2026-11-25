@@ -8,7 +8,7 @@
 - Reviewed commit: `bd350c7be5004fd28382470a6a841be6e133c50f`
 - Reviewed tree: `b6f20122aa1e564e9ca723f7a58140261bf7ba66`
 - Selected SHA-256 of `SHA256SUMS.txt`, calculated from the 22 declared `public/` assets **before** the build: `c4916abc6e35579d89d367eb8368ddcb4d677830c35eed30584ea4da796d4374`
-- Resulting deterministic static archive SHA-256: `d277ba5dc819324716e178b1623ade1cbd2e505be3b1576b218ec75d0619ad31`
+- Resulting deterministic static archive SHA-256: `d277ba5dc919324716e178b1623ade1cbd2e505be3b1576b218ec75d0619ad31`
 - Related requirements: [OI-01](OPERATOR_INDEPENDENCE.md), [static recovery](STATIC_RECOVERY.md), and [BA-02](BUILDER_ABSENT_REHEARSAL.md).
 
 The builder does not compile JavaScript. `scripts/build.mjs` copies and hashes 22 declared public assets, then adds the checksum manifest as a 23rd output. Its package command builds a deterministic tar from those bytes. This is an **alpha simulation frontend**, not the executable protocol deployment.
@@ -82,7 +82,7 @@ cd ..
 sha256sum recovered-static.tar
 ```
 
-The recorded run produced `d277ba5dc819324716e178b1623ade1cbd2e505be3b1576b218ec75d0619ad31` for the recovered tar. Compare its bytes with the first tar if both are available; otherwise compare against the independently retained digest. If source, runtime, network denial or toolchain differs, report that deviation rather than inheriting this run's result.
+The recorded run produced `d277ba5dc919324716e178b1623ade1cbd2e505be3b1576b218ec75d0619ad31` for the recovered tar. Compare its bytes with the first tar if both are available; otherwise compare against the independently retained digest. If source, runtime, network denial or toolchain differs, report that deviation rather than inheriting this run's result.
 
 ### Phase C — verify responses from a replacement host (loopback permitted)
 
