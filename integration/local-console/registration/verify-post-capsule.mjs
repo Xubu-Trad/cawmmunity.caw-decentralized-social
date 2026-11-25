@@ -26,7 +26,7 @@ function singletonRoot(bytes){
   // Hex-prefix encoding of the leaf path for transaction index zero (RLP 0x80).
   return keccak256(encodeRlp(['0x2080',bytes]));
 }
-function readHeader(bytes){
+export function readHeader(bytes){
   const h=canonicalRlp(bytes);
   // Post-Merge Shanghai execution header ending at withdrawalsRoot.
   const widths=[32,32,20,32,32,32,256,null,null,null,null,null,null,32,8,null,32];

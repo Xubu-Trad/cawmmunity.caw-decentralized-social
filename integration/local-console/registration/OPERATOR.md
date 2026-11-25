@@ -57,6 +57,8 @@ node "$b/post-capsule.mjs" verify "$BLOCK_HASH" "$TX_HASH" my-post.json
 
 The offline reader recovers the signer and text from the transaction, checks the two trie roots against the supplied header, then matches the fee and weighted credits to the token transfer and pool events. On the pinned chain-1337 contract layout, the reader supports Shanghai blocks with one transaction or a bounded archive of up to 32 signed transactions and their receipts. Capture checks the node’s canonical block at the time of the read. For independent historical attribution, obtain the expected block hash separately. A later reorganization, contract state at the block, and wider chain history require other evidence. The sample and the hashes printed above share the same publisher.
 
+To check which branch a saved post belongs to after a chain reorganization, follow the [later checkpoint walkthrough](../../../docs/POST_BRANCH_RECHECK.md).
+
 ## Verify one paid post in a mixed block
 
 The sample block contains a 37 CAW transfer followed by two paid posts. All three payments reached the same staker. Its balance rose by 10,037 CAW across the block. Selecting either post must recover its signed text and exactly 5,000 CAW of staker credit. The transfer hash cannot identify a paid post.

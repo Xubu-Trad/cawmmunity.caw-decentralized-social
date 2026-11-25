@@ -29,7 +29,7 @@ assert.deepEqual((build.errors??[]).filter(e=>e.severity==='error'),[]);
 const node=spawn('anvil',['--host','127.0.0.1','--port','0','--chain-id','1337','--hardfork','shanghai'],
   {stdio:['ignore','pipe','inherit']});
 const stopped=once(node,'exit');
-let provider, archivedPost, mixedPost;
+let provider, archivedPost, mixedPost, reorgPost;
 try {
   const lines=createInterface({input:node.stdout});
   let endpoint;
@@ -158,6 +158,10 @@ try {
     mixedPost={archive,blockHash:block.hash,selected:selected.hash,other:other.hash,transfer:transfer.hash,
       staker:staker.address,author:payer.address,name,blockGain:'10037.0'};
   }
+  if(process.argv.includes('--reorg-post')){
+    const {mineCheckpointBranches}=await import('./test-post-checkpoint.mjs');
+    reorgPost=await mineCheckpointBranches({rpc,token,pool,staker,stake,fee,mine,name});
+  }
   if(process.argv.includes('--portal')){
     await mine(token.transfer(staker.address,stake));
     await mine(token.connect(staker).approve(pool.target,stake));
@@ -225,4 +229,14 @@ if(mixedPost){
     writeFileSync(process.env.CAW_MIXED_SAMPLE,JSON.stringify(archive)+'\n',{flag:'wx'});
   }
   console.log(JSON.stringify({mixedPost:{blockHash,selected,other,transfer,blockGain,fee:'5000.0'}}));
+}
+
+if(reorgPost){
+  const {checkArchivedBranches}=await import('./test-post-checkpoint.mjs');
+  checkArchivedBranches(reorgPost);
+  if(process.env.CAW_REORG_SAMPLE){
+    writeFileSync(process.env.CAW_REORG_SAMPLE,JSON.stringify(reorgPost)+'\n',{flag:'wx'});
+  }
+  const {original,replacement}=reorgPost;
+  console.log(JSON.stringify({archivedPostCheckpoints:{original,replacement}}));
 }
