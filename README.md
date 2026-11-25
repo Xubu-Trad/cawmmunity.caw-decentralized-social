@@ -33,6 +33,8 @@ The destination is a system others can reproduce and operate without Xubu's acco
 
 ## where the build stands
 
+you can now verify a paid post offline even when another post and a transfer paid the same staker in the same block. the sample shows which 5,000 caw came from each post. [read the mixed-block example](integration/local-console/registration/OPERATOR.md#verify-one-paid-post-in-a-mixed-block)
+
 you can now keep a signed paid post and verify its text, fee and staker credits after the portal and node go offline. the reader checks the saved bytes against the post block hash and transaction hash you supply. [try the published sample](integration/local-console/registration/OPERATOR.md#read-an-archived-paid-post-offline)
 
 you can check the code running at all seven contract addresses on the combined disposable deployment from your own node. the reader checks upgrade slots and contract dependencies at that block. add a username to see who controls its nft and custody. no signing wallet is needed. [operator commands](integration/local-console/registration/OPERATOR.md#check-the-combined-disposable-deployment-by-block-hash)

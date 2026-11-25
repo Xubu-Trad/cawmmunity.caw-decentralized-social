@@ -1,3 +1,4 @@
+import {orderedEnvelopeRoot} from '../../../reference/ethereum-block-transactions.mjs';
 import {readFileSync} from 'node:fs';
 import {Interface,Transaction,decodeRlp,encodeRlp,formatEther,getAddress,id,isHexString,keccak256,parseEther,toBeHex} from 'ethers';
 
@@ -92,17 +93,104 @@ function readCredits(logs,author,name,body){
   return credits.map(({staker,weight,amount})=>({staker,weight:formatEther(weight),amount:formatEther(amount)}));
 }
 
+function receiptForType(receipt,type){
+  let encoded=receipt.toLowerCase();
+  if(type!==0){
+    requireMatch(encoded.startsWith(toBeHex(type,1)),'receipt type mismatch');
+    encoded='0x'+encoded.slice(4);
+  }
+  const rc=canonicalRlp(encoded);
+  requireMatch(Array.isArray(rc)&&rc.length===4&&['0x','0x01'].includes(rc[0])&&
+    isHexString(rc[1],true)&&rc[1].length>2&&rc[1].length<=66&&!rc[1].startsWith('0x00')&&
+    isHexString(rc[2],256)&&Array.isArray(rc[3]),'receipt status, gas or bloom');
+  requireMatch(rc[0]!=='0x'||rc[3].length===0,'reverted transaction emitted logs');
+  return rc;
+}
+
+function computedBloom(logs){
+  let bloom=0n;
+  for(const row of logs){
+    requireMatch(Array.isArray(row)&&row.length===3&&isHexString(row[0],20)&&Array.isArray(row[1])&&
+      row[1].length<=4&&row[1].every(topic=>isHexString(topic,32))&&isHexString(row[2],true),'invalid receipt log');
+    for(const field of [row[0],...row[1]]){
+      const digest=keccak256(field);
+      for(const offset of [2,6,10]){
+        const bit=parseInt(digest.slice(offset,offset+4),16)&2047;
+        bloom|=1n<<BigInt(bit);
+      }
+    }
+  }
+  return bloom;
+}
+
+function boundedHex(value){
+  requireMatch(typeof value==='string'&&value.length>2&&value.length<=131074&&isHexString(value,true),
+    'invalid or oversized encoded bytes');
+}
+
+// The envelope ceiling applies before the compact path and both RLP prefixes.
+// At most 32 capsule entries means a leaf adds at most 1 + 4 + 4 bytes.
+export function capsuleEnvelopeRoot(envelopes){
+  requireMatch(Array.isArray(envelopes)&&envelopes.length>=2&&envelopes.length<=32,'mixed block length');
+  const bytes=envelopes.map(raw=>{
+    boundedHex(raw);
+    return Buffer.from(raw.slice(2),'hex');
+  });
+  return orderedEnvelopeRoot(bytes,node=>{
+    requireMatch(node.length<=65536+9,'oversized framed trie node');
+    return Buffer.from(keccak256(node).slice(2),'hex');
+  });
+}
+
+function readMixed(capsule,h,hash){
+  const {transactions,receipts}=capsule;
+  requireMatch(Array.isArray(transactions)&&Array.isArray(receipts)&&transactions.length>=2&&
+    transactions.length<=32&&transactions.length===receipts.length,'mixed block length');
+  let size=capsule.header.length;
+  for(let i=0;i<transactions.length;i++){
+    boundedHex(transactions[i]);boundedHex(receipts[i]);
+    size+=transactions[i].length+receipts[i].length;
+    requireMatch(size<=524288,'mixed archive size');
+  }
+  requireMatch(Buffer.byteLength(JSON.stringify(capsule))+1<=524288,'mixed archive size');
+  const hashes=transactions.map(raw=>keccak256(raw));
+  requireMatch(new Set(hashes).size===hashes.length,'duplicate transaction');
+  const index=hashes.indexOf(hash);
+  requireMatch(index!==-1,'transaction hash missing from block');
+  requireMatch(capsuleEnvelopeRoot(transactions)===h[4]&&capsuleEnvelopeRoot(receipts)===h[5],'transaction or receipt root mismatch');
+
+  let gas=0n,bloom=0n,selected;
+  for(let i=0;i<receipts.length;i++){
+    const tx=Transaction.from(transactions[i]);
+    requireMatch([0,1,2].includes(tx.type)&&tx.isSigned()&&tx.serialized===transactions[i].toLowerCase()&&
+      (tx.chainId===1337n||(tx.type===0&&tx.chainId===0n))&&tx.from,'invalid block transaction');
+    const rc=receiptForType(receipts[i],tx.type);
+    const current=BigInt(rc[1]),receiptBloom=computedBloom(rc[3]);
+    requireMatch(current>gas&&current-gas<=tx.gasLimit&&receiptBloom===BigInt(rc[2]),'receipt cumulative gas or logs bloom');
+    gas=current;bloom|=receiptBloom;
+    if(i===index)selected=rc;
+  }
+  requireMatch(gas===BigInt(h[10])&&gas<=BigInt(h[9])&&bloom===BigInt(h[6]),'block gas or bloom');
+  return {txBytes:transactions[index],rc:selected,position:{transactionIndex:index,transactionCount:transactions.length}};
+}
+
 export function verifyPostCapsule(capsule,expectedBlockHash,expectedTxHash){
   requireMatch(isHexString(expectedBlockHash,32)&&isHexString(expectedTxHash,32),'supply both expected hashes');
-  requireMatch(capsule && Object.keys(capsule).sort().join(',')==='header,receipt,txBytes','unexpected archive fields');
-  const {header,txBytes,receipt}=capsule;
-  for(const bytes of [header,txBytes,receipt]){
-    requireMatch(typeof bytes==='string'&&bytes.length<=131074&&isHexString(bytes,true),'invalid or oversized encoded bytes');
+  const keys=capsule&&Object.keys(capsule).sort().join(',');
+  const mixed=keys==='header,receipts,transactions';
+  requireMatch(mixed||keys==='header,receipt,txBytes','unexpected archive fields');
+  boundedHex(capsule.header);
+  const blockHash=keccak256(capsule.header),hash=expectedTxHash.toLowerCase();
+  requireMatch(blockHash===expectedBlockHash.toLowerCase(),'block hash mismatch');
+  const h=readHeader(capsule.header.toLowerCase());
+  let txBytes,rc,position;
+  if(mixed){
+    ({txBytes,rc,position}=readMixed(capsule,h,hash));
+  }else{
+    txBytes=capsule.txBytes;
+    boundedHex(txBytes);boundedHex(capsule.receipt);
+    requireMatch(singletonRoot(txBytes)===h[4]&&singletonRoot(capsule.receipt)===h[5],'transaction or receipt root mismatch');
   }
-  const blockHash=keccak256(header),hash=keccak256(txBytes);
-  requireMatch(blockHash===expectedBlockHash.toLowerCase()&&hash===expectedTxHash.toLowerCase(),'block or transaction hash mismatch');
-  const h=readHeader(header.toLowerCase());
-  requireMatch(singletonRoot(txBytes)===h[4]&&singletonRoot(receipt)===h[5],'transaction or receipt root mismatch');
   const tx=Transaction.from(txBytes);
   requireMatch(tx.serialized===txBytes.toLowerCase()&&tx.isSigned()&&tx.hash===hash&&tx.chainId===1337n&&
     [0,1,2].includes(tx.type)&&tx.to===posts&&tx.value===0n,'unexpected signed transaction');
@@ -110,13 +198,11 @@ export function verifyPostCapsule(capsule,expectedBlockHash,expectedTxHash){
   const [name,body]=pool.decodeFunctionData('publish',tx.data);
   requireMatch(tx.data===pool.encodeFunctionData('publish',[name,body])&&/^[a-z0-9]+$/.test(name)&&
     body.length>0&&Array.from(body).length<=420,'invalid publication calldata');
-  let encoded=receipt.toLowerCase();
-  if(tx.type!==0){
-    requireMatch(encoded.startsWith(toBeHex(tx.type,1)),'receipt type mismatch');
-    encoded='0x'+encoded.slice(4);
+  if(!mixed){
+    rc=receiptForType(capsule.receipt,tx.type);
+    requireMatch(rc[1]===h[10]&&rc[2]===h[6],'receipt gas or bloom');
   }
-  const rc=canonicalRlp(encoded);
-  requireMatch(Array.isArray(rc)&&rc.length===4&&rc[0]==='0x01'&&rc[1]===h[10]&&rc[2]===h[6]&&Array.isArray(rc[3]),'receipt status, gas or bloom');
+  requireMatch(rc[0]==='0x01','selected post reverted');
   const credits=readCredits(rc[3],author,name,body);
-  return {hash,blockHash,name,body,author,fee:formatEther(fee),credits};
+  return {hash,blockHash,name,body,author,fee:formatEther(fee),credits,...position};
 }
