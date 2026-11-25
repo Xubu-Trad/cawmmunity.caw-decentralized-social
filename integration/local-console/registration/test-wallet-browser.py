@@ -25,6 +25,7 @@ with sync_playwright() as pw:
  const {Wallet}=await import('/ethers.mjs');const w=window.testSigner ||= (sessionStorage.tkey?new Wallet(sessionStorage.tkey):Wallet.createRandom());sessionStorage.tkey=w.privateKey;
  if(['eth_accounts','eth_requestAccounts'].includes(q.method))return [w.address];
  if(q.method==='eth_sendTransaction'){const tx=q.params[0],rpc=(method,params)=>window.fixtureRpc({method,params});
+ window.lastSubmitted=tx;
  const raw=await w.signTransaction({type:0,chainId:1337,nonce:Number(await rpc('eth_getTransactionCount',[w.address,'pending'])),gasLimit:BigInt(await rpc('eth_estimateGas',[tx]))+50000n,gasPrice:BigInt(await rpc('eth_gasPrice',[])),to:tx.to,data:tx.data});
  return rpc('eth_sendRawTransaction',[raw]);}return window.fixtureRpc(q);}}""")
  if args.runtime_post:
@@ -41,7 +42,20 @@ with sync_playwright() as pw:
  page.locator('#fund').click();expect(page.locator('#status')).to_contain_text('Test funds ready',timeout=60000)
  name='portal'+str(int(time.time()))
  page.locator('#name').fill(name);page.locator('#review').click();expect(page.locator('#quote')).to_contain_text(name)
- page.locator('#approve').click();expect(page.locator('#register')).to_be_enabled(timeout=90000);page.locator('#register').click()
+ before_sign=page.locator('#quote').inner_text().splitlines()
+ page.locator('#approve').click();expect(page.locator('#register')).to_be_enabled(timeout=90000)
+ approval=page.evaluate('window.lastSubmitted')
+ assert approval['data'][:10]=='0x095ea7b3' and len(approval['data'])==138
+ spender='0x'+approval['data'][34:74]
+ amount=int(approval['data'][74:],16)
+ assert amount==1000000*10**18
+ assert approval['to'].lower()==config['token'].lower() and spender==config['registry'].lower()
+ assert approval['from']==account
+ for line in ('Selected signer: '+approval['from'],'Approval transaction destination (CAW token): '+approval['to'],
+              'Allowance spender (registry): '+spender,'Exact approval amount: 1000000.0 fixture CAW',
+              'Registration payment sink: '+config['sink'],'NFT recipient: '+account):
+  assert line.lower() in [row.lower() for row in before_sign],line
+ page.locator('#register').click()
  try:expect(page.locator('#status')).to_contain_text('NFT ownership verified',timeout=70000)
  except:print(page.locator('#status').inner_text());raise
  print(page.locator('#receipt').inner_text());expect(page.locator('#receipt')).to_contain_text(account)

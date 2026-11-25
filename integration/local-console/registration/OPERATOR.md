@@ -12,6 +12,8 @@ npm ci --prefix integration/local-console --ignore-scripts --no-audit --no-fund
 npm ci --prefix "$b" --ignore-scripts --no-audit --no-fund
 ```
 
+For a username registration approval, compare the selected signer, token destination, registry spender and exact amount on the review screen with the wallet request. The registration payment sink receives the payment when the name is registered.
+
 For a paid action, compare the token address, spender and CAW amount on the approval screen with your deployment. The next signature sends the action to its own contract. Withdrawals require only the action signature.
 
 ## Using a node you already operate

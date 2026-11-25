@@ -102,7 +102,17 @@ async function snapshot(name){
   return {name,price,approved:allowance>=price,account};
 }
 action('review',async()=>{invalidate();await check();const n=epoch,r=await snapshot($('name').value);if(n!==epoch)return;
-  review=r;$('quote').textContent=r.name+' · '+formatEther(r.price)+' fixture CAW to '+config.sink+' · NFT recipient '+account;
+  review=r;
+  const amount=formatEther(r.price)+' fixture CAW';
+  const rows=['Username: '+r.name,'Selected signer: '+r.account];
+  if(!r.approved)rows.push('Approval transaction destination (CAW token): '+token.target,
+    'Allowance spender (registry): '+registry.target,'Exact approval amount: '+amount);
+  rows.push('Registration price: '+amount,'Registration payment sink: '+config.sink,'NFT recipient: '+r.account);
+  $('quote').replaceChildren(...rows.map(text=>{
+    const row=document.createElement('div');
+    row.textContent=text;
+    return row;
+  }));
   $('status').textContent=r.approved?'Ready to register.':'Review the price, then approve it in your wallet.';});
 async function submit(kind){
   const r=review,n=epoch;await check();const fresh=await snapshot(r.name);
