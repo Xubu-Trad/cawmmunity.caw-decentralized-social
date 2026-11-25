@@ -1,0 +1,155 @@
+import assert from 'node:assert/strict';
+import {execFile, spawn} from 'node:child_process';
+import {once} from 'node:events';
+import {promisify} from 'node:util';
+import {setTimeout as delay} from 'node:timers/promises';
+import {Contract, JsonRpcProvider, parseEther, AbiCoder, keccak256} from 'ethers';
+import {createLocalRpc} from '../local-rpc.mjs';
+import {readStakeWindow,optionalStakeWindow} from './stake-window.mjs';
+
+const cwd = new URL('.', import.meta.url);
+const endpoint = 'http://127.0.0.1:38653';
+const reader = 'http://127.0.0.1:38654';
+const rpc = createLocalRpc(endpoint);
+const provider = new JsonRpcProvider(endpoint, 1337, {cacheTimeout:-1});
+provider.pollingInterval = 100;
+const checkRoot=process.argv.includes('--root-replay');
+const children = [];
+function start(command,args) {
+  const child = spawn(command,args,{cwd,stdio:['ignore','pipe','inherit']});
+  children.push(child);
+  return child;
+}
+async function ready(child, probe) {
+  for(let i=0;i<100;i++){
+    if(child.exitCode !== null) throw Error('Test process exited: '+child.exitCode);
+    try {return await probe();} catch {await delay(100);}
+  }
+  throw Error('Test process did not become ready.');
+}
+try {
+  const node = start('anvil',['--host','127.0.0.1','--port','38653','--chain-id','1337','--order','fifo',...(checkRoot?['--hardfork','shanghai','--disable-default-create2-deployer','--accounts','10','--balance','10000']:[]),'--silent']);
+  await ready(node,()=>rpc('eth_chainId',[]));
+  // Credit block tips to a funded account in the cross-engine Shanghai fixture.
+  if(checkRoot) await rpc('anvil_setCoinbase',['0xa0ee7a142d267c1f36714e4a8f75612f20a79720']);
+  const {stdout} = await promisify(execFile)(process.execPath,['test-registration.mjs',endpoint],{cwd});
+  const registry = stdout.match(/Local registry: (0x[0-9a-fA-F]{40})/)[1];
+  const service = start(process.execPath,['staked-post-service.mjs',endpoint,registry,'--deploy','38654']);
+  const config = await ready(service,async()=>(await fetch(reader+'/config')).json());
+  const [author, permanent, transient] = await Promise.all([0,1,2].map(i=>provider.getSigner(i)));
+  const token = new Contract(config.token,['function approve(address,uint256)','function transfer(address,uint256)'],author);
+  const names = new Contract(registry,['function register(string)'],author);
+  const pool = new Contract(config.posts,['function stake(uint256)','function unstake()','function publish(string,string)'],author);
+  const mine = async tx => (await tx).wait();
+  await mine(token.approve(registry,parseEther('1000000')));
+  await mine(names.register('window01'));
+  await mine(token.approve(config.posts,parseEther('5000')));
+  for(const [signer,size] of [[permanent,'100'],[transient,'300']]){
+    await mine(token.transfer(signer.address,parseEther(size)));
+    await mine(token.connect(signer).approve(config.posts,parseEther(size)));
+  }
+  await mine(pool.connect(permanent).stake(parseEther('100')));
+  await rpc('evm_setAutomine',[false]);
+  const gas={gasLimit:1000000};
+  const enter=await pool.connect(transient).stake(parseEther('300'),gas);
+  const post=await pool.publish('window01','stake at publication',gas);
+  const exit=await pool.connect(transient).unstake(gas);
+  await rpc('evm_mine',[]);
+  const receipt=await post.wait();
+  const block=await rpc('eth_getBlockByHash',[receipt.blockHash,false]);
+  assert.deepEqual(block.transactions,[enter.hash,post.hash,exit.hash]);
+  const response=await fetch(reader+'/post/'+post.hash);
+  const body=await response.text();
+  assert.equal(response.status,200,body);
+  const result=JSON.parse(body);
+  assert.deepEqual(result.credits.map(c=>[c.staker,c.amount]),[[permanent.address,'1250.0'],[transient.address,'3750.0']]);
+  assert.deepEqual(result.stakeWindow,{participant:transient.address,stakeTransaction:enter.hash,exitTransaction:exit.hash,
+    parentHash:block.parentHash,before:'0.0',atPublication:'300.0',after:'0.0',eligible:'400.0'});
+  const paid=result.credits.map(c=>({staker:c.staker,weight:parseEther(c.weight)}));
+  const verify=(query,entries)=>readStakeWindow(query,block,1,config.posts,author.address,entries,parseEther('400'));
+  await assert.rejects(verify(rpc,[{...paid[0],weight:paid[0].weight+1n},paid[1]]),/recipient weight/);
+  const badReceipt=async(method,args)=>{
+    const value=await rpc(method,args);
+    return method==='eth_getTransactionReceipt'?{...value,transactionIndex:'0x1'}:value;
+  };
+  await assert.rejects(verify(badReceipt,paid),/receipt inclusion/);
+  const wrongBoundary=async(method,args)=>{
+    if(method==='eth_call' && args[1].blockHash===block.hash) return '0x'+'00'.repeat(32);
+    return rpc(method,args);
+  };
+  await assert.rejects(verify(wrongBoundary,paid),/boundary/);
+  const explain=query=>optionalStakeWindow(query,block,1,config.posts,author.address,paid,parseEther('400'));
+  assert.deepEqual(await explain(async()=>null),{stakeWindowStatus:'unavailable'});
+  for(const [method,field,value] of [
+    ['eth_getTransactionReceipt','transactionIndex',false],
+    ['eth_getTransactionByHash','transactionIndex',''],
+    ['eth_getTransactionByHash','input',pool.interface.encodeFunctionData('stake',[0n])],
+    ['eth_getTransactionByHash','input',pool.interface.encodeFunctionData('stake',[1n<<128n])]
+  ]){
+    const modified=async(m,args)=>{
+      const v=await rpc(m,args);
+      return m===method && args[0]===enter.hash?{...v,[field]:value}:v;
+    };
+    assert.deepEqual(await explain(modified),{stakeWindowStatus:'conflicting'});
+  }
+  async function classify(entries, signer=author.address, eligible=parseEther('400')){
+    return optionalStakeWindow(rpc,block,1,config.posts,signer,entries,eligible);
+  }
+  const conflict={stakeWindowStatus:'conflicting'};
+  const substitute=(await provider.getSigner(3)).address;
+  const fakeParent=async(method,params)=>{
+    if(method==='eth_call' && params[1].blockHash===block.parentHash &&
+       params[0].data.toLowerCase().endsWith(substitute.slice(2).toLowerCase()))
+      return AbiCoder.defaultAbiCoder().encode(['uint256'],[parseEther('300')]);
+    return rpc(method,params);
+  };
+  const substituted=[paid[0],{staker:substitute,weight:paid[1].weight}];
+  assert.deepEqual(await optionalStakeWindow(fakeParent,block,1,config.posts,author.address,substituted,parseEther('400')),
+    conflict,'R02-F05: omitted participant and substitute weight above parent total');
+  assert.deepEqual(await classify([paid[0]]),conflict,'missing non-author participant');
+  assert.deepEqual(await classify([paid[1]]),conflict,'incomplete paid weight');
+  assert.deepEqual(await classify([paid[0],paid[0],paid[1]]),conflict,'duplicate recipient');
+  const lower=paid.map(c=>({...c,staker:c.staker.toLowerCase()}));
+  assert.deepEqual((await classify(lower)).stakeWindow,result.stakeWindow);
+  assert.equal((await classify([lower[0]],transient.address.toLowerCase(),parseEther('100'))).stakeWindow.eligible,'100.0');
+  const observed=new Set();
+  const oncePerKey=async(m,args)=>{
+    if(m==='eth_call'){
+      const key=JSON.stringify(args);
+      assert.ok(!observed.has(key),'duplicate historical read');
+      observed.add(key);
+    }
+    return rpc(m,args);
+  };
+  assert.deepEqual((await explain(oncePerKey)).stakeWindow,result.stakeWindow);
+  observed.clear();
+  const authorWindow=await readStakeWindow(oncePerKey,block,1,config.posts,transient.address,[paid[0]],parseEther('100'));
+  assert.equal(authorWindow.atPublication,'300.0');
+  assert.equal(authorWindow.eligible,'100.0');
+  if(checkRoot){
+    const {replayWindow}=await import('../../../experiments/c007-transactions/stake-window-root.mjs');
+    const mapping=(account,slot)=>keccak256(AbiCoder.defaultAbiCoder().encode(['address','uint256'],[account,slot]));
+    // StakedNamePosts.stakeOf uses slot 1. The fixture ERC20 balances use slot 0.
+    const slots=[['pool',mapping(transient.address,1)],['pool',mapping(permanent.address,1)],
+      ...[author,permanent,transient].map(s=>['token',mapping(s.address,0)])];
+    const replay=await replayWindow({rpc,accounts:await rpc('eth_accounts',[]),head:block,slots,
+      pool:config.posts,token:config.token,hashes:[enter.hash,post.hash,exit.hash]});
+    assert.equal(replay.states.length,4);
+    assert.deepEqual(replay.states.map(row=>row[0]),['0','300','300','0'].map(s=>parseEther(s)));
+    assert.deepEqual(replay.states.map(row=>row[1]),Array(4).fill(parseEther('100')));
+    const changes=(i)=>replay.states[i].slice(2).map((v,j)=>v-replay.states[i-1][j+2]);
+    assert.deepEqual(changes(1),[0n,0n,-parseEther('300')]);
+    assert.deepEqual(changes(2),[-parseEther('5000'),...result.credits.map(c=>parseEther(c.amount))]);
+    assert.deepEqual(changes(3),[0n,0n,parseEther('300')]);
+    console.log(JSON.stringify({headerState:replay.mismatches.length?'MISMATCH':'MATCH',headerStateRoot:block.stateRoot,blocks:replay.blocks,intermediateRoots:replay.intermediateRoots,anvilHeaderDisagreements:replay.mismatches,parentStateRoot:replay.parentStateRoot,stateRoot:replay.stateRoot}));
+    if(!process.argv.includes('--compare-only')) assert.deepEqual(replay.mismatches,[],'SOURCE_HEADER_ROOT_MISMATCH');
+  }
+  console.log(JSON.stringify({post:post.hash,block:block.hash,credits:result.credits,window:result.stakeWindow,negativeControls:3}));
+} finally {
+  provider.destroy();
+  for(const child of children.reverse()) if(child.exitCode===null && child.signalCode===null){
+    const stopped=once(child,'exit');
+    child.kill();
+    await stopped;
+  }
+}

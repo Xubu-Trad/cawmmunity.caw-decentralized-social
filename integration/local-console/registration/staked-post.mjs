@@ -76,6 +76,11 @@ async function readPost(){
     const res=await fetch('/post/'+h);if(!res.ok)throw Error(await res.text());const p=await res.json();if(turn!==reading)return;
     $('result').textContent=p.name+' · NFT owner at publication '+p.author+' · '+p.fee+' paid · block '+p.block+' ('+p.blockHash+')';
     $('credits').textContent=p.credits.map(c=>c.staker+' · stake '+c.weight+' · received '+c.amount+' fixture CAW').join('\n');
+    if(p.stakeWindowStatus) $('credits').textContent+='\nStake-window evidence: '+p.stakeWindowStatus+'.';
+    if(p.stakeWindow){
+      const w=p.stakeWindow;
+      $('credits').textContent+='\n'+w.participant+' held '+w.before+' stake before the block, '+w.atPublication+' at publication, and '+w.after+' after the block.';
+    }
     $('content').textContent=p.body;$('link').href='#'+p.hash;$('link').hidden=false;$('likePost').href='http://127.0.0.1:34739/?post='+p.hash;$('likePost').hidden=false;$('recawPost').href='http://127.0.0.1:34740/?post='+p.hash;$('recawPost').hidden=false;
   }catch(e){if(turn===reading)$('result').textContent=e.message;}
 }

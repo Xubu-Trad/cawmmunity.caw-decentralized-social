@@ -1,3 +1,19 @@
+## Paid-recipient verification on PR #37
+
+For R-03, run `node integration/local-console/registration/test-stake-window.mjs` after installing the operator dependencies with Anvil on PATH. The regression supplies a substitute recipient with 300 units of parent stake against a parent total of 100. The reader must return `conflicting`. The mined case must still pay 1,250 and 3,750. Independent verification and authentication of the original source headers remain open.
+
+## Block 5–15 operator packet — November 23, 2026
+
+Published the [pinned packet and clean-checkout commands](../integration/local-console/registration/OPERATOR.md#reproduce-the-published-pr-37-trace-packet). A local unpack-and-replay matched the reference traces and reproduced the strict rejection. Independent operator reproduction is pending.
+
+## Same-block stake replay — November 23, 2026
+
+Geth and EthereumJS agree on the execution roots across 15 disposable blocks and at all three transaction boundaries in the selected block. Each fixture credit agrees with the change in the recipient’s token balance during the post. Ahdmesh’s [#37 R-01 HOLD](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/37) applies to the original head. The revised reader reuses each historical stake value, checks stake limits and indexes, and labels missing or conflicting auxiliary evidence separately from settlement. Independent remediation review is pending. Strict Anvil header authentication failed starting at block 5; the [block-5 diagnosis](../integration/local-console/registration/OPERATOR.md#why-block-5-diverges) reproduces the exact header root by adding the two explicit zero leaves to a copy. The [per-block comparison through block 15](../integration/local-console/registration/OPERATOR.md#how-the-difference-changes-through-block-15) now accounts for each later header exactly. The strict source-header verdict remains MISMATCH. The next distinct question is whether a fresh operator can reproduce the same leaf transitions. [Exact commands and limits](../integration/local-console/registration/OPERATOR.md#independent-execution-roots).
+
+## Stake at publication — November 22, 2026
+
+The portal reader reconstructed an entry, paid post and exit in the same block on a fresh Anvil node. It checked participant weights using hash-pinned node reads and matched payments to the post receipt. This covers the direct three-transaction case. The next proof step is to replay this stake change against an independently checked state root. Ahdmesh subsequently reproduced the PR #36 feed sample on a separate machine. [Operator workflow](../integration/local-console/registration/OPERATOR.md#stake-at-publication).
+
 ## Post between two withdrawals — November 22, 2026
 
 Verified the selected post and both pool-account withdrawals in transaction order against the signed block body, receipt root and custody proofs. The next case is a neighboring call that changes eligible stake and therefore the fee split. [Replay the evidence](PRODUCT_DELIVERY.md#post-between-two-custody-withdrawals).

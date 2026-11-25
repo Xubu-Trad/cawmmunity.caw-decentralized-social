@@ -33,6 +33,14 @@ The destination is a system others can reproduce and operate without Xubu's acco
 
 ## where the build stands
 
+the paid-post reader now cross-checks who held stake when the post was mined against who actually received the fee. conflicting evidence suppresses the optional stake explanation. the fresh local case paid 1,250 and 3,750 to the two eligible stakers. independent review of this correction is pending.
+
+another operator can now [download the hashed #37 trace and replay blocks 5–15](integration/local-console/registration/OPERATOR.md#reproduce-the-published-pr-37-trace-packet). the packet checks both the reproduced credits and the strict header failure. independent operator results for this packet are pending.
+
+ahdmesh independently reproduced the [block-70 feed in #36](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/36#issuecomment-7099431981). checkpoint provenance remains open. for #37, geth and ethereumjs agree on the stake and both credits after replaying the signed transactions. the first mismatch is in the username nft transfer at block 5. anvil kept two zero-valued storage entries for the sender’s nft balance and the token approval. those two entries explain blocks 5–7. the set changes at blocks 8, 14 and 15. eight explicit zero entries account for the final header difference, including the post author’s stake, which the pool only read. [per-block results](integration/local-console/registration/OPERATOR.md#how-the-difference-changes-through-block-15). [run the comparison and strict header check](integration/local-console/registration/OPERATOR.md#independent-execution-roots).
+
+the paid-post reader now shows how a wallet can earn part of the fee even when its stake is zero at both ends of the block. on a fresh disposable chain it earned 3,750 of the 5,000 fixture CAW by holding 300 of the 400 eligible stake when the post executed. [replay the three transactions](integration/local-console/registration/OPERATOR.md#stake-at-publication).
+
 the pr #36 sample is public. [download, check the hashes and replay the feed on your own machine](docs/PR36_OPERATOR_SAMPLE.md). the sample is pinned to block 70.
 
 run the green portal from a clean checkout against your own disposable-chain node and compare a saved following feed byte for byte. [operator setup and block replay](integration/local-console/registration/OPERATOR.md).
