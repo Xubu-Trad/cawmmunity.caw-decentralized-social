@@ -33,6 +33,8 @@ The destination is a system others can reproduce and operate without Xubu's acco
 
 ## where the build stands
 
+a saved receipt still reads the same after a chain reorganization. the reader can now tell you whether the original post block belongs to the history of a later block you trust. the offline example checks one post against two different histories. [try the branch check](docs/POST_BRANCH_RECHECK.md)
+
 you can now verify a paid post offline even when another post and a transfer paid the same staker in the same block. the sample shows which 5,000 caw came from each post. [read the mixed-block example](integration/local-console/registration/OPERATOR.md#verify-one-paid-post-in-a-mixed-block)
 
 you can now keep a signed paid post and verify its text, fee and staker credits after the portal and node go offline. the reader checks the saved bytes against the post block hash and transaction hash you supply. [try the published sample](integration/local-console/registration/OPERATOR.md#read-an-archived-paid-post-offline)
