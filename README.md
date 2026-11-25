@@ -33,6 +33,8 @@ The destination is a system others can reproduce and operate without Xubu's acco
 
 ## where the build stands
 
+after a wallet submits an action, the portal saves its hash and what you reviewed in this browser. reconnect the same account on the same deployment, choose the hash, and recheck it without signing again. the browser tests cover a mined deposit hidden until after timeout and a withdrawal receipt arriving after an account change. independent review of these fixes is pending.
+
 on the disposable CAW runtime, the registration page now keeps the wallet you selected for posts, likes, recaws, follows, account deposits and withdrawals. we mined all six from one browser test signer with a second wallet present. a fresh MetaMask profile passed discovery and read-only checks. extension-signed settlement still needs a run. [start the portal and repeat both wallet tests](integration/local-console/registration/OPERATOR.md#use-one-wallet-across-the-runtime-deployment)
 
 the green registration portal now lets you choose which browser wallet signs when several are installed. switching wallets clears the account and name review. [wallet checks and remaining limits](integration/local-console/registration/OPERATOR.md#choose-a-registration-wallet) · [five protocol delivery milestones](docs/ROADMAP.md#protocol-delivery-priorities)

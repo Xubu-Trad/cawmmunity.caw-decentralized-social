@@ -13,6 +13,8 @@ The release target is a usable protocol that another community member can deploy
 
 Gilgamesh is a functional reference. Each proposed behavior here still needs a source requirement or a documented community decision.
 
+PR #38 follow-up: independently rerun the browser receipt timeout, reload, account change during mining, and wallet selection controls. Compare the recovered transaction hash and sender nonce before and after rechecking.
+
 ## Block 5–15 operator packet — November 23, 2026
 
 Published the [pinned packet and clean-checkout commands](../integration/local-console/registration/OPERATOR.md#reproduce-the-published-pr-37-trace-packet). A local unpack-and-replay matched the reference traces and reproduced the strict rejection. Independent operator reproduction is pending.

@@ -6,7 +6,21 @@ const wallets = [];
 let wallet;
 const registryAbi = ['function lookup(string) view returns(uint256,address)','function register(string)','function ownerOf(uint256) view returns(address)','function usernameOf(uint256) view returns(string)','event Transfer(address indexed from,address indexed to,uint256 indexed tokenId)'];
 const tokenAbi = ['function balanceOf(address) view returns(uint256)','function allowance(address,address) view returns(uint256)','function approve(address,uint256) returns(bool)'];
-let actionReview=null;
+let actionReview=null,walletVersion=0;
+const historyPrefix='caw-action:'+config.genesis+':'+config.registry+':'+config.token+':';
+function loadHistory(selected){
+  const list=$('action-history');
+  list.replaceChildren();
+  if(account){
+    const prefix=historyPrefix+account+':';
+    for(const k of Object.keys(localStorage).filter(k=>k.startsWith(prefix))){
+      const hash=k.slice(prefix.length);
+      list.add(new Option(hash,hash));
+    }
+    if(selected)list.value=selected;
+  }
+  refresh();
+}
 let account,provider,registry,token,review,busy=false,epoch=0;
 const key='caw-registration:'+config.genesis+':'+config.registry;
 function saved(){try{return JSON.parse(localStorage.getItem(key));}catch{return null;}}
@@ -14,6 +28,8 @@ function refresh(){
   for(const k of ['connect','fund','review','approve','register','recheck']) $(k).disabled=busy;
   $('inspect-action').disabled=busy||!account;
   $('sign-action').disabled=busy||!actionReview;
+  $('recover-action').disabled=busy||!account||!$('action-history').value;
+  $('action-history').disabled=busy||!account||!$('action-history').length;
   chooser.disabled=busy || wallets.length<2;
   $('fund').disabled ||= !account; $('review').disabled ||= !account;
   $('approve').disabled ||= !review || review.approved;
@@ -21,7 +37,12 @@ function refresh(){
   $('recheck-wrap').hidden=!saved();
 }
 function invalidate(){epoch++;actionReview=null;$('terms').textContent='';review=null;$('quote').textContent='';refresh();}
-function reset(){account=null;$('account').textContent='';invalidate();}
+function reset(){
+  walletVersion++;
+  account=null;
+  for(const k of ['account','receipt','action-receipt','status'])$(k).textContent='';
+  loadHistory();invalidate();
+}
 function addWallet(candidate,label){
   if(!candidate || typeof candidate.request!=='function')return;
   const existing=wallets.indexOf(candidate);
@@ -58,7 +79,7 @@ async function check(){
     throw Error('Select the disposable chain at '+config.endpoint+' (chain ID 1337).');
   if(account && (await wallet.request({method:'eth_accounts'}))[0]?.toLowerCase()!==account.toLowerCase()) throw Error('Reconnect the selected wallet.');
 }
-function action(k,fn){$(k).onclick=async()=>{if(busy)return;busy=true;refresh();try{await fn();}catch(e){$('status').textContent=e.shortMessage||e.message;}finally{busy=false;refresh();}};}
+function action(k,fn){$(k).onclick=async()=>{if(busy)return;const version=walletVersion;busy=true;refresh();try{await fn();}catch(e){if(version===walletVersion)$('status').textContent=e.shortMessage||e.message;}finally{busy=false;refresh();}};}
 action('connect',async()=>{
   if(!wallet) throw Error('Enable a browser wallet to connect.');
   if(await wallet.request({method:'eth_chainId'})!=='0x539'){
@@ -68,7 +89,7 @@ action('connect',async()=>{
   await check();await wallet.request({method:'eth_requestAccounts'});await check();
   provider=new BrowserProvider(wallet);account=getAddress((await wallet.request({method:'eth_accounts'}))[0]);
   registry=new Contract(config.registry,registryAbi,provider); token=new Contract(config.token,tokenAbi,provider);
-  $('account').textContent=account;$('status').textContent='Connected. Use test funds if this wallet is new.';invalidate();
+  loadHistory();$('account').textContent=account;$('status').textContent='Connected. Use test funds if this wallet is new.';invalidate();
 });
 action('fund',async()=>{await check();const a=account;invalidate();$('status').textContent='Funding local fixture wallet…';
   const res=await fetch('/fund/'+a,{method:'POST',headers:{'x-local-fixture':'1'}});if(!res.ok)throw Error(await res.text());$('status').textContent='Test funds ready. Review your name.';});
@@ -137,17 +158,50 @@ if(config.actions){
     actionReview=r;$('terms').textContent=r.summary;
     $('sign-action').textContent=r.needsApproval?'Approve exact amount':'Sign action';
   });
+  async function showReceipt(record,p,version,wait){
+    const {hash,sender,to,data,approval}=record;
+    const rc=wait?await p.waitForTransaction(hash,1,60000):await p.getTransactionReceipt(hash);
+    if(version!==walletVersion)return;
+    if(!rc)throw Error('Receipt unavailable. Recheck the saved hash.');
+    const tx=await p.getTransaction(hash);
+    const block=await p.getBlock(rc.blockNumber);
+    if(version!==walletVersion)return;
+    if(rc.hash!==hash||rc.from!==sender||tx?.from!==sender||tx.hash!==hash||
+       tx.to!==to||tx.data!==data||tx.value!==0n||tx.blockHash!==rc.blockHash||block?.hash!==rc.blockHash)
+      throw Error('Mined transaction did not match the review.');
+    if(rc.status!==1)throw Error('Transaction reverted: '+hash);
+    $('action-receipt').textContent=(approval?'Approval mined. Review the action again.':'Action mined.')+' '+hash+' · '+sender;
+    $('status').textContent='';
+  }
+  $('action-history').onchange=()=>{$('action-receipt').textContent='';refresh();};
+  action('recover-action',async()=>{
+    const version=walletVersion,p=provider,hash=$('action-history').value,sender=account;
+    $('action-receipt').textContent='';
+    await check();
+    if(version!==walletVersion)return;
+    const record=JSON.parse(localStorage.getItem(historyPrefix+sender+':'+hash));
+    if(record?.sender!==sender||record.hash!==hash)throw Error('Saved transaction context mismatch.');
+    await showReceipt(record,p,version,false);
+  });
   action('sign-action',async()=>{
     const n=epoch,old=actionReview,r=await inspect();
     await check();
     if(n!==epoch||!old||JSON.stringify(old)!==JSON.stringify(r)){invalidate();throw Error('Action changed. Review again.');}
-    const sender=account,p=provider;
+    const sender=account,p=provider,version=walletVersion;
     invalidate();
     const hash=await wallet.request({method:'eth_sendTransaction',params:[{...r.tx,from:sender,chainId:'0x539'}]});
+    const record={hash,sender,to:getAddress(r.tx.to),data:r.tx.data,approval:r.needsApproval};
+    localStorage.setItem(historyPrefix+sender+':'+hash,JSON.stringify(record));
+    if(version!==walletVersion)return;
+    loadHistory(hash);
     $('action-receipt').textContent='Submitted '+hash;
-    const rc=await p.waitForTransaction(hash,1,60000),tx=await p.getTransaction(hash);
-    if(rc?.status!==1||rc.from!==sender||tx?.to!==getAddress(r.tx.to)||tx.data!==r.tx.data||tx.value!==0n||
-      (await p.getBlock(rc.blockNumber))?.hash!==rc.blockHash)throw Error('Mined transaction did not match the review.');
-    $('action-receipt').textContent=(r.needsApproval?'Approval mined. Review the action again.':'Action mined.')+' '+hash+' · '+sender;
+    try{await showReceipt(record,p,version,true);}
+    catch(e){
+      if(version===walletVersion && e.code==='TIMEOUT'){
+        $('status').textContent='Timed out waiting for receipt. Recheck the saved hash.';
+        return;
+      }
+      throw e;
+    }
   });
 }

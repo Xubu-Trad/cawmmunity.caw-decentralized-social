@@ -16,7 +16,12 @@ def rpc(q):
  return j['result']
 with sync_playwright() as pw:
  browser=pw.chromium.launch();page=browser.new_page();page.expose_function('fixtureRpc',rpc)
- page.add_init_script("""window.ethereum={on(){},async request(q){
+ page.add_init_script("""window.walletEvents={};window.ethereum={on(event,cb){window.walletEvents[event]=cb},async request(q){
+ if(q.method==='eth_getTransactionReceipt' && window.hideReceipt)return null;
+ if(q.method==='eth_getTransactionReceipt' && window.delayReceipt){
+   window.delayReceipt=false; await new Promise(resolve=>window.releaseReceipt=resolve);
+ }
+
  const {Wallet}=await import('/ethers.mjs');const w=window.testSigner ||= (sessionStorage.tkey?new Wallet(sessionStorage.tkey):Wallet.createRandom());sessionStorage.tkey=w.privateKey;
  if(['eth_accounts','eth_requestAccounts'].includes(q.method))return [w.address];
  if(q.method==='eth_sendTransaction'){const tx=q.params[0],rpc=(method,params)=>window.fixtureRpc({method,params});
@@ -60,7 +65,37 @@ with sync_playwright() as pw:
     else:
      assert 'action transaction to '+config['actions'][role].lower() in terms
     previous=page.locator('#action-receipt').inner_text()
+    timeout_case=kind=='deposit' and not approval
+    late_case=kind=='withdraw'
+    if timeout_case:page.evaluate('window.hideReceipt=true')
+    if late_case:page.evaluate('window.delayReceipt=true')
     page.click('#sign-action')
+    if timeout_case or late_case:
+     expect(page.locator('#action-receipt')).to_contain_text('Submitted')
+     saved_hash=page.locator('#action-history').input_value()
+     nonce=rpc({'method':'eth_getTransactionCount','params':[account,'latest']})
+     if timeout_case:
+      expect(page.locator('#status')).to_contain_text('Timed out',timeout=85000)
+      page.reload()
+     else:
+      page.wait_for_function('typeof window.releaseReceipt==="function"')
+      page.evaluate("window.walletEvents.accountsChanged([]);window.releaseReceipt()")
+      expect(page.locator('#action-receipt')).to_be_empty()
+      expect(page.locator('#connect')).to_be_enabled(timeout=30000)
+      expect(page.locator('#action-receipt')).to_be_empty()
+     page.select_option('#wallet-choice',label='Test signer')
+     page.click('#connect')
+     page.select_option('#action-history',saved_hash)
+     page.click('#recover-action')
+     expect(page.locator('#action-receipt')).to_contain_text('Action mined. '+saved_hash)
+     assert rpc({'method':'eth_getTransactionCount','params':[account,'latest']})==nonce
+     page.fill('#name',name)
+
     page.wait_for_function("([old,prefix])=>{const t=document.querySelector('#action-receipt').textContent;return t!==old && t.startsWith(prefix)}",arg=[previous,'Approval mined.' if approval else 'Action mined.'],timeout=90000)
+    if kind=='post' and approval:
+     page.select_option('#wallet-choice',label='Decoy')
+     expect(page.locator('#action-receipt')).to_be_empty()
+     expect(page.locator('#action-history option')).to_have_count(0)
+     page.select_option('#wallet-choice',label='Test signer');page.click('#connect')
    print(kind,page.locator('#action-receipt').inner_text(),flush=True)
  browser.close()
