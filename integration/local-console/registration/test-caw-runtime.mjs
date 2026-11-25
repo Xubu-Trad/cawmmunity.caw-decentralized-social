@@ -91,7 +91,23 @@ try {
     post:post.hash,credit:fee.toString(),withdrawnStake:stake.toString(),totalSupplyUnchanged:true}));
   const checkpoint=(await provider.send('eth_getBlockByNumber',['latest',false])).hash;
   const rpc=createLocalRpc(endpoint);
-  const verified=await verifyRuntime(rpc,checkpoint);
+  const verified=await verifyRuntime(rpc,checkpoint,name);
+  assert.equal(verified.authority.registry.username.owner,payer.address);
+  assert.equal(verified.authority.registry.username.approvedForTransfer,ZeroAddress);
+  for(const key of ['implementation','admin','beacon']){
+    const slot=toBeHex(BigInt(id('eip1967.proxy.'+key))-1n,32);
+    await assert.rejects(verifyRuntime(async(method,params)=>{
+      if(method==='eth_getStorageAt' && params[0]===actions.vault && params[1]===slot)return word(1);
+      return rpc(method,params);
+    },checkpoint),new RegExp('vault: unexpected EIP-1967 '+key));
+  }
+  await assert.rejects(verifyRuntime(async(method,params)=>{
+    if(method==='eth_call' && params[0].to===actions.recaw && params[0].data===id('source()').slice(0,10))return word(0);
+    return rpc(method,params);
+  },checkpoint),/unexpected source binding/);
+  const transferred=await verifyRuntime(rpc,checkpoint,'reader01');
+  assert.equal(transferred.authority.registry.username.owner,(await provider.getSigner(4)).address);
+  assert.equal(transferred.authority.registry.username.epoch,'2');
   assert.equal(verified.contracts.length,7);
   console.log(JSON.stringify({endpoint,runtimeVerification:verified}));
   await assert.rejects(verifyRuntime(async(method,params)=>{

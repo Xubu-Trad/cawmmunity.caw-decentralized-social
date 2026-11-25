@@ -28,7 +28,9 @@ Copy the endpoint and checkpoint from the runtimeVerification output. In a secon
 node integration/local-console/registration/verify-runtime.mjs http://127.0.0.1:PORT 0xBLOCK_HASH
 ```
 
-An operator with a separate node retaining that same block can substitute their own loopback RPC endpoint. A fresh fixture run has its own block hash. The verifier reads the seven addresses from `disposable-runtime.json`, checks their deployed code at the requested canonical block, then rechecks the block at its height. It needs no signing account, portal server or publisher browser. The result depends on the selected node's historical responses. It covers deployed code identity. Contract storage, authority renunciation, checkpoint provenance and community acceptance require separate evidence.
+An operator with a separate node retaining that same block can substitute their own loopback RPC endpoint. A fresh fixture run has its own block hash. The verifier reads the seven addresses from `disposable-runtime.json`, checks their deployed code at the requested canonical block, then rechecks the block at its height. It needs no signing account, portal server or publisher browser. The result depends on the selected node's historical responses. For each contract the report lists its user permissions, reads the EIP-1967 implementation, admin and beacon slots, and verifies the expected contract dependencies at that block. It also checks the pinned instructions for CALLCODE, DELEGATECALL and SELFDESTRUCT, skipping PUSH data and the Solidity metadata trailer. A mismatch stops verification. The protocol-admin assessment comes from review of these specific runtimes. Empty slots alone cannot establish renunciation.
+
+Append a registered username, for example `reader01`, to the verification command to read its NFT owner, ownership epoch and single-token transfer approval. Collection-wide operator approvals and token allowances are separate user delegations and are not enumerated. The operator of the disposable Anvil node can rewrite chain state. Independent checkpoint provenance, public deployment and acceptance remain open.
 
 ## Using a node you already operate
 

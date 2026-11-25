@@ -33,7 +33,7 @@ The destination is a system others can reproduce and operate without Xubu's acco
 
 ## where the build stands
 
-you can check the code running at all seven contract addresses on the combined disposable deployment from your own node. the reader takes a block hash and needs no wallet. [operator commands](integration/local-console/registration/OPERATOR.md#check-the-combined-disposable-deployment-by-block-hash)
+you can check the code running at all seven contract addresses on the combined disposable deployment from your own node. the reader checks upgrade slots and contract dependencies at that block. add a username to see who controls its nft and custody. no signing wallet is needed. [operator commands](integration/local-console/registration/OPERATOR.md#check-the-combined-disposable-deployment-by-block-hash)
 
 after a wallet submits an action, the portal saves its hash and what you reviewed in this browser. reconnect the same account on the same deployment, choose the hash, and recheck it without signing again. the browser tests cover a mined deposit hidden until after timeout and a withdrawal receipt arriving after an account change. independent review of these fixes is pending.
 
