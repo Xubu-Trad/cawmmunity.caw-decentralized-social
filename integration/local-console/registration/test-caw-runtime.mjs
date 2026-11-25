@@ -7,6 +7,8 @@ import {Contract, ContractFactory, JsonRpcProvider, MaxUint256, ZeroAddress,
   solidityPackedKeccak256, zeroPadValue, toBeHex, keccak256, id, parseEther} from 'ethers';
 import {exerciseAccountActions} from './exercise-caw-actions.mjs';
 import solc from 'solc';
+import {verifyRuntime} from './verify-runtime.mjs';
+import {createLocalRpc} from '../local-rpc.mjs';
 
 const read=path=>readFileSync(new URL(path,import.meta.url),'utf8');
 const capture=JSON.parse(read('../../../reference/fixtures/caw-token-publicnode.json'));
@@ -87,6 +89,19 @@ try {
   assert.equal(await token.totalSupply(),supply);
   console.log(JSON.stringify({runtime:expected,name,sink:await registry.SINK(),price:price.toString(),
     post:post.hash,credit:fee.toString(),withdrawnStake:stake.toString(),totalSupplyUnchanged:true}));
+  const checkpoint=(await provider.send('eth_getBlockByNumber',['latest',false])).hash;
+  const rpc=createLocalRpc(endpoint);
+  const verified=await verifyRuntime(rpc,checkpoint);
+  assert.equal(verified.contracts.length,7);
+  console.log(JSON.stringify({endpoint,runtimeVerification:verified}));
+  await assert.rejects(verifyRuntime(async(method,params)=>{
+    if(method==='eth_getCode' && params[0].toLowerCase()===actions.vault.toLowerCase())return '0x00';
+    return rpc(method,params);
+  },checkpoint),/Runtime mismatch: vault/);
+  await assert.rejects(verifyRuntime(async(method,params)=>{
+    if(method==='eth_getBlockByNumber')return null;
+    return rpc(method,params);
+  },checkpoint),/Checkpoint changed/);
   if(process.argv.includes('--portal')){
     await mine(token.transfer(staker.address,stake));
     await mine(token.connect(staker).approve(pool.target,stake));

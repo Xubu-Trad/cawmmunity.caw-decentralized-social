@@ -14,6 +14,22 @@ npm ci --prefix "$b" --ignore-scripts --no-audit --no-fund
 
 For a paid action, compare the token address, spender and CAW amount on the approval screen with your deployment. The next signature sends the action to its own contract. Withdrawals require only the action signature.
 
+## Check the combined disposable deployment by block hash
+
+With the two installs above and Anvil on PATH, start the fixture:
+
+```sh
+node integration/local-console/registration/test-caw-runtime.mjs --portal
+```
+
+Copy the endpoint and checkpoint from the runtimeVerification output. In a second terminal, substitute those values:
+
+```sh
+node integration/local-console/registration/verify-runtime.mjs http://127.0.0.1:PORT 0xBLOCK_HASH
+```
+
+An operator with a separate node retaining that same block can substitute their own loopback RPC endpoint. A fresh fixture run has its own block hash. The verifier reads the seven addresses from `disposable-runtime.json`, checks their deployed code at the requested canonical block, then rechecks the block at its height. It needs no signing account, portal server or publisher browser. The result depends on the selected node's historical responses. It covers deployed code identity. Contract storage, authority renunciation, checkpoint provenance and community acceptance require separate evidence.
+
 ## Using a node you already operate
 
 Select the deployment addresses independently of the HTML. The example manifest is for the disposable November 22 chain. Your node must have its canonical blocks, transactions, receipts, logs and historical registry state. A new empty chain with ID 1337 cannot verify an earlier export.
