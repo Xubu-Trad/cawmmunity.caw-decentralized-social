@@ -128,6 +128,20 @@ function boundedHex(value){
     'invalid or oversized encoded bytes');
 }
 
+// The envelope ceiling applies before the compact path and both RLP prefixes.
+// At most 32 capsule entries means a leaf adds at most 1 + 4 + 4 bytes.
+export function capsuleEnvelopeRoot(envelopes){
+  requireMatch(Array.isArray(envelopes)&&envelopes.length>=2&&envelopes.length<=32,'mixed block length');
+  const bytes=envelopes.map(raw=>{
+    boundedHex(raw);
+    return Buffer.from(raw.slice(2),'hex');
+  });
+  return orderedEnvelopeRoot(bytes,node=>{
+    requireMatch(node.length<=65536+9,'oversized framed trie node');
+    return Buffer.from(keccak256(node).slice(2),'hex');
+  });
+}
+
 function readMixed(capsule,h,hash){
   const {transactions,receipts}=capsule;
   requireMatch(Array.isArray(transactions)&&Array.isArray(receipts)&&transactions.length>=2&&
@@ -143,8 +157,7 @@ function readMixed(capsule,h,hash){
   requireMatch(new Set(hashes).size===hashes.length,'duplicate transaction');
   const index=hashes.indexOf(hash);
   requireMatch(index!==-1,'transaction hash missing from block');
-  const root=list=>orderedEnvelopeRoot(list.map(raw=>Buffer.from(raw.slice(2),'hex')));
-  requireMatch(root(transactions)===h[4]&&root(receipts)===h[5],'transaction or receipt root mismatch');
+  requireMatch(capsuleEnvelopeRoot(transactions)===h[4]&&capsuleEnvelopeRoot(receipts)===h[5],'transaction or receipt root mismatch');
 
   let gas=0n,bloom=0n,selected;
   for(let i=0;i<receipts.length;i++){

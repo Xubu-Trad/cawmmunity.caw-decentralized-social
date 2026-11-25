@@ -72,7 +72,9 @@ node "$b/post-capsule.mjs" verify "$block" "$post" "$b/samples/mixed-paid-post.j
 
 Expected text: `middle paid post`, transaction index 1 of three (zero-based). Use `0x4cb6cb5f41ec2e8fa606d5f96ca41f036e706ace83c518c4c5678f292ed456c7` to read the last post from the same file. Sample SHA-256: `9056b69be912f7acd14913c672d28400055ac6d8be73b2c2504792f2ea279e5c`.
 
-Capture uses the same command as for a singleton. Mixed archives carry the entire ordered transaction and receipt lists and are capped at 512 KiB. Both reconstructed roots must match the pinned block header. Read each post by its own transaction hash. Acquire the expected block hash independently to establish which history you intend to trust.
+Capture uses the same command as for a singleton. Mixed archives carry the entire ordered transaction and receipt lists and are capped at 512 KiB, with at most 65,536 bytes per envelope. The default loopback RPC client has a separate 131,072-byte limit on each complete JSON response. Hex encoding and RPC framing can stop capture of a large neighbor even when the retained archive fits the offline verifier. Both reconstructed roots must match the pinned block header. Read each post by its own transaction hash. Acquire the expected block hash independently to establish which history you intend to trust.
+
+Run `node "$b/test-post-envelope-root.mjs"` to check the envelope boundary with fixed trie roots. It covers 65,527, 65,532 and 65,536 bytes and checks rejection at 65,537.
 
 To mine a fresh example on your own machine, install the two locked dependency sets, put Anvil on PATH, and run `node integration/local-console/registration/test-caw-runtime.mjs --mixed-post`. Set `CAW_MIXED_SAMPLE` to a new file path to retain the archive. The test closes the node before checking the two posts, their fee attribution and the rejection controls. The earlier on-chain first-recognition proof still supports only the single-transaction case.
 

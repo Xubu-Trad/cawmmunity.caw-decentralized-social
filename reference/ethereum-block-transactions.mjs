@@ -125,10 +125,10 @@ function compact(path, leaf) {
 // Keys are the nibbles of canonical RLP(index), without a state-trie key hash.
 // Leaf values are the complete envelope bytes, including a typed envelope's
 // type byte. The complete value is wrapped as the leaf's RLP byte string.
-function transactionRoot(encodedTransactions) {
+function transactionRoot(encodedTransactions, hashNode = hashBytes) {
   if (encodedTransactions.length === 0) return keccak256Hex('0x80');
   const pairs = encodedTransactions.map((value, index) => ({ path: nibbles(wrap(unsigned(BigInt(index)))), value }));
-  function reference(raw) { return raw.length < 32 ? raw : wrap(hashBytes(raw)); }
+  function reference(raw) { return raw.length < 32 ? raw : wrap(hashNode(raw)); }
   function node(entries, offset) {
     if (entries.length === 1) {
       return rlpList([wrap(compact(entries[0].path.slice(offset), true)), wrap(entries[0].value)]);
@@ -149,7 +149,7 @@ function transactionRoot(encodedTransactions) {
     return rlpList([...groups.map(group => group.length ? reference(node(group, offset + 1)) : wrap(Buffer.alloc(0))), wrap(terminal)]);
   }
   // Root nodes are always hashed, including roots shorter than 32 bytes.
-  return hex(hashBytes(node(pairs, 0)));
+  return hex(hashNode(node(pairs, 0)));
 }
 
 // Receipt and transaction tries share the same RLP(index) keys and opaque leaf values.
