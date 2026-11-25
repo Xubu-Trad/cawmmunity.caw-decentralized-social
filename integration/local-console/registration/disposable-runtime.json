@@ -1,0 +1,34 @@
+{
+  "chainId": "0x539",
+  "asset": "Captured CAW runtime with locally initialized test balances",
+  "contracts": {
+    "token": {
+      "address": "0xf3b9569F82B18aEf890De263B84189bd33EBe452",
+      "runtimeKeccak256": "0x6ee560d3e6b1f881a8711e0be0b30a0e8e0cf8b915ce8f75ea05002126c94256"
+    },
+    "registry": {
+      "address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "runtimeKeccak256": "0x2e600a53ccad2d97fc4a9ac98cb609d0cbed99f7f9537b18573d52e90fb5433b"
+    },
+    "posts": {
+      "address": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+      "runtimeKeccak256": "0x1a7887edacdc9b24b4e46fa4decccbd5a0f2ae69c091d0ae488348cb72163884"
+    },
+    "likes": {
+      "address": "0x8A791620dd6260079BF849Dc5567aDC3F2FdC318",
+      "runtimeKeccak256": "0x34521ff827d8f8bde6470618ab1faf0b56bb0cf6363bfd88748b884b2d520b1d"
+    },
+    "recaw": {
+      "address": "0x610178dA211FEF7D417bC0e6FeD39F05609AD788",
+      "runtimeKeccak256": "0xbb3dc80c3ec04821afa64605bf11c5f5483652e3150d47f7190c7c67b440cd7c"
+    },
+    "follow": {
+      "address": "0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e",
+      "runtimeKeccak256": "0x04bd97618b40992317a37067a1c2cde75a4b62bc86787e9e3698e567239a82ca"
+    },
+    "vault": {
+      "address": "0xA51c1fc2f0D1a1b8494Ed1FE312d7C3a78Ed91C0",
+      "runtimeKeccak256": "0x29027aaef7de78be944c007536cfe8cd98b6b281de73f16f24b7e948ae41bba5"
+    }
+  }
+}

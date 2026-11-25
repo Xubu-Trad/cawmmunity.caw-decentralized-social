@@ -14,6 +14,26 @@ npm ci --prefix "$b" --ignore-scripts --no-audit --no-fund
 
 For a paid action, compare the token address, spender and CAW amount on the approval screen with your deployment. The next signature sends the action to its own contract. Withdrawals require only the action signature.
 
+## Check the combined disposable deployment by block hash
+
+For a clean-checkout replay of the pinned authority checks, follow the [PR #40 reproduction packet](pr40-reproduction/README.md).
+
+With the two installs above and Anvil on PATH, start the fixture:
+
+```sh
+node integration/local-console/registration/test-caw-runtime.mjs --portal
+```
+
+Copy the endpoint and checkpoint from the runtimeVerification output. In a second terminal, substitute those values:
+
+```sh
+node integration/local-console/registration/verify-runtime.mjs http://127.0.0.1:PORT 0xBLOCK_HASH
+```
+
+An operator with a separate node retaining that same block can substitute their own loopback RPC endpoint. A fresh fixture run has its own block hash. The verifier reads the seven addresses from `disposable-runtime.json`, checks their deployed code at the requested canonical block, then rechecks the block at its height. It needs no signing account, portal server or publisher browser. The result depends on the selected node's historical responses. For each contract the report lists its user permissions, reads the EIP-1967 implementation, admin and beacon slots, and verifies the expected contract dependencies at that block. It also checks the pinned instructions for CALLCODE, DELEGATECALL and SELFDESTRUCT, skipping PUSH data and the Solidity metadata trailer. A mismatch stops verification. The protocol-admin assessment comes from review of these specific runtimes. Empty slots alone cannot establish renunciation.
+
+Append a registered username, for example `reader01`, to the verification command to read its NFT owner, ownership epoch and single-token transfer approval. Collection-wide operator approvals and token allowances are separate user delegations and are not enumerated. The operator of the disposable Anvil node can rewrite chain state. Independent checkpoint provenance, public deployment and acceptance remain open.
+
 ## Using a node you already operate
 
 Select the deployment addresses independently of the HTML. The example manifest is for the disposable November 22 chain. Your node must have its canonical blocks, transactions, receipts, logs and historical registry state. A new empty chain with ID 1337 cannot verify an earlier export.
