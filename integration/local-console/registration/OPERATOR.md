@@ -34,6 +34,29 @@ An operator with a separate node retaining that same block can substitute their 
 
 Append a registered username, for example `reader01`, to the verification command to read its NFT owner, ownership epoch and single-token transfer approval. Collection-wide operator approvals and token allowances are separate user delegations and are not enumerated. The operator of the disposable Anvil node can rewrite chain state. Independent checkpoint provenance, public deployment and acceptance remain open.
 
+## Read an archived paid post offline
+
+This sample comes from a disposable wallet that signed the text `selected wallet proof`. From the checkout root, install the locked reader dependency once. After installation the verification command can run with networking disabled.
+
+```sh
+npm ci --prefix integration/local-console --ignore-scripts --no-audit --no-fund
+b=integration/local-console/registration
+block=0x1c977de580b845272cae853af0c19dad264ad712193e4d81f86459a2bc809439
+tx=0x2b840ae54faf8b63134204973b15e07d0f07be116dc927038a85fee9a8581eec
+node "$b/post-capsule.mjs" verify "$block" "$tx" "$b/samples/paid-post.json"
+```
+
+Expected fee: 5,000 fixture CAW. The sole eligible staker, `0x70997970C51812dc3A010C7d01b50e0d17dc79C8`, received all 5,000. The 4,482-byte sample has SHA-256 `30c06366b9a8b1030b793025ed0180ccc5f1cc4c6fc3e7e105f83bc2a9cb088f`.
+
+To archive another post from this deployment layout, retain the **post block hash** and **transaction hash**. Run the capture against a loopback node holding the block, raw transaction and receipt:
+
+```sh
+node "$b/post-capsule.mjs" capture "$RPC" "$BLOCK_HASH" "$TX_HASH" my-post.json
+node "$b/post-capsule.mjs" verify "$BLOCK_HASH" "$TX_HASH" my-post.json
+```
+
+The offline reader recovers the signer and text from the transaction, checks the two trie roots against the supplied header, then matches the fee and weighted credits to the token transfer and pool events. It supports a single transaction in a Shanghai block on the pinned chain-1337 contract layout. Capture checks the node’s canonical block at the time of the read. For independent historical attribution, obtain the expected block hash separately. A later reorganization, contract state at the block, and wider chain history require other evidence. The sample and the hashes printed above share the same publisher.
+
 ## Using a node you already operate
 
 Select the deployment addresses independently of the HTML. The example manifest is for the disposable November 22 chain. Your node must have its canonical blocks, transactions, receipts, logs and historical registry state. A new empty chain with ID 1337 cannot verify an earlier export.

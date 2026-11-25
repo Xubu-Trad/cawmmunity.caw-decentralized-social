@@ -8,6 +8,8 @@ import {Contract, ContractFactory, JsonRpcProvider, MaxUint256, ZeroAddress,
 import {exerciseAccountActions} from './exercise-caw-actions.mjs';
 import solc from 'solc';
 import {verifyRuntime} from './verify-runtime.mjs';
+import {capturePostCapsule} from './post-capsule.mjs';
+import {verifyPostCapsule} from './verify-post-capsule.mjs';
 import {createLocalRpc} from '../local-rpc.mjs';
 
 const read=path=>readFileSync(new URL(path,import.meta.url),'utf8');
@@ -27,7 +29,7 @@ assert.deepEqual((build.errors??[]).filter(e=>e.severity==='error'),[]);
 const node=spawn('anvil',['--host','127.0.0.1','--port','0','--chain-id','1337','--hardfork','shanghai'],
   {stdio:['ignore','pipe','inherit']});
 const stopped=once(node,'exit');
-let provider;
+let provider, archivedPost;
 try {
   const lines=createInterface({input:node.stdout});
   let endpoint;
@@ -91,6 +93,18 @@ try {
     post:post.hash,credit:fee.toString(),withdrawnStake:stake.toString(),totalSupplyUnchanged:true}));
   const checkpoint=(await provider.send('eth_getBlockByNumber',['latest',false])).hash;
   const rpc=createLocalRpc(endpoint);
+  const capsule=await capturePostCapsule(rpc,post.blockHash,post.hash);
+  await assert.rejects(capturePostCapsule(async(method,params)=>{
+    const response=await rpc(method,params);
+    if(method==='eth_getBlockByHash')return {...response,transactions:[post.hash,post.hash]};
+    return response;
+  },post.blockHash,post.hash),/single-transaction/);
+  await assert.rejects(capturePostCapsule(async(method,params)=>{
+    if(method==='eth_getBlockByNumber')return null;
+    return rpc(method,params);
+  },post.blockHash,post.hash),/no longer canonical/);
+  archivedPost={bytes:JSON.stringify(capsule),blockHash:post.blockHash,txHash:post.hash,
+    name,author:payer.address,staker:staker.address};
   const verified=await verifyRuntime(rpc,checkpoint,name);
   assert.equal(verified.authority.registry.username.owner,payer.address);
   assert.equal(verified.authority.registry.username.approvedForTransfer,ZeroAddress);
@@ -135,3 +149,25 @@ try {
   if(node.exitCode===null && node.signalCode===null)node.kill();
   await stopped;
 }
+
+// Verify only the portable bytes and the independently retained identifiers after
+// the fixture's RPC server exits. No live receipt, browser or wallet is available.
+const {bytes,blockHash,txHash}=archivedPost;
+const capsule=JSON.parse(bytes);
+const result=verifyPostCapsule(capsule,blockHash,txHash);
+assert.equal(result.hash,txHash);
+assert.equal(result.blockHash,blockHash);
+assert.equal(result.name,archivedPost.name);
+assert.equal(result.body,'A'.repeat(420));
+assert.equal(result.author,archivedPost.author);
+assert.equal(result.fee,'5000.0');
+assert.deepEqual(result.credits,[{staker:archivedPost.staker,weight:'100.0',amount:'5000.0'}]);
+
+assert.throws(()=>verifyPostCapsule(capsule,id('different block'),txHash));
+assert.throws(()=>verifyPostCapsule(capsule,blockHash,id('different transaction')));
+for(const field of ['header','txBytes','receipt']){
+  const data=capsule[field];
+  const changed=data.slice(0,-1)+(data.endsWith('0')?'1':'0');
+  assert.throws(()=>verifyPostCapsule({...capsule,[field]:changed},blockHash,txHash));
+}
+console.log(JSON.stringify({offlinePost:{blockHash,txHash,fee:result.fee,credits:result.credits}}));
