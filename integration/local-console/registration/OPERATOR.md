@@ -16,6 +16,8 @@ For a paid action, compare the token address, spender and CAW amount on the appr
 
 ## Check the combined disposable deployment by block hash
 
+For a clean-checkout replay of the pinned authority checks, follow the [PR #40 reproduction packet](pr40-reproduction/README.md).
+
 With the two installs above and Anvil on PATH, start the fixture:
 
 ```sh

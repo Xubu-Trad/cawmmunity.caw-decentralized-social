@@ -1,0 +1,88 @@
+{
+  "block": "0x1f",
+  "checkpoint": "0x9630090a4d1b1617ac0cf50c1961245f12cc350fc2c781cd6998171b881a34a1",
+  "contracts": [
+    "token",
+    "registry",
+    "posts",
+    "likes",
+    "recaw",
+    "follow",
+    "vault"
+  ],
+  "authority": {
+    "token": {
+      "address": "0xf3b9569F82B18aEf890De263B84189bd33EBe452",
+      "accountPermissions": "Holders transfer balances and set allowances. Approved spenders can transfer within their allowance.",
+      "protocolAdmin": "none identified in pinned runtime",
+      "upgrade": "no upgrade entry point identified; EIP-1967 slots empty; no CALLCODE, DELEGATECALL or SELFDESTRUCT in the scanned instructions",
+      "dependencies": {}
+    },
+    "registry": {
+      "address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "accountPermissions": "Anyone can register an available name for the quoted payment. The NFT owner, approved address or approved operator can transfer it.",
+      "protocolAdmin": "none identified in pinned runtime",
+      "upgrade": "no upgrade entry point identified; EIP-1967 slots empty; no CALLCODE, DELEGATECALL or SELFDESTRUCT in the scanned instructions",
+      "dependencies": {
+        "paymentToken": "0xf3b9569F82B18aEf890De263B84189bd33EBe452",
+        "SINK": "0xdEAD000000000000000042069420694206942069",
+        "CAW_RUNTIME": "0x6ee560d3e6b1f881a8711e0be0b30a0e8e0cf8b915ce8f75ea05002126c94256"
+      },
+      "username": {
+        "name": "hunter01",
+        "owner": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+        "epoch": "1",
+        "approvedForTransfer": "0x0000000000000000000000000000000000000000"
+      }
+    },
+    "posts": {
+      "address": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+      "accountPermissions": "Stakers can change their own stake. The current username owner can publish.",
+      "protocolAdmin": "none identified in pinned runtime",
+      "upgrade": "no upgrade entry point identified; EIP-1967 slots empty; no CALLCODE, DELEGATECALL or SELFDESTRUCT in the scanned instructions",
+      "dependencies": {
+        "registry": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "token": "0xf3b9569F82B18aEf890De263B84189bd33EBe452"
+      }
+    },
+    "likes": {
+      "address": "0x8A791620dd6260079BF849Dc5567aDC3F2FdC318",
+      "accountPermissions": "The current username owner can like. Anyone can submit a valid historical post proof.",
+      "protocolAdmin": "none identified in pinned runtime",
+      "upgrade": "no upgrade entry point identified; EIP-1967 slots empty; no CALLCODE, DELEGATECALL or SELFDESTRUCT in the scanned instructions",
+      "dependencies": {
+        "pool": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9"
+      }
+    },
+    "recaw": {
+      "address": "0x610178dA211FEF7D417bC0e6FeD39F05609AD788",
+      "accountPermissions": "The current username owner can reCAW a proven post.",
+      "protocolAdmin": "none identified in pinned runtime",
+      "upgrade": "no upgrade entry point identified; EIP-1967 slots empty; no CALLCODE, DELEGATECALL or SELFDESTRUCT in the scanned instructions",
+      "dependencies": {
+        "pool": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+        "source": "0x8A791620dd6260079BF849Dc5567aDC3F2FdC318"
+      }
+    },
+    "follow": {
+      "address": "0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e",
+      "accountPermissions": "The current username owner can follow another name. The transaction checks its reviewed recipient.",
+      "protocolAdmin": "none identified in pinned runtime",
+      "upgrade": "no upgrade entry point identified; EIP-1967 slots empty; no CALLCODE, DELEGATECALL or SELFDESTRUCT in the scanned instructions",
+      "dependencies": {
+        "pool": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9"
+      }
+    },
+    "vault": {
+      "address": "0xA51c1fc2f0D1a1b8494Ed1FE312d7C3a78Ed91C0",
+      "accountPermissions": "The current NFT owner can deposit and withdraw for that account at the current ownership epoch.",
+      "protocolAdmin": "none identified in pinned runtime",
+      "upgrade": "no upgrade entry point identified; EIP-1967 slots empty; no CALLCODE, DELEGATECALL or SELFDESTRUCT in the scanned instructions",
+      "dependencies": {
+        "registry": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        "TOKEN": "0xf3b9569F82B18aEf890De263B84189bd33EBe452",
+        "registryCodeHash": "0x2e600a53ccad2d97fc4a9ac98cb609d0cbed99f7f9537b18573d52e90fb5433b"
+      }
+    }
+  }
+}
