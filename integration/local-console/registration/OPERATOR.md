@@ -55,7 +55,26 @@ node "$b/post-capsule.mjs" capture "$RPC" "$BLOCK_HASH" "$TX_HASH" my-post.json
 node "$b/post-capsule.mjs" verify "$BLOCK_HASH" "$TX_HASH" my-post.json
 ```
 
-The offline reader recovers the signer and text from the transaction, checks the two trie roots against the supplied header, then matches the fee and weighted credits to the token transfer and pool events. It supports a single transaction in a Shanghai block on the pinned chain-1337 contract layout. Capture checks the node’s canonical block at the time of the read. For independent historical attribution, obtain the expected block hash separately. A later reorganization, contract state at the block, and wider chain history require other evidence. The sample and the hashes printed above share the same publisher.
+The offline reader recovers the signer and text from the transaction, checks the two trie roots against the supplied header, then matches the fee and weighted credits to the token transfer and pool events. On the pinned chain-1337 contract layout, the reader supports Shanghai blocks with one transaction or a bounded archive of up to 32 signed transactions and their receipts. Capture checks the node’s canonical block at the time of the read. For independent historical attribution, obtain the expected block hash separately. A later reorganization, contract state at the block, and wider chain history require other evidence. The sample and the hashes printed above share the same publisher.
+
+## Verify one paid post in a mixed block
+
+The sample block contains a 37 CAW transfer followed by two paid posts. All three payments reached the same staker. Its balance rose by 10,037 CAW across the block. Selecting either post must recover its signed text and exactly 5,000 CAW of staker credit. The transfer hash cannot identify a paid post.
+
+With the reader dependencies installed, run this offline:
+
+```sh
+b=integration/local-console/registration
+block=0x7178c64980e516e68e7fa25b68126d53eb0af9daee2847eb00e022eed303fb5e
+post=0x93d6390b211e91d71b19a718654e2d34fed9b06e720def154dddd099527e6312
+node "$b/post-capsule.mjs" verify "$block" "$post" "$b/samples/mixed-paid-post.json"
+```
+
+Expected text: `middle paid post`, transaction index 1 of three (zero-based). Use `0x4cb6cb5f41ec2e8fa606d5f96ca41f036e706ace83c518c4c5678f292ed456c7` to read the last post from the same file. Sample SHA-256: `9056b69be912f7acd14913c672d28400055ac6d8be73b2c2504792f2ea279e5c`.
+
+Capture uses the same command as for a singleton. Mixed archives carry the entire ordered transaction and receipt lists and are capped at 512 KiB. Both reconstructed roots must match the pinned block header. Read each post by its own transaction hash. Acquire the expected block hash independently to establish which history you intend to trust.
+
+To mine a fresh example on your own machine, install the two locked dependency sets, put Anvil on PATH, and run `node integration/local-console/registration/test-caw-runtime.mjs --mixed-post`. Set `CAW_MIXED_SAMPLE` to a new file path to retain the archive. The test closes the node before checking the two posts, their fee attribution and the rejection controls. The earlier on-chain first-recognition proof still supports only the single-transaction case.
 
 ## Using a node you already operate
 

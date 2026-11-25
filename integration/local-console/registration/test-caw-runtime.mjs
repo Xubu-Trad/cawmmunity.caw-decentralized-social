@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {readFileSync} from 'node:fs';
+import {readFileSync,writeFileSync} from 'node:fs';
 import {spawn} from 'node:child_process';
 import {once} from 'node:events';
 import {createInterface} from 'node:readline';
@@ -29,7 +29,7 @@ assert.deepEqual((build.errors??[]).filter(e=>e.severity==='error'),[]);
 const node=spawn('anvil',['--host','127.0.0.1','--port','0','--chain-id','1337','--hardfork','shanghai'],
   {stdio:['ignore','pipe','inherit']});
 const stopped=once(node,'exit');
-let provider, archivedPost;
+let provider, archivedPost, mixedPost;
 try {
   const lines=createInterface({input:node.stdout});
   let endpoint;
@@ -98,7 +98,7 @@ try {
     const response=await rpc(method,params);
     if(method==='eth_getBlockByHash')return {...response,transactions:[post.hash,post.hash]};
     return response;
-  },post.blockHash,post.hash),/single-transaction/);
+  },post.blockHash,post.hash));
   await assert.rejects(capturePostCapsule(async(method,params)=>{
     if(method==='eth_getBlockByNumber')return null;
     return rpc(method,params);
@@ -132,6 +132,32 @@ try {
     if(method==='eth_getBlockByNumber')return null;
     return rpc(method,params);
   },checkpoint),/Checkpoint changed/);
+  if(process.argv.includes('--mixed-post')){
+    await mine(token.connect(staker).approve(pool.target,stake));
+    await mine(pool.connect(staker).stake(stake));
+    await mine(token.approve(pool.target,2n*fee));
+    const previousHeight=await rpc('eth_blockNumber',[]);
+    const balanceBefore=await token.balanceOf(staker.address,{blockTag:previousHeight});
+    const transferAmount=parseEther('37');
+    const nonce=await payer.getNonce('pending');
+    await rpc('evm_setAutomine',[false]);
+    let transfer,selected,other;
+    try{
+      transfer=await token.transfer(staker.address,transferAmount,{nonce,gasLimit:100000});
+      selected=await pool.publish(name,'middle paid post',{nonce:nonce+1,gasLimit:750000});
+      other=await pool.publish(name,'last paid post',{nonce:nonce+2,gasLimit:750000});
+      await rpc('evm_mine',[]);
+    }finally{await rpc('evm_setAutomine',[true]);}
+    const receipt=await selected.wait();
+    const block=await rpc('eth_getBlockByHash',[receipt.blockHash,false]);
+    assert.deepEqual(block.transactions,[transfer.hash,selected.hash,other.hash]);
+    assert.equal(receipt.status,1);
+    const balanceAfter=await token.balanceOf(staker.address,{blockTag:block.number});
+    assert.equal(balanceAfter-balanceBefore,2n*fee+transferAmount);
+    const archive=await capturePostCapsule(rpc,block.hash,selected.hash);
+    mixedPost={archive,blockHash:block.hash,selected:selected.hash,other:other.hash,transfer:transfer.hash,
+      staker:staker.address,author:payer.address,name,blockGain:'10037.0'};
+  }
   if(process.argv.includes('--portal')){
     await mine(token.transfer(staker.address,stake));
     await mine(token.connect(staker).approve(pool.target,stake));
@@ -171,3 +197,32 @@ for(const field of ['header','txBytes','receipt']){
   assert.throws(()=>verifyPostCapsule({...capsule,[field]:changed},blockHash,txHash));
 }
 console.log(JSON.stringify({offlinePost:{blockHash,txHash,fee:result.fee,credits:result.credits}}));
+
+// The two posts and the direct transfer all paid the same staker in one block.
+// Its overall balance change must not be used as either post's receipt.
+if(mixedPost){
+  const {archive,blockHash,selected,other,transfer,staker,author,name,blockGain}=mixedPost;
+  for(const [hash,body] of [[selected,'middle paid post'],[other,'last paid post']]){
+    const item=verifyPostCapsule(archive,blockHash,hash);
+    assert.equal(item.hash,hash);
+    assert.equal(item.name,name);
+    assert.equal(item.author,author);
+    assert.equal(item.body,body);
+    assert.equal(item.fee,'5000.0');
+    assert.deepEqual(item.credits,[{staker,weight:'100.0',amount:'5000.0'}]);
+  }
+  assert.throws(()=>verifyPostCapsule(archive,blockHash,transfer));
+  assert.throws(()=>verifyPostCapsule(archive,id('wrong mixed block'),selected));
+  assert.throws(()=>verifyPostCapsule(archive,blockHash,id('absent post')));
+  for(const field of ['transactions','receipts']){
+    const rows=archive[field];
+    assert.equal(rows.length,3);
+    for(const replacement of [[rows[1],rows[0],rows[2]],rows.slice(1),[rows[0],rows[1],rows[1]]]){
+      assert.throws(()=>verifyPostCapsule({...archive,[field]:replacement},blockHash,selected));
+    }
+  }
+  if(process.env.CAW_MIXED_SAMPLE){
+    writeFileSync(process.env.CAW_MIXED_SAMPLE,JSON.stringify(archive)+'\n',{flag:'wx'});
+  }
+  console.log(JSON.stringify({mixedPost:{blockHash,selected,other,transfer,blockGain,fee:'5000.0'}}));
+}

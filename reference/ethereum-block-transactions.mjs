@@ -152,6 +152,9 @@ function transactionRoot(encodedTransactions) {
   return hex(hashBytes(node(pairs, 0)));
 }
 
+// Receipt and transaction tries share the same RLP(index) keys and opaque leaf values.
+export { transactionRoot as orderedEnvelopeRoot };
+
 // Strict canonical RLP with parent-boundary and full-input consumption. No
 // prefix-derived allocation occurs. Depth/node limits also bound malformed
 // nested or many-item input before transaction field checks are reached.
