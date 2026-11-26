@@ -33,6 +33,8 @@ The destination is a system others can reproduce and operate without Xubu's acco
 
 ## where the build stands
 
+you can now rebuild a feed of saved paid posts against one checkpoint. a re-mined post gets the payout from its current receipt. posts the reader cannot locate stay visible as unresolved. [offline feed commands](docs/POST_PEER_CHECKPOINT.md#rebuild-a-feed-of-archived-paid-posts)
+
 a second geth node synced from genesis and found the exact signed post from pr #44. the original block was absent from its history. the same post still cost 5,000 caw, but two earlier stake withdrawals had reverted, so its receipt paid 2,000 and 3,000 to two stakers. the original receipt paid all 5,000 to one. both nodes ran under one operator. [check both receipts offline or repeat the peer sync](docs/POST_PEER_CHECKPOINT.md)
 
 a saved receipt still reads the same after a chain reorganization. the reader can now tell you whether the original post block belongs to the history of a later block you trust. the offline example checks one post against two different histories. [try the branch check](docs/POST_BRANCH_RECHECK.md)
