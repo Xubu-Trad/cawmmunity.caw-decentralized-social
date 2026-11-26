@@ -54,6 +54,27 @@ class Node:
         return self.rpc("eth_getBlockByNumber", [height, False])
 
 
+def verify_listeners(pid, ports):
+    # Linux exposes all listening sockets in the namespace. Keep only this child's inodes.
+    fds = Path(f"/proc/{pid}/fd")
+    owned = set()
+    for fd in fds.iterdir():
+        try:
+            owned.add(os.readlink(fd))
+        except FileNotFoundError:
+            continue
+    found = set()
+    for table in ("tcp", "tcp6"):
+        for row in Path(f"/proc/{pid}/net/{table}").read_text().splitlines()[1:]:
+            fields = row.split()
+            if fields[3] != "0A" or f"socket:[{fields[9]}]" not in owned:
+                continue
+            address, port = fields[1].split(":")
+            demand(table == "tcp" and address == "0100007F", "Non-loopback TCP listener")
+            found.add(int(port, 16))
+    demand(found == set(ports), "Expected exactly three loopback listeners")
+
+
 def start(stack, name, ports, exe, out, genesis):
     http, engine, p2p = ports
     secret = secrets.token_bytes(32)
@@ -66,17 +87,25 @@ def start(stack, name, ports, exe, out, genesis):
     env = dict(os.environ, GOMEMLIMIT="256MiB", GOMAXPROCS="2")
     subprocess.run(cmd + ["init", str(genesis)], check=True, timeout=60, env=env, stdout=log, stderr=log)
     api = "eth,net,admin,miner,txpool" if name == "source" else "eth,net,admin"
-    proc = subprocess.Popen(cmd + ["--networkid", "1337", "--syncmode", "full", "--nodiscover",
-        "--netrestrict", "127.0.0.0/8", "--nat", "none", "--maxpeers", "2", "--port", str(p2p),
+    config = out / (name + ".toml")
+    listener = f'ListenAddr = "127.0.0.1:{p2p}"'
+    config.write_text('[Node.P2P]\n' + listener + '\nBootstrapNodes = []\nBootstrapNodesV5 = []\n')
+    launch = cmd + ["--config", str(config),"--networkid", "1337", "--syncmode", "full", "--nodiscover",
+        "--netrestrict", "127.0.0.0/8", "--nat", "none", "--maxpeers", "2",
         "--http", "--http.addr", "127.0.0.1", "--http.port", str(http), "--http.api", api,
         "--authrpc.addr", "127.0.0.1", "--authrpc.port", str(engine), "--authrpc.jwtsecret", str(jwt),
-        "--ipcdisable"], env=env, stdout=log, stderr=log)
+        "--ipcdisable"]
+    effective = subprocess.check_output(launch + ["dumpconfig"], text=True, env=env)
+    for setting in (listener, "BootstrapNodes = []", "BootstrapNodesV5 = []", "NoDiscovery = true"):
+        demand(setting in effective.splitlines(), f"Missing effective setting: {setting}")
+    proc = subprocess.Popen(launch, env=env, stdout=log, stderr=log)
     stack.callback(peer.stop, proc)
     node = Node(http, engine, p2p, secret, proc)
     for _ in range(150):
         demand(proc.poll() is None, f"{name} exited. See {name}.log")
         try:
             if node.rpc("eth_chainId", []) == "0x539" and node.block()["number"] == "0x0":
+                verify_listeners(proc.pid, ports)
                 return node
         except OSError:
             pass
