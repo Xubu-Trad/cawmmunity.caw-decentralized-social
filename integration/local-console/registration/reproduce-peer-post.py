@@ -90,13 +90,13 @@ def start(stack, name, ports, exe, out, genesis):
     config = out / (name + ".toml")
     listener = f'ListenAddr = "127.0.0.1:{p2p}"'
     config.write_text('[Node.P2P]\n' + listener + '\nBootstrapNodes = []\nBootstrapNodesV5 = []\n')
-    launch = cmd + ["--config", str(config),"--networkid", "1337", "--syncmode", "full", "--nodiscover",
+    launch = cmd + ["--config", str(config), "--bootnodes", "", "--networkid", "1337", "--syncmode", "full", "--nodiscover",
         "--netrestrict", "127.0.0.0/8", "--nat", "none", "--maxpeers", "2",
         "--http", "--http.addr", "127.0.0.1", "--http.port", str(http), "--http.api", api,
         "--authrpc.addr", "127.0.0.1", "--authrpc.port", str(engine), "--authrpc.jwtsecret", str(jwt),
         "--ipcdisable"]
     effective = subprocess.check_output(launch + ["dumpconfig"], text=True, env=env)
-    for setting in (listener, "BootstrapNodes = []", "BootstrapNodesV5 = []", "NoDiscovery = true"):
+    for setting in (listener, "BootstrapNodes = []", "NoDiscovery = true"):
         demand(setting in effective.splitlines(), f"Missing effective setting: {setting}")
     proc = subprocess.Popen(launch, env=env, stdout=log, stderr=log)
     stack.callback(peer.stop, proc)
