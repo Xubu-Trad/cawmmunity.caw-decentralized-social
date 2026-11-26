@@ -20,7 +20,7 @@ function linkedHeader(encoded,expectedHash){
     throw Error('Invalid encoded checkpoint header.');
   if(keccak256(encoded)!==expectedHash)throw Error('Checkpoint header hash or parent link mismatch.');
   const fields=readHeader(encoded.toLowerCase());
-  return {parent:fields[0],height:height(fields)};
+  return {parent:fields[0],height:height(fields),timestamp:fields[11]==='0x'?0n:BigInt(fields[11])};
 }
 
 function chainDepth(checkpointHeight,postHeight){
@@ -29,14 +29,17 @@ function chainDepth(checkpointHeight,postHeight){
   return Number(count);
 }
 
-export function verifyPostCheckpoint(capsule,blockHash,txHash,checkpointHash,evidence){
+export function verifyPostCheckpoint(capsule,blockHash,txHash,checkpointHash,evidence,{requireIncreasingTime=false}={}){
   const anchor=checkedPost(capsule,blockHash,txHash,checkpointHash);
   if(!evidence || Object.keys(evidence).length!==1 || !Object.hasOwn(evidence,'headers') ||
      !Array.isArray(evidence.headers) || evidence.headers.length<1 || evidence.headers.length>maxHeaders)
     throw Error('Invalid checkpoint evidence.');
-  let expectedHash=anchor.checkpointHash,checkpointHeight;
+  let expectedHash=anchor.checkpointHash,checkpointHeight,childTime;
   for(let index=0;index<evidence.headers.length;index++){
     const header=linkedHeader(evidence.headers[index],expectedHash);
+    if(requireIncreasingTime && childTime!==undefined && header.timestamp>=childTime)
+      throw Error('Child timestamp must be greater than its parent timestamp.');
+    childTime=header.timestamp;
     if(index===0){
       checkpointHeight=header.height;
       if(chainDepth(checkpointHeight,anchor.postHeight)!==evidence.headers.length)

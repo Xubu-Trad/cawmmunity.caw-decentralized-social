@@ -2,6 +2,12 @@
 
 A post’s signature and receipt still verify if its block is replaced. To see whether that block belongs to a particular history, keep a later block hash (the checkpoint). The reader walks from that hash through the parent headers to the post height and compares the block found there with the archived block.
 
+## What the original branch examples establish
+
+The original PR #44 reader checks linked hashes back to the post. Ahdmesh independently reproduced both classifications. The included example's blocks 36 and 37 both carry timestamp 1795627802. On the other branch, blocks 35, 36 and 37 all carry 1795627801. Geth requires a child timestamp greater than its parent's. These samples remain useful for checking branch membership. Neither height-37 hash can serve as a Geth-validated checkpoint for this chain. [Independent review](https://github.com/Xubu-Trad/cawmmunity.caw-decentralized-social/pull/44#issuecomment-7177120250) · [Geth timestamp rule](https://github.com/ethereum/go-ethereum/blob/1df30b18d9ed35ee9d28ffd4648442c2204554ad/consensus/beacon/consensus.go#L220-L223)
+
+For the separately synced receiver workflow, see [Locate an archived post on a Geth peer](POST_PEER_CHECKPOINT.md).
+
 ## Try both outcomes offline
 
 From the checkout root, install the reader dependencies once. The two verification commands then run without network access.

@@ -33,6 +33,8 @@ The destination is a system others can reproduce and operate without Xubu's acco
 
 ## where the build stands
 
+a second geth node synced from genesis and found the exact signed post from pr #44. the original block was absent from its history. the same post still cost 5,000 caw, but two earlier stake withdrawals had reverted, so its receipt paid 2,000 and 3,000 to two stakers. the original receipt paid all 5,000 to one. both nodes ran under one operator. [check both receipts offline or repeat the peer sync](docs/POST_PEER_CHECKPOINT.md)
+
 a saved receipt still reads the same after a chain reorganization. the reader can now tell you whether the original post block belongs to the history of a later block you trust. the offline example checks one post against two different histories. [try the branch check](docs/POST_BRANCH_RECHECK.md)
 
 you can now verify a paid post offline even when another post and a transfer paid the same staker in the same block. the sample shows which 5,000 caw came from each post. [read the mixed-block example](integration/local-console/registration/OPERATOR.md#verify-one-paid-post-in-a-mixed-block)
