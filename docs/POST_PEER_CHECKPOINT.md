@@ -62,3 +62,16 @@ node "$b/locate-archived-post.mjs" capture "$RPC" "$block" "$tx" "$b/samples/bra
 ```
 
 A missing receipt gives an unknown post location (`located: null`). Inconsistent evidence, unavailable ancestors or a changing checkpoint stop capture. The original archive and any re-mined receipt are verified independently against their own block commitments.
+
+## Rebuild a feed of archived paid posts
+
+Use the variables from the offline example above. Give the reader one checkpoint hash and a group of four arguments for each post. It checks all groups before printing a result. Up to 32 original posts can be checked together.
+
+```sh
+node "$b/recheck-feed.mjs" "$checkpoint" "$block" "$tx" "$b/samples/branch-check/archive.json" "$s/located.json"
+node --test "$b/test-recheck-feed.mjs"
+```
+
+The current feed is sorted newest first, including transaction position within a block. A re-mined transaction appears once with its current receipt. An unlocated transaction stays in the unresolved list and contributes no current credit. Duplicate transactions, conflicting checkpoints and invalid evidence stop the whole rebuild. This command projects the supplied paid posts. Discovering omitted posts, handling reCAWs and updating the live following screen remain open.
+
+The two-node launcher now requires explicit loopback bindings and checks the actual TCP listeners of both processes. Both fresh nodes passed the listener check. The complete replay on the corrected launcher is pending.
