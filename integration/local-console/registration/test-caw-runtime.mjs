@@ -132,6 +132,16 @@ try {
     if(method==='eth_getBlockByNumber')return null;
     return rpc(method,params);
   },checkpoint),/Checkpoint changed/);
+  if(process.env.CAW_PEER_POST_INPUT){
+    const {writePeerPostInput}=await import('./write-peer-post-input.mjs');
+    const snapshot=await rpc('evm_snapshot',[]);
+    try{
+      await writePeerPostInput({file:process.env.CAW_PEER_POST_INPUT,rpc,token,pool,staker,payer,
+        stake,fee,mine,runtime,balanceSlot,supply,word});
+    }finally{
+      assert.equal(await rpc('evm_revert',[snapshot]),true);
+    }
+  }
   if(process.argv.includes('--mixed-post')){
     await mine(token.connect(staker).approve(pool.target,stake));
     await mine(pool.connect(staker).stake(stake));

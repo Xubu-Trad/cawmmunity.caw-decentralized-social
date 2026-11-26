@@ -1,0 +1,111 @@
+{
+  "originalBlockHash": "0x81473ce06a2add0ef448b70e2cbca60f0b557eebbde2345fb147ec04e69e2a0d",
+  "txHash": "0xa7145ef7bbc6e88cf0db0824b8e3b635dba8d5834b2865570d5c625c130066d7",
+  "genesisHash": "0x2979a2b737d5f51bccf24982d460f0ac84f368a7a2cf9cd87ef8468a6e05163f",
+  "inputSha256": "35b8fc2707e45114b75bb3e7e0119d82a4a05249438067f4b579d51109dfae9b",
+  "receiverInitialHeight": 0,
+  "receiverInitiallyHadTip": false,
+  "receiverPeerCount": 1,
+  "syncHint": {
+    "number": "0x26",
+    "hash": "0x544689821bf2659f5e17eb8b34ece6afd0594d7173b91c367c401737de9f924d"
+  },
+  "receiverCheckpoint": {
+    "number": "0x25",
+    "hash": "0x3ae8c74183bc3aae8e9e2dd27aad137ac6960f33d745a4ecd3c7ef61c68d06ae"
+  },
+  "sourceStoppedBeforeCapture": true,
+  "bothNodesStoppedBeforeReplay": true,
+  "operatorCount": 1,
+  "archiveSha256": "56a0953dff9505d141f3f3ba8241707a0142373bc38903f0e36a8dc18e12cc98",
+  "receiverEvidenceSha256": "15410c7fa41b6e127c92ef4562f47ef1483f6670cdc63d9016fb78e78dc20ea0",
+  "gethCommit": "1df30b18d9ed35ee9d28ffd4648442c2204554ad",
+  "gethBinarySha256": "45335929e149413c9f680209c87fa14adc5750387da6f5f30b7b2bd24d2d54ea",
+  "receiverReceiptCount": 35,
+  "revertedTransactions": [
+    {
+      "height": 20,
+      "transactionHash": "0x35b85bc95dd08c119c1d7e7c0c955c4a10a00aeb9ea7adf330ba5e2a70c574e4"
+    },
+    {
+      "height": 22,
+      "transactionHash": "0x53c409e81551e994ef01395f9abebeeef7d7132745b12de45855bf3fec761b46"
+    },
+    {
+      "height": 24,
+      "transactionHash": "0xbaab8859accf7c41be18392c478b0e1ee1e861c20c7cce95b5c450300ed3ca7d"
+    },
+    {
+      "height": 30,
+      "transactionHash": "0x31578209a21c885c84f82defe3d730577a0f50e16ef7a29570b9a980dcf9fe84"
+    },
+    {
+      "height": 31,
+      "transactionHash": "0x95cb4ea49d6d4304847f0b47e0c522f76fb604f44c81c00dde1891db626aa9e1"
+    }
+  ],
+  "originalCredits": [
+    {
+      "staker": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "weight": "100.0",
+      "amount": "5000.0"
+    }
+  ],
+  "replay": {
+    "original": {
+      "status": "different-block",
+      "blockHash": "0x81473ce06a2add0ef448b70e2cbca60f0b557eebbde2345fb147ec04e69e2a0d",
+      "txHash": "0xa7145ef7bbc6e88cf0db0824b8e3b635dba8d5834b2865570d5c625c130066d7",
+      "checkpointHash": "0x3ae8c74183bc3aae8e9e2dd27aad137ac6960f33d745a4ecd3c7ef61c68d06ae",
+      "observedBlockHash": "0x062a077f3fca0acbefa3142687bc09a4fcf7504184b6072af716aa7f4553563b",
+      "postHeight": "0x23",
+      "checkpointHeight": "0x25",
+      "headerCount": 3
+    },
+    "located": {
+      "status": "included",
+      "blockHash": "0x062a077f3fca0acbefa3142687bc09a4fcf7504184b6072af716aa7f4553563b",
+      "txHash": "0xa7145ef7bbc6e88cf0db0824b8e3b635dba8d5834b2865570d5c625c130066d7",
+      "checkpointHash": "0x3ae8c74183bc3aae8e9e2dd27aad137ac6960f33d745a4ecd3c7ef61c68d06ae",
+      "observedBlockHash": "0x062a077f3fca0acbefa3142687bc09a4fcf7504184b6072af716aa7f4553563b",
+      "postHeight": "0x23",
+      "checkpointHeight": "0x25",
+      "headerCount": 3
+    },
+    "archivedPost": {
+      "hash": "0xa7145ef7bbc6e88cf0db0824b8e3b635dba8d5834b2865570d5c625c130066d7",
+      "blockHash": "0x81473ce06a2add0ef448b70e2cbca60f0b557eebbde2345fb147ec04e69e2a0d",
+      "name": "hunter01",
+      "body": "post before branch replacement",
+      "author": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "fee": "5000.0",
+      "credits": [
+        {
+          "staker": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+          "weight": "100.0",
+          "amount": "5000.0"
+        }
+      ]
+    },
+    "post": {
+      "hash": "0xa7145ef7bbc6e88cf0db0824b8e3b635dba8d5834b2865570d5c625c130066d7",
+      "blockHash": "0x062a077f3fca0acbefa3142687bc09a4fcf7504184b6072af716aa7f4553563b",
+      "name": "hunter01",
+      "body": "post before branch replacement",
+      "author": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "fee": "5000.0",
+      "credits": [
+        {
+          "staker": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+          "weight": "200.0",
+          "amount": "2000.0"
+        },
+        {
+          "staker": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+          "weight": "300.0",
+          "amount": "3000.0"
+        }
+      ]
+    }
+  }
+}
