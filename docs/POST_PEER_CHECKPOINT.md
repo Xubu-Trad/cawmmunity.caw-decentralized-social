@@ -72,6 +72,21 @@ node "$b/recheck-feed.mjs" "$checkpoint" "$block" "$tx" "$b/samples/branch-check
 node --test "$b/test-recheck-feed.mjs"
 ```
 
-The current feed is sorted newest first, including transaction position within a block. A re-mined transaction appears once with its current receipt. An unlocated transaction stays in the unresolved list and contributes no current credit. Duplicate transactions, conflicting checkpoints and invalid evidence stop the whole rebuild. This command projects the supplied paid posts. Discovering omitted posts, handling reCAWs and updating the live following screen remain open.
+The current feed is sorted newest first, including transaction position within a block. A re-mined transaction appears once with its current receipt. An unlocated transaction stays in the unresolved list and contributes no current credit. Duplicate transactions, conflicting checkpoints and invalid evidence stop the whole rebuild. This command projects the supplied paid posts. Automatic discovery of omitted posts and reCAW rollback remain open.
 
-The two-node launcher now requires explicit loopback bindings and checks the actual TCP listeners of both processes. Both fresh nodes passed the listener check. The complete replay on the corrected launcher is pending.
+The two-node launcher now requires explicit loopback bindings and checks the actual TCP listeners of both processes. Both fresh nodes passed the listener check. The complete stock replay on ec14b96 also reproduced the published receiver packet byte for byte.
+
+## Check saved payouts in the green portal
+
+Open **Recheck saved payouts** from the green portal or **Recheck saved posts and payouts** from the following feed. Choose **Try published example** to verify the original archive and receiver packet. For a re-mined post, the page shows each staker's current credit and the original receipt underneath. An unresolved row keeps the transaction and original block visible with no current payout.
+
+To check your files, select the original archive JSON and its location packet JSON together, enter your trusted checkpoint hash, and choose **Verify feed**. Multiple posts may share one block archive. The portal accepts up to 32 selected posts and a combined request of 1 MiB. On a connected portal, choose **Get fresh receipts from the local node** and enter the later checkpoint height in hex. The saved packets identify the original selections. The node supplies the new evidence. If the hash at that height changes, the portal clears the old result and asks you to review the pin. Recheck explicitly whenever you change checkpoints.
+
+For the standalone portal run these commands from the checkout root. The same page is built into the operator feed service on the same port. Run one server at a time.
+
+```sh
+npm ci --prefix integration/local-console --ignore-scripts --no-audit --no-fund
+node integration/local-console/registration/checkpoint-portal.mjs
+```
+
+Open **http://127.0.0.1:34742/checkpoint**. To enable fresh reads on the standalone server, append the HTTP URL of your own loopback disposable node to the launch command. With the server running, use `python3 integration/local-console/registration/test-checkpoint-portal.py` for the Chromium checks. Add `--live` for the published Geth receiver history.
