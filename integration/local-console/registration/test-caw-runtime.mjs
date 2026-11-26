@@ -132,6 +132,10 @@ try {
     if(method==='eth_getBlockByNumber')return null;
     return rpc(method,params);
   },checkpoint),/Checkpoint changed/);
+  if(process.argv.includes('--watch-following')){
+    const {testFollowingWatch}=await import('./test-following-watch.mjs');
+    await testFollowingWatch({endpoint,rpc,provider,token,pool,staker,payer,stake,fee,mine,name});
+  }
   if(process.env.CAW_PEER_POST_INPUT){
     const {writePeerPostInput}=await import('./write-peer-post-input.mjs');
     const snapshot=await rpc('evm_snapshot',[]);

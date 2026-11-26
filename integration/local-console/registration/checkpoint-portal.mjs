@@ -1,3 +1,4 @@
+import {discoverFollowing} from './discover-following.mjs';
 import http from 'node:http';
 import {readFile} from 'node:fs/promises';
 import {pathToFileURL} from 'node:url';
@@ -9,27 +10,34 @@ import {recheckFeed} from './recheck-feed.mjs';
 
 const addr='127.0.0.1:34742';
 const assets=new Map([
+  ['/checkpoint/following',['following-watch.html','text/html']], ['/checkpoint/following.mjs',['following-watch.mjs','text/javascript']],
   ['/checkpoint',['checkpoint.html','text/html']], ['/checkpoint/ui.mjs',['checkpoint-ui.mjs','text/javascript']],
   ['/checkpoint/style.css',['../../../public/styles.css','text/css']], ['/checkpoint/portal.css',['../../../public/website.css','text/css']]
 ]);
 const load=file=>readFile(new URL(file,import.meta.url),'utf8');
-export async function serveCheckpointPortal(req,res,rpc){
+export async function serveCheckpointPortal(req,res,rpc,expectedHost=addr){
   res.setHeader('Cache-Control','no-store');
   res.setHeader('Content-Security-Policy',"default-src 'none'; style-src 'self'; script-src 'self'; connect-src 'self'; frame-ancestors 'none'");
-  if(req.headers.host!==addr){res.writeHead(403).end();return;}
+  if(req.headers.host!==expectedHost){res.writeHead(403).end();return;}
   try{
     const path=req.url.split('?')[0];
     if(req.method==='GET' && assets.has(path)){
       const [file,type]=assets.get(path);res.setHeader('Content-Type',type);res.end(await load(file));return;
     }
     res.setHeader('Content-Type','application/json');
+    const watch=/^\/checkpoint\/following\/([a-z0-9]+)$/.exec(path);
+    if(req.method==='GET' && (watch || path==='/checkpoint/head')){
+      if(!rpc)throw Error('Connect the portal to a disposable node to watch a username.');
+      const result=watch?await discoverFollowing(rpc,watch[1]):{head:(await rpc('eth_getBlockByNumber',['latest',false])).hash};
+      res.end(JSON.stringify(result));return;
+    }
     if(req.method==='GET' && path==='/checkpoint/config'){res.end(JSON.stringify({live:!!rpc}));return;}
     if(req.method==='GET' && path==='/checkpoint/example'){
       const files=await Promise.all(['branch-check/archive','peer-check/located'].map(name=>load('samples/'+name+'.json')));
       res.end(JSON.stringify({checkpoint:'0x3ae8c74183bc3aae8e9e2dd27aad137ac6960f33d745a4ecd3c7ef61c68d06ae',files}));return;
     }
     if(req.method!=='POST'||path!=='/checkpoint/verify'){res.writeHead(404).end();return;}
-    if(req.headers.origin!=='http://'+addr || req.headers['content-type']!=='application/json'){res.writeHead(403).end();return;}
+    if(req.headers.origin!=='http://'+expectedHost || req.headers['content-type']!=='application/json'){res.writeHead(403).end();return;}
     const {files,checkpoint,height,live}=await readJsonBody(req,1048576,'Selection exceeds 1 MiB.');
     if(!Array.isArray(files)||files.length<2||files.length>64||!/^0x[0-9a-f]{64}$/.test(checkpoint))throw Error('Select archives, packets and a lowercase checkpoint hash.');
     const archives=new Map(), packets=[];

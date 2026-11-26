@@ -1,3 +1,4 @@
+import {serveCheckpointPortal} from './checkpoint-portal.mjs';
 import {singlePostProof} from './single-post-proof.mjs';
 import http from 'node:http';
 import {readFile} from 'node:fs/promises';
@@ -68,6 +69,9 @@ http.createServer(async (req,res) => {
   res.setHeader('Content-Security-Policy',"default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'");
   try {
     if (req.headers.host !== host || (req.headers.origin && req.headers.origin !== 'http://'+host)) {res.writeHead(403).end();return;}
+    if(actions && req.method==='GET' && req.url.startsWith('/checkpoint')){
+      await serveCheckpointPortal(req,res,rpc,host);return;
+    }
     if(actions && req.method==='GET' && /^\/proof\/0x[0-9a-fA-F]{64}$/.test(req.url)){
       const hash=req.url.slice(7),rc=await provider.getTransactionReceipt(hash);
       if(rc?.status!==1 || rc.to!==getAddress(actions.posts))throw Error('Unknown post receipt');

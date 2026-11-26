@@ -264,3 +264,23 @@ python3 integration/local-console/registration/test-wallet-extension.py /path/to
 ```
 
 The signing test chooses the second provider with a rejecting decoy installed and signs locally. It registers a username, reloads, then publishes, likes, reCAWs, follows, deposits 10 CAW and withdraws 10 CAW. The browser checks the mined sender, destination, calldata, value and block hash. The MetaMask check uses the installed extension code and a fresh profile with no existing wallet data. It checks wallet discovery, chain ID and authorized accounts. Real-extension transaction signing and independent reproduction are pending. Use Ctrl-C to stop the launcher.
+
+## Watch followed posts
+
+Start the combined disposable deployment with the two dependency installs above, Anvil on PATH and the following command from the repository root.
+
+```sh
+node integration/local-console/registration/test-caw-runtime.mjs --portal
+```
+
+Open [Watch followed posts](http://127.0.0.1:34736/checkpoint/following), enter `reader01` and choose **Watch feed**. The fixture has this username follow `hunter01`. Reading the feed requires no signature or file selection. Each card shows the signed post hash and the staker credits in its current receipt.
+
+Every five seconds the portal checks the latest block hash. When it changes, the reader checks follows against the selected state and rebuilds matching paid posts and receipts from the node. A previously displayed post missing from the new history stays unresolved while its author is still followed. Re-mining the transaction shows the new receipt's credits. Changing username or reloading starts a fresh session.
+
+The reader uses a single disposable node for discovery and the branch tip. It checks receipt and transaction roots for returned posts. Independent confirmation of the node's chosen branch and completeness of its log results is still open. Supports blocks 0–4095 and up to 32 matching paid posts. Exceeding either limit clears the results and displays the reason.
+
+To repeat the browser test with Python Playwright and its Chromium installed, run the following in a separate process. It starts its own chain, observes the original 5,000 CAW payout, removes the post and mines the same signed transaction again with payouts of 1,250 and 3,750 CAW.
+
+```sh
+node integration/local-console/registration/test-caw-runtime.mjs --watch-following
+```
