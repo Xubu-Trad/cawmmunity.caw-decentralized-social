@@ -13,10 +13,10 @@ const assets=new Map([
   ['/checkpoint/style.css',['../../../public/styles.css','text/css']], ['/checkpoint/portal.css',['../../../public/website.css','text/css']]
 ]);
 const load=file=>readFile(new URL(file,import.meta.url),'utf8');
-export async function serveCheckpointPortal(req,res,rpc){
+export async function serveCheckpointPortal(req,res,rpc,expectedHost=addr){
   res.setHeader('Cache-Control','no-store');
   res.setHeader('Content-Security-Policy',"default-src 'none'; style-src 'self'; script-src 'self'; connect-src 'self'; frame-ancestors 'none'");
-  if(req.headers.host!==addr){res.writeHead(403).end();return;}
+  if(req.headers.host!==expectedHost){res.writeHead(403).end();return;}
   try{
     const path=req.url.split('?')[0];
     if(req.method==='GET' && assets.has(path)){
@@ -29,7 +29,7 @@ export async function serveCheckpointPortal(req,res,rpc){
       res.end(JSON.stringify({checkpoint:'0x3ae8c74183bc3aae8e9e2dd27aad137ac6960f33d745a4ecd3c7ef61c68d06ae',files}));return;
     }
     if(req.method!=='POST'||path!=='/checkpoint/verify'){res.writeHead(404).end();return;}
-    if(req.headers.origin!=='http://'+addr || req.headers['content-type']!=='application/json'){res.writeHead(403).end();return;}
+    if(req.headers.origin!=='http://'+expectedHost || req.headers['content-type']!=='application/json'){res.writeHead(403).end();return;}
     const {files,checkpoint,height,live}=await readJsonBody(req,1048576,'Selection exceeds 1 MiB.');
     if(!Array.isArray(files)||files.length<2||files.length>64||!/^0x[0-9a-f]{64}$/.test(checkpoint))throw Error('Select archives, packets and a lowercase checkpoint hash.');
     const archives=new Map(), packets=[];
@@ -54,7 +54,11 @@ export async function serveCheckpointPortal(req,res,rpc){
     }
     if(used.size!==archives.size)throw Error('An archive has no matching packet.');
     const result=recheckFeed(checkpoint,entries,{includeArchivedCredits:true});
-    if(live && (await rpc('eth_getBlockByNumber',[height,false]))?.hash!==checkpoint)throw Error('Checkpoint changed. Recheck the feed.');
+    if(live){
+      const finalBlock=await rpc('eth_getBlockByNumber',[height,false]);
+      if(finalBlock?.hash!==checkpoint || finalBlock.number!==height)
+        throw Error('Checkpoint hash or height changed. Recheck the feed.');
+    }
     res.end(JSON.stringify(result));
   }catch(error){res.writeHead(400,{'Content-Type':'text/plain'}).end(error.message);}
 }
