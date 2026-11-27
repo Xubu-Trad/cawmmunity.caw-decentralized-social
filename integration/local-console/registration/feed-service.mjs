@@ -1,3 +1,4 @@
+import {serveCheckpointPortal} from './checkpoint-portal.mjs';
 import {renderSnapshot} from './feed-export.mjs';
 import {createRequire} from 'node:module';
 import {dirname,resolve} from 'node:path';
@@ -91,6 +92,7 @@ async function feed(name,tag='latest',expectedHash){
 const lib=resolve(dirname(createRequire(import.meta.url).resolve('ethers')),'../dist/ethers.min.js');
 const files={'/ethers.mjs':[lib,'text/javascript'],'/feed-actions.mjs':['feed-actions.mjs','text/javascript'],'/':['feed.html','text/html'],'/feed.mjs':['feed.mjs','text/javascript'],'/styles.css':['../../../public/styles.css','text/css'],'/website.css':['../../../public/website.css','text/css']};
 http.createServer(async(req,res)=>{
+  if (req.url.split('?')[0].startsWith('/checkpoint')) { await serveCheckpointPortal(req,res,rpc); return; }
   if(req.headers.host!=='127.0.0.1:34742'||req.method!=='GET'){res.writeHead(403).end();return;}
   res.setHeader('Cache-Control','no-store');res.setHeader('Content-Security-Policy',"default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; frame-ancestors 'none'");
   try{

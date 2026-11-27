@@ -33,6 +33,8 @@ The destination is a system others can reproduce and operate without Xubu's acco
 
 ## where the build stands
 
+open **recheck saved payouts** in the green portal to compare an archived receipt with the credits on the branch you select. unresolved posts stay visible without a current payout. [try the example or connect your node](docs/POST_PEER_CHECKPOINT.md#check-saved-payouts-in-the-green-portal)
+
 you can now rebuild a feed of saved paid posts against one checkpoint. a re-mined post gets the payout from its current receipt. posts the reader cannot locate stay visible as unresolved. [offline feed commands](docs/POST_PEER_CHECKPOINT.md#rebuild-a-feed-of-archived-paid-posts)
 
 a second geth node synced from genesis and found the exact signed post from pr #44. the original block was absent from its history. the same post still cost 5,000 caw, but two earlier stake withdrawals had reverted, so its receipt paid 2,000 and 3,000 to two stakers. the original receipt paid all 5,000 to one. both nodes ran under one operator. [check both receipts offline or repeat the peer sync](docs/POST_PEER_CHECKPOINT.md)

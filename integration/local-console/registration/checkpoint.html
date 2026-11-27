@@ -1,0 +1,9 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Saved posts · community.caw</title><link rel="stylesheet" href="/checkpoint/style.css"><link rel="stylesheet" href="/checkpoint/portal.css"><script type="module" src="/checkpoint/ui.mjs"></script></head>
+<body class="website-page"><main class="website-wrap"><section class="terminal-window name-console"><div class="window-title">COMMUNITY.CAW / DISPOSABLE CHAIN</div><div class="window-body">
+<h1>Recheck saved posts</h1><p>Choose the original post archives and their location packets, then enter the checkpoint hash you trust.</p>
+<form><label>Archive and packet files <input type="file" id="files" multiple accept=".json"></label>
+<label>Checkpoint hash <input id="pin" required pattern="0x[0-9a-f]{64}" spellcheck="false"></label>
+<label id="node-option" hidden><input type="checkbox" id="live"> Get fresh receipts from the local node</label>
+<label id="height-label" hidden>Checkpoint height (hex) <input id="height" placeholder="0x25"></label>
+<p><button>Verify feed</button> <button id="example" type="button">Try published example</button></p></form>
+<p role="status" id="status"></p><div id="results"></div></div></section></main></body></html>

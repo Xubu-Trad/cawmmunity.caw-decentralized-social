@@ -2,7 +2,7 @@ import { pathToFileURL } from 'node:url';
 import { readJsonFile } from '../read-proof-file.mjs';
 import { verifyLocatedPost } from './locate-archived-post.mjs';
 
-export function recheckFeed(checkpoint, entries) {
+export function recheckFeed(checkpoint, entries, {includeArchivedCredits=false}={}) {
   if (!Array.isArray(entries) || !entries.length || entries.length > 32) throw Error('Supply 1 to 32 saved posts.');
   const hashes = new Set();
   const posts = [], unresolved = [];
@@ -15,7 +15,8 @@ export function recheckFeed(checkpoint, entries) {
       continue;
     }
     posts.push({height: checked.located.postHeight, position: checked.post.transactionIndex ?? 0,
-      membership: checked.original.status === 'included' ? 'retained' : 're-mined', post: checked.post});
+      membership: checked.original.status === 'included' ? 'retained' : 're-mined', post: checked.post,
+      ...(includeArchivedCredits ? {archivedCredits: checked.archivedPost.credits} : {})});
   }
   posts.sort((a,b) => BigInt(a.height) === BigInt(b.height) ? b.position-a.position :
     BigInt(a.height) > BigInt(b.height) ? -1 : 1);
