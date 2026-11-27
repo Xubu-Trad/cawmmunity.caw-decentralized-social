@@ -288,3 +288,11 @@ To repeat the browser test with Python Playwright and its Chromium installed, ru
 ```sh
 node integration/local-console/registration/test-caw-runtime.mjs --watch-following
 ```
+
+On the machine with the second node, run the following from the checkout root. Replace the loopback port and hex height with the receiver’s values. Copy the returned height and hash into the portal connected to the first node.
+
+```sh
+node integration/local-console/registration/read-feed-checkpoint.mjs http://127.0.0.1:8545 0x25
+```
+
+The command checks chain 1337, recomputes the header hash and rereads the selected height. To exercise two local Geth databases and Chromium together, follow the [peer reproduction procedure](../../../docs/POST_PEER_CHECKPOINT.md) and append `--following-browser` to the `reproduce-peer-post.py` command. Leave portal port 34742 available. The source serves the feed. The newly synced receiver supplies the pin. The test checks the selected post’s 2,000 and 3,000 CAW payments, rejects a conflicting pin and records the successful pin in `result.json`. Both nodes belong to the same test operator.
