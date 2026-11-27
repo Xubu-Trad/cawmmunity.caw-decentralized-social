@@ -13,10 +13,13 @@ function line(parent,tag,text){
 }
 function watch(name){
   reset();const active=generation;
-  let head=null,remembered=new Map();
+  let head=null,height=null,remembered=new Map();
   async function refresh(){
     try{
-      if(head && (await read('head')).head===head)return;
+      if(head){
+        const current=await read('head');
+        if(current.head===head && current.height===height)return;
+      }
       if(active!==generation)return;
       items.replaceChildren();status.textContent='Checking follows and payout receipts…';
       const feed=await read('following/'+encodeURIComponent(name));
@@ -37,7 +40,7 @@ function watch(name){
         line(card,'p',hash);line(card,'p','No current payout verified.');
         next.set(hash,old);missing++;
       }
-      items.replaceChildren(cards);remembered=next;head=feed.head;
+      items.replaceChildren(cards);remembered=next;head=feed.head;height=feed.height;
       status.textContent=feed.items.length+' verified · '+missing+' unresolved · '+feed.targets.length+' followed · '+head;
     }catch(e){
       if(active===generation){head=null;items.replaceChildren();status.textContent=e.message+' Checking again in 5 seconds.';}

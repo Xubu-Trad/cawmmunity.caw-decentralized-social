@@ -28,7 +28,11 @@ export async function serveCheckpointPortal(req,res,rpc,expectedHost=addr){
     const watch=/^\/checkpoint\/following\/([a-z0-9]+)$/.exec(path);
     if(req.method==='GET' && (watch || path==='/checkpoint/head')){
       if(!rpc)throw Error('Connect the portal to a disposable node to watch a username.');
-      const result=watch?await discoverFollowing(rpc,watch[1]):{head:(await rpc('eth_getBlockByNumber',['latest',false])).hash};
+      if(!watch){
+        const block=await rpc('eth_getBlockByNumber',['latest',false]);
+        res.end(JSON.stringify({head:block.hash,height:block.number}));return;
+      }
+      const result=await discoverFollowing(rpc,watch[1]);
       res.end(JSON.stringify(result));return;
     }
     if(req.method==='GET' && path==='/checkpoint/config'){res.end(JSON.stringify({live:!!rpc}));return;}

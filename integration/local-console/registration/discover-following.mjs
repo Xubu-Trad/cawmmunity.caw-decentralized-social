@@ -1,7 +1,7 @@
 import {readFileSync} from 'node:fs';
 import {Interface,id,toQuantity} from 'ethers';
 import {capturePostCapsule} from './post-capsule.mjs';
-import {verifyPostCapsule} from './verify-post-capsule.mjs';
+import {readHeader,verifyPostCapsule} from './verify-post-capsule.mjs';
 import {verifyRuntime} from './verify-runtime.mjs';
 
 const {contracts}=JSON.parse(readFileSync(new URL('./disposable-runtime.json',import.meta.url)));
@@ -27,7 +27,8 @@ async function* scan(rpc,head,address,topic){
 export async function discoverFollowing(rpc,name){
   if(!/^[a-z0-9]+$/.test(name))throw Error('Enter a registered username.');
   const head=await rpc('eth_getBlockByNumber',['latest',false]);
-  await verifyRuntime(rpc,head.hash,name);
+  const runtime=await verifyRuntime(rpc,head.hash,name);
+  if(runtime.block!==head.number)throw Error('Selected head height disagrees with the checked block.');
   const at={blockHash:head.hash,requireCanonical:true};
   const targets=new Set();
   for await(const log of scan(rpc,head,contracts.follow.address,follow.getEvent('Followed').topicHash)){
@@ -48,11 +49,15 @@ export async function discoverFollowing(rpc,name){
       const archive=await capturePostCapsule(rpc,log.blockHash,log.transactionHash);
       const post=verifyPostCapsule(archive,log.blockHash,log.transactionHash);
       if(post.name!==args.name || post.body!==args.body)throw Error('Discovered post disagrees with signed receipt.');
-      items.push({post,height:Number(BigInt(log.blockNumber)),index:post.transactionIndex??0});
+      const number=readHeader(archive.header)[8];
+      const height=number==='0x'?0n:BigInt(number);
+      if(log.blockNumber!==toQuantity(height))throw Error('Publication height disagrees with the verified post header.');
+      items.push({post,height:Number(height),index:post.transactionIndex??0});
       seen.add(post.hash);
     }
   }
-  if((await rpc('eth_getBlockByNumber',['latest',false]))?.hash!==head.hash)throw Error('Head changed during recheck. Retrying.');
+  const finalHead=await rpc('eth_getBlockByNumber',['latest',false]);
+  if(finalHead?.hash!==head.hash || finalHead.number!==head.number)throw Error('Head changed during recheck. Retrying.');
   items.sort((a,b)=>b.height-a.height||b.index-a.index);
   return {name,head:head.hash,height:head.number,targets:[...targets],items};
 }
