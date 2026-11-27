@@ -1,3 +1,4 @@
+import {completeFeedLogs} from './complete-feed-logs.mjs';
 import {readFileSync} from 'node:fs';
 import {Interface,id,toQuantity} from 'ethers';
 import {capturePostCapsule} from './post-capsule.mjs';
@@ -9,21 +10,6 @@ const follow=new Interface(['event Followed(string name,string target,address in
   'function following(bytes32,bytes32) view returns(bool)']);
 const posts=new Interface(['event Published(uint256 indexed tokenId,address indexed author,string name,string body,uint256 fee)']);
 
-async function* scan(rpc,head,address,topic){
-  const height=Number(BigInt(head.number));
-  if(height>4095)throw Error('This disposable-chain reader supports heights through 4095.');
-  for(let first=0;first<=height;first+=32){
-    const last=Math.min(first+31,height);
-    const logs=await rpc('eth_getLogs',[{address,topics:[topic],fromBlock:toQuantity(first),toBlock:toQuantity(last)}]);
-    for(const log of logs){
-      const n=Number(BigInt(log.blockNumber));
-      if(log.removed || log.address.toLowerCase()!==address.toLowerCase() || log.topics[0]!==topic ||
-         n<first || n>last)throw Error('Inconsistent log in the selected history.');
-      yield log;
-    }
-  }
-}
-
 export async function discoverFollowing(rpc,name){
   if(!/^[a-z0-9]+$/.test(name))throw Error('Enter a registered username.');
   const head=await rpc('eth_getBlockByNumber',['latest',false]);
@@ -31,7 +17,7 @@ export async function discoverFollowing(rpc,name){
   if(runtime.block!==head.number)throw Error('Selected head height disagrees with the checked block.');
   const at={blockHash:head.hash,requireCanonical:true};
   const targets=new Set();
-  for await(const log of scan(rpc,head,contracts.follow.address,follow.getEvent('Followed').topicHash)){
+  for await(const log of completeFeedLogs(rpc,head,contracts.follow.address,follow.getEvent('Followed').topicHash,'Follow')){
     const args=follow.parseLog(log).args;
     if(args.name!==name || targets.has(args.target))continue;
     const data=follow.encodeFunctionData('following',[id(name),id(args.target)]);
@@ -41,7 +27,7 @@ export async function discoverFollowing(rpc,name){
   }
   const items=[],seen=new Set();
   if(targets.size){
-    for await(const log of scan(rpc,head,contracts.posts.address,posts.getEvent('Published').topicHash)){
+    for await(const log of completeFeedLogs(rpc,head,contracts.posts.address,posts.getEvent('Published').topicHash,'Publication')){
       const args=posts.parseLog(log).args;
       if(!targets.has(args.name))continue;
       if(seen.has(log.transactionHash))throw Error('Duplicate post in node discovery.');

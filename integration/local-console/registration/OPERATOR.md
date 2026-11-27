@@ -275,9 +275,11 @@ node integration/local-console/registration/test-caw-runtime.mjs --portal
 
 Open [Watch followed posts](http://127.0.0.1:34736/checkpoint/following), enter `reader01` and choose **Watch feed**. The fixture has this username follow `hunter01`. Reading the feed requires no signature or file selection. Each card shows the signed post hash and the staker credits in its current receipt.
 
-Every five seconds the portal checks the latest block hash. When it changes, the reader checks follows against the selected state and rebuilds matching paid posts and receipts from the node. A previously displayed post missing from the new history stays unresolved while its author is still followed. Re-mining the transaction shows the new receipt's credits. Changing username or reloading starts a fresh session.
+Every five seconds the portal checks the latest block hash and height. When it changes, the reader checks follows against the selected state and rebuilds matching paid posts and receipts from the node. A previously displayed post missing from the new history stays unresolved while its author is still followed. Re-mining the transaction shows the new receipt's credits. Changing username or reloading starts a fresh session.
 
-The reader uses a single disposable node for discovery and the branch tip. It checks receipt and transaction roots for returned posts. Independent confirmation of the node's chosen branch and completeness of its log results is still open. Supports blocks 0–4095 and up to 32 matching paid posts. Exceeding either limit clears the results and displays the reason.
+The reader walks parent headers from the selected tip to genesis. A header’s event filter tells it which blocks could contain a follow or publication. For those blocks it checks the full transaction and receipt lists against the roots in the header and compares the events with the node’s search results. If a follow or publication is missing, the portal clears the feed, explains the omission and retries. A reader still needs an independent checkpoint to confirm that the node chose the right branch.
+
+This disposable reader supports heights 0–4095, up to 32 matching paid posts, and at most 32 transactions in a candidate block. Blocks that exceed the evidence limits stop verification.
 
 To repeat the browser test with Python Playwright and its Chromium installed, run the following in a separate process. It starts its own chain, observes the original 5,000 CAW payout, removes the post and mines the same signed transaction again with payouts of 1,250 and 3,750 CAW.
 

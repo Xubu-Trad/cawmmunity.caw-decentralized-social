@@ -100,3 +100,5 @@ node integration/local-console/registration/test-caw-runtime.mjs --checkpoint-he
 The browser verifies one post and then two posts. For each batch, the test repeats the request with the same hash and a wrong block number on the final read. The portal must report the height conflict and clear every payout.
 
 Add `--watch-following` to the command to cover automatic discovery and polling. The browser checks conflicting heights on the first and last head reads and a publication log whose height disagrees with its authenticated header. It also starts with visible payouts and checks that a conflicting poll clears them. The existing chain-change test then exercises removal and re-mining with updated credits.
+
+The automatic watcher also checks event discovery against the selected header chain. The browser test withholds one mined post while keeping the other search results, then restores it on the same chain. It separately withholds the follow that makes the author visible. Either omission must clear the feed. See the [operator guide](../integration/local-console/registration/OPERATOR.md) for the branch and size limits.

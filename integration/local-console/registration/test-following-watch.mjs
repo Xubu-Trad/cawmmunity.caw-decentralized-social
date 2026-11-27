@@ -23,7 +23,7 @@ export async function testFollowingWatch({endpoint,rpc,provider,token,pool,stake
     const raw=await rpc('eth_getRawTransactionByHash',[tx.hash]);
     const amount=parseEther('300');
     const {testFollowingHeights}=await import('./test-following-heights.mjs');
-    await testFollowingHeights(rpc);
+    await testFollowingHeights(rpc,tx.hash);
     const browser=spawn('python3',['test-following-watch.py'],{cwd,stdio:['pipe','inherit','inherit']});
     browser.stdin.end(JSON.stringify({url,endpoint,parent,hash:tx.hash,raw,second:second.address,token:token.target,pool:pool.target,
       approve:token.interface.encodeFunctionData('approve',[pool.target,amount]),stake:pool.interface.encodeFunctionData('stake',[amount])}));

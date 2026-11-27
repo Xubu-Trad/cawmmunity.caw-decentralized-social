@@ -33,7 +33,7 @@ The destination is a system others can reproduce and operate without Xubu's acco
 
 ## where the build stands
 
-open **watch followed posts** in the wallet portal and enter your registered username. the portal finds paid posts from the names you follow and checks their payout receipts again when the local chain changes. if a post disappears during the session, its old payout comes off the screen. [run the disposable demo](integration/local-console/registration/OPERATOR.md#watch-followed-posts)
+open **watch followed posts** in the wallet portal and enter your registered username. the portal finds paid posts from the names you follow and checks their payout receipts again when the local chain changes. if the node skips a follow or post that the block receipts record, the portal clears the feed and tells you what is missing. if a chain change removes a post, its old payout comes off the screen. [run the disposable demo](integration/local-console/registration/OPERATOR.md#watch-followed-posts)
 
 open **recheck saved payouts** in the green portal to compare an archived receipt with the credits on the branch you select. unresolved posts stay visible without a current payout. [try the example or connect your node](docs/POST_PEER_CHECKPOINT.md#check-saved-payouts-in-the-green-portal)
 

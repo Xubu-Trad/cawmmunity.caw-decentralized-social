@@ -107,7 +107,7 @@ function receiptForType(receipt,type){
   return rc;
 }
 
-function computedBloom(logs){
+export function computedBloom(logs){
   let bloom=0n;
   for(const row of logs){
     requireMatch(Array.isArray(row)&&row.length===3&&isHexString(row[0],20)&&Array.isArray(row[1])&&
