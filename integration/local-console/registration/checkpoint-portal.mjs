@@ -1,4 +1,4 @@
-import {discoverFollowing} from './discover-following.mjs';
+import {discoverFollowing,readFeedHead} from './discover-following.mjs';
 import http from 'node:http';
 import {readFile} from 'node:fs/promises';
 import {pathToFileURL} from 'node:url';
@@ -28,11 +28,13 @@ export async function serveCheckpointPortal(req,res,rpc,expectedHost=addr){
     const watch=/^\/checkpoint\/following\/([a-z0-9]+)$/.exec(path);
     if(req.method==='GET' && (watch || path==='/checkpoint/head')){
       if(!rpc)throw Error('Connect the portal to a disposable node to watch a username.');
+      const query=new URLSearchParams(req.url.split('?').slice(1).join('?'));
+      const pin=query.has('height') || query.has('hash')?{height:query.get('height'),hash:query.get('hash')}:null;
       if(!watch){
-        const block=await rpc('eth_getBlockByNumber',['latest',false]);
+        const block=await readFeedHead(rpc,pin);
         res.end(JSON.stringify({head:block.hash,height:block.number}));return;
       }
-      const result=await discoverFollowing(rpc,watch[1]);
+      const result=await discoverFollowing(rpc,watch[1],pin);
       res.end(JSON.stringify(result));return;
     }
     if(req.method==='GET' && path==='/checkpoint/config'){res.end(JSON.stringify({live:!!rpc}));return;}

@@ -21,6 +21,21 @@ with sync_playwright() as pw:
     card = page.locator('article').filter(has_text=cfg['hash'])
     expect(card).to_contain_text('5000.0 CAW',timeout=20000)
     height = rpc('eth_blockNumber',[])
+    pinned = browser.new_page()
+    pinned.goto(cfg['url'])
+    pinned.get_by_label('Your registered username').fill('reader01')
+    pinned.locator('summary').click()
+    pinned.get_by_label('Checkpoint height (hex)').fill(height)
+    original = rpc('eth_getBlockByNumber',[height,False])['hash']
+    pinned.get_by_label('Checkpoint hash').fill(original)
+    pinned.get_by_role('button',name='Watch feed').click()
+    expect(pinned.locator('#status')).to_contain_text('supplied checkpoint '+height,timeout=20000)
+    expect(pinned.locator('#items')).to_contain_text(cfg['hash'])
+    rpc('evm_mine',[])
+    assert rpc('eth_blockNumber',[]) != height
+    # Submit again after tip advancement to exercise reconstruction at the old block.
+    pinned.get_by_role('button',name='Watch feed').click()
+    expect(pinned.locator('#status')).to_contain_text(original,timeout=20000)
     assert rpc('evm_revert',[cfg['parent']])
     expect(card).to_contain_text('No current payout verified.',timeout=20000)
     expect(card).not_to_contain_text('5000.0 CAW')
@@ -33,5 +48,11 @@ with sync_playwright() as pw:
     expect(card).to_contain_text('1250.0 CAW')
     expect(card).to_contain_text('3750.0 CAW')
     expect(card).not_to_contain_text('5000.0 CAW')
+    # The replacement branch has the same height and signed post, but a different block hash.
+    expect(pinned.locator('#status')).to_contain_text('Node disagrees with the supplied checkpoint',timeout=20000)
+    expect(pinned.locator('#items')).to_be_empty()
+    pinned.get_by_role('button',name='Watch feed').click()
+    expect(pinned.locator('#status')).to_contain_text('Node disagrees with the supplied checkpoint',timeout=20000)
+    expect(pinned.locator('#items')).to_be_empty()
     browser.close()
 print('PASS · discovered, unresolved, and re-mined with updated payouts',flush=True)

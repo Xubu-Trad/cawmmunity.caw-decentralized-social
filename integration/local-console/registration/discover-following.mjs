@@ -10,9 +10,18 @@ const follow=new Interface(['event Followed(string name,string target,address in
   'function following(bytes32,bytes32) view returns(bool)']);
 const posts=new Interface(['event Published(uint256 indexed tokenId,address indexed author,string name,string body,uint256 fee)']);
 
-export async function discoverFollowing(rpc,name){
+export async function readFeedHead(rpc,pin){
+  if(pin && (!/^0x(?:0|[1-9a-f][0-9a-f]{0,2})$/.test(pin.height) || !/^0x[0-9a-f]{64}$/.test(pin.hash)))
+    throw Error('Enter a checkpoint height in hex (0x0–0xfff) and its lowercase block hash.');
+  const block=await rpc('eth_getBlockByNumber',[pin?.height??'latest',false]);
+  if(pin && (block?.hash!==pin.hash || block.number!==pin.height))
+    throw Error('Node disagrees with the supplied checkpoint.');
+  return block;
+}
+
+export async function discoverFollowing(rpc,name,pin){
   if(!/^[a-z0-9]+$/.test(name))throw Error('Enter a registered username.');
-  const head=await rpc('eth_getBlockByNumber',['latest',false]);
+  const head=await readFeedHead(rpc,pin);
   const runtime=await verifyRuntime(rpc,head.hash,name);
   if(runtime.block!==head.number)throw Error('Selected head height disagrees with the checked block.');
   const at={blockHash:head.hash,requireCanonical:true};
@@ -42,7 +51,7 @@ export async function discoverFollowing(rpc,name){
       seen.add(post.hash);
     }
   }
-  const finalHead=await rpc('eth_getBlockByNumber',['latest',false]);
+  const finalHead=await readFeedHead(rpc,pin);
   if(finalHead?.hash!==head.hash || finalHead.number!==head.number)throw Error('Head changed during recheck. Retrying.');
   items.sort((a,b)=>b.height-a.height||b.index-a.index);
   return {name,head:head.hash,height:head.number,targets:[...targets],items};

@@ -13,16 +13,18 @@ function line(parent,tag,text){
 }
 function watch(name){
   reset();const active=generation;
+  const hash=document.querySelector('#hash').value.trim(),at=document.querySelector('#height').value.trim();
+  const query=hash||at?'?'+new URLSearchParams({height:at,hash}):'';
   let head=null,height=null,remembered=new Map();
   async function refresh(){
     try{
       if(head){
-        const current=await read('head');
+        const current=await read('head'+query);
         if(current.head===head && current.height===height)return;
       }
       if(active!==generation)return;
       items.replaceChildren();status.textContent='Checking follows and payout receipts…';
-      const feed=await read('following/'+encodeURIComponent(name));
+      const feed=await read('following/'+encodeURIComponent(name)+query);
       if(active!==generation)return;
       const next=new Map(),cards=document.createDocumentFragment();
       for(const {post} of feed.items){
@@ -41,7 +43,7 @@ function watch(name){
         next.set(hash,old);missing++;
       }
       items.replaceChildren(cards);remembered=next;head=feed.head;height=feed.height;
-      status.textContent=feed.items.length+' verified · '+missing+' unresolved · '+feed.targets.length+' followed · '+head;
+      status.textContent=feed.items.length+' verified · '+missing+' unresolved · '+feed.targets.length+' followed · '+(query?'supplied checkpoint ':'local tip ')+height+' · '+head;
     }catch(e){
       if(active===generation){head=null;items.replaceChildren();status.textContent=e.message+' Checking again in 5 seconds.';}
     }finally{
@@ -50,5 +52,5 @@ function watch(name){
   }
   refresh();
 }
-input.oninput=reset;
+document.querySelector('form').oninput=reset;
 document.querySelector('form').onsubmit=e=>{e.preventDefault();watch(input.value);};
