@@ -62,7 +62,11 @@ export async function serveCheckpointPortal(req,res,rpc,expectedHost=addr){
     }
     if(used.size!==archives.size)throw Error('An archive has no matching packet.');
     const result=recheckFeed(checkpoint,entries,{includeArchivedCredits:true});
-    if(live && (await rpc('eth_getBlockByNumber',[height,false]))?.hash!==checkpoint)throw Error('Checkpoint changed. Recheck the feed.');
+    if(live){
+      const finalBlock=await rpc('eth_getBlockByNumber',[height,false]);
+      if(finalBlock?.hash!==checkpoint || finalBlock.number!==height)
+        throw Error('Checkpoint hash or height changed. Recheck the feed.');
+    }
     res.end(JSON.stringify(result));
   }catch(error){res.writeHead(400,{'Content-Type':'text/plain'}).end(error.message);}
 }

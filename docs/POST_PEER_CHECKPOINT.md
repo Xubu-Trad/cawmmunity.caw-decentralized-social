@@ -80,7 +80,7 @@ The two-node launcher now requires explicit loopback bindings and checks the act
 
 Open **Recheck saved payouts** from the green portal or **Recheck saved posts and payouts** from the following feed. Choose **Try published example** to verify the original archive and receiver packet. For a re-mined post, the page shows each staker's current credit and the original receipt underneath. An unresolved row keeps the transaction and original block visible with no current payout.
 
-To check your files, select the original archive JSON and its location packet JSON together, enter your trusted checkpoint hash, and choose **Verify feed**. Multiple posts may share one block archive. The portal accepts up to 32 selected posts and a combined request of 1 MiB. On a connected portal, choose **Get fresh receipts from the local node** and enter the later checkpoint height in hex. The saved packets identify the original selections. The node supplies the new evidence. If the hash at that height changes, the portal clears the old result and asks you to review the pin. Recheck explicitly whenever you change checkpoints.
+To check your files, select the original archive JSON and its location packet JSON together, enter your trusted checkpoint hash, and choose **Verify feed**. Multiple posts may share one block archive. The portal accepts up to 32 selected posts and a combined request of 1 MiB. On a connected portal, choose **Get fresh receipts from the local node** and enter the later checkpoint height in hex. The saved packets identify the original selections. The node supplies the new evidence. On its final read, the portal checks both the block hash and the block number. A mismatch clears the whole batch, including any previously displayed payouts. Recheck explicitly whenever you change checkpoints.
 
 For the standalone portal run these commands from the checkout root. The same page is built into the operator feed service on the same port. Run one server at a time.
 
@@ -90,3 +90,11 @@ node integration/local-console/registration/checkpoint-portal.mjs
 ```
 
 Open **http://127.0.0.1:34742/checkpoint**. To enable fresh reads on the standalone server, append the HTTP URL of your own loopback disposable node to the launch command. With the server running, use `python3 integration/local-console/registration/test-checkpoint-portal.py` for the Chromium checks. Add `--live` for the published Geth receiver history.
+
+With the disposable runtime test dependencies installed (including Anvil, Python Playwright and Chromium), run the connected batch regression from the checkout root:
+
+```sh
+node integration/local-console/registration/test-caw-runtime.mjs --checkpoint-height
+```
+
+The browser verifies one post and then two posts. For each batch, the test repeats the request with the same hash and a wrong block number on the final read. The portal must report the height conflict and clear every payout.

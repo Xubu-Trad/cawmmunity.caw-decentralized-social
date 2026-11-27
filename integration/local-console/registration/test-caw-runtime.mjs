@@ -82,6 +82,10 @@ try {
   assert.equal(await token.balanceOf(pool.target),stake);
   assert.equal(await token.allowance(payer.address,pool.target),0n);
   assert.equal(await token.balanceOf(payer.address),supply-price-fee-stake);
+  if(process.argv.includes('--checkpoint-height')){
+    const {testCheckpointHeight}=await import('./test-checkpoint-height.mjs');
+    await testCheckpointHeight({rpc:createLocalRpc(endpoint),post,token,pool,fee,name,mine});
+  }
   const actions=await exerciseAccountActions({provider,registry,token,pool,payer,staker,name,post,deploy,mine,read});
   const beforeExit=await token.balanceOf(staker.address);
   await mine(pool.connect(staker).unstake());
