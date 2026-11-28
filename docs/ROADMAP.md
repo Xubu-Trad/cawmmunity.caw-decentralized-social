@@ -1,5 +1,7 @@
 ## Protocol delivery priorities
 
+The source-offline milestone now exercises the green portal in a fresh browser against the synced receiver. The operator retains the original checkpoint and compares every rendered post and credit. Next acceptance step: repeat with a separately operated receiver and independently acquired checkpoint. Public finality and reCAW rollback remain open.
+
 The release target is a usable protocol that another community member can deploy, read and maintain. The #36 and #37 evidence remains available for independent reproduction. The next implementation priority is the combined protocol path.
 
 | Milestone | Current evidence and next acceptance test |

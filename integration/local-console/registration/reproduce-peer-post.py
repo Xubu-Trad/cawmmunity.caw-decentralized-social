@@ -219,11 +219,18 @@ def main():
         connections = synchronize(source, receiver, head["hash"])
         browser_pin = None
         if args.following_browser:
-            browser_pin = import_module("test-feed-receiver").check_receiver_feed(
-                f"http://127.0.0.1:{source.http}", f"http://127.0.0.1:{receiver.http}",
-                hex(checkpoint_height), POST_TX, ["2000.0 CAW · "+STAKER, "3000.0 CAW · "+SECOND_STAKER])
+            receiver_url = f"http://127.0.0.1:{receiver.http}"
+            browser_pin = json.loads(subprocess.check_output([
+                "node", str(HERE / "read-feed-checkpoint.mjs"), receiver_url, hex(checkpoint_height)
+            ]))
+            check_feed = import_module("test-feed-receiver").check_receiver_feed
+            credits = ["2000.0 CAW · "+STAKER, "3000.0 CAW · "+SECOND_STAKER]
+            source_cards = check_feed(f"http://127.0.0.1:{source.http}", browser_pin, POST_TX, credits)
         peer.stop(source.proc)
         demand(source.proc.poll() is not None, "Source must be offline before acquisition")
+        if args.following_browser:
+            receiver_cards = check_feed(receiver_url, browser_pin, POST_TX, credits)
+            demand(receiver_cards == source_cards, "Receiver-only browser feed differs after source shutdown")
         checkpoint = receiver.block(hex(checkpoint_height))
         demand(checkpoint["hash"] != head["hash"] and receiver.block()["parentHash"] == checkpoint["hash"],
                "Unexpected checkpoint below the receiver tip")
@@ -268,6 +275,7 @@ def main():
         demand(browser_pin == {"height": checkpoint["number"], "hash": checkpoint["hash"]},
                "Browser pin differs from the final receiver checkpoint")
         result["followingBrowserCheckpoint"] = browser_pin
+        result["sourceOfflineBrowserCards"] = receiver_cards
         result["followingBrowserSetupTransactions"] = browser_transactions
     (output / "result.json").write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps(result, indent=2))

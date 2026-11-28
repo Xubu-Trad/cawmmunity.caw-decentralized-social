@@ -1,5 +1,4 @@
-"""Check the source portal against a checkpoint acquired through the receiver RPC."""
-import json
+"""Read the followed feed in a new browser at a previously captured checkpoint."""
 from pathlib import Path
 import subprocess
 
@@ -8,14 +7,11 @@ from playwright.sync_api import expect, sync_playwright
 HERE = Path(__file__).resolve().parent
 
 
-def check_receiver_feed(source, receiver, height, tx_hash, credits):
+def check_receiver_feed(endpoint, pin, tx_hash, credits):
     from contextlib import ExitStack
 
-    pin = json.loads(subprocess.check_output([
-        'node', str(HERE / 'read-feed-checkpoint.mjs'), receiver, height
-    ]))
     with ExitStack() as stack:
-        portal = subprocess.Popen(['node', str(HERE / 'checkpoint-portal.mjs'), source],
+        portal = subprocess.Popen(['node', str(HERE / 'checkpoint-portal.mjs'), endpoint],
                                   stdout=subprocess.PIPE, text=True)
         def close_portal():
             if portal.poll() is None:
@@ -38,12 +34,14 @@ def check_receiver_feed(source, receiver, height, tx_hash, credits):
         field.fill(pin['hash'])
         button = page.get_by_role('button', name='Watch feed')
         button.click()
-        expect(page.locator('#status')).to_contain_text('supplied checkpoint '+height+' · '+pin['hash'], timeout=30000)
+        expect(page.locator('#status')).to_contain_text('supplied checkpoint '+pin['height']+' · '+pin['hash'], timeout=30000)
         card = page.locator('article').filter(has_text=tx_hash)
-        for credit in credits:
-            expect(card).to_contain_text(credit)
+        expect(card.locator('h2')).to_have_text('hunter01')
+        expect(card.locator('blockquote')).to_have_text('post before branch replacement')
+        expect(card.locator('p')).to_have_text([tx_hash, *credits])
+        rendered = page.locator('#items article').all_inner_texts()
         field.fill('0x'+'00'*32)
         button.click()
         expect(page.locator('#status')).to_contain_text('Node disagrees with the supplied checkpoint')
         expect(page.locator('#items')).to_be_empty()
-    return pin
+    return rendered
