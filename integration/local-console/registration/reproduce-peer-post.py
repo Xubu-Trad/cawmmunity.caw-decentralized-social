@@ -164,6 +164,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for flag in ("--geth", "--input", "--output"):
         parser.add_argument(flag, type=Path, required=True)
+    parser.add_argument("--following-browser", action="store_true",
+                        help="Check the source portal against a pin read from the synced receiver")
     args = parser.parse_args()
     exe, output = args.geth.resolve(), args.output.resolve()
     demand(shutil.disk_usage(output.parent).free >= 2 * 1024**3, "Need 2 GiB free for test nodes")
@@ -199,10 +201,27 @@ def main():
         demand(receiver.block()["hash"] == genesis_hash, "Different genesis")
         for group in groups:
             head = mine(source, head, group["transactions"])
+        browser_transactions = []
+        if args.following_browser:
+            # The archived follow reverted at block 24. Preserve it and exercise
+            # a real follow from reader01's new owner after the archived post.
+            suffix = json.loads(subprocess.check_output(["node", str(HERE / "receiver-follow-fixture.mjs"), str(args.input)]))
+            for raw in suffix:
+                head = mine(source, head, [raw])
+                tx_hash = head["transactions"][0]
+                demand(source.rpc("eth_getTransactionReceipt", [tx_hash])["status"] == "0x1",
+                       "Browser fixture transaction reverted at " + head["number"])
+                browser_transactions.append(tx_hash)
+            checkpoint_height += len(suffix)
         for _ in range(3):
             head = mine(source, head, [])
         demand(int(head["number"], 16) == checkpoint_height + 1, "Wrong tip height")
         connections = synchronize(source, receiver, head["hash"])
+        browser_pin = None
+        if args.following_browser:
+            browser_pin = import_module("test-feed-receiver").check_receiver_feed(
+                f"http://127.0.0.1:{source.http}", f"http://127.0.0.1:{receiver.http}",
+                hex(checkpoint_height), POST_TX, ["2000.0 CAW · "+STAKER, "3000.0 CAW · "+SECOND_STAKER])
         peer.stop(source.proc)
         demand(source.proc.poll() is not None, "Source must be offline before acquisition")
         checkpoint = receiver.block(hex(checkpoint_height))
@@ -245,6 +264,11 @@ def main():
                   gethCommit=PINNED_COMMIT, gethBinarySha256=GETH_SHA256,
                   receiverReceiptCount=receipt_count, revertedTransactions=reverted,
                   originalCredits=original_post["credits"], replay=replay)
+    if args.following_browser:
+        demand(browser_pin == {"height": checkpoint["number"], "hash": checkpoint["hash"]},
+               "Browser pin differs from the final receiver checkpoint")
+        result["followingBrowserCheckpoint"] = browser_pin
+        result["followingBrowserSetupTransactions"] = browser_transactions
     (output / "result.json").write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps(result, indent=2))
 

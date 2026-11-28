@@ -264,3 +264,35 @@ python3 integration/local-console/registration/test-wallet-extension.py /path/to
 ```
 
 The signing test chooses the second provider with a rejecting decoy installed and signs locally. It registers a username, reloads, then publishes, likes, reCAWs, follows, deposits 10 CAW and withdraws 10 CAW. The browser checks the mined sender, destination, calldata, value and block hash. The MetaMask check uses the installed extension code and a fresh profile with no existing wallet data. It checks wallet discovery, chain ID and authorized accounts. Real-extension transaction signing and independent reproduction are pending. Use Ctrl-C to stop the launcher.
+
+## Watch followed posts
+
+Start the combined disposable deployment with the two dependency installs above, Anvil on PATH and the following command from the repository root.
+
+```sh
+node integration/local-console/registration/test-caw-runtime.mjs --portal
+```
+
+Open [Watch followed posts](http://127.0.0.1:34736/checkpoint/following), enter `reader01` and choose **Watch feed**. The fixture has this username follow `hunter01`. Reading the feed requires no signature or file selection. Each card shows the signed post hash and the staker credits in its current receipt.
+
+To verify a particular branch, open **Check against another operator’s checkpoint**. On a separately synchronized node, request `eth_getBlockByNumber` with the block height and `false`. Copy the returned `number` and `hash` into the portal. The feed shows settlement at that exact block even as newer blocks arrive. A missing or replaced checkpoint clears the feed. The source of the checkpoint determines how independent this check is.
+
+Every five seconds the portal checks the latest block hash and height. When it changes, the reader checks follows against the selected state and rebuilds matching paid posts and receipts from the node. A previously displayed post missing from the new history stays unresolved while its author is still followed. Re-mining the transaction shows the new receipt's credits. Changing username or reloading starts a fresh session.
+
+The reader walks parent headers from the selected tip to genesis. A header’s event filter tells it which blocks could contain a follow or publication. For those blocks it checks the full transaction and receipt lists against the roots in the header and compares the events with the node’s search results. If a follow or publication is missing, the portal clears the feed, explains the omission and retries. A reader still needs an independent checkpoint to confirm that the node chose the right branch.
+
+This disposable reader supports heights 0–4095, up to 32 matching paid posts, and at most 32 transactions in a candidate block. Blocks that exceed the evidence limits stop verification.
+
+To repeat the browser test with Python Playwright and its Chromium installed, run the following in a separate process. It starts its own chain, observes the original 5,000 CAW payout, removes the post and mines the same signed transaction again with payouts of 1,250 and 3,750 CAW.
+
+```sh
+node integration/local-console/registration/test-caw-runtime.mjs --watch-following
+```
+
+On the machine with the second node, run the following from the checkout root. Replace the loopback port and hex height with the receiver’s values. Copy the returned height and hash into the portal connected to the first node.
+
+```sh
+node integration/local-console/registration/read-feed-checkpoint.mjs http://127.0.0.1:8545 0x25
+```
+
+The command checks chain 1337, recomputes the header hash and rereads the selected height. To exercise two local Geth databases and Chromium together, follow the [peer reproduction procedure](../../../docs/POST_PEER_CHECKPOINT.md) and append `--following-browser` to the `reproduce-peer-post.py` command. Leave portal port 34742 available. The source serves the feed. The newly synced receiver supplies the pin. The test checks the selected post’s 2,000 and 3,000 CAW payments, rejects a conflicting pin and records the successful pin in `result.json`. Both nodes belong to the same test operator.

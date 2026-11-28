@@ -15,3 +15,5 @@ The original alpha code and project-authored explanatory documentation are licen
 No contributor, including Xubu, should receive reserved protocol powers, a hidden fee, global moderation authority, a proxy/upgrade key, confiscation rights or a universal DM key. Running a website does not confer authority over the protocol.
 
 Proposed release review: publish a pinned candidate and deviations, allow an open review period, record unresolved objections, seek independent reproduction and assess release evidence. The duration and acceptance criteria still require an explicit decision. Stars, this agent team's checks and one person's approval are not consensus.
+
+For changes to automatic following-feed discovery, run the [browser reorg check](integration/local-console/registration/OPERATOR.md#watch-followed-posts). Report the original credits, the unresolved interval, and the credits from the replacement receipt. Identify who operated the node used for the check.
