@@ -33,6 +33,8 @@ The destination is a system others can reproduce and operate without Xubu's acco
 
 ## where the build stands
 
+a fresh green portal can read a followed feed from the synced receiver after the source node stops. the operator keeps the checkpoint captured before shutdown. [repeat the two-node browser check](docs/POST_PEER_CHECKPOINT.md#recover-the-followed-feed-after-source-shutdown)
+
 open **watch followed posts** in the wallet portal and enter your registered username. the portal finds paid posts from the names you follow and checks their payout receipts again when the local chain changes. if the node skips a follow or post that the block receipts record, the portal clears the feed and tells you what is missing. if a chain change removes a post, its old payout comes off the screen. [run the disposable demo](integration/local-console/registration/OPERATOR.md#watch-followed-posts)
 
 open **recheck saved payouts** in the green portal to compare an archived receipt with the credits on the branch you select. unresolved posts stay visible without a current payout. [try the example or connect your node](docs/POST_PEER_CHECKPOINT.md#check-saved-payouts-in-the-green-portal)

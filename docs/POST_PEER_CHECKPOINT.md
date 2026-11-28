@@ -106,3 +106,15 @@ The automatic watcher also checks event discovery against the selected header ch
 In browser mode the archived Follow reverted. The fixture preserves that receipt, funds the current reader01 owner, approves the fee and mines a successful Follow before synchronization. Each setup receipt must succeed. The resulting browser checkpoint is at height 40. The three setup transaction hashes are saved in result.json for comparison.
 
 The combined Chromium watcher regression mines one block per replacement transaction and checks the re-mined receipt against the original publication height and the new canonical block hash. The November 28 publisher rerun cleared the original 5,000 CAW payout and displayed 1,250 and 3,750 CAW on the replacement branch. The separate two-node browser run verified 2,000 and 3,000 CAW at the receiver checkpoint at height 40. These runs used disposable nodes on one host.
+
+## Recover the followed feed after source shutdown
+
+Use the dependencies and pinned Geth binary from **Repeat the peer sync**, plus Python Playwright and Chromium. From the checkout root run:
+
+```sh
+b=integration/local-console/registration
+tmp=$(mktemp -d)
+python3 "$b/reproduce-peer-post.py" --following-browser --geth "$(command -v geth)" --input "$b/samples/peer-check/input.json" --output "$tmp/peer"
+```
+
+The first portal uses the source RPC and a height and hash captured from the receiver. After the source process exits, the test starts a new portal backed solely by the receiver and opens a new Chromium session. It reuses the saved checkpoint, rediscovers the followed posts, checks the selected post and its exact credit rows, and compares all displayed cards with the first session. Both sessions must clear the feed when given a conflicting pin. Inspect `followingBrowserCheckpoint` and `sourceOfflineBrowserCards` in `result.json`. The disposable nodes share an operator, genesis and a sync hint.

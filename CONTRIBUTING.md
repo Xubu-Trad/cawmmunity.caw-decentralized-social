@@ -17,3 +17,5 @@ No contributor, including Xubu, should receive reserved protocol powers, a hidde
 Proposed release review: publish a pinned candidate and deviations, allow an open review period, record unresolved objections, seek independent reproduction and assess release evidence. The duration and acceptance criteria still require an explicit decision. Stars, this agent team's checks and one person's approval are not consensus.
 
 For changes to automatic following-feed discovery, run the [browser reorg check](integration/local-console/registration/OPERATOR.md#watch-followed-posts). Report the original credits, the unresolved interval, and the credits from the replacement receipt. Identify who operated the node used for the check.
+
+When reviewing source-offline recovery, record the saved checkpoint height and hash, the receiver-only cards in result.json and the number of operators. Compare the post hash and each staker credit after the source stops. [Reproduction workflow](docs/POST_PEER_CHECKPOINT.md#recover-the-followed-feed-after-source-shutdown).
